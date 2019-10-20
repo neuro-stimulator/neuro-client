@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Greeter } from 'diplomka-share';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'diplomka-frontend';
+
+  xxx = Greeter('');
 }

@@ -1,6 +1,9 @@
 {
   "name": "diplomka-frontend",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "keywords": [],
+  "author": "Petr Štechmüller",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +12,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stechy1/diplomka-frontend"
+  },
   "dependencies": {
     "@angular/animations": "~8.1.0",
     "@angular/common": "~8.1.0",
@@ -22,7 +28,8 @@
     "bootstrap": "^4.3.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "diplomka-share": "1.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.801.0",
