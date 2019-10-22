@@ -1,0 +1,13 @@
+<div class="bg-light" [class.active]="navigation.showSidebarValue | async" id="sidebar-wrapper">
+  <div class="sidebar-heading">
+    <img src="assets/nav_header.png" alt="Hlavička">
+    <p id="application-name">Remote stimulator control</p>
+    <small id="application-author">Petr Štechmüller</small>
+  </div>
+  <div class="list-group list-group-flush">
+    <a routerLink="/experiments" class="list-group-item list-group-item-action bg-light" routerLinkActive="active"><i class="fas"></i>Experimenty</a>
+    <a routerLink="/settings" class="list-group-item list-group-item-action bg-light" routerLinkActive="active"><i class="fas fa-cog"></i> Nastavení</a>
+    <a routerLink="/help" class="list-group-item list-group-item-action bg-light" routerLinkActive="active"><i class="fas fa-question"></i> Nápověda</a>
+    <a routerLink="/about" class="list-group-item list-group-item-action bg-light" routerLinkActive="active"><i class="fas fa-info"></i> O aplikaci</a>
+  </div>
+</div>

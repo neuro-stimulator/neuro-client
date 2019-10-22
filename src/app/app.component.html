@@ -1,1 +1,19 @@
-<router-outlet></router-outlet>
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
+
+  <div id="page-content-wrapper">
+
+    <!-- Navigation -->
+    <app-navigation></app-navigation>
+
+    <!-- Page content -->
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div id="page-shadow" *ngIf="navigation.showSidebarValue | async" (click)="navigation.showSidebar = false"></div>
+  </div>
+
+</div>

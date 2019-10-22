@@ -1,0 +1,13 @@
+@import "~src/sass/_style-variables.sass"
+
+.navbar
+  background-color: $primary
+  height: 54px
+
+  #menu-toggle
+    display: block
+
+@include media-breakpoint-up(md)
+  .navbar
+    #menu-toggle
+      display: none
