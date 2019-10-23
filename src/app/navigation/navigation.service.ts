@@ -6,11 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class NavigationService {
 
-  private _showSidebar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-
-  constructor() {
-    this._showSidebar.subscribe(value => console.log(value));
-  }
+  private _showSidebar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   toggle() {
     this._showSidebar.next(!this._showSidebar.getValue());

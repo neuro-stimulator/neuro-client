@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ExperimentsService } from './experiments.service';
+import { Observable } from 'rxjs';
+import { Experiment } from 'diplomka-share';
 
 @Component({
   selector: 'app-experiments',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExperimentsComponent implements OnInit {
 
-  constructor() { }
+  experiments: Observable<Experiment[]>;
+
+  constructor(private readonly _service: ExperimentsService) { }
 
   ngOnInit() {
+    this.experiments = this._service.records;
+    this._service.all();
   }
 
 }

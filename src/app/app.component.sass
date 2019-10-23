@@ -1,10 +1,12 @@
 @import "~src/sass/_style-variables.sass"
 
 #page-content-wrapper
-  width: 100%
-  //background-color: rgba(0, 0, 0, 0.5)
+  width: calc(100% - 240px)
   position: relative
   transition: all 0.3s
+
+#page-content-wrapper.full
+    width: 100%
 
 #page-shadow
   position: fixed
