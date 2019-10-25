@@ -1,6 +1,7 @@
 @import "~src/sass/_style-variables.sass"
 
 #sidebar-wrapper
+  position: absolute
   display: none
   min-height: 100vh
   margin-left: -15rem
@@ -11,7 +12,8 @@
   transition: all 0.3s
 
 #sidebar-wrapper.active
-    display: block
+  display: block
+  z-index: 3
 
 #sidebar-wrapper
   .sidebar-heading
@@ -61,6 +63,6 @@
   //color:
   border-color: rgba(0, 0, 0, 0.3)
 
-@include media-breakpoint-up(md)
+@include media-breakpoint-up(lg)
   #sidebar-wrapper
     display: block

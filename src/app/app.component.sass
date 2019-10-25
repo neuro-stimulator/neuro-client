@@ -1,12 +1,18 @@
 @import "~src/sass/_style-variables.sass"
 
 #page-content-wrapper
-  width: calc(100% - 240px)
-  position: relative
+  position: absolute
+  top: 0
+  left: 0
   transition: all 0.3s
+  width: 100vw
+  z-index: 1
+  max-height: 100vh
+  overflow: hidden
+  height: 100%
 
 #page-content-wrapper.full
-    width: 100%
+  width: 100vw
 
 #page-shadow
   position: fixed
@@ -16,7 +22,14 @@
   background-color: rgba(0, 0, 0, 0.5)
 
 
-@include media-breakpoint-up(md)
+@include media-breakpoint-up(lg)
   #page-shadow
     display: none
 
+  #page-content-wrapper
+    left: 240px
+    width: calc(100vw - 240px)
+
+  #page-content-wrapper.full
+    left: 240px
+    width: calc(100vw - 240px)

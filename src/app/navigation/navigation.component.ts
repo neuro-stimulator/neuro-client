@@ -11,7 +11,7 @@ export class NavigationComponent implements OnInit {
 
   showSidebar: boolean;
 
-  constructor(private _navigation: NavigationService, private readonly _route: Router) {
+  constructor(public navigation: NavigationService, private readonly _route: Router) {
   }
 
   ngOnInit() {
@@ -24,9 +24,5 @@ export class NavigationComponent implements OnInit {
 
     });
 
-  }
-
-  handleToggleSidebar() {
-    this._navigation.toggle();
   }
 }

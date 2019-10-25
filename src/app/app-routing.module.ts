@@ -11,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'experiments',
-    component: ExperimentsComponent
+    component: ExperimentsComponent,
+    data: {title: 'Experimenty'}
   }
 ];
 
