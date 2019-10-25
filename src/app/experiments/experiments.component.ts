@@ -10,13 +10,20 @@ import { Experiment } from 'diplomka-share';
 })
 export class ExperimentsComponent implements OnInit {
 
+  ghosts: any[] = [];
   experiments: Observable<Experiment[]>;
 
   constructor(private readonly _service: ExperimentsService) { }
 
   ngOnInit() {
+    this.ghosts = this._service.makeGhosts();
     this.experiments = this._service.records;
-    this._service.all();
+    this._service.all()
+        .then(() => {
+          this.ghosts = [];
+        });
   }
+
+
 
 }

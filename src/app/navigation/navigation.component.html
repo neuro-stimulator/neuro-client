@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div>
     <h1 class="p-0 m-0" style="font-size: 1.5rem">{{navigation.title}}</h1>
-    <small><i class="fa fa-spin" *ngIf="navigation.working">&#xf1ce;</i> {{navigation.subtitle}}</small>
+    <small><i [ngClass]="['fas', 'fa-spin', navigation.icon]" *ngIf="navigation.working"></i> {{navigation.subtitle}}</small>
   </div>
 
   <button class="navbar-toggler d-lg-none ml-auto" type="button" (click)="navigation.toggle()" data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

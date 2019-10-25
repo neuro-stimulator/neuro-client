@@ -15,13 +15,17 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { SidebarComponent } from './navigation/sidebar/sidebar.component';
 import { ExperimentsComponent } from './experiments/experiments.component';
+import { ExperimentItemListComponent } from './experiments/experiment-item/experiment-item-list.component';
+import { GhostItemListComponent } from './experiments/ghost-item/ghost-item-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     SidebarComponent,
-    ExperimentsComponent
+    ExperimentsComponent,
+    ExperimentItemListComponent,
+    GhostItemListComponent
   ],
   imports: [
     BrowserModule,

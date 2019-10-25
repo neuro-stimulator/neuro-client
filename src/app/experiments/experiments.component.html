@@ -8,36 +8,18 @@
 
 <section class="row">
   <div class="col-12">
-    <h2 *ngIf="(experiments | async).length === 0">Nebyly nalezeny žádné experimenty...</h2>
-    <ul class="list-group experiment-list">
-      <li class="list-group-item list-group-item-action" *ngFor="let experiment of experiments | async">
+    <h2 *ngIf="ghosts.length === 0 && (experiments | async).length === 0">Nebyly nalezeny žádné experimenty...</h2>
+    <app-ghost-item-list [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></app-ghost-item-list>
+    <app-experiment-item-list [experiments]="experiments" *ngIf="ghosts.length === 0"></app-experiment-item-list>
 
-        <div class="row expriment">
-          <!-- Experiment image representation -->
-          <div class="col-2 col-md-1 vertical-center">
-            <div [ngClass]="['experiment-icon', experiment.type]"><span class="align-middle">{{experiment.type.toUpperCase()}}</span></div>
-          </div>
-          <!-- Experiment Name, Description, Output types -->
-          <div class="col-8 col-md-9">
-            <div>
-              <strong>{{experiment.name}}</strong>
-              <span class="experiment-output float-right">
-                <i class="fas fa-lightbulb" *ngIf="experiment.output['led']" title="LED"></i>
-                <i class="fas fa-image" *ngIf="experiment.output['image']" title="Obrázek"></i>
-                <i class="fas fa-music" *ngIf="experiment.output['sound']" title="Zvuk"></i>
-              </span>
-            </div>
-            <div><small class="text-truncate experiment-description">{{experiment.description}}</small></div>
-          </div>
-          <!-- Experiment toolbar buttons -->
-          <div class="col-2 experiment-toolbar">
-            <i class="fas fa-edit text-primary" title="Editovat"></i>
-            <i class="fas fa-trash text-danger" title="Odstranit"></i>
-          </div>
-        </div>
-
-      </li>
-    </ul>
+<!--    <ul class="list-group experiment-list">-->
+<!--      <li class="list-group-item list-group-item-action" *ngFor="let experiment of experiments | async">-->
+<!--        <app-experiment-item [experiment]="experiment"></app-experiment-item>-->
+<!--      </li>-->
+<!--      <li class="list-group-item list-group-item-action" *ngFor="let ghost of ghosts">-->
+<!--        <app-ghost-item [ghost]="ghost"></app-ghost-item>-->
+<!--      </li>-->
+<!--    </ul>-->
   </div>
 </section>
 

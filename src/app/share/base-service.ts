@@ -69,11 +69,12 @@ export abstract class BaseService<T extends BaseRecord> {
   /**
    * Získá ze serveru všechny záznamy
    */
-  all(): void {
-    this._http.get<{records: T[]}>(this._accessPoint)
+  public all(): Promise<void> {
+    return this._http.get<{records: T[]}>(this._accessPoint)
         .toPromise()
         .then(response => {
           this.records$.next(response.records);
+          return null;
         });
   }
 
@@ -133,10 +134,19 @@ export abstract class BaseService<T extends BaseRecord> {
   }
 
   /**
+   * Abstraktní metoda pro vygenerování 'ghost' záznamů
+   *
+   * @param count Počet ghost záznamů, který se má vygenerovat
+   */
+  public makeGhosts(count: number = 5): Array<any> {
+    return new Array(count);
+  }
+
+  /**
    * Vrátí pozorovatelnou kolekci záznamů
    * Sama o sobě neinvokuje získání dat ze serveru
    */
-  get records(): Observable<T[]> {
+  public get records(): Observable<T[]> {
     return this.records$;
   }
 }

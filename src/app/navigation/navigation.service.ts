@@ -17,6 +17,7 @@ export class NavigationService {
 
   public title: string;
   public subtitle: string;
+  public icon: string;
   public working: boolean;
 
   constructor(private readonly _route: ActivatedRoute,

@@ -16,4 +16,6 @@ export class ExperimentsService extends BaseService<Experiment> {
               protected readonly logger: NGXLogger) {
     super(ExperimentsService.BASE_API_URL, _http, logger);
   }
+
+
 }
