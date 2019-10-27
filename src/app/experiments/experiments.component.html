@@ -10,19 +10,12 @@
   <div class="col-12">
     <h2 *ngIf="ghosts.length === 0 && (experiments | async).length === 0">Nebyly nalezeny žádné experimenty...</h2>
     <app-experiment-ghost-item-list [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></app-experiment-ghost-item-list>
-    <app-experiment-item-list [experiments]="experiments" *ngIf="ghosts.length === 0"></app-experiment-item-list>
-
-<!--    <ul class="list-group experiment-list">-->
-<!--      <li class="list-group-item list-group-item-action" *ngFor="let experiment of experiments | async">-->
-<!--        <app-experiment-item [experiment]="experiment"></app-experiment-item>-->
-<!--      </li>-->
-<!--      <li class="list-group-item list-group-item-action" *ngFor="let ghost of ghosts">-->
-<!--        <app-ghost-item [ghost]="ghost"></app-ghost-item>-->
-<!--      </li>-->
-<!--    </ul>-->
+    <app-experiment-item-list [experiments]="experiments" (delete)="handleDelete($event)" *ngIf="ghosts.length === 0"></app-experiment-item-list>
   </div>
 </section>
 
 <button type="button" class="floating-action-button btn btn-primary">
   <i class="fas fa-plus-circle"></i>
 </button>
+
+<app-modal #modal></app-modal>

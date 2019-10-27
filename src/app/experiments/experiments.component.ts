@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ExperimentsService } from './experiments.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { Observable } from 'rxjs';
-import { Experiment, ExperimentType } from 'diplomka-share';
+
+import { ModalComponent } from '../share/modal/modal.component';
+
+import { ExperimentsService } from './experiments.service';
+import { Experiment} from 'diplomka-share';
+import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.component';
 
 @Component({
   selector: 'app-experiments',
@@ -9,6 +14,8 @@ import { Experiment, ExperimentType } from 'diplomka-share';
   styleUrls: ['./experiments.component.sass']
 })
 export class ExperimentsComponent implements OnInit {
+
+  @ViewChild('modal', {static: true}) modal: ModalComponent;
 
   ghosts: any[] = [];
   experiments: Observable<Experiment[]>;
@@ -22,5 +29,14 @@ export class ExperimentsComponent implements OnInit {
         .then(() => {
           this.ghosts = [];
         });
+  }
+
+  handleDelete(experiment: Experiment) {
+    const self = this;
+    this.modal.showComponent = ConfirmDialogComponent;
+    this.modal.open({
+      message: 'Opravdu si přejete smazat vybraný experiment?',
+      confirm: () => self._service.delete(experiment.id)
+    });
   }
 }

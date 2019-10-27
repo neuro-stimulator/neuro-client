@@ -68,6 +68,24 @@ export abstract class BaseService<T extends BaseRecord> {
   }
 
   /**
+   * Smaže zadaný záznam ze serveru pomocí metody DELETE
+   *
+   * @param recordId ID záznamu, který se má smazat
+   * @return T Záznam, který reprezentoval data na serveru
+   */
+  public delete(recordId: number): Promise<T> {
+    return this._http.delete<ResponseObject<T>>(`${this._accessPoint}/${recordId}`)
+               .toPromise()
+               .then(result => {
+                 this._changeServiceEventHandler({
+                   record: result.data,
+                   changeType: CRUDServiceType.DELETE
+                 });
+                 return result.data;
+               });
+  }
+
+  /**
    * Abstraktní metoda pro vygenerování 'ghost' záznamů
    *
    * @param count Počet ghost záznamů, který se má vygenerovat
@@ -108,24 +126,6 @@ export abstract class BaseService<T extends BaseRecord> {
                  this._changeServiceEventHandler({
                    record: result.data,
                    changeType: CRUDServiceType.UPDATE
-                 });
-                 return result.data;
-               });
-  }
-
-  /**
-   * Smaže zadaný záznam ze serveru pomocí metody DELETE
-   *
-   * @param recordId ID záznamu, který se má smazat
-   * @return T Záznam, který reprezentoval data na serveru
-   */
-  protected _delete(recordId: number): Promise<T> {
-    return this._http.delete<ResponseObject<T>>(`${this._accessPoint}/${recordId}`)
-               .toPromise()
-               .then(result => {
-                 this._changeServiceEventHandler({
-                   record: result.data,
-                   changeType: CRUDServiceType.DELETE
                  });
                  return result.data;
                });

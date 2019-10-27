@@ -17,5 +17,4 @@ export class ExperimentsService extends BaseService<Experiment> {
     super(ExperimentsService.BASE_API_URL, _http, logger);
   }
 
-
 }
