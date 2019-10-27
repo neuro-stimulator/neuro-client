@@ -23,7 +23,4 @@ export class ExperimentsComponent implements OnInit {
           this.ghosts = [];
         });
   }
-
-
-
 }

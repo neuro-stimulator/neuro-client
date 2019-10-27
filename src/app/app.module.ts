@@ -10,26 +10,29 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 
+// Application modules
+import { ModalModule } from './share/modal/modal.module';
+
 // Application components
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { SidebarComponent } from './navigation/sidebar/sidebar.component';
 import { ExperimentsComponent } from './experiments/experiments.component';
 import { ExperimentItemListComponent } from './experiments/experiment-item/experiment-item-list.component';
-import { GhostItemListComponent } from './experiments/ghost-item/ghost-item-list.component';
+import { ExperimentGhostItemListComponent } from './experiments/experiment-ghost-item/experiment-ghost-item-list.component';
+import { NavigationModule } from './navigation/navigation.module';
+import { ExperimentsModule } from './experiments/experiments.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
-    SidebarComponent,
-    ExperimentsComponent,
-    ExperimentItemListComponent,
-    GhostItemListComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+
+    NavigationModule,
+    ModalModule,
 
     // Third party modules
     ToastrModule.forRoot(),

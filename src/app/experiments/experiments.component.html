@@ -9,7 +9,7 @@
 <section class="row">
   <div class="col-12">
     <h2 *ngIf="ghosts.length === 0 && (experiments | async).length === 0">Nebyly nalezeny žádné experimenty...</h2>
-    <app-ghost-item-list [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></app-ghost-item-list>
+    <app-experiment-ghost-item-list [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></app-experiment-ghost-item-list>
     <app-experiment-item-list [experiments]="experiments" *ngIf="ghosts.length === 0"></app-experiment-item-list>
 
 <!--    <ul class="list-group experiment-list">-->
