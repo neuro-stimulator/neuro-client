@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { BaseRecord } from './base-record';
 import { HttpClient } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
+import { ResponseObject } from 'diplomka-share';
 
 /**
  * Základní třída pro správu CRUD operací
@@ -70,10 +71,10 @@ export abstract class BaseService<T extends BaseRecord> {
    * Získá ze serveru všechny záznamy
    */
   public all(): Promise<void> {
-    return this._http.get<{records: T[]}>(this._accessPoint)
+    return this._http.get<ResponseObject<T[]>>(this._accessPoint)
         .toPromise()
         .then(response => {
-          this.records$.next(response.records);
+          this.records$.next(response.data);
           return null;
         });
   }
@@ -81,38 +82,58 @@ export abstract class BaseService<T extends BaseRecord> {
   /**
    * Pomocí POST požadavku nahraje zadaná data na server
    *
-   * @param formData Data, která se mají nahrát
+   * @param data Data, která se mají nahrát
    * @return T Záznam, který reprezentuje data na serveru
    */
-  protected _insert(formData: FormData): Promise<T> {
-    return this._http.post<{record: T}>(this._accessPoint, formData)
+  protected _insert(data: FormData|T): Promise<T> {
+    return this._http.post<ResponseObject<T>>(this._accessPoint, data)
                .toPromise()
                .then(result => {
                  this._changeServiceEventHandler({
-                   record: result.record,
+                   record: result.data,
                    changeType: CRUDServiceType.INSERT
                  });
 
-                 return result.record;
+                 return result.data;
+               });
+  }
+
+  /**
+   * Pomocí POST požadavku nahraje zadaná data na server
+   *
+   * @param record Záznam, který se má vložit
+   * @return T Záznam, který reprezentuje data na serveru
+   */
+  public insert(record: T): Promise<T> {
+    return this._insert(record);
+  }
+
+  /**
+   * Aktualizuje záznam na serveru pomocí metody PATCH
+   *
+   * @param data Data, která obsahují aktualizované informace záznamu
+   * @return T Záznam, který reprezentuje data na serveru
+   */
+  protected _update(data: FormData|T): Promise<T> {
+    return this._http.patch<ResponseObject<T>>(this._accessPoint, data)
+               .toPromise()
+               .then((result) => {
+                 this._changeServiceEventHandler({
+                   record: result.data,
+                   changeType: CRUDServiceType.UPDATE
+                 });
+                 return result.data;
                });
   }
 
   /**
    * Aktualizuje záznam na serveru pomocí metody PATCH
    *
-   * @param formData Data, která obsahují aktualizované informace záznamu
+   * @param record Záznam, který se má aktualizovat
    * @return T Záznam, který reprezentuje data na serveru
    */
-  protected _update(formData: FormData): Promise<T> {
-    return this._http.patch<{record: T}>(this._accessPoint, formData)
-               .toPromise()
-               .then((result) => {
-                 this._changeServiceEventHandler({
-                   record: result.record,
-                   changeType: CRUDServiceType.UPDATE
-                 });
-                 return result.record;
-               });
+  public update(record: T): Promise<T> {
+    return this._update(record);
   }
 
   /**
@@ -122,14 +143,14 @@ export abstract class BaseService<T extends BaseRecord> {
    * @return T Záznam, který reprezentoval data na serveru
    */
   protected _delete(recordId: number): Promise<T> {
-    return this._http.delete<{record: T}>(`${this._accessPoint}/${recordId}`)
+    return this._http.delete<ResponseObject<T>>(`${this._accessPoint}/${recordId}`)
                .toPromise()
                .then(result => {
                  this._changeServiceEventHandler({
-                   record: result.record,
+                   record: result.data,
                    changeType: CRUDServiceType.DELETE
                  });
-                 return result.record;
+                 return result.data;
                });
   }
 

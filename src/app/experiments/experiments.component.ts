@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExperimentsService } from './experiments.service';
 import { Observable } from 'rxjs';
-import { Experiment } from 'diplomka-share';
+import { Experiment, ExperimentType } from 'diplomka-share';
 
 @Component({
   selector: 'app-experiments',

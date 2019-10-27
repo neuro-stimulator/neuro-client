@@ -1,3 +1,3 @@
 export interface BaseRecord {
-  id: string;
+  id?: number;
 }

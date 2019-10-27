@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Experiment } from 'diplomka-share';
+import { Experiment, ExperimentType } from 'diplomka-share';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 export class ExperimentItemListComponent implements OnInit {
 
   @Input() experiments: Observable<Experiment[]>;
+
+  ExperimentType = ExperimentType;
 
   constructor() { }
 

@@ -4,7 +4,7 @@
     <div class="row expriment">
       <!-- Experiment image representation -->
       <div class="col-2 col-md-1 vertical-center">
-        <div [ngClass]="['experiment-icon', experiment.type]"><span class="align-middle">{{experiment.type.toUpperCase()}}</span></div>
+        <div [ngClass]="['experiment-icon', ExperimentType[experiment.type].toLowerCase()]"><span class="align-middle">{{ExperimentType[experiment.type]}}</span></div>
       </div>
       <!-- Experiment Name, Description, Output types -->
       <div class="col-8 col-md-9">
