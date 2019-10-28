@@ -10,6 +10,10 @@ const routes: Routes = [
   },
   {
     path: ':type',
+    redirectTo: ':type/new'
+  },
+  {
+    path: ':type/new',
     component: ExperimentTypeComponent
   },
   {
