@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 import { ResponseObject } from 'diplomka-share';
 import { delay } from 'rxjs/operators';
+import { Socket } from 'ngx-socket-io';
+import { environment } from '../../environments/environment';
 
 /**
  * Základní třída pro správu CRUD operací
@@ -18,6 +20,8 @@ export abstract class BaseService<T extends BaseRecord> {
    * na změny v kolekci
    */
   private readonly records$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]);
+
+  private _socket: Socket;
 
   protected constructor(private readonly _accessPoint: string,
                         protected readonly _http: HttpClient,
@@ -77,10 +81,15 @@ export abstract class BaseService<T extends BaseRecord> {
     return this._http.delete<ResponseObject<T>>(`${this._accessPoint}/${recordId}`)
                .toPromise()
                .then(result => {
-                 this._changeServiceEventHandler({
-                   record: result.data,
-                   changeType: CRUDServiceType.DELETE
-                 });
+                 // Odešlu aktualizaci událost pouze, pokud nejsem připojený
+                 // na websocket
+                 if (this._socket === undefined) {
+                   this._changeServiceEventHandler({
+                     record: result.data,
+                     changeType: CRUDServiceType.DELETE
+                   });
+                 }
+
                  return result.data;
                });
   }
@@ -94,6 +103,28 @@ export abstract class BaseService<T extends BaseRecord> {
     return new Array(count);
   }
 
+  protected _initSocket(namespace: string): void {
+    this._socket = new Socket({url: `${environment.makeURL(environment.url.socket, environment.port.socket)}/${namespace}`});
+    this._socket.on('insert', (data: T) => {
+      this._changeServiceEventHandler({
+        record: data,
+        changeType: CRUDServiceType.INSERT
+      });
+    });
+    this._socket.on('update', (data: T) => {
+      this._changeServiceEventHandler({
+        record: data,
+        changeType: CRUDServiceType.UPDATE
+      });
+    });
+    this._socket.on('delete', (data: T) => {
+      this._changeServiceEventHandler({
+        record: data,
+        changeType: CRUDServiceType.DELETE
+      });
+    });
+  }
+
   /**
    * Pomocí POST požadavku nahraje zadaná data na server
    *
@@ -104,10 +135,14 @@ export abstract class BaseService<T extends BaseRecord> {
     return this._http.post<ResponseObject<T>>(this._accessPoint, data)
                .toPromise()
                .then(result => {
-                 this._changeServiceEventHandler({
-                   record: result.data,
-                   changeType: CRUDServiceType.INSERT
-                 });
+                 // Odešlu aktualizaci událost pouze, pokud nejsem připojený
+                 // na websocket
+                 if (this._socket === undefined) {
+                   this._changeServiceEventHandler({
+                     record: result.data,
+                     changeType: CRUDServiceType.INSERT
+                   });
+                 }
 
                  return result.data;
                });
@@ -123,10 +158,15 @@ export abstract class BaseService<T extends BaseRecord> {
     return this._http.patch<ResponseObject<T>>(this._accessPoint, data)
                .toPromise()
                .then((result) => {
-                 this._changeServiceEventHandler({
-                   record: result.data,
-                   changeType: CRUDServiceType.UPDATE
-                 });
+                 // Odešlu aktualizaci událost pouze, pokud nejsem připojený
+                 // na websocket
+                 if (this._socket === undefined) {
+                   this._changeServiceEventHandler({
+                     record: result.data,
+                     changeType: CRUDServiceType.UPDATE
+                   });
+                 }
+
                  return result.data;
                });
   }
@@ -147,7 +187,7 @@ export abstract class BaseService<T extends BaseRecord> {
     switch (event.changeType) {
       case CRUDServiceType.INSERT:
         if (recordIndex !== -1) {
-          this.logger.error(`Záznam s ID: ${recordIndex} již existuje!`);
+          this.logger.warn(`Záznam s ID: ${record.id} již existuje!`);
           return;
         }
 
@@ -156,7 +196,7 @@ export abstract class BaseService<T extends BaseRecord> {
         break;
       case CRUDServiceType.UPDATE:
         if (recordIndex === -1) {
-          this.logger.error(`Záznam s ID: ${recordIndex} nebyl nalezen!`);
+          this.logger.warn(`Záznam s ID: ${record.id} nebyl nalezen!`);
           return;
         }
 
@@ -165,7 +205,7 @@ export abstract class BaseService<T extends BaseRecord> {
         break;
       case CRUDServiceType.DELETE:
         if (recordIndex === -1) {
-          this.logger.error(`Záznam s ID: ${recordIndex} nebyl nalezen!`);
+          this.logger.warn(`Záznam s ID: ${record.id} nebyl nalezen!`);
           return;
         }
 

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { ModalComponent } from '../share/modal/modal.component';
 
 import { ExperimentsService } from './experiments.service';
-import { Experiment} from 'diplomka-share';
+import { Experiment, ExperimentType } from 'diplomka-share';
 import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.component';
 
 @Component({
@@ -29,6 +29,16 @@ export class ExperimentsComponent implements OnInit {
         .then(() => {
           this.ghosts = [];
         });
+
+    this._service.insert({
+      name: `${Math.random()}`,
+      description: 'Test descrition',
+      type: ExperimentType.ERP,
+      created: new Date().getTime(),
+      output: {
+        led: true
+      }
+    }).then(() => {});
   }
 
   handleDelete(experiment: Experiment) {
