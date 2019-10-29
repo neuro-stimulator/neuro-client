@@ -11,8 +11,6 @@ const routes: Routes = [
   },
   {
     path: 'experiments',
-    data: {title: 'Experimenty'},
-    // component: ExperimentsComponent
     loadChildren: () => import('./experiments/experiments.module').then(mod => mod.ExperimentsModule)
   }
 ];

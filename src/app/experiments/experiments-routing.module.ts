@@ -7,7 +7,8 @@ import { ExperimentTypeComponent } from './experiment-type/experiment-type.compo
 const routes: Routes = [
   {
     path: '',
-    component: ExperimentsComponent
+    component: ExperimentsComponent,
+    data: {title: 'Experimenty'}
   },
   {
     path: ':type',
@@ -15,11 +16,13 @@ const routes: Routes = [
   },
   {
     path: ':type/new',
-    component: ExperimentTypeComponent
+    component: ExperimentTypeComponent,
+    data: {title: 'Nový experiment'}
   },
   {
     path: ':type/:id',
-    component: ExperimentTypeComponent
+    component: ExperimentTypeComponent,
+    data: {title: 'Konfigurace experimentu'}
   }
 ];
 
