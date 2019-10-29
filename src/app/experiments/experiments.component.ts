@@ -30,15 +30,15 @@ export class ExperimentsComponent implements OnInit {
           this.ghosts = [];
         });
 
-    this._service.insert({
-      name: `${Math.random()}`,
-      description: 'Test descrition',
-      type: ExperimentType.ERP,
-      created: new Date().getTime(),
-      output: {
-        led: true
-      }
-    }).then(() => {});
+    // this._service.insert({
+    //   name: `${Math.random()}`,
+    //   description: 'Test descrition',
+    //   type: ExperimentType.ERP,
+    //   created: new Date().getTime(),
+    //   output: {
+    //     led: true
+    //   }
+    // }).then(() => {});
   }
 
   handleDelete(experiment: Experiment) {
