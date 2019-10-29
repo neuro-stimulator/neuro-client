@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   url: {
-    server: 'http://10.0.1.31',
-    socket: 'http://10.0.1.31',
+    server: 'http://localhost',
+    socket: 'http://localhost',
   },
   port: {
     server: 3000,

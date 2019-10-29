@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { createEmptyExperiment, Experiment } from 'diplomka-share';
+
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
-import { ActivatedRoute } from '@angular/router';
+import { ExperimentsService } from '../../experiments.service';
 
 @Component({
   selector: 'app-experiment-type-none',
@@ -9,12 +13,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ExperimentTypeNoneComponent extends BaseExperimentTypeComponent implements OnInit {
 
-  constructor(route: ActivatedRoute) {
-    super(route);
+  constructor(service: ExperimentsService, route: ActivatedRoute,
+              private readonly router: Router) {
+    super(service, route);
   }
 
   ngOnInit() {
-    super.ngOnInit();
+    this.router.navigate(['/experiments']);
   }
+
+  protected _createEmptyExperiment(): Experiment {
+    return createEmptyExperiment();
+  }
+
+
 
 }
