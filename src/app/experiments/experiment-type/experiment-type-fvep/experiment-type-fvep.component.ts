@@ -3,11 +3,11 @@ import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-experiment-type-none',
-  templateUrl: './experiment-type-none.component.html',
-  styleUrls: ['./experiment-type-none.component.sass']
+  selector: 'app-experiment-type-fvep',
+  templateUrl: './experiment-type-fvep.component.html',
+  styleUrls: ['./experiment-type-fvep.component.sass']
 })
-export class ExperimentTypeNoneComponent extends BaseExperimentTypeComponent implements OnInit {
+export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent implements OnInit {
 
   constructor(route: ActivatedRoute) {
     super(route);
