@@ -5,6 +5,7 @@ import { createEmptyExperiment, Experiment } from 'diplomka-share';
 
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentsService } from '../../experiments.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-experiment-type-none',
@@ -13,9 +14,8 @@ import { ExperimentsService } from '../../experiments.service';
 })
 export class ExperimentTypeNoneComponent extends BaseExperimentTypeComponent<Experiment> implements OnInit {
 
-  constructor(service: ExperimentsService, route: ActivatedRoute,
-              private readonly router: Router) {
-    super(service, route);
+  constructor(service: ExperimentsService, protected readonly router: Router, route: ActivatedRoute, location: Location) {
+    super(service, router, route, location);
   }
 
   ngOnInit() {

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import { Edge, Experiment, ExperimentERP, ExperimentType, Random } from 'diplomka-share';
-
-import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
-import { ExperimentsService } from '../../experiments.service';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Options } from 'ng5-slider';
 import { Location } from '@angular/common';
+import { AbstractControl, FormControl, Validators } from '@angular/forms';
+
+import { Options } from 'ng5-slider';
+import { Edge, ExperimentERP, ExperimentType, Random } from 'diplomka-share';
+
+import { ExperimentsService } from '../../experiments.service';
+import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 
 @Component({
   selector: 'app-experiment-type-erp',

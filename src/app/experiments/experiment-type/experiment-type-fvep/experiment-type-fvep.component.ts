@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { createEmptyExperiment, Experiment } from 'diplomka-share';
 
-import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentsService } from '../../experiments.service';
+import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 
 @Component({
   selector: 'app-experiment-type-fvep',
@@ -13,8 +14,8 @@ import { ExperimentsService } from '../../experiments.service';
 })
 export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Experiment> implements OnInit {
 
-  constructor(service: ExperimentsService, route: ActivatedRoute) {
-    super(service, route);
+  constructor(service: ExperimentsService, router: Router, route: ActivatedRoute, location: Location) {
+    super(service, router, route, location);
   }
 
   ngOnInit() {
