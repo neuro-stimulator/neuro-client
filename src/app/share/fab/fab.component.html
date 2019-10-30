@@ -1,9 +1,9 @@
-<div id="fab-container">
-  <div id="fab-dismiss"
-       *ngIf="fabTogglerState==='active'"
-       (click)="hideItems()">
-  </div>
+<div id="fab-dismiss"
+     *ngIf="fabTogglerState==='active'"
+     (click)="hideItems()">
+</div>
 
+<div id="fab-container">
   <button class="btn btn-primary fab-toggler"
           (click)="handleFabClick()" [disabled]="disabled">
     <i [ngClass]="['fas', icon]" [@fabToggler]="{value: fabTogglerState}"></i>
