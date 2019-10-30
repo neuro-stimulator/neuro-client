@@ -17,6 +17,7 @@ import { ExperimentTypeTvepComponent } from './experiment-type/experiment-type-t
 import { ExperimentTypeReaComponent } from './experiment-type/experiment-type-rea/experiment-type-rea.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Ng5SliderModule } from 'ng5-slider';
+import { FabModule } from '../share/fab/fab.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { Ng5SliderModule } from 'ng5-slider';
     ReactiveFormsModule,
     Ng5SliderModule,
     ModalModule,
-    ExperimentsRoutingModule
+    ExperimentsRoutingModule,
+    FabModule
   ],
   entryComponents: [
     ExperimentTypeNoneComponent,

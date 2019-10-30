@@ -11,7 +11,7 @@ import { ExperimentsService } from '../../experiments.service';
   templateUrl: './experiment-type-tvep.component.html',
   styleUrls: ['./experiment-type-tvep.component.sass']
 })
-export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent implements OnInit {
+export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Experiment> implements OnInit {
 
   constructor(service: ExperimentsService, route: ActivatedRoute) {
     super(service, route);

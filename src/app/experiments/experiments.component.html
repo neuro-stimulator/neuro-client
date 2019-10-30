@@ -14,8 +14,6 @@
   </div>
 </section>
 
-<button type="button" class="floating-action-button btn btn-primary">
-  <i class="fas fa-plus-circle"></i>
-</button>
+<app-fab icon="fa-plus-circle" [fabButtons]="fabButtonList" (fabClick)="handleNewExperiment($event)"></app-fab>
 
 <app-modal #modal></app-modal>

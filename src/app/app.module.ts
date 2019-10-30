@@ -16,6 +16,7 @@ import { ModalModule } from './share/modal/modal.module';
 // Application components
 import { AppComponent } from './app.component';
 import { NavigationModule } from './navigation/navigation.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NavigationModule } from './navigation/navigation.module';
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
 
     NavigationModule,
     ModalModule,

@@ -1,0 +1,14 @@
+<div id="fab-container">
+  <button class="btn btn-primary fab-toggler"
+          (click)="handleFabClick()">
+    <i [ngClass]="['fas', icon]" [@fabToggler]="{value: fabTogglerState}"></i>
+  </button>
+  <div class="fab-button-list" [@fabStagger]="buttons.length">
+    <button *ngFor="let btn of buttons"
+            [ngClass]="['btn', 'btn-sm', 'btn-secondary', 'fab-secondary', btn.class]"
+            (click)="handleFabClick(btn.id)">
+      <i [ngClass]="['fas', btn.icon]" *ngIf="btn.icon !== undefined"></i>
+      <span *ngIf="btn.text !== undefined">{{btn.text}}</span>
+    </button>
+  </div>
+</div>
