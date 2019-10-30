@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Edge, Experiment, ExperimentERP, ExperimentType, Random } from 'diplomka-share';
 
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentsService } from '../../experiments.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Options } from 'ng5-slider';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-experiment-type-erp',
@@ -24,28 +25,32 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     animate: false
   };
 
-  constructor(service: ExperimentsService, route: ActivatedRoute) {
-    super(service, route);
+  constructor(service: ExperimentsService, router: Router, route: ActivatedRoute, location: Location) {
+    super(service, router, route, location);
   }
 
   ngOnInit() {
     super.ngOnInit();
   }
 
-  protected _createFormGroup(): FormGroup {
-    return new FormGroup({
+  protected _createFormControls(): {[p: string]: AbstractControl} {
+    const superControls = super._createFormControls();
+    const myControls = {
       outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(8)]),
+      maxDistributionValue: new FormControl(0, [Validators.required]),
       out: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
       wait: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
       random: new FormControl(null, [Validators.required]),
       edge: new FormControl(null, [Validators.required])
-    });
+    };
+
+    return {...superControls, ...myControls};
   }
 
   protected _createEmptyExperiment(): ExperimentERP {
     return {
-      name: '',
-      description: '',
+      name: 'Test - ' + Math.random(),
+      description: 'description',
       created: new Date().getTime(),
       type: ExperimentType.ERP,
       output: {},

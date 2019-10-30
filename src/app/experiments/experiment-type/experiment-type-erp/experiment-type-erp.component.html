@@ -2,6 +2,9 @@
   <div class="col">
     <form [formGroup]="form">
 
+      <!-- Generická hlaviška společná pro všechny experimenty -->
+      <app-experiment-type-header [form]="form"></app-experiment-type-header>
+
       <div class="row experiment-property">
         <div class="col-12">
           <h4>ERP parametry</h4>
@@ -15,7 +18,7 @@
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
             <label for="erp-out">out [ms]</label>
-            <input type="number" id="erp-out" class="form-control" [class.is-valid]="out.valid" [class.is-invalid]="out.invalid" formControlName="out">
+            <input type="number" id="erp-out" class="form-control form-control-sm" [class.is-valid]="out.valid" [class.is-invalid]="out.invalid" formControlName="out">
             <small *ngIf="out.touched && out.errors?.required" class="form-text text-muted">Parametr out je vyžadován.</small>
             <small *ngIf="out.touched && out.errors?.min" class="form-text text-muted">Minimální hodnota je: {{out.errors?.min.min}}.</small>
             <small *ngIf="out.touched && out.errors?.max" class="form-text text-muted">Maximální hodnota je: {{out.errors?.max.max}}.</small>
@@ -24,7 +27,7 @@
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
             <label for="erp-wait">wait [ms]</label>
-            <input type="number" id="erp-wait" class="form-control" [class.is-valid]="wait.valid" [class.is-invalid]="wait.invalid" formControlName="wait">
+            <input type="number" id="erp-wait" class="form-control form-control-sm" [class.is-valid]="wait.valid" [class.is-invalid]="wait.invalid" formControlName="wait">
             <small *ngIf="wait.touched && wait.errors?.required" class="form-text text-muted">Parametr wait je vyžadován.</small>
             <small *ngIf="wait.touched && wait.errors?.min" class="form-text text-muted">Minimální hodnota je: {{wait.errors?.min.min}}.</small>
             <small *ngIf="wait.touched && wait.errors?.max" class="form-text text-muted">Maximální hodnota je: {{wait.errors?.max.max}}.</small>
@@ -57,14 +60,14 @@
 <!--        <div class="col-6">-->
 <!--          <div class="form-group">-->
 <!--            <label for="pulse-up">up [ms]</label>-->
-<!--            <input type="number" id="pulse-up" class="form-control" formControlName="pulseUp">-->
+<!--            <input type="number" id="pulse-up" class="form-control form-control-sm" formControlName="pulseUp">-->
 <!--&lt;!&ndash;            <small *ngIf="trainer.touched && trainer.errors?.required" class="form-text text-muted">Lektor je vyžadován.</small>&ndash;&gt;-->
 <!--          </div>-->
 <!--        </div>-->
 <!--        <div class="col-6">-->
 <!--          <div class="form-group">-->
 <!--            <label for="pulse-down">down [ms]</label>-->
-<!--            <input type="number" id="pulse-down" class="form-control" formControlName="pulseDown">-->
+<!--            <input type="number" id="pulse-down" class="form-control form-control-sm" formControlName="pulseDown">-->
 <!--&lt;!&ndash;            <small *ngIf="trainer.touched && trainer.errors?.required" class="form-text text-muted">Lektor je vyžadován.</small>&ndash;&gt;-->
 <!--          </div>-->
 <!--        </div>-->
@@ -77,14 +80,14 @@
 <!--        <div class="col-6">-->
 <!--          <div class="form-group">-->
 <!--            <label for="distribution-value">value [%]</label>-->
-<!--            <input type="number" id="distribution-value" class="form-control" formControlName="distributionValue">-->
+<!--            <input type="number" id="distribution-value" class="form-control form-control-sm" formControlName="distributionValue">-->
 <!--&lt;!&ndash;            <small *ngIf="trainer.touched && trainer.errors?.required" class="form-text text-muted">Lektor je vyžadován.</small>&ndash;&gt;-->
 <!--          </div>-->
 <!--        </div>-->
 <!--        <div class="col-6">-->
 <!--          <div class="form-group">-->
 <!--            <label for="distribution-delay">delay [ms]</label>-->
-<!--            <input type="number" id="distribution-delay" class="form-control" formControlName="distributionDelay">-->
+<!--            <input type="number" id="distribution-delay" class="form-control form-control-sm" formControlName="distributionDelay">-->
 <!--&lt;!&ndash;            <small *ngIf="trainer.touched && trainer.errors?.required" class="form-text text-muted">Lektor je vyžadován.</small>&ndash;&gt;-->
 <!--          </div>-->
 <!--        </div>-->
@@ -97,7 +100,7 @@
 <!--        <div class="col-12">-->
 <!--          <div class="form-group">-->
 <!--            <label for="brightness">brightness [%]</label>-->
-<!--            <input type="number" id="brightness" class="form-control" formControlName="brightness">-->
+<!--            <input type="number" id="brightness" class="form-control form-control-sm" formControlName="brightness">-->
 <!--            &lt;!&ndash;            <small *ngIf="trainer.touched && trainer.errors?.required" class="form-text text-muted">Lektor je vyžadován.</small>&ndash;&gt;-->
 <!--          </div>-->
 <!--        </div>-->
@@ -107,4 +110,4 @@
   </div>
 </div>
 
-<app-fab icon="fa-save"></app-fab>
+<app-fab icon="fa-save" (fabClick)="handleSaveExperiment()"></app-fab>

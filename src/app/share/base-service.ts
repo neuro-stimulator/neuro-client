@@ -53,20 +53,10 @@ export abstract class BaseService<T extends BaseRecord> {
 
   /**
    * Vrátí jeden záznam podle ID
-   * Nejdříve se prohledá lokální cache, pokud záznam neexistuje
-   * zavolá se dotaz na server
    *
    * @param recordId ID záznamu, který se má najít
    */
   public one(recordId: number): Promise<T> {
-    const records = this.records$.getValue();
-    const index = records.findIndex(record => record.id === recordId);
-    if (index !== -1) {
-      return new Promise(resolve => {
-        resolve(records[index]);
-      });
-    }
-
     return this._http.get<ResponseObject<T>>(`${this._accessPoint}/${recordId}`)
                .toPromise()
                .then(result => {

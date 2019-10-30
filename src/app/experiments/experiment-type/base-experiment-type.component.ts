@@ -1,9 +1,10 @@
 import { OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ExperimentsService } from '../experiments.service';
-import { Experiment } from 'diplomka-share';
-import { FormGroup } from '@angular/forms';
+import { Experiment, ExperimentType } from 'diplomka-share';
 
 export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit {
 
@@ -11,8 +12,10 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   public form: FormGroup;
 
   protected constructor(protected readonly _service: ExperimentsService,
-                        protected readonly route: ActivatedRoute) {
-      this.form = this._createFormGroup();
+                        protected readonly _router: Router,
+                        protected readonly _route: ActivatedRoute,
+                        protected readonly _location: Location) {
+      this.form = new FormGroup(this._createFormControls());
   }
 
   /**
@@ -58,12 +61,23 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   /**
    * Pomocná abstraktní metoda pro vytvoření formulářové skupiny komponent
    */
-  protected _createFormGroup(): FormGroup {
-    return new FormGroup({});
+  protected _createFormControls(): {[p: string]: AbstractControl} {
+    return {
+      id: new FormControl(),
+      name: new FormControl(null, [Validators.required]),
+      description: new FormControl(),
+      type: new FormControl(),
+      created: new FormControl(),
+      output: new FormGroup({
+        led: new FormControl(),
+        image: new FormControl(),
+        sound: new FormControl()
+      })
+    };
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
+    this._route.params.subscribe((params: Params) => {
       this._handleRouteParams(params);
     });
   }
@@ -73,9 +87,14 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
    */
   public handleSaveExperiment() {
     if (this._experiment.id === undefined) {
-      this._service.insert(this._experiment);
+      this._service.insert(this.form.value)
+          .then((experiment: E) => {
+            this._experiment = experiment;
+            this._location.replaceState(this._router.serializeUrl(this._router.createUrlTree(
+              ['/', 'experiments', ExperimentType[experiment.type].toLowerCase(), experiment.id])));
+          });
     } else {
-      this._service.update(this._experiment);
+      this._service.update(this.form.value);
     }
   }
 
