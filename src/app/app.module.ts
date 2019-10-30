@@ -1,7 +1,7 @@
 // Core angular modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 // Third party modules
 import { ToastrModule } from 'ngx-toastr';
@@ -17,6 +17,9 @@ import { ModalModule } from './share/modal/modal.module';
 import { AppComponent } from './app.component';
 import { NavigationModule } from './navigation/navigation.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Interceptory (modifikátory http komunikace)
+import { ResponseInterceptor } from './share/response.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     // Root routing module
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
