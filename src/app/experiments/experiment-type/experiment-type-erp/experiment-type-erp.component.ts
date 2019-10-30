@@ -49,8 +49,8 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
 
   protected _createEmptyExperiment(): ExperimentERP {
     return {
-      name: 'Test - ' + Math.random(),
-      description: 'description',
+      name: '',
+      description: '',
       created: new Date().getTime(),
       type: ExperimentType.ERP,
       output: {},

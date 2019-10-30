@@ -25,11 +25,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
    */
   private _handleRouteParams(params: Params) {
     const experimentId: string = params['id'];
-    if (experimentId === undefined) {
-      this._experiment = this._createEmptyExperiment();
-      this._updateFormGroup(this._experiment);
-      return;
-    }
+    this._experiment = this._createEmptyExperiment();
 
     try {
       parseInt(experimentId, 10);
@@ -37,11 +33,19 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
       console.log(ex);
       return;
     }
-    this._service.one(+experimentId)
-        .then((experiment: E) => {
-          this._experiment = experiment;
-          this._updateFormGroup(this._experiment);
-        });
+
+    if (experimentId !== undefined) {
+      this._experiment.id = +experimentId;
+    }
+    this._updateFormGroup(this._experiment);
+
+    if (experimentId !== undefined) {
+      this._service.one(+experimentId)
+          .then((experiment: E) => {
+            this._experiment = experiment;
+            this._updateFormGroup(this._experiment);
+          });
+    }
   }
 
   /**
@@ -90,8 +94,11 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
       this._service.insert(this.form.value)
           .then((experiment: E) => {
             this._experiment = experiment;
+            // Po úspěšném založení nového experimentu,
+            // upravím adresní řádek tak, aby obsahoval ID experimentu
             this._location.replaceState(this._router.serializeUrl(this._router.createUrlTree(
-              ['/', 'experiments', ExperimentType[experiment.type].toLowerCase(), experiment.id])));
+              ['/', 'experiments', ExperimentType[experiment.type].toLowerCase(), experiment.id])
+            ));
           });
     } else {
       this._service.update(this.form.value);
