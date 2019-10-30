@@ -10,6 +10,7 @@ import { fabAnimations } from './fab.animations';
 })
 export class FabComponent implements OnInit {
 
+  @Input() disabled = false;
   @Input() icon: string;
   @Input() fabButtons: FabListButtonEntry[] = [];
   @Output() fabClick: EventEmitter<number> = new EventEmitter<number>();

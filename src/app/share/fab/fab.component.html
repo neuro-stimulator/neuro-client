@@ -1,6 +1,6 @@
 <div id="fab-container">
   <button class="btn btn-primary fab-toggler"
-          (click)="handleFabClick()">
+          (click)="handleFabClick()" [disabled]="disabled">
     <i [ngClass]="['fas', icon]" [@fabToggler]="{value: fabTogglerState}"></i>
   </button>
   <div class="fab-button-list" [@fabStagger]="buttons.length">
