@@ -19,7 +19,8 @@ import { NavigationModule } from './navigation/navigation.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Interceptory (modifikátory http komunikace)
-import { ResponseInterceptor } from './share/response.interceptor';
+import { DEFAULT_TIMEOUT, RequestTimeoutInterceptor } from './share/interceptors/request-timeout-interceptor.service';
+import { ResponseInterceptor } from './share/interceptors/response.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,15 @@ import { ResponseInterceptor } from './share/response.interceptor';
     AppRoutingModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:
+      RequestTimeoutInterceptor,
+      multi: true },
+    {
+      provide: DEFAULT_TIMEOUT,
+      useValue: 3000
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ResponseInterceptor,

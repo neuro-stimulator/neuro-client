@@ -7,8 +7,8 @@ import { ResponseMessage } from 'diplomka-share';
 
 export class ResponseInterceptor implements HttpInterceptor {
 
-  constructor(private _toaster: ToastrService,
-              private logger: NGXLogger) {}
+  constructor(private readonly _toaster: ToastrService,
+              private readonly logger: NGXLogger) {}
 
   private _handleResponseMessage(message: ResponseMessage) {
     switch (message.type) {

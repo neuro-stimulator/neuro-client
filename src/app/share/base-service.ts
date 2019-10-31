@@ -1,6 +1,6 @@
 import { ChangeServiceEvent } from './change-service-event';
 import { CRUDServiceType } from './crud-service-type';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, TimeoutError } from 'rxjs';
 import { BaseRecord } from './base-record';
 import { HttpClient } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
@@ -8,6 +8,7 @@ import { ResponseObject } from 'diplomka-share';
 import { delay } from 'rxjs/operators';
 import { Socket } from 'ngx-socket-io';
 import { environment } from '../../environments/environment';
+import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
 
 /**
  * Základní třída pro správu CRUD operací
@@ -21,11 +22,20 @@ export abstract class BaseService<T extends BaseRecord> {
    */
   private readonly records$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]);
 
-  private _socket: Socket;
+  protected _socket: Socket;
 
   protected constructor(private readonly _accessPoint: string,
+                        private readonly aliveChecker: AliveCheckerService,
                         protected readonly _http: HttpClient,
                         protected readonly logger: NGXLogger) {
+    aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
+      this._handleAliveStatus(status);
+    });
+    aliveChecker.disconnect.subscribe(() => {
+      if (this._socket !== undefined) {
+        this._socket.disconnect();
+      }
+    });
   }
 
   /**
@@ -40,11 +50,20 @@ export abstract class BaseService<T extends BaseRecord> {
    * Získá ze serveru všechny záznamy
    */
   public all(): Promise<void> {
+    if (this.records$.getValue().length !== 0) {
+      return Promise.resolve();
+    }
     return this._http.get<ResponseObject<T[]>>(this._accessPoint)
                .pipe(
                  delay(1000)
                )
                .toPromise()
+               .catch(error => {
+                 if (error instanceof TimeoutError) {
+                   return {data: []};
+                 }
+                 throw new Error();
+               })
                .then(response => {
                  this.records$.next(response.data);
                  return null;
@@ -184,6 +203,10 @@ export abstract class BaseService<T extends BaseRecord> {
                });
   }
 
+  protected _replaceData(records: T[]): void {
+    this.records$.next(records);
+  }
+
   /**
    * Základní CRUD handler na jednotlivá volání CRUD
    *
@@ -227,5 +250,21 @@ export abstract class BaseService<T extends BaseRecord> {
         break;
     }
     this.records$.next(records);
+  }
+
+  private _handleAliveStatus(status: ConnectionStatus) {
+    if (this._socket === undefined) {
+      return;
+    }
+
+    switch (status) {
+      case ConnectionStatus.CONNECTED:
+        this._socket.connect();
+        break;
+      case ConnectionStatus.CONNECTING:
+        break;
+      case ConnectionStatus.DISCONNECTED:
+        break;
+    }
   }
 }
