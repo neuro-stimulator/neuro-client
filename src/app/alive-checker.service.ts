@@ -22,6 +22,7 @@ export class AliveCheckerService {
     this._socket = new Socket({url: `${environment.makeURL(environment.url.socket, environment.port.socket)}`});
     this._socket.on('connect', () => this._socketConnected());
     this._socket.on('disconnect', (reason) => this._socketDisconnected(reason));
+    navigation.subtitle = 'Odpojeno';
   }
 
   public requestConnect() {
