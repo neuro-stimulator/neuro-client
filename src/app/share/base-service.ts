@@ -9,6 +9,7 @@ import { delay } from 'rxjs/operators';
 import { Socket } from 'ngx-socket-io';
 import { environment } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
+import { EventEmitter } from '@angular/core';
 
 /**
  * Základní třída pro správu CRUD operací
@@ -23,6 +24,12 @@ export abstract class BaseService<T extends BaseRecord> {
   private readonly records$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]);
 
   protected _socket: Socket;
+  private readonly _connected: EventEmitter<any> = new EventEmitter<any>();
+  public readonly connected$: Observable<any> = this._connected.asObservable();
+  private readonly _disconnected: EventEmitter<any> = new EventEmitter<any>();
+  public readonly disconnected$: Observable<any> = this._disconnected.asObservable();
+  private readonly _working: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public readonly working$: Observable<boolean> = this._working.asObservable();
 
   protected constructor(private readonly _accessPoint: string,
                         private readonly aliveChecker: AliveCheckerService,
@@ -67,7 +74,7 @@ export abstract class BaseService<T extends BaseRecord> {
                .then(response => {
                  this.records$.next(response.data);
                  return null;
-               });
+               }).catch(error => {});
   }
 
   /**
@@ -76,10 +83,18 @@ export abstract class BaseService<T extends BaseRecord> {
    * @param recordId ID záznamu, který se má najít
    */
   public one(recordId: number): Promise<T> {
+    this._working.next(true);
     return this._http.get<ResponseObject<T>>(`${this._accessPoint}/${recordId}`)
                .toPromise()
                .then(result => {
+                 if (!result.data) {
+                   throw new Error();
+                 }
+
                  return result.data;
+               })
+               .finally(() => {
+                 this._working.next(false);
                });
   }
 
@@ -110,6 +125,7 @@ export abstract class BaseService<T extends BaseRecord> {
    * @return T Záznam, který reprezentoval data na serveru
    */
   public delete(recordId: number): Promise<T> {
+    this._working.next(true);
     return this._http.delete<ResponseObject<T>>(`${this._accessPoint}/${recordId}`)
                .toPromise()
                .then(result => {
@@ -123,6 +139,9 @@ export abstract class BaseService<T extends BaseRecord> {
                  }
 
                  return result.data;
+               })
+               .finally(() => {
+                 this._working.next(false);
                });
   }
 
@@ -137,6 +156,8 @@ export abstract class BaseService<T extends BaseRecord> {
 
   protected _initSocket(namespace: string): void {
     this._socket = new Socket({url: `${environment.makeURL(environment.url.socket, environment.port.socket)}/${namespace}`});
+    this._socket.on('connect', () => this._socketConnected());
+    this._socket.on('disconnect', (reason) => this._socketDisconnected(reason));
     this._socket.on('insert', (data: T) => {
       this._changeServiceEventHandler({
         record: data,
@@ -164,6 +185,7 @@ export abstract class BaseService<T extends BaseRecord> {
    * @return T Záznam, který reprezentuje data na serveru
    */
   protected _insert(data: FormData | T): Promise<T> {
+    this._working.next(true);
     return this._http.post<ResponseObject<T>>(this._accessPoint, data)
                .toPromise()
                .then(result => {
@@ -177,6 +199,9 @@ export abstract class BaseService<T extends BaseRecord> {
                  }
 
                  return result.data;
+               })
+               .finally(() => {
+                 this._working.next(false);
                });
   }
 
@@ -187,6 +212,7 @@ export abstract class BaseService<T extends BaseRecord> {
    * @return T Záznam, který reprezentuje data na serveru
    */
   protected _update(data: FormData | T): Promise<T> {
+    this._working.next(true);
     return this._http.patch<ResponseObject<T>>(this._accessPoint, data)
                .toPromise()
                .then((result) => {
@@ -200,11 +226,22 @@ export abstract class BaseService<T extends BaseRecord> {
                  }
 
                  return result.data;
+               })
+               .finally(() => {
+                 this._working.next(false);
                });
   }
 
   protected _replaceData(records: T[]): void {
     this.records$.next(records);
+  }
+
+  protected _socketConnected() {
+    this._connected.next();
+  }
+
+  protected _socketDisconnected(reason) {
+    this._disconnected.next();
   }
 
   /**

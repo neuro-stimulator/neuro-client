@@ -1,17 +1,21 @@
-import { OnInit } from '@angular/core';
+import { OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ExperimentsService } from '../experiments.service';
 import { Experiment, ExperimentType } from 'diplomka-share';
+import { ToastrService } from 'ngx-toastr';
+import { Subscription, TimeoutError } from 'rxjs';
 
-export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit {
+export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit, OnDestroy {
 
   protected _experiment: E;
   public form: FormGroup;
+  private _connectedSubscription: Subscription;
 
   protected constructor(protected readonly _service: ExperimentsService,
+                        protected readonly toastr: ToastrService,
                         protected readonly _router: Router,
                         protected readonly _route: ActivatedRoute,
                         protected readonly _location: Location) {
@@ -21,16 +25,15 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   /**
    * Obslužná metoda pro zpracování URL parametrů
    *
-   * @param params URL parametry
+   * @param experimentId ID experimentu
    */
-  private _handleRouteParams(params: Params) {
-    const experimentId: string = params['id'];
+  private _handleRouteParams(experimentId: string) {
+    // const experimentId: string = params['id'];
     this._experiment = this._createEmptyExperiment();
 
-    try {
-      parseInt(experimentId, 10);
-    } catch (ex) {
-      console.log(ex);
+    if (isNaN(parseInt(experimentId, 10))) {
+      this.toastr.error(`ID experimentu: '${experimentId}' se nepodařilo naparsovat!`);
+      this._router.navigate(['/experiments']);
       return;
     }
 
@@ -41,6 +44,22 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
 
     if (experimentId !== undefined) {
       this._service.one(+experimentId)
+          .catch(error => {
+            // Pokud nenastane timeout => experiment nebyl na serveru nalezen
+            if (!(error instanceof TimeoutError)) {
+              // Rovnou přesmeruji na seznam všech experimentů
+              this._router.navigate(['/experiments']);
+            }
+
+            // Nastal timeout
+            // vrátím existující prázdný experiment a přihlásím se k socketu na událost
+            // pro obnovení spojení
+            this._connectedSubscription = this._service.connected$.subscribe(() => {
+              this._connectedSubscription.unsubscribe();
+              this._handleRouteParams(experimentId);
+            });
+            return this._experiment;
+          })
           .then((experiment: E) => {
             this._experiment = experiment;
             this._updateFormGroup(this._experiment);
@@ -82,9 +101,16 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
 
   ngOnInit(): void {
     this._route.params.subscribe((params: Params) => {
-      this._handleRouteParams(params);
+      this._handleRouteParams(params['id']);
     });
   }
+
+  ngOnDestroy(): void {
+    if (this._connectedSubscription) {
+      this._connectedSubscription.unsubscribe();
+    }
+  }
+
 
   /**
    * Reakce na tlačítko pro uložení dat experimentu
@@ -107,6 +133,10 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
 
   public get experiment(): E {
     return this._experiment;
+  }
+
+  get working() {
+    return this._service.working$;
   }
 
 }

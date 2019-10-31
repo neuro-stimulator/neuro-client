@@ -8,6 +8,7 @@ import { Edge, ExperimentERP, ExperimentType, Random } from 'diplomka-share';
 
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-experiment-type-erp',
@@ -25,8 +26,8 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     animate: false
   };
 
-  constructor(service: ExperimentsService, router: Router, route: ActivatedRoute, location: Location) {
-    super(service, router, route, location);
+  constructor(service: ExperimentsService, toastr: ToastrService, router: Router, route: ActivatedRoute, location: Location) {
+    super(service, toastr, router, route, location);
   }
 
   ngOnInit() {
@@ -98,6 +99,4 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
   get edge() {
     return this.form.get('edge');
   }
-
-
 }

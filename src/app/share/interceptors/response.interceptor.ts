@@ -1,12 +1,12 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
-import { NEVER, Observable} from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { NEVER, Observable, of, throwError } from 'rxjs';
+import { catchError, map, tap, timeout } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { ResponseMessage } from 'diplomka-share';
 
 export class ResponseInterceptor implements HttpInterceptor {
-
+l
   constructor(private readonly _toaster: ToastrService,
               private readonly logger: NGXLogger) {}
 
@@ -33,7 +33,7 @@ export class ResponseInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)
                .pipe(
-                 tap(response => {
+                 map(response => {
                    if (response instanceof HttpResponse) {
                      if (response.body !== null) {
                        if (response.body.message) {
@@ -41,6 +41,8 @@ export class ResponseInterceptor implements HttpInterceptor {
                        }
                      }
                    }
+
+                   return response;
                  }),
                  catchError((response: any) => {
                    this.logger.error(response);

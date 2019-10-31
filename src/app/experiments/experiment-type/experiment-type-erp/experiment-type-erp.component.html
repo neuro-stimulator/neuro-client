@@ -110,4 +110,4 @@
   </div>
 </div>
 
-<app-fab icon="fa-save" (fabClick)="handleSaveExperiment()" [disabled]="form.invalid"></app-fab>
+<app-fab icon="fa-save" (fabClick)="handleSaveExperiment()" [disabled]="form.invalid || (working | async)"></app-fab>

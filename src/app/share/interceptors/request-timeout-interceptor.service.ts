@@ -1,7 +1,7 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { NEVER, Observable, of, throwError, TimeoutError } from 'rxjs';
-import { catchError, tap, timeout } from 'rxjs/operators';
+import { catchError, map, tap, timeout } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 
