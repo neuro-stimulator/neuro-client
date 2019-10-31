@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { ToastrService } from 'ngx-toastr';
 import { createEmptyExperiment, Experiment } from 'diplomka-share';
 
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
@@ -14,8 +15,8 @@ import { Location } from '@angular/common';
 })
 export class ExperimentTypeNoneComponent extends BaseExperimentTypeComponent<Experiment> implements OnInit {
 
-  constructor(service: ExperimentsService, protected readonly router: Router, route: ActivatedRoute, location: Location) {
-    super(service, router, route, location);
+  constructor(service: ExperimentsService, toastr: ToastrService, protected router: Router, route: ActivatedRoute, location: Location) {
+    super(service, toastr, router, route, location);
   }
 
   ngOnInit() {

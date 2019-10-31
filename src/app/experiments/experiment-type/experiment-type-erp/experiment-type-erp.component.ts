@@ -4,11 +4,11 @@ import { Location } from '@angular/common';
 import { AbstractControl, FormControl, Validators } from '@angular/forms';
 
 import { Options } from 'ng5-slider';
+import { ToastrService } from 'ngx-toastr';
 import { Edge, ExperimentERP, ExperimentType, Random } from 'diplomka-share';
 
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-experiment-type-erp',
