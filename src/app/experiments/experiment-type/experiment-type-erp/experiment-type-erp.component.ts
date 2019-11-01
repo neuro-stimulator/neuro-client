@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AbstractControl, FormControl, Validators } from '@angular/forms';
 
-import { Options } from 'ng5-slider';
+import { Options as SliderOptions } from 'ng5-slider';
 import { ToastrService } from 'ngx-toastr';
 import { Edge, ExperimentERP, ExperimentType, Random } from 'diplomka-share';
 
@@ -17,7 +17,7 @@ import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 })
 export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<ExperimentERP> implements OnInit {
 
-  outputCountParams: Options = {
+  outputCountParams: SliderOptions = {
     floor: 1,
     ceil: 8,
     showTicks: true,
