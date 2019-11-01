@@ -43,13 +43,13 @@ import { ResponseInterceptor } from './share/interceptors/response.interceptor';
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass:
-      RequestTimeoutInterceptor,
-      multi: true },
-    {
       provide: DEFAULT_TIMEOUT,
       useValue: 3000
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestTimeoutInterceptor,
+      multi: true
     },
     {
       provide: HTTP_INTERCEPTORS,
