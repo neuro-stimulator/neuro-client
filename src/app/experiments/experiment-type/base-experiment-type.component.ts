@@ -13,6 +13,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   protected _experiment: E;
   public form: FormGroup;
   private _connectedSubscription: Subscription;
+  private _workingSubscription: Subscription;
 
   protected constructor(protected readonly _service: ExperimentsService,
                         protected readonly toastr: ToastrService,
@@ -102,12 +103,20 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
     this._route.params.subscribe((params: Params) => {
       this._loadExperiment(params['id']);
     });
+    this._workingSubscription = this.working.subscribe(working => {
+      if (working) {
+        this.form.disable();
+      } else {
+        this.form.enable();
+      }
+    });
   }
 
   ngOnDestroy(): void {
     if (this._connectedSubscription) {
       this._connectedSubscription.unsubscribe();
     }
+    this._workingSubscription.unsubscribe();
   }
 
 

@@ -59,4 +59,4 @@
   </div>
 </div>
 
-<app-fab icon="fa-save" (fabClick)="handleSaveExperiment()" [disabled]="form.invalid || (working | async)"></app-fab>
+<app-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperiment()" [disabled]="form.invalid || (working | async)"></app-fab>
