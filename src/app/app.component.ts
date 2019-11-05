@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavigationService } from './navigation/navigation.service';
+import { SerialService } from './share/serial.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,6 @@ import { NavigationService } from './navigation/navigation.service';
 })
 export class AppComponent {
 
-  constructor(public readonly navigation: NavigationService) { }
+  constructor(public readonly navigation: NavigationService,
+              private readonly serial: SerialService) { }
 }
