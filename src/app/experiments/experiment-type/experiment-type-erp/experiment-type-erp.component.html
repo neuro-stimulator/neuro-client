@@ -53,58 +53,7 @@
 
       </div>
 
-<!--      <div class="row experiment-property">-->
-<!--        <div class="col-12">-->
-<!--          <h5>Pulse</h5>-->
-<!--        </div>-->
-<!--        <div class="col-6">-->
-<!--          <div class="form-group">-->
-<!--            <label for="pulse-up">up [ms]</label>-->
-<!--            <input type="number" id="pulse-up" class="form-control form-control-sm" formControlName="pulseUp">-->
-<!--&lt;!&ndash;            <small *ngIf="trainer.touched && trainer.errors?.required" class="form-text text-muted">Lektor je vyžadován.</small>&ndash;&gt;-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-6">-->
-<!--          <div class="form-group">-->
-<!--            <label for="pulse-down">down [ms]</label>-->
-<!--            <input type="number" id="pulse-down" class="form-control form-control-sm" formControlName="pulseDown">-->
-<!--&lt;!&ndash;            <small *ngIf="trainer.touched && trainer.errors?.required" class="form-text text-muted">Lektor je vyžadován.</small>&ndash;&gt;-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="row experiment-property">-->
-<!--        <div class="col-12">-->
-<!--          <h5>Distribution</h5>-->
-<!--        </div>-->
-<!--        <div class="col-6">-->
-<!--          <div class="form-group">-->
-<!--            <label for="distribution-value">value [%]</label>-->
-<!--            <input type="number" id="distribution-value" class="form-control form-control-sm" formControlName="distributionValue">-->
-<!--&lt;!&ndash;            <small *ngIf="trainer.touched && trainer.errors?.required" class="form-text text-muted">Lektor je vyžadován.</small>&ndash;&gt;-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-6">-->
-<!--          <div class="form-group">-->
-<!--            <label for="distribution-delay">delay [ms]</label>-->
-<!--            <input type="number" id="distribution-delay" class="form-control form-control-sm" formControlName="distributionDelay">-->
-<!--&lt;!&ndash;            <small *ngIf="trainer.touched && trainer.errors?.required" class="form-text text-muted">Lektor je vyžadován.</small>&ndash;&gt;-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="row experiment-property">-->
-<!--        <div class="col-12">-->
-<!--          <h5>Brightness</h5>-->
-<!--        </div>-->
-<!--        <div class="col-12">-->
-<!--          <div class="form-group">-->
-<!--            <label for="brightness">brightness [%]</label>-->
-<!--            <input type="number" id="brightness" class="form-control form-control-sm" formControlName="brightness">-->
-<!--            &lt;!&ndash;            <small *ngIf="trainer.touched && trainer.errors?.required" class="form-text text-muted">Lektor je vyžadován.</small>&ndash;&gt;-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
+      <app-experiment-type-erp-output [form]="form" [count]="outputCount.value"></app-experiment-type-erp-output>
 
     </form>
   </div>

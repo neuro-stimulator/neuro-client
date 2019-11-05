@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Ng5SliderModule } from 'ng5-slider';
 import { FabModule } from '../share/fab/fab.module';
 import { ExperimentTypeHeaderComponent } from './experiment-type/experiment-type-header/experiment-type-header.component';
+import { ExperimentTypeErpOutputComponent } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output.component';
+import { ExperimentTypeErpOutputCountPipe } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output-count.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ExperimentTypeHeaderComponent } from './experiment-type/experiment-type
     ExperimentTypeFvepComponent,
     ExperimentTypeTvepComponent,
     ExperimentTypeReaComponent,
-    ExperimentTypeHeaderComponent
+    ExperimentTypeHeaderComponent,
+    ExperimentTypeErpOutputComponent,
+    ExperimentTypeErpOutputCountPipe
   ],
   imports: [
     CommonModule,

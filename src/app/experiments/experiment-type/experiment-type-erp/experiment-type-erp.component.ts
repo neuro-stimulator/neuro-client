@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { AbstractControl, FormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Options as SliderOptions } from 'ng5-slider';
 import { ToastrService } from 'ngx-toastr';
@@ -34,6 +34,27 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     super.ngOnInit();
   }
 
+  protected _createOutputsFormControls(): FormGroup[] {
+    const array = [];
+    for (let i = 0; i < 8; i++) {
+      const group = new FormGroup({
+        id: new FormControl(null, Validators.required),
+        experimentId: new FormControl(null, Validators.required),
+        orderId: new FormControl(null, Validators.required),
+        pulseUp: new FormControl(null, [Validators.required]),
+        pulseDown: new FormControl(null, [Validators.required]),
+        distributionValue: new FormControl(null, [Validators.required]),
+        distributionDelay: new FormControl(null, [Validators.required]),
+        brightness: new FormControl(null, [
+          Validators.required, Validators.min(0), Validators.max(100)
+        ]),
+      });
+      array.push(group);
+    }
+
+    return array;
+  }
+
   protected _createFormControls(): {[p: string]: AbstractControl} {
     const superControls = super._createFormControls();
     const myControls = {
@@ -42,7 +63,8 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
       out: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
       wait: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
       random: new FormControl(null, [Validators.required]),
-      edge: new FormControl(null, [Validators.required])
+      edge: new FormControl(null, [Validators.required]),
+      outputs: new FormArray(this._createOutputsFormControls())
     };
 
     return {...superControls, ...myControls};
@@ -60,7 +82,8 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
       wait: 0,
       random: Random.OFF,
       edge: Edge.FALLING,
-      maxDistributionValue: 0
+      maxDistributionValue: 0,
+      outputs: []
     };
   }
 
@@ -99,4 +122,6 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
   get edge() {
     return this.form.get('edge');
   }
+
+
 }
