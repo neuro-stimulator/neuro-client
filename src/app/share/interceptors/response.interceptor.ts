@@ -1,12 +1,14 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
-import { NEVER, Observable, of, throwError } from 'rxjs';
-import { catchError, map, tap, timeout } from 'rxjs/operators';
+import { NEVER, Observable} from 'rxjs';
+import { catchError, map} from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { ResponseMessage } from 'diplomka-share';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class ResponseInterceptor implements HttpInterceptor {
-l
+
   constructor(private readonly _toaster: ToastrService,
               private readonly logger: NGXLogger) {}
 

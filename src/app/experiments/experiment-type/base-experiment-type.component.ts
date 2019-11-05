@@ -23,21 +23,20 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   }
 
   /**
-   * Obslužná metoda pro zpracování URL parametrů
+   * Obslužná metoda načtení experimentu podle ID
    *
    * @param experimentId ID experimentu
    */
-  private _handleRouteParams(experimentId: string) {
-    // const experimentId: string = params['id'];
+  private _loadExperiment(experimentId: string) {
     this._experiment = this._createEmptyExperiment();
 
-    if (isNaN(parseInt(experimentId, 10))) {
-      this.toastr.error(`ID experimentu: '${experimentId}' se nepodařilo naparsovat!`);
-      this._router.navigate(['/experiments']);
-      return;
-    }
-
     if (experimentId !== undefined) {
+      if (isNaN(parseInt(experimentId, 10))) {
+        this.toastr.error(`ID experimentu: '${experimentId}' se nepodařilo naparsovat!`);
+        this._router.navigate(['/experiments']);
+        return;
+      }
+
       this._experiment.id = +experimentId;
     }
     this._updateFormGroup(this._experiment);
@@ -56,7 +55,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
             // pro obnovení spojení
             this._connectedSubscription = this._service.connected$.subscribe(() => {
               this._connectedSubscription.unsubscribe();
-              this._handleRouteParams(experimentId);
+              this._loadExperiment(experimentId);
             });
             return this._experiment;
           })
@@ -101,7 +100,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
 
   ngOnInit(): void {
     this._route.params.subscribe((params: Params) => {
-      this._handleRouteParams(params['id']);
+      this._loadExperiment(params['id']);
     });
   }
 
