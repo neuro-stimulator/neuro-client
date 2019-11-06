@@ -10,14 +10,24 @@ import { Observable } from 'rxjs';
 export class ExperimentItemListComponent implements OnInit {
 
   @Input() experiments: Observable<Experiment[]>;
-  @Output() delete: EventEmitter<Experiment> = new EventEmitter<Experiment>();
+  @Output() run: EventEmitter<Experiment> = new EventEmitter<Experiment>();
+  @Output() simulate: EventEmitter<Experiment> = new EventEmitter<Experiment>();
   @Output() edit: EventEmitter<Experiment> = new EventEmitter<Experiment>();
+  @Output() delete: EventEmitter<Experiment> = new EventEmitter<Experiment>();
 
   ExperimentType = ExperimentType;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  handleRun(experiment: Experiment) {
+    this.run.next(experiment);
+  }
+
+  handleSimulate(experiment: Experiment) {
+    this.simulate.next(experiment);
   }
 
   handleEdit(experiment: Experiment) {

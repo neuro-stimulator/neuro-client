@@ -19,7 +19,11 @@
         <div><small class="text-truncate experiment-description">{{experiment.description}}</small></div>
       </div>
       <!-- Experiment toolbar buttons -->
-      <div class="col-2 experiment-toolbar">
+      <div class="col-1 experiment-toolbar">
+        <i class="fas fa-play text-success" title="Spustit" (click)="handleRun(experiment)"></i>
+        <i class="fas fa-bug text-info" title="Simulovat" (click)="handleSimulate(experiment)"></i>
+      </div>
+      <div class="col-1 experiment-toolbar">
         <i class="fas fa-edit text-primary" title="Editovat" (click)="handleEdit(experiment)"></i>
         <i class="fas fa-trash text-danger" title="Odstranit" (click)="handleDelete(experiment)"></i>
       </div>

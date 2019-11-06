@@ -47,6 +47,14 @@ export class ExperimentsComponent implements OnInit {
     this._router.navigate([type, experiment.id], {relativeTo: this._route});
   }
 
+  handleRun(experiment: Experiment) {
+    // TODO spustit experiment
+  }
+
+  handleSimulate(experiment: Experiment) {
+    // TODO simulovat experiment
+  }
+
   handleDelete(experiment: Experiment) {
     const self = this;
     this.modal.showComponent = ConfirmDialogComponent;
