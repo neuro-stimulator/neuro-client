@@ -7,3 +7,9 @@
         >
   Odpojit
 </button>
+
+<br>
+<textarea name="console" id="stm-console" cols="30" rows="10" [value]="console"></textarea>
+<br>
+<input type="text" [value]="command">
+<button (click)="handleSendCommand()">Odeslat</button>
