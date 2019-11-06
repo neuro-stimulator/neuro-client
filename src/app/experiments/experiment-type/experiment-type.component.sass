@@ -1,3 +1,16 @@
+.working-overlay
+  position: absolute
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  z-index: 1
+  cursor: wait
+  display: none
+
+.working-overlay.show
+  display: block
+
 ::ng-deep .experiment-property
   background-color: rgba(0, 0, 0, 0.21)
   margin: 2px

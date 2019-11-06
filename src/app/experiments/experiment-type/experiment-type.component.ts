@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ExperimentType, experimentTypeFromRaw } from 'diplomka-share';
 import { BehaviorSubject, Subscription } from 'rxjs';
+import { ExperimentsService } from '../experiments.service';
 
 @Component({
   selector: 'app-experiment-type',
@@ -14,7 +15,8 @@ export class ExperimentTypeComponent implements OnInit, OnDestroy {
 
   private _paramsSubscription: Subscription;
 
-  constructor(private readonly route: ActivatedRoute) { }
+  constructor(public service: ExperimentsService,
+              private readonly route: ActivatedRoute) { }
 
   private _handleRouteParams(params: Params) {
     const experimentType = params['type'];

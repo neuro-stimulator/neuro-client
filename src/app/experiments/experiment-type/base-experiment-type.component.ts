@@ -1,4 +1,4 @@
-import { OnDestroy, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -8,7 +8,7 @@ import { Experiment, ExperimentType } from 'diplomka-share';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription, TimeoutError } from 'rxjs';
 
-export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit, OnDestroy {
+export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit, AfterViewInit, OnDestroy {
 
   protected _experiment: E;
   public form: FormGroup;
@@ -19,7 +19,8 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
                         protected readonly toastr: ToastrService,
                         protected readonly _router: Router,
                         protected readonly _route: ActivatedRoute,
-                        protected readonly _location: Location) {
+                        protected readonly _location: Location,
+                        protected readonly _cdr: ChangeDetectorRef) {
       this.form = new FormGroup(this._createFormControls());
   }
 
@@ -103,6 +104,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
     this._route.params.subscribe((params: Params) => {
       this._loadExperiment(params['id']);
     });
+
     this._workingSubscription = this.working.subscribe(working => {
       if (working) {
         this.form.disable();
@@ -110,6 +112,10 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
         this.form.enable();
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    this._cdr.detectChanges();
   }
 
   ngOnDestroy(): void {

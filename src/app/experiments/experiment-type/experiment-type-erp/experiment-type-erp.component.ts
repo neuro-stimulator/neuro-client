@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -26,8 +26,13 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     animate: false
   };
 
-  constructor(service: ExperimentsService, toastr: ToastrService, router: Router, route: ActivatedRoute, location: Location) {
-    super(service, toastr, router, route, location);
+  constructor(service: ExperimentsService,
+              toastr: ToastrService,
+              router: Router,
+              route: ActivatedRoute,
+              location: Location,
+              cdr: ChangeDetectorRef) {
+    super(service, toastr, router, route, location, cdr);
   }
 
   ngOnInit() {
