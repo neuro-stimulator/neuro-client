@@ -42,6 +42,11 @@ export class ExperimentsComponent implements OnInit {
         });
   }
 
+  handleEdit(experiment: Experiment) {
+    const type = ExperimentType[experiment.type].toLowerCase();
+    this._router.navigate([type, experiment.id], {relativeTo: this._route});
+  }
+
   handleDelete(experiment: Experiment) {
     const self = this;
     this.modal.showComponent = ConfirmDialogComponent;

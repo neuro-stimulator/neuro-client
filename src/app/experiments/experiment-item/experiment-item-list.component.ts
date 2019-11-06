@@ -11,12 +11,17 @@ export class ExperimentItemListComponent implements OnInit {
 
   @Input() experiments: Observable<Experiment[]>;
   @Output() delete: EventEmitter<Experiment> = new EventEmitter<Experiment>();
+  @Output() edit: EventEmitter<Experiment> = new EventEmitter<Experiment>();
 
   ExperimentType = ExperimentType;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  handleEdit(experiment: Experiment) {
+    this.edit.next(experiment);
   }
 
   handleDelete(experiment: Experiment) {
