@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
@@ -15,8 +15,13 @@ import { Location } from '@angular/common';
 })
 export class ExperimentTypeNoneComponent extends BaseExperimentTypeComponent<Experiment> implements OnInit {
 
-  constructor(service: ExperimentsService, toastr: ToastrService, protected router: Router, route: ActivatedRoute, location: Location) {
-    super(service, toastr, router, route, location);
+  constructor(service: ExperimentsService,
+              toastr: ToastrService,
+              protected readonly router: Router,
+              route: ActivatedRoute,
+              location: Location,
+              cdr: ChangeDetectorRef) {
+    super(service, toastr, router, route, location, cdr);
   }
 
   ngOnInit() {
