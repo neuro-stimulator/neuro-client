@@ -14,6 +14,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   public form: FormGroup;
   private _connectedSubscription: Subscription;
   private _workingSubscription: Subscription;
+  private _isNew = true;
 
   protected constructor(protected readonly _service: ExperimentsService,
                         protected readonly toastr: ToastrService,
@@ -39,6 +40,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
         return;
       }
 
+      this._isNew = false;
       this._experiment.id = +experimentId;
     }
     this._updateFormGroup(this._experiment);
@@ -73,7 +75,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
    *
    * @param experiment Experiment, který dodá data do formuláře
    */
-  private _updateFormGroup(experiment: E) {
+  protected _updateFormGroup(experiment: E) {
     this.form.patchValue(experiment);
   }
 
@@ -136,9 +138,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
             this._experiment = experiment;
             // Po úspěšném založení nového experimentu,
             // upravím adresní řádek tak, aby obsahoval ID experimentu
-            this._location.replaceState(this._router.serializeUrl(this._router.createUrlTree(
-              ['/', 'experiments', ExperimentType[experiment.type].toLowerCase(), experiment.id])
-            ));
+            this._router.navigate(['/', 'experiments', ExperimentType[experiment.type].toLowerCase(), experiment.id]);
           });
     } else {
       this._service.update(this.form.value);
@@ -153,4 +153,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
     return this._service.working$;
   }
 
+  get isNew() {
+    return this._isNew;
+  }
 }

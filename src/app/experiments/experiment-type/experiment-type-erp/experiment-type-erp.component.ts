@@ -48,11 +48,14 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
         orderId: new FormControl(null, Validators.required),
         pulseUp: new FormControl(null, [Validators.required]),
         pulseDown: new FormControl(null, [Validators.required]),
-        distributionValue: new FormControl(null, [Validators.required]),
-        distributionDelay: new FormControl(null, [Validators.required]),
+        distribution: new FormControl(null, [Validators.required]),
         brightness: new FormControl(null, [
           Validators.required, Validators.min(0), Validators.max(100)
         ]),
+        dependencies: new FormArray([
+          new FormControl([]),
+          new FormControl(null, [Validators.pattern('^[0-8]x[1-9]+[0-9]*')]),
+        ])
       });
       array.push(group);
     }
@@ -69,7 +72,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
       wait: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
       random: new FormControl(null, [Validators.required]),
       edge: new FormControl(null, [Validators.required]),
-      outputs: new FormArray(this._createOutputsFormControls())
+      outputs: new FormArray([]),
     };
 
     return {...superControls, ...myControls};
@@ -90,6 +93,17 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
       maxDistributionValue: 0,
       outputs: []
     };
+  }
+
+
+  protected _updateFormGroup(experiment: ExperimentERP) {
+    if (experiment.outputs.length > 0) {
+      (this.form.get('outputs') as FormArray).controls = this._createOutputsFormControls();
+    } else {
+      (this.form.get('outputs') as FormArray).controls = [];
+    }
+
+    super._updateFormGroup(experiment);
   }
 
   get randoms() {

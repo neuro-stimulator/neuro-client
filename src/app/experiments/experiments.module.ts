@@ -21,6 +21,7 @@ import { FabModule } from '../share/fab/fab.module';
 import { ExperimentTypeHeaderComponent } from './experiment-type/experiment-type-header/experiment-type-header.component';
 import { ExperimentTypeErpOutputComponent } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output.component';
 import { ExperimentTypeErpOutputCountPipe } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output-count.pipe';
+import { ExperimentTypeErpOutputDependencyPipe } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output-dependency.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ExperimentTypeErpOutputCountPipe } from './experiment-type/experiment-t
     ExperimentTypeReaComponent,
     ExperimentTypeHeaderComponent,
     ExperimentTypeErpOutputComponent,
-    ExperimentTypeErpOutputCountPipe
+    ExperimentTypeErpOutputCountPipe,
+    ExperimentTypeErpOutputDependencyPipe
   ],
   imports: [
     CommonModule,

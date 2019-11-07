@@ -2,50 +2,56 @@
   <div formArrayName="outputs">
     <div *ngFor="let output of outputs | experimentTypeErpOutputCount:count; let i=index">
       <div class="row experiment-property" [attr.data-content]="(i+1) + '.'" [formGroupName]="i">
-        <div class="col-12 col-md-6">
+        <div class="d-none d-md-block col-md-12">
           <h5>Pulse</h5>
-        </div>
-        <div class="col-12 col-md-6 d-none d-md-block">
-          <h5>Distribution</h5>
         </div>
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label for="pulse-up">up [ms]</label>
-            <input type="number" id="pulse-up" class="form-control form-control-sm" formControlName="pulseUp">
+            <label for="pulse-up" class="d-none d-md-block">up [ms]</label>
+            <label for="pulse-up" class="d-md-none">Pulse - up [ms]</label>
+            <input type="number" id="pulse-up" class="form-control form-control-sm" formControlName="pulseUp" [class.is-valid]="pulseUp(i).valid" [class.is-invalid]="pulseUp(i).invalid">
             <small *ngIf="pulseUp(i).touched && pulseUp(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label for="pulse-down">down [ms]</label>
-            <input type="number" id="pulse-down" class="form-control form-control-sm" formControlName="pulseDown">
+            <label for="pulse-down" class="d-none d-md-block">down [ms]</label>
+            <label for="pulse-down" class="d-md-none">Pulse - down [ms]</label>
+            <input type="number" id="pulse-down" class="form-control form-control-sm" formControlName="pulseDown" [class.is-valid]="pulseDown(i).valid" [class.is-invalid]="pulseDown(i).invalid">
             <small *ngIf="pulseDown(i).touched && pulseDown(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
           </div>
         </div>
 
-        <div class="col-12 d-md-none">
-          <h5>Distribution</h5>
-        </div>
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label for="distribution-value">value [%]</label>
-            <ng5-slider id="distribution-value" formControlName="distributionValue" [options]="distributionSliderOptions"></ng5-slider>
-            <small *ngIf="distributionValue(i).touched && distributionValue(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
+            <label for="distribution">distribution [%]</label>
+            <ng5-slider id="distribution" formControlName="distribution" [options]="distributionSliderOptions"></ng5-slider>
+            <small *ngIf="distribution(i).touched && distribution(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-3">
-          <div class="form-group">
-            <label for="distribution-delay">delay [ms]</label>
-            <input type="number" id="distribution-delay" class="form-control form-control-sm" formControlName="distributionDelay">
-            <small *ngIf="distributionDelay(i).touched && distributionDelay(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
-          </div>
-        </div>
-
-        <div class="col-12">
           <div class="form-group">
             <label for="brightness">brightness [%]</label>
             <ng5-slider id="brightness" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
+          </div>
+        </div>
+
+        <div class="col-12" formArrayName="dependencies">
+          <div class="form-group">
+            <label [for]="'dependency-' + i">dependencies</label>
+            <div>
+            <span class="dependency badge badge-info"
+                  *ngFor="let dependency of dependencies(i).value"
+                  title="Odstranit">{{dependency | experimentTypeErpOutputDependency}}
+              <i class="fas fa-trash" (click)="handleRemoveDependency(i, dependency)"></i></span>
+            <input type="text" [id]="'dependency-' + i"
+                   class="dependency form-control form-control-sm"
+                   placeholder="stimul x count" #input
+                   [formControlName]="1"
+                   (keyup)="handleDependencyKeyUp($event, i, input.value)"
+                   [class.is-invalid]="dependencyValue(i).invalid">
+            </div>
           </div>
         </div>
 
