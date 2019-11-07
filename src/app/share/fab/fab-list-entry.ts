@@ -1,4 +1,4 @@
-export interface FabListButtonEntry {
+export interface FabListEntry {
   id: number;
   tooltip: string;
   icon?: string;

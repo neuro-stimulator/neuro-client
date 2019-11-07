@@ -3,12 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
+import { Experiment, ExperimentType } from 'diplomka-share';
+
 import { ModalComponent } from '../share/modal/modal.component';
+import { FabListEntry } from '../share/fab/fab-list-entry';
+import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.component';
 
 import { ExperimentsService } from './experiments.service';
-import { Experiment, ExperimentType } from 'diplomka-share';
-import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.component';
-import { FabListButtonEntry } from '../share/fab/fab-list-button-entry';
 
 @Component({
   selector: 'app-experiments',
@@ -21,7 +22,7 @@ export class ExperimentsComponent implements OnInit {
 
   ghosts: any[] = [];
   experiments: Observable<Experiment[]>;
-  fabButtonList: FabListButtonEntry[] = [
+  fabButtonList: FabListEntry[] = [
     {id: ExperimentType.REA, text: 'REA', class: 'rea', tooltip: 'REA'},
     {id: ExperimentType.FVEP, text: 'FVEP', class: 'fvep', tooltip: 'FVEP'},
     {id: ExperimentType.TVEP, text: 'TVEP', class: 'tvep', tooltip: 'TVEP'},

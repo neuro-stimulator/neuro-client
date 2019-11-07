@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FabListButtonEntry } from './fab-list-button-entry';
+import { FabListEntry } from './fab-list-entry';
 import { fabAnimations } from './fab.animations';
 
 @Component({
@@ -12,11 +12,11 @@ export class FabComponent implements OnInit {
 
   @Input() disabled = false;
   @Input() icon: string;
-  @Input() fabButtons: FabListButtonEntry[] = [];
+  @Input() fabButtons: FabListEntry[] = [];
   @Output() fabClick: EventEmitter<number> = new EventEmitter<number>();
 
   fabTogglerState = 'inactive';
-  buttons: FabListButtonEntry[] = [];
+  buttons: FabListEntry[] = [];
 
   constructor() { }
 
