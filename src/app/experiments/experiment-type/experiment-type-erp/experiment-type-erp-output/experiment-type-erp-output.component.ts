@@ -14,6 +14,7 @@ export class ExperimentTypeErpOutputComponent {
 
   @Input() form: FormGroup;
   @Input() count: number;
+  @Input() experimentId: number;
 
   distributionSliderOptions: SliderOptions = {
     floor: 0,
@@ -47,9 +48,9 @@ export class ExperimentTypeErpOutputComponent {
     const params = value.split('x');
 
     dependencies.push({
-      id: 0,
-      experimentId: 0,
-      sourceOutput: index,
+      id: Math.random(),
+      experimentId: this.experimentId,
+      sourceOutput: index + 1,
       destOutput: +params[0],
       count: +params[1]
     });

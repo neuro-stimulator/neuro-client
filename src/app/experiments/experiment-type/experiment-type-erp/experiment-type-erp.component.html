@@ -53,7 +53,7 @@
 
       </div>
 
-      <app-experiment-type-erp-output [form]="form" [count]="outputCount.value" *ngIf="!isNew"></app-experiment-type-erp-output>
+      <app-experiment-type-erp-output [form]="form" [count]="outputCount.value" [experimentId]="experiment.id" *ngIf="!isNew"></app-experiment-type-erp-output>
 
     </form>
   </div>
