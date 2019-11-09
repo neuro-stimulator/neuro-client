@@ -1,18 +1,20 @@
-import { Component, Input} from '@angular/core';
-import { FormArray, FormGroup} from '@angular/forms';
+import { AfterContentInit, Component, EventEmitter, Input, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 import { Options as SliderOptions } from 'ng5-slider';
 
 import { environment } from '../../../../../environments/environment';
 
 import { OutputDependency } from 'diplomka-share';
+import { Subscription } from 'rxjs';
+import { SliderComponent } from 'ng5-slider/slider.component';
 
 @Component({
   selector: 'app-experiment-type-erp-output',
   templateUrl: './experiment-type-erp-output.component.html',
   styleUrls: ['./experiment-type-erp-output.component.sass']
 })
-export class ExperimentTypeErpOutputComponent {
+export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDestroy {
 
   private static readonly GENERAL_DISTRIBUTION_SLIDER_OPTIONS: SliderOptions = {
     floor: 0,
@@ -23,6 +25,10 @@ export class ExperimentTypeErpOutputComponent {
     showSelectionBar: true,
     animate: false
   };
+
+  private _outputCountSubscription: Subscription;
+  private _outputDistributionSubscriptions: Subscription[] = [];
+  private _oldOutputCount = environment.maxOutputCount;
 
   @Input() form: FormGroup;
   @Input() count: number;
@@ -42,7 +48,22 @@ export class ExperimentTypeErpOutputComponent {
 
   constructor() {
     for (let i = 0; i < environment.maxOutputCount; i++) {
-      this.distributionSliderOptions.push(ExperimentTypeErpOutputComponent.GENERAL_DISTRIBUTION_SLIDER_OPTIONS);
+      this.distributionSliderOptions.push({...ExperimentTypeErpOutputComponent.GENERAL_DISTRIBUTION_SLIDER_OPTIONS});
+    }
+  }
+
+  ngAfterContentInit(): void {
+    setTimeout(() => {
+      this._oldOutputCount = this.form.root.get('outputCount').value;
+      this._listenOutputCountChange();
+      this._listenOutputDistributionChange();
+    }, 1000);
+  }
+
+  ngOnDestroy(): void {
+    this._outputCountSubscription.unsubscribe();
+    for (let i = 0; i < environment.maxOutputCount; i++) {
+      this._outputDistributionSubscriptions[i].unsubscribe();
     }
   }
 
@@ -69,6 +90,41 @@ export class ExperimentTypeErpOutputComponent {
     dependencies.splice(dependencies.findIndex(value => value.id === dependency.id));
   }
 
+  private _listenOutputCountChange() {
+    this._outputCountSubscription = this.form.root.get('outputCount').valueChanges.subscribe((value: number) => {
+      // V případě, že zvětšuji počet, tak nemusím nic přepočítávat, protože nově inicializované výstupy budou na výchozích hodnotách
+      if (value > this._oldOutputCount) {
+        this._oldOutputCount = value;
+        return;
+      }
+      const tmpOldValue = this._oldOutputCount;
+      this._oldOutputCount = value;
+
+      for (let i = value; i < tmpOldValue; i++) {
+        this.distribution(i).setValue(0);
+      }
+    });
+  }
+
+  private _listenOutputDistributionChange() {
+    for (let i = 0; i < environment.maxOutputCount; i++) {
+      this._outputDistributionSubscriptions.push(this.distribution(i).valueChanges.subscribe((value: number) => {
+        let total = 0;
+
+        for (let j = 0; j < this._oldOutputCount; j++) {
+          total += this.distribution(j).value;
+        }
+
+        for (let j = 0; j < this._oldOutputCount; j++) {
+          // shorturl.at/ijAFQ
+          const newOptions: SliderOptions = Object.assign({}, this.distributionSliderOptions[j]);
+          newOptions.ceil = 100 - total + this.distribution(j).value;
+          this.distributionSliderOptions[j] = newOptions;
+        }
+      }));
+    }
+  }
+
   get outputs() {
     return (this.form.get('outputs') as FormArray).controls;
   }
@@ -82,12 +138,9 @@ export class ExperimentTypeErpOutputComponent {
   }
 
   distribution(index: number) {
-    return this.outputs[index].get('distribution');
+    return this.outputs[index].get('distribution') as FormControl;
   }
 
-  distributionOptions(index: number) {
-    return this.distributionSliderOptions[index];
-  }
 
   brightness(index: number) {
     return this.outputs[index].get('brightness');

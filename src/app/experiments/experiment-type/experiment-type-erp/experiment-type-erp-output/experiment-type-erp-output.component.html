@@ -25,7 +25,7 @@
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
             <label for="distribution">distribution [%]</label>
-            <ng5-slider id="distribution" formControlName="distribution" [options]="distributionOptions(i)"></ng5-slider>
+            <ng5-slider id="distribution" formControlName="distribution" [formControl]="distribution(i)" [options]="distributionSliderOptions[i]"></ng5-slider>
             <small *ngIf="distribution(i).touched && distribution(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
           </div>
         </div>

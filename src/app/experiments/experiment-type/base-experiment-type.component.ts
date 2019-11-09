@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -126,7 +126,6 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
     }
     this._workingSubscription.unsubscribe();
   }
-
 
   /**
    * Reakce na tlačítko pro uložení dat experimentu
