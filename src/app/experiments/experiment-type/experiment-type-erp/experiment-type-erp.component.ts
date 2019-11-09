@@ -9,6 +9,7 @@ import { Edge, ExperimentERP, ExperimentType, Random } from 'diplomka-share';
 
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
+import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
 
 @Component({
   selector: 'app-experiment-type-erp',
@@ -54,9 +55,12 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
         ]),
         dependencies: new FormArray([
           new FormControl([]),
-          new FormControl(null, [Validators.pattern('^[0-8]x[1-9]+[0-9]*')]),
+          new FormControl(null, [
+            Validators.pattern('^[0-8]x[1-9]+[0-9]*'),
+            ExperimentTypeErpOutputDependencyValidator.createValidator()]),
         ])
       });
+      group.setParent(this.form);
       array.push(group);
     }
 

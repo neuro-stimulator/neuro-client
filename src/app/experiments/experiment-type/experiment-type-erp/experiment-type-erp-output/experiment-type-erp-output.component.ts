@@ -98,6 +98,9 @@ export class ExperimentTypeErpOutputComponent {
       if (this.dependencyValue(index).invalid) {
         return;
       }
+      if (value.trim().length === 0) {
+        return;
+      }
 
       const srcElement = (event.target as HTMLInputElement);
       this._addDependency(index, value);

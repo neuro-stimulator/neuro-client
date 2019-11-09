@@ -51,6 +51,8 @@
                    [formControlName]="1"
                    (keyup)="handleDependencyKeyUp($event, i, input.value)"
                    [class.is-invalid]="dependencyValue(i).invalid">
+              <small *ngIf="dependencyValue(i).touched && dependencyValue(i).errors?.invalidDependency" class="form-text text-muted">Číslo závislosti je vyšší, než počet výstupů!</small>
+              <small *ngIf="dependencyValue(i).touched && dependencyValue(i).errors?.invalidValue" class="form-text text-muted">Číslo závislosti je neplatné!</small>
             </div>
           </div>
         </div>
