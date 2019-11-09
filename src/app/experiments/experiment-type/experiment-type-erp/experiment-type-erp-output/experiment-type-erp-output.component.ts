@@ -3,6 +3,8 @@ import { FormArray, FormGroup} from '@angular/forms';
 
 import { Options as SliderOptions } from 'ng5-slider';
 
+import { environment } from '../../../../../environments/environment';
+
 import { OutputDependency } from 'diplomka-share';
 
 @Component({
@@ -12,11 +14,7 @@ import { OutputDependency } from 'diplomka-share';
 })
 export class ExperimentTypeErpOutputComponent {
 
-  @Input() form: FormGroup;
-  @Input() count: number;
-  @Input() experimentId: number;
-
-  distributionSliderOptions: SliderOptions = {
+  private static readonly GENERAL_DISTRIBUTION_SLIDER_OPTIONS: SliderOptions = {
     floor: 0,
     ceil: 100,
     showTicks: false,
@@ -25,6 +23,12 @@ export class ExperimentTypeErpOutputComponent {
     showSelectionBar: true,
     animate: false
   };
+
+  @Input() form: FormGroup;
+  @Input() count: number;
+  @Input() experimentId: number;
+
+  distributionSliderOptions: SliderOptions[] = [];
 
   brightnessSliderOptions: SliderOptions = {
     floor: 0,
@@ -36,7 +40,11 @@ export class ExperimentTypeErpOutputComponent {
     animate: false
   };
 
-  constructor() { }
+  constructor() {
+    for (let i = 0; i < environment.maxOutputCount; i++) {
+      this.distributionSliderOptions.push(ExperimentTypeErpOutputComponent.GENERAL_DISTRIBUTION_SLIDER_OPTIONS);
+    }
+  }
 
   private _addDependency(index: number, value: string) {
     let dependencies = this.dependencies(index).value as OutputDependency[];
@@ -75,6 +83,10 @@ export class ExperimentTypeErpOutputComponent {
 
   distribution(index: number) {
     return this.outputs[index].get('distribution');
+  }
+
+  distributionOptions(index: number) {
+    return this.distributionSliderOptions[index];
   }
 
   brightness(index: number) {

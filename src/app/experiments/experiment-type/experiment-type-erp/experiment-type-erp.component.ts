@@ -5,7 +5,11 @@ import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '
 
 import { Options as SliderOptions } from 'ng5-slider';
 import { ToastrService } from 'ngx-toastr';
+
 import { Edge, ExperimentERP, ExperimentType, Random } from 'diplomka-share';
+
+import { environment } from '../../../../environments/environment';
+import { dependencyValidatorPattern } from '../../experiments.share';
 
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
@@ -20,7 +24,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
 
   outputCountParams: SliderOptions = {
     floor: 1,
-    ceil: 8,
+    ceil: environment.maxOutputCount,
     showTicks: true,
     showTicksValues: true,
     tickStep: 1,
@@ -42,7 +46,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
 
   protected _createOutputsFormControls(): FormGroup[] {
     const array = [];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < environment.maxOutputCount; i++) {
       const group = new FormGroup({
         id: new FormControl(null, Validators.required),
         experimentId: new FormControl(null, Validators.required),
@@ -56,7 +60,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
         dependencies: new FormArray([
           new FormControl([]),
           new FormControl(null, [
-            Validators.pattern('^[0-8]x[1-9]+[0-9]*'),
+            Validators.pattern(dependencyValidatorPattern),
             ExperimentTypeErpOutputDependencyValidator.createValidator()]),
         ])
       });
@@ -70,7 +74,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
   protected _createFormControls(): {[p: string]: AbstractControl} {
     const superControls = super._createFormControls();
     const myControls = {
-      outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(8)]),
+      outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(environment.maxOutputCount)]),
       maxDistributionValue: new FormControl(0, [Validators.required]),
       out: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
       wait: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),

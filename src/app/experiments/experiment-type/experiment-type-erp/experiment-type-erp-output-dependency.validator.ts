@@ -1,4 +1,5 @@
 import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { outputCountValidatorPattern } from '../../experiments.share';
 
 export class ExperimentTypeErpOutputDependencyValidator {
 
@@ -20,7 +21,7 @@ export class ExperimentTypeErpOutputDependencyValidator {
       if (value.length === 0) {
         return null;
       }
-      if (!value.match('^[0-8]{1}$')) {
+      if (!value.match(outputCountValidatorPattern)) {
         return {invalidValue: true};
       }
       return (+value <= +usedOutputs) ? null : {invalidDependency: true};
