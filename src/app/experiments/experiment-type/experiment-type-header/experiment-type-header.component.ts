@@ -10,7 +10,8 @@ export class ExperimentTypeHeaderComponent implements OnInit {
 
   @Input() form: FormGroup;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

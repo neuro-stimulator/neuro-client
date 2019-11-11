@@ -33,5 +33,4 @@ export class ExperimentTypeNoneComponent extends BaseExperimentTypeComponent<Exp
   }
 
 
-
 }

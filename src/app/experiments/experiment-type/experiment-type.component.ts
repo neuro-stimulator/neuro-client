@@ -16,7 +16,8 @@ export class ExperimentTypeComponent implements OnInit, OnDestroy {
   private _paramsSubscription: Subscription;
 
   constructor(public service: ExperimentsService,
-              private readonly route: ActivatedRoute) { }
+              private readonly route: ActivatedRoute) {
+  }
 
   private _handleRouteParams(params: Params) {
     const experimentType = params['type'];

@@ -71,7 +71,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     return array;
   }
 
-  protected _createFormControls(): {[p: string]: AbstractControl} {
+  protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
     const myControls = {
       outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(environment.maxOutputCount)]),
@@ -116,10 +116,10 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
 
   get randoms() {
     return [
-      {id: Random.OFF , name: 'OFF'},
-      {id: Random.SHORT , name: 'SHORT'},
-      {id: Random.LONG , name: 'LONG'},
-      {id: Random.SHORT_LONG , name: 'SHORT_LONG'},
+      {id: Random.OFF, name: 'OFF'},
+      {id: Random.SHORT, name: 'SHORT'},
+      {id: Random.LONG, name: 'LONG'},
+      {id: Random.SHORT_LONG, name: 'SHORT_LONG'},
     ];
   }
 

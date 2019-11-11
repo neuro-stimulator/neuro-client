@@ -20,7 +20,8 @@ export class ExperimentTypeResolverDirective implements OnInit {
   @Input() type: Observable<ExperimentType>;
 
   constructor(private readonly componentFactoryResolver: ComponentFactoryResolver,
-              private readonly _viewContainerRef: ViewContainerRef) {}
+              private readonly _viewContainerRef: ViewContainerRef) {
+  }
 
   static _initializeComponentMap() {
     ExperimentTypeResolverDirective.EXPERIMENT_COMPONENTS_BY_TYPE[ExperimentType.NONE] = ExperimentTypeNoneComponent;
@@ -46,4 +47,5 @@ export class ExperimentTypeResolverDirective implements OnInit {
   }
 
 }
+
 ExperimentTypeResolverDirective._initializeComponentMap();

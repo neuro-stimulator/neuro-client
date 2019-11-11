@@ -74,7 +74,9 @@ export abstract class BaseService<T extends BaseRecord> {
                .then(response => {
                  this.records$.next(response.data);
                  return null;
-               }).catch(error => {});
+               })
+               .catch(error => {
+               });
   }
 
   /**
@@ -264,7 +266,7 @@ export abstract class BaseService<T extends BaseRecord> {
           return;
         }
 
-        this.logger.debug('Vkládám nový záznam: ' + JSON.stringify(record));
+        this.logger.debug(`Vkládám nový záznam: ${JSON.stringify(record)}`);
         records.push(record);
         break;
       case CRUDServiceType.UPDATE:
@@ -273,7 +275,7 @@ export abstract class BaseService<T extends BaseRecord> {
           return;
         }
 
-        this.logger.debug('Aktualizuji záznam: ' + JSON.stringify(record));
+        this.logger.debug(`Aktualizuji záznam: ${JSON.stringify(record)}`);
         records[recordIndex] = record;
         break;
       case CRUDServiceType.DELETE:
@@ -282,7 +284,7 @@ export abstract class BaseService<T extends BaseRecord> {
           return;
         }
 
-        this.logger.debug('Mažu záznam: ' + JSON.stringify(record));
+        this.logger.debug(`Mažu záznam: ${JSON.stringify(record)}`);
         records.splice(recordIndex, 1);
         break;
     }

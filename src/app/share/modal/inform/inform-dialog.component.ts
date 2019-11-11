@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ModalComponent } from '../modal.component';
 import { DialogChildComponent } from '../dialog-child.component';
@@ -26,7 +26,7 @@ export class InformDialogComponent extends DialogChildComponent {
     modal.confirmText = 'Potvrzuji';
     modal.cancelText = 'Zrušit';
     modal.confirmClose = false;
-    this._showSubscription =  modal.show.subscribe((args) => this._prepareForm(args[0]));
+    this._showSubscription = modal.show.subscribe((args) => this._prepareForm(args[0]));
   }
 
   unbind(modal: ModalComponent) {

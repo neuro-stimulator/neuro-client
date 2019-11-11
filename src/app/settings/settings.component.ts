@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AliveCheckerService} from '../alive-checker.service';
+import { AliveCheckerService } from '../alive-checker.service';
 import { SerialService } from '../share/serial.service';
 import { SettingsService } from './settings.service';
 
@@ -16,7 +16,8 @@ export class SettingsComponent implements OnInit {
 
   constructor(public readonly aliveChecker: AliveCheckerService,
               private readonly _gateway: SerialService,
-              private readonly _service: SettingsService) { }
+              private readonly _service: SettingsService) {
+  }
 
   ngOnInit() {
     this._gateway.rawData$.subscribe(data => {

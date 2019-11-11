@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { DialogChildComponent } from '../dialog-child.component';
 import { ModalComponent } from '../modal.component';
 import { of, Subscription } from 'rxjs';
@@ -24,8 +24,10 @@ export class ConfirmDialogComponent extends DialogChildComponent {
 
   private _prepareForm(args: any) {
     this.message = args.message;
-    this._handleConfirmDialog = args.confirm || (() => {});
-    this._handleCancelDialog = args.cancel || (() => {});
+    this._handleConfirmDialog = args.confirm || (() => {
+    });
+    this._handleCancelDialog = args.cancel || (() => {
+    });
   }
 
   private _handleConfirm() {
@@ -42,9 +44,9 @@ export class ConfirmDialogComponent extends DialogChildComponent {
     modal.cancelText = 'Zrušit';
     modal.confirmClose = false;
     modal.confirmDisabled = of(false);
-    this._confirmSubscription =  modal.confirm.subscribe(() => this._handleConfirm());
-    this._cancelSubscription =  modal.cancel.subscribe(() => this._handleNotConfirm());
-    this._showSubscription =  modal.show.subscribe((args) => this._prepareForm(args[0]));
+    this._confirmSubscription = modal.confirm.subscribe(() => this._handleConfirm());
+    this._cancelSubscription = modal.cancel.subscribe(() => this._handleNotConfirm());
+    this._showSubscription = modal.show.subscribe((args) => this._prepareForm(args[0]));
   }
 
   unbind(modal: ModalComponent) {

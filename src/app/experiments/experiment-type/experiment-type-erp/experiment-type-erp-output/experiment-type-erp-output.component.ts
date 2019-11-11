@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, EventEmitter, Input, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterContentInit, Component, Input, OnDestroy} from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 import { Options as SliderOptions } from 'ng5-slider';
@@ -7,7 +7,6 @@ import { environment } from '../../../../../environments/environment';
 
 import { OutputDependency } from 'diplomka-share';
 import { Subscription } from 'rxjs';
-import { SliderComponent } from 'ng5-slider/slider.component';
 
 @Component({
   selector: 'app-experiment-type-erp-output',
@@ -71,7 +70,8 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
     let dependencies = this.dependencies(index).value as OutputDependency[];
     if (dependencies === undefined) {
       dependencies = [];
-      this.dependencies(index).setValue(dependencies);
+      this.dependencies(index)
+          .setValue(dependencies);
     }
 
     const params = value.split('x');
@@ -91,37 +91,42 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   }
 
   private _listenOutputCountChange() {
-    this._outputCountSubscription = this.form.root.get('outputCount').valueChanges.subscribe((value: number) => {
-      // V případě, že zvětšuji počet, tak nemusím nic přepočítávat, protože nově inicializované výstupy budou na výchozích hodnotách
-      if (value > this._oldOutputCount) {
-        this._oldOutputCount = value;
-        return;
-      }
-      const tmpOldValue = this._oldOutputCount;
-      this._oldOutputCount = value;
+    this._outputCountSubscription = this.form.root.get('outputCount')
+                                        .valueChanges
+                                        .subscribe((value: number) => {
+                                          // V případě, že zvětšuji počet, tak nemusím nic přepočítávat, protože nově inicializované výstupy budou na výchozích hodnotách
+                                          if (value > this._oldOutputCount) {
+                                            this._oldOutputCount = value;
+                                            return;
+                                          }
+                                          const tmpOldValue = this._oldOutputCount;
+                                          this._oldOutputCount = value;
 
-      for (let i = value; i < tmpOldValue; i++) {
-        this.distribution(i).setValue(0);
-      }
-    });
+                                          for (let i = value; i < tmpOldValue; i++) {
+                                            this.distribution(i)
+                                                .setValue(0);
+                                          }
+                                        });
   }
 
   private _listenOutputDistributionChange() {
     for (let i = 0; i < environment.maxOutputCount; i++) {
-      this._outputDistributionSubscriptions.push(this.distribution(i).valueChanges.subscribe((value: number) => {
-        let total = 0;
+      this._outputDistributionSubscriptions.push(this.distribution(i)
+                                                     .valueChanges
+                                                     .subscribe((value: number) => {
+                                                       let total = 0;
 
-        for (let j = 0; j < this._oldOutputCount; j++) {
-          total += this.distribution(j).value;
-        }
+                                                       for (let j = 0; j < this._oldOutputCount; j++) {
+                                                         total += this.distribution(j).value;
+                                                       }
 
-        for (let j = 0; j < this._oldOutputCount; j++) {
-          // shorturl.at/ijAFQ
-          const newOptions: SliderOptions = Object.assign({}, this.distributionSliderOptions[j]);
-          newOptions.ceil = 100 - total + this.distribution(j).value;
-          this.distributionSliderOptions[j] = newOptions;
-        }
-      }));
+                                                       for (let j = 0; j < this._oldOutputCount; j++) {
+                                                         // shorturl.at/ijAFQ
+                                                         const newOptions: SliderOptions = Object.assign({}, this.distributionSliderOptions[j]);
+                                                         newOptions.ceil = 100 - total + this.distribution(j).value;
+                                                         this.distributionSliderOptions[j] = newOptions;
+                                                       }
+                                                     }));
     }
   }
 

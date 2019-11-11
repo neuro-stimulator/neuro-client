@@ -59,4 +59,5 @@ import { ResponseInterceptor } from './share/interceptors/response.interceptor';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

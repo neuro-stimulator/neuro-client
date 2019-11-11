@@ -11,5 +11,6 @@ import { SerialService } from './share/serial.service';
 export class AppComponent {
 
   constructor(public readonly navigation: NavigationService,
-              private readonly serial: SerialService) { }
+              private readonly serial: SerialService) {
+  }
 }

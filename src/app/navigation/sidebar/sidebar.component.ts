@@ -8,7 +8,8 @@ import { NavigationService } from '../navigation.service';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(public navigation: NavigationService) { }
+  constructor(public navigation: NavigationService) {
+  }
 
   ngOnInit() {
   }

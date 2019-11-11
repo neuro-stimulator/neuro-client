@@ -18,7 +18,8 @@ export class FabComponent implements OnInit {
   fabTogglerState = 'inactive';
   buttons: FabListEntry[] = [];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     if (this.fabButtons === undefined) {

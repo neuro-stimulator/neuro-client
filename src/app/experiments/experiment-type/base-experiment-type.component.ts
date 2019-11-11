@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -22,7 +22,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
                         protected readonly _route: ActivatedRoute,
                         protected readonly _location: Location,
                         protected readonly _cdr: ChangeDetectorRef) {
-      this.form = new FormGroup(this._createFormControls());
+    this.form = new FormGroup(this._createFormControls());
   }
 
   /**
@@ -87,7 +87,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   /**
    * Pomocná abstraktní metoda pro vytvoření formulářové skupiny komponent
    */
-  protected _createFormControls(): {[p: string]: AbstractControl} {
+  protected _createFormControls(): { [p: string]: AbstractControl } {
     return {
       id: new FormControl(),
       name: new FormControl(null, [Validators.required]),

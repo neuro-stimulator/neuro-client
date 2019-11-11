@@ -80,7 +80,8 @@ export class ModalComponent implements OnDestroy {
   // Instance zobrazované komponenty
   private _viewInstance: DialogChildComponent;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+  }
 
   // Příznak, který říká, zda-li je dialog otevřený
   private _isOpen = false;
@@ -185,66 +186,87 @@ export class ModalComponent implements OnDestroy {
   set id(id: string) {
     this._id = id;
   }
+
   get id(): string {
     return this._id;
   }
+
   @Input() set title(title: string) {
     this._title = title;
   }
+
   get title(): string {
     return this._title;
   }
+
   @Input() set confirmText(confirmText: string) {
     this._confirmText = confirmText;
   }
+
   get confirmText(): string {
     return this._confirmText;
   }
+
   @Input() set cancelText(cancelText: string) {
     this._cancelText = cancelText;
   }
+
   get cancelText(): string {
     return this._cancelText;
   }
+
   set result(result: Observable<any>) {
     this._result = result;
   }
+
   get result(): Observable<any> {
     return this._result;
   }
+
   @Input() set cancelDisabled(cancelDisabled: boolean) {
     this._cancelDisabled = cancelDisabled;
   }
+
   get cancelDisabled(): boolean {
     return this._cancelDisabled;
   }
+
   set confirmDisabled(confirmDisabled: Observable<boolean>) {
     this._confirmDisabled = confirmDisabled;
   }
+
   get confirmDisabled(): Observable<boolean> {
     return this._confirmDisabled;
   }
+
   set showComponent(showComponent: Type<DialogChildComponent>) {
     this._showComponent = showComponent;
   }
+
   get showComponent(): Type<DialogChildComponent> {
     return this._showComponent;
   }
+
   set confirmClose(confirmClose: boolean) {
     this._confirmClose = confirmClose;
   }
+
   get confirmClose(): boolean {
     return this._confirmClose;
   }
+
   get show(): Observable<any> {
     return this._show;
   }
+
   get cancel(): Observable<any> {
     return this._cancel;
   }
+
   get confirm(): Observable<any> {
     return this._confirm;
   }
+
   get isOpen(): boolean {
     return this._isOpen;
   }

@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
-import { NEVER, Observable} from 'rxjs';
-import { catchError, map} from 'rxjs/operators';
+import { NEVER, Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { ResponseMessage } from 'diplomka-share';
@@ -10,7 +10,8 @@ import { Injectable } from '@angular/core';
 export class ResponseInterceptor implements HttpInterceptor {
 
   constructor(private readonly _toaster: ToastrService,
-              private readonly logger: NGXLogger) {}
+              private readonly logger: NGXLogger) {
+  }
 
   private _handleResponseMessage(message: ResponseMessage) {
     switch (message.type) {

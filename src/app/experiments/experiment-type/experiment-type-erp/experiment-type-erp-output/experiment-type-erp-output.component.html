@@ -48,7 +48,7 @@
             <input type="text" [id]="'dependency-' + i"
                    class="dependency form-control form-control-sm"
                    placeholder="stimul x count" #input
-                   [formControlName]="1"
+                   [formControlName]="'1'"
                    (keyup)="handleDependencyKeyUp($event, i, input.value)"
                    [class.is-invalid]="dependencyValue(i).invalid">
               <small *ngIf="dependencyValue(i).touched && dependencyValue(i).errors?.invalidDependency" class="form-text text-muted">Číslo závislosti je vyšší, než počet výstupů!</small>

@@ -32,7 +32,8 @@ export class ExperimentsComponent implements OnInit {
 
   constructor(private readonly _service: ExperimentsService,
               private readonly _router: Router,
-              private readonly _route: ActivatedRoute) { }
+              private readonly _route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.ghosts = this._service.makeGhosts();

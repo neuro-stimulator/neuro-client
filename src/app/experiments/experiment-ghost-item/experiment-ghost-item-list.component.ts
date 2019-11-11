@@ -9,7 +9,8 @@ export class ExperimentGhostItemListComponent implements OnInit {
 
   @Input() ghosts: [];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

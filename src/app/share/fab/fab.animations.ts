@@ -22,7 +22,7 @@ export const fabAnimations = [
   trigger('fabStagger', [
     transition('* => *', [
 
-      query(':enter', style({ opacity: 0 }), {optional: true}),
+      query(':enter', style({opacity: 0}), {optional: true}),
 
       query(':enter', stagger('40ms',
         [

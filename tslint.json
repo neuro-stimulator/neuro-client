@@ -93,7 +93,14 @@
         "allow-leading-underscore",
         "allow-pascal-case"
       ]
-    }
+    },
+    "no-async-without-await": true,
+    "no-duplicate-super": true,
+    "no-duplicate-switch-case": true,
+    "no-duplicate-variable": true,
+    "no-var-keyword": true,
+    "triple-equals": true,
+    "prefer-template": true
   },
   "rulesDirectory": [
     "codelyzer"

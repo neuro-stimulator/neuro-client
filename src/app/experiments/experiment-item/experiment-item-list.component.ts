@@ -17,7 +17,8 @@ export class ExperimentItemListComponent implements OnInit {
 
   ExperimentType = ExperimentType;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

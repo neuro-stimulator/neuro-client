@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 
-import { environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
 import { Experiment } from 'diplomka-share';
 import { BaseService } from '../share/base-service';
 import { AliveCheckerService } from '../alive-checker.service';
