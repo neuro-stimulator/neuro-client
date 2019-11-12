@@ -16,6 +16,7 @@ export class AliveCheckerService {
   private readonly _requestDisconnect: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   private readonly requestDisconnect$ = this._requestDisconnect.asObservable();
   private _firstTime = true;
+  private _isConnected = false;
 
   constructor(private readonly navigation: NavigationService,
               private readonly toastr: ToastrService) {
@@ -49,6 +50,7 @@ export class AliveCheckerService {
       this.toastr.success('Spojení se serverem bylo obnoveno.');
     }
     this._connected.next(ConnectionStatus.CONNECTED);
+    this._isConnected = true;
   }
 
   protected _socketDisconnected(reason) {
@@ -58,6 +60,7 @@ export class AliveCheckerService {
     this.navigation.icon = 'fa-circle text-danger';
     this.toastr.error('Spojení se serverem bylo ztraceno');
     this._connected.next(ConnectionStatus.DISCONNECTED);
+    this._isConnected = false;
     if (reason === 'io server disconnect') {
       // the disconnection was initiated by the server, you need to reconnect manually
       this._socket.connect();
@@ -66,6 +69,14 @@ export class AliveCheckerService {
 
   get connectionStatus(): Observable<ConnectionStatus> {
     return this.connected$;
+  }
+
+  get isConnected(): boolean {
+    return this._isConnected;
+  }
+
+  get isDisconnected(): boolean {
+    return !this.isConnected;
   }
 
   get firstTime() {

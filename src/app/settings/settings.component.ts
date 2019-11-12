@@ -14,6 +14,8 @@ export class SettingsComponent implements OnInit {
   console = '';
   command = '';
 
+  devices = [];
+
   constructor(public readonly aliveChecker: AliveCheckerService,
               private readonly _gateway: SerialService,
               private readonly _service: SettingsService) {
@@ -30,10 +32,18 @@ export class SettingsComponent implements OnInit {
   }
 
   async handleDiscover() {
-    await this._service.discover();
+    this.devices = await this._gateway.discover();
+  }
+
+  async handleOpen(path: string) {
+    await this._gateway.open(path);
   }
 
   async handleStop() {
-    await this._service.stop();
+    await this._gateway.stop();
+  }
+
+  get serialConnected() {
+    return this._gateway.isSerialConnected;
   }
 }
