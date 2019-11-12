@@ -1,54 +1,21 @@
+<ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="fragment === 'service-state'" [routerLink]="'.'" [fragment]="'service-state'"><i class="fas fa-wifi"></i> Stav připojení</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="fragment === 'param-config'" [routerLink]="'.'" [fragment]="'param-config'"><i class="fas fa-cubes"></i> Konfigurace parametrů</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="fragment === 'console'" [routerLink]="'.'" [fragment]="'console'"><i class="fas fa-terminal"></i> Konzole</a>
+  </li>
+</ul>
+
 <div class="row">
   <div class="col-12 col-lg-8 offset-lg-2">
 
-    <h3>Service status</h3>
-    <div class="row service-status server bg-light">
-      <div class="col-6">
-        <i class="fas fa-server"></i> Web Server
-      </div>
-      <div class="col-6 text-right">
-        <span *ngIf="!aliveChecker.isConnected"><i class="fas fa-times text-danger"></i> NEPŘIPOJENO</span>
-        <span *ngIf="aliveChecker.isConnected"><i class="fas fa-check text-success"></i> PŘIPOJENO</span>
-      </div>
-    </div>
-    <div class="row service-status serial bg-light">
-      <div class="col-6">
-        <i class="fas fa-microchip"></i> Stimulator
-      </div>
-      <div class="col-6 text-right">
-        <span *ngIf="!serialConnected"><i class="fas fa-times text-danger"></i> NEPŘIPOJENO</span>
-        <span *ngIf="serialConnected"><i class="fas fa-check text-success"></i> PŘIPOJENO</span>
-      </div>
-    </div>
-    <hr>
-
-    <h3>Web Server</h3>
-    <div class="row">
-      <div class="col-12">
-        <button class="btn btn-sm btn-success" *ngIf="!aliveChecker.isConnected" (click)="aliveChecker.requestConnect()"><i class="fas fa-sign-in-alt"></i> Připojit</button>
-        <button class="btn btn-sm btn-danger" *ngIf="aliveChecker.isConnected" (click)="aliveChecker.requestDisconnect()"><i class="fas fa-sign-in-alt"></i> Odpojit</button>
-      </div>
-    </div>
-    <hr>
-
-    <h3>Stimulator</h3>
-    <div class="row">
-      <div class="col-12 col-sm-6">
-        <button class="btn btn-sm btn-primary" (click)="handleDiscover()"><i class="fas fa-search"></i> Prozkoumat</button>
-        <button class="btn btn-sm btn-danger" (click)="handleStop()" *ngIf="serialConnected"><i class="fas fa-search"></i> Odpojit</button>
-        <button class="btn btn-sm btn-warning d-sm-none" (click)="devices = []" [disabled]="devices.length == 0"><i class="fas fa-trash"></i> Vymazat seznam</button>
-      </div>
-      <div class="d-none d-sm-block col-sm-6 text-right">
-        <button class="btn btn-sm btn-warning" (click)="devices = []" [disabled]="devices.length == 0"><i class="fas fa-trash"></i> Vymazat seznam</button>
-      </div>
-
-    </div>
-    <div class="row bg-light pb-2" *ngFor="let device of devices">
-      <div class="col-6">{{device.path}}</div>
-      <div class="col-6 text-right">
-        <button class="btn btn-sm btn-success" [disabled]="serialConnected" (click)="handleOpen(device.path)"><i class="fas fa-sign-in-alt"></i> Připojit</button>
-      </div>
-    </div>
+    <app-service-state *ngIf="fragment === 'service-state'"></app-service-state>
+    <app-param-config *ngIf="fragment === 'param-config'"></app-param-config>
+    <app-console *ngIf="fragment === 'console'"></app-console>
 
   </div>
 </div>

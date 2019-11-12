@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AliveCheckerService } from '../alive-checker.service';
 import { SerialService } from '../share/serial.service';
 import { SettingsService } from './settings.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -11,39 +12,29 @@ import { SettingsService } from './settings.service';
 })
 export class SettingsComponent implements OnInit {
 
-  console = '';
-  command = '';
+  fragment: string;
 
-  devices = [];
+  constructor(
 
-  constructor(public readonly aliveChecker: AliveCheckerService,
-              private readonly _gateway: SerialService,
-              private readonly _service: SettingsService) {
+              private readonly _service: SettingsService,
+              private readonly _route: ActivatedRoute,
+              private readonly _router: Router) {
   }
 
   ngOnInit() {
-    this._gateway.rawData$.subscribe(data => {
-      this.console = JSON.stringify(data);
+    this._route.fragment.subscribe(fragment => {
+      this.fragment = fragment;
     });
+    if (this._route.snapshot.fragment === undefined) {
+      this._router.navigate([], {fragment: 'service-state', relativeTo: this._route});
+      return;
+    }
+
+
+    // this._gateway.rawData$.subscribe(data => {
+    //   console.log(JSON.stringify(data));
+    // });
   }
 
-  handleSendCommand() {
 
-  }
-
-  async handleDiscover() {
-    this.devices = await this._gateway.discover();
-  }
-
-  async handleOpen(path: string) {
-    await this._gateway.open(path);
-  }
-
-  async handleStop() {
-    await this._gateway.stop();
-  }
-
-  get serialConnected() {
-    return this._gateway.isSerialConnected;
-  }
 }

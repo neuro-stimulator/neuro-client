@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { ResponseObject } from 'diplomka-share';
 
 @Injectable({
   providedIn: 'root'
@@ -33,10 +34,14 @@ export class SerialService {
         this._isSerialConnected = false;
       }
     });
+    this._socket.on('connect', () => {
+      this.status();
+    });
     this._socket.on('data', data => {
       this._rawData.next(data);
     });
     this._socket.on('status', data => {
+      console.log(data);
       this._isSerialConnected = data.connected;
     });
   }
@@ -57,6 +62,14 @@ export class SerialService {
   public stop() {
     return this._http.patch(`${SerialService.BASE_API_URL}/stop`, null)
                .toPromise();
+  }
+
+  public status() {
+    this._http.get<ResponseObject<{connected: boolean}>>(`${SerialService.BASE_API_URL}/status`)
+        .toPromise()
+        .then(response => {
+          this._isSerialConnected = response.data.connected;
+        });
   }
 
   public get isSerialConnected() {
