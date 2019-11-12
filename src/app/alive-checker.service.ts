@@ -23,6 +23,7 @@ export class AliveCheckerService {
     this._socket.on('connect', () => this._socketConnected());
     this._socket.on('disconnect', (reason) => this._socketDisconnected(reason));
     navigation.subtitle = 'Odpojeno';
+    navigation.icon = 'fa-circle text-danger';
   }
 
   public requestConnect() {
@@ -41,6 +42,7 @@ export class AliveCheckerService {
   protected _socketConnected() {
     this.navigation.subtitle = 'Připojeno';
     this.navigation.working = false;
+    this.navigation.icon = 'fa-circle text-success';
     if (this._firstTime) {
       this.toastr.success('Spojení se serverem bylo vytvořeno.');
     } else {
@@ -53,6 +55,7 @@ export class AliveCheckerService {
     this._firstTime = false;
     this.navigation.subtitle = 'Odpojeno';
     this.navigation.working = false;
+    this.navigation.icon = 'fa-circle text-danger';
     this.toastr.error('Spojení se serverem bylo ztraceno');
     this._connected.next(ConnectionStatus.DISCONNECTED);
     if (reason === 'io server disconnect') {
