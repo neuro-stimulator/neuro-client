@@ -31,7 +31,7 @@
 <h3>Stimulator</h3>
 <div class="row mb-2">
   <div class="col-12 col-sm-6">
-    <button class="btn btn-sm btn-primary" (click)="handleDiscover()"><i class="fas fa-search"></i> Prozkoumat</button>
+    <button class="btn btn-sm btn-primary" (click)="handleDiscover()" [disabled]="aliveChecker.isDisconnected"><i class="fas fa-search"></i> Prozkoumat</button>
     <button class="btn btn-sm btn-danger" (click)="handleStop()" *ngIf="serialConnected"><i class="fas fa-sign-in-alt"></i> Odpojit</button>
     <button class="btn btn-sm btn-warning d-sm-none" (click)="devices = []" [disabled]="devices.length == 0"><i class="fas fa-trash"></i> Vymazat seznam</button>
   </div>
