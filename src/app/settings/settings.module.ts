@@ -6,6 +6,7 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { ServiceStateComponent } from './service-state/service-state.component';
 import { ConsoleComponent } from './console/console.component';
 import { ParamConfigComponent } from './param-config/param-config.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ParamConfigComponent } from './param-config/param-config.component';
   ],
   imports: [
     CommonModule,
-    SettingsRoutingModule
+    ReactiveFormsModule,
+    SettingsRoutingModule,
   ]
 })
 export class SettingsModule {

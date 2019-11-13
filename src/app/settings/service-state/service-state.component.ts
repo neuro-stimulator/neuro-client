@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SerialService } from '../../share/serial.service';
 import { AliveCheckerService } from '../../alive-checker.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-service-state',
@@ -10,6 +11,10 @@ import { AliveCheckerService } from '../../alive-checker.service';
 export class ServiceStateComponent implements OnInit {
 
   devices = [];
+  firmwareForm = new FormGroup({
+    text: new FormControl(null),
+    firmware: new FormControl(null, [Validators.required])
+  });
 
   constructor(public readonly aliveChecker: AliveCheckerService,
               private readonly _gateway: SerialService) { }
@@ -29,8 +34,29 @@ export class ServiceStateComponent implements OnInit {
     await this._gateway.stop();
   }
 
+  handleFileSelect(event: Event) {
+    const input = (event.target as HTMLInputElement);
+
+    // // Vytvořím novou instanci třídy pro přečtení souboru
+    // const reader = new FileReader();
+    // const self = this;
+    // // Nastavím payload, který se zavolá po přečtení souboru
+    // reader.onload = () => {
+    //   self.firmwareForm.setValue({firmware: reader.result, text: input.files[0].name});
+    // };
+    // reader.readAsDataURL(input.files[0]);
+    this.firmwareForm.setValue({firmware: input.files[0], text: input.files[0].name});
+  }
+
+  handleUpdateStimulatorFirmware() {
+    this._gateway.updateFirmware(this.firmwareForm.get('firmware').value);
+  }
+
   get serialConnected() {
     return this._gateway.isSerialConnected;
   }
 
+  get firmwareFilePath() {
+    return this.firmwareForm.get('text').value;
+  }
 }

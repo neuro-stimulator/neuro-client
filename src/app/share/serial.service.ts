@@ -75,4 +75,14 @@ export class SerialService {
   public get isSerialConnected() {
     return this._isSerialConnected;
   }
+
+  updateFirmware(firmware: Blob) {
+    const formData = new FormData();
+    formData.append('firmware', firmware);
+    this._http.post(`${SerialService.BASE_API_URL}/firmware`, formData)
+        .toPromise()
+        .then(result => {
+          console.log(result);
+        });
+  }
 }

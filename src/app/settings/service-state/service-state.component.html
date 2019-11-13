@@ -46,3 +46,17 @@
     <button class="btn btn-sm btn-success" [disabled]="serialConnected" (click)="handleOpen(device.path)"><i class="fas fa-sign-in-alt"></i> Připojit</button>
   </div>
 </div>
+
+<form [formGroup]="firmwareForm">
+  <div class="row">
+    <div class="col">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFile" (change)="handleFileSelect($event)">
+        <label class="custom-file-label" for="customFile">{{firmwareFilePath || 'Vyberte soubor...'}}</label>
+      </div>
+    </div>
+    <div class="col-4 text-right">
+      <button class="btn btn-warning" (click)="handleUpdateStimulatorFirmware()" [disabled]="firmwareForm.invalid"><i class="fas fa-meteor"></i> Aktualizovat firmware</button>
+    </div>
+  </div>
+</form>
