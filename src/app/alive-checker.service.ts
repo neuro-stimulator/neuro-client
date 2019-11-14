@@ -10,7 +10,14 @@ import { NavigationService } from './navigation/navigation.service';
 })
 export class AliveCheckerService {
 
+  /**
+   * Socket pro komunikaci se serverem
+   */
   private readonly _socket: Socket;
+  /**
+   * Tato proměnná udržuje informaci o stavu připojení
+   * Kdykoliv se stav změní, vyšle všem svým pozorovatelům informaci o změně
+   */
   private readonly _connected: BehaviorSubject<ConnectionStatus> = new BehaviorSubject<ConnectionStatus>(ConnectionStatus.DISCONNECTED);
   private readonly connected$ = this._connected.asObservable();
   private readonly _requestDisconnect: BehaviorSubject<any> = new BehaviorSubject<any>(null);
@@ -27,19 +34,28 @@ export class AliveCheckerService {
     navigation.icon = 'fa-circle text-danger';
   }
 
+  /**
+   * Pokusí se vytvořit stále spojení se serverem.
+   */
   public requestConnect() {
     this.navigation.subtitle = 'Připojuji';
     this.navigation.icon = 'fa-circle-notch';
     this.navigation.working = true;
     this._connected.next(ConnectionStatus.CONNECTING);
-    this._socket.connect();
+    console.log(this._socket.connect());
   }
 
+  /**
+   * Oznámí zbytku aplikace, aby byla ukončena komunikace přes WebSockety se serverem.
+   */
   public requestDisconnect() {
     this._requestDisconnect.next(null);
     this._socket.disconnect();
   }
 
+  /**
+   * Funkce se zavolá ve chvíli, kdy je vytvořeno stále spojení se serverem.
+   */
   protected _socketConnected() {
     this.navigation.subtitle = 'Připojeno';
     this.navigation.working = false;
@@ -53,6 +69,11 @@ export class AliveCheckerService {
     this._isConnected = true;
   }
 
+  /**
+   * Funkce se zavolá ve chvíli, kdy je spojení se serverem zrušeno.
+   *
+   * @param reason Důvod, proč se spojení zrušilo
+   */
   protected _socketDisconnected(reason) {
     this._firstTime = false;
     this.navigation.subtitle = 'Odpojeno';
@@ -89,6 +110,9 @@ export class AliveCheckerService {
 
 }
 
+/**
+ * Výčet stavu spojení se serverem
+ */
 export enum ConnectionStatus {
   DISCONNECTED, CONNECTING, CONNECTED
 }

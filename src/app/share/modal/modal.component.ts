@@ -86,16 +86,26 @@ export class ModalComponent implements OnDestroy {
   // Příznak, který říká, zda-li je dialog otevřený
   private _isOpen = false;
 
+  /**
+   * Načte samotnou komponentu, která se v dialogu zobrazí
+   */
   private _loadDialogContent() {
+    // Nejdříve se ukončí životní cyklus staré komponenty
     if (this._viewInstance !== undefined) {
       this._viewInstance.unbind(this);
     }
+    // Podle zadané komponenty získám její továrnu
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.showComponent);
+    // Uložím si referenci na viewContainer
     const viewContainerRef = this.childDirective.viewContainerRef;
+    // Vymažu obsah ve viewContaineru
     viewContainerRef.clear();
 
+    // Vytvořím novou komponentu ve viewContaineru za pomoci továrny
     const component = viewContainerRef.createComponent(componentFactory);
+    // Získám instanci této komponenty
     this._viewInstance = (component.instance as DialogChildComponent);
+    // Nechám komponentu inicializovat
     this._viewInstance.bind(this);
   }
 

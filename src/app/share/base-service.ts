@@ -234,14 +234,28 @@ export abstract class BaseService<T extends BaseRecord> {
                });
   }
 
+  /**
+   * Aktualizuje lokální kolekci dat novými daty
+   *
+   * @param records Nová kolekce dat
+   */
   protected _replaceData(records: T[]): void {
     this.records$.next(records);
   }
 
+  /**
+   * Funkce se zavolá vždy, když je vytvořeno stálé spojení se serverem
+   * Pouze informuje své pozorovatele, že k takové události došlo
+   */
   protected _socketConnected() {
     this._connected.next();
   }
 
+  /**
+   * Funkce se zavolá vždy, když je spojení ztraceno
+   *
+   * @param reason Důvod ztráty spojení
+   */
   protected _socketDisconnected(reason) {
     this._disconnected.next();
   }

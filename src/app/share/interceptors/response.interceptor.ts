@@ -33,6 +33,11 @@ export class ResponseInterceptor implements HttpInterceptor {
     }
   }
 
+  /**
+   * Prozkoumá každou příchozí odpověď ze serveru
+   * Pokud odpověď obsahuje vlastnost 'message' v těle,
+   * zobrazí se zpráva na základě informací
+   */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)
                .pipe(

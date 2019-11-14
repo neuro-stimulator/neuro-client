@@ -15,6 +15,11 @@ export class RequestTimeoutInterceptor implements HttpInterceptor {
               private readonly logger: NGXLogger) {
   }
 
+  /**
+   * Každý požadavek na server bude mít vlastní timeout
+   * Tím se zamezí nekonečnému čekání na odpověď ze serveru,
+   * který je v době požadavku nedostupný
+   */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const timeoutValue = req.headers.get('timeout') || this.defaultTimeout;
     const timeoutValueNumeric = +timeoutValue;
