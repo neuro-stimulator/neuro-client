@@ -94,7 +94,8 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
     this._outputCountSubscription = this.form.root.get('outputCount')
                                         .valueChanges
                                         .subscribe((value: number) => {
-                                          // V případě, že zvětšuji počet, tak nemusím nic přepočítávat, protože nově inicializované výstupy budou na výchozích hodnotách
+                                          // V případě, že zvětšuji počet, tak nemusím nic přepočítávat,
+                                          // protože nově inicializované výstupy budou na výchozích hodnotách
                                           if (value > this._oldOutputCount) {
                                             this._oldOutputCount = value;
                                             return;
@@ -121,6 +122,11 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
                                                        }
 
                                                        for (let j = 0; j < this._oldOutputCount; j++) {
+                                                         // Nechci aktualizovat maximální hodnotu právě nastavovaného
+                                                         // čísla, proto ho přeskočím
+                                                         if (j === i) {
+                                                           continue;
+                                                         }
                                                          // shorturl.at/ijAFQ
                                                          const newOptions: SliderOptions = Object.assign({}, this.distributionSliderOptions[j]);
                                                          newOptions.ceil = 100 - total + this.distribution(j).value;
