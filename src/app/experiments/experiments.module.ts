@@ -22,6 +22,7 @@ import { ExperimentTypeHeaderComponent } from './experiment-type/experiment-type
 import { ExperimentTypeErpOutputComponent } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output.component';
 import { ExperimentTypeErpOutputCountPipe } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output-count.pipe';
 import { ExperimentTypeErpOutputDependencyPipe } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output-dependency.pipe';
+import { ShareModule } from '../share/share.module';
 
 @NgModule({
   declarations: [
@@ -45,9 +46,10 @@ import { ExperimentTypeErpOutputDependencyPipe } from './experiment-type/experim
     CommonModule,
     ReactiveFormsModule,
     Ng5SliderModule,
+    ShareModule,
     ModalModule,
+    FabModule,
     ExperimentsRoutingModule,
-    FabModule
   ],
   entryComponents: [
     ExperimentTypeNoneComponent,

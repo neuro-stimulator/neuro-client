@@ -1,21 +1,27 @@
 <div class="row experiment-property" [formGroup]="form">
-  <div class="col-12">
+  <div class="col-10">
     <h4>Základní údaje</h4>
   </div>
+  <div class="col-2 text-right" appContentToggler [toggledContent]="basicInformations" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
 
-  <div class="col-12 col-sm-4 col-md-3">
-    <div class="form-group">
-      <label for="erp-name">Název experimentu</label>
-      <input type="text" id="erp-name" class="form-control form-control-sm" [class.is-valid]="name.valid" [class.is-invalid]="name.invalid" formControlName="name">
-      <small *ngIf="name.touched && name.errors?.required" class="form-text text-muted">Název experimentu je vyžadován.</small>
-    </div>
-  </div>
+  <div class="col-12" #basicInformations>
+    <div class="row">
+      <div class="col-12 col-sm-4 col-md-3">
+        <div class="form-group">
+          <label for="erp-name">Název experimentu</label>
+          <input type="text" id="erp-name" class="form-control form-control-sm" [class.is-valid]="name.valid" [class.is-invalid]="name.invalid" formControlName="name">
+          <small *ngIf="name.touched && name.errors?.required" class="form-text text-muted">Název experimentu je vyžadován.</small>
+        </div>
+      </div>
 
-  <div class="col-12 col-sm-8 col-md-9">
-    <div class="form-group">
-      <label for="erp-name">Popis experimentu</label>
-      <!--suppress HtmlFormInputWithoutLabel -->
-      <input type="text" id="erp-description" class="form-control form-control-sm" [class.is-valid]="description.valid" [class.is-invalid]="description.invalid" formControlName="description">
+      <div class="col-12 col-sm-8 col-md-9">
+        <div class="form-group">
+          <label for="erp-name">Popis experimentu</label>
+          <!--suppress HtmlFormInputWithoutLabel -->
+          <input type="text" id="erp-description" class="form-control form-control-sm" [class.is-valid]="description.valid" [class.is-invalid]="description.invalid" formControlName="description">
+        </div>
+      </div>
+
     </div>
   </div>
 
