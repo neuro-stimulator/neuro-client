@@ -16,7 +16,7 @@
                     <i class="fas fa-music" *ngIf="experiment.output['sound']" title="Zvuk"></i>
                   </span>
         </div>
-        <div><small class="text-truncate experiment-description">{{experiment.description}}</small></div>
+        <div><small class="text-truncate experiment-description">{{experiment.description || 'Žádný popis není k dispozici...'}}</small></div>
       </div>
       <!-- Experiment toolbar buttons -->
       <div class="col-1 experiment-toolbar">
