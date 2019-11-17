@@ -21,7 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Interceptory (modifikátory http komunikace)
 import { DEFAULT_TIMEOUT, RequestTimeoutInterceptor } from './share/interceptors/request-timeout-interceptor.service';
 import { ResponseInterceptor } from './share/interceptors/response.interceptor';
-import { ContentTogglerDirective } from './share/content-toggler.directive';
 import { ShareModule } from './share/share.module';
 
 @NgModule({
