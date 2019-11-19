@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-12">
+
+    <ul class="list-group list-group-horizontal sequence-group">
+      <li class="list-group-item sequence-entry" *ngFor="let data of flowData; let i = index">
+        <div class="heading text-center">{{i}}</div>
+        <ul class="list-group stimul-group" >
+          <li class="list-group-item stimul-entry text-center"
+              *ngFor="let output of outputs"
+              [class.active]="data == output"
+              [ngStyle]="{'height': 'calc((100vh - 100px) / ' + 8 +')'}">
+            <span>{{output}}</span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+</div>

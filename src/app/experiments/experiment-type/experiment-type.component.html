@@ -1,2 +1,2 @@
 <div class="working-overlay" [class.show]="service.working$ | async"></div>
-<ng-container appExperimentTypeResolver [type]="experimentType"></ng-container>
+<ng-container appExperimentTypeResolver [componentMap]="componentMap" [type]="experimentType"></ng-container>

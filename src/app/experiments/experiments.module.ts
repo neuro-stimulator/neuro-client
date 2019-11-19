@@ -7,7 +7,6 @@ import { ExperimentsRoutingModule } from './experiments-routing.module';
 import { ExperimentsComponent } from './experiments.component';
 import { ExperimentItemListComponent } from './experiment-item/experiment-item-list.component';
 import { ExperimentGhostItemListComponent } from './experiment-ghost-item/experiment-ghost-item-list.component';
-import { ExperimentTypeResolverDirective } from './experiment-type/experiment-type-resolver.directive';
 import { ExperimentTypeComponent } from './experiment-type/experiment-type.component';
 import { ExperimentTypeErpComponent } from './experiment-type/experiment-type-erp/experiment-type-erp.component';
 import { ExperimentTypeNoneComponent } from './experiment-type/experiment-type-none/experiment-type-none.component';
@@ -29,7 +28,6 @@ import { ShareModule } from '../share/share.module';
     ExperimentsComponent,
     ExperimentItemListComponent,
     ExperimentGhostItemListComponent,
-    ExperimentTypeResolverDirective,
     ExperimentTypeComponent,
     ExperimentTypeErpComponent,
     ExperimentTypeNoneComponent,

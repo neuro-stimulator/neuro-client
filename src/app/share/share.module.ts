@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { ContentTogglerDirective } from './content-toggler.directive';
+import { ExperimentTypeResolverDirective } from './experiment-type-resolver.directive';
 
 @NgModule({
   declarations: [
-    ContentTogglerDirective
+    ContentTogglerDirective,
+    ExperimentTypeResolverDirective
   ],
   imports: [
 
   ],
   exports: [
-    ContentTogglerDirective
+    ContentTogglerDirective,
+    ExperimentTypeResolverDirective
   ]
 })
 export class ShareModule {

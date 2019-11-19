@@ -50,11 +50,13 @@ export class ExperimentsComponent implements OnInit {
   }
 
   handleRun(experiment: Experiment) {
-    // TODO spustit experiment
+    const type = ExperimentType[experiment.type].toLowerCase();
+    this._router.navigate(['/', 'player', type, experiment.id], {relativeTo: null});
   }
 
   handleSimulate(experiment: Experiment) {
-    // TODO simulovat experiment
+    const type = ExperimentType[experiment.type].toLowerCase();
+    this._router.navigate(['/', 'simulation', type, experiment.id], {relativeTo: null});
   }
 
   handleDelete(experiment: Experiment) {
