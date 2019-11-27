@@ -48,6 +48,7 @@ export class SerialService {
       this.status();
     });
     this._socket.on('data', data => {
+      console.log(data);
       this._rawData.next(data);
     });
     this._socket.on('status', data => {
