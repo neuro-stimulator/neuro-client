@@ -37,7 +37,10 @@ export class SimulationTypeErpComponent implements OnInit, OnDestroy {
   readonly pieChartPlugins = [pluginDataLabels];
   readonly pieChartColors = [
     {
-      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'],
+      backgroundColor: [
+        'rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)',
+        '#0b0033', '#370031', '#832232', '#ce8964', '#eaf27c'
+      ],
     },
   ];
 
@@ -73,6 +76,7 @@ export class SimulationTypeErpComponent implements OnInit, OnDestroy {
             this.outputs.push(i);
           }
 
+          delete analyse['0'];
           for (const key of Object.keys(analyse)) {
             const data = analyse[key];
             this.pieChartLabels.push(key);
