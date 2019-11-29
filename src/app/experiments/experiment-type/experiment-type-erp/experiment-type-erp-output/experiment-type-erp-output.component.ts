@@ -56,6 +56,9 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
       this._oldOutputCount = this.form.root.get('outputCount').value;
       this._listenOutputCountChange();
       this._listenOutputDistributionChange();
+      // Vyvolám umělou změnu v hodnotě distribuce pro neexistující výstup
+      // Tím se přepočítají maximální hodnoty pro posuvníky
+      this._onOutputDistributionChange(-1);
     }, 1000);
   }
 
@@ -90,49 +93,53 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
     dependencies.splice(dependencies.findIndex(value => value.id === dependency.id));
   }
 
+  private _onOutputCountChange(value: number) {
+    // V případě, že zvětšuji počet, tak nemusím nic přepočítávat,
+    // protože nově inicializované výstupy budou na výchozích hodnotách
+    if (value > this._oldOutputCount) {
+      this._oldOutputCount = value;
+      return;
+    }
+    const tmpOldValue = this._oldOutputCount;
+    this._oldOutputCount = value;
+
+    for (let i = value; i < tmpOldValue; i++) {
+      this.distribution(i)
+          .setValue(0);
+    }
+  }
+
   private _listenOutputCountChange() {
     this._outputCountSubscription = this.form.root.get('outputCount')
                                         .valueChanges
-                                        .subscribe((value: number) => {
-                                          // V případě, že zvětšuji počet, tak nemusím nic přepočítávat,
-                                          // protože nově inicializované výstupy budou na výchozích hodnotách
-                                          if (value > this._oldOutputCount) {
-                                            this._oldOutputCount = value;
-                                            return;
-                                          }
-                                          const tmpOldValue = this._oldOutputCount;
-                                          this._oldOutputCount = value;
+                                        .subscribe((value: number) => this._onOutputCountChange(value));
+  }
 
-                                          for (let i = value; i < tmpOldValue; i++) {
-                                            this.distribution(i)
-                                                .setValue(0);
-                                          }
-                                        });
+  private _onOutputDistributionChange(i: number) {
+    let total = 0;
+
+    for (let j = 0; j < this._oldOutputCount; j++) {
+      total += this.distribution(j).value;
+    }
+
+    for (let j = 0; j < this._oldOutputCount; j++) {
+      // Nechci aktualizovat maximální hodnotu právě nastavovaného
+      // čísla, proto ho přeskočím
+      if (j === i) {
+        continue;
+      }
+      // shorturl.at/ijAFQ
+      const newOptions: SliderOptions = Object.assign({}, this.distributionSliderOptions[j]);
+      newOptions.ceil = 100 - total + this.distribution(j).value;
+      this.distributionSliderOptions[j] = newOptions;
+    }
   }
 
   private _listenOutputDistributionChange() {
     for (let i = 0; i < environment.maxOutputCount; i++) {
       this._outputDistributionSubscriptions.push(this.distribution(i)
                                                      .valueChanges
-                                                     .subscribe((value: number) => {
-                                                       let total = 0;
-
-                                                       for (let j = 0; j < this._oldOutputCount; j++) {
-                                                         total += this.distribution(j).value;
-                                                       }
-
-                                                       for (let j = 0; j < this._oldOutputCount; j++) {
-                                                         // Nechci aktualizovat maximální hodnotu právě nastavovaného
-                                                         // čísla, proto ho přeskočím
-                                                         if (j === i) {
-                                                           continue;
-                                                         }
-                                                         // shorturl.at/ijAFQ
-                                                         const newOptions: SliderOptions = Object.assign({}, this.distributionSliderOptions[j]);
-                                                         newOptions.ceil = 100 - total + this.distribution(j).value;
-                                                         this.distributionSliderOptions[j] = newOptions;
-                                                       }
-                                                     }));
+                                                     .subscribe((value: number) => this._onOutputDistributionChange(i)));
     }
   }
 

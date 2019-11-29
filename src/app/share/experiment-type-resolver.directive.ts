@@ -1,4 +1,4 @@
-import { ComponentFactoryResolver, Directive, Input, OnInit, Type, ViewContainerRef } from '@angular/core';
+import { ComponentFactoryResolver, ComponentRef, Directive, EventEmitter, Input, OnInit, Output, Type, ViewContainerRef } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ExperimentType } from 'diplomka-share';
@@ -10,6 +10,7 @@ export class ExperimentTypeResolverDirective implements OnInit {
 
   @Input() componentMap: {[experiment: string]: Type<any>};
   @Input() type: Observable<ExperimentType>;
+  @Output() componentChange: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private readonly componentFactoryResolver: ComponentFactoryResolver,
               private readonly _viewContainerRef: ViewContainerRef) {
@@ -20,7 +21,8 @@ export class ExperimentTypeResolverDirective implements OnInit {
     const factory = this.componentFactoryResolver.resolveComponentFactory(component);
 
     this._viewContainerRef.clear();
-    this._viewContainerRef.createComponent(factory);
+    const componentRef = this._viewContainerRef.createComponent(factory);
+    this.componentChange.next(componentRef.instance);
   }
 
   ngOnInit(): void {

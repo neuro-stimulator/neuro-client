@@ -1,20 +1,24 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 import { Label } from 'ng2-charts';
 import { ChartOptions, ChartType } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
-import { ExperimentERP } from 'diplomka-share';
+import { Experiment, ExperimentERP } from 'diplomka-share';
 import { SequenceService } from '../../../share/sequence.service';
+import { SimulationTypeComponent } from '../simulation-type.component';
 
 @Component({
   selector: 'app-simulation-type-erp',
   templateUrl: './simulation-type-erp.component.html',
   styleUrls: ['./simulation-type-erp.component.sass']
 })
-export class SimulationTypeErpComponent implements OnInit, OnDestroy {
+export class SimulationTypeErpComponent implements OnInit, OnDestroy, SimulationTypeComponent {
+
+  private readonly _progress: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  private readonly progress$: Observable<number> = this._progress.asObservable();
 
   // Pie
   readonly pieChartOptions: ChartOptions = {
@@ -30,8 +34,8 @@ export class SimulationTypeErpComponent implements OnInit, OnDestroy {
       },
     }
   };
-  pieChartLabels: Label[] = []; // = [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'];
-  pieChartData: number[] = []; // = [300, 500, 100];
+  pieChartLabels: Label[] = [];
+  pieChartData: number[] = [];
   readonly pieChartType: ChartType = 'pie';
   readonly pieChartLegend = true;
   readonly pieChartPlugins = [pluginDataLabels];
@@ -49,6 +53,7 @@ export class SimulationTypeErpComponent implements OnInit, OnDestroy {
   outputs = [];
 
   private paramsSubscription: Subscription;
+  private experimentID: number;
 
   constructor(private readonly _service: SequenceService,
               private readonly route: ActivatedRoute,
@@ -61,12 +66,41 @@ export class SimulationTypeErpComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const experimentID = +params['id'];
+    this.experimentID = +params['id'];
     this.pieChartLabels.splice(0);
     this.pieChartData.splice(0);
 
-    this._service.generate(experimentID, 100)
-        .then(result => {
+    // this._service.generate(experimentID, 100)
+    //     .then(result => {
+    //       this.flowData = result.sequence;
+    //       const experiment = result.experiment as ExperimentERP;
+    //       const analyse = result.analyse;
+    //
+    //       this.outputs.splice(0);
+    //       for (let i = 0; i <= experiment.outputCount; i++) {
+    //         this.outputs.push(i);
+    //       }
+    //
+    //       delete analyse['0'];
+    //       for (const key of Object.keys(analyse)) {
+    //         const data = analyse[key];
+    //         this.pieChartLabels.push(key);
+    //         this.pieChartData.push(data['value']);
+    //       }
+    //     });
+  }
+
+  ngOnInit() {
+    this._handleParams(this.route.snapshot.params);
+  }
+
+  ngOnDestroy(): void {
+    this.paramsSubscription.unsubscribe();
+  }
+
+  generateSequence(sequenceSize: number): Observable<number> {
+    this._service.generate(this.experimentID, sequenceSize, progress => { this._progress.next(progress); })
+        .then((result: {experiment: Experiment, sequence: number[], analyse: any}) => {
           this.flowData = result.sequence;
           const experiment = result.experiment as ExperimentERP;
           const analyse = result.analyse;
@@ -83,15 +117,8 @@ export class SimulationTypeErpComponent implements OnInit, OnDestroy {
             this.pieChartData.push(data['value']);
           }
         });
+    return this.progress$;
   }
 
-  ngOnInit() {
-    this.paramsSubscription = this.route.params.subscribe(params => {
-      this._handleParams(params);
-    });
-  }
 
-  ngOnDestroy(): void {
-    this.paramsSubscription.unsubscribe();
-  }
 }

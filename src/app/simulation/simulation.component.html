@@ -1,1 +1,30 @@
-<ng-container appExperimentTypeResolver [componentMap]="componentMap" [type]="experimentType"></ng-container>
+<ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="fragment === 'parameters'" [routerLink]="'.'" [fragment]="'parameters'">Parametry</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="fragment === 'result'" [routerLink]="'.'" [fragment]="'result'">Výsledek</a>
+  </li>
+</ul>
+<div class="row" [class.d-none]="fragment !== 'parameters'">
+  <div class="col-12">
+    <form [formGroup]="formGroup">
+      <div class="form-group">
+        <label for="sequenceSize">Délka vygenerované sekvence</label>
+      <div class="input-group">
+        <input type="number" id="sequenceSize" class="form-control form-control" formControlName="sequenceSize">
+        <div class="input-group-append">
+          <span class="input-group-text">stimulů</span>
+        </div>
+      </div>
+      </div>
+      <button class="btn btn-primary" (click)="handleGenerateSequence()">Vygenerovat</button>
+    </form>
+
+    <div class="progress mt-2">
+      <div class="progress-bar" role="progressbar" [ngStyle]="{width: currentProgress}"></div>
+    </div>
+  </div>
+</div>
+
+<ng-container appExperimentTypeResolver [componentMap]="componentMap" [type]="experimentType" (componentChange)="handleComponentChange($event)"></ng-container>

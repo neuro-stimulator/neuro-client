@@ -7,6 +7,7 @@ import { SimulationRoutingModule } from './simulation-routing.module';
 import { SimulationComponent } from './simulation.component';
 import { SimulationTypeErpComponent } from './simulation-type/simulation-type-erp/simulation-type-erp.component';
 import { ChartsModule } from 'ng2-charts';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ChartsModule } from 'ng2-charts';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ChartsModule,
     ShareModule,
     SimulationRoutingModule

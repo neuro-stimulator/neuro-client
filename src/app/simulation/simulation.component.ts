@@ -1,9 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { BehaviorSubject, Subscription } from 'rxjs';
-import { ExperimentsService } from '../experiments/experiments.service';
-import { ActivatedRoute, Params } from '@angular/router';
-import { SimulationTypeErpComponent } from './simulation-type/simulation-type-erp/simulation-type-erp.component';
+
 import { ExperimentType, experimentTypeFromRaw } from 'diplomka-share';
+
+import { ExperimentsService } from '../experiments/experiments.service';
+import { SimulationTypeErpComponent } from './simulation-type/simulation-type-erp/simulation-type-erp.component';
+import { SimulationTypeComponent } from './simulation-type/simulation-type.component';
 
 @Component({
   selector: 'app-simulation',
@@ -15,10 +20,17 @@ export class SimulationComponent implements OnInit, OnDestroy {
   public experimentType: BehaviorSubject<ExperimentType> = new BehaviorSubject<ExperimentType>(ExperimentType.NONE);
 
   private _paramsSubscription: Subscription;
+  private _simulationTypeComponent: SimulationTypeComponent;
   componentMap = {};
+  fragment: string;
+  formGroup = new FormGroup({
+    sequenceSize: new FormControl(100, Validators.required)
+  });
+  currentProgress: string;
 
   constructor(public service: ExperimentsService,
-              private readonly route: ActivatedRoute) {
+              private readonly route: ActivatedRoute,
+              private readonly router: Router) {
     this.componentMap[ExperimentType.ERP] = SimulationTypeErpComponent;
   }
 
@@ -29,6 +41,14 @@ export class SimulationComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.route.fragment.subscribe(fragment => {
+      this.fragment = fragment;
+      this.currentProgress = '0%';
+    });
+    if (this.route.snapshot.fragment === undefined) {
+      this.router.navigate([], {fragment: 'parameters', relativeTo: this.route});
+      return;
+    }
     this._paramsSubscription = this.route.params.subscribe(params => {
       this._handleRouteParams(params);
     });
@@ -38,4 +58,16 @@ export class SimulationComponent implements OnInit, OnDestroy {
     this._paramsSubscription.unsubscribe();
   }
 
+  handleGenerateSequence() {
+    this._simulationTypeComponent.generateSequence(this.formGroup.get('sequenceSize').value)
+        .subscribe(progress => this.onUpdateGenerateStatus(progress));
+  }
+
+  onUpdateGenerateStatus(progress: number) {
+    this.currentProgress = `${progress}%`;
+  }
+
+  handleComponentChange(component: any) {
+    this._simulationTypeComponent = component;
+  }
 }
