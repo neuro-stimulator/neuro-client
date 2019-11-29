@@ -21,6 +21,7 @@ import { ExperimentTypeHeaderComponent } from './experiment-type/experiment-type
 import { ExperimentTypeErpOutputComponent } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output.component';
 import { ExperimentTypeErpOutputCountPipe } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output-count.pipe';
 import { ExperimentTypeErpOutputDependencyPipe } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output-dependency.pipe';
+import { ExperimentTypeTvepOutputComponent } from './experiment-type/experiment-type-tvep/experiment-type-tvep-output/experiment-type-tvep-output.component';
 import { ShareModule } from '../share/share.module';
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ShareModule } from '../share/share.module';
     ExperimentTypeHeaderComponent,
     ExperimentTypeErpOutputComponent,
     ExperimentTypeErpOutputCountPipe,
-    ExperimentTypeErpOutputDependencyPipe
+    ExperimentTypeErpOutputDependencyPipe,
+    ExperimentTypeTvepOutputComponent
   ],
   imports: [
     CommonModule,
