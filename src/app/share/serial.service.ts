@@ -118,4 +118,12 @@ export class SerialService {
   public get isSerialConnected() {
     return this._isSerialConnected;
   }
+
+  public startExperiment() {
+    this._http.patch(`${SerialService.BASE_API_URL}/experiment/start`, {}).toPromise().then(() => {});
+  }
+
+  public stopExperiment() {
+    this._http.patch(`${SerialService.BASE_API_URL}/experiment/stop`, null).toPromise().then(() => {});
+  }
 }

@@ -7,7 +7,7 @@
   </li>
 </ul>
 <div class="row" [class.d-none]="fragment !== 'parameters'">
-  <div class="col-12">
+  <div class="col-12 col-md-8 offset-md-2">
     <form [formGroup]="formGroup">
       <div class="form-group">
         <label for="sequenceSize">Délka vygenerované sekvence</label>
@@ -19,12 +19,19 @@
       </div>
       </div>
       <button class="btn btn-primary" (click)="handleGenerateSequence()">Vygenerovat</button>
+      <button class="btn btn-success" (click)="handleInstallExperiment()">Nahrát</button>
     </form>
 
     <div class="progress mt-2">
       <div class="progress-bar" role="progressbar" [ngStyle]="{width: currentProgress}"></div>
     </div>
   </div>
+  <div class="col-12">
+    <button class="btn btn-info" (click)="handleRunExperiment()">Spustit experiment</button>
+    <button class="btn btn-danger" (click)="handleStopExperiment()">Zastavit experiment</button>
+  </div>
 </div>
 
-<ng-container appExperimentTypeResolver [componentMap]="componentMap" [type]="experimentType" (componentChange)="handleComponentChange($event)"></ng-container>
+<div [class.d-none]="fragment !== 'result'">
+  <ng-container appExperimentTypeResolver [componentMap]="componentMap" [type]="experimentType" (componentChange)="handleComponentChange($event)"></ng-container>
+</div>

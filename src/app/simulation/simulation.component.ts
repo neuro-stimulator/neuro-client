@@ -9,6 +9,7 @@ import { ExperimentType, experimentTypeFromRaw } from 'diplomka-share';
 import { ExperimentsService } from '../experiments/experiments.service';
 import { SimulationTypeErpComponent } from './simulation-type/simulation-type-erp/simulation-type-erp.component';
 import { SimulationTypeComponent } from './simulation-type/simulation-type.component';
+import { SerialService } from '../share/serial.service';
 
 @Component({
   selector: 'app-simulation',
@@ -29,6 +30,7 @@ export class SimulationComponent implements OnInit, OnDestroy {
   currentProgress: string;
 
   constructor(public service: ExperimentsService,
+              private readonly _lowLevel: SerialService,
               private readonly route: ActivatedRoute,
               private readonly router: Router) {
     this.componentMap[ExperimentType.ERP] = SimulationTypeErpComponent;
@@ -45,17 +47,20 @@ export class SimulationComponent implements OnInit, OnDestroy {
       this.fragment = fragment;
       this.currentProgress = '0%';
     });
+    this._paramsSubscription = this.route.params.subscribe(params => {
+      this._handleRouteParams(params);
+    });
     if (this.route.snapshot.fragment === undefined) {
       this.router.navigate([], {fragment: 'parameters', relativeTo: this.route});
       return;
     }
-    this._paramsSubscription = this.route.params.subscribe(params => {
-      this._handleRouteParams(params);
-    });
+    this._handleRouteParams(this.route.snapshot.params);
   }
 
   ngOnDestroy(): void {
-    this._paramsSubscription.unsubscribe();
+    if (this._paramsSubscription !== undefined) {
+      this._paramsSubscription.unsubscribe();
+    }
   }
 
   handleGenerateSequence() {
@@ -69,5 +74,18 @@ export class SimulationComponent implements OnInit, OnDestroy {
 
   handleComponentChange(component: any) {
     this._simulationTypeComponent = component;
+  }
+
+  handleInstallExperiment() {
+    this._simulationTypeComponent.installExperiment()
+        .subscribe(progress => this.onUpdateGenerateStatus(progress));
+  }
+
+  handleRunExperiment() {
+    this._lowLevel.startExperiment();
+  }
+
+  handleStopExperiment() {
+    this._lowLevel.stopExperiment();
   }
 }

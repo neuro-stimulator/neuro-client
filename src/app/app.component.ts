@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavigationService } from './navigation/navigation.service';
 import { SerialService } from './share/serial.service';
+import { SequenceService } from './share/sequence.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import { SerialService } from './share/serial.service';
 export class AppComponent {
 
   constructor(public readonly navigation: NavigationService,
-              private readonly serial: SerialService) {
+              private readonly serial: SerialService,
+              private readonly sequence: SequenceService) {
   }
 }

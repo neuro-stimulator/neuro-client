@@ -29,4 +29,16 @@ export class ExperimentsService extends BaseService<Experiment> {
     super._socketConnected();
     this._socket.emit('all');
   }
+
+  public install(experimentID: number, sequence: number[], onProgress: (progress: number) => void) {
+    return new Promise(resolve => {
+      this._socket.on('progress', (data: {progress: number}) => {
+        onProgress(data.progress);
+        if (data.progress >= 100) {
+          resolve();
+        }
+      });
+      this._socket.emit('install-experiment', {id: experimentID, sequence});
+    });
+  }
 }

@@ -45,7 +45,7 @@ export class SequenceService {
    */
   public generate(experimentID: number, sequenceSize: number, onProgress: (progress: number) => void) {
     return new Promise(resolve => {
-      this._socket.on('progress', data => {
+      this._socket.on('progress', (data: {progress: number}) => {
         onProgress(data.progress);
       });
       this._socket.on('new-for-experiment', (data: {experiment: Experiment, sequence: number[], analyse: any}) => {
@@ -58,4 +58,6 @@ export class SequenceService {
     // (`${SequenceService.BASE_API_URL}/new-for-experiment/${experimentID}/${sequenceSize}`)
     //            .toPromise();
   }
+
+
 }

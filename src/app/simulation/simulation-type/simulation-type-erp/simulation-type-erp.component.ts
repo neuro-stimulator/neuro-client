@@ -9,6 +9,7 @@ import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Experiment, ExperimentERP } from 'diplomka-share';
 import { SequenceService } from '../../../share/sequence.service';
 import { SimulationTypeComponent } from '../simulation-type.component';
+import { ExperimentsService } from '../../../experiments/experiments.service';
 
 @Component({
   selector: 'app-simulation-type-erp',
@@ -48,14 +49,14 @@ export class SimulationTypeErpComponent implements OnInit, OnDestroy, Simulation
     },
   ];
 
-  flowData = [];
+  flowData: number[] = [];
 
-  outputs = [];
+  readonly outputs: number[] = [];
 
-  private paramsSubscription: Subscription;
   private experimentID: number;
 
   constructor(private readonly _service: SequenceService,
+              private readonly _experiments: ExperimentsService,
               private readonly route: ActivatedRoute,
               private readonly router: Router) {
   }
@@ -69,25 +70,6 @@ export class SimulationTypeErpComponent implements OnInit, OnDestroy, Simulation
     this.experimentID = +params['id'];
     this.pieChartLabels.splice(0);
     this.pieChartData.splice(0);
-
-    // this._service.generate(experimentID, 100)
-    //     .then(result => {
-    //       this.flowData = result.sequence;
-    //       const experiment = result.experiment as ExperimentERP;
-    //       const analyse = result.analyse;
-    //
-    //       this.outputs.splice(0);
-    //       for (let i = 0; i <= experiment.outputCount; i++) {
-    //         this.outputs.push(i);
-    //       }
-    //
-    //       delete analyse['0'];
-    //       for (const key of Object.keys(analyse)) {
-    //         const data = analyse[key];
-    //         this.pieChartLabels.push(key);
-    //         this.pieChartData.push(data['value']);
-    //       }
-    //     });
   }
 
   ngOnInit() {
@@ -95,10 +77,12 @@ export class SimulationTypeErpComponent implements OnInit, OnDestroy, Simulation
   }
 
   ngOnDestroy(): void {
-    this.paramsSubscription.unsubscribe();
   }
 
   generateSequence(sequenceSize: number): Observable<number> {
+    this.pieChartLabels.splice(0);
+    this.pieChartData.splice(0);
+
     this._service.generate(this.experimentID, sequenceSize, progress => { this._progress.next(progress); })
         .then((result: {experiment: Experiment, sequence: number[], analyse: any}) => {
           this.flowData = result.sequence;
@@ -116,9 +100,20 @@ export class SimulationTypeErpComponent implements OnInit, OnDestroy, Simulation
             this.pieChartLabels.push(key);
             this.pieChartData.push(data['value']);
           }
+
+          return this.router.navigate([], {fragment: 'result', relativeTo: this.route});
         });
     return this.progress$;
   }
 
+  installExperiment(): Observable<number> {
+    this._progress.next(0);
 
+    this._experiments.install(this.experimentID, this.flowData, progress => { this._progress.next(progress); })
+        .then(result => {
+
+        });
+
+    return this.progress$;
+  }
 }
