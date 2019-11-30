@@ -21,7 +21,7 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
   checkboxes: number[] = [];
 
   private _disableChangePropagation = true;
-  private _patternSize: number;
+  _patternSize: number;
 
   constructor() {
     super(0);
@@ -36,6 +36,9 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
   }
 
   private _drawPattern() {
+    if (this.canvas === undefined) {
+      return;
+    }
     const canvas = (this.canvas.nativeElement as HTMLCanvasElement);
     canvas.width = canvas.parentElement.clientWidth;
     // canvas.height = canvas.parentElement.clientHeight;
@@ -76,6 +79,7 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
     if (isObservable(this.patternSize)) {
       this.patternSize.subscribe(patternSize => {
         this._patternSize = patternSize;
+        this._initCheckboxes();
         this._drawPattern();
       });
     } else if (typeof this.patternSize === 'number') {

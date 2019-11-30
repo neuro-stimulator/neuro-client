@@ -1,10 +1,10 @@
 <div class="custom-control-inline pattern-checkbox" *ngFor="let checkbox of checkboxes; let i = index">
-  <input type="checkbox" [id]="'checkbox-' + (patternSize - 1 - i)"
+  <input type="checkbox" [id]="'checkbox-' + (_patternSize - 1 - i)"
          [checked]="checkbox === 1"
-         (change)="handleCheckboxChange($event, patternSize - 1 - i)">
-  <label  [for]="'checkbox-' + (patternSize - 1 - i)"><div></div></label>
+         (change)="handleCheckboxChange($event, _patternSize - 1 - i)">
+  <label  [for]="'checkbox-' + (_patternSize - 1 - i)"><div></div></label>
 </div>
 
 <div>
-  <canvas #canvas></canvas>
+  <canvas #canvas height="50px"></canvas>
 </div>
