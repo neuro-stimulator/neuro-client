@@ -6,7 +6,7 @@ import { Options as SliderOptions } from 'ng5-slider';
 import { environment } from '../../../../../environments/environment';
 
 import { OutputDependency } from 'diplomka-share';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-experiment-type-erp-output',
@@ -28,10 +28,12 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   private _outputCountSubscription: Subscription;
   private _outputDistributionSubscriptions: Subscription[] = [];
   private _oldOutputCount = environment.maxOutputCount;
+  private _experimentLoadedSubscription: Subscription;
 
   @Input() form: FormGroup;
   @Input() count: number;
   @Input() experimentId: number;
+  @Input() experimentLoaded: Observable<any>;
 
   distributionSliderOptions: SliderOptions[] = [];
 
@@ -52,14 +54,14 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   }
 
   ngAfterContentInit(): void {
-    setTimeout(() => {
+    this._experimentLoadedSubscription = this.experimentLoaded.subscribe(() => {
       this._oldOutputCount = this.form.root.get('outputCount').value;
       this._listenOutputCountChange();
       this._listenOutputDistributionChange();
       // Vyvolám umělou změnu v hodnotě distribuce pro neexistující výstup
       // Tím se přepočítají maximální hodnoty pro posuvníky
       this._onOutputDistributionChange(-1);
-    }, 1000);
+    });
   }
 
   ngOnDestroy(): void {
@@ -67,6 +69,7 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
     for (let i = 0; i < environment.maxOutputCount; i++) {
       this._outputDistributionSubscriptions[i].unsubscribe();
     }
+    this._experimentLoadedSubscription.unsubscribe();
   }
 
   private _addDependency(index: number, value: string) {

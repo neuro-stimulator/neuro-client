@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -6,12 +6,14 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { ExperimentsService } from '../experiments.service';
 import { Experiment, ExperimentType } from 'diplomka-share';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription, TimeoutError } from 'rxjs';
+import { Observable, Subscription, TimeoutError } from 'rxjs';
 import { NavigationService } from '../../navigation/navigation.service';
 
 export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit, AfterViewInit, OnDestroy {
 
   protected _experiment: E;
+  private _experimentLoaded: EventEmitter<E> = new EventEmitter<E>();
+  protected _experimentLoaded$: Observable<E> = this._experimentLoaded.asObservable();
   public form: FormGroup;
   private _connectedSubscription: Subscription;
   private _workingSubscription: Subscription;
@@ -68,6 +70,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
             this._experiment = experiment;
             this._updateFormGroup(this._experiment);
             this._navigation.customNavColor.next(ExperimentType[experiment.type].toLowerCase());
+            this._experimentLoaded.next(experiment);
           });
     }
   }
@@ -156,5 +159,9 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
 
   get isNew() {
     return this._isNew;
+  }
+
+  get experimentLoaded$(): Observable<E> {
+    return this._experimentLoaded$;
   }
 }

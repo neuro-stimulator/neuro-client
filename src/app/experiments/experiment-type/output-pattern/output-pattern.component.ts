@@ -1,9 +1,9 @@
-import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ValueAccessorBase } from '../../../share/value-accessor-base';
 
 import { environment } from '../../../../environments/environment';
-import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { isObservable, Observable } from 'rxjs';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { isObservable, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-output-pattern',
@@ -13,14 +13,16 @@ import { isObservable, Observable } from 'rxjs';
     {provide: NG_VALUE_ACCESSOR, useExisting: OutputPatternComponent, multi: true}
   ]
 })
-export class OutputPatternComponent extends ValueAccessorBase<number> implements OnInit {
+export class OutputPatternComponent extends ValueAccessorBase<number> implements OnInit, OnDestroy {
 
   @Input() patternSize: number|Observable<number> = environment.patternSize;
+  @Input() viewReady: Observable<any>;
   @ViewChild('canvas', {static: false}) canvas: ElementRef;
 
   checkboxes: number[] = [];
 
-  private _disableChangePropagation = true;
+  private _disableChangePropagation = false;
+  private _viewReadySubscription: Subscription;
   _patternSize: number;
 
   constructor() {
@@ -41,10 +43,8 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
     }
     const canvas = (this.canvas.nativeElement as HTMLCanvasElement);
     canvas.width = canvas.parentElement.clientWidth;
-    // canvas.height = canvas.parentElement.clientHeight;
     const graphics = canvas.getContext('2d');
     const width = canvas.width;
-    // const height = canvas.height;
 
     const patternWidth = width / (this._patternSize + 1);
     const patternHeight = 30;
@@ -85,11 +85,15 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
     } else if (typeof this.patternSize === 'number') {
       this._patternSize = this.patternSize;
     }
-    setTimeout(() => {
+    this._viewReadySubscription = this.viewReady.subscribe(() => {
       this._initCheckboxes();
       this._disableChangePropagation = false;
       this._drawPattern();
-    }, 500);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this._viewReadySubscription.unsubscribe();
   }
 
   @HostListener('window:resize', ['$event'])

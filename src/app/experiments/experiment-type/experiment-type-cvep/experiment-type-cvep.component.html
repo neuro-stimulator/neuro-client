@@ -69,7 +69,7 @@
         <div class="col-2 text-right" appContentToggler [toggledContent]="pattern" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
 
         <div class="col-12" #pattern>
-          <app-output-pattern formControlName="pattern"></app-output-pattern>
+          <app-output-pattern formControlName="pattern" [viewReady]="experimentLoaded$"></app-output-pattern>
         </div>
       </div>
     </form>

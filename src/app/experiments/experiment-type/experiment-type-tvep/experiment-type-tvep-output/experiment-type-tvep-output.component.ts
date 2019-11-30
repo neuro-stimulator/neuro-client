@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { Options as SliderOptions } from 'ng5-slider/options';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
@@ -9,7 +9,7 @@ import { environment } from '../../../../../environments/environment';
   templateUrl: './experiment-type-tvep-output.component.html',
   styleUrls: ['./experiment-type-tvep-output.component.sass']
 })
-export class ExperimentTypeTvepOutputComponent implements OnInit {
+export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
 
   brightnessSliderOptions: SliderOptions = {
     floor: 0,
@@ -23,8 +23,11 @@ export class ExperimentTypeTvepOutputComponent implements OnInit {
 
   @Input() form: FormGroup;
   @Input() count: number;
+  @Input() experimentReady: Observable<any>;
 
-  readonly patternSizes: BehaviorSubject<number>[] = []; // new BehaviorSubject<number>(1);
+  readonly patternSizes: BehaviorSubject<number>[] = [];
+
+  private _experimentReadySubscription: Subscription;
 
   constructor() { }
 
@@ -33,13 +36,17 @@ export class ExperimentTypeTvepOutputComponent implements OnInit {
       this.patternSizes.push(new BehaviorSubject<number>(1));
     }
 
-    setTimeout(() => {
+    this._experimentReadySubscription = this.experimentReady.subscribe(() => {
       for (let i = 0; i < environment.maxOutputCount; i++) {
         this.patternLength(i).valueChanges.subscribe(patternLength => {
           this.patternSizes[i].next(patternLength);
         });
       }
-    }, 500);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this._experimentReadySubscription.unsubscribe();
   }
 
   get outputs() {

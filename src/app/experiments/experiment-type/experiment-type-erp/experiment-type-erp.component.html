@@ -60,7 +60,8 @@
         </div>
       </div>
 
-      <app-experiment-type-erp-output [form]="form" [count]="outputCount.value" [experimentId]="experiment.id" *ngIf="!isNew"></app-experiment-type-erp-output>
+      <app-experiment-type-erp-output [form]="form" [count]="outputCount.value" [experimentId]="experiment.id" *ngIf="!isNew"
+                                      [experimentLoaded]="experimentLoaded$"></app-experiment-type-erp-output>
 
     </form>
   </div>

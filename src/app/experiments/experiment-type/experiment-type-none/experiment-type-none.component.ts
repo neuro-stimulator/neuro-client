@@ -6,7 +6,6 @@ import { createEmptyExperiment, Experiment } from 'diplomka-share';
 
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentsService } from '../../experiments.service';
-import { Location } from '@angular/common';
 import { NavigationService } from '../../../navigation/navigation.service';
 
 @Component({

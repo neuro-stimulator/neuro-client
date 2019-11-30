@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AbstractControl, FormControl, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
 
 import { ToastrService } from 'ngx-toastr';
 import { Options as SliderOptions } from 'ng5-slider/options';

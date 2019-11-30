@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 
 import { ToastrService } from 'ngx-toastr';
 import { createEmptyExperiment, Experiment } from 'diplomka-share';
