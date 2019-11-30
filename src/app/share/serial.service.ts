@@ -5,6 +5,7 @@ import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service'
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ResponseObject } from 'diplomka-share';
+import { NavigationService } from '../navigation/navigation.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,7 @@ export class SerialService {
   private _isSerialConnected: boolean;
 
   constructor(aliveChecker: AliveCheckerService,
+              private readonly navigation: NavigationService,
               private readonly _http: HttpClient) {
     this._isSerialConnected = false;
     aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
@@ -42,6 +44,7 @@ export class SerialService {
       if (this._socket !== undefined) {
         this._socket.disconnect();
         this._isSerialConnected = false;
+        this._updateNavigationSubtitle();
       }
     });
     this._socket.on('connect', () => {
@@ -55,6 +58,18 @@ export class SerialService {
       console.log(data);
       this._isSerialConnected = data.connected;
     });
+  }
+
+  private _updateNavigationSubtitle() {
+    if (this._isSerialConnected) {
+      this.navigation.subtitle = 'Připojeno';
+      this.navigation.working = false;
+      this.navigation.icon = 'fa-circle text-success';
+    } else {
+      this.navigation.subtitle = 'Odpojeno';
+      this.navigation.working = false;
+      this.navigation.icon = 'fa-circle text-danger';
+    }
   }
 
   /**
@@ -75,7 +90,11 @@ export class SerialService {
    */
   public open(path: string) {
     return this._http.post(`${SerialService.BASE_API_URL}/open`, {path})
-               .toPromise();
+               .toPromise()
+               .then(() => {
+                 this._isSerialConnected = true;
+                 this._updateNavigationSubtitle();
+               });
   }
 
   /**
@@ -83,7 +102,11 @@ export class SerialService {
    */
   public stop() {
     return this._http.patch(`${SerialService.BASE_API_URL}/stop`, null)
-               .toPromise();
+               .toPromise()
+               .then(() => {
+                  this._isSerialConnected = false;
+                  this._updateNavigationSubtitle();
+                });
   }
 
   /**
@@ -94,6 +117,7 @@ export class SerialService {
         .toPromise()
         .then(response => {
           this._isSerialConnected = response.data.connected;
+          this._updateNavigationSubtitle();
         });
   }
 

@@ -30,19 +30,13 @@ export class AliveCheckerService {
     this._socket = new Socket({url: `${environment.makeURL(environment.url.socket, environment.port.socket)}`});
     this._socket.on('connect', () => this._socketConnected());
     this._socket.on('disconnect', (reason) => this._socketDisconnected(reason));
-    navigation.subtitle = 'Odpojeno';
-    navigation.icon = 'fa-circle text-danger';
   }
 
   /**
    * Pokusí se vytvořit stále spojení se serverem.
    */
   public requestConnect() {
-    this.navigation.subtitle = 'Připojuji';
-    this.navigation.icon = 'fa-circle-notch';
-    this.navigation.working = true;
     this._connected.next(ConnectionStatus.CONNECTING);
-    console.log(this._socket.connect());
   }
 
   /**
@@ -57,9 +51,6 @@ export class AliveCheckerService {
    * Funkce se zavolá ve chvíli, kdy je vytvořeno stále spojení se serverem.
    */
   protected _socketConnected() {
-    this.navigation.subtitle = 'Připojeno';
-    this.navigation.working = false;
-    this.navigation.icon = 'fa-circle text-success';
     if (this._firstTime) {
       this.toastr.success('Spojení se serverem bylo vytvořeno.');
     } else {
@@ -76,10 +67,7 @@ export class AliveCheckerService {
    */
   protected _socketDisconnected(reason) {
     this._firstTime = false;
-    this.navigation.subtitle = 'Odpojeno';
-    this.navigation.working = false;
-    this.navigation.icon = 'fa-circle text-danger';
-    this.toastr.error('Spojení se serverem bylo ztraceno');
+    this.toastr.error('Spojení se serverem bylo ztraceno.');
     this._connected.next(ConnectionStatus.DISCONNECTED);
     this._isConnected = false;
     if (reason === 'io server disconnect') {

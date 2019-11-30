@@ -24,6 +24,10 @@ export class NavigationService {
 
   constructor(private readonly _route: ActivatedRoute,
               private readonly _router: Router) {
+    this.title = '';
+    this.subtitle = '';
+    this.icon = '';
+    this.working = false;
     this.applyCustomNavColor = false;
 
     /**
