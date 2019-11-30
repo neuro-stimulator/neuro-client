@@ -55,8 +55,8 @@ export class SerialService {
       this._rawData.next(data);
     });
     this._socket.on('status', data => {
-      console.log(data);
       this._isSerialConnected = data.connected;
+      this._updateNavigationSubtitle();
     });
   }
 
