@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { Options as SliderOptions } from 'ng5-slider/options';
+import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-experiment-type-tvep-output',
@@ -22,9 +24,22 @@ export class ExperimentTypeTvepOutputComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() count: number;
 
+  readonly patternSizes: BehaviorSubject<number>[] = []; // new BehaviorSubject<number>(1);
+
   constructor() { }
 
   ngOnInit() {
+    for (let i = 0; i < environment.maxOutputCount; i++) {
+      this.patternSizes.push(new BehaviorSubject<number>(1));
+    }
+
+    setTimeout(() => {
+      for (let i = 0; i < environment.maxOutputCount; i++) {
+        this.patternLength(i).valueChanges.subscribe(patternLength => {
+          this.patternSizes[i].next(patternLength);
+        });
+      }
+    }, 500);
   }
 
   get outputs() {
