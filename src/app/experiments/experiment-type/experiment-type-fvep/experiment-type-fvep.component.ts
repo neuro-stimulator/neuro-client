@@ -79,7 +79,7 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
       timeOff: 0,
       frequency: 0,
       dutyCycle: 0,
-      brightness: 0
+      brightness: 100
     };
   }
 

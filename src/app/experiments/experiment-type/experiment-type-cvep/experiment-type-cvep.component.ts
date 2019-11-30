@@ -79,7 +79,7 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
       wait: 0,
       pattern: 0,
       bitShift: 0,
-      brightness: 0
+      brightness: 100
     };
   }
 
