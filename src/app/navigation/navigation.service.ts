@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, mergeMap } from 'rxjs/operators';
@@ -19,9 +19,12 @@ export class NavigationService {
   public subtitle: string;
   public icon: string;
   public working: boolean;
+  public applyCustomNavColor: boolean;
+  public customNavColor: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   constructor(private readonly _route: ActivatedRoute,
               private readonly _router: Router) {
+    this.applyCustomNavColor = false;
 
     /**
      * Přihlásí se k odběru událostí na změnu url
@@ -39,7 +42,10 @@ export class NavigationService {
       }),
       filter(route => route.outlet === 'primary'),
       mergeMap(route => route.data))
-        .subscribe((event) => this.title = event['title']);
+        .subscribe((event) => {
+          this.title = event['title'];
+          this.applyCustomNavColor = event['applyCustomNavColor'] !== undefined ? event['applyCustomNavColor'] : false;
+        });
   }
 
   /**

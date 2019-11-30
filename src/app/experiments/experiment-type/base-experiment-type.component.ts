@@ -7,6 +7,7 @@ import { ExperimentsService } from '../experiments.service';
 import { Experiment, ExperimentType } from 'diplomka-share';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription, TimeoutError } from 'rxjs';
+import { NavigationService } from '../../navigation/navigation.service';
 
 export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit, AfterViewInit, OnDestroy {
 
@@ -20,7 +21,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
                         protected readonly toastr: ToastrService,
                         protected readonly _router: Router,
                         protected readonly _route: ActivatedRoute,
-                        protected readonly _location: Location,
+                        protected readonly _navigation: NavigationService,
                         protected readonly _cdr: ChangeDetectorRef) {
     this.form = new FormGroup(this._createFormControls());
   }
@@ -66,6 +67,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
           .then((experiment: E) => {
             this._experiment = experiment;
             this._updateFormGroup(this._experiment);
+            this._navigation.customNavColor.next(ExperimentType[experiment.type].toLowerCase());
           });
     }
   }

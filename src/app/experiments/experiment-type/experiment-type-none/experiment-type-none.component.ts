@@ -7,6 +7,7 @@ import { createEmptyExperiment, Experiment } from 'diplomka-share';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentsService } from '../../experiments.service';
 import { Location } from '@angular/common';
+import { NavigationService } from '../../../navigation/navigation.service';
 
 @Component({
   selector: 'app-experiment-type-none',
@@ -19,9 +20,9 @@ export class ExperimentTypeNoneComponent extends BaseExperimentTypeComponent<Exp
               toastr: ToastrService,
               protected readonly router: Router,
               route: ActivatedRoute,
-              location: Location,
+              navigation: NavigationService,
               cdr: ChangeDetectorRef) {
-    super(service, toastr, router, route, location, cdr);
+    super(service, toastr, router, route, navigation, cdr);
   }
 
   ngOnInit() {

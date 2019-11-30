@@ -14,6 +14,7 @@ import { dependencyValidatorPattern } from '../../experiments.share';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
+import { NavigationService } from '../../../navigation/navigation.service';
 
 @Component({
   selector: 'app-experiment-type-erp',
@@ -35,9 +36,9 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
               toastr: ToastrService,
               router: Router,
               route: ActivatedRoute,
-              location: Location,
+              navigation: NavigationService,
               cdr: ChangeDetectorRef) {
-    super(service, toastr, router, route, location, cdr);
+    super(service, toastr, router, route, navigation, cdr);
   }
 
   ngOnInit() {

@@ -12,6 +12,7 @@ import { ExperimentType, ExperimentFVEP } from 'diplomka-share';
 
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
+import { NavigationService } from '../../../navigation/navigation.service';
 
 @Component({
   selector: 'app-experiment-type-fvep',
@@ -43,9 +44,9 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
               toastr: ToastrService,
               router: Router,
               route: ActivatedRoute,
-              location: Location,
+              navigation: NavigationService,
               cdr: ChangeDetectorRef) {
-    super(service, toastr, router, route, location, cdr);
+    super(service, toastr, router, route, navigation, cdr);
   }
 
   ngOnInit() {

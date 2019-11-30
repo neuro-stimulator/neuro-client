@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path: ':type/:id',
     component: ExperimentTypeComponent,
-    data: {title: 'Konfigurace experimentu'}
+    data: {title: 'Konfigurace experimentu', applyCustomNavColor: true}
   }
 ];
 
