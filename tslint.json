@@ -63,6 +63,7 @@
     "no-use-before-declare": true,
     "no-var-requires": false,
     "no-string-literal": false,
+    "no-bitwise": false,
     "object-literal-key-quotes": [
       true,
       "as-needed"

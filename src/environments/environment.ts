@@ -15,7 +15,8 @@ export const environment = {
   makeURL: (url: string, port: number) => {
     return `${url}:${port}`;
   },
-  maxOutputCount: 8
+  maxOutputCount: 8,
+  patternSize: 32
 };
 
 /*

@@ -24,6 +24,7 @@ import { ExperimentTypeErpOutputDependencyPipe } from './experiment-type/experim
 import { ExperimentTypeTvepOutputComponent } from './experiment-type/experiment-type-tvep/experiment-type-tvep-output/experiment-type-tvep-output.component';
 import { ShareModule } from '../share/share.module';
 import { ExperimentTypeTvepOutputCountPipe } from './experiment-type/experiment-type-tvep/experiment-type-tvep-output/experiment-type-tvep-output-count.pipe';
+import { OutputPatternComponent } from './experiment-type/output-pattern/output-pattern.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ExperimentTypeTvepOutputCountPipe } from './experiment-type/experiment-
     ExperimentTypeErpOutputCountPipe,
     ExperimentTypeErpOutputDependencyPipe,
     ExperimentTypeTvepOutputComponent,
-    ExperimentTypeTvepOutputCountPipe
+    ExperimentTypeTvepOutputCountPipe,
+    OutputPatternComponent
   ],
   imports: [
     CommonModule,
