@@ -42,7 +42,7 @@
             </div>
             <div class="col-12 col-sm-6 col-md-3">
               <div class="form-group">
-                <label for="cvep-out">bit shift</label>
+                <label for="cvep-bit-shift">bit shift</label>
                 <input type="number" id="cvep-bit-shift" class="form-control form-control-sm" [class.is-valid]="bitShift.valid" [class.is-invalid]="bitShift.invalid" formControlName="bitShift">
                 <small *ngIf="bitShift.touched && bitShift.errors?.required" class="form-text text-muted">Parametr bitShift je vyžadován.</small>
                 <small *ngIf="bitShift.touched && bitShift.errors?.min" class="form-text text-muted">Minimální hodnota je: {{bitShift.errors?.min.min}}.</small>
@@ -58,13 +58,18 @@
             </div>
 
           </div>
+        </div>
 
-          <div class="row">
-            <div class="col-12">
-              <h2>Pattern</h2>
-            </div>
-          </div>
+      </div>
 
+      <div class="row experiment-property">
+        <div class="col-10">
+          <h4>Pattern</h4>
+        </div>
+        <div class="col-2 text-right" appContentToggler [toggledContent]="pattern" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+
+        <div class="col-12" #pattern>
+          <app-output-pattern formControlName="pattern"></app-output-pattern>
         </div>
       </div>
     </form>

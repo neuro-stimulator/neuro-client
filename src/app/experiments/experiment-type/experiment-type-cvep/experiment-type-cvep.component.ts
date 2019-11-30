@@ -95,6 +95,10 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
     return this.form.get('wait');
   }
 
+  get pattern() {
+    return this.form.get('pattern');
+  }
+
   get bitShift() {
     return this.form.get('bitShift');
   }
