@@ -67,11 +67,6 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
     const superControls = super._createFormControls();
     const myControls = {
       outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(environment.maxOutputCount)]),
-      out: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
-      wait: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
-      pattern: new FormControl(null, [Validators.required]),
-      bitShift: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(31)]),
-      brightness: new FormControl(null, [Validators.required]),
       outputs: new FormArray([])
     };
 
@@ -83,7 +78,7 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
       name: '',
       description: '',
       created: new Date().getTime(),
-      type: ExperimentType.CVEP,
+      type: ExperimentType.TVEP,
       output: {},
       outputCount: 1,
       outputs: []

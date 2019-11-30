@@ -58,8 +58,8 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
       outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(environment.maxOutputCount)]),
       timeOn: new FormControl(null, [Validators.required]),
       timeOff: new FormControl(null, [Validators.required]),
-      timeFrequency: new FormControl(null, [Validators.required]),
-      timeDutyCycle: new FormControl(null, [Validators.required]),
+      frequency: new FormControl(null, [Validators.required]),
+      dutyCycle: new FormControl(null, [Validators.required]),
       brightness: new FormControl(null, [Validators.required])
     };
 
