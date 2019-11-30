@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
 
 import { ToastrService } from 'ngx-toastr';
 import { Options as SliderOptions } from 'ng5-slider/options';
@@ -49,6 +48,7 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
       const group = new FormGroup({
         id: new FormControl(null, Validators.required),
         experimentId: new FormControl(null, Validators.required),
+        orderId: new FormControl(null, Validators.required),
         out: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
         wait: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
         patternLength: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(32)]),

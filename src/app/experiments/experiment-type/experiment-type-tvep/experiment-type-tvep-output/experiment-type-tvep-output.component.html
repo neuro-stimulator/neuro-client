@@ -1,7 +1,11 @@
 <div [formGroup]="form">
   <div formArrayName="outputs">
-    <div *ngFor="let output of outputs | experimentTypeErpOutputCount:count; let i=index">
+    <div *ngFor="let output of outputs | experimentTypeTvepOutputCount:count; let i=index">
       <div class="row experiment-property" [attr.data-content]="(i+1) + '.'" [formGroupName]="i">
+
+        <div class="col-md-12">
+          <h5>Parametry výstupu</h5>
+        </div>
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">

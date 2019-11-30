@@ -20,6 +20,7 @@ export class ExperimentTypeTvepOutputComponent implements OnInit {
   };
 
   @Input() form: FormGroup;
+  @Input() count: number;
 
   constructor() { }
 
