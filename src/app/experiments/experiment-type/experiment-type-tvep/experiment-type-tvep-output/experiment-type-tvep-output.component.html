@@ -9,11 +9,9 @@
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label for="tvep-pattern-length">pattern length</label>
-            <input type="number" id="tvep-pattern-length" class="form-control form-control-sm" [class.is-valid]="patternLength(i).valid" [class.is-invalid]="patternLength(i).invalid" formControlName="patternLength">
-            <small *ngIf="patternLength(i).touched && patternLength(i).errors?.required" class="form-text text-muted">Parametr patternLength je vyžadován.</small>
-            <small *ngIf="patternLength(i).touched && patternLength(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{patternLength(i).errors?.min.min}}.</small>
-            <small *ngIf="patternLength(i).touched && patternLength(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{patternLength(i).errors?.max.max}}.</small>
+            <label for="cvep-pattern-length">pattern length</label>
+            <ng5-slider id="cvep-pattern-length" formControlName="patternLength" [options]="patternLengthSliderOptions"></ng5-slider>
+            <small *ngIf="patternLength(i).touched && patternLength(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
           </div>
         </div>
 

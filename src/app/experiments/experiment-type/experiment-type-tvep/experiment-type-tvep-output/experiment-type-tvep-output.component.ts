@@ -11,6 +11,16 @@ import { environment } from '../../../../../environments/environment';
 })
 export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
 
+  patternLengthSliderOptions: SliderOptions = {
+    floor: 1,
+    ceil: 32,
+    showTicks: false,
+    showTicksValues: false,
+    tickStep: 1,
+    showSelectionBar: true,
+    animate: false
+  };
+
   brightnessSliderOptions: SliderOptions = {
     floor: 0,
     ceil: 100,
