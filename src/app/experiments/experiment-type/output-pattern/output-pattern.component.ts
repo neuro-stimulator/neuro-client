@@ -111,4 +111,22 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
     this.value ^= (-x ^ this.value) & (1 << index);
     this._drawPattern();
   }
+
+  handleEmptyPattern() {
+    this.value = 0;
+    this._initCheckboxes();
+    this._drawPattern();
+  }
+
+  handleFullPattern() {
+    this.value = 0xFFFFFFFF;
+    this._initCheckboxes();
+    this._drawPattern();
+  }
+
+  handleInvertPattern() {
+    this.value = ~this.value;
+    this._initCheckboxes();
+    this._drawPattern();
+  }
 }
