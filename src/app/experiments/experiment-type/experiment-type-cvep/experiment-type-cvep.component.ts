@@ -29,6 +29,16 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
     animate: false
   };
 
+  bitShiftSliderOptions: SliderOptions = {
+    floor: 0,
+    ceil: 31,
+    showTicks: false,
+    showTicksValues: false,
+    tickStep: 1,
+    showSelectionBar: true,
+    animate: false
+  };
+
   brightnessSliderOptions: SliderOptions = {
     floor: 0,
     ceil: 100,

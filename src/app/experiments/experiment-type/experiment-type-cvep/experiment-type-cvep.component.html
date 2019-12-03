@@ -10,7 +10,7 @@
         <div class="col-10">
           <h4>C-VEP parametry</h4>
         </div>
-        <div class="col-2 text-right" appContentToggler [toggledContent]="cvepParams" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+        <div class="col-2 text-right" appContentToggler [toggledContent]="cvepParams" [icon]="cvepParamsIcon"><i class="fas fa-minus" #cvepParamsIcon></i></div>
 
         <div class="col-12" #cvepParams>
           <div class="row">
@@ -31,6 +31,7 @@
                 <small *ngIf="out.touched && out.errors?.max" class="form-text text-muted">Maximální hodnota je: {{out.errors?.max.max}}.</small>
               </div>
             </div>
+
             <div class="col-12 col-sm-6 col-md-3">
               <div class="form-group">
                 <label for="cvep-wait">wait [ms]</label>
@@ -40,15 +41,15 @@
                 <small *ngIf="wait.touched && wait.errors?.max" class="form-text text-muted">Maximální hodnota je: {{wait.errors?.max.max}}.</small>
               </div>
             </div>
+
             <div class="col-12 col-sm-6 col-md-3">
               <div class="form-group">
                 <label for="cvep-bit-shift">bit shift</label>
-                <input type="number" id="cvep-bit-shift" class="form-control form-control-sm" [class.is-valid]="bitShift.valid" [class.is-invalid]="bitShift.invalid" formControlName="bitShift">
-                <small *ngIf="bitShift.touched && bitShift.errors?.required" class="form-text text-muted">Parametr bitShift je vyžadován.</small>
-                <small *ngIf="bitShift.touched && bitShift.errors?.min" class="form-text text-muted">Minimální hodnota je: {{bitShift.errors?.min.min}}.</small>
-                <small *ngIf="bitShift.touched && bitShift.errors?.max" class="form-text text-muted">Maximální hodnota je: {{bitShift.errors?.max.max}}.</small>
+                <ng5-slider id="cvep-bit-shift" formControlName="bitShift" [options]="bitShiftSliderOptions"></ng5-slider>
+                <small *ngIf="bitShift.touched && bitShift.errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
               </div>
             </div>
+
             <div class="col-12 col-sm-6 col-md-3">
               <div class="form-group">
                 <label for="cvep-brightness">brightness [%]</label>
@@ -66,7 +67,7 @@
         <div class="col-10">
           <h4>Pattern</h4>
         </div>
-        <div class="col-2 text-right" appContentToggler [toggledContent]="pattern" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+        <div class="col-2 text-right" appContentToggler [toggledContent]="pattern" [icon]="patternIcon"><i class="fas fa-minus" #patternIcon></i></div>
 
         <div class="col-12" #pattern>
           <app-output-pattern formControlName="pattern" [viewReady]="experimentLoaded$"></app-output-pattern>
