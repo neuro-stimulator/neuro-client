@@ -24,8 +24,8 @@ export class ExperimentsComponent implements OnInit {
   experiments: Observable<Experiment[]>;
   fabButtonList: FabListEntry[] = [
     {id: ExperimentType.REA, text: 'REA', class: 'rea', tooltip: 'REA'},
-    {id: ExperimentType.FVEP, text: 'FVEP', class: 'fvep', tooltip: 'FVEP'},
     {id: ExperimentType.TVEP, text: 'TVEP', class: 'tvep', tooltip: 'TVEP'},
+    {id: ExperimentType.FVEP, text: 'FVEP', class: 'fvep', tooltip: 'FVEP'},
     {id: ExperimentType.CVEP, text: 'CVEP', class: 'cvep', tooltip: 'CVEP'},
     {id: ExperimentType.ERP, text: 'ERP', class: 'erp', tooltip: 'ERP'},
   ];
