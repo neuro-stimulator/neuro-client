@@ -23,6 +23,11 @@ const routes: Routes = [
     loadChildren: () => import('./settings/settings.module').then(mod => mod.SettingsModule)
   },
   {
+    path: 'help',
+    pathMatch: 'prefix',
+    loadChildren: () => import('./help/help.module').then(mod => mod.HelpModule)
+  },
+  {
     path: '',
     pathMatch: 'prefix',
     redirectTo: 'experiments'
