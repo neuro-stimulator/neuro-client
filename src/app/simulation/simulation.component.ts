@@ -77,15 +77,11 @@ export class SimulationComponent implements OnInit, OnDestroy {
   }
 
   handleInstallExperiment() {
-    this._simulationTypeComponent.installExperiment()
-        .subscribe(progress => this.onUpdateGenerateStatus(progress));
   }
 
   handleRunExperiment() {
-    this._lowLevel.startExperiment();
   }
 
   handleStopExperiment() {
-    this._lowLevel.stopExperiment();
   }
 }
