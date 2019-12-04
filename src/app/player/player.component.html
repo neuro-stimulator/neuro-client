@@ -1,1 +1,22 @@
-<p>player works!</p>
+<div class="row">
+  <div class="col-12">
+    <h1>Ovládací panel</h1>
+  </div>
+
+  <div class="col-12" *ngIf="!stimulatorOnline">
+    <p>Server není připojený ke stimulátoru. Než budete pokračovat, připojte se
+    pomocí <a routerLink="/settings">nastavení</a>.</p>
+  </div>
+
+  <div class="col-12">
+    <button class="btn btn-primary" (click)="handleUploadExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-upload"></i> Nahrát</button>
+    <button class="btn btn-success" (click)="handleRunExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-play"></i> Spustit</button>
+    <button class="btn btn-warning" (click)="handleStopExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-stop"></i> Zastavit</button>
+    <button class="btn btn-danger" (click)="handleClearExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-eraser"></i> Vymazat</button>
+  </div>
+
+  <div class="col-12">
+    <h2>Průběh experimentu</h2>
+  </div>
+<!-- TODO vymyslet nějaký pěkný průbeh experimentu -->
+</div>
