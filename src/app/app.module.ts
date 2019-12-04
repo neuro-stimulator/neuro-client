@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DEFAULT_TIMEOUT, RequestTimeoutInterceptor } from './share/interceptors/request-timeout-interceptor.service';
 import { ResponseInterceptor } from './share/interceptors/response.interceptor';
 import { ShareModule } from './share/share.module';
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ShareModule } from './share/share.module';
     // Third party modules
     ToastrModule.forRoot(),
     LoggerModule.forRoot({level: NgxLoggerLevel.TRACE, enableSourceMaps: true}),
+    LocalStorageModule.forRoot({prefix: 'stim-control', storageType: 'localStorage'}),
 
     // Root routing module
     AppRoutingModule

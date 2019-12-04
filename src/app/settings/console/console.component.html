@@ -1,1 +1,21 @@
-<p>console works!</p>
+<div class="row console-output">
+  <div class="console-clear">
+    <button class="btn btn-sm btn-light" (click)="handleClearHistory()">X</button>
+  </div>
+  <div class="col-12 border border-dark">
+    <div *ngFor="let command of console.commands$ | async">
+      {{command}}
+    </div>
+  </div>
+</div>
+
+<div class="row console-input">
+  <div class="col-12">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">></span>
+      </div>
+      <input type="text" class="form-control" placeholder="Zadete příkaz...">
+    </div>
+  </div>
+</div>

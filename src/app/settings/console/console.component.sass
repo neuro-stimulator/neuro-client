@@ -1,0 +1,25 @@
+//noinspection CssUnknownTarget
+@import "~src/sass/_style-variables.sass"
+
+.console-output
+  height: calc(100vh - 220px)
+  overflow: auto
+  position: relative
+
+  .console-clear
+    position: absolute
+    top: 4px
+    right: 4px
+    z-index: 1
+
+.console-input
+  height: 44px
+
+
+@media (min-width: 361px)
+  .console-output
+    height: calc(100vh - 180px)
+@media (min-width: 514px)
+  .console-output
+    height: calc(100vh - 140px)
+
