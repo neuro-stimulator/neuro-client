@@ -3,6 +3,7 @@ import { SerialService } from '../../share/serial.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { ConsoleCommand } from './console-command';
+import { CommandService } from './command.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class ConsoleService {
   private readonly _commands: BehaviorSubject<ConsoleCommand[]> = new BehaviorSubject<ConsoleCommand[]>([]);
   public readonly commands$: Observable<ConsoleCommand[]> = this._commands.asObservable();
 
-  constructor(private readonly _serial: SerialService,
+  constructor(private readonly _command: CommandService,
+              private readonly _serial: SerialService,
               private readonly _storage: LocalStorageService) {
     this._serial.rawData$.subscribe(data => {
       this._processData({date: new Date(), text: data});
@@ -35,8 +37,12 @@ export class ConsoleService {
     this._commands.next(commands);
   }
 
-  clearHistory() {
+  public clearHistory() {
     this._storage.set(ConsoleService.STORAGE_KEY, []);
     this._commands.next([]);
+  }
+
+  public processCommand(text: string) {
+    this._command.parseCommand(text);
   }
 }
