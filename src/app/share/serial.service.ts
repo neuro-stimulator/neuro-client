@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ResponseObject } from 'diplomka-share';
+import { ResponseObject, ClientCommand } from 'diplomka-share';
 import { NavigationService } from '../navigation/navigation.service';
 
 @Injectable({

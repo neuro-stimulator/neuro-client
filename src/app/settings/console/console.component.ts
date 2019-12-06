@@ -21,6 +21,7 @@ export class ConsoleComponent implements OnInit {
 
     if (event.code === 'Enter') {
       this.console.processCommand((event.target as HTMLInputElement).value);
+      (event.target as HTMLInputElement).value = '';
     }
   }
 }

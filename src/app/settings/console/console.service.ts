@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-import { SerialService } from '../../share/serial.service';
+
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Socket } from 'ngx-socket-io';
 import { LocalStorageService } from 'angular-2-local-storage';
+
+import { environment } from '../../../environments/environment';
+
+import { AliveCheckerService, ConnectionStatus } from '../../alive-checker.service';
 import { ConsoleCommand } from './console-command';
 import { CommandService } from './command.service';
 
@@ -12,14 +17,31 @@ export class ConsoleService {
 
   private static readonly STORAGE_KEY = 'commands';
 
+  /**
+   * Konstanta reprezentující výchozí URL adresu pro požadavky týkající se seriové linky
+   */
+
   private readonly _commands: BehaviorSubject<ConsoleCommand[]> = new BehaviorSubject<ConsoleCommand[]>([]);
   public readonly commands$: Observable<ConsoleCommand[]> = this._commands.asObservable();
 
-  constructor(private readonly _command: CommandService,
-              private readonly _serial: SerialService,
+  private readonly _socket = new Socket({url: `${environment.makeURL(environment.url.socket, environment.port.socket)}/commands`});
+
+  constructor(private readonly aliveChecker: AliveCheckerService,
+              private readonly _command: CommandService,
               private readonly _storage: LocalStorageService) {
-    this._serial.rawData$.subscribe(data => {
-      this._processData({date: new Date(), text: data});
+    // this._serial.rawData$.subscribe(data => {
+    //   this._processData({date: new Date(), text: data});
+    // });
+
+    aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
+      if (status === ConnectionStatus.CONNECTED) {
+        this._socket.connect();
+      }
+    });
+    aliveChecker.disconnect.subscribe(() => {
+      if (this._socket !== undefined) {
+        this._socket.disconnect();
+      }
     });
 
     this._loadHistory();
@@ -43,6 +65,12 @@ export class ConsoleService {
   }
 
   public processCommand(text: string) {
-    this._command.parseCommand(text);
+    this._processData({date: new Date(), text});
+    const [valid, name, data] = this._command.parseCommand(text);
+    if (!valid) {
+      this._processData({date: new Date(), text: data});
+    } else {
+      this._socket.emit('command', {name, data});
+    }
   }
 }
