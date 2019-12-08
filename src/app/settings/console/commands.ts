@@ -73,10 +73,10 @@ export class DisplayTextCommand implements ClientCommand<{ x: number, y: number,
       return [false, `Nedostatečný počet parametrů: 'display show x:number y:number content:text'`];
     }
 
-    if (typeof params[0] !== 'number') {
+    if (typeof +params[0] !== 'number') {
       return [false, 'X-ová souřadnice musí být číslo!'];
     }
-    if (typeof params[1] !== 'number') {
+    if (typeof +params[1] !== 'number') {
       return [false, 'Y-ová souřadnice musí být číslo!'];
     }
     if (typeof params[2] !== 'string') {
@@ -111,6 +111,26 @@ export class ExperimentUploadCommand implements ClientCommand<number> {
   public getValue(params: string[]): number {
     return null;
   }
+}
+
+export class ExperimentInitCommand implements ClientCommand<void> {
+
+  public getName(): string {
+    return 'experiment-init';
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length !== 0) {
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): number {
+    return null;
+  }
+
 }
 
 export class ExperimentStartCommand implements ClientCommand<void> {
@@ -164,5 +184,36 @@ export class ExperimentClearCommand implements ClientCommand<void> {
 
   public getValue(params: string[]): number {
     return null;
+  }
+}
+
+
+// Backdoor do stimulátoru
+export class OutputSetCommand implements ClientCommand<{index: number, brightness: number}> {
+  public getName(): string {
+    return 'output-set';
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length < 2) {
+      return [false, `Nedostatečný počet parametrů: 'output set index:number brightness:number'`];
+    }
+
+    if (params.length > 2) {
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
+    }
+
+    if (typeof +params[0] !== 'number') {
+      return [false, 'Index musí být číslo!'];
+    }
+    if (typeof +params[1] !== 'number') {
+      return [false, 'Svítivost musí být!'];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): {index: number, brightness: number} {
+    return {index: +params[0], brightness: +params[1]};
   }
 }
