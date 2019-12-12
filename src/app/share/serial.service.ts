@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ResponseObject, ClientCommand } from 'diplomka-share';
 import { NavigationService } from '../navigation/navigation.service';
+import { SerialDataEvent } from './serial-data.event';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,8 @@ export class SerialService {
    * Emitter pro přijatá data
    * Kdykoliv přijdou nějaká data ze serveru, tento emitter je pošle dál ke zpracování
    */
-  private readonly _rawData: EventEmitter<any> = new EventEmitter<any>();
-  public readonly rawData$: Observable<any> = this._rawData.asObservable();
+  private readonly _rawData: EventEmitter<SerialDataEvent> = new EventEmitter<SerialDataEvent>();
+  public readonly rawData$: Observable<SerialDataEvent> = this._rawData.asObservable();
 
   /**
    * Socket pro komunikaci mezi WebServerem a Webovou aplikací
