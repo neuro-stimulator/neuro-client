@@ -14,28 +14,29 @@ export class PlayerComponent implements OnInit {
 
   private _experimentID: number;
   private _rounds = 0;
+  private _processedRounds = 0;
   private _eventOffset = 0;
   public timestampStart = 125608628;
 
   private events: IOEvent[] = [
-    {name: 'EventIOChange', ioType: 'output', state: 'off', index: 0, timestamp: 129501263},
-    {name: 'EventIOChange', ioType: 'output', state: 'off', index: 1, timestamp: 129501281},
-    {name: 'EventIOChange', ioType: 'output', state: 'off', index: 2, timestamp: 129501298},
-    {name: 'EventIOChange', ioType: 'output', state: 'off', index: 3, timestamp: 129501316},
-    {name: 'EventIOChange', ioType: 'output', state: 'on', index: 1, timestamp: 130501240},
-    {name: 'EventIOChange', ioType: 'output', state: 'on', index: 2, timestamp: 130501259},
-    {name: 'EventIOChange', ioType: 'output', state: 'on', index: 3, timestamp: 130501276},
-    {name: 'EventIOChange', ioType: 'output', state: 'off', index: 0, timestamp: 132501315},
-    {name: 'EventIOChange', ioType: 'output', state: 'off', index: 1, timestamp: 132501333},
-    {name: 'EventIOChange', ioType: 'output', state: 'off', index: 2, timestamp: 132501350},
-    {name: 'EventIOChange', ioType: 'output', state: 'off', index: 3, timestamp: 132501368},
-    {name: 'EventIOChange', ioType: 'output', state: 'on', index: 0, timestamp: 133501240},
-    {name: 'EventIOChange', ioType: 'output', state: 'on', index: 1, timestamp: 133501258},
-    {name: 'EventIOChange', ioType: 'output', state: 'on', index: 2, timestamp: 133501276},
-    {name: 'EventIOChange', ioType: 'output', state: 'off', index: 0, timestamp: 135501315},
-    {name: 'EventIOChange', ioType: 'output', state: 'off', index: 1, timestamp: 135501332},
-    {name: 'EventIOChange', ioType: 'output', state: 'off', index: 2, timestamp: 135501350},
-    {name: 'EventIOChange', ioType: 'output', state: 'off', index: 3, timestamp: 135501368},
+    // {name: 'EventIOChange', ioType: 'output', state: 'off', index: 0, timestamp: 129501263},
+    // {name: 'EventIOChange', ioType: 'output', state: 'off', index: 1, timestamp: 129501281},
+    // {name: 'EventIOChange', ioType: 'output', state: 'off', index: 2, timestamp: 129501298},
+    // {name: 'EventIOChange', ioType: 'output', state: 'off', index: 3, timestamp: 129501316},
+    // {name: 'EventIOChange', ioType: 'output', state: 'on', index: 1, timestamp: 130501240},
+    // {name: 'EventIOChange', ioType: 'output', state: 'on', index: 2, timestamp: 130501259},
+    // {name: 'EventIOChange', ioType: 'output', state: 'on', index: 3, timestamp: 130501276},
+    // {name: 'EventIOChange', ioType: 'output', state: 'off', index: 0, timestamp: 132501315},
+    // {name: 'EventIOChange', ioType: 'output', state: 'off', index: 1, timestamp: 132501333},
+    // {name: 'EventIOChange', ioType: 'output', state: 'off', index: 2, timestamp: 132501350},
+    // {name: 'EventIOChange', ioType: 'output', state: 'off', index: 3, timestamp: 132501368},
+    // {name: 'EventIOChange', ioType: 'output', state: 'on', index: 0, timestamp: 133501240},
+    // {name: 'EventIOChange', ioType: 'output', state: 'on', index: 1, timestamp: 133501258},
+    // {name: 'EventIOChange', ioType: 'output', state: 'on', index: 2, timestamp: 133501276},
+    // {name: 'EventIOChange', ioType: 'output', state: 'off', index: 0, timestamp: 135501315},
+    // {name: 'EventIOChange', ioType: 'output', state: 'off', index: 1, timestamp: 135501332},
+    // {name: 'EventIOChange', ioType: 'output', state: 'off', index: 2, timestamp: 135501350},
+    // {name: 'EventIOChange', ioType: 'output', state: 'off', index: 3, timestamp: 135501368},
   ];
 
   @ViewChild('canvas', {static: false}) canvas: ElementRef;
@@ -77,9 +78,14 @@ export class PlayerComponent implements OnInit {
   }
 
   private _renderExperimentProgress() {
+    if (this._processedRounds === this._processedRounds) {
+      
+    }
+
     const canvas = (this.canvas.nativeElement as HTMLCanvasElement);
     const graphics = canvas.getContext('2d');
     const helpData: {event: any, x: number, y: number}[] = [];
+    const peakHeight = 20;
     let dynamicTimestampStart = this.timestampStart;
 
     for (let i = 0; i < 8; i++) {
@@ -110,8 +116,8 @@ export class PlayerComponent implements OnInit {
         dynamicTimestampStart = event.timestamp;
       }
       graphics.moveTo(lastX, lastY);
-      const newX = lastX + delta;
-      const newY = lastY;
+      let newX = lastX + delta;
+      let newY = lastY;
       if (canvas.width < newX) {
         canvas.width = newX;
         this.logger.debug(`Rozšiřuji canvas na novou šířku: ${newX}`);
@@ -125,15 +131,25 @@ export class PlayerComponent implements OnInit {
         if (event.state === 'on') {
           this.logger.trace('output on');
           // Poslední event musí být deaktivace
-
-          graphics.strokeStyle = 'blue';
+          newY -= peakHeight;
+          // graphics.strokeStyle = 'blue';
           graphics.lineTo(newX, newY);
-          graphics.stroke();
+          // graphics.stroke();
         } else { // Výstup se deaktivovat
           this.logger.trace('output off');
-          graphics.strokeStyle = 'red';
-          graphics.lineTo(newX, newY);
-          graphics.stroke();
+          if (lastEvent.event.state === 'on') {
+            graphics.lineTo(newX, newY);
+            newY += peakHeight;
+            graphics.lineTo(newX, newY);
+            newX += delta;
+            graphics.lineTo(newX, newY);
+          } else {
+            newX += (2 * delta);
+            graphics.lineTo(newX, newY);
+          }
+          // graphics.strokeStyle = 'red';
+          // graphics.lineTo(newX, newY);
+          // graphics.stroke();
         }
       }
 
