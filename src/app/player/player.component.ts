@@ -21,9 +21,9 @@ export class PlayerComponent implements OnInit {
     'rgba(156,154,121,0.5)',
     'rgba(213,102,44,0.5)',
     'rgba(101,73,119,0.5)',
+    'rgba(62,72,85,0.5)',
     'rgba(69,109,147,0.5)',
     'rgba(123,156,172,0.5)',
-    'rgba(241,234,236,0.5)',
   ];
 
   private _experimentID: number;
@@ -102,34 +102,40 @@ export class PlayerComponent implements OnInit {
   }
 
   private _renderExperimentProgress() {
-    const canvas = (this.canvas.nativeElement as HTMLCanvasElement);
-    canvas.width = canvas.parentElement.clientWidth;
-    canvas.height = environment.maxOutputCount * 30;
-    const graphics = canvas.getContext('2d');
-    const helpData: {event: any, x: number, y: number}[] = [];
     const peakHeight = 20;
     const lineHeight = 30;
     const maxDelta = 30;
+    const canvas = (this.canvas.nativeElement as HTMLCanvasElement);
+    canvas.width = canvas.parentElement.clientWidth;
+    canvas.height = (environment.maxOutputCount + 1) * lineHeight;
+    const graphics = canvas.getContext('2d');
+    const helpData: {event: any, x: number, y: number}[] = [];
 
     graphics.clearRect(0, 0, canvas.width, canvas.height);
-    graphics.strokeStyle = 'black';
-    graphics.beginPath();
+
+    // graphics.beginPath();
     graphics.moveTo(0, 0);
 
     for (let i = 0; i < environment.maxOutputCount; i++) {
       const event = {event: null, x: 20, y: lineHeight + (i * lineHeight)};
       graphics.fillStyle = PlayerComponent.OUTPUT_COLORS[i];
       graphics.fillRect(event.x - 20, event.y - lineHeight, canvas.width, lineHeight);
+      graphics.strokeStyle = 'black';
       graphics.strokeText(`${i + 1}.`, event.x - 10, event.y - (lineHeight / 2) + 3);
       graphics.moveTo(event.x, event.y);
+      graphics.strokeStyle = 'rgba(62,62,62,0.28)';
       graphics.lineTo(canvas.width, event.y);
+      graphics.stroke();
       helpData.push(event);
     }
     graphics.stroke();
+
+    graphics.strokeStyle = 'black';
     graphics.moveTo(0, 0);
 
-
+    let j = 1;
     for (let i = this._eventOffsetIndexArray[this.eventOffsetIndex]; i < this.events.length; i++) {
+      graphics.beginPath();
       const event = this.events[i];
       // Pokud v pomocných datech na indexu nic není
       if (helpData[event.index].event === null) {
@@ -186,7 +192,8 @@ export class PlayerComponent implements OnInit {
               graphics.lineTo(newX, canvas.height);
 
               const textX = (helpData[event.index].x + newX) / 2;
-              graphics.strokeText(`${i}.`, textX, canvas.height - 10);
+              graphics.strokeText(`${this.eventOffsetIndex + j}.`, textX, canvas.height - 10);
+              j++;
           }
         }
       } else {
@@ -199,8 +206,9 @@ export class PlayerComponent implements OnInit {
       helpData[event.index].x = newX;
       helpData[event.index].y = newY;
 
+      graphics.stroke();
+      graphics.closePath();
     }
-    graphics.stroke();
   }
 
   ngOnInit() {
@@ -245,7 +253,6 @@ export class PlayerComponent implements OnInit {
 
   handleOffsetIndexChange(offsetIndex: number) {
     this.eventOffsetIndex = offsetIndex - 1;
-    // this._rounds = this._processedRounds - 1;
     this._renderExperimentProgress();
   }
 }
