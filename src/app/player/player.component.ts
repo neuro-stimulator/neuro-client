@@ -6,6 +6,7 @@ import { IOEvent, SerialDataEvent, StimulatorStateEvent } from '../share/serial-
 import { NGXLogger } from 'ngx-logger';
 import { environment } from '../../environments/environment';
 import { Options as SliderOptions } from 'ng5-slider/options';
+import { Round } from './round';
 
 
 @Component({
@@ -70,7 +71,6 @@ export class PlayerComponent implements OnInit {
         for (let i = 0; i < environment.maxOutputCount; i++) {
           const e: IOEvent = {name: 'EventIOChange', ioType: 'output', state: 'off', index: i, timestamp: event.timestamp};
           this.events.push(e);
-          console.log(e);
         }
         this._eventOffsetIndexArray.push(this._eventOffsetCounter);
         this._eventOffsetCounter += environment.maxOutputCount;
@@ -80,7 +80,7 @@ export class PlayerComponent implements OnInit {
 
   private _handleIODataEvent(event: IOEvent) {
     this.events.push(event);
-    if (event.ioType === 'output' && event.state === 'off' && event.index === 0) {
+    if (event.ioType === 'output' && event.state === 'off' && event.index === 3) {
       this._rounds++;
       this._eventOffsetIndexArray.push(this._eventOffsetCounter);
 
@@ -105,51 +105,56 @@ export class PlayerComponent implements OnInit {
     const peakHeight = 20;
     const lineHeight = 30;
     const maxDelta = 30;
+    const graphOffset = 30;
     const canvas = (this.canvas.nativeElement as HTMLCanvasElement);
     canvas.width = canvas.parentElement.clientWidth;
     canvas.height = (environment.maxOutputCount + 1) * lineHeight;
     const graphics = canvas.getContext('2d');
-    const helpData: {event: any, x: number, y: number}[] = [];
+    const rounds: Round[] = [];
 
     graphics.clearRect(0, 0, canvas.width, canvas.height);
 
-    // graphics.beginPath();
+    graphics.beginPath();
     graphics.moveTo(0, 0);
 
     for (let i = 0; i < environment.maxOutputCount; i++) {
-      const event = {event: null, x: 20, y: lineHeight + (i * lineHeight)};
+      const round: Round = {
+        input: {event: null, x: graphOffset, y: lineHeight + (i * lineHeight)},
+        output: {event: null, x: graphOffset, y: lineHeight + (i * lineHeight)},
+      };
       graphics.fillStyle = PlayerComponent.OUTPUT_COLORS[i];
-      graphics.fillRect(event.x - 20, event.y - lineHeight, canvas.width, lineHeight);
+      graphics.fillRect(round.output.x - graphOffset, round.output.y - lineHeight, canvas.width, lineHeight);
       graphics.strokeStyle = 'black';
-      graphics.strokeText(`${i + 1}.`, event.x - 10, event.y - (lineHeight / 2) + 3);
-      graphics.moveTo(event.x, event.y);
+      graphics.strokeText(`${i + 1}.`, round.output.x - (graphOffset / 2), round.output.y - (lineHeight / 2) + 3);
+      graphics.moveTo(round.output.x, round.output.y);
       graphics.strokeStyle = 'rgba(62,62,62,0.28)';
-      graphics.lineTo(canvas.width, event.y);
+      graphics.lineTo(canvas.width, round.output.y);
       graphics.stroke();
-      helpData.push(event);
+      rounds.push(round);
     }
-    graphics.stroke();
 
-    graphics.strokeStyle = 'black';
+    graphics.stroke();
+    graphics.closePath();
     graphics.moveTo(0, 0);
 
     let j = 1;
     for (let i = this._eventOffsetIndexArray[this.eventOffsetIndex]; i < this.events.length; i++) {
-      graphics.beginPath();
       const event = this.events[i];
-      // Pokud v pomocných datech na indexu nic není
-      if (helpData[event.index].event === null) {
-        // Tak event uložím
-        helpData[event.index].event = event;
-        if (event.state === 'on') {
-          helpData[event.index].y -= peakHeight;
+      if (event.ioType === 'output') {
+        // Pokud v pomocných datech na indexu nic není
+        if (rounds[event.index].output.event === null) {
+          // Tak event uložím
+          rounds[event.index].output.event = event;
+          if (event.state === 'on') {
+            rounds[event.index].output.y -= peakHeight;
+          }
+          continue;
         }
-        continue;
       }
 
-      const lastEvent = helpData[event.index];
-      const lastX = lastEvent.x;
-      const lastY = lastEvent.y;
+      const previousRound = rounds[event.index];
+      const lastX = previousRound.output.x;
+      const lastY = previousRound.output.y;
       let dynamicTimestampStart = this.events[event.index].timestamp;
       let delta = event.timestamp - dynamicTimestampStart;
       if (delta > maxDelta) {
@@ -160,11 +165,13 @@ export class PlayerComponent implements OnInit {
       let newX = lastX + delta;
       let newY = lastY;
       if (newX > (canvas.width - delta)) {
-        graphics.stroke();
         this.eventOffsetIndex++;
 
         return;
       }
+
+      graphics.strokeStyle = 'black';
+      graphics.beginPath();
 
       // Na indexu se nachází nějaký event
       // Pokud se jedná o event výstupu
@@ -172,42 +179,68 @@ export class PlayerComponent implements OnInit {
         // Výstup se aktivoval
         if (event.state === 'on') {
           // Poslední event musí být deaktivace
-          newY -= peakHeight;
           newX -= delta;
+          graphics.moveTo(newX, newY);
+          newY -= peakHeight;
           graphics.lineTo(newX, newY);
+
+          graphics.stroke();
         } else { // Výstup se deaktivovat
-          if (lastEvent.event.state === 'on') {
+          if (previousRound.output.event.state === 'on') {
+            graphics.moveTo(lastX, lastY);
             graphics.lineTo(newX, newY);
             newY += peakHeight;
             graphics.lineTo(newX, newY);
             newX += delta;
             graphics.lineTo(newX, newY);
+            graphics.stroke();
           } else {
             newX += delta;
+            graphics.moveTo(lastX, lastY);
             graphics.lineTo(newX, newY);
-          }
-
-          if (event.index === 0) {
-              graphics.moveTo(newX, 0);
-              graphics.lineTo(newX, canvas.height);
-
-              const textX = (helpData[event.index].x + newX) / 2;
-              graphics.strokeText(`${this.eventOffsetIndex + j}.`, textX, canvas.height - 10);
-              j++;
+            graphics.stroke();
           }
         }
+
+        rounds[event.index].output.event = event;
+        rounds[event.index].output.x = newX;
+        rounds[event.index].output.y = newY;
       } else {
-        continue;
+        graphics.strokeStyle = 'blue';
+        let deltaY = 0;
+        if (previousRound.output.event && previousRound.output.event.state === 'on') {
+          deltaY = peakHeight;
+        }
+        newY += deltaY;
+        graphics.moveTo(newX, newY);
+        if (previousRound.output.event && previousRound.output.event.state === 'off') {
+          deltaY = peakHeight;
+        }
+        newY -= deltaY;
+        graphics.lineTo(newX, newY);
+        graphics.stroke();
+
+        rounds[event.index].input.event = event;
+        rounds[event.index].input.x = newX;
+        rounds[event.index].input.y = newY;
       }
 
 
-      graphics.strokeStyle = 'black';
-      helpData[event.index].event = event;
-      helpData[event.index].x = newX;
-      helpData[event.index].y = newY;
-
       graphics.stroke();
       graphics.closePath();
+      if (event.ioType === 'output' && event.state === 'off' && event.index === 0) {
+        graphics.beginPath();
+        graphics.strokeStyle = 'orange';
+        graphics.moveTo(newX, 0);
+        graphics.lineTo(newX, canvas.height);
+        graphics.stroke();
+        graphics.closePath();
+        graphics.strokeStyle = 'black';
+
+        const textX = (lastX + newX) / 2;
+        graphics.strokeText(`${this.eventOffsetIndex + j}.`, textX, canvas.height - 10);
+        j++;
+      }
     }
   }
 
