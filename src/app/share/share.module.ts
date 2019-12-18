@@ -5,14 +5,14 @@ import { ExperimentTypeResolverDirective } from './experiment-type-resolver.dire
 @NgModule({
   declarations: [
     ContentTogglerDirective,
-    ExperimentTypeResolverDirective
+    ExperimentTypeResolverDirective,
   ],
   imports: [
 
   ],
   exports: [
     ContentTogglerDirective,
-    ExperimentTypeResolverDirective
+    ExperimentTypeResolverDirective,
   ]
 })
 export class ShareModule {

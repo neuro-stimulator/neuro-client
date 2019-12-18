@@ -17,9 +17,8 @@
 
   <div class="col-12">
     <h2>Průběh experimentu</h2>
-    <div style="width: 100%; overflow: auto">
-      <canvas height="150" width="300" #canvas></canvas>
+    <div style="width: 100%;">
+      <app-experiment-viewer [incommingEvent]="eventEmitter" [outputCount]="outputCount"></app-experiment-viewer>
     </div>
-    <ng5-slider id="event-offset-index" [value]="eventOffsetIndex" [options]="eventOffsetIndexOptions" (valueChange)="handleOffsetIndexChange($event)"></ng5-slider>
   </div>
 </div>
