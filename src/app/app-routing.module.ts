@@ -18,6 +18,11 @@ const routes: Routes = [
   //   loadChildren: () => import('./simulation/simulation.module').then(mod => mod.SimulationModule)
   // },
   {
+    path: 'results',
+    pathMatch: 'prefix',
+    loadChildren: () => import('./experiment-results/experiment-results.module').then(mod => mod.ExperimentResultsModule)
+  },
+  {
     path: 'settings',
     pathMatch: 'prefix',
     loadChildren: () => import('./settings/settings.module').then(mod => mod.SettingsModule)
