@@ -12,11 +12,11 @@ const routes: Routes = [
     pathMatch: 'prefix',
     loadChildren: () => import('./player/player.module').then(mod => mod.PlayerModule)
   },
-  {
-    path: 'simulation',
-    pathMatch: 'prefix',
-    loadChildren: () => import('./simulation/simulation.module').then(mod => mod.SimulationModule)
-  },
+  // {
+  //   path: 'simulation',
+  //   pathMatch: 'prefix',
+  //   loadChildren: () => import('./simulation/simulation.module').then(mod => mod.SimulationModule)
+  // },
   {
     path: 'settings',
     pathMatch: 'prefix',
