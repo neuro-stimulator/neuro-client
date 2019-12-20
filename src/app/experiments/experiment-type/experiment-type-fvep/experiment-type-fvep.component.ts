@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AbstractControl, FormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
 import { Options as SliderOptions } from 'ng5-slider/options';
@@ -29,16 +29,6 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
     animate: false
   };
 
-  brightnessSliderOptions: SliderOptions = {
-    floor: 0,
-    ceil: 100,
-    showTicks: false,
-    showTicksValues: false,
-    tickStep: 1,
-    showSelectionBar: true,
-    animate: false
-  };
-
   constructor(service: ExperimentsService,
               toastr: ToastrService,
               router: Router,
@@ -52,15 +42,33 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
     super.ngOnInit();
   }
 
+  protected _createOutputsFormControls(): FormGroup[] {
+    const array = [];
+    for (let i = 0; i < environment.maxOutputCount; i++) {
+      const group = new FormGroup({
+        id: new FormControl(null, Validators.required),
+        experimentId: new FormControl(null, Validators.required),
+        orderId: new FormControl(null, Validators.required),
+        timeOn: new FormControl(null, [Validators.required]),
+        timeOff: new FormControl(null, [Validators.required]),
+        frequency: new FormControl(null, [Validators.required]),
+        dutyCycle: new FormControl(null, [Validators.required]),
+        brightness: new FormControl(null, [
+          Validators.required, Validators.min(0), Validators.max(100)
+        ]),
+      });
+      group.setParent(this.form);
+      array.push(group);
+    }
+
+    return array;
+  }
+
   protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
     const myControls = {
       outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(environment.maxOutputCount)]),
-      timeOn: new FormControl(null, [Validators.required]),
-      timeOff: new FormControl(null, [Validators.required]),
-      frequency: new FormControl(null, [Validators.required]),
-      dutyCycle: new FormControl(null, [Validators.required]),
-      brightness: new FormControl(null, [Validators.required])
+      outputs: new FormArray([])
     };
 
     return {...superControls, ...myControls};
@@ -74,36 +82,28 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
       type: ExperimentType.FVEP,
       output: {},
       outputCount: 1,
-      timeOn: 0,
-      timeOff: 0,
-      frequency: 0,
-      dutyCycle: 0,
-      brightness: 100
+      outputs: []
+      // timeOn: 0,
+      // timeOff: 0,
+      // frequency: 0,
+      // dutyCycle: 0,
+      // brightness: 100
     };
   }
 
+  protected _updateFormGroup(experiment: ExperimentFVEP) {
+    if (experiment.outputs.length > 0) {
+      (this.form.get('outputs') as FormArray).controls = this._createOutputsFormControls();
+    } else {
+      (this.form.get('outputs') as FormArray).controls = [];
+    }
+
+    super._updateFormGroup(experiment);
+  }
 
   get outputCount() {
     return this.form.get('outputCount');
   }
 
-  get timeOn() {
-    return this.form.get('timeOn');
-  }
 
-  get timeOff() {
-    return this.form.get('timeOff');
-  }
-
-  get frequency() {
-    return this.form.get('frequency');
-  }
-
-  get dutyCycle() {
-    return this.form.get('dutyCycle');
-  }
-
-  get brightness() {
-    return this.form.get('brightness');
-  }
 }
