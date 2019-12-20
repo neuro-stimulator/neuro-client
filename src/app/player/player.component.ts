@@ -8,6 +8,7 @@ import { IOEvent, SerialDataEvent, StimulatorStateEvent } from '../share/serial-
 
 import { CommandsService } from '../share/commands.service';
 import { SerialService } from '../share/serial.service';
+import { ExperimentsService } from '../experiments/experiments.service';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class PlayerComponent implements OnInit {
 
   constructor(private readonly _command: CommandsService,
               private readonly _serial: SerialService,
+              private readonly _service: ExperimentsService,
               private readonly _router: Router,
               private readonly _route: ActivatedRoute,
               private readonly logger: NGXLogger) {
@@ -59,6 +61,9 @@ export class PlayerComponent implements OnInit {
     }
 
     this._experimentID = this._route.snapshot.params['id'];
+    this._service.one(this._experimentID).then(experiment => {
+      this.outputCount = experiment.outputCount;
+    });
     this._serial.rawData$.subscribe((event: SerialDataEvent) => this._handleRawData(event));
   }
 
