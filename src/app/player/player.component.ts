@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { NGXLogger } from 'ngx-logger';
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 import { IOEvent, SerialDataEvent, StimulatorStateEvent } from '../share/serial-data.event';
 
@@ -29,7 +30,8 @@ export class PlayerComponent implements OnInit {
               private readonly _service: ExperimentsService,
               private readonly _router: Router,
               private readonly _route: ActivatedRoute,
-              private readonly logger: NGXLogger) {
+              private readonly logger: NGXLogger,
+              private readonly toaster: ToastrService) {
   }
 
   private _handleRawData(event: SerialDataEvent) {
@@ -45,11 +47,25 @@ export class PlayerComponent implements OnInit {
 
   private _handleStimulatorStateEvent(event: StimulatorStateEvent) {
     switch (event.state) {
+      // Experiment byl ukončen
+      case 0x00:
+        this.toaster.success('Experiment byl ukončen.');
+        this._router.navigate(['/results']);
+        break;
+      // Experiment byl spuštěn
       case 0x01:
+        this.toaster.success('Experiment byl spuštěn.');
         for (let i = 0; i < this.outputCount; i++) {
           const e: IOEvent = {name: 'EventIOChange', ioType: 'output', state: 'off', index: i, timestamp: event.timestamp};
           this._eventEmitter.next(e);
         }
+        break;
+        // Experiment byl inicializován
+      case 0x02:
+        this.toaster.success('Experiment byl inicializován.');
+        break;
+      case 0x03:
+        this.toaster.warning('Konfigurace experimentů byla vymazána.');
         break;
     }
   }
@@ -68,17 +84,16 @@ export class PlayerComponent implements OnInit {
   }
 
 
-
   handleUploadExperiment() {
     this._command.experimentSetup(this._experimentID);
   }
 
   handleRunExperiment() {
-    this._command.experimentStart();
+    this._command.experimentStart(this._experimentID);
   }
 
   handleStopExperiment() {
-    this._command.experimentStop();
+    this._command.experimentStop(this._experimentID);
   }
 
   handleClearExperiment() {

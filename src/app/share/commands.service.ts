@@ -20,12 +20,12 @@ export class CommandsService {
     return await this._http.patch(`${CommandsService.BASE_API_URL}/time-set/${Date.now()}`, null).toPromise();
   }
 
-  public async experimentStart() {
-    return await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/start`, null).toPromise();
+  public async experimentStart(experimentID: number) {
+    return await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/start/${experimentID}`, null).toPromise();
   }
 
-  public async experimentStop() {
-    return await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/stop`, null).toPromise();
+  public async experimentStop(experimentID: number) {
+    return await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/stop/${experimentID}`, null).toPromise();
   }
 
   public async experimentSetup(id: number) {

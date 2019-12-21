@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-experiment-result-ghost-item',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./experiment-result-ghost-item.component.sass']
 })
 export class ExperimentResultGhostItemComponent implements OnInit {
+
+  @Input() ghosts: [];
 
   constructor() { }
 

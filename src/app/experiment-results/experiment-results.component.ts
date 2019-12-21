@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { ExperimentResult } from 'diplomka-share';
+
+import { ExperimentResultsService } from './experiment-results.service';
 
 @Component({
   selector: 'app-experiment-results',
@@ -7,9 +13,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExperimentResultsComponent implements OnInit {
 
-  constructor() { }
+  ghosts: any[] = [];
+  experimentResults: Observable<ExperimentResult[]>;
 
-  ngOnInit() {
+  constructor(private readonly _service: ExperimentResultsService,
+              private readonly _router: Router,
+              private readonly _route: ActivatedRoute) {
   }
 
+  ngOnInit() {
+    this.ghosts = this._service.makeGhosts();
+    this.experimentResults = this._service.records;
+    this._service.all()
+        .then(() => {
+          this.ghosts = [];
+        });
+  }
+
+  handleView(experimentResult: ExperimentResult) {
+
+  }
+
+  handleDelete(experimentResult: ExperimentResult) {
+
+  }
 }

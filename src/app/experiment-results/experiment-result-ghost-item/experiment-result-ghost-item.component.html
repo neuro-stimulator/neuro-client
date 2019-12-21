@@ -1,1 +1,17 @@
-<p>experiment-result-ghost-item works!</p>
+<ul class="list-group experiment-result-list">
+  <li class="list-group-item list-group-item-action" *ngFor="let ghost of ghosts">
+
+    <div class="row ghost">
+      <!-- Experiment result image representation -->
+      <div class="col-2 col-md-1 vertical-center">
+        <div class="experiment-icon none"></div>
+      </div>
+      <!-- Experiment result Name -->
+      <div class="col-8 col-md-9 p-4">
+        <div class="ghost-name"></div>
+        <div class="ghost-date"></div>
+      </div>
+    </div>
+
+  </li>
+</ul>
