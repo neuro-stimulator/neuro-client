@@ -1,16 +1,16 @@
-import { AfterContentInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { IOEvent } from '../serial-data.event';
 import { Options as SliderOptions } from 'ng5-slider/options';
 import { environment } from '../../../environments/environment';
 import { Round } from '../../player/round';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-experiment-viewer',
   templateUrl: './experiment-viewer.component.html',
   styleUrls: ['./experiment-viewer.component.sass']
 })
-export class ExperimentViewerComponent implements OnInit, AfterContentInit {
+export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDestroy {
 
   private static readonly DEFAULT_OUTPUT_COLORS = [
     'rgba(119,94,64,0.5)',
@@ -38,6 +38,8 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit {
   // Pole všech eventů, které uběhly v aktuálním experimentu
   private _events: IOEvent[] = [];
 
+  private _incommingEventSubscription: Subscription;
+
   @ViewChild('experimentCanvas', {static: true}) canvas: ElementRef;
   @Input() outputCount = environment.maxOutputCount;
   @Input() lineHeight = 30;
@@ -62,11 +64,21 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit {
   constructor() { }
 
   ngOnInit() {
-    this.incommingEvent.subscribe(event => { this._handleIncommingEvent(event); });
+    if (this.incommingEvent !== undefined) {
+      this._incommingEventSubscription = this.incommingEvent.subscribe(event => {
+        this._handleIncommingEvent(event);
+      });
+    }
   }
 
   ngAfterContentInit(): void {
     this._renderExperimentProgress();
+  }
+
+  ngOnDestroy(): void {
+    if (this._incommingEventSubscription !== undefined) {
+      this._incommingEventSubscription.unsubscribe();
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -75,7 +87,6 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit {
   }
 
   private _handleIncommingEvent(event: IOEvent) {
-    console.log(event);
     // Uložím si událost do pole všech událostí
     this._events.push(event);
 

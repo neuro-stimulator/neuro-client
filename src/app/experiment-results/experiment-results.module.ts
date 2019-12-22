@@ -6,6 +6,7 @@ import { ExperimentResultsComponent } from './experiment-results.component';
 import { ExperimentResultItemComponent } from './experiment-result-item/experiment-result-item.component';
 import { ExperimentResultGhostItemComponent } from './experiment-result-ghost-item/experiment-result-ghost-item.component';
 import { ExperimentResultComponent } from './experiment-result/experiment-result.component';
+import { ExperimentViewerModule } from '../share/experiment-viewer/experiment-viewer.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ExperimentResultComponent } from './experiment-result/experiment-result
   ],
   imports: [
     CommonModule,
-    ExperimentResultsRoutingModule
+    ExperimentResultsRoutingModule,
+    ExperimentViewerModule
   ]
 })
 export class ExperimentResultsModule {

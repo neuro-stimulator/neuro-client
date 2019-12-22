@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
@@ -7,7 +7,8 @@ import { ExperimentType, ExperimentResult, createEmptyExperimentResult, createEm
 
 import { NavigationService } from '../../navigation/navigation.service';
 import { ExperimentResultsService } from '../experiment-results.service';
-import { Subscription, TimeoutError } from 'rxjs';
+import { Observable, Subscription, TimeoutError } from 'rxjs';
+import { IOEvent } from '../../share/serial-data.event';
 
 @Component({
   selector: 'app-experiment-result',
@@ -17,8 +18,11 @@ import { Subscription, TimeoutError } from 'rxjs';
 export class ExperimentResultComponent implements OnInit {
 
   private _experimentResult: ExperimentResult;
-
   private _connectedSubscription: Subscription;
+  private readonly _incommingEvent: EventEmitter<IOEvent> = new EventEmitter<IOEvent>();
+
+  // events: IOEvent[] = [];
+  incommingEvent: Observable<IOEvent> = this._incommingEvent.asObservable();
 
   constructor(private readonly _service: ExperimentResultsService,
               private readonly toastr: ToastrService,
@@ -63,7 +67,12 @@ export class ExperimentResultComponent implements OnInit {
               return;
             }
 
-            this._service.resultData(experimentResult);
+            this._service.resultData(experimentResult)
+                .then((resultData: IOEvent[]) => {
+                  for (const data of resultData) {
+                    this._incommingEvent.next(data);
+                  }
+                });
           });
     }
   }

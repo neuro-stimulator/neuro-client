@@ -55,10 +55,6 @@ export class PlayerComponent implements OnInit {
       // Experiment byl spuštěn
       case 0x01:
         this.toaster.success('Experiment byl spuštěn.');
-        for (let i = 0; i < this.outputCount; i++) {
-          const e: IOEvent = {name: 'EventIOChange', ioType: 'output', state: 'off', index: i, timestamp: event.timestamp};
-          this._eventEmitter.next(e);
-        }
         break;
         // Experiment byl inicializován
       case 0x02:

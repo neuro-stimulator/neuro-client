@@ -11,7 +11,7 @@
         <div>
           <a [routerLink]="[experimentResult.id]"><strong>{{experimentResult.name || 'Nepojmenováno'}}</strong></a>
         </div>
-        <div><small class="text-truncate experiment-description">{{experimentResult.date | date:'dd.MM.yyyy HH:mm'}}</small></div>
+        <div><small class="text-truncate experiment-description">{{experimentResult.date | date:'HH:mm, dd.MM.yyyy'}}</small></div>
       </div>
       <!-- Experiment result toolbar buttons -->
       <div class="col-1 experiment-result-toolbar">

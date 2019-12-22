@@ -19,6 +19,9 @@ export class ExperimentResultItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.experimentResults.subscribe(value => {
+      console.log(value);
+    });
   }
 
   handleView(experimentResult: ExperimentResult) {

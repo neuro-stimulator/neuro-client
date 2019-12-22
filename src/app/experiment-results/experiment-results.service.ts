@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { ExperimentResult } from 'diplomka-share';
+import { ResponseObject, ExperimentResult } from 'diplomka-share';
 
 import { BaseService } from '../share/base-service';
 import { AliveCheckerService } from '../alive-checker.service';
 import { HttpClient } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 import { environment } from '../../environments/environment';
+import { IOEvent } from '../share/serial-data.event';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class ExperimentResultsService extends BaseService<ExperimentResult> {
   }
 
   resultData(experimentResult: ExperimentResult) {
-    return this._http.get(`${ExperimentResultsService.BASE_API_URL}/result-data/${experimentResult.id}`).toPromise();
+    return this._http.get<ResponseObject<IOEvent[]>>(`${ExperimentResultsService.BASE_API_URL}/result-data/${experimentResult.id}`)
+               .toPromise()
+               .then(result => {
+                 return result.data;
+               });
   }
 }
