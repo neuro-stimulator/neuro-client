@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { ExperimentResult } from 'diplomka-share';
 
 import { ExperimentResultsService } from './experiment-results.service';
+import { ModalComponent } from '../share/modal/modal.component';
+import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.component';
 
 @Component({
   selector: 'app-experiment-results',
@@ -12,6 +14,8 @@ import { ExperimentResultsService } from './experiment-results.service';
   styleUrls: ['./experiment-results.component.sass']
 })
 export class ExperimentResultsComponent implements OnInit {
+
+  @ViewChild('modal', {static: true}) modal: ModalComponent;
 
   ghosts: any[] = [];
   experimentResults: Observable<ExperimentResult[]>;
@@ -31,10 +35,15 @@ export class ExperimentResultsComponent implements OnInit {
   }
 
   handleView(experimentResult: ExperimentResult) {
-
+    this._router.navigate([experimentResult.id], {relativeTo: this._route});
   }
 
   handleDelete(experimentResult: ExperimentResult) {
-
+    const self = this;
+    this.modal.showComponent = ConfirmDialogComponent;
+    this.modal.open({
+      message: 'Opravdu si přejete smazat vybraný výsledek experimentu?',
+      confirm: () => self._service.delete(experimentResult.id)
+    });
   }
 }

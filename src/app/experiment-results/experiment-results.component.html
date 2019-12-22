@@ -1,7 +1,7 @@
 <header class="row">
   <div class="col-12 col-sm-6 offset-sm-3 p-2">
     <!--suppress HtmlFormInputWithoutLabel -->
-    <input class="form-control form-control-sm" style="width: 100%" type="text" placeholder="Najít experiment...">
+    <input class="form-control form-control-sm" style="width: 100%" type="text" placeholder="Najít výsledek experimentu...">
   </div>
 </header>
 
@@ -9,7 +9,8 @@
   <div class="col-12">
     <h2 *ngIf="ghosts.length === 0 && (experimentResults | async).length === 0">Nebyly nalezeny žádné výsledky experimentů...</h2>
     <app-experiment-result-ghost-item [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></app-experiment-result-ghost-item>
-    <app-experiment-result-item [experimentResults]="experimentResults" (view)="handleView($event)" (delete)="handleDelete($event)" *ngIf="ghosts.length === 0"></app-experiment-result-item>
+    <app-experiment-result-item-list [experimentResults]="experimentResults" (view)="handleView($event)" (delete)="handleDelete($event)" *ngIf="ghosts.length === 0"></app-experiment-result-item-list>
   </div>
 </section>
 
+<app-modal #modal></app-modal>

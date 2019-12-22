@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import { ExperimentResult, ExperimentType } from 'diplomka-share';
 
 @Component({
-  selector: 'app-experiment-result-item',
-  templateUrl: './experiment-result-item.component.html',
-  styleUrls: ['./experiment-result-item.component.sass']
+  selector: 'app-experiment-result-item-list',
+  templateUrl: './experiment-result-item-list.component.html',
+  styleUrls: ['./experiment-result-item-list.component.sass']
 })
-export class ExperimentResultItemComponent implements OnInit {
+export class ExperimentResultItemListComponent implements OnInit {
 
   @Input() experimentResults: Observable<ExperimentResult[]>;
   @Output() view: EventEmitter<ExperimentResult> = new EventEmitter<ExperimentResult>();
