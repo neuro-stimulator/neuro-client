@@ -1,8 +1,8 @@
-import { Component, EventEmitter, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { NGXLogger } from 'ngx-logger';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 import { IOEvent, SerialDataEvent, StimulatorStateEvent } from '../share/serial-data.event';
@@ -17,9 +17,10 @@ import { ExperimentsService } from '../experiments/experiments.service';
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.sass']
 })
-export class PlayerComponent implements OnInit {
+export class PlayerComponent implements OnInit, OnDestroy {
 
   private _experimentID: number;
+  private _serialRawDataSubscription: Subscription;
 
   private _eventEmitter: EventEmitter<IOEvent> = new EventEmitter<IOEvent>();
   eventEmitter: Observable<IOEvent> = this._eventEmitter.asObservable();
@@ -76,7 +77,11 @@ export class PlayerComponent implements OnInit {
     this._service.one(this._experimentID).then(experiment => {
       this.outputCount = experiment.outputCount;
     });
-    this._serial.rawData$.subscribe((event: SerialDataEvent) => this._handleRawData(event));
+    this._serialRawDataSubscription = this._serial.rawData$.subscribe((event: SerialDataEvent) => this._handleRawData(event));
+  }
+
+  ngOnDestroy(): void {
+    this._serialRawDataSubscription.unsubscribe();
   }
 
 
