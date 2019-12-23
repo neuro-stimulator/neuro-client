@@ -23,6 +23,7 @@ import { DEFAULT_TIMEOUT, RequestTimeoutInterceptor } from './share/interceptors
 import { ResponseInterceptor } from './share/interceptors/response-interceptor.service';
 import { ShareModule } from './share/share.module';
 import { LocalStorageModule } from 'angular-2-local-storage';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { LocalStorageModule } from 'angular-2-local-storage';
 
     // Third party modules
     ToastrModule.forRoot(),
-    LoggerModule.forRoot({level: NgxLoggerLevel.TRACE, enableSourceMaps: true}),
+    LoggerModule.forRoot({level: NgxLoggerLevel.TRACE, enableSourceMaps: !environment.production}),
     LocalStorageModule.forRoot({prefix: 'stim-control', storageType: 'localStorage'}),
 
     // Root routing module

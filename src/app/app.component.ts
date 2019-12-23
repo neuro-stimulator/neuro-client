@@ -20,6 +20,5 @@ export class AppComponent {
               private readonly console: ConsoleService,
               private readonly logger: NGXLogger) {
     logger.registerMonitor(new ConsoleLoggerMonitorService(console));
-
   }
 }

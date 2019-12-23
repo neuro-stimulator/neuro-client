@@ -7,6 +7,7 @@ import { ExperimentResult } from 'diplomka-share';
 import { ExperimentResultsService } from './experiment-results.service';
 import { ModalComponent } from '../share/modal/modal.component';
 import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.component';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-experiment-results',
@@ -22,8 +23,8 @@ export class ExperimentResultsComponent implements OnInit {
 
   constructor(private readonly _service: ExperimentResultsService,
               private readonly _router: Router,
-              private readonly _route: ActivatedRoute) {
-  }
+              private readonly _route: ActivatedRoute,
+              private readonly logger: NGXLogger) {}
 
   ngOnInit() {
     this.ghosts = this._service.makeGhosts();
@@ -43,7 +44,10 @@ export class ExperimentResultsComponent implements OnInit {
     this.modal.showComponent = ConfirmDialogComponent;
     this.modal.open({
       message: 'Opravdu si přejete smazat vybraný výsledek experimentu?',
-      confirm: () => self._service.delete(experimentResult.id)
+      confirm: () => {
+        self.logger.info(`Budu mazat výsledek experimentu s id: ${experimentResult.id}.`);
+        return self._service.delete(experimentResult.id);
+      }
     });
   }
 }

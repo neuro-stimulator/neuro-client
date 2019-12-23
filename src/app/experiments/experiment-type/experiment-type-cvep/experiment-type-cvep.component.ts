@@ -12,6 +12,7 @@ import { ExperimentType, ExperimentCVEP } from 'diplomka-share';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { NavigationService } from '../../../navigation/navigation.service';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-experiment-type-cvep',
@@ -54,8 +55,9 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
               router: Router,
               route: ActivatedRoute,
               navigation: NavigationService,
-              cdr: ChangeDetectorRef) {
-    super(service, toastr, router, route, navigation, cdr);
+              cdr: ChangeDetectorRef,
+              logger: NGXLogger) {
+    super(service, toastr, router, route, navigation, cdr, logger);
   }
 
   ngOnInit() {

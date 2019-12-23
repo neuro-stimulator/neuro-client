@@ -1,6 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ExperimentsService } from '../experiments.service';
@@ -8,6 +7,7 @@ import { Experiment, ExperimentType } from 'diplomka-share';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subscription, TimeoutError } from 'rxjs';
 import { NavigationService } from '../../navigation/navigation.service';
+import { NGXLogger } from 'ngx-logger';
 
 export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit, AfterViewInit, OnDestroy {
 
@@ -24,7 +24,8 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
                         protected readonly _router: Router,
                         protected readonly _route: ActivatedRoute,
                         protected readonly _navigation: NavigationService,
-                        protected readonly _cdr: ChangeDetectorRef) {
+                        protected readonly _cdr: ChangeDetectorRef,
+                        protected readonly logger: NGXLogger) {
     this.form = new FormGroup(this._createFormControls());
   }
 
@@ -38,6 +39,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
 
     if (experimentId !== undefined) {
       if (isNaN(parseInt(experimentId, 10))) {
+        this.logger.error(`ID experimentu: '${experimentId}' se nepodařilo naparsovat!`);
         this.toastr.error(`ID experimentu: '${experimentId}' se nepodařilo naparsovat!`);
         this._router.navigate(['/experiments']);
         return;
@@ -67,6 +69,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
             return this._experiment;
           })
           .then((experiment: E) => {
+            this.logger.info(`Budu zobrazovat konfiguraci experimentu s ID: ${experiment.id}.`);
             this._experiment = experiment;
             this._updateFormGroup(this._experiment);
             this._navigation.customNavColor.next(ExperimentType[experiment.type].toLowerCase());
@@ -81,6 +84,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
    * @param experiment Experiment, který dodá data do formuláře
    */
   protected _updateFormGroup(experiment: E) {
+    this.logger.debug('Aktualizuji hodnoty ve formuláři.');
     this.form.patchValue(experiment);
   }
 
@@ -93,6 +97,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
    * Pomocná abstraktní metoda pro vytvoření formulářové skupiny komponent
    */
   protected _createFormControls(): { [p: string]: AbstractControl } {
+    this.logger.debug('Vytvářím kontrolky pro formulář.');
     return {
       id: new FormControl(),
       name: new FormControl(null, [Validators.required]),
@@ -139,12 +144,14 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
     if (this._experiment.id === undefined) {
       this._service.insert(this.form.value)
           .then((experiment: E) => {
+            this.logger.info(`Zakládám nový experiment s id: ${experiment.id}`);
             this._experiment = experiment;
             // Po úspěšném založení nového experimentu,
             // upravím adresní řádek tak, aby obsahoval ID experimentu
             this._router.navigate(['/', 'experiments', ExperimentType[experiment.type].toLowerCase(), experiment.id]);
           });
     } else {
+      this.logger.info(`Aktualizuji experiment s id: ${this._experiment.id}`);
       this._service.update(this.form.value);
     }
   }
