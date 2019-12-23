@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, Router } from '@angular/router';
+
 import { NavigationService } from './navigation.service';
 
 @Component({

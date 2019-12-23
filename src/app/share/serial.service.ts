@@ -1,13 +1,16 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { Observable } from 'rxjs';
 import { Socket } from 'ngx-socket-io';
+
+import { ResponseObject} from 'diplomka-share';
+
 import { environment } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { ResponseObject} from 'diplomka-share';
 import { NavigationService } from '../navigation/navigation.service';
-import { SerialDataEvent, StimulatorStateEvent } from './serial-data.event';
 import { ConsoleService } from '../settings/console/console.service';
+import { SerialDataEvent, StimulatorStateEvent } from './serial-data.event';
 
 @Injectable({
   providedIn: 'root'

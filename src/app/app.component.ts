@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
+import { NGXLogger } from 'ngx-logger';
+
 import { NavigationService } from './navigation/navigation.service';
 import { SerialService } from './share/serial.service';
 import { SequenceService } from './share/sequence.service';
 import { ConsoleService } from './settings/console/console.service';
-import { NGXLogger } from 'ngx-logger';
 import { ConsoleLoggerMonitorService } from './console-logger-monitor.service';
 
 @Component({

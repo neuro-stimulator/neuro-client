@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SerialService } from '../../share/serial.service';
-import { AliveCheckerService } from '../../alive-checker.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { AliveCheckerService } from '../../alive-checker.service';
+import { SerialService } from '../../share/serial.service';
 
 @Component({
   selector: 'app-service-state',

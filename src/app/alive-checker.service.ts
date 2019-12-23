@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
-import { environment } from '../environments/environment';
-import { ToastrService } from 'ngx-toastr';
+
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Socket } from 'ngx-socket-io';
+import { ToastrService } from 'ngx-toastr';
+
+import { environment } from '../environments/environment';
 import { NavigationService } from './navigation/navigation.service';
 
 @Injectable({

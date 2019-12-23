@@ -2,19 +2,18 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Options as SliderOptions } from 'ng5-slider';
 import { ToastrService } from 'ngx-toastr';
+import { NGXLogger } from 'ngx-logger';
+import { Options as SliderOptions } from 'ng5-slider';
 
 import { Edge, ExperimentERP, ExperimentType, Random } from 'diplomka-share';
 
 import { environment } from '../../../../environments/environment';
+import { NavigationService } from '../../../navigation/navigation.service';
 import { dependencyValidatorPattern } from '../../experiments.share';
-
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
-import { NavigationService } from '../../../navigation/navigation.service';
-import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-experiment-type-erp',

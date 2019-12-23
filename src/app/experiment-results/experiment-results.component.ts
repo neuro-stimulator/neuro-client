@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { Observable } from 'rxjs';
+import { NGXLogger } from 'ngx-logger';
 
 import { ExperimentResult } from 'diplomka-share';
 
 import { ExperimentResultsService } from './experiment-results.service';
 import { ModalComponent } from '../share/modal/modal.component';
 import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.component';
-import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-experiment-results',

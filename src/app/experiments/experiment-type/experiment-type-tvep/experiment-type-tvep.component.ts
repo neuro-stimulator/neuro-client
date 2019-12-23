@@ -3,16 +3,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
+import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider/options';
-
-import { environment } from '../../../../environments/environment';
 
 import { ExperimentType, ExperimentTVEP } from 'diplomka-share';
 
+import { environment } from '../../../../environments/environment';
+import { NavigationService } from '../../../navigation/navigation.service';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
-import { NavigationService } from '../../../navigation/navigation.service';
-import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-experiment-type-tvep',

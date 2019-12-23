@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+
+import { Socket } from 'ngx-socket-io';
 
 import { Experiment } from 'diplomka-share';
-import { Socket } from 'ngx-socket-io';
+
+import { environment } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
 
 @Injectable({

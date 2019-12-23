@@ -1,7 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
-import { Options as SliderOptions } from 'ng5-slider/options';
+
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { Options as SliderOptions } from 'ng5-slider/options';
+
 import { environment } from '../../../../../environments/environment';
 
 @Component({

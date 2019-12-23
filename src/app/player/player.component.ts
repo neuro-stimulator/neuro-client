@@ -1,12 +1,11 @@
 import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { NGXLogger } from 'ngx-logger';
 import { Observable, Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { NGXLogger } from 'ngx-logger';
 
 import { IOEvent, SerialDataEvent, StimulatorStateEvent } from '../share/serial-data.event';
-
 import { CommandsService } from '../share/commands.service';
 import { SerialService } from '../share/serial.service';
 import { ExperimentsService } from '../experiments/experiments.service';

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Experiment, ExperimentType } from 'diplomka-share';
+
 import { Observable } from 'rxjs';
+
+import { Experiment, ExperimentType } from 'diplomka-share';
 
 @Component({
   selector: 'app-experiment-item-list',
@@ -17,11 +19,9 @@ export class ExperimentItemListComponent implements OnInit {
 
   ExperimentType = ExperimentType;
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   handleRun(experiment: Experiment) {
     this.run.next(experiment);

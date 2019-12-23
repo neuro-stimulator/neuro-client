@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { ExperimentType, experimentTypeFromRaw } from 'diplomka-share';
+
 import { BehaviorSubject, Subscription } from 'rxjs';
+
+import { ExperimentType, experimentTypeFromRaw } from 'diplomka-share';
+
 import { ExperimentsService } from '../experiments.service';
 import { ExperimentTypeNoneComponent } from './experiment-type-none/experiment-type-none.component';
 import { ExperimentTypeErpComponent } from './experiment-type-erp/experiment-type-erp.component';

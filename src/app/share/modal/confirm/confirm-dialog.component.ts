@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+
+import { of, Subscription } from 'rxjs';
+
 import { DialogChildComponent } from '../dialog-child.component';
 import { ModalComponent } from '../modal.component';
-import { of, Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './confirm-dialog.component.html',

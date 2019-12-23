@@ -1,15 +1,19 @@
-import { ChangeServiceEvent } from './change-service-event';
-import { CRUDServiceType } from './crud-service-type';
-import { BehaviorSubject, Observable, TimeoutError } from 'rxjs';
-import { BaseRecord } from './base-record';
+import { EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NGXLogger } from 'ngx-logger';
-import { ResponseObject } from 'diplomka-share';
+
+
+import { BehaviorSubject, Observable, TimeoutError } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { Socket } from 'ngx-socket-io';
+import { NGXLogger } from 'ngx-logger';
+
+import { ResponseObject } from 'diplomka-share';
+
 import { environment } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
-import { EventEmitter } from '@angular/core';
+import { ChangeServiceEvent } from './change-service-event';
+import { CRUDServiceType } from './crud-service-type';
+import { BaseRecord } from './base-record';
 
 /**
  * Základní třída pro správu CRUD operací

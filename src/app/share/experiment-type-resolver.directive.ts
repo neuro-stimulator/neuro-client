@@ -1,8 +1,9 @@
 import { ComponentFactoryResolver, Directive, EventEmitter, Input, OnDestroy, OnInit, Output, Type, ViewContainerRef } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 
-import { ExperimentType } from 'diplomka-share';
 import { NGXLogger } from 'ngx-logger';
+
+import { ExperimentType } from 'diplomka-share';
 
 @Directive({
   selector: '[appExperimentTypeResolver]'

@@ -1,4 +1,5 @@
 import { NgxLoggerLevel, NGXLoggerMonitor, NGXLogInterface } from 'ngx-logger';
+
 import { ConsoleService } from './settings/console/console.service';
 
 export class ConsoleLoggerMonitorService implements NGXLoggerMonitor {

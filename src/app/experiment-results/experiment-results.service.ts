@@ -22,6 +22,11 @@ export class ExperimentResultsService extends BaseService<ExperimentResult> {
     super(ExperimentResultsService.BASE_API_URL, aliveChecker, _http, logger);
   }
 
+  /**
+   * Získá ze serveru průběh experimentu
+   *
+   * @param experimentResult Experiment, pro který chci získat průběh
+   */
   resultData(experimentResult: ExperimentResult) {
     return this._http.get<ResponseObject<IOEvent[]>>(`${ExperimentResultsService.BASE_API_URL}/result-data/${experimentResult.id}`)
                .toPromise()

@@ -1,10 +1,12 @@
+import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+
 import { NEVER, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
+
 import { ResponseMessage } from 'diplomka-share';
-import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {

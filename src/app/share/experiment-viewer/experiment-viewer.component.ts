@@ -1,9 +1,11 @@
 import { AfterContentInit, Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { IOEvent } from '../serial-data.event';
+
+import { Observable, Subscription } from 'rxjs';
 import { Options as SliderOptions } from 'ng5-slider/options';
+
 import { environment } from '../../../environments/environment';
 import { Round } from '../../player/round';
-import { Observable, Subscription } from 'rxjs';
+import { IOEvent } from '../serial-data.event';
 
 @Component({
   selector: 'app-experiment-viewer',
@@ -26,8 +28,6 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDe
   // Čítač pro uběhlá kola experimentu
   // 1 kolo experimentu = poslední výstup zhasnul
   private _rounds = 0;
-  // Indikátor posledního zpracovaného kola
-  private _processedRounds = -1;
   // Čítač všech eventů
   private _eventOffsetCounter = 0;
   // Index do pole offsetů

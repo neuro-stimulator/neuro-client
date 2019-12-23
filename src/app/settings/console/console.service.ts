@@ -5,7 +5,6 @@ import { Socket } from 'ngx-socket-io';
 import { LocalStorageService } from 'angular-2-local-storage';
 
 import { environment } from '../../../environments/environment';
-
 import { AliveCheckerService, ConnectionStatus } from '../../alive-checker.service';
 import { ConsoleCommand } from './console-command';
 import { CommandService } from './command.service';

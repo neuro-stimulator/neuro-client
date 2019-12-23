@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
+import { NGXLogger } from 'ngx-logger';
 
 import { Experiment, ExperimentType } from 'diplomka-share';
 
@@ -10,7 +11,6 @@ import { FabListEntry } from '../share/fab/fab-list-entry';
 import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.component';
 
 import { ExperimentsService } from './experiments.service';
-import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-experiments',

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import { AliveCheckerService } from '../alive-checker.service';
-import { SerialService } from '../share/serial.service';
-import { SettingsService } from './settings.service';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { SettingsService } from './settings.service';
 
 @Component({
   selector: 'app-settings',
@@ -14,12 +12,9 @@ export class SettingsComponent implements OnInit {
 
   fragment: string;
 
-  constructor(
-
-              private readonly _service: SettingsService,
+  constructor(private readonly _service: SettingsService,
               private readonly _route: ActivatedRoute,
-              private readonly _router: Router) {
-  }
+              private readonly _router: Router) {}
 
   ngOnInit() {
     this._route.fragment.subscribe(fragment => {
@@ -29,12 +24,5 @@ export class SettingsComponent implements OnInit {
       this._router.navigate([], {fragment: 'service-state', relativeTo: this._route});
       return;
     }
-
-
-    // this._gateway.rawData$.subscribe(data => {
-    //   console.log(JSON.stringify(data));
-    // });
   }
-
-
 }

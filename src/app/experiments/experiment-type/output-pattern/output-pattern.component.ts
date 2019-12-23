@@ -1,9 +1,10 @@
 import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ValueAccessorBase } from '../../../share/value-accessor-base';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+
+import { isObservable, Observable, Subscription } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { isObservable, Observable, Subscription } from 'rxjs';
+import { ValueAccessorBase } from '../../../share/value-accessor-base';
 
 @Component({
   selector: 'app-output-pattern',

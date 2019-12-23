@@ -2,12 +2,13 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
+import { NGXLogger } from 'ngx-logger';
+
 import { createEmptyExperiment, Experiment } from 'diplomka-share';
 
+import { NavigationService } from '../../../navigation/navigation.service';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
-import { NavigationService } from '../../../navigation/navigation.service';
-import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-experiment-type-rea',

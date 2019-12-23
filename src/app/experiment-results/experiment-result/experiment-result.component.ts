@@ -2,12 +2,12 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
+import { Observable, Subscription, TimeoutError } from 'rxjs';
 
 import { ExperimentType, ExperimentResult, createEmptyExperimentResult, createEmptyExperiment } from 'diplomka-share';
 
 import { NavigationService } from '../../navigation/navigation.service';
 import { ExperimentResultsService } from '../experiment-results.service';
-import { Observable, Subscription, TimeoutError } from 'rxjs';
 import { IOEvent } from '../../share/serial-data.event';
 
 @Component({
@@ -21,7 +21,6 @@ export class ExperimentResultComponent implements OnInit {
   private _connectedSubscription: Subscription;
   private readonly _incommingEvent: EventEmitter<IOEvent> = new EventEmitter<IOEvent>();
 
-  // events: IOEvent[] = [];
   incommingEvent: Observable<IOEvent> = this._incommingEvent.asObservable();
 
   constructor(private readonly _service: ExperimentResultsService,
