@@ -5,10 +5,10 @@
     <small id="application-author">Petr Štechmüller</small>
   </div>
   <div class="list-group list-group-flush">
-    <a routerLink="/experiments" class="list-group-item list-group-item-action bg-light" routerLinkActive="active"><i class="fas fa-stethoscope"></i> Experimenty</a>
-    <a routerLink="/results" class="list-group-item list-group-item-action bg-light" routerLinkActive="active"><i class="fas fa-poll"></i> Výsledky</a>
-    <a routerLink="/settings" class="list-group-item list-group-item-action bg-light" routerLinkActive="active"><i class="fas fa-cog"></i> Nastavení</a>
-    <a routerLink="/help" class="list-group-item list-group-item-action bg-light" routerLinkActive="active"><i class="fas fa-question"></i> Nápověda</a>
-    <a routerLink="/about" class="list-group-item list-group-item-action bg-light" routerLinkActive="active"><i class="fas fa-info"></i> O aplikaci</a>
+    <a routerLink="/experiments" class="list-group-item list-group-item-action bg-light" routerLinkActive="active" (click)="handleCloseSidebar()"><i class="fas fa-stethoscope"></i> Experimenty</a>
+    <a routerLink="/results" class="list-group-item list-group-item-action bg-light" routerLinkActive="active" (click)="handleCloseSidebar()"><i class="fas fa-poll"></i> Výsledky</a>
+    <a routerLink="/settings" class="list-group-item list-group-item-action bg-light" routerLinkActive="active" (click)="handleCloseSidebar()"><i class="fas fa-cog"></i> Nastavení</a>
+    <a routerLink="/help" class="list-group-item list-group-item-action bg-light" routerLinkActive="active" (click)="handleCloseSidebar()"><i class="fas fa-question"></i> Nápověda</a>
+    <a routerLink="/about" class="list-group-item list-group-item-action bg-light" routerLinkActive="active" (click)="handleCloseSidebar()"><i class="fas fa-info"></i> O aplikaci</a>
   </div>
 </div>

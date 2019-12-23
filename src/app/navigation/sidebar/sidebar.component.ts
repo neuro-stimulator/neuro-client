@@ -14,4 +14,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
   }
 
+  handleCloseSidebar() {
+    this.navigation.showSidebar = false;
+  }
 }
