@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ResponseObject} from 'diplomka-share';
 import { NavigationService } from '../navigation/navigation.service';
-import { SerialDataEvent } from './serial-data.event';
+import { SerialDataEvent, StimulatorStateEvent } from './serial-data.event';
+import { ConsoleService } from '../settings/console/console.service';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,7 @@ export class SerialService {
 
   constructor(aliveChecker: AliveCheckerService,
               private readonly navigation: NavigationService,
+              private readonly console: ConsoleService,
               private readonly _http: HttpClient) {
     this._isSerialConnected = false;
     aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
@@ -51,13 +53,44 @@ export class SerialService {
     this._socket.on('connect', () => {
       this.status();
     });
-    this._socket.on('data', data => {
-      this._rawData.next(data);
+    this._socket.on('data', (event: SerialDataEvent) => {
+      this._rawData.next(event);
+      if (event.name === 'EventStimulatorState') {
+        this._handleStimulatorStateEvent(event as StimulatorStateEvent);
+      }
     });
     this._socket.on('status', data => {
+      if (this._isSerialConnected === data.connected) {
+        return;
+      }
+
       this._isSerialConnected = data.connected;
       this._updateNavigationSubtitle();
     });
+  }
+
+  // TODO odstranit duplikovaný kód
+  private _handleStimulatorStateEvent(event: StimulatorStateEvent) {
+    let text = '';
+    switch (event.state) {
+      // Experiment byl ukončen
+      case 0x00:
+        text = 'Experiment byl ukončen.';
+        break;
+      // Experiment byl spuštěn
+      case 0x01:
+        text = 'Experiment byl spuštěn.';
+        break;
+      // Experiment byl inicializován
+      case 0x02:
+        text = 'Experiment byl inicializován.';
+        break;
+      case 0x03:
+        text = 'Konfigurace experimentů byla vymazána.';
+        break;
+    }
+
+    this.console.saveCommand({date: new Date(event.timestamp), text});
   }
 
   private _updateNavigationSubtitle() {
@@ -65,10 +98,12 @@ export class SerialService {
       this.navigation.subtitle = 'Připojeno';
       this.navigation.working = false;
       this.navigation.icon = 'fa-circle text-success';
+      this.console.saveCommandRaw('Stimulátor byl připojen.');
     } else {
       this.navigation.subtitle = 'Odpojeno';
       this.navigation.working = false;
       this.navigation.icon = 'fa-circle text-danger';
+      this.console.saveCommandRaw('Stimulátor byl odpojen.');
     }
   }
 
@@ -93,7 +128,6 @@ export class SerialService {
                .toPromise()
                .then(() => {
                  this._isSerialConnected = true;
-                 this._updateNavigationSubtitle();
                });
   }
 
@@ -105,7 +139,6 @@ export class SerialService {
                .toPromise()
                .then(() => {
                   this._isSerialConnected = false;
-                  this._updateNavigationSubtitle();
                 });
   }
 

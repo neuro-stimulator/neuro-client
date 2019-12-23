@@ -1,4 +1,4 @@
 export interface ConsoleCommand {
-  date: Date;
+  date?: Date;
   text: string;
 }

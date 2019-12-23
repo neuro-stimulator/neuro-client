@@ -17,10 +17,6 @@ export class ConsoleService {
 
   private static readonly STORAGE_KEY = 'commands';
 
-  /**
-   * Konstanta reprezentující výchozí URL adresu pro požadavky týkající se seriové linky
-   */
-
   private readonly _commands: BehaviorSubject<ConsoleCommand[]> = new BehaviorSubject<ConsoleCommand[]>([]);
   public readonly commands$: Observable<ConsoleCommand[]> = this._commands.asObservable();
 
@@ -29,9 +25,6 @@ export class ConsoleService {
   constructor(private readonly aliveChecker: AliveCheckerService,
               private readonly _command: CommandService,
               private readonly _storage: LocalStorageService) {
-    // this._serial.rawData$.subscribe(data => {
-    //   this._processData({date: new Date(), text: data});
-    // });
 
     aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
       if (status === ConnectionStatus.CONNECTED) {
@@ -68,9 +61,17 @@ export class ConsoleService {
     this._processData({date: new Date(), text});
     const [valid, name, data] = this._command.parseCommand(text);
     if (!valid) {
-      this._processData({date: new Date(), text: data});
+      this.saveCommandRaw(data);
     } else {
       this._socket.emit('command', {name, data});
     }
+  }
+
+  public saveCommandRaw(text: string, date?: Date) {
+    this._processData({date: date ? date : new Date(), text});
+  }
+
+  public saveCommand(data: ConsoleCommand) {
+    this._processData(data);
   }
 }
