@@ -1,4 +1,8 @@
-import { ClientCommand } from 'diplomka-share';
+export interface ClientCommand<T> {
+  isValid: (params: string[]) => [boolean, string?];
+  getName: () => string;
+  getValue: (params: string[]) => T;
+}
 
 export class UnknownCommand implements ClientCommand<string> {
 

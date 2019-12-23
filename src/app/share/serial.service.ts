@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ResponseObject, ClientCommand } from 'diplomka-share';
+import { ResponseObject} from 'diplomka-share';
 import { NavigationService } from '../navigation/navigation.service';
 import { SerialDataEvent } from './serial-data.event';
 
@@ -52,7 +52,6 @@ export class SerialService {
       this.status();
     });
     this._socket.on('data', data => {
-      // console.log(data);
       this._rawData.next(data);
     });
     this._socket.on('status', data => {
