@@ -2,6 +2,8 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { SERVER_HTTP_PORT, SERVER_SOCKET_PORT } from 'diplomka-share';
+
 export const environment = {
   production: false,
   url: {
@@ -9,8 +11,8 @@ export const environment = {
     socket: 'http://localhost',
   },
   port: {
-    server: 3000,
-    socket: 3001
+    server: SERVER_HTTP_PORT,
+    socket: SERVER_SOCKET_PORT
   },
   makeURL: (url: string, port: number) => {
     return `${url}:${port}`;
@@ -26,4 +28,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+import 'zone.js/dist/zone-error';  // Included with Angular CLI.
