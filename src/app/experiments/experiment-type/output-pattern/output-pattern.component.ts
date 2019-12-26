@@ -14,16 +14,14 @@ import { ValueAccessorBase } from '../../../share/value-accessor-base';
     {provide: NG_VALUE_ACCESSOR, useExisting: OutputPatternComponent, multi: true}
   ]
 })
-export class OutputPatternComponent extends ValueAccessorBase<number> implements OnInit, OnDestroy {
+export class OutputPatternComponent extends ValueAccessorBase<number> implements OnInit {
 
   @Input() patternSize: number|Observable<number> = environment.patternSize;
-  @Input() viewReady: Observable<any>;
-  @ViewChild('canvas', {static: false}) canvas: ElementRef;
+  @ViewChild('canvas', {static: true}) canvas: ElementRef;
 
   checkboxes: number[] = [];
 
   private _disableChangePropagation = false;
-  private _viewReadySubscription: Subscription;
   _patternSize: number;
 
   constructor() {
@@ -86,15 +84,11 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
     } else if (typeof this.patternSize === 'number') {
       this._patternSize = this.patternSize;
     }
-    this._viewReadySubscription = this.viewReady.subscribe(() => {
+    setTimeout(() => {
       this._initCheckboxes();
       this._disableChangePropagation = false;
       this._drawPattern();
-    });
-  }
-
-  ngOnDestroy(): void {
-    this._viewReadySubscription.unsubscribe();
+    }, 500);
   }
 
   @HostListener('window:resize', ['$event'])

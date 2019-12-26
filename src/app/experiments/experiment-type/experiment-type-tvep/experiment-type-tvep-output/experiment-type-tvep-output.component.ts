@@ -49,6 +49,7 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
     }
 
     this._experimentReadySubscription = this.experimentReady.subscribe(() => {
+      console.log('Experiment ready');
       for (let i = 0; i < environment.maxOutputCount; i++) {
         this.patternLength(i).valueChanges.subscribe(patternLength => {
           this.patternSizes[i].next(patternLength);
