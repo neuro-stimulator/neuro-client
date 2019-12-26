@@ -1,27 +1,39 @@
 # DiplomkaFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
+Klientská část diplomové práce na téma: **Návrh hardwarového stimulátoru pro neuroinformatické experimenty**
 
-## Development server
+## Funkce
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ - Experimenty
+   - [x] prohlížeč všech experimentů
+     - [ ] filtrování
+   - [x] CRUD operace s experimenty
+   - [ ] tvorba nových experimentů
+     - [x] ERP
+     - [x] CVEP
+     - [x] FVEP
+     - [x] TVEP
+     - [ ] REA
+ - Výsledky experimentů
+   - [x] zobrazení
+   - [x] smazání
+ - Přehrávač experimentů
+   - podporované experimenty:
+     - [ ] ERP
+     - [x] CVEP
+     - [ ] FVEP
+     - [ ] TVEP
+     - [ ] REA
+ - Podporované typy výstupů
+    - [x] LED
+    - [ ] IMAGE
+    - [ ] AUDIO
+ - Podporované příkazy v konzoli:
+    - `Reboot` - restartuje stimulátor
+    - `DisplayClear` - vymaže obsah displaye
+    - `DisplayText` - zapíše text na display
+    - `ExperimentUpload` - nahraje experiment do paměti stimulátoru
+    - `ExperimentInit` - inicializuje nahraný experiment ve stimulátoru
+    - `ExperimentStart` - odstartuje experiment
+    - `ExperimentStop` - zastaví experiment
+    - `ExperimentClear`  - vymaže experiment z paměti stimulátoru
