@@ -20,6 +20,7 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
   @ViewChild('canvas', {static: true}) canvas: ElementRef;
 
   checkboxes: number[] = [];
+  uuid = `${Math.random()}`;
 
   private _disableChangePropagation = false;
   _patternSize: number;
