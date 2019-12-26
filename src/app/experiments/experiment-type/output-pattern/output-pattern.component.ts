@@ -125,4 +125,10 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
     this._initCheckboxes();
     this._drawPattern();
   }
+
+  handleRandomPattern() {
+    this.value = Math.floor(Math.random() * 1000000000);
+    this._initCheckboxes();
+    this._drawPattern();
+  }
 }
