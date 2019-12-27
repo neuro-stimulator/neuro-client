@@ -28,6 +28,7 @@ import { OutputPatternComponent } from './experiment-type/output-pattern/output-
 import { ExperimentTypeFvepOutputComponent } from './experiment-type/experiment-type-fvep/experiment-type-fvep-output/experiment-type-fvep-output.component';
 import { ExperimentTypeFvepOutputCountPipe } from './experiment-type/experiment-type-fvep/experiment-type-fvep-output/experiment-type-tvep-output-count.pipe';
 import { OutputTypeComponent } from './experiment-type/output-type/output-type.component';
+import { AudioPlayerModule } from '../share/audio-player/audio-player.module';
 
 @NgModule({
   declarations: [
@@ -52,15 +53,16 @@ import { OutputTypeComponent } from './experiment-type/output-type/output-type.c
     ExperimentTypeFvepOutputCountPipe,
     OutputTypeComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    Ng5SliderModule,
-    ShareModule,
-    ModalModule,
-    FabModule,
-    ExperimentsRoutingModule,
-  ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        Ng5SliderModule,
+        ShareModule,
+        ModalModule,
+        FabModule,
+        ExperimentsRoutingModule,
+        AudioPlayerModule,
+    ],
   entryComponents: [
     ExperimentTypeNoneComponent,
     ExperimentTypeErpComponent,
