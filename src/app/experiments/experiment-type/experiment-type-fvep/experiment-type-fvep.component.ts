@@ -57,6 +57,11 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
         brightness: new FormControl(null, [
           Validators.required, Validators.min(0), Validators.max(100)
         ]),
+        outputType: new FormGroup({
+          led: new FormControl(null),
+          audio: new FormControl(null),
+          image: new FormControl(null)
+        }, [Validators.required])
       });
       group.setParent(this.form);
       array.push(group);
@@ -81,14 +86,9 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
       description: '',
       created: new Date().getTime(),
       type: ExperimentType.FVEP,
-      output: {},
+      usedOutputs: {},
       outputCount: 1,
       outputs: []
-      // timeOn: 0,
-      // timeOff: 0,
-      // frequency: 0,
-      // dutyCycle: 0,
-      // brightness: 100
     };
   }
 

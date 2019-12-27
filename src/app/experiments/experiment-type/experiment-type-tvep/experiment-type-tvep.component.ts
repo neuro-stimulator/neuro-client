@@ -57,6 +57,11 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
         brightness: new FormControl(null, [
           Validators.required, Validators.min(0), Validators.max(100)
         ]),
+        outputType: new FormGroup({
+          led: new FormControl(null),
+          audio: new FormControl(null),
+          image: new FormControl(null)
+        }, [Validators.required])
       });
       group.setParent(this.form);
       array.push(group);
@@ -81,7 +86,7 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
       description: '',
       created: new Date().getTime(),
       type: ExperimentType.TVEP,
-      output: {},
+      usedOutputs: {},
       outputCount: 1,
       outputs: []
     };

@@ -33,6 +33,10 @@ export class ExperimentTypeFvepOutputComponent implements OnInit {
     return (this.form.get('outputs') as FormArray).controls;
   }
 
+  outputType(index: number): FormGroup {
+    return this.outputs[index].get('outputType') as FormGroup;
+  }
+
   timeOn(index: number) {
     return this.outputs[index].get('timeOn');
   }

@@ -11,9 +11,9 @@
         <div>
           <a [routerLink]="[ExperimentType[experiment.type].toLowerCase(), experiment.id]"><strong>{{experiment.name}}</strong></a>
           <span class="experiment-output float-right">
-                    <i class="fas fa-lightbulb" *ngIf="experiment.output['led']" title="LED"></i>
-                    <i class="fas fa-image" *ngIf="experiment.output['image']" title="Obrázek"></i>
-                    <i class="fas fa-music" *ngIf="experiment.output['sound']" title="Zvuk"></i>
+                    <i class="fas fa-lightbulb" *ngIf="experiment.usedOutputs['led']" title="LED"></i>
+                    <i class="fas fa-music" *ngIf="experiment.usedOutputs['audio']" title="Zvuk"></i>
+                    <i class="fas fa-image" *ngIf="experiment.usedOutputs['image']" title="Obrázek"></i>
                   </span>
         </div>
         <div><small class="text-truncate experiment-description">{{experiment.description || 'Žádný popis není k dispozici...'}}</small></div>

@@ -47,6 +47,10 @@
           <app-output-pattern formControlName="pattern" [patternSize]="patternSizes[i]"></app-output-pattern>
         </div>
 
+        <div class="col-12">
+          <app-output-type [form]="outputType(i)"></app-output-type>
+        </div>
+
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AbstractControl, FormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
@@ -67,6 +67,11 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
     const superControls = super._createFormControls();
     const myControls = {
       outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(environment.maxOutputCount)]),
+      usedOutputs: new FormGroup({
+        led: new FormControl(null),
+        audio: new FormControl(null),
+        image: new FormControl(null)
+      }, [Validators.required]),
       out: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
       wait: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
       pattern: new FormControl(null, [Validators.required]),
@@ -83,7 +88,7 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
       description: '',
       created: new Date().getTime(),
       type: ExperimentType.CVEP,
-      output: {},
+      usedOutputs: {led: true},
       outputCount: 1,
       out: 0,
       wait: 0,
@@ -95,6 +100,10 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
 
   get outputCount() {
     return this.form.get('outputCount');
+  }
+
+  get usedOutputs(): FormGroup {
+    return this.form.get('usedOutputs') as FormGroup;
   }
 
   get out() {

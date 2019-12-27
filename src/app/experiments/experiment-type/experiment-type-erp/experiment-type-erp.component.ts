@@ -63,7 +63,12 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
           new FormControl(null, [
             Validators.pattern(dependencyValidatorPattern),
             ExperimentTypeErpOutputDependencyValidator.createValidator()]),
-        ])
+        ]),
+        outputType: new FormGroup({
+          led: new FormControl(null),
+          audio: new FormControl(null),
+          image: new FormControl(null)
+        }, [Validators.required])
       });
       group.setParent(this.form);
       array.push(group);
@@ -93,7 +98,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
       description: '',
       created: new Date().getTime(),
       type: ExperimentType.ERP,
-      output: {},
+      usedOutputs: {},
       outputCount: 1,
       out: 0,
       wait: 0,

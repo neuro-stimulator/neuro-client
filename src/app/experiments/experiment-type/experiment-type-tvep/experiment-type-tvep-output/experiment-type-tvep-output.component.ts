@@ -65,6 +65,10 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
     return (this.form.get('outputs') as FormArray).controls;
   }
 
+  outputType(index: number): FormGroup {
+    return this.outputs[index].get('outputType') as FormGroup;
+  }
+
   patternLength(index: number) {
     return this.outputs[index].get('patternLength');
   }

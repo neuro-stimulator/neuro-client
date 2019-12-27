@@ -150,6 +150,10 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
     return (this.form.get('outputs') as FormArray).controls;
   }
 
+  outputType(index: number): FormGroup {
+    return this.outputs[index].get('outputType') as FormGroup;
+  }
+
   pulseUp(index: number) {
     return this.outputs[index].get('pulseUp');
   }
@@ -161,7 +165,6 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   distribution(index: number) {
     return this.outputs[index].get('distribution') as FormControl;
   }
-
 
   brightness(index: number) {
     return this.outputs[index].get('brightness');
