@@ -109,7 +109,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
       output: new FormGroup({
         led: new FormControl(),
         image: new FormControl(),
-        sound: new FormControl()
+        audio: new FormControl()
       })
     };
   }
