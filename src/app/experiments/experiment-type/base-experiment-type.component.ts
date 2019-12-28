@@ -105,12 +105,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
       name: new FormControl(null, [Validators.required]),
       description: new FormControl(),
       type: new FormControl(),
-      created: new FormControl(),
-      output: new FormGroup({
-        led: new FormControl(),
-        image: new FormControl(),
-        audio: new FormControl()
-      })
+      created: new FormControl()
     };
   }
 
