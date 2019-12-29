@@ -1,3 +1,6 @@
+//noinspection CssUnknownTarget
+@import "~src/sass/_style-variables.sass"
+
 .modal
   position: fixed
   top: 0
@@ -19,3 +22,8 @@
   height: 100vmax
   z-index: 1031
   background: rgba(0,0,0,0.4)
+
+
+@include media-breakpoint-up(lg)
+  .modal-dialog
+    max-width: 50%
