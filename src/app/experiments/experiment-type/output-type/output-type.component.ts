@@ -1,5 +1,8 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+
+import { FileRecord } from 'diplomka-share';
+import { FileBrowserService } from '../../../share/file-browser/file-browser.service';
 
 @Component({
   selector: 'app-output-type',
@@ -11,10 +14,17 @@ export class OutputTypeComponent implements OnInit {
   @Input() form: FormGroup;
 
   uuid = `${Math.random()}`;
+  audioUrl: string;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.audioUrl = this.buildFilePath(this.audioFile.value);
+  }
+
+  buildFilePath(path: string) {
+    return `${FileBrowserService.BASE_API_URL}/${path}`;
+  }
 
   handleLedChange(event: Event) {
     if (((event.target) as HTMLInputElement).checked) {
@@ -29,6 +39,11 @@ export class OutputTypeComponent implements OnInit {
     }
   }
 
+  handleAudioSelected(fileRecord: FileRecord) {
+    this.audioFile.setValue(fileRecord.path);
+    this.audioUrl = this.buildFilePath(fileRecord.path);
+  }
+
   get led() {
     return this.form.get('led');
   }
@@ -37,7 +52,15 @@ export class OutputTypeComponent implements OnInit {
     return this.form.get('audio');
   }
 
+  get audioFile() {
+    return this.form.get('audioFile');
+  }
+
   get image() {
     return this.form.get('image');
+  }
+
+  get imageFile() {
+    return this.form.get('imageFile');
   }
 }

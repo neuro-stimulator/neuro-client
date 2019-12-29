@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { ModalModule } from '../modal/modal.module';
+import { FileBrowserModule } from '../file-browser/file-browser.module';
+
 import { AudioPlayerComponent } from './audio-player.component';
 
 @NgModule({
@@ -11,7 +14,9 @@ import { AudioPlayerComponent } from './audio-player.component';
     AudioPlayerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ModalModule,
+    FileBrowserModule
   ]
 })
 export class AudioPlayerModule {

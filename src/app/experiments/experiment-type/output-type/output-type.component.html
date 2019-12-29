@@ -11,7 +11,7 @@
       <label class="form-check-label" [for]="'output-type-audio_' + uuid"><i class="fas fa-music"></i> AUDIO</label>
     </div>
 
-    <app-audio-player *ngIf="audio.value === true" title="some test title"></app-audio-player>
+    <app-audio-player *ngIf="audio.value === true" [title]="audioFile.value" [audioUrl]="audioUrl" (fileChange)="handleAudioSelected($event)"></app-audio-player>
   </div>
   <div class="col-12 col-sm-4">
     <div class="form-check">

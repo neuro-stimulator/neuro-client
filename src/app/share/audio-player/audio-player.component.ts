@@ -1,4 +1,9 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+
+import { FileRecord } from 'diplomka-share';
+
+import { FileBrowserComponent } from '../file-browser/file-browser.component';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-audio-player',
@@ -8,12 +13,18 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 export class AudioPlayerComponent implements OnInit {
 
   @ViewChild('audioPlayer', {static: true}) player: ElementRef;
+  @ViewChild('modal', {static: true}) modal: ModalComponent;
 
   @Input() title: string;
-  @Input() audioUrl: string;
+
   @Input() displayTitle = true;
   @Input() autoPlay = false;
   @Input() displayVolumeControls = true;
+
+  @Output() fileChange: EventEmitter<FileRecord> = new EventEmitter<FileRecord>();
+
+  private _inicialized = false;
+  private _audioUrl: string;
 
   loaderDisplay = false;
   isPlaying = false;
@@ -23,36 +34,47 @@ export class AudioPlayerComponent implements OnInit {
 
   constructor() { }
 
+  private _player(): HTMLAudioElement {
+    return this.player.nativeElement as HTMLAudioElement;
+  }
+
   private _bindPlayerEvent() {
-    this.player.nativeElement.addEventListener('playing', () => {
+    if (this._inicialized) {
+      return;
+    }
+
+    this._inicialized = true;
+    this._player().addEventListener('playing', () => {
       this.isPlaying = true;
-      this.duration = Math.floor(this.player.nativeElement.duration);
+      this.duration = Math.floor(this._player().duration);
     });
-    this.player.nativeElement.addEventListener('pause', () => {
+    this._player().addEventListener('pause', () => {
       this.isPlaying = false;
     });
-    this.player.nativeElement.addEventListener('timeupdate', () => {
-      this.currentTime = Math.floor(this.player.nativeElement.currentTime);
+    this._player().addEventListener('timeupdate', () => {
+      this.currentTime = Math.floor(this._player().currentTime);
     });
-    this.player.nativeElement.addEventListener('volume', () => {
-      this.volume = Math.floor(this.player.nativeElement.volume);
+    this._player().addEventListener('volume', () => {
+      this.volume = Math.floor(this._player().volume);
     });
-    this.player.nativeElement.addEventListener('loadstart', () => {
+    this._player().addEventListener('loadstart', () => {
       this.loaderDisplay = true;
     });
-    this.player.nativeElement.addEventListener('loadeddata', () => {
+    this._player().addEventListener('loadeddata', () => {
       this.loaderDisplay = false;
-      this.duration = Math.floor(this.player.nativeElement.duration);
+      this.duration = Math.floor(this._player().duration);
     });
   }
 
   private _setVolume(volume: number) {
     this.volume = volume;
-    this.player.nativeElement.volume = this.volume;
+    this._player().volume = this.volume;
   }
 
   ngOnInit() {
-    this._bindPlayerEvent();
+    if (this.audioUrl) {
+      this._bindPlayerEvent();
+    }
   }
 
   handlePlay() {
@@ -62,8 +84,8 @@ export class AudioPlayerComponent implements OnInit {
     if (this.player.nativeElement.paused) {
       this.player.nativeElement.play(this.currentTime);
     } else {
-      this.currentTime = this.player.nativeElement.currentTime;
-      this.player.nativeElement.pause();
+      this.currentTime = this._player().currentTime;
+      this._player().pause();
     }
   }
 
@@ -77,5 +99,29 @@ export class AudioPlayerComponent implements OnInit {
 
   sliderTimeChange(event: Event) {
     this.player.nativeElement.currentTime = (event.target as HTMLInputElement).value;
+  }
+
+  handleShowFileBrowser() {
+    this.modal.showComponent = FileBrowserComponent;
+    // this.modal.open();
+    this.modal.openForResult()
+        .then((file: FileRecord) => {
+          this.fileChange.next(file);
+          this._bindPlayerEvent();
+        })
+        .catch((e) => {
+          // Dialog was closed
+          console.log(e);
+        });
+  }
+
+  @Input() set audioUrl(audioUrl: string) {
+    this._audioUrl = audioUrl;
+    this._player().src = audioUrl;
+
+  }
+
+  get audioUrl() {
+    return this._audioUrl;
   }
 }

@@ -1,7 +1,7 @@
 <div class="audio-player-container">
 <div class="d-flex audio-player">
-  <audio [src]="audioUrl" #audioPlayer></audio>
-  <button (click)='handlePlay();' class="btn btn-sm"
+  <audio  #audioPlayer></audio>
+  <button (click)='handlePlay();' class="btn btn-sm btn-dark"
           style="font-size: 14px!important;" [disabled]="loaderDisplay">
     <i *ngIf="loaderDisplay" title="Načítání..." class="fas fa-spinner fa-spin" aria-hidden="true"></i>
     <i *ngIf="!loaderDisplay && !isPlaying" title="Přehrát" class="fas fa-play" aria-hidden="true"></i>
@@ -19,10 +19,9 @@
     <i *ngIf="volume === 0" class="fas fa-volume-up" aria-hidden="true" title="Povolit zvuk"></i>
     <i *ngIf="volume > 0" class="fas fa-volume-mute" aria-hidden="true" title="Ztlumit"></i>
   </button>
-  <button class="btn btn-sm btn-dark" (click)="audioFile.click()">
+  <button class="btn btn-sm btn-dark" (click)="handleShowFileBrowser()">
     <i class="fas fa-file-audio" title="Vybrat zvuk..."></i>
   </button>
-    <input type="file" hidden #audioFile>
 </div>
 
 <div *ngIf="displayTitle && title !== ''">
@@ -33,3 +32,5 @@
   </div>
 </div>
 </div>
+
+<app-modal #modal></app-modal>
