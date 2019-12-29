@@ -1,0 +1,65 @@
+.file-entry-wrapper
+  display: flex
+  float: left
+  flex-wrap: wrap
+
+
+.file-entry
+  min-height: 80px
+  max-height: 80px
+  min-width: 80px
+  max-width: 80px
+  background: rgba(0, 0, 0, 0.17)
+  cursor: pointer
+  margin: 1px
+  padding: 1px
+  position: relative
+
+  .file
+    margin-top: 15px
+
+  &:hover
+    -webkit-box-shadow: 0 0 7px 0 rgba(0,0,0,0.75)
+    -moz-box-shadow: 0 0 7px 0 rgba(0,0,0,0.75)
+    box-shadow: 0 0 7px 0 rgba(0,0,0,0.75)
+
+
+.file-entry-toolbar
+  position: absolute
+  top: 0
+  left: 0
+  min-width: 80px
+  max-width: 80px
+  z-index: 1
+  padding: 4px 2px
+
+  .delete-file:hover
+    -webkit-box-shadow: 0 0 7px 0 rgba(0,0,0,0.75)
+    -moz-box-shadow: 0 0 7px 0 rgba(0,0,0,0.75)
+    box-shadow: 0 0 7px 0 rgba(0,0,0,0.75)
+
+.file-entry-view
+  position: absolute
+  top: 0
+  left: 0
+  min-height: 80px
+  max-height: 80px
+  min-width: 80px
+  max-width: 80px
+
+  .file
+    span
+     font-size: 2rem
+
+.file-entry-title
+  position: absolute
+  bottom: 0
+  left: 0
+  min-width: 80px
+  max-width: 80px
+  z-index: 1
+  padding: 4px 2px
+
+.file-entry-title.image
+  small
+    background-color: rgba(255, 255, 255, 0.7)
