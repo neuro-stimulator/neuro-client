@@ -70,7 +70,9 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
       usedOutputs: new FormGroup({
         led: new FormControl(null),
         audio: new FormControl(null),
-        image: new FormControl(null)
+        audioFile: new FormControl(null),
+        image: new FormControl(null),
+        imageFile: new FormControl(null)
       }, [Validators.required]),
       out: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
       wait: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),

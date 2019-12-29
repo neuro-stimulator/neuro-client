@@ -67,7 +67,9 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
         outputType: new FormGroup({
           led: new FormControl(null),
           audio: new FormControl(null),
-          image: new FormControl(null)
+          audioFile: new FormControl(null),
+          image: new FormControl(null),
+          imageFile: new FormControl(null)
         }, [Validators.required])
       });
       group.setParent(this.form);
