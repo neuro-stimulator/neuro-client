@@ -68,3 +68,6 @@
 </div>
 
 <app-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperiment()" [disabled]="form.invalid || (working | async)"></app-fab>
+
+{{form.valid}}
+{{form.errors | json}}

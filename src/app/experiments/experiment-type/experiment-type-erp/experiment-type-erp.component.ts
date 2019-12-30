@@ -14,6 +14,7 @@ import { dependencyValidatorPattern } from '../../experiments.share';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
+import { ExperimentOutputTypeValidator } from '../experiment-output-type-validator';
 
 @Component({
   selector: 'app-experiment-type-erp',
@@ -70,7 +71,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
           audioFile: new FormControl(null),
           image: new FormControl(null),
           imageFile: new FormControl(null)
-        }, [Validators.required])
+        }, {validators: [Validators.required, ExperimentOutputTypeValidator.createValidator()]})
       });
       group.setParent(this.form);
       array.push(group);

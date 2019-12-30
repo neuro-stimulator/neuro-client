@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, Input, OnDestroy} from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { ControlContainer, FormArray, FormControl, FormGroup, NgForm } from '@angular/forms';
 
 import { Options as SliderOptions } from 'ng5-slider';
 
@@ -11,7 +11,8 @@ import { Observable, Subscription } from 'rxjs';
 @Component({
   selector: 'app-experiment-type-erp-output',
   templateUrl: './experiment-type-erp-output.component.html',
-  styleUrls: ['./experiment-type-erp-output.component.sass']
+  styleUrls: ['./experiment-type-erp-output.component.sass'],
+  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }]
 })
 export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDestroy {
 
