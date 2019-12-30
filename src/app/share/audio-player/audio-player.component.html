@@ -12,7 +12,7 @@
   </div>
   <div class="d-flex audio-player-duration">
         <span *ngIf="duration !== 0.01" class="pl-2 pr-3 my-auto" style="font-size: 14px!important;">
-            -{{duration - currentTime }}
+            -{{(duration - currentTime) | secondsToMinutes }}
         </span>
   </div>
   <button class="btn btn-sm btn-dark" *ngIf="displayVolumeControls" (click)="handleToggleVolume()">
@@ -27,7 +27,7 @@
 <div *ngIf="displayTitle && title !== ''">
   <div style="text-align: center;">
     <div style="padding:1px 3px;">
-      {{ title }}
+      {{ title | audioTitle }}
     </div>
   </div>
 </div>

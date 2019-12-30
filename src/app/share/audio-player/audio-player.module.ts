@@ -5,10 +5,14 @@ import { ModalModule } from '../modal/modal.module';
 import { FileBrowserModule } from '../file-browser/file-browser.module';
 
 import { AudioPlayerComponent } from './audio-player.component';
+import { SecondsToMinutesPipe } from './seconds-to-minutes.pipe';
+import { AudioTitlePipe } from './audio-title.pipe';
 
 @NgModule({
   declarations: [
-    AudioPlayerComponent
+    AudioPlayerComponent,
+    SecondsToMinutesPipe,
+    AudioTitlePipe
   ],
   exports: [
     AudioPlayerComponent
