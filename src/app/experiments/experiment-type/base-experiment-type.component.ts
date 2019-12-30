@@ -145,7 +145,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
             this._experiment = experiment;
             // Po úspěšném založení nového experimentu,
             // upravím adresní řádek tak, aby obsahoval ID experimentu
-            this._router.navigate(['/', 'experiments', ExperimentType[experiment.type].toLowerCase(), experiment.id]);
+            this._router.navigate(['/', 'experiments', ExperimentType[experiment.type].toLowerCase(), experiment.id], {replaceUrl: true });
           });
     } else {
       this.logger.info(`Aktualizuji experiment s id: ${this._experiment.id}`);
