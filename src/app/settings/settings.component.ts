@@ -21,7 +21,7 @@ export class SettingsComponent implements OnInit {
       this.fragment = fragment;
     });
     if (this._route.snapshot.fragment === undefined) {
-      this._router.navigate([], {fragment: 'service-state', relativeTo: this._route});
+      this._router.navigate([], {fragment: 'service-state', relativeTo: this._route, replaceUrl: true});
       return;
     }
   }
