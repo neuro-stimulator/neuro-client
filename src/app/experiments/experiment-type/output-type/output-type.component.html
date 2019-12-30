@@ -1,24 +1,37 @@
 <div class="row" [formGroup]="form">
-  <div class="col-12 col-sm-4">
+  <div class="col-12 col-sm-2">
     <div class="form-check">
       <input type="checkbox" class="form-check-input" [id]="'output-type-led_' + uuid" formControlName="led" (change)="handleLedChange($event)">
       <label class="form-check-label" [for]="'output-type-led_' + uuid"><i class="fas fa-lightbulb"></i> LED</label>
     </div>
   </div>
-  <div class="col-12 col-sm-4">
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" [id]="'output-type-audio_' + uuid" formControlName="audio" (change)="handleAudioImageChange($event)">
-      <label class="form-check-label" [for]="'output-type-audio_' + uuid"><i class="fas fa-music"></i> AUDIO</label>
+  <div class="col-12 col-sm-5">
+    <div class="row">
+      <div class="col">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" [id]="'output-type-audio_' + uuid" formControlName="audio" (change)="handleAudioImageChange($event)">
+          <label class="form-check-label" [for]="'output-type-audio_' + uuid"><i class="fas fa-music"></i> AUDIO</label>
+        </div>
+      </div>
+      <div class="col-8">
+        <app-audio-player *ngIf="audio.value === true" [title]="audioFile.value || defaultTitle" [audioUrl]="audioUrl" (fileChange)="handleAudioSelected($event)"></app-audio-player>
+      </div>
     </div>
 
-    <app-audio-player *ngIf="audio.value === true" [title]="audioFile.value" [audioUrl]="audioUrl" (fileChange)="handleAudioSelected($event)"></app-audio-player>
   </div>
-  <div class="col-12 col-sm-4">
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" [id]="'output-type-image_' + uuid" formControlName="image" (change)="handleAudioImageChange($event)">
-      <label class="form-check-label" [for]="'output-type-image_' + uuid"><i class="fas fa-image"></i> IMAGE</label>
+  <div class="col-12 col-sm-5">
+    <div class="row">
+      <div class="col">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" [id]="'output-type-image_' + uuid" formControlName="image" (change)="handleAudioImageChange($event)">
+          <label class="form-check-label" [for]="'output-type-image_' + uuid"><i class="fas fa-image"></i> IMAGE</label>
+        </div>
+      </div>
+      <div class="col-7">
+        <app-image-player *ngIf="image.value === true" [title]="imageFile.value || defaultTitle" [imageUrl]="imageUrl" (fileChange)="handleImageSelected($event)"></app-image-player>
+      </div>
     </div>
-    <app-image-player *ngIf="image.value === true" [title]="imageFile.value" [imageUrl]="imageUrl" (fileChange)="handleImageSelected($event)"></app-image-player>
+
   </div>
 
 </div>

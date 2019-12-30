@@ -18,6 +18,8 @@ export class OutputTypeComponent implements OnInit {
   audioUrl: string;
   imageUrl: string;
 
+  defaultTitle = 'Vyberte soubor...';
+
   constructor() {}
 
   ngOnInit() {
