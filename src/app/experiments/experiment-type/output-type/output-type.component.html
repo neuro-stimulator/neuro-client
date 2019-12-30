@@ -18,6 +18,7 @@
       <input type="checkbox" class="form-check-input" [id]="'output-type-image_' + uuid" formControlName="image" (change)="handleAudioImageChange($event)">
       <label class="form-check-label" [for]="'output-type-image_' + uuid"><i class="fas fa-image"></i> IMAGE</label>
     </div>
+    <app-image-player *ngIf="image.value === true" [title]="imageFile.value" [imageUrl]="imageUrl" (fileChange)="handleImageSelected($event)"></app-image-player>
   </div>
 
 </div>

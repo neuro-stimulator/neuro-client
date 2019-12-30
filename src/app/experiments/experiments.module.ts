@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { Ng5SliderModule } from 'ng5-slider';
 
 import { ModalModule } from '../share/modal/modal.module';
-import { ExperimentsRoutingModule } from './experiments-routing.module';
+import { FabModule } from '../share/fab/fab.module';
+import { ShareModule } from '../share/share.module';
+import { AudioPlayerModule } from '../share/audio-player/audio-player.module';
+import { ImagePlayerModule } from '../share/image-player/image-player.module';
 
+import { ExperimentsRoutingModule } from './experiments-routing.module';
 import { ExperimentsComponent } from './experiments.component';
 import { ExperimentItemListComponent } from './experiment-item/experiment-item-list.component';
 import { ExperimentGhostItemListComponent } from './experiment-ghost-item/experiment-ghost-item-list.component';
@@ -14,21 +21,16 @@ import { ExperimentTypeCvepComponent } from './experiment-type/experiment-type-c
 import { ExperimentTypeFvepComponent } from './experiment-type/experiment-type-fvep/experiment-type-fvep.component';
 import { ExperimentTypeTvepComponent } from './experiment-type/experiment-type-tvep/experiment-type-tvep.component';
 import { ExperimentTypeReaComponent } from './experiment-type/experiment-type-rea/experiment-type-rea.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { Ng5SliderModule } from 'ng5-slider';
-import { FabModule } from '../share/fab/fab.module';
 import { ExperimentTypeHeaderComponent } from './experiment-type/experiment-type-header/experiment-type-header.component';
 import { ExperimentTypeErpOutputComponent } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output.component';
 import { ExperimentTypeErpOutputCountPipe } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output-count.pipe';
 import { ExperimentTypeErpOutputDependencyPipe } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output-dependency.pipe';
 import { ExperimentTypeTvepOutputComponent } from './experiment-type/experiment-type-tvep/experiment-type-tvep-output/experiment-type-tvep-output.component';
-import { ShareModule } from '../share/share.module';
 import { ExperimentTypeTvepOutputCountPipe } from './experiment-type/experiment-type-tvep/experiment-type-tvep-output/experiment-type-tvep-output-count.pipe';
 import { OutputPatternComponent } from './experiment-type/output-pattern/output-pattern.component';
 import { ExperimentTypeFvepOutputComponent } from './experiment-type/experiment-type-fvep/experiment-type-fvep-output/experiment-type-fvep-output.component';
 import { ExperimentTypeFvepOutputCountPipe } from './experiment-type/experiment-type-fvep/experiment-type-fvep-output/experiment-type-tvep-output-count.pipe';
 import { OutputTypeComponent } from './experiment-type/output-type/output-type.component';
-import { AudioPlayerModule } from '../share/audio-player/audio-player.module';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { AudioPlayerModule } from '../share/audio-player/audio-player.module';
         FabModule,
         ExperimentsRoutingModule,
         AudioPlayerModule,
+        ImagePlayerModule,
     ],
   entryComponents: [
     ExperimentTypeNoneComponent,

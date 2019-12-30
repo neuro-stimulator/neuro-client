@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { FileRecord } from 'diplomka-share';
+
 import { FileBrowserService } from '../../../share/file-browser/file-browser.service';
 
 @Component({
@@ -15,11 +16,13 @@ export class OutputTypeComponent implements OnInit {
 
   uuid = `${Math.random()}`;
   audioUrl: string;
+  imageUrl: string;
 
   constructor() {}
 
   ngOnInit() {
     this.audioUrl = this.buildFilePath(this.audioFile.value);
+    this.imageUrl = this.buildFilePath(this.imageFile.value);
   }
 
   buildFilePath(path: string) {
@@ -42,6 +45,11 @@ export class OutputTypeComponent implements OnInit {
   handleAudioSelected(fileRecord: FileRecord) {
     this.audioFile.setValue(fileRecord.path);
     this.audioUrl = this.buildFilePath(fileRecord.path);
+  }
+
+  handleImageSelected(fileRecord: FileRecord) {
+    this.imageFile.setValue(fileRecord.path);
+    this.imageUrl = this.buildFilePath(fileRecord.path);
   }
 
   get led() {
