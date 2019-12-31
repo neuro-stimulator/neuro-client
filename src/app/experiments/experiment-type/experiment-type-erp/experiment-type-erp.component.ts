@@ -50,10 +50,10 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     return new FormGroup({
       id: new FormControl(null, Validators.required),
       experimentId: new FormControl(null, Validators.required),
-      orderId: new FormControl(null, Validators.required),
-      pulseUp: new FormControl(null, [Validators.required]),
-      pulseDown: new FormControl(null, [Validators.required]),
-      distribution: new FormControl(null, [Validators.required]),
+      orderId: new FormControl(null, [Validators.required, Validators.min(0)]),
+      pulseUp: new FormControl(null, [Validators.required, Validators.min(0)]),
+      pulseDown: new FormControl(null, [Validators.required, Validators.min(0)]),
+      distribution: new FormControl(null, [Validators.required, Validators.min(0)]),
       brightness: new FormControl(null, [
         Validators.required, Validators.min(0), Validators.max(100)
       ]),
@@ -77,9 +77,8 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     const superControls = super._createFormControls();
     const myControls = {
       outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(environment.maxOutputCount)]),
-      maxDistributionValue: new FormControl(0, [Validators.required]),
-      out: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
-      wait: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
+      out: new FormControl(null, [Validators.required, Validators.min(0)]),
+      wait: new FormControl(null, [Validators.required, Validators.min(0)]),
       random: new FormControl(null, [Validators.required]),
       edge: new FormControl(null, [Validators.required]),
       outputs: new FormArray([]),

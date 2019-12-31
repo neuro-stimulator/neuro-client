@@ -11,6 +11,7 @@
             <label [for]="'pulse-up_' + i" class="d-md-none">Pulse - up [ms]</label>
             <input type="number" [id]="'pulse-up_' + i" class="form-control form-control-sm" formControlName="pulseUp" [class.is-valid]="pulseUp(i).valid" [class.is-invalid]="pulseUp(i).invalid">
             <small *ngIf="pulseUp(i).touched && pulseUp(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
+            <small *ngIf="pulseUp(i).touched && pulseUp(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{pulseUp(i).errors?.min.min}}.</small>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-3">
@@ -19,6 +20,7 @@
             <label [for]="'pulse-down_' + i" class="d-md-none">Pulse - down [ms]</label>
             <input type="number" [id]="'pulse-down_' + i" class="form-control form-control-sm" formControlName="pulseDown" [class.is-valid]="pulseDown(i).valid" [class.is-invalid]="pulseDown(i).invalid">
             <small *ngIf="pulseDown(i).touched && pulseDown(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
+            <small *ngIf="pulseDown(i).touched && pulseDown(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{pulseDown(i).errors?.min.min}}.</small>
           </div>
         </div>
 
@@ -27,6 +29,7 @@
             <label [for]="'distribution_' + i">distribution [%]</label>
             <ng5-slider [id]="'distribution_' + i" formControlName="distribution" [formControl]="distribution(i)" [options]="distributionSliderOptions[i]"></ng5-slider>
             <small *ngIf="distribution(i).touched && distribution(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
+            <small *ngIf="distribution(i).touched && distribution(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{distribution(i).errors?.min.min}}.</small>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-3">
@@ -34,6 +37,8 @@
             <label [for]="'brightness_' + i">brightness [%]</label>
             <ng5-slider [id]="'brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{brightness(i).errors?.min.min}}.</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{brightness(i).errors?.max.max}}.</small>
           </div>
         </div>
 

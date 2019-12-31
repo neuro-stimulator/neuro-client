@@ -40,6 +40,8 @@
             <label [for]="'brightness_' + i">brightness [%]</label>
             <ng5-slider [id]="'brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{brightness(i).errors?.min.min}}.</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{brightness(i).errors?.max.max}}.</small>
           </div>
         </div>
 

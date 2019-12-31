@@ -49,10 +49,10 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
       id: new FormControl(null, Validators.required),
       experimentId: new FormControl(null, Validators.required),
       orderId: new FormControl(null, Validators.required),
-      timeOn: new FormControl(null, [Validators.required]),
-      timeOff: new FormControl(null, [Validators.required]),
-      frequency: new FormControl(null, [Validators.required]),
-      dutyCycle: new FormControl(null, [Validators.required]),
+      timeOn: new FormControl(null, [Validators.required, Validators.min(0)]),
+      timeOff: new FormControl(null, [Validators.required, Validators.min(0)]),
+      frequency: new FormControl(null, [Validators.required, Validators.min(0)]),
+      dutyCycle: new FormControl(null, [Validators.required, Validators.min(0)]),
       brightness: new FormControl(null, [
         Validators.required, Validators.min(0), Validators.max(100)
       ]),

@@ -49,8 +49,8 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
       id: new FormControl(null, Validators.required),
       experimentId: new FormControl(null, Validators.required),
       orderId: new FormControl(null, Validators.required),
-      out: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
-      wait: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
+      out: new FormControl(null, [Validators.required, Validators.min(0)]),
+      wait: new FormControl(null, [Validators.required, Validators.min(0)]),
       patternLength: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(32)]),
       pattern: new FormControl(null, [Validators.required]),
       brightness: new FormControl(null, [

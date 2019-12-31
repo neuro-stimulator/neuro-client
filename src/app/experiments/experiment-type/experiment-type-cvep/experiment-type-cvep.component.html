@@ -55,6 +55,8 @@
                 <label for="cvep-brightness">brightness [%]</label>
                 <ng5-slider id="cvep-brightness" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
                 <small *ngIf="brightness.touched && brightness.errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
+                <small *ngIf="brightness.touched && brightness.errors?.min" class="form-text text-muted">Minimální hodnota je: {{brightness.errors?.min.min}}.</small>
+                <small *ngIf="brightness.touched && brightness.errors?.max" class="form-text text-muted">Maximální hodnota je: {{brightness.errors?.max.max}}.</small>
               </div>
             </div>
 

@@ -75,11 +75,13 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
         image: new FormControl(null),
         imageFile: new FormControl(null)
       }, [Validators.required, ExperimentOutputTypeValidator.createValidator()]),
-      out: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
-      wait: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
+      out: new FormControl(null, [Validators.required, Validators.min(0)]),
+      wait: new FormControl(null, [Validators.required, Validators.min(0)]),
       pattern: new FormControl(null, [Validators.required]),
       bitShift: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(31)]),
-      brightness: new FormControl(null, [Validators.required])
+      brightness: new FormControl(null, [
+        Validators.required, Validators.min(0), Validators.max(100)
+      ])
     };
 
     return {...superControls, ...myControls};
