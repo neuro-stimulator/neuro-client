@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 @Pipe({
-  name: 'experimentTypeTvepOutputCount'
+  name: 'experimentTypeTvepOutputCount',
+  pure: false
 })
 export class ExperimentTypeTvepOutputCountPipe implements PipeTransform {
 

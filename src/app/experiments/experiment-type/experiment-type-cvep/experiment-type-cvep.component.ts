@@ -12,6 +12,7 @@ import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
+import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 
 @Component({
   selector: 'app-experiment-type-cvep',
@@ -73,7 +74,7 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
         audioFile: new FormControl(null),
         image: new FormControl(null),
         imageFile: new FormControl(null)
-      }, [Validators.required]),
+      }, [Validators.required, ExperimentOutputTypeValidator.createValidator()]),
       out: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
       wait: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(9999)]),
       pattern: new FormControl(null, [Validators.required]),

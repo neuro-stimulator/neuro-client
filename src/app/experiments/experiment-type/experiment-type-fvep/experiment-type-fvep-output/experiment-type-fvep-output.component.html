@@ -1,7 +1,7 @@
 <div [formGroup]="form">
   <div formArrayName="outputs">
     <div *ngFor="let output of outputs | experimentTypeFvepOutputCount:count; let i=index">
-      <div class="row experiment-property" [attr.data-content]="(i+1) + '.'" [formGroupName]="i">
+      <div class="row experiment-property" [attr.data-content]="(i+1)" [formGroupName]="i">
 
         <div class="col-md-12">
           <h5>Parametry výstupu</h5>
@@ -9,8 +9,8 @@
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label for="fvep-time-on">time ON</label>
-            <input type="number" id="fvep-time-on" class="form-control form-control-sm" [class.is-valid]="timeOn(i).valid" [class.is-invalid]="timeOn(i).invalid" formControlName="timeOn">
+            <label [for]="'fvep-time-on_' + i">time ON</label>
+            <input type="number" [id]="'fvep-time-on_' + i" class="form-control form-control-sm" [class.is-valid]="timeOn(i).valid" [class.is-invalid]="timeOn(i).invalid" formControlName="timeOn">
             <small *ngIf="timeOn(i).touched && timeOn(i).errors?.required" class="form-text text-muted">Parametr timeOn je vyžadován.</small>
             <small *ngIf="timeOn(i).touched && timeOn(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{timeOn(i).errors?.min.min}}.</small>
             <small *ngIf="timeOn(i).touched && timeOn(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{timeOn(i).errors?.max.max}}.</small>
@@ -18,8 +18,8 @@
         </div>
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label for="fvep-time-off">time OFF</label>
-            <input type="number" id="fvep-time-off" class="form-control form-control-sm" [class.is-valid]="timeOff(i).valid" [class.is-invalid]="timeOff(i).invalid" formControlName="timeOff">
+            <label [for]="'fvep-time-off_' + i">time OFF</label>
+            <input type="number" [id]="'fvep-time-off_' + i" class="form-control form-control-sm" [class.is-valid]="timeOff(i).valid" [class.is-invalid]="timeOff(i).invalid" formControlName="timeOff">
             <small *ngIf="timeOff(i).touched && timeOff(i).errors?.required" class="form-text text-muted">Parametr timeOff je vyžadován.</small>
             <small *ngIf="timeOff(i).touched && timeOff(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{timeOff(i).errors?.min.min}}.</small>
             <small *ngIf="timeOff(i).touched && timeOff(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{timeOff(i).errors?.max.max}}.</small>
@@ -27,8 +27,8 @@
         </div>
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label for="fvep-frequency">frequency</label>
-            <input type="number" id="fvep-frequency" class="form-control form-control-sm" [class.is-valid]="frequency(i).valid" [class.is-invalid]="frequency(i).invalid" formControlName="frequency">
+            <label [for]="'fvep-frequency_' + i">frequency</label>
+            <input type="number" [id]="'fvep-frequency_' + i" class="form-control form-control-sm" [class.is-valid]="frequency(i).valid" [class.is-invalid]="frequency(i).invalid" formControlName="frequency">
             <small *ngIf="frequency(i).touched && frequency(i).errors?.required" class="form-text text-muted">Parametr frequency je vyžadován.</small>
             <small *ngIf="frequency(i).touched && frequency(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{frequency(i).errors?.min.min}}.</small>
             <small *ngIf="frequency(i).touched && frequency(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{frequency(i).errors?.max.max}}.</small>
@@ -36,8 +36,8 @@
         </div>
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label for="fvep-duty-cycle">duty cycle</label>
-            <input type="number" id="fvep-duty-cycle" class="form-control form-control-sm" [class.is-valid]="dutyCycle(i).valid" [class.is-invalid]="dutyCycle(i).invalid" formControlName="dutyCycle">
+            <label [for]="'fvep-duty-cycle_' + i">duty cycle</label>
+            <input type="number" [id]="'fvep-duty-cycle_' + i" class="form-control form-control-sm" [class.is-valid]="dutyCycle(i).valid" [class.is-invalid]="dutyCycle(i).invalid" formControlName="dutyCycle">
             <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.required" class="form-text text-muted">Parametr dutyCycle je vyžadován.</small>
             <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{dutyCycle(i).errors?.min.min}}.</small>
             <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{dutyCycle(i).errors?.max.max}}.</small>
@@ -45,8 +45,8 @@
         </div>
         <div class="col-12">
           <div class="form-group">
-            <label for="fvep-brightness">brightness [%]</label>
-            <ng5-slider id="fvep-brightness" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
+            <label [for]="'fvep-brightness_' + i">brightness [%]</label>
+            <ng5-slider [id]="'fvep-brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
           </div>
         </div>

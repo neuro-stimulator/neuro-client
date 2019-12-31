@@ -14,7 +14,7 @@ import { dependencyValidatorPattern } from '../../experiments.share';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
-import { ExperimentOutputTypeValidator } from '../experiment-output-type-validator';
+import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 
 @Component({
   selector: 'app-experiment-type-erp',
@@ -46,38 +46,31 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     super.ngOnInit();
   }
 
-  protected _createOutputsFormControls(): FormGroup[] {
-    const array = [];
-    for (let i = 0; i < environment.maxOutputCount; i++) {
-      const group = new FormGroup({
-        id: new FormControl(null, Validators.required),
-        experimentId: new FormControl(null, Validators.required),
-        orderId: new FormControl(null, Validators.required),
-        pulseUp: new FormControl(null, [Validators.required]),
-        pulseDown: new FormControl(null, [Validators.required]),
-        distribution: new FormControl(null, [Validators.required]),
-        brightness: new FormControl(null, [
-          Validators.required, Validators.min(0), Validators.max(100)
-        ]),
-        dependencies: new FormArray([
-          new FormControl([]),
-          new FormControl(null, [
-            Validators.pattern(dependencyValidatorPattern),
-            ExperimentTypeErpOutputDependencyValidator.createValidator()]),
-        ]),
-        outputType: new FormGroup({
-          led: new FormControl(null),
-          audio: new FormControl(null),
-          audioFile: new FormControl(null),
-          image: new FormControl(null),
-          imageFile: new FormControl(null)
-        }, {validators: [Validators.required, ExperimentOutputTypeValidator.createValidator()]})
-      });
-      group.setParent(this.form);
-      array.push(group);
-    }
-
-    return array;
+  private _createOutputFormControl(): FormGroup {
+    return new FormGroup({
+      id: new FormControl(null, Validators.required),
+      experimentId: new FormControl(null, Validators.required),
+      orderId: new FormControl(null, Validators.required),
+      pulseUp: new FormControl(null, [Validators.required]),
+      pulseDown: new FormControl(null, [Validators.required]),
+      distribution: new FormControl(null, [Validators.required]),
+      brightness: new FormControl(null, [
+        Validators.required, Validators.min(0), Validators.max(100)
+      ]),
+      dependencies: new FormArray([
+        new FormControl([]),
+        new FormControl(null, [
+          Validators.pattern(dependencyValidatorPattern),
+          ExperimentTypeErpOutputDependencyValidator.createValidator()]),
+      ]),
+      outputType: new FormGroup({
+        led: new FormControl(null),
+        audio: new FormControl(null),
+        audioFile: new FormControl(null),
+        image: new FormControl(null),
+        imageFile: new FormControl(null)
+      }, {validators: [Validators.required, ExperimentOutputTypeValidator.createValidator()]})
+    });
   }
 
   protected _createFormControls(): { [p: string]: AbstractControl } {
@@ -112,12 +105,13 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     };
   }
 
-
   protected _updateFormGroup(experiment: ExperimentERP) {
     if (experiment.outputs.length > 0) {
-      (this.form.get('outputs') as FormArray).controls = this._createOutputsFormControls();
+      for (let i = 0; i < environment.maxOutputCount; i++) {
+        (this.form.get('outputs') as FormArray).push(this._createOutputFormControl());
+      }
     } else {
-      (this.form.get('outputs') as FormArray).controls = [];
+      (this.form.get('outputs') as FormArray).clear();
     }
 
     super._updateFormGroup(experiment);

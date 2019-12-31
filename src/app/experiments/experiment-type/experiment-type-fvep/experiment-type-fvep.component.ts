@@ -12,6 +12,7 @@ import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
+import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 
 @Component({
   selector: 'app-experiment-type-fvep',
@@ -43,33 +44,26 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
     super.ngOnInit();
   }
 
-  protected _createOutputsFormControls(): FormGroup[] {
-    const array = [];
-    for (let i = 0; i < environment.maxOutputCount; i++) {
-      const group = new FormGroup({
-        id: new FormControl(null, Validators.required),
-        experimentId: new FormControl(null, Validators.required),
-        orderId: new FormControl(null, Validators.required),
-        timeOn: new FormControl(null, [Validators.required]),
-        timeOff: new FormControl(null, [Validators.required]),
-        frequency: new FormControl(null, [Validators.required]),
-        dutyCycle: new FormControl(null, [Validators.required]),
-        brightness: new FormControl(null, [
-          Validators.required, Validators.min(0), Validators.max(100)
-        ]),
-        outputType: new FormGroup({
-          led: new FormControl(null),
-          audio: new FormControl(null),
-          audioFile: new FormControl(null),
-          image: new FormControl(null),
-          imageFile: new FormControl(null)
-        }, [Validators.required])
-      });
-      group.setParent(this.form);
-      array.push(group);
-    }
-
-    return array;
+  private _createOutputFormControl(): FormGroup {
+    return new FormGroup({
+      id: new FormControl(null, Validators.required),
+      experimentId: new FormControl(null, Validators.required),
+      orderId: new FormControl(null, Validators.required),
+      timeOn: new FormControl(null, [Validators.required]),
+      timeOff: new FormControl(null, [Validators.required]),
+      frequency: new FormControl(null, [Validators.required]),
+      dutyCycle: new FormControl(null, [Validators.required]),
+      brightness: new FormControl(null, [
+        Validators.required, Validators.min(0), Validators.max(100)
+      ]),
+      outputType: new FormGroup({
+        led: new FormControl(null),
+        audio: new FormControl(null),
+        audioFile: new FormControl(null),
+        image: new FormControl(null),
+        imageFile: new FormControl(null)
+      }, [Validators.required, ExperimentOutputTypeValidator.createValidator()])
+    });
   }
 
   protected _createFormControls(): { [p: string]: AbstractControl } {
@@ -96,9 +90,11 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
 
   protected _updateFormGroup(experiment: ExperimentFVEP) {
     if (experiment.outputs.length > 0) {
-      (this.form.get('outputs') as FormArray).controls = this._createOutputsFormControls();
+      for (let i = 0; i < environment.maxOutputCount; i++) {
+        (this.form.get('outputs') as FormArray).push(this._createOutputFormControl());
+      }
     } else {
-      (this.form.get('outputs') as FormArray).controls = [];
+      (this.form.get('outputs') as FormArray).clear();
     }
 
     super._updateFormGroup(experiment);

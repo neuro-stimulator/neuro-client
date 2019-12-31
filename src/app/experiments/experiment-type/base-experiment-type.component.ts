@@ -29,6 +29,9 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
                         protected readonly _cdr: ChangeDetectorRef,
                         protected readonly logger: NGXLogger) {
     this.form = new FormGroup(this._createFormControls());
+    this.form.valueChanges.subscribe(() => {
+      console.log(this.form.value);
+    });
   }
 
   /**
@@ -101,11 +104,11 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   protected _createFormControls(): { [p: string]: AbstractControl } {
     this.logger.debug('Vytvářím kontrolky pro formulář.');
     return {
-      id: new FormControl(),
+      id: new FormControl(null),
       name: new FormControl(null, [Validators.required]),
       description: new FormControl(),
-      type: new FormControl(),
-      created: new FormControl()
+      type: new FormControl(null, [Validators.required]),
+      created: new FormControl(null)
     };
   }
 
