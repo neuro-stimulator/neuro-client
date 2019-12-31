@@ -29,9 +29,6 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
                         protected readonly _cdr: ChangeDetectorRef,
                         protected readonly logger: NGXLogger) {
     this.form = new FormGroup(this._createFormControls());
-    this.form.valueChanges.subscribe(() => {
-      console.log(this.form.value);
-    });
   }
 
   /**
