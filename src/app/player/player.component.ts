@@ -23,7 +23,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   private _eventEmitter: EventEmitter<IOEvent> = new EventEmitter<IOEvent>();
   eventEmitter: Observable<IOEvent> = this._eventEmitter.asObservable();
-  outputCount = 4;
+  outputCount;
 
   constructor(private readonly _command: CommandsService,
               private readonly _serial: SerialService,

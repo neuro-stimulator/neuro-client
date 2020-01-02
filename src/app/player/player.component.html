@@ -18,7 +18,7 @@
   <div class="col-12">
     <h2>Průběh experimentu</h2>
     <div style="width: 100%;">
-      <app-experiment-viewer [incommingEvent]="eventEmitter" [outputCount]="outputCount"></app-experiment-viewer>
+      <app-experiment-viewer *ngIf="outputCount" [incommingEvent]="eventEmitter" [outputCount]="outputCount"></app-experiment-viewer>
     </div>
   </div>
 </div>
