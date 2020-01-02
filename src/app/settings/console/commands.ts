@@ -95,9 +95,9 @@ export class DisplayTextCommand implements ClientCommand<{ x: number, y: number,
   }
 }
 
-export class ExperimentUploadCommand implements ClientCommand<number> {
+export class ExperimentSetupCommand implements ClientCommand<number> {
   public getName(): string {
-    return 'experiment-upload';
+    return 'experiment-setup';
   }
 
   public isValid(params: string[]): [boolean, string?] {

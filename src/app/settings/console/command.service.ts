@@ -5,7 +5,7 @@ import {
   DisplayTextCommand, ExperimentClearCommand, ExperimentInitCommand,
   ExperimentStartCommand,
   ExperimentStopCommand,
-  ExperimentUploadCommand, OutputSetCommand,
+  ExperimentSetupCommand, OutputSetCommand,
   RebootCommand,
   SetTimeCommand
 } from './commands';
@@ -22,7 +22,7 @@ export class CommandService {
     new SetTimeCommand(),
     new DisplayClearCommand(),
     new DisplayTextCommand(),
-    new ExperimentUploadCommand(),
+    new ExperimentSetupCommand(),
     new ExperimentInitCommand(),
     new ExperimentStartCommand(),
     new ExperimentStopCommand(),
