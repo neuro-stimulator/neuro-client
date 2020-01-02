@@ -10,7 +10,6 @@ export class ExperimentOutputTypeValidator {
 
   public static createValidator(): ValidatorFn {
     return (control: FormGroup): ValidationErrors | null => {
-      console.log(control.parent);
       if (!control.get('led').value && !control.get('audio').value && !control.get('image').value) {
         return { noOutputType: true };
       }

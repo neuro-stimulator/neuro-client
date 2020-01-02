@@ -81,6 +81,11 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
       wait: new FormControl(null, [Validators.required, Validators.min(0)]),
       random: new FormControl(null, [Validators.required]),
       edge: new FormControl(null, [Validators.required]),
+      usedOutputs: new FormGroup({
+        led: new FormControl(null),
+        audio: new FormControl(null),
+        image: new FormControl(null),
+      }),
       outputs: new FormArray([]),
     };
 
@@ -99,7 +104,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
       wait: 0,
       random: Random.OFF,
       edge: Edge.FALLING,
-      maxDistributionValue: 0,
+      // maxDistributionValue: 0,
       outputs: []
     };
   }

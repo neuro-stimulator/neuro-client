@@ -8,9 +8,12 @@
   <div class="col-12 col-sm-5">
     <div class="row">
       <div class="col">
+        <div class="form-group">
         <div class="form-check">
           <input type="checkbox" class="form-check-input" [id]="'output-type-audio_' + uuid" formControlName="audio" (change)="handleAudioImageChange($event)">
           <label class="form-check-label" [for]="'output-type-audio_' + uuid"><i class="fas fa-music"></i> AUDIO</label>
+        </div>
+          <small *ngIf="form.errors?.audioFile" class="form-text text-muted">Je třeba vybrat přehrávaný zvuk.</small>
         </div>
       </div>
       <div class="col-8">
@@ -22,9 +25,12 @@
   <div class="col-12 col-sm-5">
     <div class="row">
       <div class="col">
+        <div class="form-group">
         <div class="form-check">
           <input type="checkbox" class="form-check-input" [id]="'output-type-image_' + uuid" formControlName="image" (change)="handleAudioImageChange($event)">
           <label class="form-check-label" [for]="'output-type-image_' + uuid"><i class="fas fa-image"></i> IMAGE</label>
+        </div>
+          <small *ngIf="form.errors?.imageFile" class="form-text text-muted">Je třeba vybrat obrázek.</small>
         </div>
       </div>
       <div class="col-7">
@@ -34,6 +40,9 @@
 
   </div>
 
-  {{form.errors | json}}
+  <div class="col-12">
+    <small *ngIf="form.touched && form.errors?.noOutputType" class="form-text text-muted">Je třeba vybrat typ výstupu.</small>
+  </div>
+
 </div>
 
