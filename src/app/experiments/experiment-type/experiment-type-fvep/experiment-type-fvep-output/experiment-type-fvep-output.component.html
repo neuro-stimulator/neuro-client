@@ -7,37 +7,49 @@
           <h5>Parametry výstupu</h5>
         </div>
 
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-md-6">
+          <input type="radio" [name]="'fvep-input-type-time_' + i" [checked]="activeSide[i].left" (change)="handleChangeActiveSide(i)">
+<!--          <label [for]="'fvep-input-type-time_' + i"> LEFT</label>-->
+        </div>
+        <div class="col-sm-6 d-none d-md-block">
+          <input type="radio" [name]="'fvep-input-type-ratio-up_' + i" [checked]="activeSide[i].right" (change)="handleChangeActiveSide(i)">
+<!--          <label [for]="'fvep-input-type-ratio-up_' + i"> RIGHT</label>-->
+        </div>
+        <div class="col-12 col-sm-6 col-md-3" >
           <div class="form-group">
             <label [for]="'fvep-time-on_' + i">time ON</label>
-            <input type="number" [id]="'fvep-time-on_' + i" class="form-control form-control-sm" [class.is-valid]="timeOn(i).valid" [class.is-invalid]="timeOn(i).invalid" formControlName="timeOn">
+            <input type="number" [id]="'fvep-time-on_' + i" class="form-control form-control-sm" [class.is-valid]="timeOn(i).valid" [class.is-invalid]="timeOn(i).invalid" [attr.disabled]="!activeSide[i].left ? '' : null" formControlName="timeOn" (change)="handleTimeChange($event, i)">
             <small *ngIf="timeOn(i).touched && timeOn(i).errors?.required" class="form-text text-muted">Parametr timeOn je vyžadován.</small>
             <small *ngIf="timeOn(i).touched && timeOn(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{timeOn(i).errors?.min.min}}.</small>
             <small *ngIf="timeOn(i).touched && timeOn(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{timeOn(i).errors?.max.max}}.</small>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-3" >
           <div class="form-group">
             <label [for]="'fvep-time-off_' + i">time OFF</label>
-            <input type="number" [id]="'fvep-time-off_' + i" class="form-control form-control-sm" [class.is-valid]="timeOff(i).valid" [class.is-invalid]="timeOff(i).invalid" formControlName="timeOff">
+            <input type="number" [id]="'fvep-time-off_' + i" class="form-control form-control-sm" [class.is-valid]="timeOff(i).valid" [class.is-invalid]="timeOff(i).invalid" [attr.disabled]="!activeSide[i].left ? '' : null" formControlName="timeOff" (change)="handleTimeChange($event, i)">
             <small *ngIf="timeOff(i).touched && timeOff(i).errors?.required" class="form-text text-muted">Parametr timeOff je vyžadován.</small>
             <small *ngIf="timeOff(i).touched && timeOff(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{timeOff(i).errors?.min.min}}.</small>
             <small *ngIf="timeOff(i).touched && timeOff(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{timeOff(i).errors?.max.max}}.</small>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 d-block d-md-none">
+          <input type="radio" [name]="'fvep-input-type-ratio-down_' + i" [checked]="activeSide[i].right" (change)="handleChangeActiveSide(i)">
+<!--          <label [for]="'fvep-input-type-ratio-down_' + i"> RIGHT</label>-->
+        </div>
+        <div class="col-12 col-sm-6 col-md-3" >
           <div class="form-group">
             <label [for]="'fvep-frequency_' + i">frequency</label>
-            <input type="number" [id]="'fvep-frequency_' + i" class="form-control form-control-sm" [class.is-valid]="frequency(i).valid" [class.is-invalid]="frequency(i).invalid" formControlName="frequency">
+            <input type="number" [id]="'fvep-frequency_' + i" class="form-control form-control-sm" [class.is-valid]="frequency(i).valid" [class.is-invalid]="frequency(i).invalid" [attr.disabled]="!activeSide[i].right ? '' : null" formControlName="frequency" (change)="handleRatioChange($event, i)">
             <small *ngIf="frequency(i).touched && frequency(i).errors?.required" class="form-text text-muted">Parametr frequency je vyžadován.</small>
             <small *ngIf="frequency(i).touched && frequency(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{frequency(i).errors?.min.min}}.</small>
             <small *ngIf="frequency(i).touched && frequency(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{frequency(i).errors?.max.max}}.</small>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-3" >
           <div class="form-group">
             <label [for]="'fvep-duty-cycle_' + i">duty cycle</label>
-            <input type="number" [id]="'fvep-duty-cycle_' + i" class="form-control form-control-sm" [class.is-valid]="dutyCycle(i).valid" [class.is-invalid]="dutyCycle(i).invalid" formControlName="dutyCycle">
+            <input type="number" [id]="'fvep-duty-cycle_' + i" class="form-control form-control-sm" [class.is-valid]="dutyCycle(i).valid" [class.is-invalid]="dutyCycle(i).invalid" [attr.disabled]="!activeSide[i].right ? '' : null" formControlName="dutyCycle" (change)="handleRatioChange($event, i)">
             <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.required" class="form-text text-muted">Parametr dutyCycle je vyžadován.</small>
             <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{dutyCycle(i).errors?.min.min}}.</small>
             <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{dutyCycle(i).errors?.max.max}}.</small>

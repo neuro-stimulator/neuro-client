@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Options as SliderOptions } from 'ng5-slider/options';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-experiment-type-fvep-output',
@@ -9,6 +10,10 @@ import { Options as SliderOptions } from 'ng5-slider/options';
   styleUrls: ['./experiment-type-fvep-output.component.sass']
 })
 export class ExperimentTypeFvepOutputComponent implements OnInit {
+
+  @Input() form: FormGroup;
+  @Input() count: number;
+  @Input() experimentReady: Observable<any>;
 
   brightnessSliderOptions: SliderOptions = {
     floor: 0,
@@ -20,13 +25,47 @@ export class ExperimentTypeFvepOutputComponent implements OnInit {
     animate: false
   };
 
-  @Input() form: FormGroup;
-  @Input() count: number;
-  @Input() experimentReady: Observable<any>;
+  activeSide: {left: boolean, right: boolean}[] = [];
 
   constructor() { }
 
   ngOnInit() {
+    for (let i = 0; i < environment.maxOutputCount; i++) {
+      this.activeSide.push({left: true, right: false});
+    }
+  }
+
+  handleChangeActiveSide(i: number) {
+    this.activeSide[i].left = !this.activeSide[i].left;
+    this.activeSide[i].right = !this.activeSide[i].right;
+  }
+
+  handleTimeChange(event: Event, index: number) {
+    if (!this.activeSide[index].left) {
+      return;
+    }
+
+    const timeOnValue = +this.timeOn(index).value as number;
+    const timeOffValue = +this.timeOff(index).value as number;
+    const frequencyControl = this.frequency(index);
+    const dutyCycleControl = this.dutyCycle(index);
+
+    frequencyControl.setValue(timeOnValue + timeOffValue);
+    dutyCycleControl.setValue((timeOnValue + timeOffValue) / timeOffValue);
+  }
+
+  handleRatioChange(event: Event, index: number) {
+    if (!this.activeSide[index].right) {
+      return;
+    }
+
+    const frequencyValue = +this.frequency(index).value as number;
+    const dutyCycleValue = +this.dutyCycle(index).value as number;
+    const timeOnControl = this.timeOn(index);
+    const timeOffControl = this.timeOff(index);
+
+    timeOffControl.setValue(frequencyValue / dutyCycleValue);
+    timeOnControl.setValue(frequencyValue - (frequencyValue / dutyCycleValue));
   }
 
   get outputs() {
@@ -55,5 +94,5 @@ export class ExperimentTypeFvepOutputComponent implements OnInit {
 
   brightness(index: number) {
     return this.outputs[index].get('brightness');
-  }
+}
 }
