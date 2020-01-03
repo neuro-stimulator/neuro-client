@@ -20,6 +20,8 @@ export class ExperimentResultsService extends BaseService<ExperimentResult> {
               protected readonly _http: HttpClient,
               protected readonly logger: NGXLogger) {
     super(ExperimentResultsService.BASE_API_URL, aliveChecker, _http, logger);
+
+    super._initSocket('experiment-results');
   }
 
   /**

@@ -91,6 +91,12 @@ export class SerialService {
       case 0x03:
         text = 'Konfigurace experimentů byla vymazána.';
         break;
+      case 0x10:
+        text = 'Konfigurace byla nahrána.';
+        break;
+      case 0x11:
+        text = 'Nastavení jednoho výstupu bylo nahráno.';
+        break;
     }
 
     this.console.saveCommand({date: new Date(event.timestamp), text});

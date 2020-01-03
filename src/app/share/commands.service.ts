@@ -21,24 +21,28 @@ export class CommandsService {
   }
 
   public async experimentStart(experimentID: number) {
-    return await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/start/${experimentID}`, null).toPromise();
+    await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/start/${experimentID}`, null).toPromise();
   }
 
   public async experimentStop(experimentID: number) {
-    return await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/stop/${experimentID}`, null).toPromise();
+    await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/stop/${experimentID}`, null).toPromise();
   }
 
   public async experimentSetup(id: number) {
-    await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/setup/${id}`, null).toPromise();
+    const res = await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/setup/${id}`, null).toPromise();
+    if (res && res.message && res.message.type !== 0) {
+      return;
+    }
     await this.experimentInit();
   }
 
   public async experimentInit() {
-    return await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/init`, null).toPromise();
+    await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/init`, null).toPromise();
   }
 
   public async experimentClear() {
-    return await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/clear`, null).toPromise();
+    const ret = await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/clear`, null).toPromise();
+    console.log(ret);
   }
 
   // toggle-led/:index/:enabled
