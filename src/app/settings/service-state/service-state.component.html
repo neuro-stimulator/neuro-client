@@ -1,7 +1,7 @@
 <h3>Service status</h3>
 <div class="row service-status server bg-light">
   <div class="col-6">
-    <i class="fas fa-server"></i> Web Server
+    <i class="fas fa-server" title="Web Server"></i> Web Server
   </div>
   <div class="col-6 text-right">
     <span *ngIf="!aliveChecker.isConnected"><i class="fas fa-times text-danger"></i> NEPŘIPOJENO</span>
@@ -10,7 +10,7 @@
 </div>
 <div class="row service-status serial bg-light">
   <div class="col-6">
-    <i class="fas fa-microchip"></i> Stimulator
+    <i class="fas fa-microchip" title="Stimulator"></i> Stimulator
   </div>
   <div class="col-6 text-right">
     <span *ngIf="!serialConnected"><i class="fas fa-times text-danger"></i> NEPŘIPOJENO</span>
@@ -19,7 +19,7 @@
 </div>
 <div class="row service-status serial bg-light">
   <div class="col-6">
-    <i class="fas fa-bullhorn"></i>/<i class="fas fa-camera-retro"></i> Přehrávač zvuků a obrázků
+    <i class="fas fa-bullhorn" title="Přehrávač zvuků a obrázků"></i>/<i class="fas fa-camera-retro" title="Přehrávač zvuků a obrázků"></i> Přehrávač zvuků a obrázků
   </div>
   <div class="col-6 text-right">
     <span *ngIf="!ipcConnected"><i class="fas fa-times text-danger"></i> NEPŘIPOJENO</span>
