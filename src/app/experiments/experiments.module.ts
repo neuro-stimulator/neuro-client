@@ -12,8 +12,8 @@ import { ImagePlayerModule } from '../share/image-player/image-player.module';
 
 import { ExperimentsRoutingModule } from './experiments-routing.module';
 import { ExperimentsComponent } from './experiments.component';
-import { ExperimentItemListComponent } from './experiment-item/experiment-item-list.component';
-import { ExperimentGhostItemListComponent } from './experiment-ghost-item/experiment-ghost-item-list.component';
+import { ExperimentItemListComponent } from './experiment-item-list/experiment-item-list.component';
+import { ExperimentGhostItemListComponent } from './experiment-ghost-item-list/experiment-ghost-item-list.component';
 import { ExperimentTypeComponent } from './experiment-type/experiment-type.component';
 import { ExperimentTypeErpComponent } from './experiment-type/experiment-type-erp/experiment-type-erp.component';
 import { ExperimentTypeNoneComponent } from './experiment-type/experiment-type-none/experiment-type-none.component';
