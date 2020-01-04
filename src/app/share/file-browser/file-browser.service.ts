@@ -3,14 +3,14 @@ import { HttpClient } from '@angular/common/http';
 
 import { ResponseObject, FileRecord } from '@stechy1/diplomka-share';
 
-import { environment } from '../../../environments/environment';
+import { environment, makeURL } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileBrowserService {
 
-  public static readonly BASE_API_URL = `${environment.makeURL(environment.url.server, environment.port.server)}/api/file-browser`;
+  public static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/file-browser`;
 
   constructor(private _http: HttpClient) { }
 

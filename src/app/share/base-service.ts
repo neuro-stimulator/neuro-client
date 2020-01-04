@@ -9,7 +9,7 @@ import { NGXLogger } from 'ngx-logger';
 
 import { ResponseObject } from '@stechy1/diplomka-share';
 
-import { environment } from '../../environments/environment';
+import { environment, makeURL } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
 import { ChangeServiceEvent } from './change-service-event';
 import { CRUDServiceType } from './crud-service-type';
@@ -161,7 +161,7 @@ export abstract class BaseService<T extends BaseRecord> {
   }
 
   protected _initSocket(namespace: string): void {
-    this._socket = new Socket({url: `${environment.makeURL(environment.url.socket, environment.port.socket)}/${namespace}`});
+    this._socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.socket)}/${namespace}`});
     this._socket.on('connect', () => this._socketConnected());
     this._socket.on('disconnect', (reason) => this._socketDisconnected(reason));
     this._socket.on('insert', (data: T) => {

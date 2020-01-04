@@ -6,7 +6,7 @@ import { BaseService } from '../share/base-service';
 import { AliveCheckerService } from '../alive-checker.service';
 import { HttpClient } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
-import { environment } from '../../environments/environment';
+import { environment, makeURL } from '../../environments/environment';
 import { IOEvent } from '../share/serial-data.event';
 
 @Injectable({
@@ -14,7 +14,7 @@ import { IOEvent } from '../share/serial-data.event';
 })
 export class ExperimentResultsService extends BaseService<ExperimentResult> {
 
-  private static readonly BASE_API_URL = `${environment.makeURL(environment.url.server, environment.port.server)}/api/experiment-results`;
+  private static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/experiment-results`;
 
   constructor(aliveChecker: AliveCheckerService,
               protected readonly _http: HttpClient,

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { environment } from '../../environments/environment';
+import { environment, makeURL } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommandsService {
 
-  private static readonly BASE_API_URL = `${environment.makeURL(environment.url.server, environment.port.server)}/api/commands`;
+  private static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/commands`;
 
   constructor(private readonly _http: HttpClient) { }
 

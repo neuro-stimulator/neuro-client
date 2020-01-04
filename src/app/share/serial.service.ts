@@ -6,7 +6,7 @@ import { Socket } from 'ngx-socket-io';
 
 import { ResponseObject} from '@stechy1/diplomka-share';
 
-import { environment } from '../../environments/environment';
+import { environment, makeURL } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
 import { NavigationService } from '../navigation/navigation.service';
 import { ConsoleService } from '../settings/console/console.service';
@@ -20,7 +20,7 @@ export class SerialService {
   /**
    * Konstanta reprezentující výchozí URL adresu pro požadavky týkající se seriové linky
    */
-  private static readonly BASE_API_URL = `${environment.makeURL(environment.url.server, environment.port.server)}/api/low-level`;
+  private static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/low-level`;
 
   /**
    * Emitter pro přijatá data
@@ -32,7 +32,7 @@ export class SerialService {
   /**
    * Socket pro komunikaci mezi WebServerem a Webovou aplikací
    */
-  private readonly _socket = new Socket({url: `${environment.makeURL(environment.url.socket, environment.port.socket)}/serial`});
+  private readonly _socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.socket)}/serial`});
 
   private _isSerialConnected: boolean;
 

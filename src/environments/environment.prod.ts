@@ -10,10 +10,10 @@ export const environment = {
     server: SERVER_HTTP_PORT,
     socket: SERVER_SOCKET_PORT
   },
-  makeURL: (url: string, port: number) => {
-    // return `${url}:${port}`;
-    return '';
-  },
   maxOutputCount: 8,
   patternSize: 32
 };
+
+export function makeURL(url: string, port: number) {
+  return '';
+}

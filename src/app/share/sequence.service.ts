@@ -5,7 +5,7 @@ import { Socket } from 'ngx-socket-io';
 
 import { Experiment } from '@stechy1/diplomka-share';
 
-import { environment } from '../../environments/environment';
+import { environment, makeURL } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
 
 @Injectable({
@@ -16,12 +16,12 @@ export class SequenceService {
   /**
    * Konstanta reprezentující výchozí URL adresu pro požadavky týkající se sekvencí
    */
-  private static readonly BASE_API_URL = `${environment.makeURL(environment.url.server, environment.port.server)}/api/sequence`;
+  private static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/sequence`;
 
   /**
    * Socket pro komunikaci mezi WebServerem a Webovou aplikací
    */
-  private readonly _socket = new Socket({url: `${environment.makeURL(environment.url.socket, environment.port.socket)}/sequence`});
+  private readonly _socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.socket)}/sequence`});
 
   constructor(aliveChecker: AliveCheckerService,
               private readonly _http: HttpClient) {

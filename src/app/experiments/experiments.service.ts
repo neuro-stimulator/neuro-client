@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 
-import { environment } from '../../environments/environment';
+import { environment, makeURL } from '../../environments/environment';
 import { Experiment } from '@stechy1/diplomka-share';
 import { BaseService } from '../share/base-service';
 import { AliveCheckerService } from '../alive-checker.service';
@@ -12,7 +12,7 @@ import { AliveCheckerService } from '../alive-checker.service';
 })
 export class ExperimentsService extends BaseService<Experiment> {
 
-  private static readonly BASE_API_URL = `${environment.makeURL(environment.url.server, environment.port.server)}/api/experiments`;
+  private static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/experiments`;
 
   constructor(aliveChecker: AliveCheckerService,
               protected readonly _http: HttpClient,

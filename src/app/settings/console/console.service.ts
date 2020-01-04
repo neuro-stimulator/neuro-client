@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Socket } from 'ngx-socket-io';
 import { LocalStorageService } from 'angular-2-local-storage';
 
-import { environment } from '../../../environments/environment';
+import { environment, makeURL } from '../../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../../alive-checker.service';
 import { ConsoleCommand } from './console-command';
 import { CommandService } from './command.service';
@@ -19,7 +19,7 @@ export class ConsoleService {
   private readonly _commands: BehaviorSubject<ConsoleCommand[]> = new BehaviorSubject<ConsoleCommand[]>([]);
   public readonly commands$: Observable<ConsoleCommand[]> = this._commands.asObservable();
 
-  private readonly _socket = new Socket({url: `${environment.makeURL(environment.url.socket, environment.port.socket)}/commands`});
+  private readonly _socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.socket)}/commands`});
 
   constructor(private readonly aliveChecker: AliveCheckerService,
               private readonly _command: CommandService,

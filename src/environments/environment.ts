@@ -14,12 +14,13 @@ export const environment = {
     server: SERVER_HTTP_PORT,
     socket: SERVER_SOCKET_PORT
   },
-  makeURL: (url: string, port: number) => {
-    return `${url}:${port}`;
-  },
   maxOutputCount: 8,
   patternSize: 32
 };
+
+export function makeURL(url: string, port: number) {
+  return `${url}:${port}`;
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

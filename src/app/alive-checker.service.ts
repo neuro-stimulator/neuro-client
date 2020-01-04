@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Socket } from 'ngx-socket-io';
 import { ToastrService } from 'ngx-toastr';
 
-import { environment } from '../environments/environment';
+import { environment, makeURL } from '../environments/environment';
 import { NavigationService } from './navigation/navigation.service';
 
 @Injectable({
@@ -29,7 +29,7 @@ export class AliveCheckerService {
 
   constructor(private readonly navigation: NavigationService,
               private readonly toastr: ToastrService) {
-    this._socket = new Socket({url: `${environment.makeURL(environment.url.socket, environment.port.socket)}`});
+    this._socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.socket)}`});
     this._socket.on('connect', () => this._socketConnected());
     this._socket.on('disconnect', (reason) => this._socketDisconnected(reason));
   }
