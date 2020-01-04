@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { AliveCheckerService } from '../../alive-checker.service';
 import { SerialService } from '../../share/serial.service';
+import { IpcService } from '../../share/ipc.service';
 
 @Component({
   selector: 'app-service-state',
@@ -18,21 +19,22 @@ export class ServiceStateComponent implements OnInit {
   });
 
   constructor(public readonly aliveChecker: AliveCheckerService,
-              private readonly _gateway: SerialService) { }
+              private readonly _service: SerialService,
+              private readonly _ipc: IpcService) { }
 
   ngOnInit() {
   }
 
   async handleDiscover() {
-    this.devices = await this._gateway.discover();
+    this.devices = await this._service.discover();
   }
 
   async handleOpen(path: string) {
-    await this._gateway.open(path);
+    await this._service.open(path);
   }
 
   async handleStop() {
-    await this._gateway.stop();
+    await this._service.stop();
   }
 
   handleFileSelect(event: Event) {
@@ -50,11 +52,15 @@ export class ServiceStateComponent implements OnInit {
   }
 
   handleUpdateStimulatorFirmware() {
-    this._gateway.updateFirmware(this.firmwareForm.get('firmware').value);
+    this._service.updateFirmware(this.firmwareForm.get('firmware').value);
   }
 
   get serialConnected() {
-    return this._gateway.isSerialConnected;
+    return this._service.isSerialConnected;
+  }
+
+  get ipcConnected() {
+    return this._ipc.isIpcConnected;
   }
 
   get firmwareFilePath() {
