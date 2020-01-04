@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ExperimentResult, ExperimentType } from 'diplomka-share';
+import { ExperimentResult, ExperimentType } from '@stechy1/diplomka-share';
 
 @Component({
   selector: 'app-experiment-result-item-list',

@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
-import { Experiment, ExperimentType } from 'diplomka-share';
+import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 
 import { ModalComponent } from '../share/modal/modal.component';
 import { FabListEntry } from '../share/fab/fab-list-entry';

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Socket } from 'ngx-socket-io';
 
-import { Experiment } from 'diplomka-share';
+import { Experiment } from '@stechy1/diplomka-share';
 
 import { environment } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { ResponseObject, ExperimentResult } from 'diplomka-share';
+import { ResponseObject, ExperimentResult } from '@stechy1/diplomka-share';
 
 import { BaseService } from '../share/base-service';
 import { AliveCheckerService } from '../alive-checker.service';

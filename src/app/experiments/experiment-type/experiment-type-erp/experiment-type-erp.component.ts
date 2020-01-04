@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider';
 
-import { Edge, ExperimentERP, ExperimentType, Random } from 'diplomka-share';
+import { Edge, ExperimentERP, ExperimentType, Random } from '@stechy1/diplomka-share';
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';

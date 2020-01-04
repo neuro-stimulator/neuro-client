@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
-import { FileRecord } from 'diplomka-share';
+import { FileRecord } from '@stechy1/diplomka-share';
 
 import { ModalComponent } from '../modal/modal.component';
 import { FileBrowserComponent } from '../file-browser/file-browser.component';

@@ -6,7 +6,7 @@ import { Label } from 'ng2-charts';
 import { ChartOptions, ChartType } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
-import { Experiment, ExperimentERP } from 'diplomka-share';
+import { Experiment, ExperimentERP } from '@stechy1/diplomka-share';
 import { SequenceService } from '../../../share/sequence.service';
 import { SimulationTypeComponent } from '../simulation-type.component';
 import { ExperimentsService } from '../../../experiments/experiments.service';

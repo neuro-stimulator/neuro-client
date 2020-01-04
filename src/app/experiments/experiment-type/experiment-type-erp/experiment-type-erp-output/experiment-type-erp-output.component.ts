@@ -5,7 +5,7 @@ import { Options as SliderOptions } from 'ng5-slider';
 
 import { environment } from '../../../../../environments/environment';
 
-import { OutputDependency } from 'diplomka-share';
+import { OutputDependency } from '@stechy1/diplomka-share';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({

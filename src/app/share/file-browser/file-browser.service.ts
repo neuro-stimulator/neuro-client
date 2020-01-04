@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { ResponseObject, FileRecord } from 'diplomka-share';
+import { ResponseObject, FileRecord } from '@stechy1/diplomka-share';
 
 import { environment } from '../../../environments/environment';
 

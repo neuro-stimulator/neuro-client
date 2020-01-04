@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subscription, TimeoutError } from 'rxjs';
 
-import { ExperimentType, ExperimentResult, createEmptyExperimentResult, createEmptyExperiment } from 'diplomka-share';
+import { ExperimentType, ExperimentResult, createEmptyExperimentResult, createEmptyExperiment } from '@stechy1/diplomka-share';
 
 import { NavigationService } from '../../navigation/navigation.service';
 import { ExperimentResultsService } from '../experiment-results.service';

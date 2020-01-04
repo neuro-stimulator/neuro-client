@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { BehaviorSubject, Subscription } from 'rxjs';
 
-import { ExperimentType, experimentTypeFromRaw } from 'diplomka-share';
+import { ExperimentType, experimentTypeFromRaw } from '@stechy1/diplomka-share';
 
 import { ExperimentsService } from '../experiments/experiments.service';
 import { SimulationTypeErpComponent } from './simulation-type/simulation-type-erp/simulation-type-erp.component';

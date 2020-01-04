@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 
-import { createEmptyExperiment, Experiment } from 'diplomka-share';
+import { createEmptyExperiment, Experiment } from '@stechy1/diplomka-share';
 
 import { NavigationService } from '../../../navigation/navigation.service';
 import { ExperimentsService } from '../../experiments.service';

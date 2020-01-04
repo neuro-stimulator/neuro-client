@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
-import { ExperimentResult } from 'diplomka-share';
+import { ExperimentResult } from '@stechy1/diplomka-share';
 
 import { ExperimentResultsService } from './experiment-results.service';
 import { ModalComponent } from '../share/modal/modal.component';

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Socket } from 'ngx-socket-io';
 
-import { ResponseObject} from 'diplomka-share';
+import { ResponseObject} from '@stechy1/diplomka-share';
 
 import { environment } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';

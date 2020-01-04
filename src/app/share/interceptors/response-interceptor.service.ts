@@ -6,7 +6,7 @@ import { catchError, map } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 
-import { ResponseMessage } from 'diplomka-share';
+import { ResponseMessage } from '@stechy1/diplomka-share';
 
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {

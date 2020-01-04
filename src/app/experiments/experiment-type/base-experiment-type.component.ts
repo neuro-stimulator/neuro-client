@@ -6,7 +6,7 @@ import { Observable, Subscription, TimeoutError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 
-import { Experiment, ExperimentType } from 'diplomka-share';
+import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 
 import { NavigationService } from '../../navigation/navigation.service';
 import { ExperimentsService } from '../experiments.service';

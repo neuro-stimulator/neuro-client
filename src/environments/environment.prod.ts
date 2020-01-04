@@ -1,4 +1,4 @@
-import { SERVER_HTTP_PORT, SERVER_SOCKET_PORT } from 'diplomka-share';
+import { SERVER_HTTP_PORT, SERVER_SOCKET_PORT } from '@stechy1/diplomka-share';
 
 export const environment = {
   production: false,

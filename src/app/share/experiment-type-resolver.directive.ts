@@ -3,7 +3,7 @@ import { Observable, Subscription } from 'rxjs';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { ExperimentType } from 'diplomka-share';
+import { ExperimentType } from '@stechy1/diplomka-share';
 
 @Directive({
   selector: '[appExperimentTypeResolver]'

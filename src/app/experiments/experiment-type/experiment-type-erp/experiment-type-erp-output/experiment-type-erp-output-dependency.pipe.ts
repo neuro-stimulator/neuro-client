@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { OutputDependency } from 'diplomka-share';
+import { OutputDependency } from '@stechy1/diplomka-share';
 
 @Pipe({
   name: 'experimentTypeErpOutputDependency'

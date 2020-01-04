@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 import { BehaviorSubject, Subscription } from 'rxjs';
 
-import { ExperimentType, experimentTypeFromRaw } from 'diplomka-share';
+import { ExperimentType, experimentTypeFromRaw } from '@stechy1/diplomka-share';
 
 import { ExperimentsService } from '../experiments.service';
 import { ExperimentTypeNoneComponent } from './experiment-type-none/experiment-type-none.component';

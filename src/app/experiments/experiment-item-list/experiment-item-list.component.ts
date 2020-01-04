@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { Experiment, ExperimentType } from 'diplomka-share';
+import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 
 @Component({
   selector: 'app-experiment-item-list',

@@ -7,7 +7,7 @@ import { delay } from 'rxjs/operators';
 import { Socket } from 'ngx-socket-io';
 import { NGXLogger } from 'ngx-logger';
 
-import { ResponseObject } from 'diplomka-share';
+import { ResponseObject } from '@stechy1/diplomka-share';
 
 import { environment } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';

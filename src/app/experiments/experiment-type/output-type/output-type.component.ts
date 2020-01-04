@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { FileRecord } from 'diplomka-share';
+import { FileRecord } from '@stechy1/diplomka-share';
 
 import { FileBrowserService } from '../../../share/file-browser/file-browser.service';
 

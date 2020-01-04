@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { BehaviorSubject, Subscription } from 'rxjs';
 
-import { FileRecord } from 'diplomka-share';
+import { FileRecord } from '@stechy1/diplomka-share';
 
 import { DialogChildComponent } from '../modal/dialog-child.component';
 import { ModalComponent } from '../modal/modal.component';
