@@ -91,6 +91,9 @@ export class SerialService {
       case 0x03:
         text = 'Konfigurace experimentů byla vymazána.';
         break;
+      case 0x05:
+        text = 'Stimulátor je připraven k použití.';
+        break;
       case 0x10:
         text = 'Konfigurace byla nahrána.';
         break;
