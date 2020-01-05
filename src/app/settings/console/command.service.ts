@@ -77,4 +77,10 @@ export class CommandService {
 
     return [valid, 'unknown', invalidReason];
   }
+
+  public buildHelp(): string {
+    const helpText = 'Nápověda: \n';
+    const descriptions = CommandService.COMMANDS.map(command => `${command.getName()} - ${command.description}.`).join('\n');
+    return helpText + descriptions;
+  }
 }

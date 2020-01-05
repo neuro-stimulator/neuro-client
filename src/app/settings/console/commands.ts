@@ -2,11 +2,14 @@ export interface ClientCommand<T> {
   isValid: (params: string[]) => [boolean, string?];
   getName: () => string;
   getValue: (params: string[]) => T;
+  description: string;
 }
 
 export class UnknownCommand implements ClientCommand<string> {
 
   constructor(private readonly text: string) {}
+
+  description = '';
 
   public getName(): string {
     return 'unknown';
@@ -22,6 +25,8 @@ export class UnknownCommand implements ClientCommand<string> {
 }
 
 export class RebootCommand implements ClientCommand<void> {
+  description = 'Restartuje server';
+
   public getName(): string {
     return 'reboot';
   }
@@ -36,6 +41,8 @@ export class RebootCommand implements ClientCommand<void> {
 }
 
 export class SetTimeCommand implements ClientCommand<number> {
+  description = 'Nastaví čas stimulátoru - deprecated';
+
   public getName(): string {
     return 'set-time';
   }
@@ -54,6 +61,8 @@ export class SetTimeCommand implements ClientCommand<number> {
 }
 
 export class DisplayClearCommand implements ClientCommand<void> {
+  description = 'Vymaže obsah displaye';
+
   public getName(): string {
     return 'display-clear';
   }
@@ -68,6 +77,8 @@ export class DisplayClearCommand implements ClientCommand<void> {
 }
 
 export class DisplayTextCommand implements ClientCommand<{ x: number, y: number, text: string }> {
+  description = `Nastaví text:  ${this.getName()} x: number, y: number, text: string`;
+
   public getName(): string {
     return 'display-text';
   }
@@ -96,6 +107,8 @@ export class DisplayTextCommand implements ClientCommand<{ x: number, y: number,
 }
 
 export class ExperimentSetupCommand implements ClientCommand<number> {
+  description = `Nahraje experiment do stimulátoru: ${this.getName()} id: number`;
+
   public getName(): string {
     return 'experiment-setup';
   }
@@ -118,6 +131,7 @@ export class ExperimentSetupCommand implements ClientCommand<number> {
 }
 
 export class ExperimentInitCommand implements ClientCommand<void> {
+  description = `Inicializuje experiment: ${this.getName()} id: number`;
 
   public getName(): string {
     return 'experiment-init';
@@ -138,6 +152,8 @@ export class ExperimentInitCommand implements ClientCommand<void> {
 }
 
 export class ExperimentStartCommand implements ClientCommand<void> {
+  description = `Spustí experiment: ${this.getName()} id: number`;
+
   public getName(): string {
     return 'experiment-start';
   }
@@ -156,6 +172,8 @@ export class ExperimentStartCommand implements ClientCommand<void> {
 }
 
 export class ExperimentStopCommand implements ClientCommand<void> {
+  description = `Zastaví experiment: ${this.getName()} id: number`;
+
   public getName(): string {
     return 'experiment-stop';
   }
@@ -174,6 +192,8 @@ export class ExperimentStopCommand implements ClientCommand<void> {
 }
 
 export class ExperimentClearCommand implements ClientCommand<void> {
+  description = `Vymaže experiment ze stimulátoru: ${this.getName()} id: number`;
+
   public getName(): string {
     return 'experiment-clear';
   }
@@ -194,6 +214,8 @@ export class ExperimentClearCommand implements ClientCommand<void> {
 
 // Backdoor do stimulátoru
 export class OutputSetCommand implements ClientCommand<{index: number, brightness: number}> {
+  description = `Nastaví jeden konkrétní výstup na zadanou hodnotu: ${this.getName()} index: number, brightness: number`;
+
   public getName(): string {
     return 'output-set';
   }

@@ -58,6 +58,10 @@ export class ConsoleService {
 
   public processCommand(text: string) {
     this._processData({date: new Date(), text});
+    if (text === 'help') {
+      this.saveCommandRaw(this._command.buildHelp());
+      return;
+    }
     const [valid, name, data] = this._command.parseCommand(text);
     if (!valid) {
       this.saveCommandRaw(data);
