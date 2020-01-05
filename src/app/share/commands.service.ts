@@ -42,7 +42,6 @@ export class CommandsService {
 
   public async experimentClear() {
     const ret = await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/clear`, null).toPromise();
-    console.log(ret);
   }
 
   // toggle-led/:index/:enabled

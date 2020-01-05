@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
@@ -11,18 +11,20 @@ import { FabListEntry } from '../share/fab/fab-list-entry';
 import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.component';
 
 import { ExperimentsService } from './experiments.service';
+import { ExperimentsSortFilter } from './experiments-sort-filter.service';
+import { ExperimentsButtonsAddonService } from '../share/buttons-addons/experiments-buttons-addon/experiments-buttons-addon.service';
+import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/experiment-filter-dialog.component';
 
 @Component({
   selector: 'app-experiments',
   templateUrl: './experiments.component.html',
   styleUrls: ['./experiments.component.sass']
 })
-export class ExperimentsComponent implements OnInit {
+export class ExperimentsComponent implements OnInit, OnDestroy {
 
   @ViewChild('modal', {static: true}) modal: ModalComponent;
 
   ghosts: any[] = [];
-  experiments: Observable<Experiment[]>;
   fabButtonList: FabListEntry[] = [
     {id: ExperimentType.REA, text: 'REA', class: 'rea', tooltip: 'REA'},
     {id: ExperimentType.TVEP, text: 'TVEP', class: 'tvep', tooltip: 'TVEP'},
@@ -31,18 +33,31 @@ export class ExperimentsComponent implements OnInit {
     {id: ExperimentType.ERP, text: 'ERP', class: 'erp', tooltip: 'ERP'},
   ];
 
+  private _filterRequestSubscription: Subscription;
+
   constructor(private readonly _service: ExperimentsService,
+              private readonly _filterService: ExperimentsSortFilter,
+              private readonly _buttonsAddonService: ExperimentsButtonsAddonService,
               private readonly _router: Router,
               private readonly _route: ActivatedRoute,
               private readonly logger: NGXLogger) {}
 
   ngOnInit() {
     this.ghosts = this._service.makeGhosts();
-    this.experiments = this._service.records;
     this._service.all()
         .then(() => {
           this.ghosts = [];
         });
+    this._filterRequestSubscription = this._buttonsAddonService.filterRequest.subscribe(() => this._showFilterDialog());
+  }
+
+  ngOnDestroy(): void {
+    this._filterRequestSubscription.unsubscribe();
+  }
+
+  private _showFilterDialog() {
+    this.modal.showComponent = ExperimentFilterDialogComponent;
+    this.modal.open();
   }
 
   handleEdit(experiment: Experiment) {
@@ -76,5 +91,9 @@ export class ExperimentsComponent implements OnInit {
     const type: string = ExperimentType[experimentType].toLowerCase();
     this.logger.info(`Budu vytvářet nový experiment typu: ${type}.`);
     this._router.navigate([type, 'new'], {relativeTo: this._route});
+  }
+
+  get experiments() {
+    return this._filterService.records;
   }
 }

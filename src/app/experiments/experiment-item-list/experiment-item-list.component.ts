@@ -11,7 +11,7 @@ import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 })
 export class ExperimentItemListComponent implements OnInit {
 
-  @Input() experiments: Observable<Experiment[]>;
+  @Input() experiments: Experiment[];
   @Output() run: EventEmitter<Experiment> = new EventEmitter<Experiment>();
   @Output() simulate: EventEmitter<Experiment> = new EventEmitter<Experiment>();
   @Output() edit: EventEmitter<Experiment> = new EventEmitter<Experiment>();

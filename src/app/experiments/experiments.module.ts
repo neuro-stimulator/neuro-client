@@ -31,6 +31,7 @@ import { OutputPatternComponent } from './experiment-type/output-pattern/output-
 import { ExperimentTypeFvepOutputComponent } from './experiment-type/experiment-type-fvep/experiment-type-fvep-output/experiment-type-fvep-output.component';
 import { ExperimentTypeFvepOutputCountPipe } from './experiment-type/experiment-type-fvep/experiment-type-fvep-output/experiment-type-tvep-output-count.pipe';
 import { OutputTypeComponent } from './experiment-type/output-type/output-type.component';
+import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/experiment-filter-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,26 +54,28 @@ import { OutputTypeComponent } from './experiment-type/output-type/output-type.c
     OutputPatternComponent,
     ExperimentTypeFvepOutputComponent,
     ExperimentTypeFvepOutputCountPipe,
-    OutputTypeComponent
+    OutputTypeComponent,
+    ExperimentFilterDialogComponent,
   ],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        Ng5SliderModule,
-        ShareModule,
-        ModalModule,
-        FabModule,
-        ExperimentsRoutingModule,
-        AudioPlayerModule,
-        ImagePlayerModule,
-    ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    Ng5SliderModule,
+    ShareModule,
+    ModalModule,
+    FabModule,
+    ExperimentsRoutingModule,
+    AudioPlayerModule,
+    ImagePlayerModule
+  ],
   entryComponents: [
     ExperimentTypeNoneComponent,
     ExperimentTypeErpComponent,
     ExperimentTypeCvepComponent,
     ExperimentTypeFvepComponent,
     ExperimentTypeTvepComponent,
-    ExperimentTypeReaComponent
+    ExperimentTypeReaComponent,
+    ExperimentFilterDialogComponent
   ]
 })
 export class ExperimentsModule {
