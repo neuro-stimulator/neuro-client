@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router';
 
 import { NavigationComponent } from './navigation.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.directive';
 
 @NgModule({
   declarations: [
     NavigationComponent,
     SidebarComponent,
+    NavigationButtonsAddonDirective
   ],
   imports: [
     CommonModule,
@@ -17,6 +19,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   exports: [
     NavigationComponent,
     SidebarComponent,
+    NavigationButtonsAddonDirective
   ]
 })
 export class NavigationModule {

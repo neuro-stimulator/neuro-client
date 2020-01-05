@@ -13,14 +13,16 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 })
 export class NavigationService {
 
-  private _showSidebar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private readonly _showSidebar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private readonly _navigationChange: EventEmitter<any> = new EventEmitter<any>();
 
   public title: string;
   public subtitle: string;
   public icon: string;
   public working: boolean;
   public applyCustomNavColor: boolean;
-  public customNavColor: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public readonly customNavColor: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public readonly navigationChange$: Observable<any> = this._navigationChange.asObservable();
 
   constructor(private readonly _route: ActivatedRoute,
               private readonly _router: Router) {
@@ -49,6 +51,7 @@ export class NavigationService {
         .subscribe((event) => {
           this.title = event['title'];
           this.applyCustomNavColor = event['applyCustomNavColor'] !== undefined ? event['applyCustomNavColor'] : false;
+          this._navigationChange.next(event);
         });
   }
 

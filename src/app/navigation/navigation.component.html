@@ -4,7 +4,14 @@
     <small><i [ngClass]="['fas', (navigation.working ? 'fa-spin' : ''), navigation.icon]"></i> {{navigation.subtitle}}</small>
   </div>
 
-  <button class="navbar-toggler d-lg-none ml-auto" type="button" (click)="navigation.toggle()" data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="ml-auto button-addon-bar">
+    <ng-template appNavigationButtonsAddon></ng-template>
+
+    <button class="navbar-toggler d-lg-none " type="button"
+            data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            (click)="navigation.toggle()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  </div>
 </nav>
