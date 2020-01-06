@@ -34,6 +34,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
   ];
 
   private _filterRequestSubscription: Subscription;
+  private _searchBySubscription: Subscription;
 
   constructor(private readonly _service: ExperimentsService,
               private readonly _filterService: ExperimentsSortFilter,
@@ -49,10 +50,12 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
           this.ghosts = [];
         });
     this._filterRequestSubscription = this._buttonsAddonService.filterRequest.subscribe(() => this._showFilterDialog());
+    this._searchBySubscription = this._buttonsAddonService.searchValue.subscribe(value => this._filterService.filterBy(value));
   }
 
   ngOnDestroy(): void {
     this._filterRequestSubscription.unsubscribe();
+    this._searchBySubscription.unsubscribe();
   }
 
   private _showFilterDialog() {
