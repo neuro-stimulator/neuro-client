@@ -26,7 +26,7 @@ export class ExperimentsButtonsAddonComponent implements OnInit {
   ngOnInit() {
     this._route.fragment.subscribe(value => {
       this.initialSearchValue = value || '';
-      this._notifySearchValue(value);
+      this._notifySearchValue(this.initialSearchValue);
     });
   }
 
@@ -38,6 +38,6 @@ export class ExperimentsButtonsAddonComponent implements OnInit {
     const value: string = (event.target as HTMLInputElement).value;
     const url = this._router.serializeUrl(this._router.createUrlTree([], {relativeTo: this._route, fragment: value}));
     this._location.go(url);
-    this._notifySearchValue(value);
+    this._notifySearchValue(value || '');
   }
 }
