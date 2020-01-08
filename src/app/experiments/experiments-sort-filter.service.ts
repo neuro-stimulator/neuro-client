@@ -6,6 +6,9 @@ import { Experiment } from '@stechy1/diplomka-share';
 
 import { ExperimentsService } from './experiments.service';
 import { NGXLogger } from 'ngx-logger';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { FilterParameters, GroupByPosibilities, OrderByPosibilities, SortByPosibilities } from './experiments-filter-parameters';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,21 +27,33 @@ export class ExperimentsSortFilter {
     keys: ['name']
   };
 
+  private static readonly STORAGE_KEY_FILTER_PARAMETERS = 'filter-parameters';
+  private static readonly DEFAULT_FILTER_PARAMETERS: FilterParameters = {
+    groupBy: GroupByPosibilities.NONE.value,
+    sortBy: SortByPosibilities.ALPHABET.value,
+    orderBy: OrderByPosibilities.ASCENDING.value
+  };
+
   // Fusejs instance pro fulltextové vyhledávání
   private readonly _fusejs: Fuse<Experiment, Fuse.FuseOptions<Experiment>>;
   // Způsob seskupování
   private _selectedGroup: string;
-  // Způsob řazení
-  private _orderBy$: EventEmitter<string> = new EventEmitter<string>();
   // Kolekce experimentů pro FuseJS
   private _fuseExperiments: Experiment[] = [];
   // Výsledná kolekce, která obsahuje výsledky experimentů po filtraci
   private _resultExperiments: Experiment[] = [];
   // Poslední slovo, podle kterého se vyhledávalo
   private _lastSearch = '';
+  // Poslední použité filtrační parametry
+  private _lastFilterParameters: FilterParameters;
+  // Emitter změn nastavení filtračních parametrů
+  private _filterParametersChange: EventEmitter<FilterParameters> = new EventEmitter<FilterParameters>();
+  // Pozorovatelný objekt změn nastavení filtračních parametrů
+  public readonly filterParametersChange$: Observable<FilterParameters> = this._filterParametersChange.asObservable();
 
   constructor(private readonly service: ExperimentsService,
-              private readonly logger: NGXLogger) {
+              private readonly logger: NGXLogger,
+              private readonly _storage: LocalStorageService) {
     this._selectedGroup = 'none';
     this._fusejs = new Fuse(this._fuseExperiments, ExperimentsSortFilter.FUSEJS_SETTINGS);
     this.service.records.subscribe(value => {
@@ -47,25 +62,29 @@ export class ExperimentsSortFilter {
       this._fuseExperiments.push(...value);
       this.filterBy(this._lastSearch);
     });
+    this._loadFilterParameters();
+  }
+
+  private _loadFilterParameters() {
+    this.filterParameters = this._storage.get<FilterParameters>(ExperimentsSortFilter.STORAGE_KEY_FILTER_PARAMETERS)
+      || ExperimentsSortFilter.DEFAULT_FILTER_PARAMETERS;
   }
 
   /**
    * Metoda se zavolá vždy, když se změní způsob řazení dotazů
    *
-   * @param orderBy Způsob, podle čeho se bude řadit
-   * @param orderType Směr řazení (vzestupně/sestupně)
+   * @param filterParameters Filtrační parametry
    */
-  public sort(orderBy: string, orderType: string) {
+  public sort(filterParameters: FilterParameters) {
     this._resultExperiments.sort((a, b) => a.name.localeCompare(b.name));
-    switch (orderBy) {
+    switch (filterParameters.orderBy) {
       case 'date_of_creation':
         this._resultExperiments.sort((a, b) => a.created - b.created);
         break;
     }
-    if (orderType === 'descending') {
+    if (filterParameters.orderBy === 'descending') {
       this._resultExperiments.reverse();
     }
-    this._orderBy$.next(orderBy);
   }
 
   /**
@@ -95,82 +114,27 @@ export class ExperimentsSortFilter {
     }
   }
 
+  public resetFilterParameters() {
+    this.sort(this._lastFilterParameters);
+  }
+
+  get filterParameters() {
+    return this._lastFilterParameters;
+  }
+
+  set filterParameters(filterParameters: FilterParameters) {
+    this._lastFilterParameters = filterParameters;
+    this._storage.set(ExperimentsSortFilter.STORAGE_KEY_FILTER_PARAMETERS, filterParameters);
+    this._filterParametersChange.emit(filterParameters);
+  }
+
+  get searchValue(): string {
+    return this._lastSearch;
+  }
+
   public get records(): Experiment[] {
     return this._resultExperiments;
   }
 }
 
-export class GroupByPosibilities {
-  static readonly KEY = 'groupBy';
 
-  static readonly NONE = new GroupByPosibilities('Neseskupovat', 'none');
-  static readonly ENDPOINT = new GroupByPosibilities('Typ experimentu', 'type');
-
-  static readonly VALUES: GroupByPosibilities[] = [
-    GroupByPosibilities.NONE,
-    GroupByPosibilities.ENDPOINT,
-  ];
-
-  private constructor(private _name: string, private _value: string) {}
-
-  get name(): string {
-    return this._name;
-  }
-
-  get value(): string {
-    return this._value;
-  }
-}
-
-export class OrderByPosibilities {
-  static readonly KEY = 'orderBy';
-
-  static readonly ALPHABET = new OrderByPosibilities('Abecedně', 'alphabeticaly');
-  static readonly CREATION_DATE = new OrderByPosibilities('Datum vytvoření', 'date_of_creation');
-
-  static readonly VALUES: OrderByPosibilities[] = [
-    OrderByPosibilities.ALPHABET,
-    OrderByPosibilities.CREATION_DATE,
-  ];
-
-  private constructor(private _name: string, private _value: string) {}
-
-  get name(): string {
-    return this._name;
-  }
-
-  get value(): string {
-    return this._value;
-  }
-
-  static byValue(value: string): OrderByPosibilities {
-    switch (value) {
-      case 'alphabeticaly':
-        return OrderByPosibilities.ALPHABET;
-      case 'date_of_creation':
-        return OrderByPosibilities.CREATION_DATE;
-    }
-  }
-}
-
-export class OrderTypePosibilities {
-  static readonly KEY = 'orderType';
-
-  static readonly ASCENDING = new OrderTypePosibilities('Vzestupně', 'ascending');
-  static readonly DESCENDING = new OrderTypePosibilities('Sestupně', 'descending');
-
-  static readonly VALUES: OrderTypePosibilities[] = [
-    OrderTypePosibilities.ASCENDING,
-    OrderTypePosibilities.DESCENDING
-  ];
-
-  private constructor(private _name: string, private _value: string) {}
-
-  get name(): string {
-    return this._name;
-  }
-
-  get value(): string {
-    return this._value;
-  }
-}

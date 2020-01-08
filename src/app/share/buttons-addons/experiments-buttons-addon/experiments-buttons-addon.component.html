@@ -2,7 +2,7 @@
   <li>
     <div class="input-group search-input-group">
       <input class="form-control py-2 border-right-0 border" [class.hidden]="hideFinderBox" type="search" placeholder="Najít experiment..."
-             (keyup)="handleSearchInputChange($event)" [defaultValue]="initialSearchValue">
+             (keyup)="handleSearchInputChange($event)" (change)="handleSearchInputChange($event)" [defaultValue]="initialSearchValue">
       <span class="input-group-append">
         <button class="btn btn-outline-secondary" type="button" (click)="hideFinderBox = !hideFinderBox">
           <i class="fa fa-search"></i>

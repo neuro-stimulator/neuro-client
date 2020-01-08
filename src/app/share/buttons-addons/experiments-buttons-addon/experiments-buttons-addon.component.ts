@@ -15,9 +15,7 @@ export class ExperimentsButtonsAddonComponent implements OnInit {
   initialSearchValue: string;
 
   constructor(private readonly _service: ExperimentsButtonsAddonService,
-              private readonly _location: Location,
-              private readonly _route: ActivatedRoute,
-              private readonly _router: Router) { }
+              private readonly _route: ActivatedRoute) { }
 
   private _notifySearchValue(value: string) {
     this._service.searchValue.next(value);
@@ -36,8 +34,6 @@ export class ExperimentsButtonsAddonComponent implements OnInit {
 
   handleSearchInputChange(event: Event) {
     const value: string = (event.target as HTMLInputElement).value;
-    const url = this._router.serializeUrl(this._router.createUrlTree([], {relativeTo: this._route, fragment: value}));
-    this._location.go(url);
     this._notifySearchValue(value || '');
   }
 }
