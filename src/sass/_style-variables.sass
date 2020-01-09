@@ -43,10 +43,12 @@ $theme-colors: (primary: $primary)
 
 
 .experiment-icon
-  width: 32px
-  height: 32px
+  width: 42px
+  min-width: 42px
+  height: 42px
+  min-height: 42px
   border-radius: 50%
-  font-size: 10px
+  font-size: 15px
   line-height: 1
   text-align: center
   padding: 12px 4px
@@ -88,18 +90,12 @@ $theme-colors: (primary: $primary)
 .experiment-background.none
   background-color: #4949494f !important
 
-@include media-breakpoint-up(sm)
-  .experiment-icon
-    width: 40px
-    height: 40px
-    font-size: 13px
-    line-height: 1
-    padding: 13px 4px
-
 @include media-breakpoint-up(lg)
   .experiment-icon
     width: 48px
+    min-width: 48px
     height: 48px
+    min-height: 48px
     font-size: 16px
     line-height: 1
     padding: 14px 4px
