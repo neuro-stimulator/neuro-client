@@ -77,9 +77,13 @@ export class ExperimentsSortFilter {
    */
   public sort(filterParameters: FilterParameters) {
     this._resultExperiments.sort((a, b) => a.name.localeCompare(b.name));
-    switch (filterParameters.orderBy) {
+    this.logger.debug(`Řadím data podle: '${filterParameters.sortBy}'.`);
+    switch (filterParameters.sortBy) {
       case 'date_of_creation':
         this._resultExperiments.sort((a, b) => a.created - b.created);
+        break;
+      case 'experiment_type':
+        this._resultExperiments.sort((a, b) => a.type - b.type);
         break;
     }
     if (filterParameters.orderBy === 'descending') {
@@ -93,7 +97,7 @@ export class ExperimentsSortFilter {
    * @param searchedValue Fulltextová hodnota
    */
   public filterBy(searchedValue: string) {
-    this.logger.debug(`Filtruji data podle: ${searchedValue}.`);
+    this.logger.debug(`Filtruji data podle: '${searchedValue}'.`);
     this._lastSearch = searchedValue;
     if (searchedValue === '') {
       // Ve vyhledávání je prázdná hodnota, nebudu nic filtrovat a zobrazím všechny záznamy

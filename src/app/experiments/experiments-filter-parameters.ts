@@ -35,10 +35,12 @@ export class SortByPosibilities {
 
   static readonly ALPHABET = new SortByPosibilities('Abecedně', 'alphabeticaly', {ascending: 'fa-sort-alpha-up', descending: 'fa-sort-alpha-down'});
   static readonly CREATION_DATE = new SortByPosibilities('Datum vytvoření', 'date_of_creation', {ascending: 'fa-sort-numeric-up', descending: 'fa-sort-numeric-down'});
+  static readonly TYPE = new SortByPosibilities('Typ experimentu', 'experiment_type', {ascending: '', descending: ''});
 
   static readonly VALUES: SortByPosibilities[] = [
     SortByPosibilities.ALPHABET,
     SortByPosibilities.CREATION_DATE,
+    SortByPosibilities.TYPE
   ];
 
   private constructor(private readonly _name: string, private readonly _value: string, private readonly _icon: {ascending: string, descending: string}) {}
