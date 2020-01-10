@@ -17,7 +17,8 @@
           </div>
           <!-- Informace o experimentu -->
           <div class="col-7 col-md-8">
-            <div>
+            <div class="row">
+              <div class="col-12">
               <!-- Název experimentu s odkazem na editaci -->
               <a [routerLink]="[ExperimentType[experiment.type].toLowerCase(), experiment.id]"><strong>{{experiment.name}}</strong></a>
               <!-- Obrázková reprezentace použitých typů výstupů -->
@@ -27,9 +28,14 @@
                     <i class="fas fa-image" *ngIf="experiment.usedOutputs['image']" title="Obrázek"></i>
               </span>
               <span class="experiment-output-count float-right" title="Počet použitých výstupů"><i class="fas fa-hashtag"></i> {{experiment.outputCount}}</span>
+              </div>
             </div>
             <!-- Popis experimentu -->
-            <div><small class="text-truncate experiment-description">{{experiment.description || 'Žádný popis není k dispozici...'}}</small></div>
+            <div class="row">
+              <div class="col-12">
+              <small class="text-truncate experiment-description">{{experiment.description || 'Žádný popis není k dispozici...'}}</small>
+              </div>
+            </div>
           </div>
           <!-- Toolbar s akčními tlačítky -->
           <div class="col-3 experiment-toolbar">
