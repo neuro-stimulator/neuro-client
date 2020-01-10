@@ -1,4 +1,4 @@
-import { Experiment, ExperimentType} from '@stechy1/diplomka-share';
+import { Experiment, ExperimentType, outputTypeToRaw } from '@stechy1/diplomka-share';
 
 export interface FilterParameters {
   groupBy: string;
@@ -9,11 +9,11 @@ export interface FilterParameters {
 export class GroupByPosibilities {
   static readonly KEY = 'groupBy';
 
-  static readonly NONE = new GroupByPosibilities('Neseskupovat', 'none', 'fa-ban',
+  static readonly NONE = new GroupByPosibilities('Neseskupovat', 'NONE', 'fa-ban',
     () => '',
     () => true,
     (group => group));
-  static readonly TYPE = new GroupByPosibilities('Typ experimentu', 'type', 'fa-stethoscope',
+  static readonly TYPE = new GroupByPosibilities('Typ experimentu', 'TYPE', 'fa-stethoscope',
     experiment => `${experiment.type}`,
     (experiment: Experiment, group: string) => experiment.type === +group,
     (group: string) => ExperimentType[+group]);
@@ -33,26 +33,32 @@ export class GroupByPosibilities {
                       public readonly groupFunction: (experiment: Experiment, group: any) => boolean,
                       public readonly nameTransformFunction: (group: any) => string) {}
 
-  public static byValue(value: string): GroupByPosibilities {
-    switch (value) {
-      case 'none':
-        return this.NONE;
-      case 'type':
-        return this.TYPE;
-      // case 'output_type':
-      //   return this.OUTPUT_TYPE;
-    }
-  }
+  // public static byValue(value: string): GroupByPosibilities {
+  //   return this[value];
+    // switch (value) {
+    //   case 'none':
+    //     return this.NONE;
+    //   case 'type':
+    //     return this.TYPE;
+    //   case 'output_type':
+    //     return this.OUTPUT_TYPE;
+    // }
+  // }
 }
 
 export class SortByPosibilities {
   static readonly KEY = 'sortBy';
 
-  static readonly ALPHABET = new SortByPosibilities('Abecedně', 'alphabeticaly', {ascending: 'fa-sort-alpha-up', descending: 'fa-sort-alpha-down'});
-  static readonly CREATION_DATE = new SortByPosibilities('Datum vytvoření', 'date_of_creation', {ascending: 'fa-sort-numeric-up', descending: 'fa-sort-numeric-down'});
-  static readonly TYPE = new SortByPosibilities('Typ experimentu', 'type', {ascending: 'fa-stethoscope', descending: 'fa-stethoscope'});
-  static readonly OUTPUT_TYPE = new SortByPosibilities('Typ výstupu', 'output_type', {ascending: 'fa-plug', descending: 'fa-plug'});
-  static readonly OUTPUT_COUNT = new SortByPosibilities('Počtu výstupu', 'output_count', {ascending: 'fa-plug', descending: 'fa-plug'});
+  static readonly ALPHABET = new SortByPosibilities('Abecedně', 'ALPHABET', {ascending: 'fa-sort-alpha-up', descending: 'fa-sort-alpha-down'},
+    (a, b) => a.name.localeCompare(b.name));
+  static readonly CREATION_DATE = new SortByPosibilities('Datum vytvoření', 'CREATION_DATE', {ascending: 'fa-sort-numeric-up', descending: 'fa-sort-numeric-down'},
+    (a, b) => a.created - b.created);
+  static readonly TYPE = new SortByPosibilities('Typ experimentu', 'TYPE', {ascending: 'fa-stethoscope', descending: 'fa-stethoscope'},
+    (a, b) => a.type - b.type);
+  static readonly OUTPUT_TYPE = new SortByPosibilities('Typ výstupu', 'OUTPUT_TYPE', {ascending: 'fa-plug', descending: 'fa-plug'},
+    (a, b) => outputTypeToRaw(a.usedOutputs) - outputTypeToRaw(b.usedOutputs));
+  static readonly OUTPUT_COUNT = new SortByPosibilities('Počtu výstupu', 'OUTPUT_COUNT', {ascending: 'fa-plug', descending: 'fa-plug'},
+    (a, b) => a.outputCount - b.outputCount);
 
   static readonly VALUES: SortByPosibilities[] = [
     SortByPosibilities.ALPHABET,
@@ -62,7 +68,8 @@ export class SortByPosibilities {
     SortByPosibilities.OUTPUT_COUNT
   ];
 
-  private constructor(public readonly name: string, public readonly value: string, public readonly icon: {ascending: string, descending: string}) {}
+  private constructor(public readonly name: string, public readonly value: string, public readonly icon: {ascending: string, descending: string},
+                      public readonly sortFunction: (lhs: Experiment, rhs: Experiment) => number) {}
 
 }
 

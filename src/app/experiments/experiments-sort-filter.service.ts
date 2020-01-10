@@ -111,7 +111,7 @@ export class ExperimentsSortFilter {
       return;
     }
 
-    const groupConfiguration = GroupByPosibilities.byValue(filterParameters.groupBy);
+    const groupConfiguration: GroupByPosibilities = GroupByPosibilities[filterParameters.groupBy];
     const groupsWithDuplications: any[] = this._filteredExperiments.map(groupConfiguration.mapFunction);
     const groups: any[] = groupsWithDuplications.filter(((value, index, array) => array.indexOf(value) === index));
 
@@ -133,22 +133,24 @@ export class ExperimentsSortFilter {
   public sort(filterParameters?: FilterParameters) {
     filterParameters = filterParameters || this._lastFilterParameters;
     this.logger.debug(`Řadím data podle: '${filterParameters.sortBy}'.`);
+    const sortConfiguration: SortByPosibilities = SortByPosibilities[filterParameters.sortBy];
     for (const group of this._groupExperiments) {
-      group.experiments.sort((a, b) => a.name.localeCompare(b.name));
-      switch (filterParameters.sortBy) {
-        case 'date_of_creation':
-          group.experiments.sort((a, b) => a.created - b.created);
-          break;
-        case 'type':
-          group.experiments.sort((a, b) => a.type - b.type);
-          break;
-        case 'output_type':
-          group.experiments.sort((a, b) => outputTypeToRaw(a.usedOutputs) - outputTypeToRaw(b.usedOutputs));
-          break;
-        case 'output_count':
-          group.experiments.sort((a, b) => a.outputCount - b.outputCount);
-          break;
-      }
+      group.experiments.sort(sortConfiguration.sortFunction);
+      // group.experiments.sort((a, b) => a.name.localeCompare(b.name));
+      // switch (filterParameters.sortBy) {
+      //   case 'date_of_creation':
+      //     group.experiments.sort((a, b) => a.created - b.created);
+      //     break;
+      //   case 'type':
+      //     group.experiments.sort((a, b) => a.type - b.type);
+      //     break;
+      //   case 'output_type':
+      //     group.experiments.sort((a, b) => outputTypeToRaw(a.usedOutputs) - outputTypeToRaw(b.usedOutputs));
+      //     break;
+      //   case 'output_count':
+      //     group.experiments.sort((a, b) => a.outputCount - b.outputCount);
+      //     break;
+      // }
       if (filterParameters.orderBy === 'descending') {
         group.experiments.reverse();
       }
