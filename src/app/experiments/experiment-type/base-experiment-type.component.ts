@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Observable, Subscription, TimeoutError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
@@ -105,7 +105,8 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
       name: new FormControl(null, [Validators.required]),
       description: new FormControl(),
       type: new FormControl(null, [Validators.required]),
-      created: new FormControl(null)
+      created: new FormControl(null),
+      tags: new FormControl([])
     };
   }
 

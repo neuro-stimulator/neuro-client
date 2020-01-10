@@ -12,11 +12,18 @@ export class GroupByPosibilities {
   static readonly NONE = new GroupByPosibilities('Neseskupovat', 'NONE', 'fa-ban',
     () => '',
     () => true,
+    () => false,
     (group => group));
   static readonly TYPE = new GroupByPosibilities('Typ experimentu', 'TYPE', 'fa-stethoscope',
     experiment => `${experiment.type}`,
     (experiment: Experiment, group: string) => experiment.type === +group,
+    () => false,
     (group: string) => ExperimentType[+group]);
+  static readonly TAG = new GroupByPosibilities('Tagu', 'TAG', 'fa-tags',
+    experiment => experiment.tags,
+    (experiment: Experiment, group: string) => experiment.tags.includes(group),
+    (experiment, group) => experiment.tags.length === 0,
+    group => group);
   // static readonly OUTPUT_TYPE = new GroupByPosibilities('Typ výstupu', 'output_type', '',
   //   experiment => `${experiment.usedOutputs}`,
   //   (experiment: Experiment, group: OutputType) => (outputTypeToRaw(experiment.usedOutputs) | outputTypeToRaw(group)) !== 0,
@@ -25,25 +32,16 @@ export class GroupByPosibilities {
   static readonly VALUES: GroupByPosibilities[] = [
     GroupByPosibilities.NONE,
     GroupByPosibilities.TYPE,
+    GroupByPosibilities.TAG
     // GroupByPosibilities.OUTPUT_TYPE
   ];
 
   private constructor(public readonly name: string, public readonly value: string, public readonly icon: string,
                       public readonly mapFunction: (experiment: Experiment) => any,
                       public readonly groupFunction: (experiment: Experiment, group: any) => boolean,
+                      public readonly noGroupMatcher: (experiment: Experiment, group: any) => boolean,
                       public readonly nameTransformFunction: (group: any) => string) {}
 
-  // public static byValue(value: string): GroupByPosibilities {
-  //   return this[value];
-    // switch (value) {
-    //   case 'none':
-    //     return this.NONE;
-    //   case 'type':
-    //     return this.TYPE;
-    //   case 'output_type':
-    //     return this.OUTPUT_TYPE;
-    // }
-  // }
 }
 
 export class SortByPosibilities {

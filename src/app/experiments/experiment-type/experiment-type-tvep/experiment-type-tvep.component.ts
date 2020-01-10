@@ -13,6 +13,7 @@ import { NavigationService } from '../../../navigation/navigation.service';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
+import { createEmptyExperimentTVEP } from '@stechy1/diplomka-share/lib/experiments';
 
 @Component({
   selector: 'app-experiment-type-tvep',
@@ -77,15 +78,7 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
   }
 
   protected _createEmptyExperiment(): ExperimentTVEP {
-    return {
-      name: '',
-      description: '',
-      created: new Date().getTime(),
-      type: ExperimentType.TVEP,
-      usedOutputs: {},
-      outputCount: 1,
-      outputs: []
-    };
+    return createEmptyExperimentTVEP();
   }
 
   protected _updateFormGroup(experiment: ExperimentTVEP) {

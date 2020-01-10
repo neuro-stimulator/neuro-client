@@ -13,6 +13,7 @@ import { NavigationService } from '../../../navigation/navigation.service';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
+import { createEmptyExperimentFVEP } from '@stechy1/diplomka-share/lib/experiments';
 
 @Component({
   selector: 'app-experiment-type-fvep',
@@ -77,15 +78,7 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
   }
 
   protected _createEmptyExperiment(): ExperimentFVEP {
-    return {
-      name: '',
-      description: '',
-      created: new Date().getTime(),
-      type: ExperimentType.FVEP,
-      usedOutputs: {},
-      outputCount: 1,
-      outputs: []
-    };
+    return createEmptyExperimentFVEP();
   }
 
   protected _updateFormGroup(experiment: ExperimentFVEP) {

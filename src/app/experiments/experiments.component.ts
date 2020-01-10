@@ -120,6 +120,6 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
   }
 
   get hasExperiments() {
-    return this._filterService.records && Object.keys(this._filterService.records).length !== 0;
+    return this._filterService.records && Object.keys(this._filterService.records[0].experiments).length !== 0;
   }
 }

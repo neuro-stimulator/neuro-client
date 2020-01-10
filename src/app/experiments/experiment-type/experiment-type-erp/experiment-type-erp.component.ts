@@ -15,6 +15,7 @@ import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
+import { createEmptyExperimentERP } from '@stechy1/diplomka-share/lib/experiments';
 
 @Component({
   selector: 'app-experiment-type-erp',
@@ -93,20 +94,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
   }
 
   protected _createEmptyExperiment(): ExperimentERP {
-    return {
-      name: '',
-      description: '',
-      created: new Date().getTime(),
-      type: ExperimentType.ERP,
-      usedOutputs: {},
-      outputCount: 1,
-      out: 0,
-      wait: 0,
-      random: Random.OFF,
-      edge: Edge.FALLING,
-      // maxDistributionValue: 0,
-      outputs: []
-    };
+    return createEmptyExperimentERP();
   }
 
   protected _updateFormGroup(experiment: ExperimentERP) {

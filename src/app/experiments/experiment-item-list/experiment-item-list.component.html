@@ -1,51 +1,60 @@
 <div class="row experiment-group" *ngFor="let group of experimentGroups">
-  <div class="col-10" *ngIf="group.group">
-    <span>{{group.group}} ({{group.experiments.length}})</span>
-  </div>
-  <div class="col-2 text-right" appContentToggler [toggledContent]="experimentGroup" [icon]="icon" *ngIf="group.group"><i class="fas fa-minus" #icon></i></div>
-  <div class="col-12" #experimentGroup>
-    <ul class="list-group experiment-list">
-      <li [ngClass]="['list-group-item', 'list-group-item-action experiment-background', ExperimentType[experiment.type].toLowerCase()]"
-          *ngFor="let experiment of group.experiments">
+  <!-- Pokud skupina neobsahuje žádné experimenty, tak ji ani nebudu vypisovat -->
+  <ng-container *ngIf="group.experiments.length !== 0">
+    <!-- Název skupiny zobrazím pouze tehdy, když nějaký má -->
+    <div class="col-10" *ngIf="group.group">
+      <span>{{group.group}} ({{group.experiments.length}})</span>
+    </div>
+    <div class="col-2 text-right" appContentToggler [toggledContent]="experimentGroup" [icon]="icon" *ngIf="group.group"><i class="fas fa-minus" #icon></i></div>
+    <div class="col-12" #experimentGroup>
+      <ul class="list-group experiment-list">
+        <li [ngClass]="['list-group-item', 'list-group-item-action experiment-background', ExperimentType[experiment.type].toLowerCase()]"
+            *ngFor="let experiment of group.experiments">
 
-        <!-- Jeden řádek s experimentem -->
-        <div class="row expriment">
-          <!-- Značka typu experimentu (1. sloupeček) -->
-          <div class="col-2 col-md-1 vertical-center">
-            <div [ngClass]="['experiment-icon', ExperimentType[experiment.type].toLowerCase()]">
-              <span class="align-middle">{{ExperimentType[experiment.type]}}</span></div>
-          </div>
-          <!-- Informace o experimentu -->
-          <div class="col-7 col-md-8">
-            <div class="row">
-              <div class="col-12">
-              <!-- Název experimentu s odkazem na editaci -->
-              <a [routerLink]="[ExperimentType[experiment.type].toLowerCase(), experiment.id]"><strong>{{experiment.name}}</strong></a>
-              <!-- Obrázková reprezentace použitých typů výstupů -->
-              <span class="experiment-output">
-                    <i class="fas fa-lightbulb" *ngIf="experiment.usedOutputs['led']" title="LED"></i>
-                    <i class="fas fa-music" *ngIf="experiment.usedOutputs['audio']" title="Zvuk"></i>
-                    <i class="fas fa-image" *ngIf="experiment.usedOutputs['image']" title="Obrázek"></i>
-              </span>
-              <span class="experiment-output-count float-right" title="Počet použitých výstupů"><i class="fas fa-hashtag"></i> {{experiment.outputCount}}</span>
+          <!-- Jeden řádek s experimentem -->
+          <div class="row expriment">
+            <!-- Značka typu experimentu (1. sloupeček) -->
+            <div class="col-2 col-md-1 vertical-center">
+              <div [ngClass]="['experiment-icon', ExperimentType[experiment.type].toLowerCase()]">
+                <span class="align-middle">{{ExperimentType[experiment.type]}}</span></div>
+            </div>
+            <!-- Informace o experimentu -->
+            <div class="col-7 col-md-8">
+              <div class="row">
+                <div class="col-12">
+                <!-- Název experimentu s odkazem na editaci -->
+                <a [routerLink]="[ExperimentType[experiment.type].toLowerCase(), experiment.id]"><strong>{{experiment.name}}</strong></a>
+                <!-- Obrázková reprezentace použitých typů výstupů -->
+                <span class="experiment-output">
+                      <i class="fas fa-lightbulb" *ngIf="experiment.usedOutputs['led']" title="LED"></i>
+                      <i class="fas fa-music" *ngIf="experiment.usedOutputs['audio']" title="Zvuk"></i>
+                      <i class="fas fa-image" *ngIf="experiment.usedOutputs['image']" title="Obrázek"></i>
+                </span>
+                <span class="experiment-output-count float-right" title="Počet použitých výstupů"><i class="fas fa-hashtag"></i> {{experiment.outputCount}}</span>
+                </div>
+              </div>
+              <!-- Popis experimentu -->
+              <div class="row">
+                <div class="col-12">
+                <small class="text-truncate experiment-description">{{experiment.description || 'Žádný popis není k dispozici...'}}</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                <span class="badge" *ngFor="let tag of experiment.tags">{{tag}}</span>
+                </div>
               </div>
             </div>
-            <!-- Popis experimentu -->
-            <div class="row">
-              <div class="col-12">
-              <small class="text-truncate experiment-description">{{experiment.description || 'Žádný popis není k dispozici...'}}</small>
-              </div>
+            <!-- Toolbar s akčními tlačítky -->
+            <div class="col-3 experiment-toolbar">
+              <i class="fas fa-play text-success" title="Spustit" (click)="run.next(experiment)"></i>
+              <i class="fas fa-edit text-primary" title="Editovat" (click)="edit.next(experiment)"></i>
+              <i class="fas fa-trash text-danger" title="Odstranit" (click)="delete.next(experiment)"></i>
             </div>
           </div>
-          <!-- Toolbar s akčními tlačítky -->
-          <div class="col-3 experiment-toolbar">
-            <i class="fas fa-play text-success" title="Spustit" (click)="run.next(experiment)"></i>
-            <i class="fas fa-edit text-primary" title="Editovat" (click)="edit.next(experiment)"></i>
-            <i class="fas fa-trash text-danger" title="Odstranit" (click)="delete.next(experiment)"></i>
-          </div>
-        </div>
 
-      </li>
-    </ul>
-  </div>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
 </div>

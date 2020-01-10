@@ -13,6 +13,7 @@ import { NavigationService } from '../../../navigation/navigation.service';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
+import { createEmptyExperimentCVEP } from '@stechy1/diplomka-share/lib/experiments';
 
 @Component({
   selector: 'app-experiment-type-cvep',
@@ -88,19 +89,7 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
   }
 
   protected _createEmptyExperiment(): ExperimentCVEP {
-    return {
-      name: '',
-      description: '',
-      created: new Date().getTime(),
-      type: ExperimentType.CVEP,
-      usedOutputs: {led: true},
-      outputCount: 1,
-      out: 0,
-      wait: 0,
-      pattern: 0,
-      bitShift: 0,
-      brightness: 100
-    };
+    return createEmptyExperimentCVEP();
   }
 
   get outputCount() {
