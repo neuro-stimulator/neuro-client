@@ -8,34 +8,36 @@
       <li [ngClass]="['list-group-item', 'list-group-item-action experiment-background', ExperimentType[experiment.type].toLowerCase()]"
           *ngFor="let experiment of group.experiments">
 
+        <!-- Jeden řádek s experimentem -->
         <div class="row expriment">
-          <!-- Experiment image representation -->
+          <!-- Značka typu experimentu (1. sloupeček) -->
           <div class="col-2 col-md-1 vertical-center">
-            <div [ngClass]="['experiment-icon', ExperimentType[experiment.type].toLowerCase()]"><span class="align-middle">{{ExperimentType[experiment.type]}}</span></div>
+            <div [ngClass]="['experiment-icon', ExperimentType[experiment.type].toLowerCase()]">
+              <span class="align-middle">{{ExperimentType[experiment.type]}}</span></div>
           </div>
-          <!-- Experiment Name, Description, Output types -->
-          <div class="col-8 col-md-9">
+          <!-- Informace o experimentu -->
+          <div class="col-7 col-md-8">
             <div>
+              <!-- Název experimentu s odkazem na editaci -->
               <a [routerLink]="[ExperimentType[experiment.type].toLowerCase(), experiment.id]"><strong>{{experiment.name}}</strong></a>
-              <span class="experiment-output float-right">
+              <!-- Obrázková reprezentace použitých typů výstupů -->
+              <span class="experiment-output">
                     <i class="fas fa-lightbulb" *ngIf="experiment.usedOutputs['led']" title="LED"></i>
                     <i class="fas fa-music" *ngIf="experiment.usedOutputs['audio']" title="Zvuk"></i>
                     <i class="fas fa-image" *ngIf="experiment.usedOutputs['image']" title="Obrázek"></i>
-                  </span>
+              </span>
+              <span class="experiment-output-count float-right"><i class="fas fa-hashtag" title="Počet použitých výstupů"></i> {{experiment.outputCount}}</span>
             </div>
+            <!-- Popis experimentu -->
             <div><small class="text-truncate experiment-description">{{experiment.description || 'Žádný popis není k dispozici...'}}</small></div>
           </div>
-          <!-- Experiment toolbar buttons -->
-          <div class="col-1 experiment-toolbar">
+          <!-- Toolbar s akčními tlačítky -->
+          <div class="col-3 experiment-toolbar">
             <i class="fas fa-play text-success" title="Spustit" (click)="run.next(experiment)"></i>
-            <!--          <i class="fas fa-bug text-info" title="Simulovat" (click)="simulate.next(experiment)"></i>-->
-          </div>
-          <div class="col-1 experiment-toolbar">
             <i class="fas fa-edit text-primary" title="Editovat" (click)="edit.next(experiment)"></i>
             <i class="fas fa-trash text-danger" title="Odstranit" (click)="delete.next(experiment)"></i>
           </div>
         </div>
-
 
       </li>
     </ul>

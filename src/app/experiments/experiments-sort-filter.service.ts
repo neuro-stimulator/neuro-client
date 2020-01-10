@@ -144,6 +144,10 @@ export class ExperimentsSortFilter {
           break;
         case 'output_type':
           group.experiments.sort((a, b) => outputTypeToRaw(a.usedOutputs) - outputTypeToRaw(b.usedOutputs));
+          break;
+        case 'output_count':
+          group.experiments.sort((a, b) => a.outputCount - b.outputCount);
+          break;
       }
       if (filterParameters.orderBy === 'descending') {
         group.experiments.reverse();

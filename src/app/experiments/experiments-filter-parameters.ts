@@ -52,12 +52,14 @@ export class SortByPosibilities {
   static readonly CREATION_DATE = new SortByPosibilities('Datum vytvoření', 'date_of_creation', {ascending: 'fa-sort-numeric-up', descending: 'fa-sort-numeric-down'});
   static readonly TYPE = new SortByPosibilities('Typ experimentu', 'type', {ascending: '', descending: ''});
   static readonly OUTPUT_TYPE = new SortByPosibilities('Typ výstupu', 'output_type', {ascending: '', descending: ''});
+  static readonly OUTPUT_COUNT = new SortByPosibilities('Počtu výstupu', 'output_count', {ascending: '', descending: ''});
 
   static readonly VALUES: SortByPosibilities[] = [
     SortByPosibilities.ALPHABET,
     SortByPosibilities.CREATION_DATE,
     SortByPosibilities.TYPE,
-    SortByPosibilities.OUTPUT_TYPE
+    SortByPosibilities.OUTPUT_TYPE,
+    SortByPosibilities.OUTPUT_COUNT
   ];
 
   private constructor(public readonly name: string, public readonly value: string, public readonly icon: {ascending: string, descending: string}) {}
