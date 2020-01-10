@@ -1,33 +1,43 @@
-<ul class="list-group experiment-list">
-  <li [ngClass]="['list-group-item', 'list-group-item-action experiment-background', ExperimentType[experiment.type].toLowerCase()]" *ngFor="let experiment of experiments">
+<div class="row experiment-group" *ngFor="let group of experimentGroups">
+  <div class="col-10" *ngIf="group.group">
+    <span>{{group.group}} ({{group.experiments.length}})</span>
+  </div>
+  <div class="col-2 text-right" appContentToggler [toggledContent]="experimentGroup" [icon]="icon" *ngIf="group.group"><i class="fas fa-minus" #icon></i></div>
+  <div class="col-12" #experimentGroup>
+    <ul class="list-group experiment-list">
+      <li [ngClass]="['list-group-item', 'list-group-item-action experiment-background', ExperimentType[experiment.type].toLowerCase()]"
+          *ngFor="let experiment of group.experiments">
 
-    <div class="row expriment">
-      <!-- Experiment image representation -->
-      <div class="col-2 col-md-1 vertical-center">
-        <div [ngClass]="['experiment-icon', ExperimentType[experiment.type].toLowerCase()]"><span class="align-middle">{{ExperimentType[experiment.type]}}</span></div>
-      </div>
-      <!-- Experiment Name, Description, Output types -->
-      <div class="col-8 col-md-9">
-        <div>
-          <a [routerLink]="[ExperimentType[experiment.type].toLowerCase(), experiment.id]"><strong>{{experiment.name}}</strong></a>
-          <span class="experiment-output float-right">
+        <div class="row expriment">
+          <!-- Experiment image representation -->
+          <div class="col-2 col-md-1 vertical-center">
+            <div [ngClass]="['experiment-icon', ExperimentType[experiment.type].toLowerCase()]"><span class="align-middle">{{ExperimentType[experiment.type]}}</span></div>
+          </div>
+          <!-- Experiment Name, Description, Output types -->
+          <div class="col-8 col-md-9">
+            <div>
+              <a [routerLink]="[ExperimentType[experiment.type].toLowerCase(), experiment.id]"><strong>{{experiment.name}}</strong></a>
+              <span class="experiment-output float-right">
                     <i class="fas fa-lightbulb" *ngIf="experiment.usedOutputs['led']" title="LED"></i>
                     <i class="fas fa-music" *ngIf="experiment.usedOutputs['audio']" title="Zvuk"></i>
                     <i class="fas fa-image" *ngIf="experiment.usedOutputs['image']" title="Obrázek"></i>
                   </span>
+            </div>
+            <div><small class="text-truncate experiment-description">{{experiment.description || 'Žádný popis není k dispozici...'}}</small></div>
+          </div>
+          <!-- Experiment toolbar buttons -->
+          <div class="col-1 experiment-toolbar">
+            <i class="fas fa-play text-success" title="Spustit" (click)="run.next(experiment)"></i>
+            <!--          <i class="fas fa-bug text-info" title="Simulovat" (click)="simulate.next(experiment)"></i>-->
+          </div>
+          <div class="col-1 experiment-toolbar">
+            <i class="fas fa-edit text-primary" title="Editovat" (click)="edit.next(experiment)"></i>
+            <i class="fas fa-trash text-danger" title="Odstranit" (click)="delete.next(experiment)"></i>
+          </div>
         </div>
-        <div><small class="text-truncate experiment-description">{{experiment.description || 'Žádný popis není k dispozici...'}}</small></div>
-      </div>
-      <!-- Experiment toolbar buttons -->
-      <div class="col-1 experiment-toolbar">
-        <i class="fas fa-play text-success" title="Spustit" (click)="handleRun(experiment)"></i>
-<!--        <i class="fas fa-bug text-info" title="Simulovat" (click)="handleSimulate(experiment)"></i>-->
-      </div>
-      <div class="col-1 experiment-toolbar">
-        <i class="fas fa-edit text-primary" title="Editovat" (click)="handleEdit(experiment)"></i>
-        <i class="fas fa-trash text-danger" title="Odstranit" (click)="handleDelete(experiment)"></i>
-      </div>
-    </div>
 
-  </li>
-</ul>
+
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+import { Experiment, ExperimentType} from '@stechy1/diplomka-share';
+
 export interface FilterParameters {
   groupBy: string;
   sortBy: string;
@@ -7,26 +9,39 @@ export interface FilterParameters {
 export class GroupByPosibilities {
   static readonly KEY = 'groupBy';
 
-  static readonly NONE = new GroupByPosibilities('Neseskupovat', 'none', '');
-  static readonly TYPE = new GroupByPosibilities('Typ experimentu', 'type', '');
+  static readonly NONE = new GroupByPosibilities('Neseskupovat', 'none', '',
+    () => '',
+    () => true,
+    (group => group));
+  static readonly TYPE = new GroupByPosibilities('Typ experimentu', 'type', '',
+    experiment => `${experiment.type}`,
+    (experiment: Experiment, group: string) => experiment.type === +group,
+    (group: string) => ExperimentType[+group]);
+  // static readonly OUTPUT_TYPE = new GroupByPosibilities('Typ výstupu', 'output_type', '',
+  //   experiment => `${experiment.usedOutputs}`,
+  //   (experiment: Experiment, group: OutputType) => (outputTypeToRaw(experiment.usedOutputs) | outputTypeToRaw(group)) !== 0,
+  //   (group: OutputType) => `${outputTypeToRaw(group)}`);
 
   static readonly VALUES: GroupByPosibilities[] = [
     GroupByPosibilities.NONE,
     GroupByPosibilities.TYPE,
+    // GroupByPosibilities.OUTPUT_TYPE
   ];
 
-  private constructor(private readonly _name: string, private readonly _value: string, private readonly _icon) {}
+  private constructor(public readonly name: string, public readonly value: string, public readonly icon: string,
+                      public readonly mapFunction: (experiment: Experiment) => any,
+                      public readonly groupFunction: (experiment: Experiment, group: any) => boolean,
+                      public readonly nameTransformFunction: (group: any) => string) {}
 
-  get name(): string {
-    return this._name;
-  }
-
-  get value(): string {
-    return this._value;
-  }
-
-  get icon(): string {
-    return this._icon;
+  public static byValue(value: string): GroupByPosibilities {
+    switch (value) {
+      case 'none':
+        return this.NONE;
+      case 'type':
+        return this.TYPE;
+      // case 'output_type':
+      //   return this.OUTPUT_TYPE;
+    }
   }
 }
 
@@ -35,36 +50,18 @@ export class SortByPosibilities {
 
   static readonly ALPHABET = new SortByPosibilities('Abecedně', 'alphabeticaly', {ascending: 'fa-sort-alpha-up', descending: 'fa-sort-alpha-down'});
   static readonly CREATION_DATE = new SortByPosibilities('Datum vytvoření', 'date_of_creation', {ascending: 'fa-sort-numeric-up', descending: 'fa-sort-numeric-down'});
-  static readonly TYPE = new SortByPosibilities('Typ experimentu', 'experiment_type', {ascending: '', descending: ''});
+  static readonly TYPE = new SortByPosibilities('Typ experimentu', 'type', {ascending: '', descending: ''});
+  static readonly OUTPUT_TYPE = new SortByPosibilities('Typ výstupu', 'output_type', {ascending: '', descending: ''});
 
   static readonly VALUES: SortByPosibilities[] = [
     SortByPosibilities.ALPHABET,
     SortByPosibilities.CREATION_DATE,
-    SortByPosibilities.TYPE
+    SortByPosibilities.TYPE,
+    SortByPosibilities.OUTPUT_TYPE
   ];
 
-  private constructor(private readonly _name: string, private readonly _value: string, private readonly _icon: {ascending: string, descending: string}) {}
+  private constructor(public readonly name: string, public readonly value: string, public readonly icon: {ascending: string, descending: string}) {}
 
-  get name(): string {
-    return this._name;
-  }
-
-  get value(): string {
-    return this._value;
-  }
-
-  get icon(): {ascending: string, descending: string} {
-    return this._icon;
-  }
-
-  static byValue(value: string): SortByPosibilities {
-    switch (value) {
-      case 'alphabeticaly':
-        return SortByPosibilities.ALPHABET;
-      case 'date_of_creation':
-        return SortByPosibilities.CREATION_DATE;
-    }
-  }
 }
 
 export class OrderByPosibilities {
@@ -78,17 +75,6 @@ export class OrderByPosibilities {
     OrderByPosibilities.DESCENDING
   ];
 
-  private constructor(private readonly _name: string, private readonly _value: string, private readonly _icon) {}
+  private constructor(public readonly name: string, public readonly value: string, public readonly icon) {}
 
-  get name(): string {
-    return this._name;
-  }
-
-  get value(): string {
-    return this._value;
-  }
-
-  get icon(): string {
-    return this._icon;
-  }
 }

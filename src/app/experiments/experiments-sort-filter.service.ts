@@ -1,14 +1,15 @@
 import { EventEmitter, Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { NGXLogger } from 'ngx-logger';
 import * as Fuse from 'fuse.js';
 
-import { Experiment } from '@stechy1/diplomka-share';
+import { Experiment, outputTypeToRaw } from '@stechy1/diplomka-share';
 
 import { ExperimentsService } from './experiments.service';
-import { NGXLogger } from 'ngx-logger';
-import { LocalStorageService } from 'angular-2-local-storage';
 import { FilterParameters, GroupByPosibilities, OrderByPosibilities, SortByPosibilities } from './experiments-filter-parameters';
-import { Observable } from 'rxjs';
+import { ExperimentGroup } from './experiments.share';
 
 @Injectable({
   providedIn: 'root'
@@ -40,8 +41,9 @@ export class ExperimentsSortFilter {
   private _selectedGroup: string;
   // Kolekce experimentů pro FuseJS
   private _fuseExperiments: Experiment[] = [];
+  private _filteredExperiments: Experiment[] = [];
   // Výsledná kolekce, která obsahuje výsledky experimentů po filtraci
-  private _resultExperiments: Experiment[] = [];
+  private _groupExperiments: ExperimentGroup = [];
   // Poslední slovo, podle kterého se vyhledávalo
   private _lastSearch = '';
   // Poslední použité filtrační parametry
@@ -56,39 +58,19 @@ export class ExperimentsSortFilter {
               private readonly _storage: LocalStorageService) {
     this._selectedGroup = 'none';
     this._fusejs = new Fuse(this._fuseExperiments, ExperimentsSortFilter.FUSEJS_SETTINGS);
+    this._loadFilterParameters();
     this.service.records.subscribe(value => {
       // Provedu mělkou kopii pole
       this._fuseExperiments.splice(0);
       this._fuseExperiments.push(...value);
       this.filterBy(this._lastSearch);
     });
-    this._loadFilterParameters();
   }
 
   private _loadFilterParameters() {
-    this.filterParameters = this._storage.get<FilterParameters>(ExperimentsSortFilter.STORAGE_KEY_FILTER_PARAMETERS)
+    this._lastFilterParameters = this._storage.get<FilterParameters>(ExperimentsSortFilter.STORAGE_KEY_FILTER_PARAMETERS)
       || ExperimentsSortFilter.DEFAULT_FILTER_PARAMETERS;
-  }
-
-  /**
-   * Metoda se zavolá vždy, když se změní způsob řazení dotazů
-   *
-   * @param filterParameters Filtrační parametry
-   */
-  public sort(filterParameters: FilterParameters) {
-    this._resultExperiments.sort((a, b) => a.name.localeCompare(b.name));
-    this.logger.debug(`Řadím data podle: '${filterParameters.sortBy}'.`);
-    switch (filterParameters.sortBy) {
-      case 'date_of_creation':
-        this._resultExperiments.sort((a, b) => a.created - b.created);
-        break;
-      case 'experiment_type':
-        this._resultExperiments.sort((a, b) => a.type - b.type);
-        break;
-    }
-    if (filterParameters.orderBy === 'descending') {
-      this._resultExperiments.reverse();
-    }
+    this._filterParametersChange.next(this._lastFilterParameters);
   }
 
   /**
@@ -101,25 +83,90 @@ export class ExperimentsSortFilter {
     this._lastSearch = searchedValue;
     if (searchedValue === '') {
       // Ve vyhledávání je prázdná hodnota, nebudu nic filtrovat a zobrazím všechny záznamy
-      this._resultExperiments.splice(0);
-      this._resultExperiments.push(...this._fuseExperiments);
+      this._filteredExperiments.splice(0);
+      this._filteredExperiments.push(...this._fuseExperiments);
+      this.groupBy();
       return;
     }
     // Hodnota není prázdná, jdu najít všechny odpovídající dotazy
     // @ts-ignore
     const fuseResult = this._fusejs.search(searchedValue) as Fuse.FuseResult<Experiment>[];
     // Vymažu všechny záznamy v pracovní kolekci
-    this._resultExperiments.splice(0);
+    this._filteredExperiments.splice(0);
     // Přidám všechny nalezené záznamy do pracovní kolekce
     for (const result of fuseResult) {
       if (result.score < 0.4) {
-        this._resultExperiments.push(result.item);
+        this._filteredExperiments.push(result.item);
       }
     }
+    this.groupBy();
+  }
+
+  public groupBy(filterParameters?: FilterParameters): void {
+    filterParameters = filterParameters || this._lastFilterParameters;
+    this._groupExperiments.splice(0);
+    if (filterParameters.groupBy === GroupByPosibilities.NONE.value) {
+      this._groupExperiments.push({ group: '', experiments: [...this._filteredExperiments] });
+      this.sort();
+      return;
+    }
+
+    const groupConfiguration = GroupByPosibilities.byValue(filterParameters.groupBy);
+    const groupsWithDuplications: any[] = this._filteredExperiments.map(groupConfiguration.mapFunction);
+    const groups: any[] = groupsWithDuplications.filter(((value, index, array) => array.indexOf(value) === index));
+
+    this._groupExperiments.splice(0);
+
+    for (const group of groups) {
+      const experiments = this._filteredExperiments.filter((experiment: Experiment) => groupConfiguration.groupFunction(experiment, group));
+      this._groupExperiments.push({ group: groupConfiguration.nameTransformFunction(group), experiments });
+    }
+
+    this.sort();
+  }
+
+  /**
+   * Metoda se zavolá vždy, když se změní způsob řazení dotazů
+   *
+   * @param filterParameters Filtrační parametry
+   */
+  public sort(filterParameters?: FilterParameters) {
+    filterParameters = filterParameters || this._lastFilterParameters;
+    this.logger.debug(`Řadím data podle: '${filterParameters.sortBy}'.`);
+    for (const group of this._groupExperiments) {
+      group.experiments.sort((a, b) => a.name.localeCompare(b.name));
+      switch (filterParameters.sortBy) {
+        case 'date_of_creation':
+          group.experiments.sort((a, b) => a.created - b.created);
+          break;
+        case 'type':
+          group.experiments.sort((a, b) => a.type - b.type);
+          break;
+        case 'output_type':
+          group.experiments.sort((a, b) => outputTypeToRaw(a.usedOutputs) - outputTypeToRaw(b.usedOutputs));
+      }
+      if (filterParameters.orderBy === 'descending') {
+        group.experiments.reverse();
+      }
+    }
+    console.log(this._groupExperiments);
+    // this._resultExperiments.sort((a, b) => a.name.localeCompare(b.name));
+    // this.logger.debug(`Řadím data podle: '${filterParameters.sortBy}'.`);
+    // switch (filterParameters.sortBy) {
+    //   case 'date_of_creation':
+    //     this._resultExperiments.sort((a, b) => a.created - b.created);
+    //     break;
+    //   case 'experiment_type':
+    //     this._resultExperiments.sort((a, b) => a.type - b.type);
+    //     break;
+    // }
+    // if (filterParameters.orderBy === 'descending') {
+    //   this._resultExperiments.reverse();
+    // }
   }
 
   public resetFilterParameters() {
-    this.sort(this._lastFilterParameters);
+    this.groupBy();
   }
 
   get filterParameters() {
@@ -136,8 +183,8 @@ export class ExperimentsSortFilter {
     return this._lastSearch;
   }
 
-  public get records(): Experiment[] {
-    return this._resultExperiments;
+  public get records(): ExperimentGroup {
+    return this._groupExperiments;
   }
 }
 

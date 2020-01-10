@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { DialogChildComponent } from '../../share/modal/dialog-child.component';
 import { ModalComponent } from '../../share/modal/modal.component';
 import { ExperimentsSortFilter } from '../experiments-sort-filter.service';
-import { GroupByPosibilities, OrderByPosibilities, SortByPosibilities } from '../experiments-filter-parameters';
+import { FilterParameters, GroupByPosibilities, OrderByPosibilities, SortByPosibilities } from '../experiments-filter-parameters';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -24,14 +24,20 @@ export class ExperimentFilterDialogComponent extends DialogChildComponent implem
   private _cancelSubscription: Subscription;
   private _showSubscription: Subscription;
   private _formValueChangesSubscription: Subscription;
+  private _lastConfiguration: FilterParameters;
 
   constructor(private readonly filter: ExperimentsSortFilter) {
     super();
   }
 
   ngOnInit() {
-    this._formValueChangesSubscription = this.form.valueChanges.subscribe(value => {
-      this.filter.sort(value);
+    this._formValueChangesSubscription = this.form.valueChanges.subscribe((value: FilterParameters) => {
+      if (value.groupBy !== this._lastConfiguration.groupBy) {
+        this.filter.groupBy(value);
+      } else {
+        this.filter.sort(value);
+      }
+      this._lastConfiguration = value;
     });
   }
 
@@ -41,7 +47,10 @@ export class ExperimentFilterDialogComponent extends DialogChildComponent implem
     modal.cancelText = 'Zrušit';
     this._confirmSubscription = modal.confirm.subscribe(() => { this.filter.filterParameters = this.form.value; });
     this._cancelSubscription = modal.cancel.subscribe(() => { this.filter.resetFilterParameters(); });
-    this._showSubscription = modal.show.subscribe(() => { this.form.setValue(this.filter.filterParameters); });
+    this._showSubscription = modal.show.subscribe(() => {
+      this.form.setValue(this.filter.filterParameters);
+      this._lastConfiguration = this.filter.filterParameters;
+    });
   }
 
   unbind(modal: ModalComponent) {

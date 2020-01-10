@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { Observable } from 'rxjs';
-
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
+import { ExperimentGroup } from '../experiments.share';
 
 @Component({
   selector: 'app-experiment-item-list',
@@ -11,7 +10,7 @@ import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 })
 export class ExperimentItemListComponent implements OnInit {
 
-  @Input() experiments: Experiment[];
+  @Input() experimentGroups: ExperimentGroup;
   @Output() run: EventEmitter<Experiment> = new EventEmitter<Experiment>();
   @Output() simulate: EventEmitter<Experiment> = new EventEmitter<Experiment>();
   @Output() edit: EventEmitter<Experiment> = new EventEmitter<Experiment>();
@@ -19,23 +18,6 @@ export class ExperimentItemListComponent implements OnInit {
 
   ExperimentType = ExperimentType;
 
-  constructor() {}
+  ngOnInit(): void {}
 
-  ngOnInit() {}
-
-  handleRun(experiment: Experiment) {
-    this.run.next(experiment);
-  }
-
-  handleSimulate(experiment: Experiment) {
-    this.simulate.next(experiment);
-  }
-
-  handleEdit(experiment: Experiment) {
-    this.edit.next(experiment);
-  }
-
-  handleDelete(experiment: Experiment) {
-    this.delete.next(experiment);
-  }
 }

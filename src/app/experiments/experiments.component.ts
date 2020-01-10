@@ -15,6 +15,7 @@ import { ExperimentsSortFilter } from './experiments-sort-filter.service';
 import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/experiment-filter-dialog.component';
 import { FilterParameters } from './experiments-filter-parameters';
 import { Location } from '@angular/common';
+import { ExperimentGroup } from './experiments.share';
 
 @Component({
   selector: 'app-experiments',
@@ -68,7 +69,10 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
   }
 
   private _handleSearchBy(value: string) {
-    const url = this._router.serializeUrl(this._router.createUrlTree([], {relativeTo: this._route, queryParams: this._filterService.filterParameters, fragment: value}));
+    const url = this._router.serializeUrl(this._router.createUrlTree(
+      [],
+      {relativeTo: this._route, queryParams: this._filterService.filterParameters, fragment: value}
+      ));
     this._location.go(url);
     this._filterService.filterBy(value);
   }
@@ -111,7 +115,11 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
     this._router.navigate([type, 'new'], {relativeTo: this._route});
   }
 
-  get experiments() {
+  get experimentGroups(): ExperimentGroup {
     return this._filterService.records;
+  }
+
+  get hasExperiments() {
+    return this._filterService.records && Object.keys(this._filterService.records).length !== 0;
   }
 }
