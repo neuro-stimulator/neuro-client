@@ -9,11 +9,11 @@ export interface FilterParameters {
 export class GroupByPosibilities {
   static readonly KEY = 'groupBy';
 
-  static readonly NONE = new GroupByPosibilities('Neseskupovat', 'none', '',
+  static readonly NONE = new GroupByPosibilities('Neseskupovat', 'none', 'fa-ban',
     () => '',
     () => true,
     (group => group));
-  static readonly TYPE = new GroupByPosibilities('Typ experimentu', 'type', '',
+  static readonly TYPE = new GroupByPosibilities('Typ experimentu', 'type', 'fa-stethoscope',
     experiment => `${experiment.type}`,
     (experiment: Experiment, group: string) => experiment.type === +group,
     (group: string) => ExperimentType[+group]);
@@ -50,9 +50,9 @@ export class SortByPosibilities {
 
   static readonly ALPHABET = new SortByPosibilities('Abecedně', 'alphabeticaly', {ascending: 'fa-sort-alpha-up', descending: 'fa-sort-alpha-down'});
   static readonly CREATION_DATE = new SortByPosibilities('Datum vytvoření', 'date_of_creation', {ascending: 'fa-sort-numeric-up', descending: 'fa-sort-numeric-down'});
-  static readonly TYPE = new SortByPosibilities('Typ experimentu', 'type', {ascending: '', descending: ''});
-  static readonly OUTPUT_TYPE = new SortByPosibilities('Typ výstupu', 'output_type', {ascending: '', descending: ''});
-  static readonly OUTPUT_COUNT = new SortByPosibilities('Počtu výstupu', 'output_count', {ascending: '', descending: ''});
+  static readonly TYPE = new SortByPosibilities('Typ experimentu', 'type', {ascending: 'fa-stethoscope', descending: 'fa-stethoscope'});
+  static readonly OUTPUT_TYPE = new SortByPosibilities('Typ výstupu', 'output_type', {ascending: 'fa-plug', descending: 'fa-plug'});
+  static readonly OUTPUT_COUNT = new SortByPosibilities('Počtu výstupu', 'output_count', {ascending: 'fa-plug', descending: 'fa-plug'});
 
   static readonly VALUES: SortByPosibilities[] = [
     SortByPosibilities.ALPHABET,
