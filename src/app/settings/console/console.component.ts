@@ -17,10 +17,8 @@ export class ConsoleComponent implements OnInit {
     this.console.clearHistory();
   }
 
-  handleCommandTextChange(event: KeyboardEvent) {
-    if (event.code === 'Enter') {
-      this.console.processCommand((event.target as HTMLInputElement).value);
-      (event.target as HTMLInputElement).value = '';
-    }
+  handleCommandTextChange(event: Event) {
+    this.console.processCommand((event.target as HTMLInputElement).value);
+    (event.target as HTMLInputElement).value = '';
   }
 }
