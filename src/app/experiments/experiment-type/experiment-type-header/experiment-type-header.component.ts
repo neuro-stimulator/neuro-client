@@ -37,12 +37,11 @@ export class ExperimentTypeHeaderComponent implements OnInit {
     }
   }
 
-  handleTagKeyUp(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
-      const tags: string[] = this.tags.value;
-      const srcElement = event.target as HTMLInputElement;
-      tags.push(srcElement.value);
-      srcElement.value = '';
-    }
+  handleTagKeyUp(event: Event) {
+    const tags: string[] = this.tags.value;
+    const srcElement = event.target as HTMLInputElement;
+    tags.push(srcElement.value);
+    srcElement.value = '';
+    srcElement.focus();
   }
 }
