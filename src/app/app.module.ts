@@ -2,6 +2,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import localeCZECH from '@angular/common/locales/cs';
 
 // Third party modules
 import { ToastrModule } from 'ngx-toastr';
@@ -24,6 +26,9 @@ import { ResponseInterceptor } from './share/interceptors/response-interceptor.s
 import { ShareModule } from './share/share.module';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { environment } from '../environments/environment';
+
+// Zaregistruji českou lokalizaci
+registerLocaleData(localeCZECH);
 
 @NgModule({
   declarations: [

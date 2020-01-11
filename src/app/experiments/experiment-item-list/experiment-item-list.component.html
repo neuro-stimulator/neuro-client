@@ -22,15 +22,16 @@
             <div class="col-7 col-md-8">
               <div class="row">
                 <div class="col-12">
-                <!-- Název experimentu s odkazem na editaci -->
-                <a [routerLink]="[ExperimentType[experiment.type].toLowerCase(), experiment.id]"><strong>{{experiment.name}}</strong></a>
-                <!-- Obrázková reprezentace použitých typů výstupů -->
-                <span class="experiment-output">
-                      <i class="fas fa-lightbulb" *ngIf="experiment.usedOutputs['led']" title="LED"></i>
-                      <i class="fas fa-music" *ngIf="experiment.usedOutputs['audio']" title="Zvuk"></i>
-                      <i class="fas fa-image" *ngIf="experiment.usedOutputs['image']" title="Obrázek"></i>
-                </span>
-                <span class="experiment-output-count float-right" title="Počet použitých výstupů"><i class="fas fa-hashtag"></i> {{experiment.outputCount}}</span>
+                  <!-- Název experimentu s odkazem na editaci -->
+                  <a [routerLink]="[ExperimentType[experiment.type].toLowerCase(), experiment.id]"><strong>{{experiment.name}}</strong></a>
+                  <!-- Obrázková reprezentace použitých typů výstupů -->
+                  <span class="experiment-output">
+                        <i class="fas fa-lightbulb" *ngIf="experiment.usedOutputs['led']" title="LED"></i>
+                        <i class="fas fa-music" *ngIf="experiment.usedOutputs['audio']" title="Zvuk"></i>
+                        <i class="fas fa-image" *ngIf="experiment.usedOutputs['image']" title="Obrázek"></i>
+                  </span>
+                  <span> - <small>{{experiment.created | dateTime:dateTimeFormat}}</small></span>
+                  <span class="experiment-output-count float-right" title="Počet použitých výstupů"><i class="fas fa-hashtag"></i> {{experiment.outputCount}}</span>
                 </div>
               </div>
               <!-- Popis experimentu -->

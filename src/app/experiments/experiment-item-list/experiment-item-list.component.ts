@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 import { ExperimentGroup } from '../experiments.share';
+import { DateTimeFormat } from '../../share/date-time-format';
 
 @Component({
   selector: 'app-experiment-item-list',
@@ -17,6 +18,8 @@ export class ExperimentItemListComponent implements OnInit {
   @Output() delete: EventEmitter<Experiment> = new EventEmitter<Experiment>();
 
   ExperimentType = ExperimentType;
+
+  dateTimeFormat: DateTimeFormat = {showDays: true, showMonths: true, showYears: true};
 
   ngOnInit(): void {}
 
