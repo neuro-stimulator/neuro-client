@@ -189,7 +189,7 @@ export class ExperimentsSortFilter {
       // A aplikuji na ně řadící funkci
       group.experiments.sort(sortConfiguration.sortFunction);
       // Nakonec, pokud je potřeba, invertuji pořadí prvků
-      if (filterParameters.orderBy === 'descending') {
+      if (filterParameters.orderBy === OrderByPosibilities.ASCENDING.value) {
         group.experiments.reverse();
       }
     }
