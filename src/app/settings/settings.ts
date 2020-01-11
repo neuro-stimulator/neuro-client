@@ -12,3 +12,8 @@ export interface Settings {
   player: {};
   results: {};
 }
+
+export interface ServerSettings {
+  autoconnectToStimulator?: boolean;
+  comPortName?: string;
+}

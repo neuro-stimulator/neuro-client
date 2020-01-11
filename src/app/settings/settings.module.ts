@@ -10,6 +10,7 @@ import { ParamConfigComponent } from './param-config/param-config.component';
 import { ParamConfigExperimentsComponent } from './param-config/param-config-experiments/param-config-experiments.component';
 import { FabModule } from '../share/fab/fab.module';
 import { ShareModule } from '../share/share.module';
+import { ParamConfigServerComponent } from './param-config/param-config-server/param-config-server.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ShareModule } from '../share/share.module';
     ServiceStateComponent,
     ConsoleComponent,
     ParamConfigComponent,
-    ParamConfigExperimentsComponent
+    ParamConfigExperimentsComponent,
+    ParamConfigServerComponent
   ],
   imports: [
     CommonModule,

@@ -1,9 +1,10 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Settings } from './settings';
+import { ServerSettings, Settings } from './settings';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { environment, makeURL } from '../../environments/environment';
+import { ResponseObject } from '@stechy1/diplomka-share';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ export class SettingsService {
 
   private static readonly SETTINGS_STORAGE_KEY = 'settings';
   private static readonly DEFAULT_SETTINGS: Settings = environment.settings;
+
+  private static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/settings`;
 
   private readonly _settingsChange: EventEmitter<Settings> = new EventEmitter<Settings>();
   public readonly settingsChange$: Observable<Settings> = this._settingsChange.asObservable();
@@ -31,6 +34,21 @@ export class SettingsService {
   private _loadSettings() {
     this._settings = this._storage.get<Settings>(SettingsService.SETTINGS_STORAGE_KEY) || SettingsService.DEFAULT_SETTINGS;
     this._settingsChange.next(this._settings);
+  }
+
+  public async loadServerSettings(): Promise<ServerSettings> {
+    return await this._http.get<ResponseObject<ServerSettings>>(SettingsService.BASE_API_URL)
+                     .toPromise()
+                     .catch(() => {
+                       return {data: {}};
+                     })
+                     .then(response => {
+                       return response.data;
+                     });
+  }
+
+  public async uploadServerSettings(settings: ServerSettings) {
+    await this._http.post(SettingsService.BASE_API_URL, settings).toPromise();
   }
 
   get settings(): Settings {

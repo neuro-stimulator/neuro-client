@@ -33,18 +33,27 @@ export class ParamConfigComponent implements OnInit {
     player: new FormGroup({}),
     results: new FormGroup({})
   });
+  server: FormGroup = new FormGroup({
+    autoconnectToStimulator: new FormControl()
+  });
 
   constructor(private readonly _service: SettingsService,
               private readonly _toastr: ToastrService) { }
 
   ngOnInit() {
-    console.log(this._service.settings);
     this.form.setValue(this._service.settings);
+    this._service.loadServerSettings()
+        .then(serverSettings => {
+          this.server.patchValue(serverSettings);
+        });
   }
 
   handleSaveSettings() {
     this._service.settings = this.form.value;
-    this._toastr.success('Nastavení bylo uloženo.');
+    this._service.uploadServerSettings(this.server.value)
+        .then(() => {
+          this._toastr.success('Nastavení bylo uloženo.');
+        });
   }
 
   get experiments(): FormGroup {
