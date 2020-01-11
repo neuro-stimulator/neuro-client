@@ -1,0 +1,160 @@
+<form [formGroup]="form" class="settings-form">
+
+  <div class="row">
+    <div class="col-10" >
+      <h2>Přehled experimentů</h2>
+    </div>
+    <div class="col-2 text-right" appContentToggler [toggledContent]="settings" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+  </div>
+  <div #settings>
+    <!-- Zobrazení popisu experimentu -->
+    <div class="col-12">
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-experiments-show-description">Zobrazit popis</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <input class="form-control form-control-sm" type="checkbox" id="settings-experiments-show-description"
+                   formControlName="showDescription">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zobrazení tagu experimentu -->
+    <div class="col-12">
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-experiments-show-tags">Zobrazit tagy</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <input class="form-control form-control-sm" type="checkbox" id="settings-experiments-show-tags"
+                   formControlName="showTags">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zobrazení data vytvoření experimentu -->
+    <div class="col-12">
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-experiments-show-creation-date">Zobrazit datum vytvoření</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <input class="form-control form-control-sm" type="checkbox" id="settings-experiments-show-creation-date"
+                   formControlName="showCreationDate">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zobrazení typ výstupu experimentu -->
+    <div class="col-12">
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-experiments-show-output-type">Zobrazit typ výstupu</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <input class="form-control form-control-sm" type="checkbox" id="settings-experiments-show-output-type"
+                   formControlName="showOutputType">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zobrazení počtu výstupů experimentu -->
+    <div class="col-12">
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-experiments-show-output-count">Zobrazit počet výstupů</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <input class="form-control form-control-sm" type="checkbox" id="settings-experiments-show-output-count"
+                   formControlName="showOutputCount">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nastavení formátu data vytvoření -->
+    <div class="col-12" [formGroupName]="'creationDateFormat'">
+      <div class="row">
+        <div class="col-10" >
+          <h3>Formát data vytvoření</h3>
+        </div>
+        <div class="col-2 text-right" appContentToggler [toggledContent]="dateTimeFormat" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+      </div>
+      <div class="form-group" #dateTimeFormat>
+        <div class="form-row">
+          <div class="col">
+            <div class="row">
+              <div class="col-6 vertical-center justify-content-start">
+                <label for="settings-experiments-output-count-format-hours">Hodiny</label>
+              </div>
+              <div class="col-6 vertical-center">
+                <input class="form-control form-control-sm col-6" type="checkbox"
+                       id="settings-experiments-output-count-format-hours"
+                       formControlName="showHours">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-6 vertical-center justify-content-start">
+                <label for="settings-experiments-output-count-format-minutes">Minuty</label>
+              </div>
+              <div class="col-6 vertical-center">
+                <input class="form-control form-control-sm col-6" type="checkbox"
+                       id="settings-experiments-output-count-format-minutes"
+                       formControlName="showMinutes">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-6 vertical-center justify-content-start">
+                <label for="settings-experiments-output-count-format-days">Dny</label>
+              </div>
+              <div class="col-6 vertical-center">
+                <input class="form-control form-control-sm col-6" type="checkbox"
+                       id="settings-experiments-output-count-format-days"
+                       formControlName="showDays">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-6 vertical-center justify-content-start">
+                <label for="settings-experiments-output-count-format-months">Měsíce</label>
+              </div>
+              <div class="col-6 vertical-center">
+                <input class="form-control form-control-sm col-6" type="checkbox"
+                       id="settings-experiments-output-count-format-months"
+                       formControlName="showMonths">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-6 vertical-center justify-content-start">
+                <label for="settings-experiments-output-count-format-years">Roky</label>
+              </div>
+              <div class="col-6 vertical-center">
+                <input class="form-control form-control-sm col-6" type="checkbox"
+                       id="settings-experiments-output-count-format-years"
+                       formControlName="showYears">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>

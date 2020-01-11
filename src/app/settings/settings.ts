@@ -1,0 +1,14 @@
+import { DateTimeFormat } from '../share/date-time-format';
+
+export interface Settings {
+  experiments: {
+    showDescription: boolean;
+    showTags: boolean;
+    showCreationDate: boolean;
+    showOutputType: boolean;
+    showOutputCount: boolean;
+    creationDateFormat: DateTimeFormat;
+  };
+  player: {};
+  results: {};
+}

@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+
+import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-param-config',
@@ -7,9 +13,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParamConfigComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup = new FormGroup({
+    experiments: new FormGroup({
+      showDescription: new FormControl(null),
+      showTags: new FormControl(null),
+      showCreationDate: new FormControl(null),
+      showOutputType: new FormControl(null),
+      showOutputCount: new FormControl(null),
+      creationDateFormat: new FormGroup({
+        showYears: new FormControl(null),
+        showMonths: new FormControl(null),
+        showDays: new FormControl(null),
+        showHours: new FormControl(null),
+        showMinutes: new FormControl(null),
+        showSeconds: new FormControl(null),
+        showMiliseconds: new FormControl(null),
+      })
+    }),
+    player: new FormGroup({}),
+    results: new FormGroup({})
+  });
+
+  constructor(private readonly _service: SettingsService,
+              private readonly _toastr: ToastrService) { }
 
   ngOnInit() {
+    console.log(this._service.settings);
+    this.form.setValue(this._service.settings);
   }
 
+  handleSaveSettings() {
+    this._service.settings = this.form.value;
+    this._toastr.success('Nastavení bylo uloženo.');
+  }
+
+  get experiments(): FormGroup {
+    return this.form.get('experiments') as FormGroup;
+  }
+
+  get player(): FormGroup {
+    return this.form.get('player') as FormGroup;
+  }
+
+  get results(): FormGroup {
+    return this.form.get('results') as FormGroup;
+  }
+
+  get working(): Observable<boolean> {
+    return this._service.working$;
+  }
 }

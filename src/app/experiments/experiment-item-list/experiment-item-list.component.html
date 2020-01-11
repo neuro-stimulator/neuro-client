@@ -25,22 +25,22 @@
                   <!-- Název experimentu s odkazem na editaci -->
                   <a [routerLink]="[ExperimentType[experiment.type].toLowerCase(), experiment.id]"><strong>{{experiment.name}}</strong></a>
                   <!-- Obrázková reprezentace použitých typů výstupů -->
-                  <span class="experiment-output">
+                  <span class="experiment-output" *ngIf="settings.experiments.showOutputType">
                         <i class="fas fa-lightbulb" *ngIf="experiment.usedOutputs['led']" title="LED"></i>
                         <i class="fas fa-music" *ngIf="experiment.usedOutputs['audio']" title="Zvuk"></i>
                         <i class="fas fa-image" *ngIf="experiment.usedOutputs['image']" title="Obrázek"></i>
                   </span>
-                  <span> - <small>{{experiment.created | dateTime:dateTimeFormat}}</small></span>
-                  <span class="experiment-output-count float-right" title="Počet použitých výstupů"><i class="fas fa-hashtag"></i> {{experiment.outputCount}}</span>
+                  <span *ngIf="settings.experiments.showCreationDate"> - <small>{{experiment.created | dateTime:settings.experiments.creationDateFormat}}</small></span>
+                  <span *ngIf="settings.experiments.showOutputCount" class="experiment-output-count float-right" title="Počet použitých výstupů"><i class="fas fa-hashtag"></i> {{experiment.outputCount}}</span>
                 </div>
               </div>
               <!-- Popis experimentu -->
-              <div class="row">
+              <div class="row" *ngIf="settings.experiments.showDescription">
                 <div class="col-12">
                 <small class="text-truncate experiment-description">{{experiment.description || 'Žádný popis není k dispozici...'}}</small>
                 </div>
               </div>
-              <div class="row">
+              <div class="row" *ngIf="settings.experiments.showTags">
                 <div class="col-12">
                 <span class="badge" *ngFor="let tag of experiment.tags">{{tag}}</span>
                 </div>

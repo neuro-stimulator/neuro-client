@@ -3,6 +3,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 import { ExperimentGroup } from '../experiments.share';
 import { DateTimeFormat } from '../../share/date-time-format';
+import { Settings } from '../../settings/settings';
+import { SettingsService } from '../../settings/settings.service';
 
 @Component({
   selector: 'app-experiment-item-list',
@@ -19,7 +21,12 @@ export class ExperimentItemListComponent implements OnInit {
 
   ExperimentType = ExperimentType;
 
-  dateTimeFormat: DateTimeFormat = {showDays: true, showMonths: true, showYears: true};
+  // dateTimeFormat: DateTimeFormat = {showDays: true, showMonths: true, showYears: true};
+  settings: Settings;
+
+  constructor(private readonly _service: SettingsService) {
+    this.settings = this._service.settings;
+  }
 
   ngOnInit(): void {}
 
