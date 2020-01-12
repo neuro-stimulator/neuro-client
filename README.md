@@ -2,14 +2,20 @@
 
 Klientská část diplomové práce na téma: **Návrh hardwarového stimulátoru pro neuroinformatické experimenty**
 
+![](https://github.com/stechy1/diplomka-frontend/workflows/build/badge.svg)
+
 ## Funkce
 
  - Experimenty
    - [x] prohlížeč všech experimentů
-     - [ ] filtrování
+     - [x] filtrování
+     - [x] řazení
+     - [x] seskupování
+     - [x] nastavení zobrazené informace
    - [x] CRUD operace s experimenty
    - [ ] tvorba nových experimentů
      - [x] ERP
+       - [ ] sekvence
      - [x] CVEP
      - [x] FVEP
      - [x] TVEP
@@ -20,14 +26,15 @@ Klientská část diplomové práce na téma: **Návrh hardwarového stimulátor
  - Přehrávač experimentů
    - podporované experimenty:
      - [ ] ERP
+       - [ ] sekvence
      - [x] CVEP
-     - [ ] FVEP
-     - [ ] TVEP
+     - [x] FVEP
+     - [x] TVEP
      - [ ] REA
  - Podporované typy výstupů
     - [x] LED
-    - [ ] IMAGE
-    - [ ] AUDIO
+    - [x] IMAGE
+    - [x] AUDIO
  - Podporované příkazy v konzoli:
     - `Reboot` - restartuje stimulátor
     - `DisplayClear` - vymaže obsah displaye
@@ -37,3 +44,17 @@ Klientská část diplomové práce na téma: **Návrh hardwarového stimulátor
     - `ExperimentStart` - odstartuje experiment
     - `ExperimentStop` - zastaví experiment
     - `ExperimentClear`  - vymaže experiment z paměti stimulátoru
+ - Nastavení aplikace
+    - [ ] Stav připojených služeb
+      - [ ] Web Server
+        - [x] Odpojení
+        - [ ] Restart
+      - [ ] Stimulator
+        - [x] Připojení
+        - [x] Odpojení
+        - [ ] Restart
+        - [x] Aktualizace firmware
+      - [x] Přehrávač zvuků a obrázků
+    - [ ] Konfigurace parametrů
+      - [x] Přeheld experimentů
+      - [x] Konfigurace serveru
