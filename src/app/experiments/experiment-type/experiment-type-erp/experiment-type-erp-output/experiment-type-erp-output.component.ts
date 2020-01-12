@@ -1,11 +1,11 @@
-import { AfterContentInit, Component, Input, OnDestroy} from '@angular/core';
+import { AfterContentInit, Component, Input, OnDestroy } from '@angular/core';
 import { ControlContainer, FormArray, FormControl, FormGroup, NgForm } from '@angular/forms';
 
 import { Options as SliderOptions } from 'ng5-slider';
 
 import { environment } from '../../../../../environments/environment';
 
-import { OutputDependency } from '@stechy1/diplomka-share';
+import { Experiment, ExperimentType, OutputDependency } from '@stechy1/diplomka-share';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -26,15 +26,10 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
     animate: false
   };
 
-  private _outputCountSubscription: Subscription;
-  private _outputDistributionSubscriptions: Subscription[] = [];
-  private _oldOutputCount = environment.maxOutputCount;
-  private _experimentLoadedSubscription: Subscription;
-
   @Input() form: FormGroup;
   @Input() count: number;
   @Input() experimentId: number;
-  @Input() experimentLoaded: Observable<any>;
+  @Input() experimentLoaded: Observable<Experiment>;
 
   distributionSliderOptions: SliderOptions[] = [];
 
@@ -48,6 +43,12 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
     animate: false
   };
 
+  private _emptyExperiment = true;
+  private _outputCountSubscription: Subscription;
+  private _outputDistributionSubscriptions: Subscription[] = [];
+  private _oldOutputCount = environment.maxOutputCount;
+  private _experimentLoadedSubscription: Subscription;
+
   constructor() {
     for (let i = 0; i < environment.maxOutputCount; i++) {
       this.distributionSliderOptions.push({...ExperimentTypeErpOutputComponent.GENERAL_DISTRIBUTION_SLIDER_OPTIONS});
@@ -55,20 +56,25 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   }
 
   ngAfterContentInit(): void {
-    this._experimentLoadedSubscription = this.experimentLoaded.subscribe(() => {
+    this._experimentLoadedSubscription = this.experimentLoaded.subscribe((experiment: Experiment) => {
       this._oldOutputCount = this.form.root.get('outputCount').value;
-      this._listenOutputCountChange();
-      this._listenOutputDistributionChange();
-      // Vyvolám umělou změnu v hodnotě distribuce pro neexistující výstup
-      // Tím se přepočítají maximální hodnoty pro posuvníky
-      this._onOutputDistributionChange(-1);
+      if (experiment.type !== ExperimentType.NONE) {
+        this._emptyExperiment = false;
+        this._listenOutputCountChange();
+        this._listenOutputDistributionChange();
+        // Vyvolám umělou změnu v hodnotě distribuce pro neexistující výstup
+        // Tím se přepočítají maximální hodnoty pro posuvníky
+        this._onOutputDistributionChange(-1);
+      }
     });
   }
 
   ngOnDestroy(): void {
-    this._outputCountSubscription.unsubscribe();
-    for (let i = 0; i < environment.maxOutputCount; i++) {
-      this._outputDistributionSubscriptions[i].unsubscribe();
+    if (!this._emptyExperiment) {
+      this._outputCountSubscription.unsubscribe();
+      for (let i = 0; i < environment.maxOutputCount; i++) {
+        this._outputDistributionSubscriptions[i].unsubscribe();
+      }
     }
     this._experimentLoadedSubscription.unsubscribe();
   }

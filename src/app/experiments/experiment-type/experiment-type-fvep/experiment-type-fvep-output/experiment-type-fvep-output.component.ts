@@ -1,7 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
+
 import { Observable } from 'rxjs';
 import { Options as SliderOptions } from 'ng5-slider/options';
+
+import { Experiment } from '@stechy1/diplomka-share';
+
 import { environment } from '../../../../../environments/environment';
 
 @Component({
@@ -13,7 +17,6 @@ export class ExperimentTypeFvepOutputComponent implements OnInit {
 
   @Input() form: FormGroup;
   @Input() count: number;
-  @Input() experimentReady: Observable<any>;
 
   brightnessSliderOptions: SliderOptions = {
     floor: 0,

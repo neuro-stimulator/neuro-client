@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Observable, Subscription, TimeoutError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
@@ -38,6 +38,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
    */
   private _loadExperiment(experimentId: string) {
     this._experiment = this._createEmptyExperiment();
+    this._experiment.type = ExperimentType.NONE;
 
     if (experimentId !== undefined) {
       if (isNaN(parseInt(experimentId, 10))) {

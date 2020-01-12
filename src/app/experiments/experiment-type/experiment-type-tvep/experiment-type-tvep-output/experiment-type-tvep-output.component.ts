@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
 import { environment } from '../../../../../environments/environment';
+import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 
 @Component({
   selector: 'app-experiment-type-tvep-output',
@@ -35,11 +36,13 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
 
   @Input() form: FormGroup;
   @Input() count: number;
-  @Input() experimentReady: Observable<any>;
+  @Input() experimentReady: Observable<Experiment>;
 
   readonly patternSizes: BehaviorSubject<number>[] = [];
 
   private _experimentReadySubscription: Subscription;
+  private _patternLengthSubscriptions: Subscription[] = [];
+  private _emptyExperiment = true;
 
   constructor() { }
 
@@ -48,16 +51,24 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
       this.patternSizes.push(new BehaviorSubject<number>(1));
     }
 
-    this._experimentReadySubscription = this.experimentReady.subscribe(() => {
-      for (let i = 0; i < environment.maxOutputCount; i++) {
-        this.patternLength(i).valueChanges.subscribe(patternLength => {
-          this.patternSizes[i].next(patternLength);
-        });
+    this._experimentReadySubscription = this.experimentReady.subscribe((experiment: Experiment) => {
+      if (experiment.type !== ExperimentType.NONE) {
+        this._emptyExperiment = false;
+        for (let i = 0; i < environment.maxOutputCount; i++) {
+          this._patternLengthSubscriptions.push(this.patternLength(i).valueChanges.subscribe(patternLength => {
+            this.patternSizes[i].next(patternLength);
+          }));
+        }
       }
     });
   }
 
   ngOnDestroy(): void {
+    if (!this._emptyExperiment) {
+      for (let i = 0; i < environment.maxOutputCount; i++) {
+        this._patternLengthSubscriptions[i].unsubscribe();
+      }
+    }
     this._experimentReadySubscription.unsubscribe();
   }
 
