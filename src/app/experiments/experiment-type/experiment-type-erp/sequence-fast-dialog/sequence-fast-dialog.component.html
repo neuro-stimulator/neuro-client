@@ -1,0 +1,20 @@
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <label for="sequence-name">Název sekvence</label>
+        <input type="text" id="sequence-name" class="form-control form-control-sm" [class.is-valid]="name.valid" [class.is-invalid]="name.invalid" formControlName="name">
+        <small *ngIf="name.touched && name.errors?.required" class="form-text text-muted">Název sekvence je vyžadován.</small>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="form-group">
+        <label for="sequence-size">Délka sekvence</label>
+        <input type="number" id="sequence-size" class="form-control form-control-sm" [class.is-valid]="size.valid" [class.is-invalid]="size.invalid" formControlName="size">
+        <small *ngIf="size.touched && size.errors?.required" class="form-text text-muted">Délka sekvence je vyžadována.</small>
+        <small *ngIf="size.touched && size.errors?.min" class="form-text text-muted">Minimální hodnota je: {{size.errors?.min.min}}.</small>
+      </div>
+    </div>
+  </div>
+</form>

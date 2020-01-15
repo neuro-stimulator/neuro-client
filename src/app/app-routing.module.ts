@@ -8,6 +8,11 @@ const routes: Routes = [
     loadChildren: () => import('./experiments/experiments.module').then(mod => mod.ExperimentsModule)
   },
   {
+    path: 'sequences',
+    pathMatch: 'prefix',
+    loadChildren: () => import('./sequences/sequences.module').then(mod => mod.SequencesModule)
+  },
+  {
     path: 'player',
     pathMatch: 'prefix',
     loadChildren: () => import('./player/player.module').then(mod => mod.PlayerModule)

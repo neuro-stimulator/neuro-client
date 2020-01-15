@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col">
+
+    <form [formGroup]="form">
+
+      <div class="row experiment-property" [formGroup]="form">
+        <div class="col-10">
+          <h4>Základní údaje</h4>
+        </div>
+        <div class="col-2 text-right" appContentToggler [toggledContent]="basicInformations" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+
+        <div class="col-12" #basicInformations>
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <div class="form-group">
+                <label for="sequence-name">Název sekvence</label>
+                <input type="text" id="sequence-name" class="form-control form-control-sm" [class.is-valid]="name.valid" [class.is-invalid]="name.invalid" formControlName="name">
+                <small *ngIf="name.touched && name.errors?.required" class="form-text text-muted">Název sekvence je vyžadován.</small>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-4">
+              <div class="form-group">
+                <label for="sequence-source-experiment">Zdrojový experiment</label>
+                <select id="sequence-source-experiment" class="custom-select custom-select-sm" formControlName="experimentId" (change)="handleSourceExperimentChange($event)">
+                  <option *ngFor="let experiment of (experiments$ | async)" [value]="experiment.id">{{experiment.name}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-4">
+              <div class="form-group">
+                <label for="sequence-size">Délka sekvence</label>
+                <input type="number" id="sequence-size" class="form-control form-control-sm" [class.is-valid]="size.valid" [class.is-invalid]="size.invalid" formControlName="size" (change)="handleSequenceSizeChange($event)">
+                <small *ngIf="size.touched && size.errors?.required" class="form-text text-muted">Délka sekvence je vyžadována.</small>
+                <small *ngIf="size.touched && size.errors?.min" class="form-text text-muted">Minimální hodnota je: {{size.errors?.min.min}}.</small>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <app-tag-editor [form]="form"></app-tag-editor>
+            </div>
+          </div>
+        </div>
+
+        </div>
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-primary" (click)="handleGenerateSequence()" [disabled]="experimentId.invalid || size.invalid"><i class="fas fa-plus"></i> Generovat sekvenci</button>
+            <button class="btn btn-secondary ml-2" (click)="handleShowOriginalSequence()" [disabled]="actualIsOriginal"><i class="fas fa-recycle"></i> Zobrazit původní</button>
+          </div>
+        </div>
+
+    </form>
+
+  </div>
+</div>
+
+<app-sequence-viewer [inputData]="sequenceData$" [outputCount]="outputCount$"></app-sequence-viewer>
+
+
+<app-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveSequence()" [disabled]="form.invalid || (working | async)"></app-fab>
