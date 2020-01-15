@@ -1,0 +1,25 @@
+<div class="btn-group">
+
+  <button type="button" class="btn btn-primary"
+          [class.btn-sm]="small"
+          [class.btn-lg]="large"
+          [class.disabled]="disabled"
+          *ngIf="!buttonAsLink"><i [ngClass]="['fas', icon]" *ngIf="icon"></i> {{text}}</button>
+  <a class="btn btn-primary"
+     [class.btn-sm]="small"
+     [class.btn-lg]="large"
+     [class.disabled]="disabled"
+     [routerLink]="navigationLink"
+     [queryParams]="queryParams"
+     *ngIf="buttonAsLink"><i [ngClass]="['fas', icon]" *ngIf="icon"></i> {{text}}</a>
+  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+          [class.btn-sm]="small"
+          [class.btn-lg]="large"
+          [class.disabled]="disabled"
+          (click)="!disabled && (showDropdown = !showDropdown)">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu" [class.show]="showDropdown">
+    <ng-content></ng-content>
+  </div>
+</div>
