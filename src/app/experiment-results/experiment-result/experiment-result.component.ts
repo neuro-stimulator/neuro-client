@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
@@ -15,7 +15,7 @@ import { IOEvent } from '../../share/serial-data.event';
   templateUrl: './experiment-result.component.html',
   styleUrls: ['./experiment-result.component.sass']
 })
-export class ExperimentResultComponent implements OnInit {
+export class ExperimentResultComponent implements OnInit, OnDestroy {
 
   private _experimentResult: ExperimentResult;
   private _connectedSubscription: Subscription;
@@ -80,6 +80,12 @@ export class ExperimentResultComponent implements OnInit {
     this._route.params.subscribe((params: Params) => {
       this._loadExperimentResult(params['id']);
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this._connectedSubscription) {
+      this._connectedSubscription.unsubscribe();
+    }
   }
 
 }

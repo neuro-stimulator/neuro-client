@@ -38,7 +38,6 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
    */
   private _loadExperiment(experimentId: string) {
     this._experiment = this._createEmptyExperiment();
-    this._experiment.type = ExperimentType.NONE;
 
     if (experimentId !== undefined) {
       if (isNaN(parseInt(experimentId, 10))) {
@@ -52,6 +51,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
       this._experiment.id = +experimentId;
     }
     this._updateFormGroup(this._experiment);
+    this._experiment.type = ExperimentType.NONE;
 
     if (experimentId !== undefined) {
       this._service.one(+experimentId)

@@ -32,6 +32,9 @@ import { ExperimentTypeFvepOutputComponent } from './experiment-type/experiment-
 import { ExperimentTypeFvepOutputCountPipe } from './experiment-type/experiment-type-fvep/experiment-type-fvep-output/experiment-type-tvep-output-count.pipe';
 import { OutputTypeComponent } from './experiment-type/output-type/output-type.component';
 import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/experiment-filter-dialog.component';
+import { TagEditorModule } from '../share/tag-editor/tag-editor.module';
+import { DropdownBtnModule } from '../share/dropdown-btn/dropdown-btn.module';
+import { SequenceFastDialogComponent } from './experiment-type/experiment-type-erp/sequence-fast-dialog/sequence-fast-dialog.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,7 @@ import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/expe
     ExperimentTypeFvepOutputCountPipe,
     OutputTypeComponent,
     ExperimentFilterDialogComponent,
+    SequenceFastDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -66,7 +70,9 @@ import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/expe
     FabModule,
     ExperimentsRoutingModule,
     AudioPlayerModule,
-    ImagePlayerModule
+    ImagePlayerModule,
+    TagEditorModule,
+    DropdownBtnModule
   ],
   entryComponents: [
     ExperimentTypeNoneComponent,
@@ -75,7 +81,8 @@ import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/expe
     ExperimentTypeFvepComponent,
     ExperimentTypeTvepComponent,
     ExperimentTypeReaComponent,
-    ExperimentFilterDialogComponent
+    ExperimentFilterDialogComponent,
+    SequenceFastDialogComponent
   ]
 })
 export class ExperimentsModule {

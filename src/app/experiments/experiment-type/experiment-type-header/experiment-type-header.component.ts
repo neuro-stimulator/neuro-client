@@ -23,25 +23,4 @@ export class ExperimentTypeHeaderComponent implements OnInit {
   get description() {
     return this.form.get('description');
   }
-
-  get tags() {
-    return this.form.get('tags');
-  }
-
-  handleRemove(tag: any) {
-    const tags: string[] = this.tags.value;
-    const index = tags.indexOf(tag);
-
-    if (index >= 0) {
-      tags.splice(index, 1);
-    }
-  }
-
-  handleTagKeyUp(event: Event) {
-    const tags: string[] = this.tags.value;
-    const srcElement = event.target as HTMLInputElement;
-    tags.push(srcElement.value);
-    srcElement.value = '';
-    srcElement.focus();
-  }
 }

@@ -23,13 +23,7 @@
       </div>
 
       <div class="col-12">
-        <div class="form-group">
-          <label for="header-tag">Tagy</label>
-          <div class="header-tags">
-            <span class="badge badge-pill" *ngFor="let tag of tags.value" title="Odstranit">{{tag}} <i class="fas fa-trash" (click)="handleRemove(tag)"></i></span>
-            <input type="text" class="form-control form-control-sm" placeholder="Nový..." id="header-tag" (change)="handleTagKeyUp($event) ">
-          </div>
-        </div>
+        <app-tag-editor [form]="form"></app-tag-editor>
       </div>
 
     </div>

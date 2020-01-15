@@ -13,6 +13,34 @@
 
         <div class="col-12" #erpParams>
           <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <label for="sequence-source-experiment">Dostupné sekvence</label>
+                <div class="form-row">
+                  <div class="col-12 col-lg-4">
+                    <select id="sequence-source-experiment" class="selectpicker form-control form-control-sm" formControlName="sequenceId">
+                      <option *ngFor="let sequence of (sequences$ | async)" [value]="sequence.id">{{sequence.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-12 col-lg-8 float-md-right">
+                    <a class="btn btn-primary btn-sm" [routerLink]="['/', 'sequences', experiment.sequenceId]" [class.disabled]="!sequenceId.value"><i class="fas fa-edit"></i> Editovat</a>
+                    <button class="btn btn-danger btn-sm ml-2" (click)="handleRemoveSequence()" [disabled]="!sequenceId.value"><i class="fas fa-minus"></i> Odebrat</button>
+                    <app-dropdown-btn small="true" text="Nová" class="ml-2" buttonAsLink="true"
+                                      [disabled]="isNew"
+                                      [icon]="'fa-plus'"
+                                      [navigationLink]="['/', 'sequences', 'new']"
+                                      [queryParams]="{sourceExperimentId: experiment.id}">
+                      <a class="dropdown-item" [routerLink]="['/', 'sequences', 'new']" [queryParams]="{sourceExperimentId: experiment.id}"><i class="fas fa-hands-helping"></i> S průvodcem</a>
+                      <button class="dropdown-item" (click)="handleCreateNewSequenceFast()"><i class="fas fa-bolt"></i> Rychle</button>
+                    </app-dropdown-btn>
+                    <a class="btn btn-secondary btn-sm ml-2" [routerLink]="['/', 'sequences']"><i class="fas fa-eye"></i> Prohlížet</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
 
             <div class="col-12">
               <div class="form-group" style="padding-bottom: 5px">
@@ -68,3 +96,5 @@
 </div>
 
 <app-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperiment()" [disabled]="form.invalid || (working | async)"></app-fab>
+
+<app-modal #modal></app-modal>

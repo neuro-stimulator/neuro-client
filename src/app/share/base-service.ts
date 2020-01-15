@@ -32,7 +32,7 @@ export abstract class BaseService<T extends BaseRecord> {
   public readonly connected$: Observable<any> = this._connected.asObservable();
   private readonly _disconnected: EventEmitter<any> = new EventEmitter<any>();
   public readonly disconnected$: Observable<any> = this._disconnected.asObservable();
-  private readonly _working: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  protected readonly _working: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public readonly working$: Observable<boolean> = this._working.asObservable();
 
   protected constructor(private readonly _accessPoint: string,

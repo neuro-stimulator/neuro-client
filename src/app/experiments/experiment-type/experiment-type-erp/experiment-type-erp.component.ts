@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider';
 
-import { Edge, ExperimentERP, ExperimentType, Random } from '@stechy1/diplomka-share';
+import { ExperimentType, ExperimentERP, Edge, Random, Sequence } from '@stechy1/diplomka-share';
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
@@ -16,6 +16,9 @@ import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 import { createEmptyExperimentERP } from '@stechy1/diplomka-share/lib/experiments';
+import { SequenceService } from '../../../sequences/sequence.service';
+import { ModalComponent } from '../../../share/modal/modal.component';
+import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fast-dialog.component';
 
 @Component({
   selector: 'app-experiment-type-erp',
@@ -23,6 +26,8 @@ import { createEmptyExperimentERP } from '@stechy1/diplomka-share/lib/experiment
   styleUrls: ['./experiment-type-erp.component.sass']
 })
 export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<ExperimentERP> implements OnInit {
+
+  @ViewChild('modal', {static: true}) modal: ModalComponent;
 
   outputCountParams: SliderOptions = {
     floor: 1,
@@ -32,8 +37,10 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     tickStep: 1,
     animate: false
   };
+  sequences$: EventEmitter<Sequence[]> = new EventEmitter<Sequence[]>();
 
   constructor(service: ExperimentsService,
+              private readonly sequenceService: SequenceService,
               toastr: ToastrService,
               router: Router,
               route: ActivatedRoute,
@@ -41,10 +48,22 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
               cdr: ChangeDetectorRef,
               logger: NGXLogger) {
     super(service, toastr, router, route, navigation, cdr, logger);
+    this._experimentLoaded$.subscribe((experiment: ExperimentERP) => this._handleLoadedExperiment(experiment));
   }
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  private _handleLoadedExperiment(experiment: ExperimentERP) {
+    if (experiment.type === ExperimentType.NONE) {
+      return;
+    }
+
+    this.sequenceService.forExperiment(experiment)
+        .then(sequences => {
+          this.sequences$.next(sequences);
+        });
   }
 
   private _createOutputFormControl(): FormGroup {
@@ -88,6 +107,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
         image: new FormControl(null),
       }),
       outputs: new FormArray([]),
+      sequenceId: new FormControl(null)
     };
 
     return {...superControls, ...myControls};
@@ -107,6 +127,17 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     }
 
     super._updateFormGroup(experiment);
+  }
+
+  handleCreateNewSequenceFast() {
+    this.modal.showComponent = SequenceFastDialogComponent;
+    this.modal.openForResult()
+        .then(result => { console.log(result); });
+  }
+
+  handleRemoveSequence() {
+    this.form.patchValue({sequenceId: null});
+
   }
 
   get randoms() {
@@ -145,5 +176,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     return this.form.get('edge');
   }
 
-
+  get sequenceId() {
+    return this.form.get('sequenceId');
+  }
 }
