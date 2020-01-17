@@ -22,7 +22,7 @@
             <div class="col-12 col-sm-4">
               <div class="form-group">
                 <label for="sequence-source-experiment">Zdrojový experiment</label>
-                <select id="sequence-source-experiment" class="custom-select custom-select-sm" formControlName="experimentId" (change)="handleSourceExperimentChange($event)">
+                <select id="sequence-source-experiment" class="selectpicker form-control form-control-sm" formControlName="experimentId" (change)="handleSourceExperimentChange($event)">
                   <option *ngFor="let experiment of (experiments$ | async)" [value]="experiment.id">{{experiment.name}}</option>
                 </select>
               </div>

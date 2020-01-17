@@ -17,8 +17,13 @@
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'tvep-out_' + i">out [ms]</label>
-            <input type="number" [id]="'tvep-out_' + i" class="form-control form-control-sm" [class.is-valid]="out(i).valid" [class.is-invalid]="out(i).invalid" formControlName="out">
+            <label [for]="'tvep-out_' + i">out</label>
+            <div class="input-group input-group-sm">
+              <input type="number" [id]="'tvep-out_' + i" class="form-control" [class.is-valid]="out(i).valid" [class.is-invalid]="out(i).invalid" formControlName="out">
+              <div class="input-group-append">
+                <span class="input-group-text">ms</span>
+              </div>
+            </div>
             <small *ngIf="out(i).touched && out(i).errors?.required" class="form-text text-muted">Parametr out je vyžadován.</small>
             <small *ngIf="out(i).touched && out(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{out(i).errors?.min.min}}.</small>
             <small *ngIf="out(i).touched && out(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{out(i).errors?.max.max}}.</small>
@@ -27,8 +32,13 @@
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'tvep-wait_' + i">wait [ms]</label>
-            <input type="number" [id]="'tvep-wait_' + i" class="form-control form-control-sm" [class.is-valid]="wait(i).valid" [class.is-invalid]="wait(i).invalid" formControlName="wait">
+            <label [for]="'tvep-wait_' + i">wait</label>
+            <div class="input-group input-group-sm">
+              <input type="number" [id]="'tvep-wait_' + i" class="form-control form-control-sm" [class.is-valid]="wait(i).valid" [class.is-invalid]="wait(i).invalid" formControlName="wait">
+              <div class="input-group-append">
+                <span class="input-group-text">ms</span>
+              </div>
+            </div>
             <small *ngIf="wait(i).touched && wait(i).errors?.required" class="form-text text-muted">Parametr wait je vyžadován.</small>
             <small *ngIf="wait(i).touched && wait(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{wait(i).errors?.min.min}}.</small>
             <small *ngIf="wait(i).touched && wait(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{wait(i).errors?.max.max}}.</small>
@@ -37,7 +47,7 @@
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'brightness_' + i">brightness [%]</label>
+            <label [for]="'brightness_' + i">brightness</label>
             <ng5-slider [id]="'brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{brightness(i).errors?.min.min}}.</small>

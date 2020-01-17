@@ -48,7 +48,8 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
     showTicksValues: false,
     tickStep: 1,
     showSelectionBar: true,
-    animate: false
+    animate: false,
+    translate: value => `${value}%`
   };
 
   constructor(service: ExperimentsService,

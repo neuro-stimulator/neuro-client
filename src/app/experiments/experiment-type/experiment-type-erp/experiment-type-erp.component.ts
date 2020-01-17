@@ -97,6 +97,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     const superControls = super._createFormControls();
     const myControls = {
       outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(environment.maxOutputCount)]),
+      maxDistribution: new FormControl(null, [Validators.required, Validators.min(1)]),
       out: new FormControl(null, [Validators.required, Validators.min(0)]),
       wait: new FormControl(null, [Validators.required, Validators.min(0)]),
       random: new FormControl(null, [Validators.required]),
@@ -158,6 +159,10 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
 
   get outputCount() {
     return this.form.get('outputCount');
+  }
+
+  get maxDistribution() {
+    return this.form.get('maxDistribution');
   }
 
   get out() {

@@ -9,11 +9,9 @@
 
         <div class="col-12 col-md-6">
           <input type="radio" [name]="'fvep-input-type-time_' + i" [checked]="activeSide[i].left" (change)="handleChangeActiveSide(i)">
-<!--          <label [for]="'fvep-input-type-time_' + i"> LEFT</label>-->
         </div>
         <div class="col-sm-6 d-none d-md-block">
           <input type="radio" [name]="'fvep-input-type-ratio-up_' + i" [checked]="activeSide[i].right" (change)="handleChangeActiveSide(i)">
-<!--          <label [for]="'fvep-input-type-ratio-up_' + i"> RIGHT</label>-->
         </div>
         <div class="col-12 col-sm-6 col-md-3" >
           <div class="form-group">
@@ -35,7 +33,6 @@
         </div>
         <div class="col-12 d-block d-md-none">
           <input type="radio" [name]="'fvep-input-type-ratio-down_' + i" [checked]="activeSide[i].right" (change)="handleChangeActiveSide(i)">
-<!--          <label [for]="'fvep-input-type-ratio-down_' + i"> RIGHT</label>-->
         </div>
         <div class="col-12 col-sm-6 col-md-3" >
           <div class="form-group">
@@ -57,7 +54,7 @@
         </div>
         <div class="col-12">
           <div class="form-group">
-            <label [for]="'fvep-brightness_' + i">brightness [%]</label>
+            <label [for]="'fvep-brightness_' + i">brightness</label>
             <ng5-slider [id]="'fvep-brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{brightness(i).errors?.min.min}}.</small>

@@ -25,7 +25,8 @@ export class ExperimentTypeFvepOutputComponent implements OnInit {
     showTicksValues: false,
     tickStep: 1,
     showSelectionBar: true,
-    animate: false
+    animate: false,
+    translate: value => `${value}%`
   };
 
   activeSide: {left: boolean, right: boolean}[] = [];

@@ -31,7 +31,8 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
     showTicksValues: false,
     tickStep: 1,
     showSelectionBar: true,
-    animate: false
+    animate: false,
+    translate: value => `${value}%`
   };
 
   @Input() form: FormGroup;
