@@ -55,7 +55,7 @@ export class SortByPosibilities {
     (a, b) => a.type - b.type);
   static readonly OUTPUT_TYPE = new SortByPosibilities('Typ výstupu', 'OUTPUT_TYPE', {ascending: 'fa-plug', descending: 'fa-plug'},
     (a, b) => outputTypeToRaw(a.usedOutputs) - outputTypeToRaw(b.usedOutputs));
-  static readonly OUTPUT_COUNT = new SortByPosibilities('Počtu výstupu', 'OUTPUT_COUNT', {ascending: 'fa-plug', descending: 'fa-plug'},
+  static readonly OUTPUT_COUNT = new SortByPosibilities('Počtu výstupu', 'OUTPUT_COUNT', {ascending: 'fa-hashtag', descending: 'fa-plug'},
     (a, b) => a.outputCount - b.outputCount);
 
   static readonly VALUES: SortByPosibilities[] = [
