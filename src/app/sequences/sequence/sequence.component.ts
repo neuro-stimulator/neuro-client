@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 
 import { SequenceService } from '../sequence.service';
-import { Experiment, Sequence} from '@stechy1/diplomka-share';
+import { Experiment, ExperimentType, Sequence } from '@stechy1/diplomka-share';
 import { createEmptyExperimentERP } from '@stechy1/diplomka-share/lib/experiments';
 import { createEmptySequence } from '@stechy1/diplomka-share/lib/sequence';
 import { ExperimentsService } from '../../experiments/experiments.service';
@@ -29,8 +29,8 @@ export class SequenceComponent implements OnInit, OnDestroy {
     tags: new FormControl([])
   });
 
-  private readonly _sequenceData: EventEmitter<{data: number[], analyse: {}}> = new EventEmitter<{data: number[], analyse: {}}>();
-  public readonly sequenceData$: Observable<{data: number[], analyse: {}}> = this._sequenceData.asObservable();
+  private readonly _sequenceData: EventEmitter<number[]> = new EventEmitter<number[]>();
+  public readonly sequenceData$: Observable<number[]> = this._sequenceData.asObservable();
 
   private readonly _experiments: EventEmitter<Experiment[]> = new EventEmitter<Experiment[]>();
   public readonly experiments$: Observable<Experiment[]> = this._experiments.asObservable();
@@ -48,6 +48,8 @@ export class SequenceComponent implements OnInit, OnDestroy {
   private _originalSequenceSize: number;
 
   actualIsOriginal = true;
+
+  ExperimentType: ExperimentType;
 
   constructor(private readonly _service: SequenceService,
               private readonly _experimetnService: ExperimentsService,
@@ -71,7 +73,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
 
       this._sequence.id = +sequenceID;
 
-      this._service.oneWithAnalyse(+sequenceID)
+      this._service.one(+sequenceID)
           .catch(error => {
             // Pokud nenastane timeout => sequence nebyla na serveru nalezena
             if (!(error instanceof TimeoutError)) {
@@ -86,16 +88,16 @@ export class SequenceComponent implements OnInit, OnDestroy {
               this._connectedSubscription.unsubscribe();
               this._loadSequence(sequenceID);
             });
-            return {sequence: this._sequence, analyse: {}};
+            return this._sequence;
           })
-          .then((result: {sequence: Sequence, analyse: {}}) => {
-            this._sequence = result.sequence;
+          .then((sequence: Sequence) => {
+            this._sequence = sequence;
             this._originalSequenceId = this._sequence.id;
             this._originalExperimentId = this._sequence.experimentId;
             this._originalSequenceSize = this._sequence.size;
             this.actualIsOriginal = true;
             this.form.patchValue(this._sequence);
-            this._sequenceData.next({ data: this._sequence.data, analyse: result.analyse });
+            this._sequenceData.next(this._sequence.data);
             this._loadExperiment(this._sequence.experimentId);
           });
     }
@@ -146,8 +148,8 @@ export class SequenceComponent implements OnInit, OnDestroy {
 
   handleGenerateSequence() {
     this._service.generaceSequence(this.experimentId.value, this.size.value || 50)
-        .then((result: {data: number[], analyse: {}}) => {
-          this.form.patchValue({data: result.data});
+        .then((result: number[]) => {
+          this.form.patchValue({data: result});
           this._sequenceData.next(result);
         });
   }
@@ -164,13 +166,15 @@ export class SequenceComponent implements OnInit, OnDestroy {
           });
     } else {
       this.logger.info(`Aktualizuji sequenci s id: ${this._sequence.id}`);
-      this._service.update(this.form.value);
+      this._service.update(this.form.value).then(value => {
+        this.actualIsOriginal = true;
+      });
     }
   }
 
   handleSourceExperimentChange(event: Event) {
     this.data.setValue(null);
-    this._sequenceData.next({ data: [], analyse: {}});
+    this._sequenceData.next([]);
     const id = (event.target as HTMLInputElement).value;
     this._loadExperiment(+id);
   }
@@ -185,6 +189,21 @@ export class SequenceComponent implements OnInit, OnDestroy {
   handleShowOriginalSequence() {
     this.form.patchValue({experimentId: this._originalExperimentId, size: this._originalSequenceSize});
     this._loadSequence(`${this._originalSequenceId}`);
+  }
+
+  handleSequenceUpdate(data: number[]) {
+    this.form.patchValue({data});
+    if (this.form.valid) {
+      this.handleSaveSequence();
+    }
+  }
+
+  handleSequenceChanged() {
+    this.actualIsOriginal = false;
+  }
+
+  get experiment(): Experiment {
+    return this._experiment;
   }
 
   get working(): Observable<boolean> {

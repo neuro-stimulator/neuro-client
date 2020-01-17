@@ -23,7 +23,7 @@
                     </select>
                   </div>
                   <div class="col-12 col-lg-8 float-md-right">
-                    <a class="btn btn-primary btn-sm" [routerLink]="['/', 'sequences', experiment.sequenceId]" [class.disabled]="!sequenceId.value"><i class="fas fa-edit"></i> Editovat</a>
+                    <a class="btn btn-primary btn-sm" [routerLink]="['/', 'sequences', sequenceId.value || -1]" [class.disabled]="!sequenceId.value"><i class="fas fa-edit"></i> Editovat</a>
                     <button class="btn btn-danger btn-sm ml-2" (click)="handleRemoveSequence()" [disabled]="!sequenceId.value"><i class="fas fa-minus"></i> Odebrat</button>
                     <app-dropdown-btn small="true" text="Nová" class="ml-2" buttonAsLink="true"
                                       [disabled]="isNew"

@@ -1,6 +1,6 @@
 <div class="row" *ngIf="flowData.length === 0">
   <div class="col">
-    <h2>Před kontrolou sekvence, ji musíte nejdříve vygenerovat!</h2>
+    <h2>Sekvence neobsahuje žádná data!</h2>
   </div>
 </div>
 
@@ -16,13 +16,21 @@
             <li class="list-group-item stimul-entry text-center"
                 *ngFor="let output of outputs"
                 [class.active]="data == output"
-                [ngStyle]="{'height': 'calc((100vh - 100px) / ' + 8 +')'}">
+                [ngStyle]="{'height': '30px', cursor: 'pointer'}"
+                (click)="handleStimulChange(i, output)">
               <span>{{output}}</span>
             </li>
           </ul>
         </li>
       </ul>
 
+    </div>
+  </div>
+
+  <div class="row" *ngIf="editable">
+    <div class="col-12">
+      <button class="btn btn-primary btn-sm" (click)="handleUpdate()" [disabled]="!dataHasChanged">Upravit</button>
+      <button class="btn btn-secondary btn-sm" (click)="handleCancelUpdate()" [disabled]="!dataHasChanged">Zrušit úpravy</button>
     </div>
   </div>
 

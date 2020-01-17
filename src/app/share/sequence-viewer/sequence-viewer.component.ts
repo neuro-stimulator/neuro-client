@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 
@@ -41,8 +41,9 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
     },
   ];
 
-  @Input() inputData: Observable<{data: number[], analyse: {}}>;
+  @Input() inputData: Observable<number[]>;
   @Input() outputCount: Observable<number>;
+  @Input() editable = false;
   flowData: number[] = [];
   private _outputCount: number;
   private _analyse: {};
@@ -51,16 +52,22 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
   private _inputDataSubscription: Subscription;
   private _outputCountSubscription: Subscription;
 
+  @Output() update: EventEmitter<number[]> = new EventEmitter<number[]>();
+  @Output() dataChanged: EventEmitter<void> = new EventEmitter<void>();
+
+  dataHasChanged = false;
+  _originalData: number[];
+
   constructor() { }
 
   ngOnInit() {
     this._inputDataSubscription = this.inputData.subscribe(input => {
-      this.pieChartLabels.splice(0);
-      this.pieChartData.splice(0);
+      this.dataHasChanged = false;
       this.flowData.splice(0);
-      this.flowData.push(...input.data);
-      this._analyse = input.analyse;
-      this._showSequenceAnalyse(input.analyse);
+      this.flowData.push(...input);
+      this._originalData = input;
+      this._analyse = this._analyseSequence(input);
+      this._showSequenceAnalyse(this._analyse);
     });
     this._outputCountSubscription = this.outputCount.subscribe(outputCount => {
       this._outputCount = outputCount;
@@ -68,8 +75,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
         return;
       }
 
-      this.pieChartLabels.splice(0);
-      this.pieChartData.splice(0);
+
       this._showSequenceAnalyse(this._analyse);
     });
   }
@@ -79,7 +85,28 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
     this._outputCountSubscription.unsubscribe();
   }
 
+  private _analyseSequence(sequence: number[]) {
+    const map = {};
+    for (const value of sequence) {
+      if (map[value] === undefined) {
+        map[value] = {};
+        map[value]['value'] = 1;
+      } else {
+        map[value]['value']++;
+      }
+    }
+
+    for (const key of Object.keys(map)) {
+      map[key]['percent'] = map[key]['value'] / sequence.length;
+    }
+
+    delete map['0'];
+    return map;
+  }
+
   private _showSequenceAnalyse(analyse: {}) {
+    this.pieChartLabels.splice(0);
+    this.pieChartData.splice(0);
     this.outputs.splice(0);
     for (let i = 0; i <= this._outputCount; i++) {
       this.outputs.push(i);
@@ -90,5 +117,28 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
       this.pieChartLabels.push(key);
       this.pieChartData.push(data['value']);
     }
+  }
+
+  handleStimulChange(i: number, output: number) {
+    if (!this.editable) {
+      return;
+    }
+
+    this.flowData[i] = output;
+    this._analyseSequence(this.flowData);
+    this._showSequenceAnalyse(this._analyse);
+    this.dataHasChanged = true;
+    this.dataChanged.next();
+  }
+
+  handleUpdate() {
+    this.update.next(this.flowData);
+  }
+
+  handleCancelUpdate() {
+    this.flowData.splice(0);
+    this.flowData.push(...this._originalData);
+    this._analyse = this._analyseSequence(this.flowData);
+    this._showSequenceAnalyse(this._analyse);
   }
 }

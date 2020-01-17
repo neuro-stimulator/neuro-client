@@ -26,41 +26,12 @@ export class SequenceService extends BaseService<Sequence> {
     });
   }
 
-  private _analyseSequence(sequence: number[]) {
-    const map = {};
-    for (const value of sequence) {
-      if (map[value] === undefined) {
-        map[value] = {};
-        map[value]['value'] = 1;
-      } else {
-        map[value]['value']++;
-      }
-    }
-
-    for (const key of Object.keys(map)) {
-      map[key]['percent'] = map[key]['value'] / sequence.length;
-    }
-
-    delete map['0'];
-    return map;
-  }
-
-  oneWithAnalyse(recordId: number): Promise<{sequence: Sequence, analyse: {}}> {
-    return super.one(recordId)
-                .then(sequence => {
-                  const analyse = this._analyseSequence(sequence.data);
-                  return { sequence, analyse };
-                });
-  }
-
-  public async generaceSequence(id: number, size: number): Promise<{ data: number[], analyse: {} }> {
+  public async generaceSequence(id: number, size: number): Promise<number[]> {
     this._working.next(true);
     return this._http.get<ResponseObject<number[]>>(`${SequenceService.BASE_API_URL}/generate/${id}/${size}`)
                .toPromise()
                .then(response => {
-                 const sequenceData = response.data;
-                 const analyse = this._analyseSequence(sequenceData);
-                 return {data: sequenceData, analyse};
+                 return response.data;
                })
                .finally(() => {
                  this._working.next(false);
