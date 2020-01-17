@@ -206,4 +206,8 @@ export class SequenceComponent implements OnInit, OnDestroy {
   get data(): AbstractControl {
     return this.form.get('data');
   }
+
+  get isNew(): boolean {
+    return !this.form.get('id').value;
+  }
 }
