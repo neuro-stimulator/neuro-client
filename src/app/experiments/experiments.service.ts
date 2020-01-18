@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { NGXLogger } from 'ngx-logger';
 
-import { environment, makeURL } from '../../environments/environment';
 import { Experiment } from '@stechy1/diplomka-share';
+
+import { environment, makeURL } from '../../environments/environment';
 import { BaseService } from '../share/base-service';
 import { AliveCheckerService } from '../alive-checker.service';
 
