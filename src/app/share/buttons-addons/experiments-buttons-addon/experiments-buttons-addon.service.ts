@@ -8,4 +8,6 @@ export class ExperimentsButtonsAddonService {
   public readonly filterRequest: EventEmitter<any> = new EventEmitter<any>();
 
   public readonly searchValue: EventEmitter<string> = new EventEmitter<string>();
+
+  public readonly addonVisible: EventEmitter<boolean> = new EventEmitter<boolean>();
 }

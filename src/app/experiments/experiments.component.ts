@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { Subscription } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
@@ -14,7 +15,6 @@ import { ExperimentsService } from './experiments.service';
 import { ExperimentsSortFilter } from './experiments-sort-filter.service';
 import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/experiment-filter-dialog.component';
 import { FilterParameters } from './experiments-filter-parameters';
-import { Location } from '@angular/common';
 import { ExperimentGroup } from './experiments.share';
 
 @Component({
@@ -38,6 +38,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
   private _filterRequestSubscription: Subscription;
   private _searchBySubscription: Subscription;
   private _filterParametersChangeSubscription: Subscription;
+  private _serviceRecordsSubscription: Subscription;
 
   constructor(private readonly _service: ExperimentsService,
               private readonly _filterService: ExperimentsSortFilter,
@@ -48,6 +49,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
               private readonly logger: NGXLogger) {}
 
   ngOnInit() {
+    this._buttonsAddonService.addonVisible.next(false);
     this.ghosts = this._service.makeGhosts();
     this._service.all()
         .then(() => {
@@ -56,12 +58,16 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
     this._filterRequestSubscription = this._buttonsAddonService.filterRequest.subscribe(() => this._showFilterDialog());
     this._searchBySubscription = this._buttonsAddonService.searchValue.subscribe(value => this._handleSearchBy(value));
     this._filterParametersChangeSubscription = this._filterService.filterParametersChange$.subscribe(params => this._handleFilterParametersChange(params));
+    this._serviceRecordsSubscription = this._service.records.subscribe(records => {
+      this._buttonsAddonService.addonVisible.next(records.length !== 0);
+    });
   }
 
   ngOnDestroy(): void {
     this._filterRequestSubscription.unsubscribe();
     this._searchBySubscription.unsubscribe();
     this._filterParametersChangeSubscription.unsubscribe();
+    this._serviceRecordsSubscription.unsubscribe();
   }
 
   private _handleFilterParametersChange(params: FilterParameters) {
