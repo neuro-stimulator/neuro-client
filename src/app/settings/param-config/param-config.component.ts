@@ -50,10 +50,7 @@ export class ParamConfigComponent implements OnInit {
 
   handleSaveSettings() {
     this._service.settings = this.form.value;
-    this._service.uploadServerSettings(this.server.value)
-        .then(() => {
-          this._toastr.success('Nastavení bylo uloženo.');
-        });
+    this._service.uploadServerSettings(this.server.value).finally();
   }
 
   get experiments(): FormGroup {
