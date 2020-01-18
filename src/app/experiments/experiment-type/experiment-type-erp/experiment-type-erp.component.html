@@ -80,12 +80,7 @@
             <div class="col-12 col-sm-4 col-md-3">
               <div class="form-group">
                 <label for="erp-max-dstribution">max distribution</label>
-                <div class="input-group input-group-sm">
-                  <input type="number" id="erp-max-dstribution" class="form-control" [class.is-valid]="maxDistribution.valid" [class.is-invalid]="maxDistribution.invalid" formControlName="maxDistribution">
-                  <div class="input-group-append">
-                    <span class="input-group-text">ms</span>
-                  </div>
-                </div>
+                <input type="number" id="erp-max-dstribution" class="form-control form-control-sm" [class.is-valid]="maxDistribution.valid" [class.is-invalid]="maxDistribution.invalid" formControlName="maxDistribution">
                 <small *ngIf="maxDistribution.touched && maxDistribution.errors?.required" class="form-text text-muted">Parametr max distribution je vyžadován.</small>
                 <small *ngIf="maxDistribution.touched && maxDistribution.errors?.min" class="form-text text-muted">Minimální hodnota je: {{maxDistribution.errors?.min.min}}.</small>
               </div>
