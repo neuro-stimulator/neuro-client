@@ -112,8 +112,12 @@
         </div>
       </div>
 
-      <app-experiment-type-erp-output [form]="form" [count]="outputCount.value" [experimentId]="experiment.id" *ngIf="!isNew"
-                                      [experimentLoaded]="experimentLoaded$"></app-experiment-type-erp-output>
+      <app-experiment-type-erp-output *ngIf="!isNew"
+                                      [form]="form"
+                                      [count]="outputCount.value"
+                                      [experimentId]="experiment.id"
+                                      [experimentLoaded]="experimentLoaded$"
+                                      [maxDistribution]="maxDistribution.valueChanges"></app-experiment-type-erp-output>
 
     </form>
   </div>

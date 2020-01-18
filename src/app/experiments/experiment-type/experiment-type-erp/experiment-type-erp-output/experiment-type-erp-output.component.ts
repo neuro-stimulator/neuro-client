@@ -4,7 +4,7 @@ import { ControlContainer, FormArray, FormControl, FormGroup, NgForm } from '@an
 import { Observable, Subscription } from 'rxjs';
 import { Options as SliderOptions } from 'ng5-slider';
 
-import { Experiment, ExperimentType, OutputDependency } from '@stechy1/diplomka-share';
+import { Experiment, ExperimentERP, ExperimentType, OutputDependency } from '@stechy1/diplomka-share';
 
 import { environment } from '../../../../../environments/environment';
 import { brightnessSliderOptions } from '../../../experiments.share';
@@ -32,14 +32,18 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   @Input() count: number;
   @Input() experimentId: number;
   @Input() experimentLoaded: Observable<Experiment>;
+  @Input() maxDistribution: Observable<number>;
 
   distributionSliderOptions: SliderOptions[] = [];
 
   private _emptyExperiment = true;
+  private _oldOutputCount = environment.maxOutputCount;
+  private _maxDistribution = 100;
+
   private _outputCountSubscription: Subscription;
   private _outputDistributionSubscriptions: Subscription[] = [];
-  private _oldOutputCount = environment.maxOutputCount;
   private _experimentLoadedSubscription: Subscription;
+  private _maxDistributionChangeSubscription: Subscription;
 
   constructor() {
     for (let i = 0; i < environment.maxOutputCount; i++) {
@@ -48,11 +52,13 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   }
 
   ngAfterContentInit(): void {
-    this._experimentLoadedSubscription = this.experimentLoaded.subscribe((experiment: Experiment) => {
+    this._experimentLoadedSubscription = this.experimentLoaded.subscribe((experiment: ExperimentERP) => {
       this._oldOutputCount = this.form.root.get('outputCount').value;
+      this._maxDistribution = experiment.maxDistribution;
       if (experiment.type !== ExperimentType.NONE) {
         this._emptyExperiment = false;
         this._listenOutputCountChange();
+        this._listenMaxDistributionChange();
         this._listenOutputDistributionChange();
         // Vyvolám umělou změnu v hodnotě distribuce pro neexistující výstup
         // Tím se přepočítají maximální hodnoty pro posuvníky
@@ -67,6 +73,7 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
       for (let i = 0; i < environment.maxOutputCount; i++) {
         this._outputDistributionSubscriptions[i].unsubscribe();
       }
+      this._maxDistributionChangeSubscription.unsubscribe();
     }
     this._experimentLoadedSubscription.unsubscribe();
   }
@@ -132,7 +139,7 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
       }
       // shorturl.at/ijAFQ
       const newOptions: SliderOptions = Object.assign({}, this.distributionSliderOptions[j]);
-      newOptions.ceil = 100 - total + this.distribution(j).value;
+      newOptions.ceil = this._maxDistribution - total + this.distribution(j).value;
       this.distributionSliderOptions[j] = newOptions;
     }
   }
@@ -143,6 +150,20 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
                                                      .valueChanges
                                                      .subscribe((value: number) => this._onOutputDistributionChange(i)));
     }
+  }
+
+  private _listenMaxDistributionChange() {
+    this.maxDistribution.subscribe(maxDistribution => {
+      const oldMaxDistribution = this._maxDistribution;
+      this._maxDistribution = Math.max(maxDistribution, 0);
+
+      for (let i = 0; i < this._oldOutputCount; i++) {
+        // shorturl.at/ijAFQ
+        const newOptions: SliderOptions = Object.assign({}, this.distributionSliderOptions[i]);
+        newOptions.ceil = Math.max(this.distributionSliderOptions[i].ceil - oldMaxDistribution + this._maxDistribution, 0);
+        this.distributionSliderOptions[i] = newOptions;
+      }
+    });
   }
 
   get brightnessSliderOptions(): SliderOptions {
