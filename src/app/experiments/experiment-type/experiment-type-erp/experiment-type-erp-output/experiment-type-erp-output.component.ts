@@ -41,7 +41,8 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
     showTicksValues: false,
     tickStep: 1,
     showSelectionBar: true,
-    animate: false
+    animate: false,
+    translate: value => `${value}%`
   };
 
   private _emptyExperiment = true;
