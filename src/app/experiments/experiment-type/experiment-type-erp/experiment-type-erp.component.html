@@ -29,8 +29,8 @@
                                       [disabled]="isNew"
                                       [icon]="'fa-plus'"
                                       [navigationLink]="['/', 'sequences', 'new']"
-                                      [queryParams]="{sourceExperimentId: experiment.id}">
-                      <a class="dropdown-item" [routerLink]="['/', 'sequences', 'new']" [queryParams]="{sourceExperimentId: experiment.id}"><i class="fas fa-hands-helping"></i> S průvodcem</a>
+                                      [queryParams]="{sourceExperimentId: experiment ? experiment.id : -1}">
+                      <a class="dropdown-item" [routerLink]="['/', 'sequences', 'new']" [queryParams]="{sourceExperimentId: experiment ? experiment.id : -1}"><i class="fas fa-hands-helping"></i> S průvodcem</a>
                       <button class="dropdown-item" (click)="handleCreateNewSequenceFast()"><i class="fas fa-bolt"></i> Rychle</button>
                     </app-dropdown-btn>
                     <a class="btn btn-secondary btn-sm ml-2" [routerLink]="['/', 'sequences']"><i class="fas fa-eye"></i> Prohlížet</a>
