@@ -166,7 +166,7 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   }
 
   private _listenMaxDistributionChange() {
-    this.maxDistribution.subscribe(maxDistribution => {
+    this._maxDistributionChangeSubscription = this.maxDistribution.subscribe(maxDistribution => {
       const oldMaxDistribution = this._maxDistribution;
       this._maxDistribution = Math.max(maxDistribution, 0);
 
