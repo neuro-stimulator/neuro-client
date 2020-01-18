@@ -1,12 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 
-import { Observable } from 'rxjs';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import { Experiment } from '@stechy1/diplomka-share';
-
 import { environment } from '../../../../../environments/environment';
+import { brightnessSliderOptions} from '../../../experiments.share';
 
 @Component({
   selector: 'app-experiment-type-fvep-output',
@@ -17,17 +15,6 @@ export class ExperimentTypeFvepOutputComponent implements OnInit {
 
   @Input() form: FormGroup;
   @Input() count: number;
-
-  brightnessSliderOptions: SliderOptions = {
-    floor: 0,
-    ceil: 100,
-    showTicks: false,
-    showTicksValues: false,
-    tickStep: 1,
-    showSelectionBar: true,
-    animate: false,
-    translate: value => `${value}%`
-  };
 
   activeSide: {left: boolean, right: boolean}[] = [];
 
@@ -70,6 +57,10 @@ export class ExperimentTypeFvepOutputComponent implements OnInit {
 
     timeOffControl.setValue(frequencyValue / dutyCycleValue);
     timeOnControl.setValue(frequencyValue - (frequencyValue / dutyCycleValue));
+  }
+
+  get brightnessSliderOptions(): SliderOptions {
+    return brightnessSliderOptions;
   }
 
   get outputs() {

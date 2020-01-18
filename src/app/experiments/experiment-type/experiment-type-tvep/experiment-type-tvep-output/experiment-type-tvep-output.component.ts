@@ -6,6 +6,7 @@ import { Options as SliderOptions } from 'ng5-slider/options';
 
 import { environment } from '../../../../../environments/environment';
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
+import { brightnessSliderOptions } from '../../../experiments.share';
 
 @Component({
   selector: 'app-experiment-type-tvep-output',
@@ -22,17 +23,6 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
     tickStep: 1,
     showSelectionBar: true,
     animate: false
-  };
-
-  brightnessSliderOptions: SliderOptions = {
-    floor: 0,
-    ceil: 100,
-    showTicks: false,
-    showTicksValues: false,
-    tickStep: 1,
-    showSelectionBar: true,
-    animate: false,
-    translate: value => `${value}%`
   };
 
   @Input() form: FormGroup;
@@ -71,6 +61,10 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
       }
     }
     this._experimentReadySubscription.unsubscribe();
+  }
+
+  get brightnessSliderOptions(): SliderOptions {
+    return brightnessSliderOptions;
   }
 
   get outputs() {

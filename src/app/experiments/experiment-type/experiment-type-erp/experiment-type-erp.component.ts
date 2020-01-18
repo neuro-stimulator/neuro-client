@@ -6,16 +6,15 @@ import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider';
 
-import { ExperimentType, ExperimentERP, Edge, Random, Sequence } from '@stechy1/diplomka-share';
+import { ExperimentType, ExperimentERP, Edge, Random, Sequence, createEmptyExperimentERP } from '@stechy1/diplomka-share';
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
-import { dependencyValidatorPattern } from '../../experiments.share';
+import { dependencyValidatorPattern, outputCountParams } from '../../experiments.share';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
-import { createEmptyExperimentERP } from '@stechy1/diplomka-share/lib/experiments';
 import { SequenceService } from '../../../sequences/sequence.service';
 import { ModalComponent } from '../../../share/modal/modal.component';
 import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fast-dialog.component';
@@ -29,14 +28,6 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
 
   @ViewChild('modal', {static: true}) modal: ModalComponent;
 
-  outputCountParams: SliderOptions = {
-    floor: 1,
-    ceil: environment.maxOutputCount,
-    showTicks: true,
-    showTicksValues: true,
-    tickStep: 1,
-    animate: false
-  };
   sequences$: EventEmitter<Sequence[]> = new EventEmitter<Sequence[]>();
 
   constructor(service: ExperimentsService,
@@ -139,6 +130,10 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
   handleRemoveSequence() {
     this.form.patchValue({sequenceId: null});
 
+  }
+
+  get outputCountParams(): SliderOptions {
+    return outputCountParams;
   }
 
   get randoms() {

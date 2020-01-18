@@ -6,14 +6,14 @@ import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import { ExperimentType, ExperimentCVEP } from '@stechy1/diplomka-share';
+import { ExperimentCVEP, createEmptyExperimentCVEP } from '@stechy1/diplomka-share';
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
+import { brightnessSliderOptions, outputCountParams } from '../../experiments.share';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
-import { createEmptyExperimentCVEP } from '@stechy1/diplomka-share/lib/experiments';
 
 @Component({
   selector: 'app-experiment-type-cvep',
@@ -21,15 +21,6 @@ import { createEmptyExperimentCVEP } from '@stechy1/diplomka-share/lib/experimen
   styleUrls: ['./experiment-type-cvep.component.sass']
 })
 export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<ExperimentCVEP> implements OnInit {
-
-  outputCountParams: SliderOptions = {
-    floor: 1,
-    ceil: environment.maxOutputCount,
-    showTicks: true,
-    showTicksValues: true,
-    tickStep: 1,
-    animate: false
-  };
 
   bitShiftSliderOptions: SliderOptions = {
     floor: 0,
@@ -39,17 +30,6 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
     tickStep: 1,
     showSelectionBar: true,
     animate: false
-  };
-
-  brightnessSliderOptions: SliderOptions = {
-    floor: 0,
-    ceil: 100,
-    showTicks: false,
-    showTicksValues: false,
-    tickStep: 1,
-    showSelectionBar: true,
-    animate: false,
-    translate: value => `${value}%`
   };
 
   constructor(service: ExperimentsService,
@@ -91,6 +71,14 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
 
   protected _createEmptyExperiment(): ExperimentCVEP {
     return createEmptyExperimentCVEP();
+  }
+
+  get outputCountParams(): SliderOptions {
+    return outputCountParams;
+  }
+
+  get brightnessSliderOptions(): SliderOptions {
+    return brightnessSliderOptions;
   }
 
   get outputCount() {

@@ -6,14 +6,14 @@ import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import { ExperimentType, ExperimentTVEP } from '@stechy1/diplomka-share';
+import { ExperimentTVEP, createEmptyExperimentTVEP } from '@stechy1/diplomka-share';
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
 import { ExperimentsService } from '../../experiments.service';
+import { outputCountParams } from '../../experiments.share';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
-import { createEmptyExperimentTVEP } from '@stechy1/diplomka-share/lib/experiments';
 
 @Component({
   selector: 'app-experiment-type-tvep',
@@ -21,15 +21,6 @@ import { createEmptyExperimentTVEP } from '@stechy1/diplomka-share/lib/experimen
   styleUrls: ['./experiment-type-tvep.component.sass']
 })
 export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<ExperimentTVEP> implements OnInit {
-
-  outputCountParams: SliderOptions = {
-    floor: 1,
-    ceil: environment.maxOutputCount,
-    showTicks: true,
-    showTicksValues: true,
-    tickStep: 1,
-    animate: false
-  };
 
   constructor(service: ExperimentsService,
               toastr: ToastrService,
@@ -92,6 +83,10 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
 
 
     super._updateFormGroup(experiment);
+  }
+
+  get outputCountParams(): SliderOptions {
+    return outputCountParams;
   }
 
   get outputCount() {

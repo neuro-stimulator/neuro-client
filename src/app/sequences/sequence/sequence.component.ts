@@ -6,11 +6,10 @@ import { Observable, Subscription, TimeoutError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 
-import { SequenceService } from '../sequence.service';
-import { Experiment, ExperimentType, Sequence } from '@stechy1/diplomka-share';
-import { createEmptyExperimentERP } from '@stechy1/diplomka-share/lib/experiments';
-import { createEmptySequence } from '@stechy1/diplomka-share/lib/sequence';
+import { Experiment, ExperimentType, Sequence, createEmptyExperimentERP, createEmptySequence } from '@stechy1/diplomka-share';
+
 import { ExperimentsService } from '../../experiments/experiments.service';
+import { SequenceService } from '../sequence.service';
 
 @Component({
   selector: 'app-sequence',

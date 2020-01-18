@@ -1,12 +1,13 @@
 import { AfterContentInit, Component, Input, OnDestroy } from '@angular/core';
 import { ControlContainer, FormArray, FormControl, FormGroup, NgForm } from '@angular/forms';
 
+import { Observable, Subscription } from 'rxjs';
 import { Options as SliderOptions } from 'ng5-slider';
 
-import { environment } from '../../../../../environments/environment';
-
 import { Experiment, ExperimentType, OutputDependency } from '@stechy1/diplomka-share';
-import { Observable, Subscription } from 'rxjs';
+
+import { environment } from '../../../../../environments/environment';
+import { brightnessSliderOptions } from '../../../experiments.share';
 
 @Component({
   selector: 'app-experiment-type-erp-output',
@@ -33,17 +34,6 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   @Input() experimentLoaded: Observable<Experiment>;
 
   distributionSliderOptions: SliderOptions[] = [];
-
-  brightnessSliderOptions: SliderOptions = {
-    floor: 0,
-    ceil: 100,
-    showTicks: false,
-    showTicksValues: false,
-    tickStep: 1,
-    showSelectionBar: true,
-    animate: false,
-    translate: value => `${value}%`
-  };
 
   private _emptyExperiment = true;
   private _outputCountSubscription: Subscription;
@@ -153,6 +143,10 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
                                                      .valueChanges
                                                      .subscribe((value: number) => this._onOutputDistributionChange(i)));
     }
+  }
+
+  get brightnessSliderOptions(): SliderOptions {
+    return brightnessSliderOptions;
   }
 
   get outputs() {
