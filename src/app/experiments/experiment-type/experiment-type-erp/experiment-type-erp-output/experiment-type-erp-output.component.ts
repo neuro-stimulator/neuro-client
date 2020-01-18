@@ -103,14 +103,27 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   }
 
   private _onOutputCountChange(value: number) {
-    // V případě, že zvětšuji počet, tak nemusím nic přepočítávat,
-    // protože nově inicializované výstupy budou na výchozích hodnotách
-    if (value > this._oldOutputCount) {
-      this._oldOutputCount = value;
-      return;
-    }
     const tmpOldValue = this._oldOutputCount;
     this._oldOutputCount = value;
+
+    // V případě, že zvětšuji počet, tak nemusím nic přepočítávat,
+    // protože nově inicializované výstupy budou na výchozích hodnotách
+    if (value > tmpOldValue) {
+      let total = 0;
+      for (let i = 0; i < tmpOldValue; i++) {
+        total += this.distribution(i).value;
+      }
+
+      const newMaxDistribution = this._maxDistribution - total;
+      for (let i = tmpOldValue; i < value; i++) {
+        // shorturl.at/ijAFQ
+        const newOptions: SliderOptions = Object.assign({}, this.distributionSliderOptions[i]);
+        newOptions.ceil = newMaxDistribution;
+        this.distributionSliderOptions[i] = newOptions;
+      }
+
+      return;
+    }
 
     for (let i = value; i < tmpOldValue; i++) {
       this.distribution(i)
@@ -157,7 +170,7 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
       const oldMaxDistribution = this._maxDistribution;
       this._maxDistribution = Math.max(maxDistribution, 0);
 
-      for (let i = 0; i < this._oldOutputCount; i++) {
+      for (let i = 0; i < environment.maxOutputCount; i++) {
         // shorturl.at/ijAFQ
         const newOptions: SliderOptions = Object.assign({}, this.distributionSliderOptions[i]);
         newOptions.ceil = Math.max(this.distributionSliderOptions[i].ceil - oldMaxDistribution + this._maxDistribution, 0);
