@@ -43,22 +43,22 @@
             </div>
           </div>
         </div>
-
-        </div>
-        <div class="row">
-          <div class="col">
-            <button class="btn btn-primary" (click)="handleGenerateSequence()" [disabled]="experimentId.invalid || size.invalid"><i class="fas fa-plus"></i> Generovat sekvenci</button>
-            <button class="btn btn-secondary ml-2" (click)="handleShowOriginalSequence()" [disabled]="isNew || actualIsOriginal"><i class="fas fa-recycle"></i> Zobrazit původní</button>
-              <a class="btn btn-info ml-2" [routerLink]="['/', 'experiments', 'erp', experiment.id]" [class.disabled]="!experiment">Přejít na experiment</a>
-          </div>
-        </div>
-
+      </div>
     </form>
+
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary" (click)="handleGenerateSequence()" [disabled]="experimentId.invalid || size.invalid"><i class="fas fa-plus"></i> Generovat sekvenci</button>
+          <button class="btn btn-secondary ml-2" (click)="handleShowOriginalSequence()" [disabled]="isNew || actualIsOriginal"><i class="fas fa-recycle"></i> Zobrazit původní</button>
+            <a class="btn btn-info ml-2" [routerLink]="['/', 'experiments', 'erp', experiment.id]" [class.disabled]="experimentId.invalid">Přejít na experiment</a>
+        </div>
+      </div>
+
 
   </div>
 </div>
 
-<app-sequence-viewer [inputData]="sequenceData$" [outputCount]="outputCount$" [editable]="true" (dataChanged)="handleSequenceChanged()" (update)="handleSequenceUpdate($event)"></app-sequence-viewer>
+<app-sequence-viewer [inputData]="sequenceData$" [outputCount]="outputCount$" [editable]="true" (dataChanged)="handleSequenceChanged($event)" (update)="handleSequenceUpdate($event)"></app-sequence-viewer>
 
 
 <app-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveSequence()" [disabled]="form.invalid || (working | async)"></app-fab>

@@ -20,7 +20,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
 
   form: FormGroup = new FormGroup({
     id: new FormControl(),
-    experimentId: new FormControl(null, [Validators.required]),
+    experimentId: new FormControl(null, [Validators.required, Validators.min(1)]),
     name: new FormControl(null, [Validators.required]),
     size: new FormControl(null, [Validators.required, Validators.min(1)]),
     data: new FormControl(null, [Validators.required]),
@@ -28,8 +28,8 @@ export class SequenceComponent implements OnInit, OnDestroy {
     tags: new FormControl([])
   });
 
-  private readonly _sequenceData: EventEmitter<number[]> = new EventEmitter<number[]>();
-  public readonly sequenceData$: Observable<number[]> = this._sequenceData.asObservable();
+  private readonly _sequenceData: EventEmitter<{data: number[], overrideOrigin: boolean}> = new EventEmitter<{data: number[], overrideOrigin: boolean}>();
+  public readonly sequenceData$: Observable<{data: number[], overrideOrigin: boolean}> = this._sequenceData.asObservable();
 
   private readonly _experiments: EventEmitter<Experiment[]> = new EventEmitter<Experiment[]>();
   public readonly experiments$: Observable<Experiment[]> = this._experiments.asObservable();
@@ -96,7 +96,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
             this._originalSequenceSize = this._sequence.size;
             this.actualIsOriginal = true;
             this.form.patchValue(this._sequence);
-            this._sequenceData.next(this._sequence.data);
+            this._sequenceData.next({data: this._sequence.data, overrideOrigin: true});
             this._loadExperiment(this._sequence.experimentId);
           });
     }
@@ -146,10 +146,10 @@ export class SequenceComponent implements OnInit, OnDestroy {
   }
 
   handleGenerateSequence() {
-    this._service.generaceSequence(this.experimentId.value, this.size.value || 50)
+    this._service.generaceSequence(this.experimentId.value, this.size.value)
         .then((result: number[]) => {
           this.form.patchValue({data: result});
-          this._sequenceData.next(result);
+          this._sequenceData.next({data: result, overrideOrigin: false});
         });
   }
 
@@ -173,7 +173,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
 
   handleSourceExperimentChange(event: Event) {
     this.data.setValue(null);
-    this._sequenceData.next([]);
+    this._sequenceData.next({data: [], overrideOrigin: false});
     const id = (event.target as HTMLInputElement).value;
     this._loadExperiment(+id);
   }
@@ -197,8 +197,8 @@ export class SequenceComponent implements OnInit, OnDestroy {
     }
   }
 
-  handleSequenceChanged() {
-    this.actualIsOriginal = false;
+  handleSequenceChanged(changed: boolean) {
+    this.actualIsOriginal = changed;
   }
 
   get experiment(): Experiment {

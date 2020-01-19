@@ -41,7 +41,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
     },
   ];
 
-  @Input() inputData: Observable<number[]>;
+  @Input() inputData: Observable<{data: number[], overrideOrigin: boolean}>;
   @Input() outputCount: Observable<number>;
   @Input() editable = false;
   flowData: number[] = [];
@@ -53,7 +53,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
   private _outputCountSubscription: Subscription;
 
   @Output() update: EventEmitter<number[]> = new EventEmitter<number[]>();
-  @Output() dataChanged: EventEmitter<void> = new EventEmitter<void>();
+  @Output() dataChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   dataHasChanged = false;
   _originalData: number[];
@@ -62,11 +62,13 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._inputDataSubscription = this.inputData.subscribe(input => {
-      this.dataHasChanged = false;
+      this.dataHasChanged = !input.overrideOrigin;
       this.flowData.splice(0);
-      this.flowData.push(...input);
-      this._originalData = input;
-      this._analyse = this._analyseSequence(input);
+      this.flowData.push(...input.data);
+      if (input.overrideOrigin) {
+        this._originalData = input.data;
+      }
+      this._analyse = this._analyseSequence(input.data);
       this._showSequenceAnalyse(this._analyse);
     });
     this._outputCountSubscription = this.outputCount.subscribe(outputCount => {
@@ -128,7 +130,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
     this._analyseSequence(this.flowData);
     this._showSequenceAnalyse(this._analyse);
     this.dataHasChanged = true;
-    this.dataChanged.next();
+    this.dataChanged.next(true);
   }
 
   handleUpdate() {
@@ -140,5 +142,6 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
     this.flowData.push(...this._originalData);
     this._analyse = this._analyseSequence(this.flowData);
     this._showSequenceAnalyse(this._analyse);
+    this.dataHasChanged = false;
   }
 }
