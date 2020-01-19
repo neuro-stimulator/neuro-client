@@ -9,9 +9,17 @@
   <canvas #canvas height="50px"></canvas>
 </div>
 
-<div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-sm btn-secondary" (click)="handleEmptyPattern()"><i class="far fa-circle"></i> Prázdný</button>
-  <button type="button" class="btn btn-sm btn-secondary" (click)="handleFullPattern()"><i class="fas fa-circle"></i> Plný</button>
-  <button type="button" class="btn btn-sm btn-secondary" (click)="handleInvertPattern()"><i class="far fa-dot-circle"></i> Invertovat</button>
-  <button type="button" class="btn btn-sm btn-secondary" (click)="handleRandomPattern()"><i class="fas fa-dice"></i> Náhodný</button>
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-sm btn-secondary" (click)="handleEmptyPattern()">
+    <i class="far fa-circle"></i> {{ 'EXPERIMENTS.OUTPUT_PATTERN.EMPTY' | translate }}
+  </button>
+  <button type="button" class="btn btn-sm btn-secondary" (click)="handleFullPattern()">
+    <i class="fas fa-circle"></i> {{ 'EXPERIMENTS.OUTPUT_PATTERN.FULL' | translate }}
+  </button>
+  <button type="button" class="btn btn-sm btn-secondary" (click)="handleInvertPattern()">
+    <i class="far fa-dot-circle"></i> {{ 'EXPERIMENTS.OUTPUT_PATTERN.INVERT' | translate }}
+  </button>
+  <button type="button" class="btn btn-sm btn-secondary" (click)="handleRandomPattern()">
+    <i class="fas fa-dice"></i> {{ 'EXPERIMENTS.OUTPUT_PATTERN.RANDOM' | translate }}
+  </button>
 </div>

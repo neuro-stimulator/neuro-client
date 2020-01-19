@@ -99,6 +99,13 @@
           "BRIGHTNESS": "Svítivost"
         }
       }
+    },
+    "OUTPUT_PATTERN": {
+      "TITLE": "Pattern",
+      "EMPTY": "Prázdný",
+      "FULL": "Plný",
+      "INVERT": "Invertovat",
+      "RANDOM": "Náhodný"
     }
   },
 
