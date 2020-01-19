@@ -42,9 +42,9 @@ export class ExperimentFilterDialogComponent extends DialogChildComponent implem
   }
 
   bind(modal: ModalComponent) {
-    modal.title = 'Filtr experimentů';
-    modal.confirmText = 'Filtrovat';
-    modal.cancelText = 'Zrušit';
+    modal.title = 'EXPERIMENTS.FILTER_DIALOG.TITLE';
+    modal.confirmText = 'EXPERIMENTS.FILTER_DIALOG.CONFIRM';
+    modal.cancelText = 'EXPERIMENTS.FILTER_DIALOG.CANCEL';
     this._confirmSubscription = modal.confirm.subscribe(() => { this.filter.filterParameters = this.form.value; });
     this._cancelSubscription = modal.cancel.subscribe(() => { this.filter.resetFilterParameters(); });
     this._showSubscription = modal.show.subscribe(() => {

@@ -4,7 +4,7 @@
   <div class="modal-dialog fade show" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">{{title}}</h5>
+        <h5 class="modal-title">{{title | translate}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="handleCancel()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -13,8 +13,8 @@
         <ng-template appDialogChilds></ng-template>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" [disabled]="confirmDisabled | async" *ngIf="confirmText" (click)="handleConfirm()">{{confirmText}}</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" [disabled]="cancelDisabled" (click)="handleCancel()" *ngIf="cancelText">{{cancelText}}</button>
+        <button type="button" class="btn btn-primary" [disabled]="confirmDisabled | async" *ngIf="confirmText" (click)="handleConfirm()">{{confirmText | translate}}</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [disabled]="cancelDisabled" (click)="handleCancel()" *ngIf="cancelText">{{cancelText | translate}}</button>
       </div>
     </div>
   </div>

@@ -111,6 +111,11 @@
       "FULL": "Plný",
       "INVERT": "Invertovat",
       "RANDOM": "Náhodný"
+    },
+    "FILTER_DIALOG": {
+      "TITLE": "Filtr experimentů",
+      "CONFIRM": "Filtrovat",
+      "CANCEL": "Zrušit"
     }
   },
 

@@ -5,6 +5,7 @@ import { ModalComponent } from './modal.component';
 import { ConfirmDialogComponent } from './confirm/confirm-dialog.component';
 import { InformDialogComponent } from './inform/inform-dialog.component';
 import { DialogChildsDirective } from './dialog-childs.directive';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { DialogChildsDirective } from './dialog-childs.directive';
   ],
   imports: [
     CommonModule,
+    TranslateModule.forChild(),
   ],
   exports: [
     ModalComponent,
