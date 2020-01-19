@@ -115,7 +115,26 @@
     "FILTER_DIALOG": {
       "TITLE": "Filtr experimentů",
       "CONFIRM": "Filtrovat",
-      "CANCEL": "Zrušit"
+      "CANCEL": "Zrušit",
+      "GROUP_BY": {
+        "TITLE": "Seskupit",
+        "NONE": "Neseskupovat",
+        "TYPE": "Typ experimentu",
+        "TAG": "Tab"
+      },
+      "SORT_BY": {
+        "TITLE": "Seřadit",
+        "ALPHABET": "Abecedně",
+        "CREATION_DATE": "Datum vytvoření",
+        "TYPE": "Typ experimentu",
+        "OUTPUT_TYPE": "Typ výstupu",
+        "OUTPUT_COUNT": "Počet výstupů"
+      },
+      "ORDER_BY": {
+        "TITLE": "Způsob řazení",
+        "ASCENDING": "Vzestupně",
+        "DESCENDING": "Sestupně"
+      }
     }
   },
 
