@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, EventEmitter, OnDestroy, ViewChild, Type, Input } from '@angular/core';
+import { Component, ComponentFactoryResolver, EventEmitter, OnDestroy, ViewChild, Type, Input, HostListener } from '@angular/core';
 import { animation } from './modal.animation';
 
 import { Observable, Subscription } from 'rxjs';
@@ -177,6 +177,10 @@ export class ModalComponent implements OnDestroy {
       this._isOpen = false;
       document.body.classList.remove('modal-open');
     }
+  }
+
+  @HostListener('window:keyup.esc') onEscapePress() {
+    this.handleCancel();
   }
 
   /**
