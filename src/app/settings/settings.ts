@@ -1,6 +1,7 @@
 import { DateTimeFormat } from '../share/date-time-format';
 
 export interface Settings {
+  language: string;
   experiments: {
     showDescription: boolean;
     showTags: boolean;

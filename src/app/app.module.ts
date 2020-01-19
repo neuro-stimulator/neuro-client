@@ -1,13 +1,14 @@
 // Core angular modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeCZECH from '@angular/common/locales/cs';
 
 // Third party modules
 import { ToastrModule } from 'ngx-toastr';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
@@ -26,9 +27,15 @@ import { ResponseInterceptor } from './share/interceptors/response-interceptor.s
 import { ShareModule } from './share/share.module';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { environment } from '../environments/environment';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // Zaregistruji českou lokalizaci
 registerLocaleData(localeCZECH);
+
+// AoT requires an exported function for factories
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -44,6 +51,13 @@ registerLocaleData(localeCZECH);
     ModalModule,
 
     // Third party modules
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
     ToastrModule.forRoot(),
     LoggerModule.forRoot({level: NgxLoggerLevel.TRACE, enableSourceMaps: !environment.production}),
     LocalStorageModule.forRoot({prefix: 'stim-control', storageType: 'localStorage'}),

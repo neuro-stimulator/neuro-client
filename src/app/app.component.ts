@@ -8,6 +8,8 @@ import { SequenceService } from './share/sequence.service';
 import { ConsoleService } from './settings/console/console.service';
 import { ConsoleLoggerMonitorService } from './console-logger-monitor.service';
 import { IpcService } from './share/ipc.service';
+import { TranslateService } from '@ngx-translate/core';
+import { SettingsService } from './settings/settings.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +23,13 @@ export class AppComponent {
               private readonly ipc: IpcService,
               private readonly sequence: SequenceService,
               private readonly console: ConsoleService,
+              private readonly translate: TranslateService,
+              private readonly settings: SettingsService,
               private readonly logger: NGXLogger) {
     logger.registerMonitor(new ConsoleLoggerMonitorService(console));
+
+    translate.addLangs(['en', 'cz']);
+    translate.setDefaultLang('cz');
+    translate.use(settings.settings.language || 'cz');
   }
 }

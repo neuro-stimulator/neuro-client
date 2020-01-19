@@ -26,6 +26,8 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/http-loader": "^4.0.0",
     "@stechy1/diplomka-share": "^1.0.7",
     "angular-2-local-storage": "^3.0.2",
     "bootstrap": "^4.3.1",

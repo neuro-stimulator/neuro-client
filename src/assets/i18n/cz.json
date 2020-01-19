@@ -1,0 +1,27 @@
+{
+  "APP": {
+    "TITLE": "Dálkové ovládání stimulátoru",
+    "AUTHOR": "Petr Štechmüller",
+    "HEADER_IMAGE": "Hlavička"
+  },
+
+  "EXPERIMENTS": {
+    "TITLE": "Experimenty"
+  },
+
+  "EXPERIMENT-RESULTS": {
+    "TITLE": "Výsledky experimentů"
+  },
+
+  "SETTINGS": {
+    "TITLE": "Nastavení"
+  },
+
+  "HELP": {
+    "TITLE": "Nápověda"
+  },
+
+  "ABOUT": {
+    "TITLE": "O aplikaci"
+  }
+}
