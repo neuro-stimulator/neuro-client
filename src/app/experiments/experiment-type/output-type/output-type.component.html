@@ -2,7 +2,9 @@
   <div class="col-12 col-sm-2">
     <div class="form-check">
       <input type="checkbox" class="form-check-input" [id]="'output-type-led_' + uuid" formControlName="led" (change)="handleLedChange($event)">
-      <label class="form-check-label" [for]="'output-type-led_' + uuid"><i class="fas fa-lightbulb"></i> LED</label>
+      <label class="form-check-label" [for]="'output-type-led_' + uuid">
+        <i class="fas fa-lightbulb"></i> {{ 'EXPERIMENTS.OUTPUT_TYPE.LED' | translate }}
+      </label>
     </div>
   </div>
   <div class="col-12 col-sm-5">
@@ -11,9 +13,11 @@
         <div class="form-group">
         <div class="form-check">
           <input type="checkbox" class="form-check-input" [id]="'output-type-audio_' + uuid" formControlName="audio" (change)="handleAudioImageChange($event)">
-          <label class="form-check-label" [for]="'output-type-audio_' + uuid"><i class="fas fa-music"></i> AUDIO</label>
+          <label class="form-check-label" [for]="'output-type-audio_' + uuid">
+            <i class="fas fa-music"></i> {{ 'EXPERIMENTS.OUTPUT_TYPE.AUDIO' | translate }}
+          </label>
         </div>
-          <small *ngIf="form.errors?.audioFile" class="form-text text-muted">Je třeba vybrat přehrávaný zvuk.</small>
+          <small *ngIf="form.errors?.audioFile" class="form-text text-muted">{{ 'EXPERIMENTS.OUTPUT_TYPE.VALIDATIONS.AUDIO_FILE_INVALID' | translate }}</small>
         </div>
       </div>
       <div class="col-8">
@@ -28,9 +32,11 @@
         <div class="form-group">
         <div class="form-check">
           <input type="checkbox" class="form-check-input" [id]="'output-type-image_' + uuid" formControlName="image" (change)="handleAudioImageChange($event)">
-          <label class="form-check-label" [for]="'output-type-image_' + uuid"><i class="fas fa-image"></i> IMAGE</label>
+          <label class="form-check-label" [for]="'output-type-image_' + uuid">
+            <i class="fas fa-image"></i> {{ 'EXPERIMENTS.OUTPUT_TYPE.IMAGE' | translate }}
+          </label>
         </div>
-          <small *ngIf="form.errors?.imageFile" class="form-text text-muted">Je třeba vybrat obrázek.</small>
+          <small *ngIf="form.errors?.imageFile" class="form-text text-muted">{{ 'EXPERIMENTS.OUTPUT_TYPE.VALIDATIONS.IMAGE_FILE_INVALID' | translate }}</small>
         </div>
       </div>
       <div class="col-7">
@@ -41,7 +47,7 @@
   </div>
 
   <div class="col-12">
-    <small *ngIf="form.touched && form.errors?.noOutputType" class="form-text text-muted">Je třeba vybrat typ výstupu.</small>
+    <small *ngIf="form.touched && form.errors?.noOutputType" class="form-text text-muted">{{ 'EXPERIMENTS.OUTPUT_TYPE.VALIDATIONS.NO_OUTPUT_TYPE' | translate }}</small>
   </div>
 
 </div>

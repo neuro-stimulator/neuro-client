@@ -26,14 +26,6 @@
       "OUTPUT_COUNT":"Počet výstupů",
       "OUTPUT_PARAMETERS": "Parametry výstupu",
       "TAGS": "Tagy",
-      "OUTPUT_TYPE": {
-        "TITLE": "Typ výstupu",
-        "LED": "LED",
-        "IMAGE": "Obrázek",
-        "IMAGE_FILE": "Soubor s obrázkem",
-        "AUDIO": "Zvuk",
-        "AUDIO_FILE": "Soubor se zvukem"
-      },
       "ERP": {
         "TITLE_PARAMS": "ERP parametry",
         "MAX_DISTRIBUTION": "Max. distribuční hodnota",
@@ -99,6 +91,19 @@
           "BRIGHTNESS": "Svítivost"
         }
       }
+    },
+    "OUTPUT_TYPE": {
+      "TITLE": "Typ výstupu",
+      "VALIDATIONS": {
+        "NO_OUTPUT_TYPE": "Je třeba vybrat typ výstupu!",
+        "AUDIO_FILE_INVALID": "Vyberte zvukový soubor!",
+        "IMAGE_FILE_INVALID": "Vyberte obrázek!"
+      },
+      "LED": "LED",
+      "AUDIO": "Zvuk",
+      "AUDIO_FILE": "Soubor se zvukem",
+      "IMAGE": "Obrázek",
+      "IMAGE_FILE": "Soubor s obrázkem"
     },
     "OUTPUT_PATTERN": {
       "TITLE": "Pattern",
