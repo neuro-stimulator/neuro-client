@@ -15,8 +15,8 @@
                 <span class="input-group-text">ms</span>
               </div>
             </div>
-            <small *ngIf="pulseUp(i).touched && pulseUp(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
-            <small *ngIf="pulseUp(i).touched && pulseUp(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{pulseUp(i).errors?.min.min}}.</small>
+            <small *ngIf="pulseUp(i).touched && pulseUp(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="pulseUp(i).touched && pulseUp(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: pulseUp(i).errors?.min.min} }}</small>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-3">
@@ -29,32 +29,32 @@
                 <span class="input-group-text">ms</span>
               </div>
             </div>
-            <small *ngIf="pulseDown(i).touched && pulseDown(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
-            <small *ngIf="pulseDown(i).touched && pulseDown(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{pulseDown(i).errors?.min.min}}.</small>
+            <small *ngIf="pulseDown(i).touched && pulseDown(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="pulseDown(i).touched && pulseDown(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: pulseDown(i).errors?.min.min} }}</small>
           </div>
         </div>
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'distribution_' + i">distribution</label>
+            <label [for]="'distribution_' + i">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DISTRIBUTION' | translate }}</label>
             <ng5-slider [id]="'distribution_' + i" formControlName="distribution" [options]="distributionSliderOptions[i]"></ng5-slider>
-            <small *ngIf="distribution(i).touched && distribution(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
-            <small *ngIf="distribution(i).touched && distribution(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{distribution(i).errors?.min.min}}.</small>
+            <small *ngIf="distribution(i).touched && distribution(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="distribution(i).touched && distribution(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: distribution(i).errors?.min.min} }}</small>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'brightness_' + i">brightness</label>
+            <label [for]="'brightness_' + i">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.BRIGHTNESS' | translate }}</label>
             <ng5-slider [id]="'brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
-            <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
-            <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{brightness(i).errors?.min.min}}.</small>
-            <small *ngIf="brightness(i).touched && brightness(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{brightness(i).errors?.max.max}}.</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness(i).errors?.min.min} }}</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness(i).errors?.max.max} }}</small>
           </div>
         </div>
 
         <div class="col-12" formArrayName="dependencies">
           <div class="form-group">
-            <label [for]="'dependency_' + i">dependencies</label>
+            <label [for]="'dependency_' + i">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DEPENDENCIES.TITLE' | translate}}</label>
             <div>
             <span class="dependency badge badge-info"
                   *ngFor="let dependency of dependencies(i).value"
@@ -62,12 +62,12 @@
               <i class="fas fa-trash" (click)="handleRemoveDependency(i, dependency)"></i></span>
             <input type="text" [id]="'dependency_' + i"
                    class="dependency form-control form-control-sm"
-                   placeholder="stimul x count" #input
+                   placeholder="{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DEPENDENCIES.FORMAT' | translate}}" #input
                    [formControlName]="'1'"
                    (keyup)="handleDependencyKeyUp($event, i, input.value)"
                    [class.is-invalid]="dependencyValue(i).invalid">
-              <small *ngIf="dependencyValue(i).touched && dependencyValue(i).errors?.invalidDependency" class="form-text text-muted">Číslo závislosti je vyšší, než počet výstupů!</small>
-              <small *ngIf="dependencyValue(i).touched && dependencyValue(i).errors?.invalidValue" class="form-text text-muted">Číslo závislosti je neplatné!</small>
+              <small *ngIf="dependencyValue(i).touched && dependencyValue(i).errors?.invalidDependency" class="form-text text-muted">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DEPENDENCIES.VALIDATION.INVALID_DEPENDENCY' | translate }}</small>
+              <small *ngIf="dependencyValue(i).touched && dependencyValue(i).errors?.invalidValue" class="form-text text-muted">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DEPENDENCIES.VALIDATION.INVALID_VALUE' | translate }}</small>
             </div>
           </div>
         </div>

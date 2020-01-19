@@ -35,6 +35,7 @@ import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/expe
 import { TagEditorModule } from '../share/tag-editor/tag-editor.module';
 import { DropdownBtnModule } from '../share/dropdown-btn/dropdown-btn.module';
 import { SequenceFastDialogComponent } from './experiment-type/experiment-type-erp/sequence-fast-dialog/sequence-fast-dialog.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,9 @@ import { SequenceFastDialogComponent } from './experiment-type/experiment-type-e
   imports: [
     CommonModule,
     ReactiveFormsModule,
+
+    TranslateModule.forChild(),
+
     Ng5SliderModule,
     ShareModule,
     ModalModule,

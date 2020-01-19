@@ -8,7 +8,7 @@
 
       <div class="row experiment-property">
         <div class="col-10">
-          <h4>C-VEP parametry</h4>
+          <h4>{{ 'EXPERIMENTS.EXPERIMENT.CVEP.TITLE_PARAMS' | translate }}</h4>
         </div>
         <div class="col-2 text-right" appContentToggler [toggledContent]="cvepParams" [icon]="cvepParamsIcon"><i class="fas fa-minus" #cvepParamsIcon></i></div>
 
@@ -17,56 +17,56 @@
 
             <div class="col-12">
               <div class="form-group" style="padding-bottom: 5px">
-                <label for="cvep-output-count">output count</label>
+                <label for="cvep-output-count">{{ 'EXPERIMENTS.EXPERIMENT.OUTPUT_COUNT' | translate }}</label>
                 <ng5-slider id="cvep-output-count" formControlName="outputCount" [options]="outputCountParams"></ng5-slider>
               </div>
             </div>
 
             <div class="col-12 col-sm-6 col-md-3">
               <div class="form-group">
-                <label for="cvep-out">out</label>
+                <label for="cvep-out">{{ 'EXPERIMENTS.EXPERIMENT.CVEP.OUT' | translate }}</label>
                 <div class="input-group input-group-sm">
                   <input type="number" id="cvep-out" class="form-control" [class.is-valid]="out.valid" [class.is-invalid]="out.invalid" formControlName="out">
                   <div class="input-group-append">
                     <span class="input-group-text">ms</span>
                   </div>
                 </div>
-                <small *ngIf="out.touched && out.errors?.required" class="form-text text-muted">Parametr out je vyžadován.</small>
-                <small *ngIf="out.touched && out.errors?.min" class="form-text text-muted">Minimální hodnota je: {{out.errors?.min.min}}.</small>
-                <small *ngIf="out.touched && out.errors?.max" class="form-text text-muted">Maximální hodnota je: {{out.errors?.max.max}}.</small>
+                <small *ngIf="out.touched && out.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="out.touched && out.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: out.errors?.min.min} }}</small>
+                <small *ngIf="out.touched && out.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: out.errors?.min.max} }}</small>
               </div>
             </div>
 
             <div class="col-12 col-sm-6 col-md-3">
               <div class="form-group">
-                <label for="cvep-wait">wait</label>
+                <label for="cvep-wait">{{ 'EXPERIMENTS.EXPERIMENT.CVEP.WAIT' | translate }}</label>
                 <div class="input-group input-group-sm">
                   <input type="number" id="cvep-wait" class="form-control form-control-sm" [class.is-valid]="wait.valid" [class.is-invalid]="wait.invalid" formControlName="wait">
                   <div class="input-group-append">
                     <span class="input-group-text">ms</span>
                   </div>
                 </div>
-                <small *ngIf="wait.touched && wait.errors?.required" class="form-text text-muted">Parametr wait je vyžadován.</small>
-                <small *ngIf="wait.touched && wait.errors?.min" class="form-text text-muted">Minimální hodnota je: {{wait.errors?.min.min}}.</small>
-                <small *ngIf="wait.touched && wait.errors?.max" class="form-text text-muted">Maximální hodnota je: {{wait.errors?.max.max}}.</small>
+                <small *ngIf="wait.touched && wait.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="wait.touched && wait.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: wait.errors?.min.min} }}</small>
+                <small *ngIf="wait.touched && wait.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: wait.errors?.min.max} }}</small>
               </div>
             </div>
 
             <div class="col-12 col-sm-6 col-md-3">
               <div class="form-group">
-                <label for="cvep-bit-shift">bit shift</label>
+                <label for="cvep-bit-shift">{{ 'EXPERIMENTS.EXPERIMENT.CVEP.BIT_SHIFT' | translate }}</label>
                 <ng5-slider id="cvep-bit-shift" formControlName="bitShift" [options]="bitShiftSliderOptions"></ng5-slider>
-                <small *ngIf="bitShift.touched && bitShift.errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
+                <small *ngIf="bitShift.touched && bitShift.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
               </div>
             </div>
 
             <div class="col-12 col-sm-6 col-md-3">
               <div class="form-group">
-                <label for="cvep-brightness">brightness</label>
+                <label for="cvep-brightness">{{ 'EXPERIMENTS.EXPERIMENT.CVEP.BRIGHTNESS' | translate }}</label>
                 <ng5-slider id="cvep-brightness" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
-                <small *ngIf="brightness.touched && brightness.errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
-                <small *ngIf="brightness.touched && brightness.errors?.min" class="form-text text-muted">Minimální hodnota je: {{brightness.errors?.min.min}}.</small>
-                <small *ngIf="brightness.touched && brightness.errors?.max" class="form-text text-muted">Maximální hodnota je: {{brightness.errors?.max.max}}.</small>
+                <small *ngIf="brightness.touched && brightness.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="brightness.touched && brightness.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness.errors?.min.min} }}</small>
+                <small *ngIf="brightness.touched && brightness.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness.errors?.max.max} }}</small>
               </div>
             </div>
 

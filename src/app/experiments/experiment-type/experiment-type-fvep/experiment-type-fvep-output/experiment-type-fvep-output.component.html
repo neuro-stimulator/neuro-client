@@ -4,7 +4,7 @@
       <div class="row experiment-property" [attr.data-content]="(i+1)" [formGroupName]="i">
 
         <div class="col-md-12">
-          <h5>Parametry výstupu</h5>
+          <h5>{{ 'EXPERIMENTS.EXPERIMENT.OUTPUT_PARAMETERS' | translate }}</h5>
         </div>
 
         <div class="col-12 col-md-6">
@@ -15,20 +15,20 @@
         </div>
         <div class="col-12 col-sm-6 col-md-3" >
           <div class="form-group">
-            <label [for]="'fvep-time-on_' + i">time ON</label>
+            <label [for]="'fvep-time-on_' + i">{{ 'EXPERIMENTS.EXPERIMENT.FVEP.OUTPUT.TIME_ON' | translate }}</label>
             <input type="number" [id]="'fvep-time-on_' + i" class="form-control form-control-sm" [class.is-valid]="timeOn(i).valid" [class.is-invalid]="timeOn(i).invalid" [attr.disabled]="!activeSide[i].left ? '' : null" formControlName="timeOn" (change)="handleTimeChange($event, i)">
-            <small *ngIf="timeOn(i).touched && timeOn(i).errors?.required" class="form-text text-muted">Parametr timeOn je vyžadován.</small>
-            <small *ngIf="timeOn(i).touched && timeOn(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{timeOn(i).errors?.min.min}}.</small>
-            <small *ngIf="timeOn(i).touched && timeOn(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{timeOn(i).errors?.max.max}}.</small>
+            <small *ngIf="timeOn(i).touched && timeOn(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="timeOn(i).touched && timeOn(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: timeOn(i).errors?.min.min} }}</small>
+            <small *ngIf="timeOn(i).touched && timeOn(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: timeOn(i).errors?.max.max} }}</small>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-3" >
           <div class="form-group">
-            <label [for]="'fvep-time-off_' + i">time OFF</label>
+            <label [for]="'fvep-time-off_' + i">{{ 'EXPERIMENTS.EXPERIMENT.FVEP.OUTPUT.TIME_OFF' | translate }}</label>
             <input type="number" [id]="'fvep-time-off_' + i" class="form-control form-control-sm" [class.is-valid]="timeOff(i).valid" [class.is-invalid]="timeOff(i).invalid" [attr.disabled]="!activeSide[i].left ? '' : null" formControlName="timeOff" (change)="handleTimeChange($event, i)">
-            <small *ngIf="timeOff(i).touched && timeOff(i).errors?.required" class="form-text text-muted">Parametr timeOff je vyžadován.</small>
-            <small *ngIf="timeOff(i).touched && timeOff(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{timeOff(i).errors?.min.min}}.</small>
-            <small *ngIf="timeOff(i).touched && timeOff(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{timeOff(i).errors?.max.max}}.</small>
+            <small *ngIf="timeOff(i).touched && timeOff(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="timeOff(i).touched && timeOff(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: timeOff(i).errors?.min.min} }}</small>
+            <small *ngIf="timeOff(i).touched && timeOff(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: timeOff(i).errors?.max.max} }}</small>
           </div>
         </div>
         <div class="col-12 d-block d-md-none">
@@ -36,29 +36,29 @@
         </div>
         <div class="col-12 col-sm-6 col-md-3" >
           <div class="form-group">
-            <label [for]="'fvep-frequency_' + i">frequency</label>
+            <label [for]="'fvep-frequency_' + i">{{ 'EXPERIMENTS.EXPERIMENT.FVEP.OUTPUT.FREQUENCY' | translate }}</label>
             <input type="number" [id]="'fvep-frequency_' + i" class="form-control form-control-sm" [class.is-valid]="frequency(i).valid" [class.is-invalid]="frequency(i).invalid" [attr.disabled]="!activeSide[i].right ? '' : null" formControlName="frequency" (change)="handleRatioChange($event, i)">
-            <small *ngIf="frequency(i).touched && frequency(i).errors?.required" class="form-text text-muted">Parametr frequency je vyžadován.</small>
-            <small *ngIf="frequency(i).touched && frequency(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{frequency(i).errors?.min.min}}.</small>
-            <small *ngIf="frequency(i).touched && frequency(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{frequency(i).errors?.max.max}}.</small>
+            <small *ngIf="frequency(i).touched && frequency(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="frequency(i).touched && frequency(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: frequency(i).errors?.min.min} }}</small>
+            <small *ngIf="frequency(i).touched && frequency(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: frequency(i).errors?.max.max} }}</small>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-3" >
           <div class="form-group">
-            <label [for]="'fvep-duty-cycle_' + i">duty cycle</label>
+            <label [for]="'fvep-duty-cycle_' + i">{{ 'EXPERIMENTS.EXPERIMENT.FVEP.OUTPUT.DUTY_CYCLE' | translate }}</label>
             <input type="number" [id]="'fvep-duty-cycle_' + i" class="form-control form-control-sm" [class.is-valid]="dutyCycle(i).valid" [class.is-invalid]="dutyCycle(i).invalid" [attr.disabled]="!activeSide[i].right ? '' : null" formControlName="dutyCycle" (change)="handleRatioChange($event, i)">
-            <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.required" class="form-text text-muted">Parametr dutyCycle je vyžadován.</small>
-            <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{dutyCycle(i).errors?.min.min}}.</small>
-            <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{dutyCycle(i).errors?.max.max}}.</small>
+            <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: dutyCycle(i).errors?.min.min} }}</small>
+            <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: dutyCycle(i).errors?.max.max} }}</small>
           </div>
         </div>
         <div class="col-12">
           <div class="form-group">
-            <label [for]="'fvep-brightness_' + i">brightness</label>
+            <label [for]="'fvep-brightness_' + i">{{ 'EXPERIMENTS.EXPERIMENT.FVEP.OUTPUT.BRIGHTNESS' | translate }}</label>
             <ng5-slider [id]="'fvep-brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
-            <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
-            <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{brightness(i).errors?.min.min}}.</small>
-            <small *ngIf="brightness(i).touched && brightness(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{brightness(i).errors?.max.max}}.</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness(i).errors?.min.min} }}</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness(i).errors?.max.max} }}</small>
           </div>
         </div>
 

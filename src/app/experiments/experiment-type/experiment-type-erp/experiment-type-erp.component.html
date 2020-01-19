@@ -7,7 +7,7 @@
 
       <div class="row experiment-property">
         <div class="col-10">
-          <h4>ERP parametry</h4>
+          <h4>{{ 'EXPERIMENTS.EXPERIMENT.ERP.TITLE_PARAMS' | translate }}</h4>
         </div>
         <div class="col-2 text-right" appContentToggler [toggledContent]="erpParams" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
 
@@ -44,61 +44,61 @@
 
             <div class="col-12">
               <div class="form-group" style="padding-bottom: 5px">
-                <label for="erp-output-count">output count</label>
+                <label for="erp-output-count">{{ 'EXPERIMENTS.EXPERIMENT.OUTPUT_COUNT' | translate }}</label>
                 <ng5-slider id="erp-output-count" formControlName="outputCount" [options]="outputCountParams"></ng5-slider>
               </div>
             </div>
             <div class="col-12 col-sm-4 col-md-3">
               <div class="form-group">
-                <label for="erp-out">out</label>
+                <label for="erp-out">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUT' | translate }}</label>
                 <div class="input-group input-group-sm">
                   <input type="number" id="erp-out" class="form-control" [class.is-valid]="out.valid" [class.is-invalid]="out.invalid" formControlName="out">
                   <div class="input-group-append">
                     <span class="input-group-text">ms</span>
                   </div>
                 </div>
-                <small *ngIf="out.touched && out.errors?.required" class="form-text text-muted">Parametr out je vyžadován.</small>
-                <small *ngIf="out.touched && out.errors?.min" class="form-text text-muted">Minimální hodnota je: {{out.errors?.min.min}}.</small>
-                <small *ngIf="out.touched && out.errors?.max" class="form-text text-muted">Maximální hodnota je: {{out.errors?.max.max}}.</small>
+                <small *ngIf="out.touched && out.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="out.touched && out.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: out.errors?.min.min} }}</small>
+                <small *ngIf="out.touched && out.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: out.errors?.max.max} }}</small>
               </div>
             </div>
             <div class="col-12 col-sm-4 col-md-2">
               <div class="form-group">
-                <label for="erp-wait">wait</label>
+                <label for="erp-wait">{{ 'EXPERIMENTS.EXPERIMENT.ERP.WAIT' | translate }}</label>
                 <div class="input-group input-group-sm">
                   <input type="number" id="erp-wait" class="form-control" [class.is-valid]="wait.valid" [class.is-invalid]="wait.invalid" formControlName="wait">
                   <div class="input-group-append">
                     <span class="input-group-text">ms</span>
                   </div>
                 </div>
-                <small *ngIf="wait.touched && wait.errors?.required" class="form-text text-muted">Parametr wait je vyžadován.</small>
-                <small *ngIf="wait.touched && wait.errors?.min" class="form-text text-muted">Minimální hodnota je: {{wait.errors?.min.min}}.</small>
-                <small *ngIf="wait.touched && wait.errors?.max" class="form-text text-muted">Maximální hodnota je: {{wait.errors?.max.max}}.</small>
+                <small *ngIf="wait.touched && wait.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="wait.touched && wait.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: wait.errors?.min.min} }}</small>
+                <small *ngIf="wait.touched && wait.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: wait.errors?.max.max} }}</small>
               </div>
             </div>
 
             <div class="col-12 col-sm-4 col-md-3">
               <div class="form-group">
-                <label for="erp-max-dstribution">max distribution</label>
+                <label for="erp-max-dstribution">{{ 'EXPERIMENTS.EXPERIMENT.ERP.MAX_DISTRIBUTION' | translate }}</label>
                 <input type="number" id="erp-max-dstribution" class="form-control form-control-sm" [class.is-valid]="maxDistribution.valid" [class.is-invalid]="maxDistribution.invalid" formControlName="maxDistribution">
-                <small *ngIf="maxDistribution.touched && maxDistribution.errors?.required" class="form-text text-muted">Parametr max distribution je vyžadován.</small>
-                <small *ngIf="maxDistribution.touched && maxDistribution.errors?.min" class="form-text text-muted">Minimální hodnota je: {{maxDistribution.errors?.min.min}}.</small>
+                <small *ngIf="maxDistribution.touched && maxDistribution.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="maxDistribution.touched && maxDistribution.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: maxDistribution.errors?.min.min} }}</small>
               </div>
             </div>
 
             <div class="col-12 col-sm-6 col-md-2">
               <div class="form-group">
-                <label for="erp-random">random</label>
+                <label for="erp-random">{{ 'EXPERIMENTS.EXPERIMENT.ERP.RANDOM.TITLE' | translate }}</label>
                 <select name="erp-random" id="erp-random" class="selectpicker form-control form-control-sm" formControlName="random">
-                  <option *ngFor="let random of randoms" [value]="random.id">{{random.name}}</option>
+                  <option *ngFor="let random of randoms" [value]="random.id">{{random.name | translate}}</option>
                 </select>
               </div>
             </div>
             <div class="col-12 col-sm-6 col-md-2">
               <div class="form-group">
-                <label for="erp-edge">edge</label>
+                <label for="erp-edge">{{ 'EXPERIMENTS.EXPERIMENT.ERP.EDGE.TITLE' | translate }}</label>
                 <select name="erp-edge" id="erp-edge" class="selectpicker form-control form-control-sm" formControlName="edge">
-                  <option *ngFor="let edge of edges" [value]="edge.id">{{edge.name}}</option>
+                  <option *ngFor="let edge of edges" [value]="edge.id">{{edge.name | translate}}</option>
                 </select>
               </div>
             </div>

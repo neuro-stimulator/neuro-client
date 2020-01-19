@@ -10,13 +10,13 @@ import { ExperimentType, ExperimentERP, Edge, Random, Sequence, createEmptyExper
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
+import { SequenceService } from '../../../sequences/sequence.service';
+import { ModalComponent } from '../../../share/modal/modal.component';
 import { dependencyValidatorPattern, outputCountParams } from '../../experiments.share';
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
-import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
-import { SequenceService } from '../../../sequences/sequence.service';
-import { ModalComponent } from '../../../share/modal/modal.component';
+import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
 import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fast-dialog.component';
 
 @Component({
@@ -138,17 +138,17 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
 
   get randoms() {
     return [
-      {id: Random.OFF, name: 'OFF'},
-      {id: Random.SHORT, name: 'SHORT'},
-      {id: Random.LONG, name: 'LONG'},
-      {id: Random.SHORT_LONG, name: 'SHORT_LONG'},
+      {id: Random.OFF, name: 'EXPERIMENTS.EXPERIMENT.ERP.RANDOM.OFF'},
+      {id: Random.SHORT, name: 'EXPERIMENTS.EXPERIMENT.ERP.RANDOM.SHORT'},
+      {id: Random.LONG, name: 'EXPERIMENTS.EXPERIMENT.ERP.RANDOM.LONG'},
+      {id: Random.SHORT_LONG, name: 'EXPERIMENTS.EXPERIMENT.ERP.RANDOM.SHORT_LONG'},
     ];
   }
 
   get edges() {
     return [
-      {id: Edge.FALLING, name: 'FALLING'},
-      {id: Edge.LEADING, name: 'LEADING'}
+      {id: Edge.FALLING, name: 'EXPERIMENTS.EXPERIMENT.ERP.EDGE.FALLING'},
+      {id: Edge.LEADING, name: 'EXPERIMENTS.EXPERIMENT.ERP.EDGE.LEADING'}
     ];
   }
 

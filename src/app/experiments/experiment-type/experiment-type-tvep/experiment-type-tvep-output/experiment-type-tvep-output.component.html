@@ -4,54 +4,54 @@
       <div class="row experiment-property" [attr.data-content]="(i+1) + '.'" [formGroupName]="i">
 
         <div class="col-md-12">
-          <h5>Parametry výstupu</h5>
+          <h5>{{ 'EXPERIMENTS.EXPERIMENT.OUTPUT_PARAMETERS' | translate }}</h5>
         </div>
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'cvep-pattern-length_' + i">pattern length</label>
+            <label [for]="'cvep-pattern-length_' + i">{{ 'EXPERIMENTS.EXPERIMENT.TVEP.OUTPUT.PATTERN_LENGTH' | translate }}</label>
             <ng5-slider [id]="'cvep-pattern-length_' + i" formControlName="patternLength" [options]="patternLengthSliderOptions"></ng5-slider>
-            <small *ngIf="patternLength(i).touched && patternLength(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
+            <small *ngIf="patternLength(i).touched && patternLength(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
           </div>
         </div>
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'tvep-out_' + i">out</label>
+            <label [for]="'tvep-out_' + i">{{ 'EXPERIMENTS.EXPERIMENT.TVEP.OUTPUT.OUT' | translate }}</label>
             <div class="input-group input-group-sm">
               <input type="number" [id]="'tvep-out_' + i" class="form-control" [class.is-valid]="out(i).valid" [class.is-invalid]="out(i).invalid" formControlName="out">
               <div class="input-group-append">
                 <span class="input-group-text">ms</span>
               </div>
             </div>
-            <small *ngIf="out(i).touched && out(i).errors?.required" class="form-text text-muted">Parametr out je vyžadován.</small>
-            <small *ngIf="out(i).touched && out(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{out(i).errors?.min.min}}.</small>
-            <small *ngIf="out(i).touched && out(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{out(i).errors?.max.max}}.</small>
+            <small *ngIf="out(i).touched && out(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="out(i).touched && out(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: out(i).errors?.min.min} }}</small>
+            <small *ngIf="out(i).touched && out(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: out(i).errors?.min.max} }}</small>
           </div>
         </div>
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'tvep-wait_' + i">wait</label>
+            <label [for]="'tvep-wait_' + i">{{ 'EXPERIMENTS.EXPERIMENT.TVEP.OUTPUT.WAIT' | translate }}</label>
             <div class="input-group input-group-sm">
               <input type="number" [id]="'tvep-wait_' + i" class="form-control form-control-sm" [class.is-valid]="wait(i).valid" [class.is-invalid]="wait(i).invalid" formControlName="wait">
               <div class="input-group-append">
                 <span class="input-group-text">ms</span>
               </div>
             </div>
-            <small *ngIf="wait(i).touched && wait(i).errors?.required" class="form-text text-muted">Parametr wait je vyžadován.</small>
-            <small *ngIf="wait(i).touched && wait(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{wait(i).errors?.min.min}}.</small>
-            <small *ngIf="wait(i).touched && wait(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{wait(i).errors?.max.max}}.</small>
+            <small *ngIf="wait(i).touched && wait(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="wait(i).touched && wait(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: wait(i).errors?.min.min} }}</small>
+            <small *ngIf="wait(i).touched && wait(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: wait(i).errors?.min.max} }}</small>
           </div>
         </div>
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'brightness_' + i">brightness</label>
+            <label [for]="'brightness_' + i">{{ 'EXPERIMENTS.EXPERIMENT.TVEP.OUTPUT.BRIGHTNESS' | translate }}</label>
             <ng5-slider [id]="'brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
-            <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">Hodnota nesmí být prázdná!</small>
-            <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">Minimální hodnota je: {{brightness(i).errors?.min.min}}.</small>
-            <small *ngIf="brightness(i).touched && brightness(i).errors?.max" class="form-text text-muted">Maximální hodnota je: {{brightness(i).errors?.max.max}}.</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness(i).errors?.min.min} }}</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness(i).errors?.max.max} }}</small>
           </div>
         </div>
 

@@ -2,11 +2,104 @@
   "APP": {
     "TITLE": "Dálkové ovládání stimulátoru",
     "AUTHOR": "Petr Štechmüller",
-    "HEADER_IMAGE": "Hlavička"
+    "HEADER_IMAGE": "Hlavička",
+    "VALIDATION": {
+      "REQUIRED": "Parametr je vyžadován.",
+      "MIN": "Minimální hodnota je: {{min}}",
+      "MAX": "Maximální hodnota je: {{max}}"
+    }
   },
 
   "EXPERIMENTS": {
-    "TITLE": "Experimenty"
+    "TITLE": "Experimenty",
+    "TITLE_NEW": "Nový experiment",
+    "TITLE_CONFIGURE": "Konfigurace experimentu",
+
+    "EXPERIMENT": {
+      "ID": "ID experimentu",
+      "NAME": "Název experimentu",
+      "NAME_REQUIRED": "Název experimentu je vyžadován.",
+      "DESCRIPTION":"Popis experimentu",
+      "TYPE": "Typ experimentu",
+      "CREATED":"Datum vytvoření experimentu",
+      "USED_OUTPUTS": "Použité výstupy",
+      "OUTPUT_COUNT":"Počet výstupů",
+      "OUTPUT_PARAMETERS": "Parametry výstupu",
+      "TAGS": "Tagy",
+      "OUTPUT_TYPE": {
+        "TITLE": "Typ výstupu",
+        "LED": "LED",
+        "IMAGE": "Obrázek",
+        "IMAGE_FILE": "Soubor s obrázkem",
+        "AUDIO": "Zvuk",
+        "AUDIO_FILE": "Soubor se zvukem"
+      },
+      "ERP": {
+        "TITLE_PARAMS": "ERP parametry",
+        "MAX_DISTRIBUTION": "Max. distribuční hodnota",
+        "OUT":"Aktivní výstup",
+        "WAIT": "Neaktivní výstup",
+        "EDGE": {
+          "TITLE": "Typ hrany",
+          "LEADING": "Sestupná",
+          "FALLING": "Náběžná"
+        },
+        "RANDOM": {
+          "TITLE": "Náhodnost",
+          "OFF": "Vypnuta",
+          "SHORT": "Krátká",
+          "LONG": "Dlouhá",
+          "SHORT_LONG": "Krátká i dlouhá"
+        },
+        "OUTPUTS": "Výstupy",
+        "OUTPUT": {
+          "TITLE": "Výstup",
+          "ID": "ID výstupu",
+          "EXPERIMENT_ID": "ID experimentu",
+          "ORDER_ID":  "Pořadí výstupu",
+          "OUTPUT_TYPE": "Typ výstupu",
+          "PULSE_UP":  "Doba náběžné hrany",
+          "PULSE_DOWN": "Doba sestpné hrany",
+          "DISTRIBUTION": "Distribuce",
+          "BRIGHTNESS": "Svítivost",
+          "DEPENDENCIES": {
+            "TITLE": "Závislosti",
+            "FORMAT": "výstup x počet",
+            "VALIDATION": {
+              "INVALID_DEPENDENCY": "Číslo závislosti je vyšší, než počet výstupů!",
+              "INVALID_VALUE": "Číslo závislosti je neplatné!"
+            }
+          }
+        },
+        "SEQUENCE_ID": "ID sekvence"
+      },
+      "CVEP": {
+        "TITLE_PARAMS": "C-VEP parametry",
+        "OUT":"Aktivní výstup",
+        "WAIT": "Neaktivní výstup",
+        "BIT_SHIFT": "Bitový posun",
+        "BRIGHTNESS": "Svítivost"
+      },
+      "FVEP": {
+        "TITLE_PARAMS": "F-VEP parametry",
+        "OUTPUT": {
+          "TIME_ON":"Aktivní výstup",
+          "TIME_OFF": "Neaktivní výstup",
+          "FREQUENCY":"Frekvence",
+          "DUTY_CYCLE": "Poměr aktivního výstupu",
+          "BRIGHTNESS": "Svítivost"
+        }
+      },
+      "TVEP": {
+        "TITLE_PARAMS": "T-VEP parametry",
+        "OUTPUT": {
+          "PATTERN_LENGTH": "Délka patternu",
+          "OUT":"Aktivní výstup",
+          "WAIT": "Neaktivní výstup",
+          "BRIGHTNESS": "Svítivost"
+        }
+      }
+    }
   },
 
   "EXPERIMENT-RESULTS": {

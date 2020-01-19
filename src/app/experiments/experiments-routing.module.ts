@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',
     component: ExperimentsComponent,
-    data: {title: 'Experimenty', buttonsAddon: ExperimentsButtonsAddonComponent}
+    data: {title: 'EXPERIMENTS.TITLE', buttonsAddon: ExperimentsButtonsAddonComponent}
   },
   {
     path: ':type',
@@ -18,12 +18,12 @@ const routes: Routes = [
   {
     path: ':type/new',
     component: ExperimentTypeComponent,
-    data: {title: 'Nový experiment'}
+    data: {title: 'EXPERIMENTS.TITLE_NEW'}
   },
   {
     path: ':type/:id',
     component: ExperimentTypeComponent,
-    data: {title: 'Konfigurace experimentu', applyCustomNavColor: true}
+    data: {title: 'EXPERIMENTS.TITLE_CONFIGURE', applyCustomNavColor: true}
   }
 ];
 

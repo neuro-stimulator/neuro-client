@@ -1,14 +1,13 @@
 <nav [ngClass]="['navbar', 'navbar-expand-lg', 'navbar-light', navigation.applyCustomNavColor ? (navigation.customNavColor | async) : '']">
   <div>
-    <h1 class="p-0 m-0 text-truncate">{{navigation.title}}</h1>
-    <small><i [ngClass]="['fas', (navigation.working ? 'fa-spin' : ''), navigation.icon]"></i> {{navigation.subtitle}}</small>
+    <h1 class="p-0 m-0 text-truncate">{{navigation.title | translate}}</h1>
+    <small><i [ngClass]="['fas', (navigation.working ? 'fa-spin' : ''), navigation.icon]"></i> {{navigation.subtitle | translate}}</small>
   </div>
 
   <ul class="ml-auto nav navbar-nav navbar-right button-addon-bar">
     <ng-template appNavigationButtonsAddon></ng-template>
     <li>
       <button class="navbar-toggler d-lg-none " type="button"
-              data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
               (click)="navigation.toggle()">
         <span class="navbar-toggler-icon"></span>
       </button>
