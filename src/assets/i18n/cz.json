@@ -152,5 +152,12 @@
 
   "ABOUT": {
     "TITLE": "O aplikaci"
+  },
+
+  "SHARE": {
+    "EXPERIMENTS_BUTTONS_ADDON": {
+      "PLACEHOLDER_FIND_EXPERIMENT": "Najít experiment",
+      "PLACEHOLDER_FILTER_EXPERIMENT": "Filtrovat experimenty"
+    },
   }
 }
