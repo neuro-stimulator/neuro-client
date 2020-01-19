@@ -18,7 +18,7 @@
                 <label for="sequence-source-experiment">Dostupné sekvence</label>
                 <div class="form-row">
                   <div class="col-12 col-lg-4">
-                    <select id="sequence-source-experiment" class="selectpicker form-control form-control-sm" formControlName="sequenceId">
+                    <select id="sequence-source-experiment" class="selectpicker form-control form-control-sm" formControlName="sequenceId" [disabled]="isNew">
                       <option *ngFor="let sequence of (sequences$ | async)" [value]="sequence.id">{{sequence.name}}</option>
                     </select>
                   </div>
