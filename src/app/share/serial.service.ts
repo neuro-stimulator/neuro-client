@@ -41,6 +41,7 @@ export class SerialService {
               private readonly console: ConsoleService,
               private readonly _http: HttpClient) {
     this._isSerialConnected = false;
+    this._updateNavigationSubtitle(false);
     aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
       if (status === ConnectionStatus.CONNECTED) {
         this._socket.connect();
@@ -49,8 +50,10 @@ export class SerialService {
     aliveChecker.disconnect.subscribe(() => {
       if (this._socket !== undefined) {
         this._socket.disconnect();
-        this._isSerialConnected = false;
-        this._updateNavigationSubtitle();
+        if (this._isSerialConnected) {
+          this._isSerialConnected = false;
+          this._updateNavigationSubtitle();
+        }
       }
     });
     this._socket.on('connect', () => {
@@ -105,17 +108,21 @@ export class SerialService {
     this.console.saveCommand({date: new Date(event.timestamp), text});
   }
 
-  private _updateNavigationSubtitle() {
+  private _updateNavigationSubtitle(saveCommand: boolean = true) {
     if (this._isSerialConnected) {
-      this.navigation.subtitle = 'Připojeno';
+      this.navigation.subtitle = 'SHARE.SERIAL.STATUS_CONNECTED';
       this.navigation.working = false;
       this.navigation.icon = 'fa-circle text-success';
-      this.console.saveCommandRaw('Stimulátor byl připojen.');
+      if (saveCommand) {
+        this.console.saveCommandRaw('SHARE.SERIAL.MESSAGES.STIMULATOR_WAS_CONNECTED');
+      }
     } else {
-      this.navigation.subtitle = 'Odpojeno';
+      this.navigation.subtitle = 'SHARE.SERIAL.STATUS_DISCONNECTED';
       this.navigation.working = false;
       this.navigation.icon = 'fa-circle text-danger';
-      this.console.saveCommandRaw('Stimulátor byl odpojen.');
+      if (saveCommand) {
+        this.console.saveCommandRaw('SHARE.SERIAL.MESSAGES.STIMULATOR_WAS_DISCONNECTED');
+      }
     }
   }
 
@@ -161,6 +168,10 @@ export class SerialService {
     this._http.get<ResponseObject<{connected: boolean}>>(`${SerialService.BASE_API_URL}/status`)
         .toPromise()
         .then(response => {
+          if (this._isSerialConnected === response.data.connected) {
+            return;
+          }
+
           this._isSerialConnected = response.data.connected;
           this._updateNavigationSubtitle();
         });

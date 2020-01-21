@@ -8,6 +8,7 @@ import { environment, makeURL } from '../../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../../alive-checker.service';
 import { ConsoleCommand } from './console-command';
 import { CommandService } from './command.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,7 @@ export class ConsoleService {
 
   constructor(private readonly aliveChecker: AliveCheckerService,
               private readonly _command: CommandService,
+              private readonly _translator: TranslateService,
               private readonly _storage: LocalStorageService) {
 
     aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
@@ -71,7 +73,11 @@ export class ConsoleService {
   }
 
   public saveCommandRaw(text: string, date?: Date) {
-    this._processData({date: date ? date : new Date(), text});
+    this._translator.get(text)
+        .toPromise()
+        .then(value => {
+          this._processData({date: date ? date : new Date(), text: value});
+        });
   }
 
   public saveCommand(data: ConsoleCommand) {

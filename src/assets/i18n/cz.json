@@ -159,5 +159,13 @@
       "PLACEHOLDER_FIND_EXPERIMENT": "Najít experiment",
       "PLACEHOLDER_FILTER_EXPERIMENT": "Filtrovat experimenty"
     },
+    "SERIAL": {
+      "STATUS_DISCONNECTED": "Odojeno",
+      "STATUS_CONNECTED": "Připojeno",
+      "MESSAGES": {
+        "STIMULATOR_WAS_CONNECTED": "Stimulátor byl připojen.",
+        "STIMULATOR_WAS_DISCONNECTED": "Stimulátor byl odpojen."
+      }
+    }
   }
 }
