@@ -166,6 +166,19 @@
         "STIMULATOR_WAS_CONNECTED": "Stimulátor byl připojen.",
         "STIMULATOR_WAS_DISCONNECTED": "Stimulátor byl odpojen."
       }
+    },
+
+    "DIALOGS": {
+      "CONFIRMATION": {
+        "TITLE": "Potvrďte",
+        "CONFIRM": "Potvrzuji",
+        "CANCEL": "Zrušit"
+      },
+      "INFORMATION": {
+        "TITLE": "Oznámení",
+        "CONFIRM": "Potvrzuji",
+        "CANCEL": "Zrušit"
+      }
     }
   }
 }

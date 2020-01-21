@@ -41,9 +41,9 @@ export class ConfirmDialogComponent extends DialogChildComponent {
   }
 
   bind(modal: ModalComponent) {
-    modal.title = 'Potvrďte';
-    modal.confirmText = 'Potvrzuji';
-    modal.cancelText = 'Zrušit';
+    modal.title = 'SHARE.DIALOGS.CONFIRMATION.TITLE';
+    modal.confirmText = 'SHARE.DIALOGS.CONFIRMATION.CONFIRM';
+    modal.cancelText = 'SHARE.DIALOGS.CONFIRMATION.CANCEL';
     modal.confirmClose = false;
     modal.confirmDisabled = of(false);
     this._confirmSubscription = modal.confirm.subscribe(() => this._handleConfirm());
