@@ -14,6 +14,18 @@
     "TITLE": "Experimenty",
     "TITLE_NEW": "Nový experiment",
     "TITLE_CONFIGURE": "Konfigurace experimentu",
+    "NOT_FOUND": "Nebyly nalezeny žádné experimenty...",
+
+    "BUTTON_BAR": {
+      "PLAY_EXPERIMENT": "Spustit",
+      "SHOW_EXPERIMENT": "Zobrazit",
+      "DELETE_EXPERIMENT": "Smazat"
+    },
+    "DIALOGS": {
+      "DELETE": {
+        "QUESTION": "Opravdu si přejete smazat vybraný výsledek experimentu?"
+      }
+    },
 
     "EXPERIMENT": {
       "ID": "ID experimentu",

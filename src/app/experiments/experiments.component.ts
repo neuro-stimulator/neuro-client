@@ -107,7 +107,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
     const self = this;
     this.modal.showComponent = ConfirmDialogComponent;
     this.modal.open({
-      message: 'Opravdu si přejete smazat vybraný experiment?',
+      message: 'EXPERIMENTS.DIALOGS.DELETE.QUESTION',
       confirm: () => {
         self.logger.info(`Budu mazat experiment s id: ${experiment.id}.`);
         return self._service.delete(experiment.id);

@@ -1,6 +1,6 @@
 <section class="row">
   <div class="col-12">
-    <h2 *ngIf="ghosts.length === 0 && !hasExperiments">Nebyly nalezeny žádné experimenty...</h2>
+    <h2 *ngIf="ghosts.length === 0 && !hasExperiments">{{ 'EXPERIMENTS.NOT_FOUND' | translate}}</h2>
     <app-experiment-ghost-item-list [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></app-experiment-ghost-item-list>
     <app-experiment-item-list [experimentGroups]="experimentGroups"
                               (run)="handleRun($event)"

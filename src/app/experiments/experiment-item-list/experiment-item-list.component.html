@@ -48,9 +48,9 @@
             </div>
             <!-- Toolbar s akčními tlačítky -->
             <div class="col-3 experiment-toolbar">
-              <i class="fas fa-play text-success" title="Spustit" (click)="run.next(experiment)"></i>
-              <i class="fas fa-edit text-primary" title="Editovat" (click)="edit.next(experiment)"></i>
-              <i class="fas fa-trash text-danger" title="Odstranit" (click)="delete.next(experiment)"></i>
+              <i class="fas fa-play text-success" [title]="'EXPERIMENTS.BUTTON_BAR.PLAY_EXPERIMENT' | translate" (click)="run.next(experiment)"></i>
+              <i class="fas fa-edit text-primary" [title]="'EXPERIMENTS.BUTTON_BAR.SHOW_EXPERIMENT' | translate" (click)="edit.next(experiment)"></i>
+              <i class="fas fa-trash text-danger" [title]="'EXPERIMENTS.BUTTON_BAR.DELETE_EXPERIMENT' | translate" (click)="delete.next(experiment)"></i>
             </div>
           </div>
 
