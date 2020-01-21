@@ -199,7 +199,61 @@
   },
 
   "SETTINGS": {
-    "TITLE": "Nastavení"
+    "TITLE": "Nastavení",
+
+    "SERVICE_STATE": {
+      "TITLE": "Stav služeb",
+      "CONNECTED": "PŘIPOJENO",
+      "DISCONNECTED": "NEPŘIPOJENO",
+
+      "WEB_SERVER": {
+        "TITLE": "Webový server",
+        "BUTTON_BAR": {
+          "CONNECT": "Připojit",
+          "DISCONNECT": "Odpojit"
+        }
+      },
+      "STIMULATOR": {
+        "TITLE": "Stimulátor",
+        "BUTTON_BAR": {
+          "EXPLORE": "Prozkoumat",
+          "CONNECT": "Připojit",
+          "DISCONNECT": "Odpojit",
+          "CLEAR_LIST": "Vymazat seznam",
+          "SELECT_FIRMWARE_FILE": "Vyberte soubor...",
+          "BROWSE_FIRMWARE_FILES": "Prohlížet",
+          "UPDATE_FIRMWARE": "Aktualizovat firmware"
+        }
+      },
+      "AUDIO_IMAGE_PLAYER": "Přehrávač zvuků a obrázků"
+    },
+    "PARAM_CONFIG": {
+      "TITLE": "Konfigurace parametrů",
+      "EXPERIMENTS": {
+        "TITLE": "Přehled experimentů",
+        "SHOW_DESCRIPTION": "Zobrazit popis",
+        "SHOW_TAGS": "Zobrazit tagy",
+        "SHOW_CREATION_DATE": "Zobrazit datum vytvoření",
+        "SHOW_OUTPUT_TYPE": "Zobrazit typ výstupu",
+        "SHOW_OUTPUT_COUNT": "Zobrazit počet výstupů",
+        "CREATION_DATE_FORMAT": {
+          "TITLE": "Formát data vytvoření",
+          "MINUTES": "Minutes",
+          "HOURS": "Hodiny",
+          "DAYS": "Dny",
+          "MONTHS": "Měsíce",
+          "YEARS": "Roky"
+        }
+      },
+      "SERVER": {
+        "TITLE": "Konfigurace serveru",
+        "STIMULATOR_AUTOCONNECT": "Automaticky připojit ke stimulátoru"
+      }
+    },
+    "CONSOLE": {
+      "TITLE": "Konzole",
+      "INSERT_COMMAND": "Zadejte příkaz..."
+    }
   },
 
   "HELP": {
