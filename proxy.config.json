@@ -6,7 +6,7 @@
     "changeOrigin": true
   },
   "/assets/*": {
-    "target": "10.0.1.25:3005",
+    "target": "localhost:3000",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
