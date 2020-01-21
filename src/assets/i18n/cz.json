@@ -23,7 +23,7 @@
     },
     "DIALOGS": {
       "DELETE": {
-        "QUESTION": "Opravdu si přejete smazat vybraný výsledek experimentu?"
+        "QUESTION": "Opravdu si přejete smazat vybraný experiment?"
       }
     },
 
@@ -167,6 +167,34 @@
       "TITLE": "Výsledek experimentu",
       "UNNAMED": "Nepojmenováno",
       "EXPERIMENT_PROGRESS": "Průběh experimentu"
+    }
+  },
+
+  "SEQUENCES": {
+    "TITLE": "Sekvence",
+    "TITLE_NEW": "Nová sekvence",
+    "TITLE_CONFIGURE": "Úprava sekvence",
+    "NOT_FOUND": "Nebyly nalezeny žádné sequence...",
+
+    "BUTTON_BAR": {
+      "SHOW_SEQUENCE": "Zobrazit",
+      "DELETE_SEQUENCE": "Smazat"
+    },
+    "DIALOGS": {
+      "DELETE": {
+        "QUESTION": "Opravdu si přejete smazat vybranou sekvenci?"
+      }
+    },
+
+    "SEQUENCE": {
+      "NAME": "Název sekvence",
+      "SOURCE_EXPERIMENT": "Zdrojový experiment",
+      "SIZE": "Délka sekvence",
+      "BUTTON_BAR": {
+        "GENERATE": "Generovat sekvenci",
+        "SHOW_ORIGINAL": "Zobrazit původní",
+        "GO_TO_EXPERIMENT": "Přejít na experiment"
+      }
     }
   },
 

@@ -12,8 +12,8 @@
       </div>
       <!-- Toolbar s akčními tlačítky -->
       <div class="col-1 sequence-toolbar">
-        <i class="fas fa-eye text-primary" title="Zobrazit" (click)="handleView(sequence)"></i>
-        <i class="fas fa-trash text-danger" title="Odstranit" (click)="handleDelete(sequence)"></i>
+        <i class="fas fa-eye text-primary" [title]="'SEQUENCES.BUTTON_BAR.SHOW_SEQUENCE' | translate" (click)="handleView(sequence)"></i>
+        <i class="fas fa-trash text-danger" [title]="'SEQUENCES.BUTTON_BAR.DELETE_SEQUENCE' | translate" (click)="handleDelete(sequence)"></i>
       </div>
 
     </div>

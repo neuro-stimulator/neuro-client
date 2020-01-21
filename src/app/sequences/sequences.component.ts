@@ -44,7 +44,7 @@ export class SequencesComponent implements OnInit {
     const self = this;
     this.modal.showComponent = ConfirmDialogComponent;
     this.modal.open({
-      message: 'Opravdu si přejete smazat vybranou sequenci?',
+      message: 'SEQUENCES.DIALOGS.DELETE.QUESTION',
       confirm: () => {
         self.logger.info(`Budu mazat sequenci s id: ${sequence.id}.`);
         return self._service.delete(sequence.id);
