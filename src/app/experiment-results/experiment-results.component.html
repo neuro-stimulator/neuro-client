@@ -7,7 +7,7 @@
 
 <section class="row">
   <div class="col-12">
-    <h2 *ngIf="ghosts.length === 0 && (experimentResults | async).length === 0">Nebyly nalezeny žádné výsledky experimentů...</h2>
+    <h2 *ngIf="ghosts.length === 0 && (experimentResults | async).length === 0">{{ 'EXPERIMENT_RESULTS.NOT_FOUND' | translate}}</h2>
     <app-experiment-result-ghost-item [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></app-experiment-result-ghost-item>
     <app-experiment-result-item-list [experimentResults]="experimentResults" (view)="handleView($event)" (delete)="handleDelete($event)" *ngIf="ghosts.length === 0"></app-experiment-result-item-list>
   </div>

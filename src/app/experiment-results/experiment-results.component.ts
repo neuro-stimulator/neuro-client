@@ -44,7 +44,7 @@ export class ExperimentResultsComponent implements OnInit {
     const self = this;
     this.modal.showComponent = ConfirmDialogComponent;
     this.modal.open({
-      message: 'Opravdu si přejete smazat vybraný výsledek experimentu?',
+      message: 'EXPERIMENT_RESULTS.DIALOGS.DELETE.QUESTION',
       confirm: () => {
         self.logger.info(`Budu mazat výsledek experimentu s id: ${experimentResult.id}.`);
         return self._service.delete(experimentResult.id);

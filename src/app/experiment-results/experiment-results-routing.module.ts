@@ -7,12 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: ExperimentResultsComponent,
-    data: {title: 'Výsledky experimentů'}
+    data: { title: 'EXPERIMENT_RESULTS.TITLE' }
   },
   {
     path: ':id',
     component: ExperimentResultComponent,
-    data: {title: 'Výsledek experimentu', applyCustomNavColor: true}
+    data: { title: 'EXPERIMENT_RESULTS.EXPERIMENT_RESULT.TITLE', applyCustomNavColor: true }
   }
 ];
 

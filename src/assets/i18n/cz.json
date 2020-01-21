@@ -150,8 +150,24 @@
     }
   },
 
-  "EXPERIMENT-RESULTS": {
-    "TITLE": "Výsledky experimentů"
+  "EXPERIMENT_RESULTS": {
+    "TITLE": "Výsledky experimentů",
+    "NOT_FOUND": "Nebyly nalezeny žádné výsledky experimentů...",
+    "BUTTON_BAR": {
+      "SHOW_RESULT": "Zobrazit",
+      "DELETE_RESULT": "Smazat"
+    },
+    "DIALOGS": {
+      "DELETE": {
+        "QUESTION": "Opravdu si přejete smazat vybraný výsledek experimentu?"
+      }
+    },
+
+    "EXPERIMENT_RESULT": {
+      "TITLE": "Výsledek experimentu",
+      "UNNAMED": "Nepojmenováno",
+      "EXPERIMENT_PROGRESS": "Průběh experimentu"
+    }
   },
 
   "SETTINGS": {

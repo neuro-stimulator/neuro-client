@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import { ExperimentResultsRoutingModule } from './experiment-results-routing.module';
 import { ExperimentResultsComponent } from './experiment-results.component';
 import { ExperimentResultItemListComponent } from './experiment-result-item-list/experiment-result-item-list.component';
@@ -18,9 +20,11 @@ import { ModalModule } from '../share/modal/modal.module';
   ],
   imports: [
     CommonModule,
+    TranslateModule.forChild(),
+
     ExperimentResultsRoutingModule,
     ExperimentViewerModule,
-    ModalModule
+    ModalModule,
   ]
 })
 export class ExperimentResultsModule {
