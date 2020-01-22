@@ -3,36 +3,40 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 
 import { NEVER, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 
 import { ResponseMessage } from '@stechy1/diplomka-share';
 
+import { MESSAGE_CODE_TRANSLATOR } from './message-code-translator';
+
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {
 
+  private readonly TOASTER_MAP: { [key: number]: (text: string) => void } = {};
+
   constructor(private readonly _toaster: ToastrService,
+              private readonly translator: TranslateService,
               private readonly logger: NGXLogger) {
+    this.TOASTER_MAP[0] = (text: string) => _toaster.success(text);
+    this.TOASTER_MAP[1] = (text: string) => _toaster.info(text);
+    this.TOASTER_MAP[2] = (text: string) => _toaster.warning(text);
+    this.TOASTER_MAP[3] = (text: string) => _toaster.error(text);
+  }
+
+  private static _transformMessageCodeToToasterType(messageCode: string): number {
+    return Math.min(Math.floor(+messageCode.substr(-3) / 100), 3);
   }
 
   private _handleResponseMessage(message: ResponseMessage) {
-    switch (message.type) {
-      case 0: {
-        this._toaster.success(message.text);
-        break;
-      }
-      case 1: {
-        this._toaster.info(message.text);
-        break;
-      }
-      case 2: {
-        this._toaster.warning(message.text);
-        break;
-      }
-      case 3: {
-        this._toaster.error(message.text);
-      }
-    }
+    const toasterMapIndex = ResponseInterceptor._transformMessageCodeToToasterType(`${message.code}`);
+    this.translator.get(MESSAGE_CODE_TRANSLATOR[message.code], message.params)
+        .toPromise()
+        .then(value => {
+          this.TOASTER_MAP[toasterMapIndex](value);
+        });
   }
 
   /**
