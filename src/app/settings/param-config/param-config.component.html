@@ -1,5 +1,9 @@
 <app-param-config-experiments [form]="experiments"></app-param-config-experiments>
 <hr>
+<app-param-config-application [form]="application"></app-param-config-application>
+<hr>
 <app-param-config-server [form]="server"></app-param-config-server>
 
 <app-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveSettings()" [disabled]="form.invalid || (working | async)"></app-fab>
+
+<app-modal #modal></app-modal>

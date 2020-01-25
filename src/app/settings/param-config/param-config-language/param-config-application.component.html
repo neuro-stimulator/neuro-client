@@ -1,0 +1,31 @@
+<form [formGroup]="form" class="settings-form">
+
+  <div class="row">
+    <div class="col-10" >
+      <h2>{{ 'SETTINGS.PARAM_CONFIG.APPLICATION.TITLE' | translate}}</h2>
+    </div>
+    <div class="col-2 text-right" appContentToggler [toggledContent]="settings" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+  </div>
+  <div #settings>
+
+    <!-- Nastavení jazyka aplikace -->
+    <div class="col-12">
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-application-language">{{ 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.TITLE' | translate}}</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <select id="settings-application-language" class="selectpicker form-control form-control-sm" formControlName="language">
+              <option *ngFor="let lang of languages" [value]="lang.value">
+                <span><i class="fas fa-flag"></i> {{lang.name | translate}}</span>
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</form>

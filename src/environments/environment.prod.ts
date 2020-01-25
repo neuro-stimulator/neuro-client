@@ -2,7 +2,9 @@ import { SERVER_HTTP_PORT, SERVER_SOCKET_PORT } from '@stechy1/diplomka-share';
 import { Settings } from '../app/settings/settings';
 
 const DEFAULT_SETTINGS: Settings = {
-  language: 'cz',
+  application: {
+    language: 'cz'
+  },
   experiments: {
     showDescription: true,
     showTags: true,

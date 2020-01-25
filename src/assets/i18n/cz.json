@@ -4,9 +4,9 @@
     "AUTHOR": "Petr Štechmüller",
     "HEADER_IMAGE": "Hlavička",
     "VALIDATION": {
-      "REQUIRED": "Parametr je vyžadován.",
-      "MIN": "Minimální hodnota je: {{min}}",
-      "MAX": "Maximální hodnota je: {{max}}"
+      "REQUIRED": "Parametr je vyžadován!",
+      "MIN": "Minimální hodnota je: {{min}}!",
+      "MAX": "Maximální hodnota je: {{max}}!"
     }
   },
 
@@ -30,7 +30,6 @@
     "EXPERIMENT": {
       "ID": "ID experimentu",
       "NAME": "Název experimentu",
-      "NAME_REQUIRED": "Název experimentu je vyžadován.",
       "DESCRIPTION":"Popis experimentu",
       "TYPE": "Typ experimentu",
       "CREATED":"Datum vytvoření experimentu",
@@ -132,7 +131,7 @@
         "TITLE": "Seskupit",
         "NONE": "Neseskupovat",
         "TYPE": "Typ experimentu",
-        "TAG": "Tab"
+        "TAG": "Tag"
       },
       "SORT_BY": {
         "TITLE": "Seřadit",
@@ -229,6 +228,15 @@
     },
     "PARAM_CONFIG": {
       "TITLE": "Konfigurace parametrů",
+      "APPLICATION": {
+        "TITLE": "Aplikace",
+        "LANGUAGE": {
+          "TITLE": "Jazyk",
+          "CHANGE_LANGUAGE_INFORMATION": "Pro změnu jazyka je třeba restartovat celou aplikaci.",
+          "CZ": "Čeština",
+          "EN": "English"
+        }
+      },
       "EXPERIMENTS": {
         "TITLE": "Přehled experimentů",
         "SHOW_DESCRIPTION": "Zobrazit popis",
@@ -286,7 +294,7 @@
       },
       "INFORMATION": {
         "TITLE": "Oznámení",
-        "CONFIRM": "Potvrzuji",
+        "CONFIRM": "Rozumím",
         "CANCEL": "Zrušit"
       }
     }

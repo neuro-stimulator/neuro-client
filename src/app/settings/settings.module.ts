@@ -15,6 +15,8 @@ import { FabModule } from '../share/fab/fab.module';
 import { ShareModule } from '../share/share.module';
 import { ParamConfigServerComponent } from './param-config/param-config-server/param-config-server.component';
 import { createTranslateLoader } from '../app.module';
+import { ParamConfigApplicationComponent } from './param-config/param-config-language/param-config-application.component';
+import { ModalModule } from '../share/modal/modal.module';
 
 
 
@@ -25,7 +27,8 @@ import { createTranslateLoader } from '../app.module';
     ConsoleComponent,
     ParamConfigComponent,
     ParamConfigExperimentsComponent,
-    ParamConfigServerComponent
+    ParamConfigServerComponent,
+    ParamConfigApplicationComponent
   ],
   imports: [
     CommonModule,
@@ -42,6 +45,7 @@ import { createTranslateLoader } from '../app.module';
     SettingsRoutingModule,
     FabModule,
     ShareModule,
+    ModalModule,
   ]
 })
 export class SettingsModule {

@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
+import { ModalComponent } from '../../share/modal/modal.component';
 import { SettingsService } from '../settings.service';
+import { ConfirmDialogComponent } from '../../share/modal/confirm/confirm-dialog.component';
+import { InformDialogComponent } from '../../share/modal/inform/inform-dialog.component';
 
 @Component({
   selector: 'app-param-config',
@@ -13,7 +16,12 @@ import { SettingsService } from '../settings.service';
 })
 export class ParamConfigComponent implements OnInit {
 
+  @ViewChild('modal', {static: true}) modal: ModalComponent;
+
   form: FormGroup = new FormGroup({
+    application: new FormGroup({
+      language: new FormControl(null, [Validators.required]),
+    }),
     experiments: new FormGroup({
       showDescription: new FormControl(null),
       showTags: new FormControl(null),
@@ -37,11 +45,14 @@ export class ParamConfigComponent implements OnInit {
     autoconnectToStimulator: new FormControl()
   });
 
+  private _originalLanguage: string;
+
   constructor(private readonly _service: SettingsService,
               private readonly _toastr: ToastrService) { }
 
   ngOnInit() {
     this.form.setValue(this._service.settings);
+    this._originalLanguage = this._service.settings.application.language;
     this._service.loadServerSettings()
         .then(serverSettings => {
           this.server.patchValue(serverSettings);
@@ -51,6 +62,16 @@ export class ParamConfigComponent implements OnInit {
   handleSaveSettings() {
     this._service.settings = this.form.value;
     this._service.uploadServerSettings(this.server.value).finally();
+    if (this._service.settings.application.language !== this._originalLanguage) {
+      this.modal.showComponent = InformDialogComponent;
+      this.modal.open({
+        message: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.CHANGE_LANGUAGE_INFORMATION'
+      });
+    }
+  }
+
+  get application(): FormGroup {
+    return this.form.get('application') as FormGroup;
   }
 
   get experiments(): FormGroup {
