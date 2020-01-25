@@ -29,11 +29,7 @@ export class CommandsService {
   }
 
   public async experimentSetup(id: number) {
-    const res = await this._http.patch<{message?}>(`${CommandsService.BASE_API_URL}/experiment/setup/${id}`, null).toPromise();
-    if (res && res.message && res.message.type !== 0) {
-      return;
-    }
-    await this.experimentInit();
+    await this._http.patch<{message?}>(`${CommandsService.BASE_API_URL}/experiment/setup/${id}`, null).toPromise();
   }
 
   public async experimentInit() {

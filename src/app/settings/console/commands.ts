@@ -24,42 +24,6 @@ export class UnknownCommand implements ClientCommand<string> {
   }
 }
 
-export class RebootCommand implements ClientCommand<void> {
-  description = 'Restartuje server';
-
-  public getName(): string {
-    return 'reboot';
-  }
-
-  public isValid(params: string[]): [boolean, string?] {
-    return [true];
-  }
-
-  public getValue(params: string[]): void {
-    return null;
-  }
-}
-
-export class SetTimeCommand implements ClientCommand<number> {
-  description = 'Nastaví čas stimulátoru - deprecated';
-
-  public getName(): string {
-    return 'set-time';
-  }
-
-  public isValid(params: string[]): [boolean, string?] {
-    if (params.length !== 1) {
-      return [false, 'Nedostatečný počet parametrů'];
-    }
-
-    return [true];
-  }
-
-  public getValue(params: string[]): number {
-    return Date.parse(params[0]);
-  }
-}
-
 export class DisplayClearCommand implements ClientCommand<void> {
   description = 'Vymaže obsah displaye';
 

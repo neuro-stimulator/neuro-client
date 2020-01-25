@@ -28,7 +28,7 @@
     "@angular/router": "~8.2.14",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
-    "@stechy1/diplomka-share": "^1.0.8",
+    "@stechy1/diplomka-share": "^1.0.9",
     "angular-2-local-storage": "^3.0.2",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.9.3",

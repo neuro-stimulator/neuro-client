@@ -6,8 +6,6 @@ import {
   ExperimentStartCommand,
   ExperimentStopCommand,
   ExperimentSetupCommand, OutputSetCommand,
-  RebootCommand,
-  SetTimeCommand
 } from './commands';
 
 @Injectable({
@@ -18,8 +16,6 @@ export class CommandService {
   private static readonly COMMAND_REGEX = /'[^']*'|"[^"]*"|\S+/g;
 
   private static readonly COMMANDS = [
-    new RebootCommand(),
-    new SetTimeCommand(),
     new DisplayClearCommand(),
     new DisplayTextCommand(),
     new ExperimentSetupCommand(),
