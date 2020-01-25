@@ -1,0 +1,334 @@
+{
+  "APP": {
+    "TITLE": "Remote stimulator control",
+    "AUTHOR": "Petr Štechmüller",
+    "HEADER_IMAGE": "Header image",
+    "VALIDATION": {
+      "REQUIRED": "Parameter is required!",
+      "MIN": "Minimal value is: {{min}}!",
+      "MAX": "Maximal value is: {{max}}!"
+    }
+  },
+
+  "EXPERIMENTS": {
+    "TITLE": "Experiments",
+    "TITLE_NEW": "New experiment",
+    "TITLE_CONFIGURE": "Experiment configuration",
+    "NOT_FOUND": "No experiments have been found...",
+
+    "BUTTON_BAR": {
+      "PLAY_EXPERIMENT": "Run",
+      "SHOW_EXPERIMENT": "Edit",
+      "DELETE_EXPERIMENT": "Delete"
+    },
+    "DIALOGS": {
+      "DELETE": {
+        "QUESTION": "Are you sure about deleting selected experiment?"
+      }
+    },
+
+    "EXPERIMENT": {
+      "ID": "Experiment ID",
+      "NAME": "Experiment name",
+      "DESCRIPTION":"Popis experimentu",
+      "TYPE": "Experiment type",
+      "CREATED":"The date the experiment was created",
+      "USED_OUTPUTS": "Used outputs",
+      "OUTPUT_COUNT":"Output count",
+      "OUTPUT_PARAMETERS": "Output parameters",
+      "TAGS": "Tags",
+      "ERP": {
+        "TITLE_PARAMS": "ERP parameters",
+        "MAX_DISTRIBUTION": "Max. distribution value",
+        "OUT":"Active output",
+        "WAIT": "Inactive output",
+        "EDGE": {
+          "TITLE": "Edge type",
+          "LEADING": "Leading",
+          "FALLING": "Falling"
+        },
+        "RANDOM": {
+          "TITLE": "Random",
+          "OFF": "Off",
+          "SHORT": "Short",
+          "LONG": "Long",
+          "SHORT_LONG": "Short and Long"
+        },
+        "OUTPUTS": "Outputs",
+        "OUTPUT": {
+          "TITLE": "Output",
+          "ID": "Output ID",
+          "EXPERIMENT_ID": "Experiment ID",
+          "ORDER_ID":  "Output order ID",
+          "OUTPUT_TYPE": "Output type",
+          "PULSE_UP":  "Pulse up",
+          "PULSE_DOWN": "Puse down",
+          "DISTRIBUTION": "Distribution",
+          "BRIGHTNESS": "Brightness",
+          "DEPENDENCIES": {
+            "TITLE": "Dependencies",
+            "FORMAT": "output x count",
+            "VALIDATION": {
+              "INVALID_DEPENDENCY": "Dependency number is higher than output count!",
+              "INVALID_VALUE": "Dependency number is invalid!"
+            }
+          }
+        },
+        "SEQUENCE_ID": "Sequence ID"
+      },
+      "CVEP": {
+        "TITLE_PARAMS": "C-VEP parameters",
+        "OUT":"Active output",
+        "WAIT": "Inactive output",
+        "BIT_SHIFT": "Bit shift",
+        "BRIGHTNESS": "Brightness"
+      },
+      "FVEP": {
+        "TITLE_PARAMS": "F-VEP parameters",
+        "OUTPUT": {
+          "TIME_ON":"Active output",
+          "TIME_OFF": "Inactive output",
+          "FREQUENCY":"Frequency",
+          "DUTY_CYCLE": "Duty cycle",
+          "BRIGHTNESS": "Brightness"
+        }
+      },
+      "TVEP": {
+        "TITLE_PARAMS": "T-VEP parameters",
+        "OUTPUT": {
+          "PATTERN_LENGTH": "Pattern length",
+          "OUT":"Active output",
+          "WAIT": "Inactive output",
+          "BRIGHTNESS": "Brightness"
+        }
+      }
+    },
+    "OUTPUT_TYPE": {
+      "TITLE": "Output type",
+      "VALIDATIONS": {
+        "NO_OUTPUT_TYPE": "It is necessary to select output type!",
+        "AUDIO_FILE_INVALID": "Select audio file!",
+        "IMAGE_FILE_INVALID": "Select image!"
+      },
+      "LED": "LED",
+      "AUDIO": "Audio",
+      "AUDIO_FILE": "Audio file",
+      "IMAGE": "Image",
+      "IMAGE_FILE": "Image file"
+    },
+    "OUTPUT_PATTERN": {
+      "TITLE": "Pattern",
+      "EMPTY": "Empty",
+      "FULL": "Full",
+      "INVERT": "Invert",
+      "RANDOM": "Random"
+    },
+    "FILTER_DIALOG": {
+      "TITLE": "Experiment filter",
+      "CONFIRM": "Filter",
+      "CANCEL": "Cancel",
+      "GROUP_BY": {
+        "TITLE": "Group by",
+        "NONE": "No groups",
+        "TYPE": "Experiment type",
+        "TAG": "Tag"
+      },
+      "SORT_BY": {
+        "TITLE": "Sort by",
+        "ALPHABET": "Alphabetically",
+        "CREATION_DATE": "Creation date",
+        "TYPE": "Experiment type",
+        "OUTPUT_TYPE": "Output type",
+        "OUTPUT_COUNT": "Output count"
+      },
+      "ORDER_BY": {
+        "TITLE": "Order by",
+        "ASCENDING": "Ascending",
+        "DESCENDING": "Descending"
+      }
+    }
+  },
+
+  "EXPERIMENT_RESULTS": {
+    "TITLE": "Experiment results",
+    "NOT_FOUND": "No experiment results have been found...",
+    "BUTTON_BAR": {
+      "SHOW_RESULT": "Show",
+      "DELETE_RESULT": "Delete"
+    },
+    "DIALOGS": {
+      "DELETE": {
+        "QUESTION": "Are you sure about deleting selected experiment result?"
+      }
+    },
+
+    "EXPERIMENT_RESULT": {
+      "TITLE": "Experiment result",
+      "UNNAMED": "Unnamed",
+      "EXPERIMENT_PROGRESS": "Experiment progress"
+    }
+  },
+
+  "SEQUENCES": {
+    "TITLE": "Sequences",
+    "TITLE_NEW": "New sequence",
+    "TITLE_CONFIGURE": "Sequence edit",
+    "NOT_FOUND": "No sequences have been found...",
+
+    "BUTTON_BAR": {
+      "SHOW_SEQUENCE": "Edit",
+      "DELETE_SEQUENCE": "Delete"
+    },
+    "DIALOGS": {
+      "DELETE": {
+        "QUESTION": "Are you sure about deleting selected sequence?"
+      }
+    },
+
+    "SEQUENCE": {
+      "NAME": "Sequence name",
+      "SOURCE_EXPERIMENT": "Source experiment",
+      "SIZE": "Sequence length",
+      "BUTTON_BAR": {
+        "GENERATE": "Generate sequence",
+        "SHOW_ORIGINAL": "Show original",
+        "GO_TO_EXPERIMENT": "Go to experiment"
+      }
+    }
+  },
+
+  "SETTINGS": {
+    "TITLE": "Settings",
+
+    "SERVICE_STATE": {
+      "TITLE": "Service state",
+      "CONNECTED": "CONNECTED",
+      "DISCONNECTED": "DISCONNECTED",
+
+      "WEB_SERVER": {
+        "TITLE": "Web server",
+        "BUTTON_BAR": {
+          "CONNECT": "Connect",
+          "DISCONNECT": "Disconnect"
+        }
+      },
+      "STIMULATOR": {
+        "TITLE": "Stimulator",
+        "BUTTON_BAR": {
+          "EXPLORE": "Explore",
+          "CONNECT": "Connect",
+          "DISCONNECT": "Disconnect",
+          "CLEAR_LIST": "Clear list",
+          "SELECT_FIRMWARE_FILE": "Select file...",
+          "BROWSE_FIRMWARE_FILES": "Explore",
+          "UPDATE_FIRMWARE": "Update firmware"
+        }
+      },
+      "AUDIO_IMAGE_PLAYER": "Audio and image player"
+    },
+    "PARAM_CONFIG": {
+      "TITLE": "Parameter configuration",
+      "APPLICATION": {
+        "TITLE": "Aplication",
+        "LANGUAGE": {
+          "TITLE": "Language",
+          "CHANGE_LANGUAGE_INFORMATION": "It is necessary restart application for language change.",
+          "CZ": "Čeština",
+          "EN": "English"
+        }
+      },
+      "EXPERIMENTS": {
+        "TITLE": "Experiments",
+        "SHOW_DESCRIPTION": "Show description",
+        "SHOW_TAGS": "Show tags",
+        "SHOW_CREATION_DATE": "Show creation date",
+        "SHOW_OUTPUT_TYPE": "Show output type",
+        "SHOW_OUTPUT_COUNT": "Show output count",
+        "CREATION_DATE_FORMAT": {
+          "TITLE": "Creation date format",
+          "MINUTES": "Minutes",
+          "HOURS": "Hours",
+          "DAYS": "Days",
+          "MONTHS": "Months",
+          "YEARS": "Years"
+        }
+      },
+      "SERVER": {
+        "TITLE": "Server configuration",
+        "STIMULATOR_AUTOCONNECT": "Automatically connect to stimulator"
+      }
+    },
+    "CONSOLE": {
+      "TITLE": "Console",
+      "INSERT_COMMAND": "Insert command..."
+    }
+  },
+
+  "HELP": {
+    "TITLE": "Help"
+  },
+
+  "ABOUT": {
+    "TITLE": "About"
+  },
+
+  "SHARE": {
+    "EXPERIMENTS_BUTTONS_ADDON": {
+      "PLACEHOLDER_FIND_EXPERIMENT": "Find experiment",
+      "PLACEHOLDER_FILTER_EXPERIMENT": "Filter experiments"
+    },
+    "SERIAL": {
+      "STATUS_DISCONNECTED": "Disconnected",
+      "STATUS_CONNECTED": "Connected",
+      "MESSAGES": {
+        "STIMULATOR_WAS_CONNECTED": "Stimulator has been connected.",
+        "STIMULATOR_WAS_DISCONNECTED": "Stimulator has been disconnected."
+      }
+    },
+
+    "DIALOGS": {
+      "CONFIRMATION": {
+        "TITLE": "Confirmation",
+        "CONFIRM": "Confirm",
+        "CANCEL": "Cancel"
+      },
+      "INFORMATION": {
+        "TITLE": "Announcement",
+        "CONFIRM": "Understand",
+        "CANCEL": "Cancel"
+      }
+    }
+  },
+
+  "SERVER_MESSAGE_CODES": {
+    "CODE_ERROR": "An unexpected error occurred on the server!",
+    "CODE_SUCCESS": "Akce proběhla v pořádku.",
+    "CODE_EXPERIMENT_CREATED":  "Experiment {{id}} was successfully created.",
+    "CODE_EXPERIMENT_UPDATED": "Experiment {{id}} was successfully updated.",
+    "CODE_EXPERIMENT_DELETED":  "Experiment {{id}} was successfully deleted..",
+    "CODE_EXPERIMENT_NOT_FOUND": "Experiment {{id}} was not found!",
+    "CODE_EXPERIMENT_RESULT_CREATED":  "Experiment result {{id}} was successfully created.",
+    "CODE_EXPERIMENT_RESULT_UPDATED": "Experiment result {{id}} was successfully updated.",
+    "CODE_EXPERIMENT_RESULT_DELETED":  "Experiment result {{id}} was successfully deleted",
+    "CODE_EXPERIMENT_RESULT_NOT_FOUND": "Experiment result {{id}} was not found.",
+    "CODE_EXPERIMENT_RESULT_DATA_NOT_FOUND":  "Experiment result date {{id]] were not found!",
+    "CODE_SEQUENCE_CREATED": "Sequence {{id}} was successfully created.",
+    "CODE_SEQUENCE_UPDATED":  "Sequence {{id}} was successfully updated.",
+    "CODE_SEQUENCE_DELETED": "Sequence {{id}} was successfully deleted.",
+    "CODE_SEQUENCE_NOT_FOUND":  "Sequence {{id}} was not found!",
+    "CODE_SEQUENCE_UNSUPORTED_EXPERIMENT": "Sequences are not supported by experiment {{id}}!",
+    "CODE_FILE_BROWSER_DIRECTORY_CREATED":  "Directory {{name}} was successfully created.",
+    "CODE_FILE_BROWSER_FILES_UPLOADED": "Soubor(y) byly úspěšně nahrány.",
+    "CODE_FILE_BROWSER_FILES_DELETED":  "Soubor(y) byly úspěšně smazány.",
+    "CODE_LOW_LEVEL_PORT_OPPENED": "COM port {{path}} was opened.",
+    "CODE_LOW_LEVEL_FIRMWARE_UPDATED":  "Firmware was successfully updated.",
+    "CODE_LOW_LEVEL_PORT_NOT_OPPENED": "COM port {{path}} was not able to open!",
+    "CODE_LOW_LEVEL_FIRMWARE_NOT_UPDATED":  "Firmware was not able to update!",
+    "CODE_SETTINGS_UPDATED": "Settings was successfully saved.",
+    "CODE_SETTINGS_NOT_UPDATED":  "Settings was not able to save.",
+    "CODE_COMMANDS_EXPERIMENT_SETUP": "Experiment with id: {{id}} could not be uploaded, because another experiment already exists in stimulator memory!",
+    "CODE_COMMANDS_EXPERIMENT_START": "Experiment with id: {{id}} could not be started, because anoter experiment is active or has not been initialized!",
+    "CODE_COMMANDS_EXPERIMENT_STOP": "Experiment with id: {{id}} could not be stopped, because has not been started!",
+    "CODE_COMMANDS_EXPERIMENT_CLEAR": "There is nothing to clear!"
+  }
+}

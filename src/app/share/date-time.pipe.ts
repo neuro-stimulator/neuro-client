@@ -1,15 +1,26 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { DateTimeFormat } from './date-time-format';
 import { DatePipe } from '@angular/common';
+import { SettingsService } from '../settings/settings.service';
 
 @Pipe({
   name: 'dateTime'
 })
 export class DateTimePipe implements PipeTransform {
 
-  private readonly pipe: DatePipe = new DatePipe('cs_CZ');
+  private readonly pipe: DatePipe;
 
-  constructor() {}
+  constructor(settings: SettingsService) {
+    const language = settings.settings.application.language || 'cz';
+    switch (language) {
+      case 'cz':
+        this.pipe = new DatePipe('cs_CZ');
+        break;
+      default:
+        this.pipe = new DatePipe('en_GB');
+        break;
+    }
+  }
 
   transform(value: Date|number, format: DateTimeFormat): string {
     if (!(value instanceof Date)) {
