@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 
 import {
   DisplayClearCommand,
-  DisplayTextCommand, ExperimentClearCommand, ExperimentInitCommand,
+  DisplayTextCommand,
+  ExperimentClearCommand,
+  ExperimentUploadCommand,
   ExperimentStartCommand,
   ExperimentStopCommand,
-  ExperimentSetupCommand, OutputSetCommand,
+  ExperimentSetupCommand,
+  OutputSetCommand, DebugCommand,
 } from './commands';
 
 @Injectable({
@@ -18,13 +21,14 @@ export class CommandService {
   private static readonly COMMANDS = [
     new DisplayClearCommand(),
     new DisplayTextCommand(),
-    new ExperimentSetupCommand(),
-    new ExperimentInitCommand(),
     new ExperimentStartCommand(),
     new ExperimentStopCommand(),
+    new ExperimentUploadCommand(),
+    new ExperimentSetupCommand(),
     new ExperimentClearCommand(),
   //  Backdoor příkazy
-    new OutputSetCommand()
+    new OutputSetCommand(),
+    new DebugCommand()
   ];
 
   public parseCommand(text: string): [boolean, string, string | any] {

@@ -70,8 +70,32 @@ export class DisplayTextCommand implements ClientCommand<{ x: number, y: number,
   }
 }
 
-export class ExperimentSetupCommand implements ClientCommand<number> {
+export class ExperimentUploadCommand implements ClientCommand<number> {
   description = `Nahraje experiment do stimulátoru: ${this.getName()} id: number`;
+
+  public getName(): string {
+    return 'experiment-upload';
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length === 0) {
+      return [false, `Nedostatečný počet parametrů: 'experiment-upload id:number'`];
+    }
+
+    if (params.length > 1) {
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): number {
+    return +params[0];
+  }
+}
+
+export class ExperimentSetupCommand implements ClientCommand<number> {
+  description = `Inicializuje experiment ve stimulátoru: ${this.getName()} id: number`;
 
   public getName(): string {
     return 'experiment-setup';
@@ -90,29 +114,8 @@ export class ExperimentSetupCommand implements ClientCommand<number> {
   }
 
   public getValue(params: string[]): number {
-    return null;
+    return +params[0];
   }
-}
-
-export class ExperimentInitCommand implements ClientCommand<void> {
-  description = `Inicializuje experiment: ${this.getName()} id: number`;
-
-  public getName(): string {
-    return 'experiment-init';
-  }
-
-  public isValid(params: string[]): [boolean, string?] {
-    if (params.length !== 0) {
-      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
-    }
-
-    return [true];
-  }
-
-  public getValue(params: string[]): number {
-    return null;
-  }
-
 }
 
 export class ExperimentStartCommand implements ClientCommand<void> {
@@ -173,6 +176,27 @@ export class ExperimentClearCommand implements ClientCommand<void> {
   public getValue(params: string[]): number {
     return null;
   }
+}
+
+export class DebugCommand implements ClientCommand<void> {
+  description = `Vypíše obsah konfigurace experimentu z paměti stimulátoru v raw podobě do konzole`;
+
+  public getName(): string {
+    return 'debug';
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length !== 0) {
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): number {
+    return null;
+  }
+
 }
 
 

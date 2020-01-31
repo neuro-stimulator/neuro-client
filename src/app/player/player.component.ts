@@ -47,21 +47,29 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   private _handleStimulatorStateEvent(event: StimulatorStateEvent) {
     switch (event.state) {
-      // Experiment byl ukončen
       case 0x00:
-        this.toaster.success('Experiment byl ukončen.');
-        this._router.navigate(['/results']);
+        this.toaster.success('Stimulátor je připraven k použití.');
         break;
       // Experiment byl spuštěn
       case 0x01:
+        this.toaster.success('Experiment byl nahrán.');
+        break;
+      // Experiment byl inicializován
+      case 0x02:
+        this.toaster.success('Experiment byl nastaven.');
+        break;
+      // Experiment byl nastaven
+      case 0x03:
         this.toaster.success('Experiment byl spuštěn.');
         break;
-        // Experiment byl inicializován
-      case 0x02:
-        this.toaster.success('Experiment byl inicializován.');
+      // Experiment byl ukončen
+      case 0x04:
+        this.toaster.success('Experiment byl ukončen.');
+        this._router.navigate(['/results']);
         break;
-      case 0x03:
-        this.toaster.warning('Konfigurace experimentů byla vymazána.');
+      // Experiment byl vymazán
+      case 0x05:
+        this.toaster.success('Experiment byl vymazán.');
         break;
     }
   }
@@ -83,9 +91,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this._serialRawDataSubscription.unsubscribe();
   }
 
-
   handleUploadExperiment() {
-    this._command.experimentSetup(this._experimentID);
+    this._command.experimentUpload(this._experimentID);
   }
 
   handleRunExperiment() {

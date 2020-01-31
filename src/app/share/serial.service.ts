@@ -79,26 +79,23 @@ export class SerialService {
   private _handleStimulatorStateEvent(event: StimulatorStateEvent) {
     let text = '';
     switch (event.state) {
-      // Experiment byl ukončen
       case 0x00:
-        text = 'Experiment byl ukončen.';
-        break;
-      // Experiment byl spuštěn
-      case 0x01:
-        text = 'Experiment byl spuštěn.';
-        break;
-      // Experiment byl inicializován
-      case 0x02:
-        text = 'Experiment byl inicializován.';
-        break;
-      case 0x03:
-        text = 'Konfigurace experimentů byla vymazána.';
-        break;
-      case 0x05:
         text = 'Stimulátor je připraven k použití.';
         break;
-      case 0x10:
-        text = 'Konfigurace byla nahrána.';
+      case 0x01:
+        text = 'Experiment byl nahrán.';
+        break;
+      case 0x02:
+        text = 'Experiment byl nastaven.';
+        break;
+      case 0x03:
+        text = 'Experiment byl spuštěn.';
+        break;
+      case 0x04:
+        text = 'Experiment byl ukončen.';
+        break;
+      case 0x05:
+        text = 'Experiment byl vymazán.';
         break;
       case 0x11:
         text = 'Nastavení jednoho výstupu bylo nahráno.';

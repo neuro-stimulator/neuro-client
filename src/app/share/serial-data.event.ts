@@ -13,3 +13,7 @@ export interface IOEvent extends SerialDataEvent {
   index: number;
   timestamp: number;
 }
+
+export interface StimulatorDebugEvent extends SerialDataEvent {
+  data: string[];
+}

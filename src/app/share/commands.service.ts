@@ -28,12 +28,16 @@ export class CommandsService {
     await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/stop/${experimentID}`, null).toPromise();
   }
 
-  public async experimentSetup(id: number) {
-    await this._http.patch<{message?}>(`${CommandsService.BASE_API_URL}/experiment/setup/${id}`, null).toPromise();
+  public async experimentUpload(id: number) {
+    const res = await this._http.patch<{message?}>(`${CommandsService.BASE_API_URL}/experiment/upload/${id}`, null).toPromise();
+    if (res && res.message && res.message.type !== 0) {
+      return;
+    }
+    await this.experimentSetup(id);
   }
 
-  public async experimentInit() {
-    await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/init`, null).toPromise();
+  public async experimentSetup(id: number) {
+    await this._http.patch<{message?}>(`${CommandsService.BASE_API_URL}/experiment/setup/${id}`, null).toPromise();
   }
 
   public async experimentClear() {
