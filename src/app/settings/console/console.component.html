@@ -2,7 +2,7 @@
   <div class="console-clear">
     <button class="btn btn-sm btn-light" (click)="handleClearHistory()">X</button>
   </div>
-  <div class="col-12 border border-dark console-content" #consoleOutput>
+  <div class="col-12 border border-dark console-content" #consoleOutput (click)="requestInputFocus()">
     <div *ngFor="let command of console.commands$ | async">
       <pre><span class="command-date">{{command.date | date:'dd.MM.yyyy, HH:mm:ss'}}</span> - {{command.text}}</pre>
     </div>
@@ -15,7 +15,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text">></span>
       </div>
-      <input type="text" class="form-control" [placeholder]="'SETTINGS.CONSOLE.INSERT_COMMAND' | translate" (change)="handleCommandTextChange($event)">
+      <input type="text" class="form-control" [placeholder]="'SETTINGS.CONSOLE.INSERT_COMMAND' | translate" (change)="handleCommandTextChange($event)" #inputCommand>
     </div>
   </div>
 </div>

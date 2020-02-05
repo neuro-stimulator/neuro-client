@@ -14,6 +14,7 @@ import { ConsoleService } from './console.service';
 export class ConsoleComponent implements OnInit, OnDestroy {
 
   @ViewChild('consoleOutput', {static: true}) consoleOutput: ElementRef;
+  @ViewChild('inputCommand', {static: true}) inputCommand: ElementRef;
 
   private _serialRawDataSubscription: Subscription;
 
@@ -49,10 +50,15 @@ export class ConsoleComponent implements OnInit, OnDestroy {
 
   handleClearHistory() {
     this.console.clearHistory();
+    this.requestInputFocus();
   }
 
   handleCommandTextChange(event: Event) {
     this.console.processCommand((event.target as HTMLInputElement).value);
     (event.target as HTMLInputElement).value = '';
+  }
+
+  requestInputFocus() {
+    (this.inputCommand.nativeElement as HTMLInputElement).focus();
   }
 }
