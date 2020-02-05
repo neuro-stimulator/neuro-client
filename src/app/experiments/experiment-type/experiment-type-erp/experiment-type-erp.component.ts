@@ -124,7 +124,38 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
   handleCreateNewSequenceFast() {
     this.modal.showComponent = SequenceFastDialogComponent;
     this.modal.openForResult()
-        .then(result => { console.log(result); });
+        .catch(reason => {
+          this.logger.warn('Nebudu vytvářet žádnou sekvenci.');
+        })
+        .then((result?: {name: string, size: number}) => {
+          if (result === undefined) {
+            return;
+          }
+
+          this.sequenceService.fromNameAndSize(this.experiment.id, result.name, result.size)
+              .catch(reason => {
+                this.logger.error('Sekvenci se nepodařilo vytvořit!');
+              })
+              .then((sequence?: Sequence) => {
+                if (sequence === undefined) {
+                  return;
+                }
+
+                this.sequenceService.forExperiment(this.experiment)
+                    .then((sequences: Sequence[]) => {
+                      this.sequences$.next(sequences);
+                      this.sequenceId.setValue(sequence.id);
+                      this._service.update(this.form.value).then(() => {
+
+                        this.sequenceService.generaceSequence(this.experiment.id, sequence.size)
+                            .then((data: number[]) => {
+                              sequence.data = data;
+                              this.sequenceService.update(sequence).finally();
+                            });
+                      });
+                    });
+              });
+        });
   }
 
   handleRemoveSequence() {

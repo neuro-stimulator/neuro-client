@@ -6,7 +6,7 @@ import { NGXLogger } from 'ngx-logger';
 import { environment, makeURL } from '../../environments/environment';
 import { BaseService } from '../share/base-service';
 import { AliveCheckerService } from '../alive-checker.service';
-import { Experiment, Sequence, ResponseObject } from '@stechy1/diplomka-share';
+import { Experiment, ResponseObject, Sequence } from '@stechy1/diplomka-share';
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +26,9 @@ export class SequenceService extends BaseService<Sequence> {
     });
   }
 
-  public async generaceSequence(id: number, size: number): Promise<number[]> {
+  public async generaceSequence(experimentId: number, size: number): Promise<number[]> {
     this._working.next(true);
-    return this._http.get<ResponseObject<number[]>>(`${SequenceService.BASE_API_URL}/generate/${id}/${size}`)
+    return this._http.get<ResponseObject<number[]>>(`${SequenceService.BASE_API_URL}/generate/${experimentId}/${size}`)
                .toPromise()
                .then(response => {
                  return response.data;
@@ -60,5 +60,18 @@ export class SequenceService extends BaseService<Sequence> {
                .finally(() => {
                  this._working.next(false);
                });
+  }
+
+  public async fromNameAndSize(experimentId: number, name: string, size: number): Promise<Sequence> {
+    const sequenceHelper: Sequence = {
+      experimentId,
+      name,
+      size,
+      created: new Date().getTime(),
+      tags: [],
+      data: [],
+    };
+
+    return this.insert(sequenceHelper);
   }
 }
