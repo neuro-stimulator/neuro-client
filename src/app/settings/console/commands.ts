@@ -178,23 +178,34 @@ export class ExperimentClearCommand implements ClientCommand<void> {
   }
 }
 
-export class DebugCommand implements ClientCommand<void> {
-  description = `Vypíše obsah konfigurace experimentu z paměti stimulátoru v raw podobě do konzole`;
+export class MemoryCommand implements ClientCommand<number> {
+
+  private static readonly MEMORY_TYPE: string[] = ['config', 'accumulator', 'counters'];
+
+  description = `Vypíše zadaný kus paměti ze stimulátoru v raw podobě do konzole.`;
 
   public getName(): string {
-    return 'debug';
+    return 'memory';
   }
 
   public isValid(params: string[]): [boolean, string?] {
-    if (params.length !== 0) {
-      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
+    if (params.length === 0) {
+      return [false, `Nedostatečný počet parametrů: 'debug [config, accumulator, counters].'`];
+    }
+    if (params.length > 1) {
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'.`];
+    }
+
+    const memoryType = params[0];
+    if (MemoryCommand.MEMORY_TYPE.indexOf(memoryType) === -1) {
+      return [false, `Zadali jste nevalidní typ paměti. \nLze zadat pouze: [config, accumulator, counters].`];
     }
 
     return [true];
   }
 
   public getValue(params: string[]): number {
-    return null;
+    return MemoryCommand.MEMORY_TYPE.indexOf(params[0]);
   }
 
 }

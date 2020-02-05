@@ -10,10 +10,10 @@ import { NGXLogger } from 'ngx-logger';
 
 import { ResponseMessage } from '@stechy1/diplomka-share';
 
-import { MESSAGE_CODE_TRANSLATOR } from './message-code-translator';
-
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {
+
+  private static readonly SERVER_MESSAGE_CODE_PREFIX = 'SERVER_MESSAGE_CODES.';
 
   private readonly TOASTER_MAP: { [key: number]: (text: string) => void } = {};
 
@@ -32,7 +32,7 @@ export class ResponseInterceptor implements HttpInterceptor {
 
   private _handleResponseMessage(message: ResponseMessage) {
     const toasterMapIndex = ResponseInterceptor._transformMessageCodeToToasterType(`${message.code}`);
-    this.translator.get(MESSAGE_CODE_TRANSLATOR[message.code], message.params)
+    this.translator.get(`${ResponseInterceptor.SERVER_MESSAGE_CODE_PREFIX}${message.code}`, message.params)
         .toPromise()
         .then(value => {
           this.TOASTER_MAP[toasterMapIndex](value);

@@ -102,7 +102,7 @@ export class SerialService {
         break;
     }
 
-    this.console.saveCommand({date: new Date(event.timestamp), text});
+    this.console.saveCommand({date: new Date(), text});
   }
 
   private _updateNavigationSubtitle(saveCommand: boolean = true) {

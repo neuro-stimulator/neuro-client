@@ -8,7 +8,7 @@ import {
   ExperimentStartCommand,
   ExperimentStopCommand,
   ExperimentSetupCommand,
-  OutputSetCommand, DebugCommand,
+  OutputSetCommand, MemoryCommand,
 } from './commands';
 
 @Injectable({
@@ -28,7 +28,7 @@ export class CommandService {
     new ExperimentClearCommand(),
   //  Backdoor příkazy
     new OutputSetCommand(),
-    new DebugCommand()
+    new MemoryCommand()
   ];
 
   public parseCommand(text: string): [boolean, string, string | any] {

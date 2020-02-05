@@ -30,6 +30,7 @@ export class ConsoleService {
     aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
       if (status === ConnectionStatus.CONNECTED) {
         this._socket.connect();
+        this._socket.on('command', (data) => console.log(data));
       }
     });
     aliveChecker.disconnect.subscribe(() => {
