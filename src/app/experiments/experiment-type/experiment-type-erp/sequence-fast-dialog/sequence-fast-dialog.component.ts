@@ -17,12 +17,9 @@ export class SequenceFastDialogComponent extends DialogChildComponent {
   });
 
   private _confirmSubscription: Subscription;
-  private _cancelSubscription: Subscription;
 
-  private _handleConfirmDialog: () => void;
-  private _handleCancelDialog: () => void;
-
-  private formInvalid: EventEmitter<boolean> = new EventEmitter<boolean>();
+  private readonly formInvalid: EventEmitter<boolean> = new EventEmitter<boolean>();
+  private readonly formResult: EventEmitter<any> = new EventEmitter<any>();
 
   private _formInvalidSubscription: Subscription;
 
@@ -35,11 +32,7 @@ export class SequenceFastDialogComponent extends DialogChildComponent {
   }
 
   private _handleConfirm() {
-    this._handleConfirmDialog();
-  }
-
-  private _handleNotConfirm() {
-    this._handleCancelDialog();
+    this.formResult.next(this.form.value);
   }
 
   bind(modal: ModalComponent) {
@@ -48,13 +41,12 @@ export class SequenceFastDialogComponent extends DialogChildComponent {
     modal.cancelText = 'Zrušit';
     modal.confirmClose = false;
     modal.confirmDisabled = this.formInvalid;
+    modal.result = this.formResult;
     this._confirmSubscription = modal.confirm.subscribe(() => this._handleConfirm());
-    this._cancelSubscription = modal.cancel.subscribe(() => this._handleNotConfirm());
   }
 
   unbind(modal: ModalComponent) {
     this._confirmSubscription.unsubscribe();
-    this._cancelSubscription.unsubscribe();
     this._formInvalidSubscription.unsubscribe();
   }
 
