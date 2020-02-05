@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ElementRef, ViewChild } from '@angular/co
 
 import { Subscription } from 'rxjs';
 
-import { SerialDataEvent, StimulatorDebugEvent } from '../../share/serial-data.event';
+import { SerialDataEvent, StimulatorMemoryEvent } from '../../share/serial-data.event';
 import { SerialService } from '../../share/serial.service';
 import { ConsoleService } from './console.service';
 
@@ -23,13 +23,13 @@ export class ConsoleComponent implements OnInit, OnDestroy {
 
   private _handleRawData(event: SerialDataEvent) {
     switch (event.name) {
-      case 'EventDebug':
-        this._handleStimulatorDebugEvent(event as StimulatorDebugEvent);
+      case 'EventMemory':
+        this._handleStimulatorMemoryEvent(event as StimulatorMemoryEvent);
         break;
     }
   }
 
-  private _handleStimulatorDebugEvent(event: StimulatorDebugEvent) {
+  private _handleStimulatorMemoryEvent(event: StimulatorMemoryEvent) {
     this.console.saveCommandRaw(event.data.toString());
   }
 

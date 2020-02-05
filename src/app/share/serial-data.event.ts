@@ -14,6 +14,6 @@ export interface IOEvent extends SerialDataEvent {
   timestamp: number;
 }
 
-export interface StimulatorDebugEvent extends SerialDataEvent {
+export interface StimulatorMemoryEvent extends SerialDataEvent {
   data: string[];
 }
