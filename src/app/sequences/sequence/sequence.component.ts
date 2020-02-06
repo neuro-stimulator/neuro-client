@@ -157,7 +157,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
     if (this._sequence.id === undefined) {
       this._service.insert(this.form.value)
           .then((sequence: Sequence) => {
-            this.logger.info(`Zakládám novou sequence s id: ${sequence.id}`);
+            this.logger.info(`Zakládám novou sequenci s id: ${sequence.id}`);
             this._sequence = sequence;
             // Po úspěšném založení nové sequenceu,
             // upravím adresní řádek tak, aby obsahoval ID sequence

@@ -37,6 +37,7 @@ export class SequencesComponent implements OnInit {
   }
 
   handleView(sequence: Sequence) {
+    this.logger.info(`Budu zobrazovat sekvenci s id: ${sequence.id}`);
     this._router.navigate([sequence.id], {relativeTo: this._route});
   }
 
