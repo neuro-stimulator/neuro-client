@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ElementRef, ViewChild } from '@angular/co
 
 import { Subscription } from 'rxjs';
 
-import { SerialDataEvent, StimulatorMemoryEvent } from '../../share/serial-data.event';
+import { SerialDataEvent, StimulatorMemoryEvent, StimulatorSequencePartRequestEvent } from '../../share/serial-data.event';
 import { SerialService } from '../../share/serial.service';
 import { ConsoleService } from './console.service';
 
@@ -26,11 +26,18 @@ export class ConsoleComponent implements OnInit, OnDestroy {
       case 'EventMemory':
         this._handleStimulatorMemoryEvent(event as StimulatorMemoryEvent);
         break;
+      case 'EventNextSequencePart':
+        this._handleStimulatorNextSequencePartRequestEvent(event as StimulatorSequencePartRequestEvent);
+        break;
     }
   }
 
   private _handleStimulatorMemoryEvent(event: StimulatorMemoryEvent) {
     this.console.saveCommandRaw(event.data.toString());
+  }
+
+  private _handleStimulatorNextSequencePartRequestEvent(event: StimulatorSequencePartRequestEvent) {
+    this.console.saveCommandRaw(JSON.stringify(event));
   }
 
   ngOnInit() {

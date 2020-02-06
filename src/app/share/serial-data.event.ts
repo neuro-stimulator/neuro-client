@@ -17,3 +17,10 @@ export interface IOEvent extends SerialDataEvent {
 export interface StimulatorMemoryEvent extends SerialDataEvent {
   data: string[];
 }
+
+export interface StimulatorSequencePartRequestEvent extends SerialDataEvent   {
+  name: string;
+  offset: number;
+  index: number;
+  timestamp: number;
+}
