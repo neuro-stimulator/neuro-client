@@ -100,6 +100,9 @@ export class SerialService {
       case 0x11:
         text = 'Nastavení jednoho výstupu bylo nahráno.';
         break;
+      case 0xF9:
+        text = 'Na stimulátor přišel neznámý příkaz!';
+        break;
     }
 
     this.console.saveCommand({date: new Date(), text});
