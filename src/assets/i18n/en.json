@@ -269,7 +269,8 @@
   },
 
   "ABOUT": {
-    "TITLE": "About"
+    "TITLE": "About",
+    "TEXT": "This application is used to create neuroinformatic experiments. In addition, the application controls the stimulator on which each experiment runs. It also includes a simple viewer of experiment results."
   },
 
   "SHARE": {
