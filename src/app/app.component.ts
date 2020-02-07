@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
-
-import { TranslateService } from '@ngx-translate/core';
-import { NGXLogger } from 'ngx-logger';
-
+import { Component, OnInit } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeCZECH from '@angular/common/locales/cs';
 import localeENGLISH from '@angular/common/locales/en-GB';
+
+import { TranslateService } from '@ngx-translate/core';
+import { NGXLogger } from 'ngx-logger';
 
 import { NavigationService } from './navigation/navigation.service';
 import { SerialService } from './share/serial.service';
@@ -14,13 +13,17 @@ import { ConsoleService } from './settings/console/console.service';
 import { ConsoleLoggerMonitorService } from './console-logger-monitor.service';
 import { IpcService } from './share/ipc.service';
 import { SettingsService } from './settings/settings.service';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  private static readonly NO_FIRST_TIME_KEY = 'no-first-time';
 
   constructor(public readonly navigation: NavigationService,
               private readonly serial: SerialService,
@@ -29,6 +32,8 @@ export class AppComponent {
               private readonly console: ConsoleService,
               private readonly translate: TranslateService,
               private readonly settings: SettingsService,
+              private readonly storage: LocalStorageService,
+              private readonly router: Router,
               private readonly logger: NGXLogger) {
     logger.registerMonitor(new ConsoleLoggerMonitorService(console));
 
@@ -42,6 +47,13 @@ export class AppComponent {
       case 'en':
         registerLocaleData(localeENGLISH);
         break;
+    }
+  }
+
+  ngOnInit(): void {
+    if (!this.storage.get<string>(AppComponent.NO_FIRST_TIME_KEY)) {
+      this.storage.set(AppComponent.NO_FIRST_TIME_KEY, true);
+      this.router.navigate(['about']);
     }
   }
 }
