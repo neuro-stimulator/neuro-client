@@ -15,6 +15,7 @@ import { IpcService } from './share/ipc.service';
 import { SettingsService } from './settings/settings.service';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Router } from '@angular/router';
+import { IntroService } from './share/intro.service';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +35,7 @@ export class AppComponent implements OnInit {
               private readonly settings: SettingsService,
               private readonly storage: LocalStorageService,
               private readonly router: Router,
+              private readonly introService: IntroService,
               private readonly logger: NGXLogger) {
     logger.registerMonitor(new ConsoleLoggerMonitorService(console));
 
@@ -55,5 +57,11 @@ export class AppComponent implements OnInit {
       this.storage.set(AppComponent.NO_FIRST_TIME_KEY, true);
       this.router.navigate(['about']);
     }
+
+    this.navigation.navigationChange$
+        .subscribe(value => {
+          const introComponent = value['intro'] || undefined;
+          this.introService.showIntro(introComponent);
+        });
   }
 }

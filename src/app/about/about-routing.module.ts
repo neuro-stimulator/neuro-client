@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: AboutComponent,
-    data: {title: 'ABOUT.TITLE'}
+    data: {title: 'ABOUT.TITLE', intro: 'about-steps'}
   }
 ];
 

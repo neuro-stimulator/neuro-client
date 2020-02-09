@@ -6,31 +6,41 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 // Third party modules
 import { ToastrModule } from 'ngx-toastr';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { LangChangeEvent, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 
 // Application modules
 import { ModalModule } from './share/modal/modal.module';
+import { ShareModule } from './share/share.module';
 
 // Application components
 import { AppComponent } from './app.component';
 import { NavigationModule } from './navigation/navigation.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Aplikační proměnné
+import { environment } from '../environments/environment';
+import { INTRO_STEPS } from './share/intro.service';
+
 // Interceptory (modifikátory http komunikace)
 import { DEFAULT_TIMEOUT, RequestTimeoutInterceptor } from './share/interceptors/request-timeout-interceptor.service';
 import { ResponseInterceptor } from './share/interceptors/response-interceptor.service';
-import { ShareModule } from './share/share.module';
-import { LocalStorageModule } from 'angular-2-local-storage';
-import { environment } from '../environments/environment';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { map } from 'rxjs/operators';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http);
+}
+
+export function createIntroStepsLoader(http: HttpClient, service: TranslateService) {
+  return service.onLangChange
+                .pipe(map((event: LangChangeEvent) => {
+                  return http.get(`./assets/steps/${event.lang}.json`).toPromise();
+                }));
 }
 
 @NgModule({
@@ -75,6 +85,11 @@ export function createTranslateLoader(http: HttpClient) {
       provide: HTTP_INTERCEPTORS,
       useClass: ResponseInterceptor,
       multi: true
+    },
+    {
+      provide: INTRO_STEPS,
+      useFactory: createIntroStepsLoader,
+      deps: [HttpClient, TranslateService]
     }
   ],
   bootstrap: [AppComponent]

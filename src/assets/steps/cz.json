@@ -1,0 +1,14 @@
+{
+  "about-steps": [
+    {
+      "element": "#header-master-thesis",
+      "intro": "Typ práce",
+      "position": "right"
+    },
+    {
+      "element": "#header-author",
+      "intro": "Autor práce",
+      "position": "right"
+    }
+  ]
+}
