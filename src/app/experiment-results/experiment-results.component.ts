@@ -4,11 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
-import { ExperimentResult } from '@stechy1/diplomka-share';
+import { ExperimentResult, ExperimentType } from '@stechy1/diplomka-share';
 
 import { ExperimentResultsService } from './experiment-results.service';
 import { ModalComponent } from '../share/modal/modal.component';
 import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.component';
+import { IntroService } from '../share/intro.service';
 
 @Component({
   selector: 'app-experiment-results',
@@ -16,6 +17,16 @@ import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.co
   styleUrls: ['./experiment-results.component.sass']
 })
 export class ExperimentResultsComponent implements OnInit {
+
+  private static readonly INTRO_EXPERIMENT_RESULT: ExperimentResult = {
+    id: -1,
+    experimentID: -1,
+    name: 'Test',
+    type: ExperimentType.NONE,
+    date: new Date().getTime(),
+    outputCount: 1,
+    filename: ''
+  };
 
   @ViewChild('modal', {static: true}) modal: ModalComponent;
 
@@ -25,15 +36,29 @@ export class ExperimentResultsComponent implements OnInit {
   constructor(private readonly _service: ExperimentResultsService,
               private readonly _router: Router,
               private readonly _route: ActivatedRoute,
+              private readonly _intro: IntroService,
               private readonly logger: NGXLogger) {}
 
   ngOnInit() {
     this.ghosts = this._service.makeGhosts();
     this.experimentResults = this._service.records;
     this._service.all()
-        .then(() => {
+        .then((count: number) => {
           this.ghosts = [];
+          if (count === 0) {
+            this._showIntro();
+          }
         });
+  }
+
+  private _showIntro() {
+    if (!this._intro.wasIntroShown('experiment-results-steps')) {
+      this._service.setIntroRecord(ExperimentResultsComponent.INTRO_EXPERIMENT_RESULT);
+      this._intro.registerOnExitCallback(() => {
+        this._service.clearIntroRecord();
+      });
+      this._intro.showIntro('experiment-results-steps');
+    }
   }
 
   handleView(experimentResult: ExperimentResult) {

@@ -97,5 +97,47 @@
       "intro": "Tlačítko pro vytvoření nového experimentu.",
       "position": "left"
     }
+  ],
+  "experiment-results-steps": [
+    {
+      "element": ".experiment-result-list",
+      "intro": "Seznam všech dostupných výsledků experimentů.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-result-row",
+      "intro": "Záznam o jednom výsledku experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-icon",
+      "intro": "Obrázek s typem výsledku experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-result-name",
+      "intro": "Název výsledku experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-result-creation-date",
+      "intro": "Datum vytvoření výsledku experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-result-toolbar",
+      "intro": "Lišta s akčními tlačítky pro vybraný experiment.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-result-toolbar .view",
+      "intro": "Tlačítko pro zobrazení výsledku experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-result-toolbar .delete",
+      "intro": "Smaže vybraný výsledek experiment.",
+      "position": "bottom"
+    }
   ]
 }
