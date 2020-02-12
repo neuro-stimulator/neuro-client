@@ -5,18 +5,19 @@ import { HttpClient } from '@angular/common/http';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
+import { createTranslateLoader } from '../app.module';
+import { FabModule } from '../share/fab/fab.module';
+import { ShareModule } from '../share/share.module';
+import { ModalModule } from '../share/modal/modal.module';
+
 import { SettingsComponent } from './settings.component';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { ServiceStateComponent } from './service-state/service-state.component';
 import { ConsoleComponent } from './console/console.component';
 import { ParamConfigComponent } from './param-config/param-config.component';
 import { ParamConfigExperimentsComponent } from './param-config/param-config-experiments/param-config-experiments.component';
-import { FabModule } from '../share/fab/fab.module';
-import { ShareModule } from '../share/share.module';
 import { ParamConfigServerComponent } from './param-config/param-config-server/param-config-server.component';
-import { createTranslateLoader } from '../app.module';
-import { ParamConfigApplicationComponent } from './param-config/param-config-language/param-config-application.component';
-import { ModalModule } from '../share/modal/modal.module';
+import { ParamConfigApplicationComponent } from './param-config/param-config-application/param-config-application.component';
 
 
 
