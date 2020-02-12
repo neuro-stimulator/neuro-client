@@ -8,11 +8,11 @@
     pomocí <a routerLink="/settings">nastavení</a>.</p>
   </div>
 
-  <div class="col-12">
-    <button class="btn btn-primary" (click)="handleUploadExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-upload"></i> Nahrát</button>
-    <button class="btn btn-success" (click)="handleRunExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-play"></i> Spustit</button>
-    <button class="btn btn-warning" (click)="handleStopExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-stop"></i> Zastavit</button>
-    <button class="btn btn-danger" (click)="handleClearExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-eraser"></i> Vymazat</button>
+  <div class="col-12 control-panel-toolbar">
+    <button class="btn btn-primary upload" (click)="handleUploadExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-upload"></i> Nahrát</button>
+    <button class="btn btn-success run" (click)="handleRunExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-play"></i> Spustit</button>
+    <button class="btn btn-warning stop" (click)="handleStopExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-stop"></i> Zastavit</button>
+    <button class="btn btn-danger clear" (click)="handleClearExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-eraser"></i> Vymazat</button>
   </div>
 
   <div class="col-12">

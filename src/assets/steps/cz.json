@@ -181,5 +181,42 @@
       "intro": "Tlačítko pro vytvoření nové sekvence.",
       "position": "left"
     }
+  ],
+  "control-player-steps": [
+    {
+      "element": ".control-panel-toolbar",
+      "intro": "Lišta s akčními tlačítky pro ovládání experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".control-panel-toolbar .upload",
+      "intro": "Nahraje zvolenou konfiguraci experimentu do stimulátoru.",
+      "position": "bottom"
+    },
+    {
+      "element": ".control-panel-toolbar .run",
+      "intro": "Spustí experiment.",
+      "position": "bottom"
+    },
+    {
+      "element": ".control-panel-toolbar .stop",
+      "intro": "Zastaví experiment.",
+      "position": "bottom"
+    },
+    {
+      "element": ".control-panel-toolbar .clear",
+      "intro": "Vymaže konfiguraci experimentu ze stimulátoru.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-visualisation",
+      "intro": "Grafická reprezentace experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-offset-editor",
+      "intro": "Posuvník času průběhu experimentu.",
+      "position": "bottom"
+    }
   ]
 }

@@ -8,7 +8,7 @@ const routes: Routes = [
     path: ':type/:id',
     pathMatch: 'prefix',
     component: PlayerComponent,
-    data: {title: 'Přehrávač experimentu'}
+    data: {title: 'Přehrávač experimentu', intro: 'control-player-steps'}
   }
 ];
 
