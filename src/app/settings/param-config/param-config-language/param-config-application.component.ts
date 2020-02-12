@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-param-config-application',
   templateUrl: './param-config-application.component.html',
@@ -20,9 +22,6 @@ export class ParamConfigApplicationComponent implements OnInit {
   }
 
   get languages(): { value: string, name: string }[] {
-    return [
-      { value: 'cz', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.CZ'},
-      { value: 'en', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.EN'}
-    ];
+    return environment.supportedLanguages;
   }
 }

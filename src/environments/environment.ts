@@ -42,7 +42,11 @@ export const environment = {
   maxOutputCount: 8,
   patternSize: 32,
   settings: DEFAULT_SETTINGS,
-  introDelay: 500
+  introDelay: 500,
+  supportedLanguages: [
+    { value: 'cz', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.CZ'},
+    { value: 'en', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.EN'}
+  ]
 };
 
 export function makeURL(url: string, port: number) {
