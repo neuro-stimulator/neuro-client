@@ -235,6 +235,9 @@
           "CHANGE_LANGUAGE_INFORMATION": "It is necessary restart application for language change.",
           "CZ": "Čeština",
           "EN": "English"
+        },
+        "TUTORIAL": {
+          "DISABLE": "Disable tutorials"
         }
       },
       "EXPERIMENTS": {

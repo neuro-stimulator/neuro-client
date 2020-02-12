@@ -32,7 +32,7 @@ export class SettingsService {
   }
 
   private _loadSettings() {
-    this._settings = this._storage.get<Settings>(SettingsService.SETTINGS_STORAGE_KEY) || SettingsService.DEFAULT_SETTINGS;
+    this._settings = Object.assign(SettingsService.DEFAULT_SETTINGS, this._storage.get<Settings>(SettingsService.SETTINGS_STORAGE_KEY) || {});
     this._settingsChange.next(this._settings);
   }
 

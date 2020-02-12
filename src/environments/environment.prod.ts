@@ -3,7 +3,8 @@ import { Settings } from '../app/settings/settings';
 
 const DEFAULT_SETTINGS: Settings = {
   application: {
-    language: 'cz'
+    language: 'cz',
+    disableTutorial: false
   },
   experiments: {
     showDescription: true,

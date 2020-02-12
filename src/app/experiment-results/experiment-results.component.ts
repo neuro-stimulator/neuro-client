@@ -52,13 +52,11 @@ export class ExperimentResultsComponent implements OnInit {
   }
 
   private _showIntro() {
-    if (!this._intro.wasIntroShown('experiment-results-steps')) {
+    this._intro.showIntro('experiment-results-steps', () => {
       this._service.setIntroRecord(ExperimentResultsComponent.INTRO_EXPERIMENT_RESULT);
-      this._intro.registerOnExitCallback(() => {
-        this._service.clearIntroRecord();
-      });
-      this._intro.showIntro('experiment-results-steps');
-    }
+    }, () => {
+      this._service.clearIntroRecord();
+    });
   }
 
   handleView(experimentResult: ExperimentResult) {

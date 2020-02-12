@@ -235,6 +235,9 @@
           "CHANGE_LANGUAGE_INFORMATION": "Pro změnu jazyka je třeba restartovat celou aplikaci.",
           "CZ": "Čeština",
           "EN": "English"
+        },
+        "TUTORIAL": {
+          "DISABLE": "Zakázat tutoriály"
         }
       },
       "EXPERIMENTS": {

@@ -21,6 +21,10 @@ export class ParamConfigApplicationComponent implements OnInit {
     return this.form.get('language');
   }
 
+  get disableTutorial() {
+    return this.form.get('disableTutorial');
+  }
+
   get languages(): { value: string, name: string }[] {
     return environment.supportedLanguages;
   }

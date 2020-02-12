@@ -3,6 +3,7 @@ import { DateTimeFormat } from '../share/date-time-format';
 export interface Settings {
   application: {
     language: string;
+    disableTutorial: boolean;
   };
   experiments: {
     showDescription: boolean;

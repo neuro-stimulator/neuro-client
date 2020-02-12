@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 
 import { environment} from '../../environments/environment';
 import { TranslateService } from '@ngx-translate/core';
+import { SettingsService } from '../settings/settings.service';
 
 export const INTRO_STEPS = new InjectionToken<number>('defaultIntroSteps');
 
@@ -46,6 +47,7 @@ export class IntroService {
               private readonly _http: HttpClient,
               private readonly _storage: LocalStorageService,
               private readonly _translator: TranslateService,
+              private readonly _settings: SettingsService,
               private readonly logger: NGXLogger) {
     this._loadComponents();
     stepsByComponentsObservable.subscribe(stepsByComponentsPromise => {
@@ -53,7 +55,6 @@ export class IntroService {
         this.stepsByComponents = steps;
       }).catch(reason => {
         this.stepsByComponents = undefined;
-        this._callComponentCallback();
       });
     });
     this._initTranslation().finally();
@@ -81,16 +82,14 @@ export class IntroService {
     this._storage.set(IntroService.COMPONENT_INTRO_KEY, this.componentIntros);
   }
 
-  private _showIntroSteps(component: string) {
+  private _showIntroSteps(component: string, beforeShow: () => void = () => {}, afterExit: () => void = () => {}) {
     if (!this.stepsByComponents || !this.stepsByComponents[component]) {
       this.logger.error(`Nemůžu zobrazit tutorial pro komponentu: '${component}'!`);
-      this._callComponentCallback();
       return;
     }
 
     if (this.componentIntros[component]) {
       this.logger.trace(`Tutorial pro komponentu jsem již zobrazil, takže ho nebudu zobrazovat znovu.`);
-      this._callComponentCallback();
       return;
     }
 
@@ -106,33 +105,20 @@ export class IntroService {
       this._saveComponentIntro(component);
     });
     this.intro.onexit(() => {
-      this._callComponentCallback();
+      afterExit();
     });
-    this.intro.start();
-  }
-
-  private _callComponentCallback() {
-    if (this.componentCallback) {
-      this.componentCallback();
-      this.componentCallback = undefined;
-    }
-  }
-
-  public showIntro(component: string) {
-    if (!component) {
-      return;
-    }
-
+    beforeShow();
     setTimeout(() => {
-      this._showIntroSteps(component);
+      this.intro.start();
     }, environment.introDelay);
   }
 
-  public wasIntroShown(component: string): boolean {
-    return this.componentIntros[component];
+  public showIntro(component: string, beforeShow?: () => void, afterExit?: () => void) {
+    if (!component || this._settings.settings.application.disableTutorial) {
+      return;
+    }
+
+    this._showIntroSteps(component, beforeShow, afterExit);
   }
 
-  public registerOnExitCallback(callback: () => void) {
-    this.componentCallback = callback;
-  }
 }

@@ -6,7 +6,6 @@ import { ToastrService } from 'ngx-toastr';
 
 import { ModalComponent } from '../../share/modal/modal.component';
 import { SettingsService } from '../settings.service';
-import { ConfirmDialogComponent } from '../../share/modal/confirm/confirm-dialog.component';
 import { InformDialogComponent } from '../../share/modal/inform/inform-dialog.component';
 
 @Component({
@@ -21,6 +20,7 @@ export class ParamConfigComponent implements OnInit {
   form: FormGroup = new FormGroup({
     application: new FormGroup({
       language: new FormControl(null, [Validators.required]),
+      disableTutorial: new FormControl(null)
     }),
     experiments: new FormGroup({
       showDescription: new FormControl(null),

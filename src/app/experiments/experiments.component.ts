@@ -11,13 +11,12 @@ import { ModalComponent } from '../share/modal/modal.component';
 import { FabListEntry } from '../share/fab/fab-list-entry';
 import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.component';
 import { ExperimentsButtonsAddonService } from '../share/buttons-addons/experiments-buttons-addon/experiments-buttons-addon.service';
+import { IntroService } from '../share/intro.service';
 import { ExperimentsService } from './experiments.service';
 import { ExperimentsSortFilter } from './experiments-sort-filter.service';
 import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/experiment-filter-dialog.component';
 import { FilterParameters } from './experiments-filter-parameters';
 import { ExperimentGroup } from './experiments.share';
-import { IntroService } from '../share/intro.service';
-import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-experiments',
@@ -88,13 +87,11 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
   }
 
   private _showIntro() {
-    if (!this._intro.wasIntroShown('experiments-steps')) {
-      this._service.setIntroRecord(ExperimentsComponent.INTRO_EXPERIMENT);
-      this._intro.registerOnExitCallback(() => {
+    this._intro.showIntro('experiments-steps', () => {
+        this._service.setIntroRecord(ExperimentsComponent.INTRO_EXPERIMENT);
+    }, () => {
         this._service.clearIntroRecord();
-      });
-      this._intro.showIntro('experiments-steps');
-    }
+    });
   }
 
   private _handleFilterParametersChange(params: FilterParameters) {

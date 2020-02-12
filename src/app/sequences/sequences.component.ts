@@ -52,13 +52,11 @@ export class SequencesComponent implements OnInit {
   }
 
   private _showIntro() {
-    if (!this._intro.wasIntroShown('sequences-steps')) {
+    this._intro.showIntro('sequences-steps', () => {
       this._service.setIntroRecord(SequencesComponent.INTRO_SEQUENCE);
-      this._intro.registerOnExitCallback(() => {
-        this._service.clearIntroRecord();
-      });
-      this._intro.showIntro('sequences-steps');
-    }
+    }, () => {
+      this._service.clearIntroRecord();
+    });
   }
 
   handleView(sequence: Sequence) {
