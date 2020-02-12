@@ -27,7 +27,7 @@ export class IntroService {
   private static readonly COMPONENT_INTRO_KEY = 'intro';
 
   private readonly intro = introjs();
-  private components: ComponentIntro;
+  private componentIntros: ComponentIntro;
   private stepsByComponents: ComponentsSteps;
 
   constructor(@Inject(INTRO_STEPS) stepsByComponentsObservable: Observable<Promise<ComponentsSteps>>,
@@ -43,7 +43,12 @@ export class IntroService {
   }
 
   private loadComponents() {
-    this.components = this._storage.get<ComponentIntro>(IntroService.COMPONENT_INTRO_KEY) || {};
+    this.componentIntros = this._storage.get<ComponentIntro>(IntroService.COMPONENT_INTRO_KEY) || {};
+  }
+
+  private _saveComponentIntro(component: string) {
+    this.componentIntros[component] = true;
+    this._storage.set(IntroService.COMPONENT_INTRO_KEY, this.componentIntros);
   }
 
   private showIntroSteps(component: string) {
@@ -51,10 +56,17 @@ export class IntroService {
       this.logger.error(`Nemůžu zobrazit tutorial pro komponentu: '${component}'!`);
       return;
     }
+
+    if (this.componentIntros[component]) {
+      this.logger.trace(`Tutorial pro komponentu jsem již zobrazil, takže ho nebudu zobrazovat znovu.`);
+      return;
+    }
+
     this.logger.info(`Budu zobrazovat tutorial pro komponentu: '${component}'.`);
     this.intro.setOptions({
       steps: this.stepsByComponents[component]
     });
+    this.intro.oncomplete(() => this._saveComponentIntro(component));
     this.intro.start();
   }
 

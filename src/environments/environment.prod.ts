@@ -37,7 +37,8 @@ export const environment = {
   },
   maxOutputCount: 8,
   patternSize: 32,
-  settings: DEFAULT_SETTINGS
+  settings: DEFAULT_SETTINGS,
+  introDelay: 500
 };
 
 export function makeURL(url: string, port: number) {

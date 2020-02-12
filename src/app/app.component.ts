@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeCZECH from '@angular/common/locales/cs';
 import localeENGLISH from '@angular/common/locales/en-GB';
@@ -16,13 +16,14 @@ import { SettingsService } from './settings/settings.service';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Router } from '@angular/router';
 import { IntroService } from './share/intro.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
   private static readonly NO_FIRST_TIME_KEY = 'no-first-time';
 
@@ -57,11 +58,15 @@ export class AppComponent implements OnInit {
       this.storage.set(AppComponent.NO_FIRST_TIME_KEY, true);
       this.router.navigate(['about']);
     }
+  }
 
+  ngAfterViewInit(): void {
     this.navigation.navigationChange$
         .subscribe(value => {
           const introComponent = value['intro'] || undefined;
-          this.introService.showIntro(introComponent);
+          setTimeout(() => {
+            this.introService.showIntro(introComponent);
+          }, environment.introDelay);
         });
   }
 }
