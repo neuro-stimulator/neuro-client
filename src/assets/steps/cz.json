@@ -139,5 +139,47 @@
       "intro": "Smaže vybraný výsledek experiment.",
       "position": "bottom"
     }
+  ],
+  "sequences-steps": [
+    {
+      "element": ".sequence-list",
+      "intro": "Seznam všech dostupných sekvencí.",
+      "position": "bottom"
+    },
+    {
+      "element": ".sequence-row",
+      "intro": "Záznam o jedné sekvenci.",
+      "position": "bottom"
+    },
+    {
+      "element": ".sequence-name",
+      "intro": "Název sekvence.",
+      "position": "bottom"
+    },
+    {
+      "element": ".sequence-creation-date",
+      "intro": "Datum vytvoření sekvence.",
+      "position": "bottom"
+    },
+    {
+      "element": ".sequence-toolbar",
+      "intro": "Lišta s akčními tlačítky pro vybranou sekvenci.",
+      "position": "bottom"
+    },
+    {
+      "element": ".sequence-toolbar .edit",
+      "intro": "Tlačítko pro zobrazení editoru sekvence.",
+      "position": "bottom"
+    },
+    {
+      "element": ".sequence-toolbar .delete",
+      "intro": "Smaže vybranou sekvenci.",
+      "position": "bottom"
+    },
+    {
+      "element": ".sequence-new #fab-container",
+      "intro": "Tlačítko pro vytvoření nové sekvence.",
+      "position": "left"
+    }
   ]
 }

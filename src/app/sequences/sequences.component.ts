@@ -9,6 +9,7 @@ import { Sequence } from '@stechy1/diplomka-share';
 import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.component';
 import { ModalComponent } from '../share/modal/modal.component';
 import { SequenceService } from './sequence.service';
+import { IntroService } from '../share/intro.service';
 
 @Component({
   selector: 'app-sequences',
@@ -16,6 +17,16 @@ import { SequenceService } from './sequence.service';
   styleUrls: ['./sequences.component.sass']
 })
 export class SequencesComponent implements OnInit {
+
+  private static readonly INTRO_SEQUENCE: Sequence = {
+    id: -1,
+    experimentId: -1,
+    name: 'Test',
+    size: 50,
+    created: new Date().getTime(),
+    data: [],
+    tags: ['tag1', 'tag2']
+  };
 
   @ViewChild('modal', {static: true}) modal: ModalComponent;
 
@@ -25,15 +36,29 @@ export class SequencesComponent implements OnInit {
   constructor(private readonly _service: SequenceService,
               private readonly _router: Router,
               private readonly _route: ActivatedRoute,
+              private readonly _intro: IntroService,
               private readonly logger: NGXLogger) {}
 
   ngOnInit() {
     this.ghosts = this._service.makeGhosts();
     this.sequences = this._service.records;
     this._service.all()
-        .then(() => {
+        .then((count: number) => {
           this.ghosts = [];
+          if (count === 0) {
+            this._showIntro();
+          }
         });
+  }
+
+  private _showIntro() {
+    if (!this._intro.wasIntroShown('sequences-steps')) {
+      this._service.setIntroRecord(SequencesComponent.INTRO_SEQUENCE);
+      this._intro.registerOnExitCallback(() => {
+        this._service.clearIntroRecord();
+      });
+      this._intro.showIntro('sequences-steps');
+    }
   }
 
   handleView(sequence: Sequence) {
