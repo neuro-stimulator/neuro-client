@@ -7,7 +7,7 @@ import { delay } from 'rxjs/operators';
 import { Socket } from 'ngx-socket-io';
 import { NGXLogger } from 'ngx-logger';
 
-import { ResponseObject } from '@stechy1/diplomka-share';
+import { Experiment, ResponseObject } from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
@@ -60,9 +60,9 @@ export abstract class BaseService<T extends BaseRecord> {
   /**
    * Získá ze serveru všechny záznamy
    */
-  public all(): Promise<void> {
+  public all(): Promise<number> {
     if (this.records$.getValue().length !== 0) {
-      return Promise.resolve();
+      return Promise.resolve(this.records$.getValue().length);
     }
     return this._http.get<ResponseObject<T[]>>(this._accessPoint)
                .pipe(
@@ -77,9 +77,10 @@ export abstract class BaseService<T extends BaseRecord> {
                })
                .then(response => {
                  this.records$.next(response.data);
-                 return null;
+                 return response.data.length;
                })
                .catch(error => {
+                 return 0;
                });
   }
 
@@ -158,6 +159,14 @@ export abstract class BaseService<T extends BaseRecord> {
    */
   public makeGhosts(count: number = 5): Array<any> {
     return new Array(count);
+  }
+
+  setIntroRecord(record: T): void {
+    this.records$.next([record]);
+  }
+
+  clearIntroRecord(): void {
+    this.records$.next([]);
   }
 
   protected _initSocket(namespace: string): void {

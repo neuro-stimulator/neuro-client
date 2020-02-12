@@ -16,6 +16,8 @@ import { ExperimentsSortFilter } from './experiments-sort-filter.service';
 import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/experiment-filter-dialog.component';
 import { FilterParameters } from './experiments-filter-parameters';
 import { ExperimentGroup } from './experiments.share';
+import { IntroService } from '../share/intro.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-experiments',
@@ -23,6 +25,17 @@ import { ExperimentGroup } from './experiments.share';
   styleUrls: ['./experiments.component.sass']
 })
 export class ExperimentsComponent implements OnInit, OnDestroy {
+
+  private static readonly INTRO_EXPERIMENT: Experiment = {
+    id: -1,
+    type: ExperimentType.NONE,
+    name: 'Test',
+    description: 'Test description',
+    created: new Date().getTime(),
+    outputCount: 1,
+    usedOutputs: {led: true},
+    tags: ['tag1', 'tag2']
+  };
 
   @ViewChild('modal', {static: true}) modal: ModalComponent;
 
@@ -46,14 +59,18 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
               private readonly _router: Router,
               private readonly _route: ActivatedRoute,
               private readonly _location: Location,
+              private readonly _intro: IntroService,
               private readonly logger: NGXLogger) {}
 
   ngOnInit() {
     this._buttonsAddonService.addonVisible.next(false);
     this.ghosts = this._service.makeGhosts();
     this._service.all()
-        .then(() => {
+        .then((count: number) => {
           this.ghosts = [];
+          if (count === 0) {
+            this._showIntro();
+          }
         });
     this._filterRequestSubscription = this._buttonsAddonService.filterRequest.subscribe(() => this._showFilterDialog());
     this._searchBySubscription = this._buttonsAddonService.searchValue.subscribe(value => this._handleSearchBy(value));
@@ -68,6 +85,16 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
     this._searchBySubscription.unsubscribe();
     this._filterParametersChangeSubscription.unsubscribe();
     this._serviceRecordsSubscription.unsubscribe();
+  }
+
+  private _showIntro() {
+    if (!this._intro.wasIntroShown('experiments-steps')) {
+      this._service.setIntroRecord(ExperimentsComponent.INTRO_EXPERIMENT);
+      this._intro.registerOnExitCallback(() => {
+        this._service.clearIntroRecord();
+      });
+      this._intro.showIntro('experiments-steps');
+    }
   }
 
   private _handleFilterParametersChange(params: FilterParameters) {

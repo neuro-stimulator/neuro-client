@@ -1,5 +1,5 @@
 <ul class="nav navbar-nav buttons-addon" *ngIf="showButtons">
-  <li>
+  <li class="experiment-search">
     <div class="input-group search-input-group">
       <input class="form-control py-2 border-right-0 border"
              [class.hidden]="hideFinderBox"
@@ -14,7 +14,7 @@
       </span>
     </div>
   </li>
-  <li>
+  <li class="experiment-filter">
     <button class="btn" title="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FILTER_EXPERIMENT' | translate}}"
             (click)="handleShowFilter()"><i class="fas fa-filter"></i></button>
   </li>

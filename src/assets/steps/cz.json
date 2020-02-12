@@ -3,12 +3,99 @@
     {
       "element": "#header-master-thesis",
       "intro": "Typ práce",
-      "position": "right"
+      "position": "bottom"
     },
     {
       "element": "#header-author",
       "intro": "Autor práce",
-      "position": "right"
+      "position": "bottom"
+    }
+  ],
+  "experiments-steps": [
+    {
+      "element": ".experiment-list",
+      "intro": "Seznam všech dostupných experimentů.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-row",
+      "intro": "Záznam o jednom experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-icon",
+      "intro": "Obrázek s typem experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-name",
+      "intro": "Název experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-output",
+      "intro": "Použité výstupy v experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-creation-date",
+      "intro": "Datum vytvoření experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-output-count",
+      "intro": "Počet použitých výstupů v experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-description",
+      "intro": "Krátký popis experimentu",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-tags",
+      "intro": "Tagy experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-toolbar",
+      "intro": "Lišta s akčními tlačítky pro vybraný experiment.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-toolbar .run",
+      "intro": "Tlačítko pro zobrazení přehrávače experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-toolbar .edit",
+      "intro": "Tlačítko pro zobrazení editoru experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-toolbar .delete",
+      "intro": "Smaže vybraný experiment.",
+      "position": "bottom"
+    },
+    {
+      "element": ".button-addon-bar",
+      "intro": "Lišta s akčními tlačítky pro experimenty.",
+      "position": "bottom"
+    },
+    {
+      "element": ".button-addon-bar .experiment-search",
+      "intro": "Tlačítko pro vyhledání experimentu.",
+      "position": "bottom"
+    },
+    {
+      "element": ".button-addon-bar .experiment-filter",
+      "intro": "Tlačítko pro filtrování experimentů.",
+      "position": "bottom"
+    },
+    {
+      "element": ".experiment-new #fab-container",
+      "intro": "Tlačítko pro vytvoření nového experimentu.",
+      "position": "left"
     }
   ]
 }

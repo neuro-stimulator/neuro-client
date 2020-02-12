@@ -286,6 +286,12 @@
         "STIMULATOR_WAS_DISCONNECTED": "Stimulator has been disconnected."
       }
     },
+    "INTRO": {
+      "NEXT": "Next",
+      "PREV": "Prev",
+      "SKIP": "Skip",
+      "DONE": "Done"
+    },
 
     "DIALOGS": {
       "CONFIRMATION": {

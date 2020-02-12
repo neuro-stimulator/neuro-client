@@ -279,12 +279,18 @@
       "PLACEHOLDER_FILTER_EXPERIMENT": "Filtrovat experimenty"
     },
     "SERIAL": {
-      "STATUS_DISCONNECTED": "Odojeno",
+      "STATUS_DISCONNECTED": "Odpojeno",
       "STATUS_CONNECTED": "Připojeno",
       "MESSAGES": {
         "STIMULATOR_WAS_CONNECTED": "Stimulátor byl připojen.",
         "STIMULATOR_WAS_DISCONNECTED": "Stimulátor byl odpojen."
       }
+    },
+    "INTRO": {
+      "NEXT": "Další",
+      "PREV": "Předchozí",
+      "SKIP": "Přeskočit",
+      "DONE": "Dokončit"
     },
 
     "DIALOGS": {

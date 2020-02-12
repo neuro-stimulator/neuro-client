@@ -64,9 +64,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.navigation.navigationChange$
         .subscribe(value => {
           const introComponent = value['intro'] || undefined;
-          setTimeout(() => {
-            this.introService.showIntro(introComponent);
-          }, environment.introDelay);
+          this.introService.showIntro(introComponent);
         });
   }
 }

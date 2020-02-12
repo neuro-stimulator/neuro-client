@@ -12,7 +12,7 @@
             *ngFor="let experiment of group.experiments">
 
           <!-- Jeden řádek s experimentem -->
-          <div class="row expriment">
+          <div class="row expriment experiment-row">
             <!-- Značka typu experimentu (1. sloupeček) -->
             <div class="col-2 col-md-1 vertical-center">
               <div [ngClass]="['experiment-icon', ExperimentType[experiment.type].toLowerCase()]">
@@ -23,14 +23,14 @@
               <div class="row">
                 <div class="col-12">
                   <!-- Název experimentu s odkazem na editaci -->
-                  <a [routerLink]="[ExperimentType[experiment.type].toLowerCase(), experiment.id]"><strong>{{experiment.name}}</strong></a>
+                  <a [routerLink]="[ExperimentType[experiment.type].toLowerCase(), experiment.id]" class="experiment-name"><strong>{{experiment.name}}</strong></a>
                   <!-- Obrázková reprezentace použitých typů výstupů -->
                   <span class="experiment-output" *ngIf="settings.experiments.showOutputType">
                         <i class="fas fa-lightbulb" *ngIf="experiment.usedOutputs['led']" title="LED"></i>
                         <i class="fas fa-music" *ngIf="experiment.usedOutputs['audio']" title="Zvuk"></i>
                         <i class="fas fa-image" *ngIf="experiment.usedOutputs['image']" title="Obrázek"></i>
                   </span>
-                  <span *ngIf="settings.experiments.showCreationDate"> - <small>{{experiment.created | dateTime:settings.experiments.creationDateFormat}}</small></span>
+                  <span *ngIf="settings.experiments.showCreationDate" class="experiment-creation-date"> - <small>{{experiment.created | dateTime:settings.experiments.creationDateFormat}}</small></span>
                   <span *ngIf="settings.experiments.showOutputCount" class="experiment-output-count float-right" title="Počet použitých výstupů"><i class="fas fa-hashtag"></i> {{experiment.outputCount}}</span>
                 </div>
               </div>
@@ -40,7 +40,7 @@
                 <small class="text-truncate experiment-description">{{experiment.description || 'Žádný popis není k dispozici...'}}</small>
                 </div>
               </div>
-              <div class="row" *ngIf="settings.experiments.showTags">
+              <div class="row experiment-tags" *ngIf="settings.experiments.showTags">
                 <div class="col-12">
                 <span class="badge" *ngFor="let tag of experiment.tags">{{tag}}</span>
                 </div>
@@ -48,9 +48,9 @@
             </div>
             <!-- Toolbar s akčními tlačítky -->
             <div class="col-3 experiment-toolbar">
-              <i class="fas fa-play text-success" [title]="'EXPERIMENTS.BUTTON_BAR.PLAY_EXPERIMENT' | translate" (click)="run.next(experiment)"></i>
-              <i class="fas fa-edit text-primary" [title]="'EXPERIMENTS.BUTTON_BAR.SHOW_EXPERIMENT' | translate" (click)="edit.next(experiment)"></i>
-              <i class="fas fa-trash text-danger" [title]="'EXPERIMENTS.BUTTON_BAR.DELETE_EXPERIMENT' | translate" (click)="delete.next(experiment)"></i>
+              <i class="fas fa-play text-success run" [title]="'EXPERIMENTS.BUTTON_BAR.PLAY_EXPERIMENT' | translate" (click)="run.next(experiment)"></i>
+              <i class="fas fa-edit text-primary edit" [title]="'EXPERIMENTS.BUTTON_BAR.SHOW_EXPERIMENT' | translate" (click)="edit.next(experiment)"></i>
+              <i class="fas fa-trash text-danger delete" [title]="'EXPERIMENTS.BUTTON_BAR.DELETE_EXPERIMENT' | translate" (click)="delete.next(experiment)"></i>
             </div>
           </div>
 
