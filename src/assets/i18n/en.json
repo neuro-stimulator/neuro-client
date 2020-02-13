@@ -237,7 +237,12 @@
           "EN": "English"
         },
         "TUTORIAL": {
-          "DISABLE": "Disable tutorials"
+          "DISABLE": "Disable tutorials",
+          "DIALOGS": {
+            "DELETE": {
+              "QUESTION": "Are you sure about reseting information of viewed tutorials?"
+            }
+          }
         }
       },
       "EXPERIMENTS": {

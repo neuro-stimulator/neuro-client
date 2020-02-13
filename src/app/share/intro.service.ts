@@ -6,9 +6,9 @@ import { Step } from 'intro.js';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { NGXLogger } from 'ngx-logger';
 import { Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 import { environment} from '../../environments/environment';
-import { TranslateService } from '@ngx-translate/core';
 import { SettingsService } from '../settings/settings.service';
 
 export const INTRO_STEPS = new InjectionToken<number>('defaultIntroSteps');
@@ -40,8 +40,6 @@ export class IntroService {
   private stepsByComponents: ComponentsSteps;
 
   private translation: IntroTranslation;
-
-  private componentCallback: () => void;
 
   constructor(@Inject(INTRO_STEPS) stepsByComponentsObservable: Observable<Promise<ComponentsSteps>>,
               private readonly _http: HttpClient,
@@ -121,4 +119,8 @@ export class IntroService {
     this._showIntroSteps(component, beforeShow, afterExit);
   }
 
+  public resetTutorials() {
+    this.componentIntros = {};
+    this._storage.remove(IntroService.COMPONENT_INTRO_KEY);
+  }
 }

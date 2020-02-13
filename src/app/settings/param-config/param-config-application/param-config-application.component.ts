@@ -1,7 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
+import { NGXLogger } from 'ngx-logger';
+
 import { environment } from '../../../../environments/environment';
+import { ModalComponent } from '../../../share/modal/modal.component';
+import { ConfirmDialogComponent } from '../../../share/modal/confirm/confirm-dialog.component';
+import { IntroService } from '../../../share/intro.service';
 
 @Component({
   selector: 'app-param-config-application',
@@ -10,9 +15,12 @@ import { environment } from '../../../../environments/environment';
 })
 export class ParamConfigApplicationComponent implements OnInit {
 
+  @ViewChild('modal', {static: true}) modal: ModalComponent;
+
   @Input() form: FormGroup;
 
-  constructor() { }
+  constructor(private readonly logger: NGXLogger,
+              private readonly _intro: IntroService) { }
 
   ngOnInit() {
   }
@@ -27,5 +35,17 @@ export class ParamConfigApplicationComponent implements OnInit {
 
   get languages(): { value: string, name: string }[] {
     return environment.supportedLanguages;
+  }
+
+  handleResetTutorial() {
+    const self = this;
+    this.modal.showComponent = ConfirmDialogComponent;
+    this.modal.open({
+      message: 'SETTINGS.PARAM_CONFIG.APPLICATION.TUTORIAL.DIALOGS.DELETE.QUESTION',
+      confirm: () => {
+        self.logger.info(`Budu resetovat informace o zobrazených tutoriálech.`);
+        self._intro.resetTutorials();
+      }
+    });
   }
 }

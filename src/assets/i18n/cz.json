@@ -237,7 +237,12 @@
           "EN": "English"
         },
         "TUTORIAL": {
-          "DISABLE": "Zakázat tutoriály"
+          "DISABLE": "Zakázat tutoriály",
+          "DIALOGS": {
+            "DELETE": {
+              "QUESTION": "Opravdu si přejete vymazat informaci o již zobrazených tutoriálech?"
+            }
+          }
         }
       },
       "EXPERIMENTS": {
