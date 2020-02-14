@@ -28,9 +28,10 @@
     },
 
     "EXPERIMENT": {
+      "BASE_INFORMATIONS": "Base informations",
       "ID": "Experiment ID",
       "NAME": "Experiment name",
-      "DESCRIPTION":"Popis experimentu",
+      "DESCRIPTION":"Experiment description",
       "TYPE": "Experiment type",
       "CREATED":"The date the experiment was created",
       "USED_OUTPUTS": "Used outputs",
@@ -299,6 +300,12 @@
       "PREV": "Prev",
       "SKIP": "Skip",
       "DONE": "Done"
+    },
+    "TAGS": {
+      "TITLE": "Tags",
+      "DELETE": "Remove",
+      "NEW": "New...",
+      "TAG_ALREADY_EXISTS": "Tag already exists!"
     },
 
     "DIALOGS": {

@@ -28,6 +28,7 @@
     },
 
     "EXPERIMENT": {
+      "BASE_INFORMATIONS": "Základní údaje",
       "ID": "ID experimentu",
       "NAME": "Název experimentu",
       "DESCRIPTION":"Popis experimentu",
@@ -36,7 +37,6 @@
       "USED_OUTPUTS": "Použité výstupy",
       "OUTPUT_COUNT":"Počet výstupů",
       "OUTPUT_PARAMETERS": "Parametry výstupu",
-      "TAGS": "Tagy",
       "ERP": {
         "TITLE_PARAMS": "ERP parametry",
         "MAX_DISTRIBUTION": "Max. distribuční hodnota",
@@ -299,6 +299,12 @@
       "PREV": "Předchozí",
       "SKIP": "Přeskočit",
       "DONE": "Dokončit"
+    },
+    "TAGS": {
+      "TITLE": "Tagy",
+      "DELETE": "Odstranit",
+      "NEW": "Nový...",
+      "TAG_ALREADY_EXISTS": "Tag již existuje!"
     },
 
     "DIALOGS": {
