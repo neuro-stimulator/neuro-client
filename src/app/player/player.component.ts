@@ -9,6 +9,7 @@ import { IOEvent, SerialDataEvent, StimulatorStateEvent } from '../share/serial-
 import { CommandsService } from '../share/commands.service';
 import { SerialService } from '../share/serial.service';
 import { ExperimentsService } from '../experiments/experiments.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
               private readonly _router: Router,
               private readonly _route: ActivatedRoute,
               private readonly logger: NGXLogger,
+              private readonly translator: TranslateService,
               private readonly toaster: ToastrService) {
   }
 
@@ -46,31 +48,14 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   private _handleStimulatorStateEvent(event: StimulatorStateEvent) {
-    switch (event.state) {
-      case 0x00:
-        this.toaster.success('Stimulátor je připraven k použití.');
-        break;
-      // Experiment byl spuštěn
-      case 0x01:
-        this.toaster.success('Experiment byl nahrán.');
-        break;
-      // Experiment byl inicializován
-      case 0x02:
-        this.toaster.success('Experiment byl nastaven.');
-        break;
-      // Experiment byl nastaven
-      case 0x03:
-        this.toaster.success('Experiment byl spuštěn.');
-        break;
-      // Experiment byl ukončen
-      case 0x04:
-        this.toaster.success('Experiment byl ukončen.');
-        this._router.navigate(['/results']);
-        break;
-      // Experiment byl vymazán
-      case 0x05:
-        this.toaster.success('Experiment byl vymazán.');
-        break;
+    const key = SerialService.getStimulatorStateTranslateValue(event.state);
+    this.translator.get(key)
+        .toPromise()
+        .then((text: string) => {
+          this.toaster.success(text);
+        });
+    if (event.state === 0x04) {
+      this._router.navigate(['/results']);
     }
   }
 

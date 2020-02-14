@@ -11,6 +11,7 @@ import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service'
 import { NavigationService } from '../navigation/navigation.service';
 import { ConsoleService } from '../settings/console/console.service';
 import { SerialDataEvent, StimulatorStateEvent } from './serial-data.event';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,17 @@ export class SerialService {
    * Konstanta reprezentující výchozí URL adresu pro požadavky týkající se seriové linky
    */
   private static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/low-level`;
+
+  private static readonly STATE_COMMAND_MAP = {
+    0x00: 'CODE_SUCCESS_COMMANDS_STIMULATOR_READY',
+    0x01: 'CODE_SUCCESS_COMMANDS_EXPERIMENT_UPLOAD',
+    0x02: 'CODE_SUCCESS_COMMANDS_EXPERIMENT_SETUP',
+    0x03: 'CODE_SUCCESS_COMMANDS_EXPERIMENT_START',
+    0x04: 'CODE_SUCCESS_COMMANDS_EXPERIMENT_STOP',
+    0x05: 'CODE_SUCCESS_COMMANDS_EXPERIMENT_CLEAR',
+    0x11: 'CODE_SUCCESS_COMMANDS_EXPERIMENT_OUTPUT_UPLOAD',
+    0x20: 'CODE_SUCCESS_COMMANDS_SEQUENCE_PART_UPLOAD',
+  };
 
   /**
    * Emitter pro přijatá data
@@ -36,9 +48,14 @@ export class SerialService {
 
   private _isSerialConnected: boolean;
 
+  public static getStimulatorStateTranslateValue(state: number) {
+    return `SERVER_MESSAGE_CODES.${SerialService.STATE_COMMAND_MAP[state]}` || 'CODE_ERROR_COMMANDS_UNKNOWN';
+  }
+
   constructor(aliveChecker: AliveCheckerService,
               private readonly navigation: NavigationService,
               private readonly console: ConsoleService,
+              private readonly translator: TranslateService,
               private readonly _http: HttpClient) {
     this._isSerialConnected = false;
     this._updateNavigationSubtitle(false);
@@ -75,40 +92,13 @@ export class SerialService {
     });
   }
 
-  // TODO odstranit duplikovaný kód
   private _handleStimulatorStateEvent(event: StimulatorStateEvent) {
-    let text = '';
-    switch (event.state) {
-      case 0x00:
-        text = 'Stimulátor je připraven k použití.';
-        break;
-      case 0x01:
-        text = 'Experiment byl nahrán.';
-        break;
-      case 0x02:
-        text = 'Experiment byl nastaven.';
-        break;
-      case 0x03:
-        text = 'Experiment byl spuštěn.';
-        break;
-      case 0x04:
-        text = 'Experiment byl ukončen.';
-        break;
-      case 0x05:
-        text = 'Experiment byl vymazán.';
-        break;
-      case 0x11:
-        text = 'Nastavení jednoho výstupu bylo nahráno.';
-        break;
-      case 0x20:
-        text = 'Část sekvence byla nahrána.';
-        break;
-      case 0xF9:
-        text = 'Na stimulátor přišel neznámý příkaz!';
-        break;
-    }
-
-    this.console.saveCommand({date: new Date(), text});
+    const key = SerialService.getStimulatorStateTranslateValue(event.state);
+    this.translator.get(key)
+        .toPromise()
+        .then((text: string) => {
+          this.console.saveCommand({date: new Date(), text});
+        });
   }
 
   private _updateNavigationSubtitle(saveCommand: boolean = true) {

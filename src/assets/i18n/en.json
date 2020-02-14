@@ -340,14 +340,22 @@
     "CODE_SUCCESS_LOW_LEVEL_PORT_NOT_OPPENED": "COM port {{path}} was not able to open!",
     "CODE_ERROR_LOW_LEVEL_FIRMWARE_NOT_UPDATED":  "Firmware was not able to update!",
     "CODE_ERROR_SETTINGS_UPDATED": "Settings was successfully saved.",
+    "CODE_SUCCESS_COMMANDS_EXPERIMENT_UPLOAD": "Experiment was uploaded.",
     "CODE_ERROR_COMMANDS_EXPERIMENT_UPLOAD": "Experiment uploading failed with unexpected reason!",
     "CODE_ERROR_COMMANDS_EXPERIMENT_UPLOAD_NOT_INITIALIZED":  "Settings was not able to save.",
+    "CODE_SUCCESS_COMMANDS_EXPERIMENT_SETUP": "Experiment was initialized.",
     "CODE_ERROR_COMMANDS_EXPERIMENT_SETUP": "Experiment initialization failed with unexpected reason!",
     "CODE_ERROR_COMMANDS_EXPERIMENT_SETUP_NOT_UPLOADED": "Experiment with id: {{id}} could not be uploaded, because another experiment already exists in stimulator memory!",
+    "CODE_SUCCESS_COMMANDS_EXPERIMENT_START": "Experiment was started.",
     "CODE_ERROR_COMMANDS_EXPERIMENT_START": "Experiment start failed with unexpected reason!",
     "CODE_ERROR_COMMANDS_EXPERIMENT_START_NOT_INITIALIZED": "Experiment with id: {{id}} could not be started, because anoter experiment is active or has not been initialized!",
+    "CODE_SUCCESS_COMMANDS_EXPERIMENT_STOP": "Experiment was stopped.",
     "CODE_ERROR_COMMANDS_EXPERIMENT_STOP": "Experiment stop failed with unexpected reason!",
     "CODE_ERROR_COMMANDS_EXPERIMENT_STOP_NOT_RUNNING": "Experiment with id: {{id}} could not be stopped, because has not been started!",
-    "CODE_ERROR_COMMANDS_EXPERIMENT_CLEAR": "There is nothing to clear!"
+    "CODE_SUCCESS_COMMANDS_EXPERIMENT_CLEAR": "Experiment was erased.",
+    "CODE_ERROR_COMMANDS_EXPERIMENT_CLEAR": "There is nothing to clear!",
+    "CODE_SUCCESS_COMMANDS_EXPERIMENT_OUTPUT_UPLOAD": "Settings of one output was uploaded.",
+    "CODE_SUCCESS_COMMANDS_SEQUENCE_PART_UPLOAD": "Sequence part was uploaded.",
+    "CODE_ERROR_COMMANDS_UNKNOWN": "An unknown command occured!"
   }
 }

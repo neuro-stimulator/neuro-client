@@ -341,14 +341,23 @@
     "CODE_ERROR_LOW_LEVEL_FIRMWARE_NOT_UPDATED":  "Firmware se nepodařilo aktualizovat!",
     "CODE_SUCCESS_SETTINGS_UPDATED": "Nastavení bylo úspěšně uloženo.",
     "CODE_ERROR_SETTINGS_NOT_UPDATED":  "Nastavení se nepodařilo uložit!",
+    "CODE_SUCCESS_COMMANDS_STIMULATOR_READY": "Stimulátor je připraven k použití.",
+    "CODE_SUCCESS_COMMANDS_EXPERIMENT_UPLOAD": "Experiment byl nahrán.",
     "CODE_ERROR_COMMANDS_EXPERIMENT_UPLOAD": "Nastala chyba při nahrávání experimentu!",
     "CODE_ERROR_COMMANDS_EXPERIMENT_UPLOAD_NOT_INITIALIZED": "Experiment s id: {{id}} nemůže být nahrán, protože v paměti je již jiný experiment!",
+    "CODE_SUCCESS_COMMANDS_EXPERIMENT_SETUP": "Experiment byl nastaven.",
     "CODE_ERROR_COMMANDS_EXPERIMENT_SETUP": "Nastala chyba při inicializaci experimentu!",
     "CODE_ERROR_COMMANDS_EXPERIMENT_SETUP_NOT_UPLOADED": "Experiment nemůže být inicializován, protože nebyl nahrán do paměti!",
+    "CODE_SUCCESS_COMMANDS_EXPERIMENT_START": "Experiment byl spuštěn.",
     "CODE_ERROR_COMMANDS_EXPERIMENT_START": "Nastala chyba při spouštění experimentu!",
     "CODE_ERROR_COMMANDS_EXPERIMENT_START_NOT_INITIALIZED": "Experiment s id: {{id}} nemůže být spuštěn, protože je aktivní jiný experiment, nebo nebyl inicializován!",
+    "CODE_SUCCESS_COMMANDS_EXPERIMENT_STOP": "Experiment byl ukončen.",
     "CODE_ERROR_COMMANDS_EXPERIMENT_STOP": "Nastala chyba při zastavování experimentu!",
     "CODE_ERROR_COMMANDS_EXPERIMENT_STOP_NOT_RUNNING": "Experiment s id: {{id}} nemůže být zastaven, protože nebyl spuštěn!",
-    "CODE_ERROR_COMMANDS_EXPERIMENT_CLEAR": "Není co mazat"
+    "CODE_SUCCESS_COMMANDS_EXPERIMENT_CLEAR": "Experiment byl vymazán.",
+    "CODE_ERROR_COMMANDS_EXPERIMENT_CLEAR": "Není co mazat!",
+    "CODE_SUCCESS_COMMANDS_EXPERIMENT_OUTPUT_UPLOAD": "Nastavení jednoho výstupu bylo nahráno.",
+    "CODE_SUCCESS_COMMANDS_SEQUENCE_PART_UPLOAD": "Část sekvence byla nahrána.",
+    "CODE_ERROR_COMMANDS_UNKNOWN": "Na stimulátor přišel neznámý příkaz!"
   }
 }
