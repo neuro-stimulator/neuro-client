@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 // Third party modules
 import { ToastrModule } from 'ngx-toastr';
@@ -51,6 +52,7 @@ export function createIntroStepsLoader(http: HttpClient, service: TranslateServi
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: true }),
 
     NavigationModule,
     ShareModule,
