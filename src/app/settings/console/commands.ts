@@ -178,9 +178,33 @@ export class ExperimentClearCommand implements ClientCommand<void> {
   }
 }
 
+export class SequencePartCommand implements ClientCommand<{offset: number, index: number}> {
+  description = `Nahraje vybranou část sekvence do stimulátoru.`;
+
+  public getName(): string {
+    return 'sequence-part';
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length === 0) {
+      return [false, `Nedostatečný počet parametrů: 'sequence part offset:number index:number'`];
+    }
+
+    if (params.length > 2) {
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): {offset: number, index: number} {
+    return {offset: +params[0], index: +params[1]};
+  }
+}
+
 export class MemoryCommand implements ClientCommand<number> {
 
-  private static readonly MEMORY_TYPE: string[] = ['config', 'accumulator', 'counters'];
+  private static readonly MEMORY_TYPE: string[] = ['config', 'counters', 'accumulator'];
 
   description = `Vypíše zadaný kus paměti ze stimulátoru v raw podobě do konzole.`;
 
@@ -190,7 +214,7 @@ export class MemoryCommand implements ClientCommand<number> {
 
   public isValid(params: string[]): [boolean, string?] {
     if (params.length === 0) {
-      return [false, `Nedostatečný počet parametrů: 'debug [config, accumulator, counters].'`];
+      return [false, `Nedostatečný počet parametrů: 'debug [config, counters, accumulator].'`];
     }
     if (params.length > 1) {
       return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'.`];
@@ -198,7 +222,7 @@ export class MemoryCommand implements ClientCommand<number> {
 
     const memoryType = params[0];
     if (MemoryCommand.MEMORY_TYPE.indexOf(memoryType) === -1) {
-      return [false, `Zadali jste nevalidní typ paměti. \nLze zadat pouze: [config, accumulator, counters].`];
+      return [false, `Zadali jste nevalidní typ paměti. \nLze zadat pouze: [config, counters, accumulator].`];
     }
 
     return [true];

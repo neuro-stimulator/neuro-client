@@ -8,7 +8,7 @@ import {
   ExperimentStartCommand,
   ExperimentStopCommand,
   ExperimentSetupCommand,
-  OutputSetCommand, MemoryCommand,
+  OutputSetCommand, MemoryCommand, SequencePartCommand,
 } from './commands';
 
 @Injectable({
@@ -26,6 +26,7 @@ export class CommandService {
     new ExperimentUploadCommand(),
     new ExperimentSetupCommand(),
     new ExperimentClearCommand(),
+    new SequencePartCommand(),
   //  Backdoor příkazy
     new OutputSetCommand(),
     new MemoryCommand()
