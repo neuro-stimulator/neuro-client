@@ -1,3 +1,5 @@
+import { CommandClientToServer } from '@stechy1/diplomka-share';
+
 export interface ClientCommand<T> {
   isValid: (params: string[]) => [boolean, string?];
   getName: () => string;
@@ -28,7 +30,7 @@ export class DisplayClearCommand implements ClientCommand<void> {
   description = 'Vymaže obsah displaye';
 
   public getName(): string {
-    return 'display-clear';
+    return CommandClientToServer.COMMAND_DISPLAY_CLEAR;
   }
 
   public isValid(params: string[]): [boolean, string?] {
@@ -44,7 +46,7 @@ export class DisplayTextCommand implements ClientCommand<{ x: number, y: number,
   description = `Nastaví text:  ${this.getName()} x: number, y: number, text: string`;
 
   public getName(): string {
-    return 'display-text';
+    return CommandClientToServer.COMMAND_DISPLAY_TEXT;
   }
 
   public isValid(params: string[]): [boolean, string?] {
@@ -74,7 +76,7 @@ export class ExperimentUploadCommand implements ClientCommand<number> {
   description = `Nahraje experiment do stimulátoru: ${this.getName()} id: number`;
 
   public getName(): string {
-    return 'experiment-upload';
+    return CommandClientToServer.COMMAND_EXPERIMENT_UPLOAD;
   }
 
   public isValid(params: string[]): [boolean, string?] {
@@ -98,7 +100,7 @@ export class ExperimentSetupCommand implements ClientCommand<number> {
   description = `Inicializuje experiment ve stimulátoru: ${this.getName()} id: number`;
 
   public getName(): string {
-    return 'experiment-setup';
+    return CommandClientToServer.COMMAND_EXPERIMENT_SETUP;
   }
 
   public isValid(params: string[]): [boolean, string?] {
@@ -122,7 +124,7 @@ export class ExperimentStartCommand implements ClientCommand<void> {
   description = `Spustí experiment: ${this.getName()} id: number`;
 
   public getName(): string {
-    return 'experiment-start';
+    return CommandClientToServer.COMMAND_EXPERIMENT_START;
   }
 
   public isValid(params: string[]): [boolean, string?] {
@@ -142,7 +144,7 @@ export class ExperimentStopCommand implements ClientCommand<void> {
   description = `Zastaví experiment: ${this.getName()} id: number`;
 
   public getName(): string {
-    return 'experiment-stop';
+    return CommandClientToServer.COMMAND_EXPERIMENT_STOP;
   }
 
   public isValid(params: string[]): [boolean, string?] {
@@ -162,7 +164,7 @@ export class ExperimentClearCommand implements ClientCommand<void> {
   description = `Vymaže experiment ze stimulátoru: ${this.getName()} id: number`;
 
   public getName(): string {
-    return 'experiment-clear';
+    return CommandClientToServer.COMMAND_EXPERIMENT_CLEAR;
   }
 
   public isValid(params: string[]): [boolean, string?] {
@@ -182,7 +184,7 @@ export class SequencePartCommand implements ClientCommand<{offset: number, index
   description = `Nahraje vybranou část sekvence do stimulátoru.`;
 
   public getName(): string {
-    return 'sequence-part';
+    return CommandClientToServer.COMMAND_SEQUENCE_PART;
   }
 
   public isValid(params: string[]): [boolean, string?] {
@@ -209,7 +211,7 @@ export class MemoryCommand implements ClientCommand<number> {
   description = `Vypíše zadaný kus paměti ze stimulátoru v raw podobě do konzole.`;
 
   public getName(): string {
-    return 'memory';
+    return CommandClientToServer.COMMAND_MEMORY;
   }
 
   public isValid(params: string[]): [boolean, string?] {
@@ -240,7 +242,7 @@ export class OutputSetCommand implements ClientCommand<{index: number, brightnes
   description = `Nastaví jeden konkrétní výstup na zadanou hodnotu: ${this.getName()} index: number, brightness: number`;
 
   public getName(): string {
-    return 'output-set';
+    return CommandClientToServer.COMMAND_OUTPUT_SET;
   }
 
   public isValid(params: string[]): [boolean, string?] {
