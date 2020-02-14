@@ -8,17 +8,17 @@ const routes: Routes = [
   {
     path: '',
     component: SequencesComponent,
-    data: {title: 'Sekvence'}
+    data: {title: 'SEQUENCES.TITLE'}
   },
   {
     path: 'new',
     component: SequenceComponent,
-    data: {title: 'Nová sekvence'}
+    data: {title: 'SEQUENCES.TITLE_NEW'}
   },
   {
     path: ':id',
     component: SequenceComponent,
-    data: {title: 'Sekvence'}
+    data: {title: 'SEQUENCES.TITLE_CONFIGURE'}
   }
 ];
 
