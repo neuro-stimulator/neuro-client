@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { environment, makeURL } from '../environments/environment';
 import { NavigationService } from './navigation/navigation.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,7 @@ export class AliveCheckerService {
   private _isConnected = false;
 
   constructor(private readonly navigation: NavigationService,
+              private readonly translator: TranslateService,
               private readonly toastr: ToastrService) {
     this._socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.socket)}`});
     this._socket.on('connect', () => this._socketConnected());
@@ -53,11 +55,12 @@ export class AliveCheckerService {
    * Funkce se zavolá ve chvíli, kdy je vytvořeno stále spojení se serverem.
    */
   protected _socketConnected() {
-    if (this._firstTime) {
-      this.toastr.success('Spojení se serverem bylo vytvořeno.');
-    } else {
-      this.toastr.success('Spojení se serverem bylo obnoveno.');
-    }
+    const status = `SERVER_MESSAGE_CODES.${this._firstTime ? 'CODE_SUCCESS_LOW_LEVEL_CONNECTION_CREATED' : 'CODE_SUCCESS_LOW_LEVEL_CONNECTION_RESTORED'}`;
+    this.translator.get(status)
+        .toPromise()
+        .then((text: string) => {
+          this.toastr.success(text);
+        });
     this._connected.next(ConnectionStatus.CONNECTED);
     this._isConnected = true;
   }
@@ -69,7 +72,11 @@ export class AliveCheckerService {
    */
   protected _socketDisconnected(reason) {
     this._firstTime = false;
-    this.toastr.error('Spojení se serverem bylo ztraceno.');
+    this.translator.get('SERVER_MESSAGE_CODES.CODE_ERROR_LOW_LEVEL_CONNECTION_LOST')
+        .toPromise()
+        .then((text: string) => {
+          this.toastr.error(text);
+        });
     this._connected.next(ConnectionStatus.DISCONNECTED);
     this._isConnected = false;
     if (reason === 'io server disconnect') {
