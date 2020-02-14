@@ -319,6 +319,11 @@
       "NEW": "Nový...",
       "TAG_ALREADY_EXISTS": "Tag již existuje!"
     },
+    "SEQUENCE_VIEWER": {
+      "NO_DATA": "Sekvence neobsahuje žádná data!",
+      "UPDATE": "Upravit",
+      "CANCEL_UPDATE": "Zrušit úpravy"
+    },
 
     "DIALOGS": {
       "CONFIRMATION": {

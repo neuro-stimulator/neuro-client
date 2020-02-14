@@ -187,7 +187,7 @@
     "TITLE_NEW": "New sequence",
     "TITLE_CONFIGURE": "Sequence edit",
     "NOT_FOUND": "No sequences have been found...",
-    "BASE_INFORMATIONS": "Základní údaje",
+    "BASE_INFORMATIONS": "Base informations",
 
     "BUTTON_BAR": {
       "SHOW_SEQUENCE": "Edit",
@@ -319,6 +319,11 @@
       "DELETE": "Remove",
       "NEW": "New...",
       "TAG_ALREADY_EXISTS": "Tag already exists!"
+    },
+    "SEQUENCE_VIEWER": {
+      "NO_DATA": "Sequence does not have any data!",
+      "UPDATE": "Update",
+      "CANCEL_UPDATE": "Cancel update"
     },
 
     "DIALOGS": {
