@@ -187,6 +187,7 @@
     "TITLE_NEW": "New sequence",
     "TITLE_CONFIGURE": "Sequence edit",
     "NOT_FOUND": "No sequences have been found...",
+    "BASE_INFORMATIONS": "Základní údaje",
 
     "BUTTON_BAR": {
       "SHOW_SEQUENCE": "Edit",

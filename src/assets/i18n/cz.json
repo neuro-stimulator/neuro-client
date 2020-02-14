@@ -186,6 +186,7 @@
     "TITLE_NEW": "Nová sekvence",
     "TITLE_CONFIGURE": "Úprava sekvence",
     "NOT_FOUND": "Nebyly nalezeny žádné sequence...",
+    "BASE_INFORMATIONS": "Základní údaje",
 
     "BUTTON_BAR": {
       "SHOW_SEQUENCE": "Zobrazit",
