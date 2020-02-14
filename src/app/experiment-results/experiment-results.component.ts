@@ -45,17 +45,19 @@ export class ExperimentResultsComponent implements OnInit {
     this._service.all()
         .then((count: number) => {
           this.ghosts = [];
-          if (count === 0) {
-            this._showIntro();
-          }
+          this._showIntro(count === 0);
         });
   }
 
-  private _showIntro() {
+  private _showIntro(useIntroRecord: boolean) {
     this._intro.showIntro('experiment-results-steps', () => {
-      this._service.setIntroRecord(ExperimentResultsComponent.INTRO_EXPERIMENT_RESULT);
+      if (useIntroRecord) {
+        this._service.setIntroRecord(ExperimentResultsComponent.INTRO_EXPERIMENT_RESULT);
+      }
     }, () => {
-      this._service.clearIntroRecord();
+      if (useIntroRecord) {
+        this._service.clearIntroRecord();
+      }
     });
   }
 

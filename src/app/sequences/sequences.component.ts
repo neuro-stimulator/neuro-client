@@ -45,17 +45,19 @@ export class SequencesComponent implements OnInit {
     this._service.all()
         .then((count: number) => {
           this.ghosts = [];
-          if (count === 0) {
-            this._showIntro();
-          }
+          this._showIntro(count === 0);
         });
   }
 
-  private _showIntro() {
+  private _showIntro(useIntroRecord: boolean) {
     this._intro.showIntro('sequences-steps', () => {
-      this._service.setIntroRecord(SequencesComponent.INTRO_SEQUENCE);
+      if (useIntroRecord) {
+        this._service.setIntroRecord(SequencesComponent.INTRO_SEQUENCE);
+      }
     }, () => {
-      this._service.clearIntroRecord();
+      if (useIntroRecord) {
+        this._service.clearIntroRecord();
+      }
     });
   }
 

@@ -67,9 +67,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
     this._service.all()
         .then((count: number) => {
           this.ghosts = [];
-          if (count === 0) {
-            this._showIntro();
-          }
+          this._showIntro(count === 0);
         });
     this._filterRequestSubscription = this._buttonsAddonService.filterRequest.subscribe(() => this._showFilterDialog());
     this._searchBySubscription = this._buttonsAddonService.searchValue.subscribe(value => this._handleSearchBy(value));
@@ -86,11 +84,15 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
     this._serviceRecordsSubscription.unsubscribe();
   }
 
-  private _showIntro() {
+  private _showIntro(useIntroRecord: boolean) {
     this._intro.showIntro('experiments-steps', () => {
+      if (useIntroRecord) {
         this._service.setIntroRecord(ExperimentsComponent.INTRO_EXPERIMENT);
+      }
     }, () => {
+      if (useIntroRecord) {
         this._service.clearIntroRecord();
+      }
     });
   }
 
