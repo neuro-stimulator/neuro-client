@@ -42,6 +42,11 @@ export class TagEditorComponent implements OnInit {
   handleTagValueChange(event: KeyboardEvent) {
     const value = (event.target as HTMLInputElement).value;
     this.newTagValid = ((this.tags.value as Array<string>).indexOf(value) === -1);
+    if (value) {
+      this.tags.markAsTouched();
+    } else {
+      this.tags.markAsUntouched();
+    }
   }
 
   get tags() {
