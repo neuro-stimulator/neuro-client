@@ -340,6 +340,8 @@
     "CODE_SUCCESS_LOW_LEVEL_PORT_NOT_OPPENED": "COM port {{path}} was not able to open!",
     "CODE_ERROR_LOW_LEVEL_FIRMWARE_NOT_UPDATED":  "Firmware was not able to update!",
     "CODE_ERROR_SETTINGS_UPDATED": "Settings was successfully saved.",
+    "CODE_ERROR_SETTINGS_NOT_UPDATED":  "Settings was not able to save!",
+    "CODE_SUCCESS_COMMANDS_STIMULATOR_READY": "Stimulator is ready to use.",
     "CODE_SUCCESS_COMMANDS_EXPERIMENT_UPLOAD": "Experiment was uploaded.",
     "CODE_ERROR_COMMANDS_EXPERIMENT_UPLOAD": "Experiment uploading failed with unexpected reason!",
     "CODE_ERROR_COMMANDS_EXPERIMENT_UPLOAD_NOT_INITIALIZED":  "Settings was not able to save.",
