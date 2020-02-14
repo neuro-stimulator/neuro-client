@@ -74,7 +74,19 @@
             }
           }
         },
-        "SEQUENCE_ID": "ID sekvence"
+        "SEQUECE": {
+          "AVAILABLE_SEQUENCES": "Dostupné sekvence",
+          "BUTTON_BAR": {
+            "EDIT": "Editovat",
+            "DELETE": "Odebrat",
+            "NEW": {
+              "TITLE": "Nová",
+              "WITH_GUIDE": "S průvodcem",
+              "QUICK": "Rychle"
+            },
+            "EXPLORE": "Prohlížet"
+          }
+        }
       },
       "CVEP": {
         "TITLE_PARAMS": "C-VEP parametry",

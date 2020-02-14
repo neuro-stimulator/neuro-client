@@ -75,7 +75,19 @@
             }
           }
         },
-        "SEQUENCE_ID": "Sequence ID"
+        "SEQUENCE": {
+          "AVAILABLE_SEQUENCES": "Available sequences",
+          "BUTTON_BAR": {
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "NEW": {
+              "TITLE": "New",
+              "WITH_GUIDE": "With guide",
+              "QUICK": "Quick"
+            },
+            "EXPLORE": "Explore"
+          }
+        }
       },
       "CVEP": {
         "TITLE_PARAMS": "C-VEP parameters",
