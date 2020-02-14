@@ -1,22 +1,21 @@
 <div class="row">
   <div class="col-12">
-    <h1>Ovládací panel</h1>
+    <h1>{{ 'EXPERIMENT_PLAYER.CONTROL_PANEL' | translate }}</h1>
   </div>
 
   <div class="col-12" *ngIf="!stimulatorOnline">
-    <p>Server není připojený ke stimulátoru. Než budete pokračovat, připojte se
-    pomocí <a routerLink="/settings">nastavení</a>.</p>
+    <p>{{ 'EXPERIMENT_PLAYER.STIMULATOR_NOT_CONNECTED' | translate }}</p>
   </div>
 
   <div class="col-12 control-panel-toolbar">
-    <button class="btn btn-primary upload" (click)="handleUploadExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-upload"></i> Nahrát</button>
-    <button class="btn btn-success run" (click)="handleRunExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-play"></i> Spustit</button>
-    <button class="btn btn-warning stop" (click)="handleStopExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-stop"></i> Zastavit</button>
-    <button class="btn btn-danger clear" (click)="handleClearExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-eraser"></i> Vymazat</button>
+    <button class="btn btn-primary upload" (click)="handleUploadExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-upload"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.UPLOAD' | translate}}</button>
+    <button class="btn btn-success run" (click)="handleRunExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-play"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PLAY' | translate}}</button>
+    <button class="btn btn-warning stop" (click)="handleStopExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-stop"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.STOP' | translate}}</button>
+    <button class="btn btn-danger clear" (click)="handleClearExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-eraser"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.CLEAR' | translate}}</button>
   </div>
 
   <div class="col-12">
-    <h2>Průběh experimentu</h2>
+    <h2>{{ 'EXPERIMENT_PLAYER.EXPERIMENT_VISUALISATION' | translate}}</h2>
     <div style="width: 100%;">
       <app-experiment-viewer *ngIf="outputCount" [incommingEvent]="eventEmitter" [outputCount]="outputCount"></app-experiment-viewer>
     </div>

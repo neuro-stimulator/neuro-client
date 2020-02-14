@@ -5,17 +5,19 @@ import { PlayerComponent } from './player.component';
 import { PlayerRoutingModule } from './player-routing.module';
 import { Ng5SliderModule } from 'ng5-slider';
 import { ExperimentViewerModule } from '../share/experiment-viewer/experiment-viewer.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
     PlayerComponent
   ],
-  imports: [
-    CommonModule,
-    PlayerRoutingModule,
-    Ng5SliderModule,
-    ExperimentViewerModule
-  ]
+    imports: [
+        CommonModule,
+        PlayerRoutingModule,
+        Ng5SliderModule,
+        ExperimentViewerModule,
+        TranslateModule
+    ]
 })
 export class PlayerModule {
 
