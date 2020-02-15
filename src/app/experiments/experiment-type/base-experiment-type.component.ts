@@ -59,6 +59,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
             // Pokud nenastane timeout => experiment nebyl na serveru nalezen
             if (!(error instanceof TimeoutError)) {
               // Rovnou přesmeruji na seznam všech experimentů
+              this.logger.error('Vyskytl se problém s načítáním experimentu... Přesmerovávám na výčet všech experimentů!');
               this._router.navigate(['/experiments']);
             }
 
@@ -113,7 +114,11 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
 
   ngOnInit(): void {
     this._route.params.subscribe((params: Params) => {
-      this._loadExperiment(params['id']);
+      // Tento timeout tu bohužel musí být
+      // Řeší mi problém "Expression has changed after it was checked."
+      setTimeout(() => {
+        this._loadExperiment(params['id']);
+      }, 10);
     });
 
     this._workingSubscription = this.working.subscribe(working => {
@@ -126,7 +131,6 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   }
 
   ngAfterViewInit(): void {
-    this._cdr.detectChanges();
   }
 
   ngOnDestroy(): void {
