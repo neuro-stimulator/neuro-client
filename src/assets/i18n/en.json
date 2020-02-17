@@ -338,6 +338,9 @@
       "UPDATE": "Update",
       "CANCEL_UPDATE": "Cancel update"
     },
+    "INTERCEPTORS": {
+      "TIMEOUT": "Request timeout."
+    },
 
     "DIALOGS": {
       "CONFIRMATION": {
