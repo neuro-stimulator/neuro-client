@@ -30,7 +30,7 @@ export class RequestTimeoutInterceptor implements HttpInterceptor {
                  timeout(timeoutValueNumeric),
                  catchError((error: any) => {
                    if (error instanceof TimeoutError) {
-                     this.logger.warn('Vypršel timeout pro požadavek.');
+                     this.logger.warn(`Vypršel timeout pro požadavek: ${req.urlWithParams}`);
                      this._toaster.warning('Vypršel timeout pro požadavek.');
                    }
                    return throwError(error);
