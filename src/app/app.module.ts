@@ -52,7 +52,7 @@ export function createIntroStepsLoader(http: HttpClient, service: TranslateServi
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: true }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
     NavigationModule,
     ShareModule,

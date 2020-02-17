@@ -8,21 +8,6 @@ const routes: Routes = [
     loadChildren: () => import('./experiments/experiments.module').then(mod => mod.ExperimentsModule)
   },
   {
-    path: 'sequences',
-    pathMatch: 'prefix',
-    loadChildren: () => import('./sequences/sequences.module').then(mod => mod.SequencesModule)
-  },
-  {
-    path: 'player',
-    pathMatch: 'prefix',
-    loadChildren: () => import('./player/player.module').then(mod => mod.PlayerModule)
-  },
-  // {
-  //   path: 'simulation',
-  //   pathMatch: 'prefix',
-  //   loadChildren: () => import('./simulation/simulation.module').then(mod => mod.SimulationModule)
-  // },
-  {
     path: 'results',
     pathMatch: 'prefix',
     loadChildren: () => import('./experiment-results/experiment-results.module').then(mod => mod.ExperimentResultsModule)
@@ -47,6 +32,10 @@ const routes: Routes = [
     pathMatch: 'prefix',
     redirectTo: 'experiments'
   },
+  {
+    path: '**',
+    redirectTo: '/about'
+  }
 ];
 
 @NgModule({
