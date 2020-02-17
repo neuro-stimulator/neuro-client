@@ -16,13 +16,15 @@ export class RequestTimeoutInterceptor implements HttpInterceptor {
 
   constructor(@Inject(DEFAULT_TIMEOUT) protected defaultTimeout: number,
               private readonly _toaster: ToastrService,
-              translator: TranslateService,
+              readonly translator: TranslateService,
               private readonly logger: NGXLogger) {
-    translator.get('SHARE.INTERCEPTORS.TIMEOUT')
-              .toPromise()
-              .then((value: string) => {
-                this.timeoutMessage = value;
-              });
+    translator.onLangChange.subscribe(() => {
+      translator.get('SHARE.INTERCEPTORS.TIMEOUT')
+                .toPromise()
+                .then((value: string) => {
+                  this.timeoutMessage = value;
+                });
+    });
   }
 
   /**
