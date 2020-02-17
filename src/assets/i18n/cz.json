@@ -340,6 +340,11 @@
     "INTERCEPTORS": {
       "TIMEOUT": "Vypršel timeout pro požadavek."
     },
+    "ALIVE_CHECKER": {
+      "SERVER_CONNECTION_CREATED": "Spojení se serverem bylo vytvořeno.",
+      "SERVER_CONNECTION_RESTORED": "Spojení se serverem bylo obnoveno.",
+      "SERVER_CONNECTION_LOST": "Spojení se serverem bylo ztraceno!"
+    },
 
     "DIALOGS": {
       "CONFIRMATION": {

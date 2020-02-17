@@ -55,7 +55,7 @@ export class AliveCheckerService {
    * Funkce se zavolá ve chvíli, kdy je vytvořeno stále spojení se serverem.
    */
   protected _socketConnected() {
-    const status = `SERVER_MESSAGE_CODES.${this._firstTime ? 'CODE_SUCCESS_LOW_LEVEL_CONNECTION_CREATED' : 'CODE_SUCCESS_LOW_LEVEL_CONNECTION_RESTORED'}`;
+    const status = `SHARE.ALIVE_CHECKER.${this._firstTime ? 'SERVER_CONNECTION_CREATED' : 'SERVER_CONNECTION_RESTORED'}`;
     this.translator.get(status)
         .toPromise()
         .then((text: string) => {
@@ -72,7 +72,7 @@ export class AliveCheckerService {
    */
   protected _socketDisconnected(reason) {
     this._firstTime = false;
-    this.translator.get('SERVER_MESSAGE_CODES.CODE_ERROR_LOW_LEVEL_CONNECTION_LOST')
+    this.translator.get('SHARE.ALIVE_CHECKER.SERVER_CONNECTION_LOST')
         .toPromise()
         .then((text: string) => {
           this.toastr.error(text);

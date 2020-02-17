@@ -341,6 +341,11 @@
     "INTERCEPTORS": {
       "TIMEOUT": "Request timeout."
     },
+    "ALIVE_CHECKER": {
+      "SERVER_CONNECTION_CREATED": "Server connection was established.",
+      "SERVER_CONNECTION_RESTORED": "Server connection was restored.",
+      "SERVER_CONNECTION_LOST": "Connection with server was lost!"
+    },
 
     "DIALOGS": {
       "CONFIRMATION": {
