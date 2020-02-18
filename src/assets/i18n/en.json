@@ -265,6 +265,7 @@
         },
         "TUTORIAL": {
           "DISABLE": "Disable tutorials",
+          "RESET": "Reset tutorials",
           "DIALOGS": {
             "DELETE": {
               "QUESTION": "Are you sure about reseting information of viewed tutorials?"

@@ -264,6 +264,7 @@
         },
         "TUTORIAL": {
           "DISABLE": "Zakázat tutoriály",
+          "RESET": "Resetovat tutoriály",
           "DIALOGS": {
             "DELETE": {
               "QUESTION": "Opravdu si přejete vymazat informaci o již zobrazených tutoriálech?"
