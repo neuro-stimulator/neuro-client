@@ -31,6 +31,7 @@ import { INTRO_STEPS } from './share/intro.service';
 import { DEFAULT_TIMEOUT, RequestTimeoutInterceptor } from './share/interceptors/request-timeout-interceptor.service';
 import { ResponseInterceptor } from './share/interceptors/response-interceptor.service';
 import { map } from 'rxjs/operators';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -47,6 +48,7 @@ export function createIntroStepsLoader(http: HttpClient, service: TranslateServi
 @NgModule({
   declarations: [
     AppComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

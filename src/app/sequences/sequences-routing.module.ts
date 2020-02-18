@@ -6,7 +6,7 @@ import { SequencesComponent } from './sequences.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'list',
     component: SequencesComponent,
     data: {title: 'SEQUENCES.TITLE'}
   },
@@ -19,6 +19,11 @@ const routes: Routes = [
     path: ':id',
     component: SequenceComponent,
     data: {title: 'SEQUENCES.TITLE_CONFIGURE'}
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'list'
   }
 ];
 

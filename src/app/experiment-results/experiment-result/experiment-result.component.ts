@@ -36,7 +36,7 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
     if (experimentResultId !== undefined) {
       if (isNaN(parseInt(experimentResultId, 10))) {
         this.toastr.error(`ID výsledku experimentu: '${experimentResultId}' se nepodařilo naparsovat!`);
-        this._router.navigate(['/experiments']);
+        this._router.navigate(['/', 'results']);
         return;
       }
 
@@ -47,7 +47,7 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
             // Pokud nenastane timeout => výsledek experimentu nebyl na serveru nalezen
             if (!(error instanceof TimeoutError)) {
               // Rovnou přesmeruji na seznam všech výsledků experimentů
-              this._router.navigate(['/experiment-results']);
+              this._router.navigate(['/', 'results']);
             }
 
             // Nastal timeout

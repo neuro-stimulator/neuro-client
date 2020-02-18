@@ -66,7 +66,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
     if (sequenceID !== undefined) {
       if (isNaN(parseInt(sequenceID, 10))) {
         this.toastr.error(`ID sequence: '${sequenceID}' se nepodařilo naparsovat!`);
-        this._router.navigate(['/sequences']);
+        this._router.navigate(['/', 'sequences']);
         return;
       }
 

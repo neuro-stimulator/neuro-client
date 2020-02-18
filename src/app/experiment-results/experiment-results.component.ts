@@ -62,7 +62,7 @@ export class ExperimentResultsComponent implements OnInit {
   }
 
   handleView(experimentResult: ExperimentResult) {
-    this._router.navigate([experimentResult.id], {relativeTo: this._route});
+    this._router.navigate([experimentResult.id], {relativeTo: this._route.parent});
   }
 
   handleDelete(experimentResult: ExperimentResult) {

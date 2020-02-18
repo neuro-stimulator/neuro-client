@@ -43,7 +43,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
       if (isNaN(parseInt(experimentId, 10))) {
         this.logger.error(`ID experimentu: '${experimentId}' se nepodařilo naparsovat!`);
         this.toastr.error(`ID experimentu: '${experimentId}' se nepodařilo naparsovat!`);
-        this._router.navigate(['/experiments']);
+        this._router.navigate(['/', 'experiments']);
         return;
       }
 
@@ -60,7 +60,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
             if (!(error instanceof TimeoutError)) {
               // Rovnou přesmeruji na seznam všech experimentů
               this.logger.error('Vyskytl se problém s načítáním experimentu... Přesmerovávám na výčet všech experimentů!');
-              this._router.navigate(['/experiments']);
+              this._router.navigate(['/', 'experiments']);
             }
 
             // Nastal timeout

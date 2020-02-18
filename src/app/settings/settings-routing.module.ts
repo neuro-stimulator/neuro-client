@@ -4,7 +4,7 @@ import { SettingsComponent } from './settings.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'index',
     component: SettingsComponent,
     data: {title: 'SETTINGS.TITLE'}
   }

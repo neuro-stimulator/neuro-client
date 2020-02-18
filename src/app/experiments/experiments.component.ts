@@ -116,7 +116,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
 
   handleEdit(experiment: Experiment) {
     const type = ExperimentType[experiment.type].toLowerCase();
-    this._router.navigate([type, experiment.id], {relativeTo: this._route});
+    this._router.navigate([type, experiment.id], {relativeTo: this._route.parent});
   }
 
   handleRun(experiment: Experiment) {
@@ -144,7 +144,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
   handleNewExperiment(experimentType: ExperimentType) {
     const type: string = ExperimentType[experimentType].toLowerCase();
     this.logger.info(`Budu vytvářet nový experiment typu: ${type}.`);
-    this._router.navigate([type, 'new'], {relativeTo: this._route});
+    this._router.navigate([type, 'new'], {relativeTo: this._route.parent});
   }
 
   get experimentGroups(): ExperimentGroup {

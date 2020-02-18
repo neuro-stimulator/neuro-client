@@ -63,7 +63,7 @@ export class SequencesComponent implements OnInit {
 
   handleView(sequence: Sequence) {
     this.logger.info(`Budu zobrazovat sekvenci s id: ${sequence.id}`);
-    this._router.navigate([sequence.id], {relativeTo: this._route});
+    this._router.navigate([sequence.id], {relativeTo: this._route.parent});
   }
 
   handleDelete(sequence: Sequence) {
@@ -79,6 +79,6 @@ export class SequencesComponent implements OnInit {
   }
 
   handleCreateSequence() {
-    this._router.navigate(['new'], { relativeTo: this._route});
+    this._router.navigate(['new'], { relativeTo: this._route.parent});
   }
 }

@@ -36,6 +36,7 @@ import { TagEditorModule } from '../share/tag-editor/tag-editor.module';
 import { DropdownBtnModule } from '../share/dropdown-btn/dropdown-btn.module';
 import { SequenceFastDialogComponent } from './experiment-type/experiment-type-erp/sequence-fast-dialog/sequence-fast-dialog.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { ExperimentsActivate } from './experiments.activate';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,9 @@ import { TranslateModule } from '@ngx-translate/core';
     ImagePlayerModule,
     TagEditorModule,
     DropdownBtnModule
+  ],
+  providers: [
+    ExperimentsActivate
   ],
   entryComponents: [
     ExperimentTypeNoneComponent,

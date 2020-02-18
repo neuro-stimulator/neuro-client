@@ -55,14 +55,14 @@ export class PlayerComponent implements OnInit, OnDestroy {
           this.toaster.success(text);
         });
     if (event.state === 0x04) {
-      this._router.navigate(['/results']);
+      this._router.navigate(['/', 'results']);
     }
   }
 
   ngOnInit() {
     if (this._route.snapshot.params['type'] === undefined ||
         this._route.snapshot.params['id'] === undefined) {
-      this._router.navigate(['/experiments']);
+      this._router.navigate(['/', 'experiments']);
     }
 
     this._experimentID = this._route.snapshot.params['id'];

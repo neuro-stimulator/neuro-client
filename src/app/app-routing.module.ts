@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule} from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
-    path: 'experiments',
+    path: 'player',
     pathMatch: 'prefix',
-    loadChildren: () => import('./experiments/experiments.module').then(mod => mod.ExperimentsModule)
-  },
-  {
-    path: 'results',
-    pathMatch: 'prefix',
-    loadChildren: () => import('./experiment-results/experiment-results.module').then(mod => mod.ExperimentResultsModule)
+    loadChildren: () => import('./player/player.module').then(mod => mod.PlayerModule)
   },
   {
     path: 'settings',
@@ -28,18 +24,39 @@ const routes: Routes = [
     loadChildren: () => import('./about/about.module').then(mod => mod.AboutModule)
   },
   {
+    path: 'experiments',
+    loadChildren: () => import('./experiments/experiments.module').then(mod => mod.ExperimentsModule)
+  },
+  {
+    path: 'results',
+    pathMatch: 'prefix',
+    loadChildren: () => import('./experiment-results/experiment-results.module').then(mod => mod.ExperimentResultsModule)
+  },
+  {
+    path: 'sequences',
+    pathMatch: 'prefix',
+    loadChildren: () => import('./sequences/sequences.module').then(mod => mod.SequencesModule)
+  },
+
+  {
+    path: '404',
+    component: PageNotFoundComponent,
+    data: {title: 'PAGE_NOT_FOUND.TITLE'}
+  },
+  {
     path: '',
     pathMatch: 'prefix',
-    redirectTo: 'experiments'
+    redirectTo: 'experiments/list'
   },
   {
     path: '**',
-    redirectTo: '/about'
+    pathMatch: 'full',
+    redirectTo: '/404'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

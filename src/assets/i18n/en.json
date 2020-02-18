@@ -309,6 +309,10 @@
     "TEXT": "This application is used to create neuroinformatic experiments. In addition, the application controls the stimulator on which each experiment runs. It also includes a simple viewer of experiment results."
   },
 
+  "PAGE_NOT_FOUND": {
+    "TITLE": "Page not found!"
+  },
+
   "SHARE": {
     "EXPERIMENTS_BUTTONS_ADDON": {
       "PLACEHOLDER_FIND_EXPERIMENT": "Find experiment",

@@ -23,7 +23,7 @@
               <div class="row">
                 <div class="col-12">
                   <!-- Název experimentu s odkazem na editaci -->
-                  <a [routerLink]="[ExperimentType[experiment.type].toLowerCase(), experiment.id]" class="experiment-name"><strong>{{experiment.name}}</strong></a>
+                  <a [routerLink]="['/', 'experiments', ExperimentType[experiment.type].toLowerCase(), experiment.id]" class="experiment-name"><strong>{{experiment.name}}</strong></a>
                   <!-- Obrázková reprezentace použitých typů výstupů -->
                   <span class="experiment-output" *ngIf="settings.experiments.showOutputType">
                         <i class="fas fa-lightbulb" *ngIf="experiment.usedOutputs['led']" title="LED"></i>

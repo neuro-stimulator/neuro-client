@@ -308,6 +308,10 @@
     "TEXT": "Tato aplikace slouží k tvorbě neuroinformatických experimentů. Dále se pomocí aplikace ovládá stimulátor, na kterém jednotlivé experimenty běží. Obsahuje také jednoduchý prohlížeč výsledků experimentů."
   },
 
+  "PAGE_NOT_FOUND": {
+    "TITLE": "Stránka nenalezena!"
+  },
+
   "SHARE": {
     "EXPERIMENTS_BUTTONS_ADDON": {
       "PLACEHOLDER_FIND_EXPERIMENT": "Najít experiment",

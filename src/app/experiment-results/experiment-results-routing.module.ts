@@ -5,7 +5,7 @@ import { ExperimentResultComponent } from './experiment-result/experiment-result
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'list',
     component: ExperimentResultsComponent,
     data: { title: 'EXPERIMENT_RESULTS.TITLE' }
   },
@@ -13,6 +13,11 @@ const routes: Routes = [
     path: ':id',
     component: ExperimentResultComponent,
     data: { title: 'EXPERIMENT_RESULTS.EXPERIMENT_RESULT.TITLE', applyCustomNavColor: true }
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'list'
   }
 ];
 

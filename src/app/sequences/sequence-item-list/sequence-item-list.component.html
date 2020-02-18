@@ -6,7 +6,7 @@
       <!-- Název sequence -->
       <div class="col-11">
         <div>
-          <a [routerLink]="[sequence.id]" class="sequence-name"><strong>{{sequence.name}}</strong></a>
+          <a [routerLink]="['/', 'sequences', sequence.id]" class="sequence-name"><strong>{{sequence.name}}</strong></a>
         </div>
         <div><small class="text-truncate sequence-creation-date">{{sequence.created | date:'HH:mm, dd.MM.yyyy'}}</small></div>
       </div>
