@@ -75,6 +75,22 @@
               ],
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa.ts"
+                }
+              ]
             }
           }
         },
@@ -86,6 +102,12 @@
           "configurations": {
             "production": {
               "browserTarget": "diplomka-frontend:build:production"
+            },
+            "dev": {
+              "browserTarget": "diplomka-frontend:build:dev"
+            },
+            "qa": {
+              "browserTarget": "diplomka-frontend:build:qa"
             }
           }
         },
@@ -140,6 +162,9 @@
           "configurations": {
             "production": {
               "devServerTarget": "diplomka-frontend:serve:production"
+            },
+            "qa": {
+              "devServerTarget": "diplomka-frontend:serve:qa"
             }
           }
         }

@@ -112,7 +112,7 @@ export class IntroService {
   }
 
   public showIntro(component: string, beforeShow?: () => void, afterExit?: () => void) {
-    if (!component || this._settings.settings.application.disableTutorial) {
+    if (!component || environment.disableTutorial || this._settings.settings.application.disableTutorial) {
       return;
     }
 

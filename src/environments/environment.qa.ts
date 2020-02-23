@@ -29,8 +29,8 @@ const DEFAULT_SETTINGS: Settings = {
 export const environment = {
   production: true,
   url: {
-    server: '',
-    socket: '',
+    server: '127.0.0.1',
+    socket: '127.0.0.1',
   },
   port: {
     server: SERVER_HTTP_PORT,
@@ -39,7 +39,7 @@ export const environment = {
   maxOutputCount: 8,
   patternSize: 32,
   settings: DEFAULT_SETTINGS,
-  disableTutorial: false,
+  disableTutorial: true,
   introDelay: 500,
   supportedLanguages: [
     { value: 'cz', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.CZ'},
