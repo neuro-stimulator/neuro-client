@@ -1,6 +1,6 @@
 <nav [ngClass]="['navbar', 'navbar-expand-lg', 'navbar-light', navigation.applyCustomNavColor ? (navigation.customNavColor | async) : '']">
   <div>
-    <h1 class="p-0 m-0 text-truncate">{{navigation.title | translate}}</h1>
+    <h1 id="page-header" class="p-0 m-0 text-truncate">{{navigation.title | translate}}</h1>
     <small><i [ngClass]="['fas', (navigation.working ? 'fa-spin' : ''), navigation.icon]"></i> {{navigation.subtitle | translate}}</small>
   </div>
 

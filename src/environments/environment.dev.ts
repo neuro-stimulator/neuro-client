@@ -32,6 +32,7 @@ const DEFAULT_SETTINGS: Settings = {
 
 export const environment = {
   production: false,
+  testing: false,
   url: {
     server: 'http://localhost',
     socket: 'http://localhost',

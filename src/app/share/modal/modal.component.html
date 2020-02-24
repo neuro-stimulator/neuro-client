@@ -13,8 +13,8 @@
         <ng-template appDialogChilds></ng-template>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" [disabled]="confirmDisabled | async" *ngIf="confirmText" (click)="handleConfirm()">{{confirmText | translate}}</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" [disabled]="cancelDisabled" (click)="handleCancel()" *ngIf="cancelText">{{cancelText | translate}}</button>
+        <button type="button" id="modal-button-confirm" class="btn btn-primary" [disabled]="confirmDisabled | async" *ngIf="confirmText" (click)="handleConfirm()">{{confirmText | translate}}</button>
+        <button type="button" id="modal-button-cancel" class="btn btn-secondary" data-dismiss="modal" [disabled]="cancelDisabled" (click)="handleCancel()" *ngIf="cancelText">{{cancelText | translate}}</button>
       </div>
     </div>
   </div>

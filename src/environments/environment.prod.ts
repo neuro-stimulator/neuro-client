@@ -28,6 +28,7 @@ const DEFAULT_SETTINGS: Settings = {
 
 export const environment = {
   production: true,
+  testing: false,
   url: {
     server: '',
     socket: '',

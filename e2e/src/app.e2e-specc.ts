@@ -1,16 +1,12 @@
-import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
 
+import { ApplicationPage } from './app.po';
+
 describe('workspace-project App', () => {
-  let page: AppPage;
+  let page: ApplicationPage;
 
   beforeEach(() => {
-    page = new AppPage();
-  });
-
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to diplomka-frontend!');
+    page = new ApplicationPage();
   });
 
   afterEach(async () => {

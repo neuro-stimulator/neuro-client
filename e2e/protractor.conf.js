@@ -23,6 +23,7 @@ exports.config = {
     defaultTimeoutInterval: 30000,
     print: function() {}
   },
+  SELENIUM_PROMISE_MANAGER: false,
   onPrepare() {
     require('ts-node').register({
       project: require('path').join(__dirname, './tsconfig.json')

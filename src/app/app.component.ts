@@ -54,7 +54,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    if (!this.storage.get<string>(AppComponent.NO_FIRST_TIME_KEY)) {
+    if (!this.storage.get<string>(AppComponent.NO_FIRST_TIME_KEY) && !environment.testing) {
       this.storage.set(AppComponent.NO_FIRST_TIME_KEY, true);
       this.router.navigate(['about']);
     }
