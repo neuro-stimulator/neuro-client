@@ -9,6 +9,7 @@ import { ExperimentType, ExperimentResult, createEmptyExperimentResult, createEm
 import { NavigationService } from '../../navigation/navigation.service';
 import { ExperimentResultsService } from '../experiment-results.service';
 import { IOEvent } from '../../share/serial-data.event';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-experiment-result',
@@ -22,6 +23,7 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
   private readonly _incommingEvent: EventEmitter<IOEvent> = new EventEmitter<IOEvent>();
 
   incommingEvent: Observable<IOEvent> = this._incommingEvent.asObservable();
+  outputCount: number = environment.maxOutputCount;
 
   constructor(private readonly _service: ExperimentResultsService,
               private readonly toastr: ToastrService,
@@ -61,6 +63,7 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
           })
           .then((experimentResult: ExperimentResult) => {
             this._experimentResult = experimentResult;
+            this.outputCount = experimentResult.outputCount;
             this._navigation.customNavColor.next(ExperimentType[experimentResult.type].toLowerCase());
             if (experimentResult.experimentID === -1) {
               return;
