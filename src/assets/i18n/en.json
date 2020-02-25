@@ -6,7 +6,8 @@
     "VALIDATION": {
       "REQUIRED": "Parameter is required!",
       "MIN": "Minimal value is: {{min}}!",
-      "MAX": "Maximal value is: {{max}}!"
+      "MAX": "Maximal value is: {{max}}!",
+      "ZERO_VALUE": "Parameter has zero value!"
     }
   },
 

@@ -57,6 +57,7 @@
                 <label for="cvep-bit-shift">{{ 'EXPERIMENTS.EXPERIMENT.CVEP.BIT_SHIFT' | translate }}</label>
                 <ng5-slider id="cvep-bit-shift" formControlName="bitShift" [options]="bitShiftSliderOptions"></ng5-slider>
                 <small *ngIf="bitShift.touched && bitShift.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="bitShift.value == 0" class="form-text text-muted">{{ 'APP.VALIDATION.ZERO_VALUE' | translate }}</small>
               </div>
             </div>
 
@@ -67,6 +68,7 @@
                 <small *ngIf="brightness.touched && brightness.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
                 <small *ngIf="brightness.touched && brightness.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness.errors?.min.min} }}</small>
                 <small *ngIf="brightness.touched && brightness.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness.errors?.max.max} }}</small>
+                <small *ngIf="brightness.value == 0" class="form-text text-muted">{{ 'APP.VALIDATION.ZERO_VALUE' | translate }}</small>
               </div>
             </div>
 

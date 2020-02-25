@@ -40,6 +40,7 @@
             <ng5-slider [id]="'distribution_' + i" formControlName="distribution" [options]="distributionSliderOptions[i]"></ng5-slider>
             <small *ngIf="distribution(i).touched && distribution(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
             <small *ngIf="distribution(i).touched && distribution(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: distribution(i).errors?.min.min} }}</small>
+            <small *ngIf="distribution(i).value == 0" class="form-text text-muted">{{ 'APP.VALIDATION.ZERO_VALUE' | translate }}</small>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-3">
@@ -49,6 +50,7 @@
             <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness(i).errors?.min.min} }}</small>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness(i).errors?.max.max} }}</small>
+            <small *ngIf="brightness(i).value == 0" class="form-text text-muted">{{ 'APP.VALIDATION.ZERO_VALUE' | translate }}</small>
           </div>
         </div>
 
