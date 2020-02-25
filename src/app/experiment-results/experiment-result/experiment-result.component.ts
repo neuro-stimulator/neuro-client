@@ -6,10 +6,10 @@ import { Observable, Subscription, TimeoutError } from 'rxjs';
 
 import { ExperimentType, ExperimentResult, createEmptyExperimentResult, createEmptyExperiment } from '@stechy1/diplomka-share';
 
-import { NavigationService } from '../../navigation/navigation.service';
-import { ExperimentResultsService } from '../experiment-results.service';
-import { IOEvent } from '../../share/serial-data.event';
 import { environment } from '../../../environments/environment';
+import { NavigationService } from '../../navigation/navigation.service';
+import { IOEvent } from '../../share/serial-data.event';
+import { ExperimentResultsService } from '../experiment-results.service';
 
 @Component({
   selector: 'app-experiment-result',
