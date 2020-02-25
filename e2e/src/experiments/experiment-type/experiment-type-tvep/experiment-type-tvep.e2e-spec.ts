@@ -5,16 +5,16 @@ import { ExperimentType } from '@stechy1/diplomka-share';
 import { ApplicationPage } from '../../../app.po';
 import { ExperimentsPage } from '../../experiments.po';
 import { ExperimentTypeAbstractSpecHelper } from '../experiment-type-abstract-helper.spec';
-import { ExperimentTypeCvepPage } from './experiment-type-cvep.po';
+import { ExperimentTypeTvepPage } from './experiment-type-tvep.po';
 
-describe('Experiment CVEP', () => {
+describe('Experiment TVEP', () => {
 
   let app: ApplicationPage;
   let experiments: ExperimentsPage;
-  let page: ExperimentTypeCvepPage;
+  let page: ExperimentTypeTvepPage;
 
   beforeEach(async () => {
-    page = new ExperimentTypeCvepPage();
+    page = new ExperimentTypeTvepPage();
     experiments = new ExperimentsPage();
     app = new ApplicationPage();
     await browser.waitForAngularEnabled(false);
@@ -22,7 +22,7 @@ describe('Experiment CVEP', () => {
 
   it('Should be able to create new experiment, check the list and delete the created experiment.', async () => {
     const experimentHelper: ExperimentTypeAbstractSpecHelper = new ExperimentTypeAbstractSpecHelper(app, experiments, page);
-    await experimentHelper.testCreateNewExperiment(ExperimentType.CVEP, 'cvep-test');
+    await experimentHelper.testCreateNewExperiment(ExperimentType.TVEP, 'tvep-test');
   });
 
 });

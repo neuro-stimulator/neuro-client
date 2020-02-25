@@ -1,4 +1,4 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, ElementFinder } from 'protractor';
 
 import { Page } from './page';
 
@@ -8,8 +8,8 @@ export class ApplicationPage implements Page {
     return browser.get('/') as Promise<any>;
   }
 
-  get applicationHeader(): Promise<string> {
-    return element(by.id('page-header')).getText() as Promise<string>;
+  get applicationHeader(): ElementFinder {
+    return element(by.id('page-header'));
   }
 
 }

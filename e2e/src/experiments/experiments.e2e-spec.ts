@@ -18,7 +18,7 @@ describe('Experiment list test', () => {
 
   it('Should be displayed with right title', async () => {
     await page.navigateTo();
-    expect(app.applicationHeader).toEqual('Experimenty');
+    expect(app.applicationHeader.getText()).toEqual('Experimenty');
   });
 
   it('Should contains button for new experiment', async () => {

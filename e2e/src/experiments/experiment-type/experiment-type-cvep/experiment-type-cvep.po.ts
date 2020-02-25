@@ -1,13 +1,12 @@
-import { by, element, ElementFinder } from 'protractor';
+import { browser} from 'protractor';
+import { ExperimentTypeAbstractPage } from '../experiment-type-abstract.po';
 
-export class ExperimentTypeCvepPage {
+export class ExperimentTypeCvepPage extends ExperimentTypeAbstractPage {
 
-  get experimentSaveButton(): ElementFinder {
-    return element(by.className('fab-toggler'));
+  navigateTo(): Promise<any> {
+    return browser.get('/experiments/cvep/new') as Promise<any>;
   }
 
-  get experimentNameField(): ElementFinder {
-    return element(by.id('experiment-name'));
-  }
+
 
 }
