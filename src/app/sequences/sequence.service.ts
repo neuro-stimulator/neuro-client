@@ -5,7 +5,6 @@ import { NGXLogger } from 'ngx-logger';
 
 import { environment, makeURL } from '../../environments/environment';
 import { BaseService } from '../share/base-service';
-import { AliveCheckerService } from '../alive-checker.service';
 import { Experiment, ResponseObject, Sequence } from '@stechy1/diplomka-share';
 
 @Injectable({

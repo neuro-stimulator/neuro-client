@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable} from 'rxjs';
 
 import { Label } from 'ng2-charts';
 import { ChartOptions, ChartType } from 'chart.js';

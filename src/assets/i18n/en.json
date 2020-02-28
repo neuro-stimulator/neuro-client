@@ -116,6 +116,19 @@
           "WAIT": "Inactive output",
           "BRIGHTNESS": "Brightness"
         }
+      },
+      "REA": {
+        "TITLE_PARAMS": "Reaction experiment parameters",
+        "CYCLE_COUNT": "Cycle count",
+        "WAIT_TIME_MIN": "Minimum interval between outputs",
+        "WAIT_TIME_MAX": "Maximum interval between outputs",
+        "MISS_TIME": "Maximum interval of reaction time",
+        "ON_FAIL": {
+          "TITLE": "When wrong input",
+          "CONTINUE": "Continue",
+          "WAIT": "Wait for timeout"
+        },
+        "BRIGHTNESS": "Brightness"
       }
     },
     "OUTPUT_TYPE": {

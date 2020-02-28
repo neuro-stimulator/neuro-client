@@ -7,7 +7,6 @@ import { Experiment } from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../environments/environment';
 import { BaseService } from '../share/base-service';
-import { AliveCheckerService } from '../alive-checker.service';
 
 @Injectable({
   providedIn: 'root'

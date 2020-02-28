@@ -5,7 +5,7 @@ import { LocalStorageService } from 'angular-2-local-storage';
 import { NGXLogger } from 'ngx-logger';
 import * as Fuse from 'fuse.js';
 
-import { Experiment, outputTypeToRaw } from '@stechy1/diplomka-share';
+import { Experiment} from '@stechy1/diplomka-share';
 
 import { ExperimentsService } from './experiments.service';
 import { FilterParameters, GroupByPosibilities, OrderByPosibilities, SortByPosibilities } from './experiments-filter-parameters';

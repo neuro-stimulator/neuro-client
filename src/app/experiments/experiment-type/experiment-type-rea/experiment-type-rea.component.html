@@ -1,1 +1,113 @@
-<p>experiment-type-rea works!</p>
+<div class="row">
+  <div class="col">
+    <form [formGroup]="form">
+
+      <!-- Generická hlavička společná pro všechny experimenty -->
+      <app-experiment-type-header [form]="form"></app-experiment-type-header>
+
+
+      <div class="row experiment-property">
+        <div class="col-10">
+          <h4>{{ 'EXPERIMENTS.EXPERIMENT.REA.TITLE_PARAMS' | translate }}</h4>
+        </div>
+        <div class="col-2 text-right" appContentToggler [toggledContent]="reaParams" [icon]="reaParamsIcon"><i class="fas fa-minus" #reaParamsIcon></i></div>
+
+        <div class="col-12" #reaParams>
+          <div class="row">
+
+            <div class="col-12">
+              <div class="form-group" style="padding-bottom: 5px">
+                <label for="rea-output-count">{{ 'EXPERIMENTS.EXPERIMENT.OUTPUT_COUNT' | translate }}</label>
+                <ng5-slider id="rea-output-count" formControlName="outputCount" [options]="outputCountParams"></ng5-slider>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="form-group">
+                <label for="rea-cycle-count">{{ 'EXPERIMENTS.EXPERIMENT.REA.CYCLE_COUNT' | translate }}</label>
+                <div class="input-group input-group-sm">
+                  <input type="number" id="rea-cycle-count" class="form-control form-control-sm" [class.is-valid]="cycleCount.valid" [class.is-invalid]="cycleCount.invalid" formControlName="cycleCount">
+                  <div class="input-group-append">
+                    <span class="input-group-text">ms</span>
+                  </div>
+                </div>
+                <small *ngIf="cycleCount.touched && cycleCount.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="cycleCount.touched && cycleCount.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: cycleCount.errors?.min.min} }}</small>
+                <small *ngIf="cycleCount.touched && cycleCount.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: cycleCount.errors?.min.max} }}</small>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xl-3">
+              <div class="form-group">
+                <label for="rea-wait-time-min">{{ 'EXPERIMENTS.EXPERIMENT.REA.WAIT_TIME_MIN' | translate }}</label>
+                <div class="input-group input-group-sm">
+                  <input type="number" id="rea-wait-time-min" class="form-control form-control-sm" [class.is-valid]="waitTimeMin.valid" [class.is-invalid]="waitTimeMin.invalid" formControlName="waitTimeMin">
+                  <div class="input-group-append">
+                    <span class="input-group-text">ms</span>
+                  </div>
+                </div>
+                <small *ngIf="waitTimeMin.touched && waitTimeMin.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="waitTimeMin.touched && waitTimeMin.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: waitTimeMin.errors?.min.min} }}</small>
+                <small *ngIf="waitTimeMin.touched && waitTimeMin.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: waitTimeMin.errors?.min.max} }}</small>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xl-3">
+              <div class="form-group">
+                <label for="rea-wait-time-max">{{ 'EXPERIMENTS.EXPERIMENT.REA.WAIT_TIME_MAX' | translate }}</label>
+                <div class="input-group input-group-sm">
+                  <input type="number" id="rea-wait-time-max" class="form-control form-control-sm" [class.is-valid]="waitTimeMax.valid" [class.is-invalid]="waitTimeMax.invalid" formControlName="waitTimeMax">
+                  <div class="input-group-append">
+                    <span class="input-group-text">ms</span>
+                  </div>
+                </div>
+                <small *ngIf="waitTimeMax.touched && waitTimeMax.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="waitTimeMax.touched && waitTimeMax.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: waitTimeMax.errors?.min.min} }}</small>
+                <small *ngIf="waitTimeMax.touched && waitTimeMax.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: waitTimeMax.errors?.min.max} }}</small>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xl-3">
+              <div class="form-group">
+                <label for="rea-miss-time">{{ 'EXPERIMENTS.EXPERIMENT.REA.MISS_TIME' | translate }}</label>
+                <div class="input-group input-group-sm">
+                  <input type="number" id="rea-miss-time" class="form-control form-control-sm" [class.is-valid]="missTime.valid" [class.is-invalid]="missTime.invalid" formControlName="missTime">
+                  <div class="input-group-append">
+                    <span class="input-group-text">ms</span>
+                  </div>
+                </div>
+                <small *ngIf="missTime.touched && missTime.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="missTime.touched && missTime.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: missTime.errors?.min.min} }}</small>
+                <small *ngIf="missTime.touched && missTime.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: missTime.errors?.min.max} }}</small>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xl-3">
+              <div class="form-group">
+                <label for="rea-on-fail">{{ 'EXPERIMENTS.EXPERIMENT.REA.ON_FAIL.TITLE' | translate }}</label>
+                <select name="rea-on-fail" id="rea-on-fail" class="selectpicker form-control form-control-sm" formControlName="onFail">
+                  <option *ngFor="let onFail of onFails" [value]="onFail.id">{{onFail.name | translate}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12 ">
+              <div class="form-group">
+                <label for="rea-brightness">{{ 'EXPERIMENTS.EXPERIMENT.REA.BRIGHTNESS' | translate }}</label>
+                <ng5-slider id="rea-brightness" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
+                <small *ngIf="brightness.touched && brightness.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="brightness.touched && brightness.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness.errors?.min.min} }}</small>
+                <small *ngIf="brightness.touched && brightness.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness.errors?.max.max} }}</small>
+                <small *ngIf="brightness.value == 0" class="form-text text-muted">{{ 'APP.VALIDATION.ZERO_VALUE' | translate }}</small>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<app-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperiment()" [disabled]="form.invalid || (working | async)"></app-fab>

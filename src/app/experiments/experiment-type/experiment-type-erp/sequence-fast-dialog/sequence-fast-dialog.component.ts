@@ -1,7 +1,7 @@
 import { Component, EventEmitter } from '@angular/core';
 import { DialogChildComponent } from '../../../../share/modal/dialog-child.component';
 import { ModalComponent } from '../../../../share/modal/modal.component';
-import { of, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({

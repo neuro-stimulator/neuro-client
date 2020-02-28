@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { ResponseObject, ExperimentResult } from '@stechy1/diplomka-share';
 
 import { BaseService } from '../share/base-service';
-import { AliveCheckerService } from '../alive-checker.service';
 import { HttpClient } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 import { environment, makeURL } from '../../environments/environment';

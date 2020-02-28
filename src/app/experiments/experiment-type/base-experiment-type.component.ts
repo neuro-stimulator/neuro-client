@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -26,7 +26,6 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
                         protected readonly _router: Router,
                         protected readonly _route: ActivatedRoute,
                         protected readonly _navigation: NavigationService,
-                        protected readonly _cdr: ChangeDetectorRef,
                         protected readonly logger: NGXLogger) {
     this.form = new FormGroup(this._createFormControls());
   }

@@ -1,7 +1,7 @@
-import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { isObservable, Observable, Subscription } from 'rxjs';
+import { isObservable, Observable} from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 import { ValueAccessorBase } from '../../../share/value-accessor-base';

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
@@ -22,9 +22,8 @@ export class ExperimentTypeNoneComponent extends BaseExperimentTypeComponent<Exp
               protected readonly router: Router,
               route: ActivatedRoute,
               navigation: NavigationService,
-              cdr: ChangeDetectorRef,
               logger: NGXLogger) {
-    super(service, toastr, router, route, navigation, cdr, logger);
+    super(service, toastr, router, route, navigation, logger);
   }
 
   ngOnInit() {

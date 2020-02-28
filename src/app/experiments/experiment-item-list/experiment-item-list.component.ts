@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 import { ExperimentGroup } from '../experiments.share';
-import { DateTimeFormat } from '../../share/date-time-format';
 import { Settings } from '../../settings/settings';
 import { SettingsService } from '../../settings/settings.service';
 

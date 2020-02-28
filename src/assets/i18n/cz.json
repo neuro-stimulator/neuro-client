@@ -115,6 +115,19 @@
           "WAIT": "Neaktivní výstup",
           "BRIGHTNESS": "Svítivost"
         }
+      },
+      "REA": {
+        "TITLE_PARAMS": "Parametry reakčního experimentu",
+        "CYCLE_COUNT": "Počet cyklů",
+        "WAIT_TIME_MIN": "Minimální doba mezi výstupy",
+        "WAIT_TIME_MAX": "Maximální doba mezi výstupy",
+        "MISS_TIME": "Maximální doba, kdy může přijít reakce od uživatele",
+        "ON_FAIL": {
+          "TITLE": "Při chybné reakci",
+          "CONTINUE": "Pokračovat",
+          "WAIT": "Počkat na timeout"
+        },
+        "BRIGHTNESS": "Svítivost"
       }
     },
     "OUTPUT_TYPE": {

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -37,9 +37,8 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
               router: Router,
               route: ActivatedRoute,
               navigation: NavigationService,
-              cdr: ChangeDetectorRef,
               logger: NGXLogger) {
-    super(service, toastr, router, route, navigation, cdr, logger);
+    super(service, toastr, router, route, navigation, logger);
   }
 
   ngOnInit() {

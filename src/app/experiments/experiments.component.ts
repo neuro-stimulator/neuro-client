@@ -144,7 +144,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
   handleNewExperiment(experimentType: ExperimentType) {
     const type: string = ExperimentType[experimentType].toLowerCase();
     this.logger.info(`Budu vytvářet nový experiment typu: ${type}.`);
-    this._router.navigate([type, 'new'], {relativeTo: this._route.parent});
+    this._router.navigate([type, 'new'], {relativeTo: this._route.parent}).catch((reason => console.log(reason)));
   }
 
   get experimentGroups(): ExperimentGroup {
