@@ -16,10 +16,9 @@ export class ExperimentResultsService extends BaseService<ExperimentResult> {
 
   private static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/experiment-results`;
 
-  constructor(aliveChecker: AliveCheckerService,
-              protected readonly _http: HttpClient,
+  constructor(protected readonly _http: HttpClient,
               protected readonly logger: NGXLogger) {
-    super(ExperimentResultsService.BASE_API_URL, aliveChecker, _http, logger);
+    super(ExperimentResultsService.BASE_API_URL, _http, logger);
 
     super._initSocket('experiment-results');
   }

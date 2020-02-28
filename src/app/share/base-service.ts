@@ -25,7 +25,8 @@ export abstract class BaseService<T extends BaseRecord> {
    * Třída BehaviorSubject je pozorovatelná, takže lze reagovat
    * na změny v kolekci
    */
-  private readonly records$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]);
+  private readonly _records$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]);
+  // public readonly records$: Observable<T[]> = this._records$.asObservable();
 
   protected _socket: Socket;
   private readonly _connected: EventEmitter<any> = new EventEmitter<any>();
@@ -36,17 +37,17 @@ export abstract class BaseService<T extends BaseRecord> {
   public readonly working$: Observable<boolean> = this._working.asObservable();
 
   protected constructor(private readonly _accessPoint: string,
-                        private readonly aliveChecker: AliveCheckerService,
+                        // private readonly aliveChecker: AliveCheckerService,
                         protected readonly _http: HttpClient,
                         protected readonly logger: NGXLogger) {
-    aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
-      this._handleAliveStatus(status);
-    });
-    aliveChecker.disconnect.subscribe(() => {
-      if (this._socket !== undefined) {
-        this._socket.disconnect();
-      }
-    });
+    // aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
+    //   this._handleAliveStatus(status);
+    // });
+    // aliveChecker.disconnect.subscribe(() => {
+    //   if (this._socket !== undefined) {
+    //     this._socket.disconnect();
+    //   }
+    // });
   }
 
   /**
@@ -54,15 +55,15 @@ export abstract class BaseService<T extends BaseRecord> {
    * Sama o sobě neinvokuje získání dat ze serveru
    */
   public get records(): Observable<T[]> {
-    return this.records$;
+    return this._records$;
   }
 
   /**
    * Získá ze serveru všechny záznamy
    */
   public all(): Promise<number> {
-    if (this.records$.getValue().length !== 0) {
-      return Promise.resolve(this.records$.getValue().length);
+    if (this._records$.getValue().length !== 0) {
+      return Promise.resolve(this._records$.getValue().length);
     }
     return this._http.get<ResponseObject<T[]>>(this._accessPoint)
                .pipe(
@@ -76,7 +77,7 @@ export abstract class BaseService<T extends BaseRecord> {
                  throw new Error();
                })
                .then(response => {
-                 this.records$.next(response.data);
+                 this._records$.next(response.data);
                  return response.data.length;
                })
                .catch(error => {
@@ -161,12 +162,22 @@ export abstract class BaseService<T extends BaseRecord> {
     return new Array(count);
   }
 
+  /**
+   * Metoda přepíše veškeré aktuální záznamy za nové
+   * Používat pouze pro účely testování!
+   *
+   * @param records New records
+   */
+  public replaceData(records: T[]): void {
+    this._replaceData(records);
+  }
+
   setIntroRecord(record: T): void {
-    this.records$.next([record]);
+    this._records$.next([record]);
   }
 
   clearIntroRecord(): void {
-    this.records$.next([]);
+    this._records$.next([]);
   }
 
   protected _initSocket(namespace: string): void {
@@ -253,7 +264,7 @@ export abstract class BaseService<T extends BaseRecord> {
    * @param records Nová kolekce dat
    */
   protected _replaceData(records: T[]): void {
-    this.records$.next(records);
+    this._records$.next(records);
   }
 
   /**
@@ -284,7 +295,7 @@ export abstract class BaseService<T extends BaseRecord> {
     }
 
     const record = event.record;
-    const records = this.records$.getValue();
+    const records = this._records$.getValue();
     const recordIndex = records.findIndex(value => value.id === record.id);
     switch (event.changeType) {
       case CRUDServiceType.INSERT:
@@ -315,7 +326,7 @@ export abstract class BaseService<T extends BaseRecord> {
         records.splice(recordIndex, 1);
         break;
     }
-    this.records$.next(records);
+    this._records$.next(records);
   }
 
   private _handleAliveStatus(status: ConnectionStatus) {

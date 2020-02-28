@@ -15,10 +15,9 @@ export class SequenceService extends BaseService<Sequence> {
 
   private static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/sequences`;
 
-  constructor(aliveChecker: AliveCheckerService,
-              protected readonly _http: HttpClient,
+  constructor(protected readonly _http: HttpClient,
               protected readonly logger: NGXLogger) {
-    super(SequenceService.BASE_API_URL, aliveChecker, _http, logger);
+    super(SequenceService.BASE_API_URL, _http, logger);
 
     super._initSocket('sequences');
     this._socket.on('all', (records: Sequence[]) => {

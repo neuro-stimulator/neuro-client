@@ -14,12 +14,11 @@ import { AliveCheckerService } from '../alive-checker.service';
 })
 export class ExperimentsService extends BaseService<Experiment> {
 
-  private static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/experiments`;
+  public static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/experiments`;
 
-  constructor(aliveChecker: AliveCheckerService,
-              protected readonly _http: HttpClient,
+  constructor(protected readonly _http: HttpClient,
               protected readonly logger: NGXLogger) {
-    super(ExperimentsService.BASE_API_URL, aliveChecker, _http, logger);
+    super(ExperimentsService.BASE_API_URL, _http, logger);
 
     super._initSocket('experiments');
     this._socket.on('all', (records: Experiment[]) => {
