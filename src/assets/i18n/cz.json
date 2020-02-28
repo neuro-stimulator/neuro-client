@@ -108,6 +108,7 @@
       },
       "TVEP": {
         "TITLE_PARAMS": "T-VEP parametry",
+        "SHARE_PATTERN_LENGTH": "Sdílet délku patternu mezi výstupy",
         "OUTPUT": {
           "PATTERN_LENGTH": "Délka patternu",
           "OUT":"Aktivní výstup",

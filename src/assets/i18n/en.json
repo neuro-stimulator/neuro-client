@@ -109,6 +109,7 @@
       },
       "TVEP": {
         "TITLE_PARAMS": "T-VEP parameters",
+        "SHARE_PATTERN_LENGTH": "Share pattern length between outputs",
         "OUTPUT": {
           "PATTERN_LENGTH": "Pattern length",
           "OUT":"Active output",

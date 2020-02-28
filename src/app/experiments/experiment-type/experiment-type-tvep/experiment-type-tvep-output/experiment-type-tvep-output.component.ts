@@ -4,8 +4,9 @@ import { FormArray, FormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import { environment } from '../../../../../environments/environment';
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
+
+import { environment } from '../../../../../environments/environment';
 import { brightnessSliderOptions } from '../../../experiments.share';
 
 @Component({
@@ -28,12 +29,16 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
   @Input() form: FormGroup;
   @Input() count: number;
   @Input() experimentReady: Observable<Experiment>;
+  @Input() sharePatternLength: Observable<boolean>;
 
   readonly patternSizes: BehaviorSubject<number>[] = [];
 
   private _experimentReadySubscription: Subscription;
   private _patternLengthSubscriptions: Subscription[] = [];
+  private _sharePatternLengthSubscription: Subscription;
   private _emptyExperiment = true;
+  private _sharePatternLength = true;
+  private _disablePatternLengthPropagation = false;
 
   constructor() { }
 
@@ -48,8 +53,15 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
         for (let i = 0; i < environment.maxOutputCount; i++) {
           this._patternLengthSubscriptions.push(this.patternLength(i).valueChanges.subscribe(patternLength => {
             this.patternSizes[i].next(patternLength);
+            if (!this._disablePatternLengthPropagation) {
+              this._handleSharePatternLengthChange(this._sharePatternLength, i);
+            }
           }));
         }
+
+        this._sharePatternLengthSubscription = this.sharePatternLength.subscribe((sharePatternLength: boolean) => {
+          this._handleSharePatternLengthChange(sharePatternLength, 0);
+        });
       }
     });
   }
@@ -59,8 +71,26 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
       for (let i = 0; i < environment.maxOutputCount; i++) {
         this._patternLengthSubscriptions[i].unsubscribe();
       }
+      this._sharePatternLengthSubscription.unsubscribe();
     }
     this._experimentReadySubscription.unsubscribe();
+  }
+
+  private _handleSharePatternLengthChange(sharePatternLength: boolean, copyOutputPatternLengthIndex: number) {
+    this._sharePatternLength = sharePatternLength;
+    if (!sharePatternLength) {
+      return;
+    }
+
+    const firstOutputPatternLength: number = this.outputs[copyOutputPatternLengthIndex].get('patternLength').value;
+    this._disablePatternLengthPropagation = true;
+    for (let i = 0; i < environment.maxOutputCount; i++) {
+      if (i === copyOutputPatternLengthIndex) {
+        continue;
+      }
+      this.outputs[i].get('patternLength').setValue(firstOutputPatternLength);
+    }
+    this._disablePatternLengthPropagation = false;
   }
 
   get brightnessSliderOptions(): SliderOptions {
@@ -90,5 +120,4 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
   brightness(index: number) {
     return this.outputs[index].get('brightness');
   }
-
 }

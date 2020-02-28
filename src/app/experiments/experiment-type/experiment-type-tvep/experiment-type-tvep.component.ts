@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, EventEmitter, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -20,7 +20,9 @@ import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-
   templateUrl: './experiment-type-tvep.component.html',
   styleUrls: ['./experiment-type-tvep.component.sass']
 })
-export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<ExperimentTVEP> implements OnInit {
+export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<ExperimentTVEP> implements OnInit, AfterContentInit {
+
+  readonly sharePatternLengthEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(service: ExperimentsService,
               toastr: ToastrService,
@@ -34,6 +36,10 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  ngAfterContentInit(): void {
+    this.sharePatternLength.valueChanges.subscribe((sharePatternLength: boolean) => this.sharePatternLengthEmitter.next(sharePatternLength));
   }
 
   protected _createOutputFormControl(): FormGroup {
@@ -62,6 +68,7 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
     const superControls = super._createFormControls();
     const myControls = {
       outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(environment.maxOutputCount)]),
+      sharePatternLength: new FormControl(null, [Validators.required]),
       outputs: new FormArray([])
     };
 
@@ -81,7 +88,6 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
       (this.form.get('outputs') as FormArray).clear();
     }
 
-
     super._updateFormGroup(experiment);
   }
 
@@ -93,4 +99,7 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
     return this.form.get('outputCount');
   }
 
+  get sharePatternLength() {
+    return this.form.get('sharePatternLength');
+  }
 }
