@@ -137,7 +137,8 @@
                 "node_modules/bootstrap/scss"
               ]
             },
-            "scripts": []
+            "scripts": [],
+            "codeCoverage": true
           }
         },
         "lint": {

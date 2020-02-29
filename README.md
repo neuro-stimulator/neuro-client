@@ -3,6 +3,7 @@
 Klientská část diplomové práce na téma: **Návrh hardwarového stimulátoru pro neuroinformatické experimenty**
 
 ![](https://github.com/stechy1/diplomka-frontend/workflows/build/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/stechy1/diplomka-frontend/badge.svg?branch=master)](https://coveralls.io/github/stechy1/diplomka-frontend?branch=master)
 
 ## Funkce
 
