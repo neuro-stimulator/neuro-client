@@ -75,6 +75,15 @@ describe('ExperimentsService', () => {
     req.flush(resp);
   });
 
+  it('should retrieve all experiments without http call', () => {
+    // Vložím do služby již existující data
+    service.replaceData(mockExperiments);
+    // Zavolám získání všech experimentů
+    expectAsync(service.all()).toBeResolvedTo(mockExperiments.length);
+    // Neočekávám žádné HTTP volání
+    httpTestingController.expectNone(ExperimentsService.BASE_API_URL);
+  });
+
   describe('experiment by id', () => {
 
     it('should find an experiment by id', () => {
