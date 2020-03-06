@@ -18,6 +18,7 @@ import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
 import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fast-dialog.component';
+import { ShareValidators } from '../../../share/ShareValidators';
 
 @Component({
   selector: 'app-experiment-type-erp',
@@ -61,8 +62,8 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
       id: new FormControl(null, Validators.required),
       experimentId: new FormControl(null, Validators.required),
       orderId: new FormControl(null, [Validators.required, Validators.min(0)]),
-      pulseUp: new FormControl(null, [Validators.required, Validators.min(0)]),
-      pulseDown: new FormControl(null, [Validators.required, Validators.min(0)]),
+      pulseUp: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      pulseDown: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
       distribution: new FormControl(null, [Validators.required, Validators.min(0)]),
       brightness: new FormControl(null, [
         Validators.required, Validators.min(0), Validators.max(100)
@@ -88,8 +89,8 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     const myControls = {
       outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(environment.maxOutputCount)]),
       maxDistribution: new FormControl(null, [Validators.required, Validators.min(1)]),
-      out: new FormControl(null, [Validators.required, Validators.min(0)]),
-      wait: new FormControl(null, [Validators.required, Validators.min(0)]),
+      out: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      wait: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
       random: new FormControl(null, [Validators.required]),
       edge: new FormControl(null, [Validators.required]),
       usedOutputs: new FormGroup({

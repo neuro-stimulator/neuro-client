@@ -14,6 +14,7 @@ import { brightnessSliderOptions, outputCountParams } from '../../experiments.sh
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
+import { ShareValidators } from '../../../share/ShareValidators';
 
 @Component({
   selector: 'app-experiment-type-cvep',
@@ -56,8 +57,8 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
         image: new FormControl(null),
         imageFile: new FormControl(null)
       }, [Validators.required, ExperimentOutputTypeValidator.createValidator()]),
-      out: new FormControl(null, [Validators.required, Validators.min(0)]),
-      wait: new FormControl(null, [Validators.required, Validators.min(0)]),
+      out: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      wait: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
       pattern: new FormControl(null, [Validators.required]),
       bitShift: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(31)]),
       brightness: new FormControl(null, [

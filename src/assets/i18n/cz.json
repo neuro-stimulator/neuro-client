@@ -6,7 +6,9 @@
     "VALIDATION": {
       "REQUIRED": "Parametr je vyžadován!",
       "MIN": "Minimální hodnota je: {{min}}!",
+      "EXCLUSIVE_MIN": "Hodnota musí být větší než: {{exclusiveMin}}",
       "MAX": "Maximální hodnota je: {{max}}!",
+      "EXCLUSIVE_MAX": "Hodnota musí být menší než: {{exclusiveMax}}",
       "ZERO_VALUE": "Parametr má hodnotu nula!"
     }
   },

@@ -47,8 +47,7 @@
                   </div>
                 </div>
                 <small *ngIf="waitTimeMin.touched && waitTimeMin.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
-                <small *ngIf="waitTimeMin.touched && waitTimeMin.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: waitTimeMin.errors?.min.min} }}</small>
-                <small *ngIf="waitTimeMin.touched && waitTimeMin.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: waitTimeMin.errors?.min.max} }}</small>
+                <small *ngIf="waitTimeMin.touched && waitTimeMin.errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: waitTimeMin.errors?.exclusiveMin.exclusiveMin} }}</small>
               </div>
             </div>
 
@@ -62,8 +61,7 @@
                   </div>
                 </div>
                 <small *ngIf="waitTimeMax.touched && waitTimeMax.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
-                <small *ngIf="waitTimeMax.touched && waitTimeMax.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: waitTimeMax.errors?.min.min} }}</small>
-                <small *ngIf="waitTimeMax.touched && waitTimeMax.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: waitTimeMax.errors?.min.max} }}</small>
+                <small *ngIf="waitTimeMax.touched && waitTimeMax.errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: waitTimeMax.errors?.exclusiveMin.exclusiveMin} }}</small>
               </div>
             </div>
 
@@ -77,8 +75,7 @@
                   </div>
                 </div>
                 <small *ngIf="missTime.touched && missTime.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
-                <small *ngIf="missTime.touched && missTime.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: missTime.errors?.min.min} }}</small>
-                <small *ngIf="missTime.touched && missTime.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: missTime.errors?.min.max} }}</small>
+                <small *ngIf="missTime.touched && missTime.errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: missTime.errors?.exclusiveMin.exclusiveMin} }}</small>
               </div>
             </div>
 

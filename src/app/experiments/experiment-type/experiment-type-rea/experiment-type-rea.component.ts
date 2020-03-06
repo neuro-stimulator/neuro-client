@@ -14,6 +14,7 @@ import { brightnessSliderOptions, outputCountParams } from '../../experiments.sh
 import { ExperimentsService } from '../../experiments.service';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
+import { ShareValidators } from '../../../share/ShareValidators';
 
 @Component({
   selector: 'app-experiment-type-rea',
@@ -46,10 +47,10 @@ export class ExperimentTypeReaComponent extends BaseExperimentTypeComponent<Expe
         image: new FormControl(null),
         imageFile: new FormControl(null)
       }, [Validators.required, ExperimentOutputTypeValidator.createValidator()]),
-      cycleCount: new FormControl(null, [Validators.required, Validators.min(0)]),
-      waitTimeMin: new FormControl(null, [Validators.required, Validators.min(0)]),
-      waitTimeMax: new FormControl(null, [Validators.required, Validators.min(0)]),
-      missTime: new FormControl(null, [Validators.required, Validators.min(0)]),
+      cycleCount: new FormControl(null, [Validators.required, Validators.min(1)]),
+      waitTimeMin: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      waitTimeMax: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      missTime: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
       onFail: new FormControl(null, [Validators.required]),
       brightness: new FormControl(null, [
         Validators.required, Validators.min(0), Validators.max(100)

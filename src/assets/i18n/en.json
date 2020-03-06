@@ -6,7 +6,9 @@
     "VALIDATION": {
       "REQUIRED": "Parameter is required!",
       "MIN": "Minimal value is: {{min}}!",
+      "EXCLUSIVE_MIN": "Value must be greater than: {{exclusiveMin}}",
       "MAX": "Maximal value is: {{max}}!",
+      "EXCLUSIVE_MAX": "Value must be less than: {{exclusiveMax}}",
       "ZERO_VALUE": "Parameter has zero value!"
     }
   },
