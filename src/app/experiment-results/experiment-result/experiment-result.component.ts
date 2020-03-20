@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
+import { NGXLogger } from 'ngx-logger';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subscription, TimeoutError } from 'rxjs';
 
@@ -25,8 +27,19 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
   incommingEvent: Observable<IOEvent> = this._incommingEvent.asObservable();
   outputCount: number = environment.maxOutputCount;
 
+  public form: FormGroup = new FormGroup({
+    id: new FormControl(),
+    experimentID: new FormControl(),
+    type: new FormControl(),
+    outputCount: new FormControl(),
+    name: new FormControl(),
+    date: new FormControl(),
+    filename: new FormControl(),
+  });
+
   constructor(private readonly _service: ExperimentResultsService,
               private readonly toastr: ToastrService,
+              private readonly logger: NGXLogger,
               private readonly _router: Router,
               private readonly _route: ActivatedRoute,
               private readonly _navigation: NavigationService) {
@@ -69,6 +82,7 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
               return;
             }
 
+            this.form.setValue(experimentResult);
             this._service.resultData(experimentResult)
                 .then((resultData: IOEvent[]) => {
                   for (const data of resultData) {
@@ -91,4 +105,16 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
     }
   }
 
+  handleSaveExperimentResult() {
+    this.logger.info(`Aktualizuji výsledek experimentu s id: ${this._experimentResult.id}`);
+    this._service.update(this.form.value);
+  }
+
+  get working() {
+    return this._service.working$;
+  }
+
+  get name() {
+    return this.form.get('name');
+  }
 }

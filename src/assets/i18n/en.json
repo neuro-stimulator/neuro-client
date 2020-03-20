@@ -193,7 +193,9 @@
     "EXPERIMENT_RESULT": {
       "TITLE": "Experiment result",
       "UNNAMED": "Unnamed",
-      "EXPERIMENT_PROGRESS": "Experiment progress"
+      "EXPERIMENT_PROGRESS": "Experiment progress",
+      "BASE_INFORMATIONS": "Basic informations",
+      "NAME": "Name"
     }
   },
 
