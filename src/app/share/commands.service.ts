@@ -24,8 +24,12 @@ export class CommandsService {
     await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/start/${experimentID}`, null).toPromise();
   }
 
-  public async experimentStop(experimentID: number) {
-    await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/stop/${experimentID}`, null).toPromise();
+  public async experimentPause(experimentID: number) {
+    await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/pause/${experimentID}`, null).toPromise();
+  }
+
+  public async experimentFinish(experimentID: number) {
+    await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/finish/${experimentID}`, null).toPromise();
   }
 
   public async experimentUpload(id: number) {

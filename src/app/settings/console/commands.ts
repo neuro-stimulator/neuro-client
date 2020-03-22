@@ -121,7 +121,7 @@ export class ExperimentSetupCommand implements ClientCommand<number> {
 }
 
 export class ExperimentStartCommand implements ClientCommand<void> {
-  description = `Spustí experiment: ${this.getName()} id: number`;
+  description = `Spustí experiment: ${this.getName()}`;
 
   public getName(): string {
     return CommandClientToServer.COMMAND_EXPERIMENT_START;
@@ -140,11 +140,31 @@ export class ExperimentStartCommand implements ClientCommand<void> {
   }
 }
 
-export class ExperimentStopCommand implements ClientCommand<void> {
-  description = `Zastaví experiment: ${this.getName()} id: number`;
+export class ExperimentPauseCommand implements ClientCommand<void> {
+  description = `Pozastaví experiment: ${this.getName()}`;
 
   public getName(): string {
-    return CommandClientToServer.COMMAND_EXPERIMENT_STOP;
+    return CommandClientToServer.COMMAND_EXPERIMENT_PAUSE;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length !== 0) {
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): number {
+    return null;
+  }
+}
+
+export class ExperimentFinishCommand implements ClientCommand<void> {
+  description = `Ukončí experiment: ${this.getName()}`;
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_EXPERIMENT_FINISH;
   }
 
   public isValid(params: string[]): [boolean, string?] {
@@ -161,7 +181,7 @@ export class ExperimentStopCommand implements ClientCommand<void> {
 }
 
 export class ExperimentClearCommand implements ClientCommand<void> {
-  description = `Vymaže experiment ze stimulátoru: ${this.getName()} id: number`;
+  description = `Vymaže experiment ze stimulátoru: ${this.getName()}`;
 
   public getName(): string {
     return CommandClientToServer.COMMAND_EXPERIMENT_CLEAR;
@@ -181,7 +201,7 @@ export class ExperimentClearCommand implements ClientCommand<void> {
 }
 
 export class SequencePartCommand implements ClientCommand<{offset: number, index: number}> {
-  description = `Nahraje vybranou část sekvence do stimulátoru.`;
+  description = `Nahraje vybranou část sekvence do stimulátoru: ${this.getName()} offset: number, index: number`;
 
   public getName(): string {
     return CommandClientToServer.COMMAND_SEQUENCE_PART;
@@ -208,7 +228,7 @@ export class MemoryCommand implements ClientCommand<number> {
 
   private static readonly MEMORY_TYPE: string[] = ['config', 'counters', 'accumulator'];
 
-  description = `Vypíše zadaný kus paměti ze stimulátoru v raw podobě do konzole.`;
+  description = `Vypíše zadaný kus paměti ze stimulátoru v raw podobě do konzole: ${this.getName()} memory: [${MemoryCommand.MEMORY_TYPE.toString()}]`;
 
   public getName(): string {
     return CommandClientToServer.COMMAND_MEMORY;

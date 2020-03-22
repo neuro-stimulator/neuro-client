@@ -3,15 +3,15 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { Socket } from 'ngx-socket-io';
+import { TranslateService } from '@ngx-translate/core';
 
-import { ResponseObject} from '@stechy1/diplomka-share';
+import { ResponseObject, CommandToStimulator } from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
 import { NavigationService } from '../navigation/navigation.service';
 import { ConsoleService } from '../settings/console/console.service';
 import { SerialDataEvent, StimulatorStateEvent } from './serial-data.event';
-import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -23,16 +23,7 @@ export class SerialService {
    */
   private static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/low-level`;
 
-  private static readonly STATE_COMMAND_MAP = {
-    0x00: 'CODE_SUCCESS_COMMANDS_STIMULATOR_READY',
-    0x01: 'CODE_SUCCESS_COMMANDS_EXPERIMENT_UPLOAD',
-    0x02: 'CODE_SUCCESS_COMMANDS_EXPERIMENT_SETUP',
-    0x03: 'CODE_SUCCESS_COMMANDS_EXPERIMENT_START',
-    0x04: 'CODE_SUCCESS_COMMANDS_EXPERIMENT_STOP',
-    0x05: 'CODE_SUCCESS_COMMANDS_EXPERIMENT_CLEAR',
-    0x11: 'CODE_SUCCESS_COMMANDS_EXPERIMENT_OUTPUT_UPLOAD',
-    0x20: 'CODE_SUCCESS_COMMANDS_SEQUENCE_PART_UPLOAD',
-  };
+  private static readonly STATE_COMMAND_MAP = {};
 
   /**
    * Emitter pro přijatá data
@@ -59,6 +50,7 @@ export class SerialService {
               private readonly _http: HttpClient) {
     this._isSerialConnected = false;
     this._updateNavigationSubtitle(false);
+    SerialService._initStateCommandMap();
     aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
       if (status === ConnectionStatus.CONNECTED) {
         this._socket.connect();
@@ -90,6 +82,18 @@ export class SerialService {
       this._isSerialConnected = data.connected;
       this._updateNavigationSubtitle();
     });
+  }
+
+  private static _initStateCommandMap() {
+    SerialService.STATE_COMMAND_MAP[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_READY] = 'CODE_SUCCESS_COMMANDS_STIMULATOR_READY';
+    SerialService.STATE_COMMAND_MAP[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_UPLOAD] = 'CODE_SUCCESS_COMMANDS_EXPERIMENT_UPLOAD';
+    SerialService.STATE_COMMAND_MAP[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_SETUP] = 'CODE_SUCCESS_COMMANDS_EXPERIMENT_SETUP';
+    SerialService.STATE_COMMAND_MAP[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_RUN] = 'CODE_SUCCESS_COMMANDS_EXPERIMENT_RUN';
+    SerialService.STATE_COMMAND_MAP[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_PAUSE] = 'CODE_SUCCESS_COMMANDS_EXPERIMENT_PAUSE';
+    SerialService.STATE_COMMAND_MAP[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_FINISH] = 'CODE_SUCCESS_COMMANDS_EXPERIMENT_FINISH';
+    SerialService.STATE_COMMAND_MAP[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_CLEAR] = 'CODE_SUCCESS_COMMANDS_EXPERIMENT_CLEAR';
+    SerialService.STATE_COMMAND_MAP[CommandToStimulator.COMMAND_OUTPUT_SETUP] = 'CODE_SUCCESS_COMMANDS_EXPERIMENT_OUTPUT_UPLOAD';
+    SerialService.STATE_COMMAND_MAP[CommandToStimulator.COMMAND_SEQUENCE_NEXT_PART] = 'CODE_SUCCESS_COMMANDS_SEQUENCE_PART_UPLOAD';
   }
 
   private _handleStimulatorStateEvent(event: StimulatorStateEvent) {

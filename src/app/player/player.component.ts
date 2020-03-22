@@ -10,6 +10,7 @@ import { CommandsService } from '../share/commands.service';
 import { SerialService } from '../share/serial.service';
 import { ExperimentsService } from '../experiments/experiments.service';
 import { TranslateService } from '@ngx-translate/core';
+import { CommandFromStimulator } from '@stechy1/diplomka-share';
 
 
 @Component({
@@ -54,7 +55,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
         .then((text: string) => {
           this.toaster.success(text);
         });
-    if (event.state === 0x04) {
+    if (event.state === CommandFromStimulator.COMMAND_STIMULATOR_STATE_FINISHED) {
       this._router.navigate(['/', 'results']);
     }
   }
@@ -84,8 +85,12 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this._command.experimentStart(this._experimentID);
   }
 
-  handleStopExperiment() {
-    this._command.experimentStop(this._experimentID);
+  handlePauseExperiment() {
+    this._command.experimentPause(this._experimentID);
+  }
+
+  handleFinishExperiment() {
+    this._command.experimentFinish(this._experimentID);
   }
 
   handleClearExperiment() {

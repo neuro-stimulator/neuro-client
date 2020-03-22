@@ -6,9 +6,10 @@ import {
   ExperimentClearCommand,
   ExperimentUploadCommand,
   ExperimentStartCommand,
-  ExperimentStopCommand,
+  ExperimentPauseCommand,
+  ExperimentFinishCommand,
   ExperimentSetupCommand,
-  OutputSetCommand, MemoryCommand, SequencePartCommand,
+  OutputSetCommand, MemoryCommand, SequencePartCommand
 } from './commands';
 
 @Injectable({
@@ -22,7 +23,8 @@ export class CommandService {
     new DisplayClearCommand(),
     new DisplayTextCommand(),
     new ExperimentStartCommand(),
-    new ExperimentStopCommand(),
+    new ExperimentPauseCommand(),
+    new ExperimentFinishCommand(),
     new ExperimentUploadCommand(),
     new ExperimentSetupCommand(),
     new ExperimentClearCommand(),

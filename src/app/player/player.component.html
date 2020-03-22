@@ -10,7 +10,8 @@
   <div class="col-12 control-panel-toolbar">
     <button class="btn btn-primary upload" (click)="handleUploadExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-upload"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.UPLOAD' | translate}}</button>
     <button class="btn btn-success run" (click)="handleRunExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-play"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PLAY' | translate}}</button>
-    <button class="btn btn-warning stop" (click)="handleStopExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-stop"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.STOP' | translate}}</button>
+    <button class="btn btn-success pause" (click)="handlePauseExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-pause"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PAUSE' | translate}}</button>
+    <button class="btn btn-warning finish" (click)="handleFinishExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-stop"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.FINISH' | translate}}</button>
     <button class="btn btn-danger clear" (click)="handleClearExperiment()" [disabled]="!stimulatorOnline"><i class="fas fa-eraser"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.CLEAR' | translate}}</button>
   </div>
 
