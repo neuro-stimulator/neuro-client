@@ -16,7 +16,7 @@
               </div>
             </div>
             <small *ngIf="pulseUp(i).touched && pulseUp(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
-            <small *ngIf="pulseUp(i).touched && pulseUp(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: pulseUp(i).errors?.min.min} }}</small>
+            <small *ngIf="pulseUp(i).touched && pulseUp(i).errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: pulseUp(i).errors?.exclusiveMin.exclusiveMin} }}</small>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-3">
@@ -30,7 +30,7 @@
               </div>
             </div>
             <small *ngIf="pulseDown(i).touched && pulseDown(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
-            <small *ngIf="pulseDown(i).touched && pulseDown(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: pulseDown(i).errors?.min.min} }}</small>
+            <small *ngIf="pulseDown(i).touched && pulseDown(i).errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: pulseDown(i).errors?.exclusiveMin.exclusiveMin} }}</small>
           </div>
         </div>
 

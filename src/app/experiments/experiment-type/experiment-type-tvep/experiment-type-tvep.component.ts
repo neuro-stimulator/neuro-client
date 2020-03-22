@@ -14,6 +14,7 @@ import { ExperimentsService } from '../../experiments.service';
 import { outputCountParams } from '../../experiments.share';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
+import { ShareValidators } from '../../../share/ShareValidators';
 
 @Component({
   selector: 'app-experiment-type-tvep',
@@ -46,8 +47,8 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
       id: new FormControl(null, Validators.required),
       experimentId: new FormControl(null, Validators.required),
       orderId: new FormControl(null, Validators.required),
-      out: new FormControl(null, [Validators.required, Validators.min(0)]),
-      wait: new FormControl(null, [Validators.required, Validators.min(0)]),
+      out: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      wait: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
       patternLength: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(32)]),
       pattern: new FormControl(null, [Validators.required]),
       brightness: new FormControl(null, [

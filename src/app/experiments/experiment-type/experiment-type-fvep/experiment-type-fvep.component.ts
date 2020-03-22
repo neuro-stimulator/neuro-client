@@ -14,6 +14,7 @@ import { ExperimentsService } from '../../experiments.service';
 import { outputCountParams } from '../../experiments.share';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
+import { ShareValidators } from '../../../share/ShareValidators';
 
 @Component({
   selector: 'app-experiment-type-fvep',
@@ -40,10 +41,10 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
       id: new FormControl(null, Validators.required),
       experimentId: new FormControl(null, Validators.required),
       orderId: new FormControl(null, Validators.required),
-      timeOn: new FormControl(null, [Validators.required, Validators.min(0)]),
-      timeOff: new FormControl(null, [Validators.required, Validators.min(0)]),
-      frequency: new FormControl(null, [Validators.required, Validators.min(0)]),
-      dutyCycle: new FormControl(null, [Validators.required, Validators.min(0)]),
+      timeOn: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      timeOff: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      frequency: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      dutyCycle: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
       brightness: new FormControl(null, [
         Validators.required, Validators.min(0), Validators.max(100)
       ]),

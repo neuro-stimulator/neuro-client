@@ -25,8 +25,7 @@
               </div>
             </div>
             <small *ngIf="out(i).touched && out(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
-            <small *ngIf="out(i).touched && out(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: out(i).errors?.min.min} }}</small>
-            <small *ngIf="out(i).touched && out(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: out(i).errors?.min.max} }}</small>
+            <small *ngIf="out(i).touched && out(i).errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: out(i).errors?.exclusiveMin.exclusiveMin} }}</small>
           </div>
         </div>
 
@@ -40,8 +39,7 @@
               </div>
             </div>
             <small *ngIf="wait(i).touched && wait(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
-            <small *ngIf="wait(i).touched && wait(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: wait(i).errors?.min.min} }}</small>
-            <small *ngIf="wait(i).touched && wait(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: wait(i).errors?.min.max} }}</small>
+            <small *ngIf="wait(i).touched && wait(i).errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: wait(i).errors?.exclusiveMin.exclusiveMin} }}</small>
           </div>
         </div>
 
