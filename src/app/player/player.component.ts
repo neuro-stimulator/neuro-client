@@ -82,7 +82,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   handleRunExperiment() {
-    this._command.experimentStart(this._experimentID);
+    this._command.experimentRun(this._experimentID);
   }
 
   handlePauseExperiment() {

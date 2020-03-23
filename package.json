@@ -12,6 +12,7 @@
     "release": "ng build --prod --base-href=/ --output-path=build --output-hashing none",
     "test": "ng test",
     "test:ci": "ng test --browsers ChromeHeadless",
+    "check-translations": "tsc check-translations.ts && node check-translations",
     "lint": "ng lint",
     "e2e": "ng e2e -c=qa"
   },

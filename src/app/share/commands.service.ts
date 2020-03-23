@@ -20,8 +20,8 @@ export class CommandsService {
     return await this._http.patch(`${CommandsService.BASE_API_URL}/time-set/${Date.now()}`, null).toPromise();
   }
 
-  public async experimentStart(experimentID: number) {
-    await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/start/${experimentID}`, null).toPromise();
+  public async experimentRun(experimentID: number) {
+    await this._http.patch(`${CommandsService.BASE_API_URL}/experiment/run/${experimentID}`, null).toPromise();
   }
 
   public async experimentPause(experimentID: number) {
