@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observable, Subscription } from 'rxjs';
@@ -11,6 +11,7 @@ import { SerialService } from '../share/serial.service';
 import { ExperimentsService } from '../experiments/experiments.service';
 import { TranslateService } from '@ngx-translate/core';
 import { CommandFromStimulator } from '@stechy1/diplomka-share';
+import { ExperimentViewerComponent } from '../share/experiment-viewer/experiment-viewer.component';
 
 
 @Component({
@@ -26,6 +27,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
   private _eventEmitter: EventEmitter<IOEvent> = new EventEmitter<IOEvent>();
   eventEmitter: Observable<IOEvent> = this._eventEmitter.asObservable();
   outputCount;
+
+  @ViewChild(ExperimentViewerComponent)
+  experimentViewer: ExperimentViewerComponent;
 
   constructor(private readonly _command: CommandsService,
               private readonly _serial: SerialService,
@@ -78,6 +82,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   handleUploadExperiment() {
+    this.experimentViewer.events = [];
     this._command.experimentUpload(this._experimentID);
   }
 
