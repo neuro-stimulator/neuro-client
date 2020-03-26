@@ -10,7 +10,7 @@ import { CommandsService } from '../share/commands.service';
 import { SerialService } from '../share/serial.service';
 import { ExperimentsService } from '../experiments/experiments.service';
 import { TranslateService } from '@ngx-translate/core';
-import { CommandFromStimulator } from '@stechy1/diplomka-share';
+import { CommandFromStimulator, CommandToStimulator } from '@stechy1/diplomka-share';
 import { ExperimentViewerComponent } from '../share/experiment-viewer/experiment-viewer.component';
 
 
@@ -23,10 +23,13 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   private _experimentID: number;
   private _serialRawDataSubscription: Subscription;
+  private _stimulatorState = 0;
 
   private _eventEmitter: EventEmitter<IOEvent> = new EventEmitter<IOEvent>();
   eventEmitter: Observable<IOEvent> = this._eventEmitter.asObservable();
   outputCount;
+
+  public readonly BUTTON_DISABLED_STATES = {};
 
   @ViewChild(ExperimentViewerComponent)
   experimentViewer: ExperimentViewerComponent;
@@ -39,6 +42,17 @@ export class PlayerComponent implements OnInit, OnDestroy {
               private readonly logger: NGXLogger,
               private readonly translator: TranslateService,
               private readonly toaster: ToastrService) {
+    this._fillButtonStates();
+  }
+
+  private _fillButtonStates() {//                                                        upload,run,   pause, finish,clear
+    this.BUTTON_DISABLED_STATES[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_READY]  = [false,  true,  true,  true,  true];
+    this.BUTTON_DISABLED_STATES[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_UPLOAD] = [true,  true,  true,  true,  true];
+    this.BUTTON_DISABLED_STATES[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_SETUP]  = [true,  false,  true,  true,  false];
+    this.BUTTON_DISABLED_STATES[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_RUN]    = [true,  true,  false,  false,  true];
+    this.BUTTON_DISABLED_STATES[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_PAUSE]  = [true,  false,  true,  true,  true];
+    this.BUTTON_DISABLED_STATES[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_FINISH] = [false,  true,  true,  true,  true];
+    this.BUTTON_DISABLED_STATES[CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_CLEAR]  = [false,  true,  true,  true,  true];
   }
 
   private _handleRawData(event: SerialDataEvent) {
@@ -53,6 +67,11 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   private _handleStimulatorStateEvent(event: StimulatorStateEvent) {
+    this._stimulatorState = event.state;
+    if (event.noUpdate) {
+      return;
+    }
+
     const key = SerialService.getStimulatorStateTranslateValue(event.state);
     this.translator.get(key)
         .toPromise()
@@ -75,6 +94,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
       this.outputCount = experiment.outputCount;
     });
     this._serialRawDataSubscription = this._serial.rawData$.subscribe((event: SerialDataEvent) => this._handleRawData(event));
+    this._command.stimulatorState();
   }
 
   ngOnDestroy(): void {
@@ -106,4 +126,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     return this._serial.isSerialConnected;
   }
 
+  get stimulatorState(): number {
+    return this._stimulatorState;
+  }
 }

@@ -4,6 +4,7 @@ export interface SerialDataEvent {
 
 export interface StimulatorStateEvent extends SerialDataEvent {
   state: number;
+  noUpdate: boolean;
   timestamp: number;
 }
 
