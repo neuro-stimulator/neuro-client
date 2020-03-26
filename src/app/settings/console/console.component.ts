@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit, ElementRef, ViewChild } from '@angular/co
 
 import { Subscription } from 'rxjs';
 
-import { SerialDataEvent, StimulatorMemoryEvent, StimulatorSequencePartRequestEvent } from '../../share/serial-data.event';
+import { SerialDataEvent, StimulatorMemoryEvent, StimulatorSequencePartRequestEvent } from '@stechy1/diplomka-share';
+
 import { SerialService } from '../../share/serial.service';
 import { ConsoleService } from './console.service';
 

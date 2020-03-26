@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-
-import { ResponseObject, ExperimentResult } from '@stechy1/diplomka-share';
-
-import { BaseService } from '../share/base-service';
 import { HttpClient } from '@angular/common/http';
+
 import { NGXLogger } from 'ngx-logger';
+
+import { ResponseObject, ExperimentResult, IOEvent } from '@stechy1/diplomka-share';
+
 import { environment, makeURL } from '../../environments/environment';
-import { IOEvent } from '../share/serial-data.event';
+import { BaseService } from '../share/base-service';
 
 @Injectable({
   providedIn: 'root'

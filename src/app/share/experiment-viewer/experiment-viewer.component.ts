@@ -3,9 +3,10 @@ import { AfterContentInit, Component, ElementRef, HostListener, Input, OnDestroy
 import { Observable, Subscription } from 'rxjs';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
+import { IOEvent } from '@stechy1/diplomka-share';
+
 import { environment } from '../../../environments/environment';
 import { Round } from '../../player/round';
-import { IOEvent } from '../serial-data.event';
 
 @Component({
   selector: 'app-experiment-viewer',

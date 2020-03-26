@@ -5,13 +5,12 @@ import { Observable } from 'rxjs';
 import { Socket } from 'ngx-socket-io';
 import { TranslateService } from '@ngx-translate/core';
 
-import { ResponseObject, CommandToStimulator } from '@stechy1/diplomka-share';
+import { ResponseObject, CommandToStimulator, SerialDataEvent, StimulatorStateEvent } from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
 import { NavigationService } from '../navigation/navigation.service';
 import { ConsoleService } from '../settings/console/console.service';
-import { SerialDataEvent, StimulatorStateEvent } from './serial-data.event';
 
 @Injectable({
   providedIn: 'root'

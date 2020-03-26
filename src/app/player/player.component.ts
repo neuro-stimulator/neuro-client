@@ -4,13 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
+import { TranslateService } from '@ngx-translate/core';
 
-import { IOEvent, SerialDataEvent, StimulatorStateEvent } from '../share/serial-data.event';
+import { CommandFromStimulator, CommandToStimulator, IOEvent, SerialDataEvent, StimulatorStateEvent } from '@stechy1/diplomka-share';
+
 import { CommandsService } from '../share/commands.service';
 import { SerialService } from '../share/serial.service';
 import { ExperimentsService } from '../experiments/experiments.service';
-import { TranslateService } from '@ngx-translate/core';
-import { CommandFromStimulator, CommandToStimulator } from '@stechy1/diplomka-share';
 import { ExperimentViewerComponent } from '../share/experiment-viewer/experiment-viewer.component';
 
 

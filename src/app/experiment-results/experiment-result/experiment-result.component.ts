@@ -6,11 +6,10 @@ import { NGXLogger } from 'ngx-logger';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subscription, TimeoutError } from 'rxjs';
 
-import { ExperimentType, ExperimentResult, createEmptyExperimentResult, createEmptyExperiment } from '@stechy1/diplomka-share';
+import { ExperimentType, ExperimentResult, createEmptyExperimentResult, createEmptyExperiment, IOEvent } from '@stechy1/diplomka-share';
 
 import { environment } from '../../../environments/environment';
 import { NavigationService } from '../../navigation/navigation.service';
-import { IOEvent } from '../../share/serial-data.event';
 import { ExperimentResultsService } from '../experiment-results.service';
 
 @Component({

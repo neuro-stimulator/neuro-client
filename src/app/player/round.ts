@@ -1,4 +1,4 @@
-import { IOEvent } from '../share/serial-data.event';
+import { IOEvent } from '@stechy1/diplomka-share';
 
 export interface Round {
   output: {
