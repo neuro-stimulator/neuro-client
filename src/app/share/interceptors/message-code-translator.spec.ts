@@ -1,5 +1,6 @@
 import { MessageCodes } from '@stechy1/diplomka-share';
 
+import { environment } from '../../../environments/environment';
 import { MESSAGE_CODE_TRANSLATOR } from './message-code-translator';
 
 function objectKeys(...objects) {
@@ -25,7 +26,7 @@ function objectKeys(...objects) {
 
 describe('MessageCodeTranslator', () => {
 
-  const supportedLanguages = ['cz', 'en'];
+  const supportedLanguages = environment.supportedLanguages.map(language => language.value);
 
   const translations = {};
   for (const language of supportedLanguages) {

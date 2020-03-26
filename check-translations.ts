@@ -9,11 +9,12 @@
  * 6. Ověři se, že překlad pro daný klíč existuje ve všech jazykových mutacích.
  */
 import * as fs from 'fs';
+import { environment } from './src/environments/environment';
 
 const root = 'src/app';
 // {{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DISTRIBUTION' | translate }}
 const translateREGEX = /{{[ ]?'[A-Z._]+'[ ]?\|[ ]?translate[ ]?}}/gm;
-const supportedTranslations = ['cz', 'en'];
+const supportedTranslations = environment.supportedLanguages.map(language => language.value);
 const translations = {};
 for (const language of supportedTranslations) {
   translations[language] = JSON.parse(fs.readFileSync(`src/assets/i18n/${language}.json`, { encoding: 'utf-8'}));

@@ -1,11 +1,14 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { registerLocaleData } from '@angular/common';
 import localeCZECH from '@angular/common/locales/cs';
 import localeENGLISH from '@angular/common/locales/en-GB';
 
+import { LocalStorageService } from 'angular-2-local-storage';
 import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 
+import { environment } from '../environments/environment';
 import { NavigationService } from './navigation/navigation.service';
 import { SerialService } from './share/serial.service';
 import { SequenceService } from './share/sequence.service';
@@ -13,10 +16,7 @@ import { ConsoleService } from './settings/console/console.service';
 import { ConsoleLoggerMonitorService } from './console-logger-monitor.service';
 import { IpcService } from './share/ipc.service';
 import { SettingsService } from './settings/settings.service';
-import { LocalStorageService } from 'angular-2-local-storage';
-import { Router } from '@angular/router';
 import { IntroService } from './share/intro.service';
-import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit, AfterViewInit {
               private readonly logger: NGXLogger) {
     logger.registerMonitor(new ConsoleLoggerMonitorService(console));
 
-    translate.addLangs(['en', 'cz']);
+    translate.addLangs(environment.supportedLanguages.map(language => language.value));
     translate.setDefaultLang('cz');
     translate.use(settings.settings.application.language || 'cz');
     switch (settings.settings.application.language) {
