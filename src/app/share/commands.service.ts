@@ -16,8 +16,8 @@ export class CommandsService {
     return await this._http.patch(`${CommandsService.BASE_API_URL}/reboot`, null).toPromise();
   }
 
-  public async setTime() {
-    return await this._http.patch(`${CommandsService.BASE_API_URL}/time-set/${Date.now()}`, null).toPromise();
+  public async stimulatorState() {
+    return await this._http.get(`${CommandsService.BASE_API_URL}/stimulator-state`).toPromise();
   }
 
   public async experimentRun(experimentID: number) {

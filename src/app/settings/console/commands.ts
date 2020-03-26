@@ -72,6 +72,26 @@ export class DisplayTextCommand implements ClientCommand<{ x: number, y: number,
   }
 }
 
+export class StimulatorStateCommand implements ClientCommand<void> {
+  description = 'Přečte ze stimulátoru aktuální stav.';
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_STIMULATOR_STATE;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length !== 0) {
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): void {
+    return null;
+  }
+}
+
 export class ExperimentUploadCommand implements ClientCommand<number> {
   description = `Nahraje experiment do stimulátoru: ${this.getName()} id: number`;
 
@@ -120,11 +140,11 @@ export class ExperimentSetupCommand implements ClientCommand<number> {
   }
 }
 
-export class ExperimentStartCommand implements ClientCommand<void> {
+export class ExperimentRunCommand implements ClientCommand<void> {
   description = `Spustí experiment: ${this.getName()}`;
 
   public getName(): string {
-    return CommandClientToServer.COMMAND_EXPERIMENT_START;
+    return CommandClientToServer.COMMAND_EXPERIMENT_RUN;
   }
 
   public isValid(params: string[]): [boolean, string?] {

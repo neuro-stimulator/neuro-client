@@ -5,11 +5,11 @@ import {
   DisplayTextCommand,
   ExperimentClearCommand,
   ExperimentUploadCommand,
-  ExperimentStartCommand,
+  ExperimentRunCommand,
   ExperimentPauseCommand,
   ExperimentFinishCommand,
   ExperimentSetupCommand,
-  OutputSetCommand, MemoryCommand, SequencePartCommand
+  OutputSetCommand, MemoryCommand, SequencePartCommand, StimulatorStateCommand
 } from './commands';
 
 @Injectable({
@@ -22,7 +22,8 @@ export class CommandService {
   private static readonly COMMANDS = [
     new DisplayClearCommand(),
     new DisplayTextCommand(),
-    new ExperimentStartCommand(),
+    new StimulatorStateCommand(),
+    new ExperimentRunCommand(),
     new ExperimentPauseCommand(),
     new ExperimentFinishCommand(),
     new ExperimentUploadCommand(),

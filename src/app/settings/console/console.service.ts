@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Socket } from 'ngx-socket-io';
+import { TranslateService } from '@ngx-translate/core';
 import { LocalStorageService } from 'angular-2-local-storage';
+
+import { ServerCommandResponse } from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../../alive-checker.service';
 import { ConsoleCommand } from './console-command';
 import { CommandService } from './command.service';
-import { TranslateService } from '@ngx-translate/core';
+import { MESSAGE_CODE_TRANSLATOR, SERVER_MESSAGE_CODE_PREFIX } from '../../share/interceptors/message-code-translator';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +33,7 @@ export class ConsoleService {
     aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
       if (status === ConnectionStatus.CONNECTED) {
         this._socket.connect();
-        this._socket.on('command', (data) => console.log(data));
+        this._socket.on('command', (data: ServerCommandResponse) => this._processIncommingCommandResponse(data));
       }
     });
     aliveChecker.disconnect.subscribe(() => {
@@ -45,6 +48,25 @@ export class ConsoleService {
   private _loadHistory() {
     const commands = this._storage.get<ConsoleCommand[]>(ConsoleService.STORAGE_KEY) || [];
     this._commands.next(commands);
+  }
+
+  private _processIncommingCommandResponse(data: ServerCommandResponse) {
+    if (data.valid) {
+      return;
+    }
+
+    if (data.message) {
+      this.saveCommandRaw(data.message);
+      return;
+    }
+
+    if (data.code) {
+      this._translator.get(`${SERVER_MESSAGE_CODE_PREFIX}${MESSAGE_CODE_TRANSLATOR[data.code]}`, data.params)
+          .toPromise()
+          .then(value => {
+            this.saveCommandRaw(value);
+          });
+    }
   }
 
   private _processData(data: ConsoleCommand) {
