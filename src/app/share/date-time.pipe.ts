@@ -1,7 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DateTimeFormat } from './date-time-format';
 import { DatePipe } from '@angular/common';
+
+import { environment } from '../../environments/environment';
 import { SettingsService } from '../settings/settings.service';
+import { DateTimeFormat } from './date-time-format';
 
 @Pipe({
   name: 'dateTime'
@@ -11,7 +13,7 @@ export class DateTimePipe implements PipeTransform {
   private readonly pipe: DatePipe;
 
   constructor(settings: SettingsService) {
-    const language = settings.settings.application.language || 'cz';
+    const language = settings.settings.application.language || environment.defaultLanguage;
     switch (language) {
       case 'cz':
         this.pipe = new DatePipe('cs_CZ');

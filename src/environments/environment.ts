@@ -49,7 +49,8 @@ export const environment = {
   supportedLanguages: [
     { value: 'cz', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.CZ'},
     { value: 'en', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.EN'}
-  ]
+  ],
+  defaultLanguage: 'cz'
 };
 
 export function makeURL(url: string, port: number) {

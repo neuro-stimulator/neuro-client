@@ -41,8 +41,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     logger.registerMonitor(new ConsoleLoggerMonitorService(console));
 
     translate.addLangs(environment.supportedLanguages.map(language => language.value));
-    translate.setDefaultLang('cz');
-    translate.use(settings.settings.application.language || 'cz');
+    translate.setDefaultLang(environment.defaultLanguage);
+    translate.use(settings.settings.application.language || environment.defaultLanguage);
     switch (settings.settings.application.language) {
       case 'cz':
         registerLocaleData(localeCZECH);
