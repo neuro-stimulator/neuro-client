@@ -31,8 +31,9 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
 
   private _initCheckboxes() {
     this.checkboxes.splice(0);
-    for (let i = this._patternSize - 1; i >= 0; i--) {
-      const value = (this.value >> i) & 1;
+    // for (let i = this._patternSize - 1; i >= 0; i--) {
+    for (let i = 0; i < this._patternSize; i++) {
+      const value = (this.value >> (i + 1)) & 1;
       this.checkboxes.push(value);
     }
   }
