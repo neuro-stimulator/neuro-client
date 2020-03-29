@@ -10,11 +10,12 @@ import { ExperimentTVEP, createEmptyExperimentTVEP } from '@stechy1/diplomka-sha
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
+import { ShareValidators } from '../../../share/ShareValidators';
 import { ExperimentsService } from '../../experiments.service';
 import { outputCountParams } from '../../experiments.share';
+import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
-import { ShareValidators } from '../../../share/ShareValidators';
 
 @Component({
   selector: 'app-experiment-type-tvep',
@@ -30,8 +31,9 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
               router: Router,
               route: ActivatedRoute,
               navigation: NavigationService,
+              nameValidator: ExperimentNameValidator,
               logger: NGXLogger) {
-    super(service, toastr, router, route, navigation, logger);
+    super(service, toastr, router, route, navigation, nameValidator, logger);
   }
 
   ngOnInit() {

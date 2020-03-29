@@ -14,6 +14,7 @@ import { SequenceService } from '../../../sequences/sequence.service';
 import { ModalComponent } from '../../../share/modal/modal.component';
 import { dependencyValidatorPattern, outputCountParams } from '../../experiments.share';
 import { ExperimentsService } from '../../experiments.service';
+import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
@@ -37,8 +38,9 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
               router: Router,
               route: ActivatedRoute,
               navigation: NavigationService,
+              nameValidator: ExperimentNameValidator,
               logger: NGXLogger) {
-    super(service, toastr, router, route, navigation, logger);
+    super(service, toastr, router, route, navigation, nameValidator, logger);
     this._experimentLoaded$.subscribe((experiment: ExperimentERP) => this._handleLoadedExperiment(experiment));
   }
 

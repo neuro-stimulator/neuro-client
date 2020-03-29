@@ -10,11 +10,12 @@ import { createEmptyExperimentREA, ExperimentREA, ReaOnResponseFail } from '@ste
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
+import { ShareValidators } from '../../../share/ShareValidators';
 import { brightnessSliderOptions, outputCountParams } from '../../experiments.share';
 import { ExperimentsService } from '../../experiments.service';
+import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
-import { ShareValidators } from '../../../share/ShareValidators';
 
 @Component({
   selector: 'app-experiment-type-rea',
@@ -28,8 +29,9 @@ export class ExperimentTypeReaComponent extends BaseExperimentTypeComponent<Expe
               router: Router,
               route: ActivatedRoute,
               navigation: NavigationService,
+              nameValidator: ExperimentNameValidator,
               logger: NGXLogger) {
-    super(service, toastr, router, route, navigation, logger);
+    super(service, toastr, router, route, navigation, nameValidator, logger);
   }
 
   ngOnInit() {

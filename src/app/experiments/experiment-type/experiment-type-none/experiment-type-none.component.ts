@@ -8,6 +8,7 @@ import { createEmptyExperiment, Experiment } from '@stechy1/diplomka-share';
 
 import { NavigationService } from '../../../navigation/navigation.service';
 import { ExperimentsService } from '../../experiments.service';
+import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 
 @Component({
@@ -22,8 +23,9 @@ export class ExperimentTypeNoneComponent extends BaseExperimentTypeComponent<Exp
               protected readonly router: Router,
               route: ActivatedRoute,
               navigation: NavigationService,
+              nameValidator: ExperimentNameValidator,
               logger: NGXLogger) {
-    super(service, toastr, router, route, navigation, logger);
+    super(service, toastr, router, route, navigation, nameValidator, logger);
   }
 
   ngOnInit() {

@@ -11,6 +11,7 @@
           <label for="experiment-name">{{ 'EXPERIMENTS.EXPERIMENT.NAME' | translate }}</label>
           <input type="text" id="experiment-name" class="form-control form-control-sm" [class.is-valid]="name.valid" [class.is-invalid]="name.invalid" formControlName="name">
           <small *ngIf="name.touched && name.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+          <small *ngIf="name.touched && name.errors?.nameExists" class="form-text text-muted">Název již existuje!</small>
         </div>
       </div>
 

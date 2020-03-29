@@ -10,6 +10,7 @@ import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 
 import { NavigationService } from '../../navigation/navigation.service';
 import { ExperimentsService } from '../experiments.service';
+import { ExperimentNameValidator } from '../experiment-name-validator';
 
 export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit, AfterViewInit, OnDestroy {
 
@@ -26,6 +27,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
                         protected readonly _router: Router,
                         protected readonly _route: ActivatedRoute,
                         protected readonly _navigation: NavigationService,
+                        private readonly _nameValidator: ExperimentNameValidator,
                         protected readonly logger: NGXLogger) {
     this.form = new FormGroup(this._createFormControls());
   }
@@ -103,7 +105,10 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
     this.logger.debug('Vytvářím kontrolky pro formulář.');
     return {
       id: new FormControl(null),
-      name: new FormControl(null, [Validators.required]),
+      name: new FormControl(null,
+        {validators: [Validators.required],
+          asyncValidators: [this._nameValidator.validate.bind(this._nameValidator)],
+          updateOn: 'blur'}),
       description: new FormControl(),
       type: new FormControl(null, [Validators.required]),
       created: new FormControl(null),

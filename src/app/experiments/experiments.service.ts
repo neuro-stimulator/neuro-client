@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { Experiment } from '@stechy1/diplomka-share';
+import { Experiment, ResponseObject } from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../environments/environment';
 import { BaseService } from '../share/base-service';
@@ -40,5 +40,15 @@ export class ExperimentsService extends BaseService<Experiment> {
       });
       this._socket.emit('install-experiment', {id: experimentID, sequence});
     });
+  }
+
+  public nameExists(name: string): Promise<boolean> {
+    this.logger.info(`Odesílám požadavek pro otestování existence názvu experimentu: ${name}.`);
+    return this._http.get<ResponseObject<{exists: boolean}>>(`${ExperimentsService.BASE_API_URL}/name-exists/${name}`)
+               .toPromise()
+               .then(result => {
+                 this.logger.info(`Výsledek existence názvu experimentu: ${result.data.exists}.`);
+                 return result.data.exists;
+               });
   }
 }

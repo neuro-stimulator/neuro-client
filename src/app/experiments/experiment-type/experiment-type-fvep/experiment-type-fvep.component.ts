@@ -12,6 +12,7 @@ import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
 import { ExperimentsService } from '../../experiments.service';
 import { outputCountParams } from '../../experiments.share';
+import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 import { ShareValidators } from '../../../share/ShareValidators';
@@ -28,8 +29,9 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
               router: Router,
               route: ActivatedRoute,
               navigation: NavigationService,
+              nameValidator: ExperimentNameValidator,
               logger: NGXLogger) {
-    super(service, toastr, router, route, navigation, logger);
+    super(service, toastr, router, route, navigation, nameValidator, logger);
   }
 
   ngOnInit() {
