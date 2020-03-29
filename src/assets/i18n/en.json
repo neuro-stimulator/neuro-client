@@ -230,7 +230,7 @@
   },
 
   "EXPERIMENT_PLAYER": {
-    "TITLE": "Experiment player",
+    "TITLE": "Experiment player: {{name}}",
     "STIMULATOR_NOT_CONNECTED": "Server is not connected to the stimulator. Before you will continue, please, connect to the stimulator in settings.",
     "CONTROL_PANEL": "Control panel",
     "BUTTON_BAR": {

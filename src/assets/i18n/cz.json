@@ -230,7 +230,7 @@
   },
 
   "EXPERIMENT_PLAYER": {
-    "TITLE": "Přehrávač experimentu",
+    "TITLE": "Přehrávač experimentu: {{name}}",
     "STIMULATOR_NOT_CONNECTED": "Server není připojený ke stimulátoru. Než budete pokračovat, připojte se pomocí nastavení.",
     "CONTROL_PANEL": "Ovládací panel",
     "BUTTON_BAR": {

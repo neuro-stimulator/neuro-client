@@ -17,7 +17,9 @@ export class NavigationService {
   private readonly _navigationChange: EventEmitter<any> = new EventEmitter<any>();
 
   public title: string;
+  public titleArgs: {};
   public subtitle: string;
+  public subtitleArgs: {};
   public icon: string;
   public working: boolean;
   public applyCustomNavColor: boolean;
@@ -28,6 +30,8 @@ export class NavigationService {
               private readonly _router: Router) {
     this.title = '';
     this.subtitle = '';
+    this.titleArgs = {};
+    this.subtitleArgs = {};
     this.icon = '';
     this.working = false;
     this.applyCustomNavColor = false;
@@ -50,6 +54,7 @@ export class NavigationService {
       mergeMap(route => route.data))
         .subscribe((event) => {
           this.title = event['title'];
+          this.titleArgs = {};
           this.applyCustomNavColor = event['applyCustomNavColor'] !== undefined ? event['applyCustomNavColor'] : false;
           this._navigationChange.next(event);
         });

@@ -12,6 +12,7 @@ import { CommandsService } from '../share/commands.service';
 import { SerialService } from '../share/serial.service';
 import { ExperimentsService } from '../experiments/experiments.service';
 import { ExperimentViewerComponent } from '../share/experiment-viewer/experiment-viewer.component';
+import { NavigationService } from '../navigation/navigation.service';
 
 
 @Component({
@@ -39,6 +40,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
               private readonly _service: ExperimentsService,
               private readonly _router: Router,
               private readonly _route: ActivatedRoute,
+              private readonly _navigation: NavigationService,
               private readonly logger: NGXLogger,
               private readonly translator: TranslateService,
               private readonly toaster: ToastrService) {
@@ -92,6 +94,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this._experimentID = this._route.snapshot.params['id'];
     this._service.one(this._experimentID).then(experiment => {
       this.outputCount = experiment.outputCount;
+      this._navigation.titleArgs = { name: experiment.name };
     });
     this._serialRawDataSubscription = this._serial.rawData$.subscribe((event: SerialDataEvent) => this._handleRawData(event));
     this._command.stimulatorState();
