@@ -42,9 +42,9 @@ export class ExperimentsService extends BaseService<Experiment> {
     });
   }
 
-  public nameExists(name: string): Promise<boolean> {
+  public nameExists(name: string, experimentID?: number): Promise<boolean> {
     this.logger.info(`Odesílám požadavek pro otestování existence názvu experimentu: ${name}.`);
-    return this._http.get<ResponseObject<{exists: boolean}>>(`${ExperimentsService.BASE_API_URL}/name-exists/${name}`)
+    return this._http.get<ResponseObject<{exists: boolean}>>(`${ExperimentsService.BASE_API_URL}/name-exists/${name}/${experimentID ?? 'new'}`)
                .toPromise()
                .then(result => {
                  this.logger.info(`Výsledek existence názvu experimentu: ${result.data.exists}.`);

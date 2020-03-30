@@ -14,7 +14,9 @@ export class ExperimentNameValidator implements AsyncValidator {
         return null;
       }
 
-      return this._service.nameExists(control.value)
+      const experimentID = control.parent.value.id;
+
+      return this._service.nameExists(control.value, experimentID)
                  .then((nameExists: boolean) => {
                    return nameExists ? {nameExists: true} : null;
                  });
