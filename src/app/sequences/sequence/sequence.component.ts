@@ -10,6 +10,7 @@ import { Experiment, ExperimentType, Sequence, createEmptyExperimentERP, createE
 
 import { ExperimentsService } from '../../experiments/experiments.service';
 import { SequenceService } from '../sequence.service';
+import { SequenceNameValidator } from '../sequence-name-validator';
 
 @Component({
   selector: 'app-sequence',
@@ -21,7 +22,11 @@ export class SequenceComponent implements OnInit, OnDestroy {
   form: FormGroup = new FormGroup({
     id: new FormControl(),
     experimentId: new FormControl(null, [Validators.required, Validators.min(1)]),
-    name: new FormControl(null, [Validators.required]),
+    name: new FormControl(null, {
+      validators: [Validators.required],
+      asyncValidators: [this._nameValidator.validate.bind(this._nameValidator)],
+      updateOn: 'blur'
+    }),
     size: new FormControl(null, [Validators.required, Validators.min(1)]),
     data: new FormControl(null, [Validators.required]),
     created: new FormControl(),
@@ -55,6 +60,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
               private readonly toastr: ToastrService,
               private readonly _router: Router,
               private readonly _route: ActivatedRoute,
+              private readonly _nameValidator: SequenceNameValidator,
               private readonly logger: NGXLogger) {
     this._experiment = createEmptyExperimentERP();
   }

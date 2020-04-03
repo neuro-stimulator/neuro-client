@@ -72,4 +72,14 @@ export class SequenceService extends BaseService<Sequence> {
 
     return this.insert(sequenceHelper);
   }
+
+  public nameExists(name: string, experimentID?: number): Promise<boolean> {
+    this.logger.info(`Odesílám požadavek pro otestování existence názvu sekvence: ${name}.`);
+    return this._http.get<ResponseObject<{exists: boolean}>>(`${SequenceService.BASE_API_URL}/name-exists/${name}/${experimentID ?? 'new'}`)
+               .toPromise()
+               .then(result => {
+                 this.logger.info(`Výsledek existence názvu sekvence: ${result.data.exists}.`);
+                 return result.data.exists;
+               });
+  }
 }
