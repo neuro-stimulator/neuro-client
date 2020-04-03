@@ -34,8 +34,8 @@ export const environment = {
   production: false,
   testing: false,
   url: {
-    server: 'http://192.168.43.68',
-    socket: 'http://192.168.43.68',
+    server: 'http://localhost',
+    socket: 'http://localhost',
   },
   port: {
     server: SERVER_HTTP_PORT,
