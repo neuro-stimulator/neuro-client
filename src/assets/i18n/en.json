@@ -360,7 +360,8 @@
     "SEQUENCE_VIEWER": {
       "NO_DATA": "Sequence does not have any data!",
       "UPDATE": "Update",
-      "CANCEL_UPDATE": "Cancel update"
+      "CANCEL_UPDATE": "Cancel update",
+      "OUTPUT_INDEX": "output/index"
     },
     "INTERCEPTORS": {
       "TIMEOUT": "Request timeout."

@@ -10,13 +10,21 @@
     <div class="col-12">
 
       <ul class="list-group list-group-horizontal sequence-group">
+        <li class="list-group-item sequence-entry">
+          <div class="heading text-center">{{ 'SHARE.SEQUENCE_VIEWER.OUTPUT_INDEX' | translate }}</div>
+          <ul class="list-group stimul-group">
+            <li class="list-group-item stimul-entry stimul-entry-heading"
+                *ngFor="let x of outputCountArray; let i = index">
+              <span>{{i}}.</span>
+            </li>
+          </ul>
+        </li>
         <li class="list-group-item sequence-entry" *ngFor="let data of flowData; let i = index">
           <div class="heading text-center">{{i}}</div>
           <ul class="list-group stimul-group" >
-            <li class="list-group-item stimul-entry text-center"
+            <li class="list-group-item stimul-entry"
                 *ngFor="let output of outputs"
                 [class.active]="data == output"
-                [ngStyle]="{'height': '30px', cursor: 'pointer'}"
                 (click)="handleStimulChange(i, output)">
               <span>{{output}}</span>
             </li>
@@ -35,7 +43,7 @@
   </div>
 
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 col-sm-8">
       <div class="chart">
         <canvas baseChart
                 [data]="pieChartData"
@@ -43,7 +51,8 @@
                 [chartType]="pieChartType"
                 [options]="pieChartOptions"
                 [colors]="pieChartColors"
-                [legend]="pieChartLegend">
+                [legend]="pieChartLegend"
+                [height]="128">
         </canvas>
       </div>
     </div>

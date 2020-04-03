@@ -5,26 +5,22 @@
   height: 100%
   overflow-x: auto
   overflow-y: hidden
-//  background-color: orange
 
 .sequence-entry
-  //background-color: blue
   border: none
   padding: 1px
-  //padding: 4px
 
   .heading
     background-color: gray
     padding: 1px
     min-width: 30px
+    margin-bottom: 1px
 
 .stimul-group
   height: 100%
   min-width: 30px
-//  background-color: red
 
 .stimul-entry
-  //background-color: green
   border: none
   padding: 1px
   border-radius: unset !important
@@ -32,17 +28,21 @@
   position: relative
   margin-right: 0
   background-color: $secondary
+  height: 30px
+  cursor: pointer
+  text-align: center
+  font-size: 14pt
+
+  &.stimul-entry-heading
+    background-color: gray
+    cursor: unset
+
+    span
+      color: unset
 
   span
-    position: absolute
-    top: 50%
-    left: 39%
-    -ms-transform: translateY(-50%)
-    transform: translateY(-50%)
     color: darkblue
-//height: calc((100vh - 100px) / 8)
 
 .stimul-entry.active
   background-color: #ffbf00
   color: black
-//background-color: pink

@@ -22,7 +22,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
     plugins: {
       datalabels: {
         formatter: (value, ctx) => {
-          return ctx.chart.data.labels[ctx.dataIndex];
+          return `#${value}`;
         },
       },
     }
@@ -102,7 +102,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
       map[key]['percent'] = map[key]['value'] / sequence.length;
     }
 
-    delete map['0'];
+    // delete map['0'];
     return map;
   }
 
@@ -116,7 +116,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
 
     for (const key of Object.keys(analyse)) {
       const data = analyse[key];
-      this.pieChartLabels.push(key);
+      this.pieChartLabels.push(`${key} (${data.percent * 100}%)`);
       this.pieChartData.push(data['value']);
     }
   }
@@ -127,7 +127,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
     }
 
     this.flowData[i] = output;
-    this._analyseSequence(this.flowData);
+    this._analyse = this._analyseSequence(this.flowData);
     this._showSequenceAnalyse(this._analyse);
     this.dataHasChanged = true;
     this.dataChanged.next(true);
@@ -143,5 +143,9 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
     this._analyse = this._analyseSequence(this.flowData);
     this._showSequenceAnalyse(this._analyse);
     this.dataHasChanged = false;
+  }
+
+  get outputCountArray(): number[] {
+    return new Array((this._outputCount ?? 0) + 1);
   }
 }

@@ -360,7 +360,8 @@
     "SEQUENCE_VIEWER": {
       "NO_DATA": "Sekvence neobsahuje žádná data!",
       "UPDATE": "Upravit",
-      "CANCEL_UPDATE": "Zrušit úpravy"
+      "CANCEL_UPDATE": "Zrušit úpravy",
+      "OUTPUT_INDEX": "výstup/index"
     },
     "INTERCEPTORS": {
       "TIMEOUT": "Vypršel timeout pro požadavek."
