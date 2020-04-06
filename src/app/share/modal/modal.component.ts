@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, EventEmitter, OnDestroy, ViewChild, Type, Input, HostListener } from '@angular/core';
+import { Component, ComponentFactoryResolver, EventEmitter, OnDestroy, ViewChild, Type, Input, HostListener, OnInit } from '@angular/core';
 import { animation } from './modal.animation';
 
 import { Observable, Subscription } from 'rxjs';

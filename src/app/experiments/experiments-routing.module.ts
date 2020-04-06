@@ -5,13 +5,18 @@ import { ExperimentsButtonsAddonComponent } from '../share/buttons-addons/experi
 import { ExperimentsComponent } from './experiments.component';
 import { ExperimentTypeComponent } from './experiment-type/experiment-type.component';
 import { ExperimentsActivate } from './experiments.activate';
+import { ExperimentsPageToolsComponent } from './experiments-page-tools/experiments-page-tools.component';
 
 const routes: Routes = [
   {
     path: 'list',
     component: ExperimentsComponent,
     pathMatch: 'full',
-    data: {title: 'EXPERIMENTS.TITLE', buttonsAddon: ExperimentsButtonsAddonComponent}
+    data: {
+      title: 'EXPERIMENTS.TITLE',
+      buttonsAddon: ExperimentsButtonsAddonComponent,
+      pageToolsComponent: ExperimentsPageToolsComponent
+    }
   },
   {
     path: ':type',
@@ -20,13 +25,18 @@ const routes: Routes = [
   {
     path: ':type/new',
     component: ExperimentTypeComponent,
-    data: {title: 'EXPERIMENTS.TITLE_NEW'},
+    data: {
+      title: 'EXPERIMENTS.TITLE_NEW'
+    },
     canActivate: [ExperimentsActivate]
   },
   {
     path: ':type/:id',
     component: ExperimentTypeComponent,
-    data: {title: 'EXPERIMENTS.TITLE_CONFIGURE', applyCustomNavColor: true},
+    data: {
+      title: 'EXPERIMENTS.TITLE_CONFIGURE',
+      applyCustomNavColor: true
+    },
     canActivate: [ExperimentsActivate]
   },
   {

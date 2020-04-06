@@ -22,32 +22,35 @@ import { ParamConfigApplicationComponent } from './param-config/param-config-app
 
 
 @NgModule({
-  declarations: [
-    SettingsComponent,
-    ServiceStateComponent,
-    ConsoleComponent,
-    ParamConfigComponent,
-    ParamConfigExperimentsComponent,
-    ParamConfigServerComponent,
-    ParamConfigApplicationComponent
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
+    declarations: [
+        SettingsComponent,
+        ServiceStateComponent,
+        ConsoleComponent,
+        ParamConfigComponent,
+        ParamConfigExperimentsComponent,
+        ParamConfigServerComponent,
+        ParamConfigApplicationComponent
+    ],
+    exports: [
+        ParamConfigExperimentsComponent
+    ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
 
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient]
-      }
-    }),
+        TranslateModule.forChild({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient]
+            }
+        }),
 
-    SettingsRoutingModule,
-    FabModule,
-    ShareModule,
-    ModalModule,
-  ]
+        SettingsRoutingModule,
+        FabModule,
+        ShareModule,
+        ModalModule,
+    ]
 })
 export class SettingsModule {
 

@@ -9,9 +9,6 @@ import { FileBrowserComponent } from './file-browser.component';
   ],
   imports: [
     CommonModule
-  ],
-  entryComponents: [
-    FileBrowserComponent
   ]
 })
 export class FileBrowserModule {

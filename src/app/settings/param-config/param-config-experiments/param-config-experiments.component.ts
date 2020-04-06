@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-param-config-experiments',
@@ -9,6 +9,25 @@ import { FormGroup } from '@angular/forms';
 export class ParamConfigExperimentsComponent implements OnInit {
 
   @Input() form: FormGroup;
+
+  public static createForm(): FormGroup {
+    return new FormGroup({
+      showDescription: new FormControl(null),
+      showTags: new FormControl(null),
+      showCreationDate: new FormControl(null),
+      showOutputType: new FormControl(null),
+      showOutputCount: new FormControl(null),
+      creationDateFormat: new FormGroup({
+        showYears: new FormControl(null),
+        showMonths: new FormControl(null),
+        showDays: new FormControl(null),
+        showHours: new FormControl(null),
+        showMinutes: new FormControl(null),
+        showSeconds: new FormControl(null),
+        showMiliseconds: new FormControl(null),
+      })
+    });
+  }
 
   constructor() { }
 

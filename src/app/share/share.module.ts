@@ -23,9 +23,6 @@ import { TranslateModule } from '@ngx-translate/core';
     ContentTogglerDirective,
     ExperimentTypeResolverDirective,
     DateTimePipe
-  ],
-  entryComponents: [
-    ExperimentsButtonsAddonComponent
   ]
 })
 export class ShareModule {

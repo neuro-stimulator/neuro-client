@@ -20,9 +20,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     ChartsModule,
     ShareModule,
     SimulationRoutingModule
-  ],
-  entryComponents: [
-    SimulationTypeErpComponent
   ]
 })
 export class SimulationModule {

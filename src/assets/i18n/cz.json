@@ -371,6 +371,11 @@
       "SERVER_CONNECTION_RESTORED": "Spojení se serverem bylo obnoveno.",
       "SERVER_CONNECTION_LOST": "Spojení se serverem bylo ztraceno!"
     },
+    "PAGE_TOOLS": {
+      "TITLE": "Nastavení na stránce",
+      "CONFIRM": "Uložit",
+      "CANCEL": "Zrušit"
+    },
 
     "DIALOGS": {
       "CONFIRMATION": {

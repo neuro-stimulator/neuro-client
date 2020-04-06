@@ -23,10 +23,6 @@ import { TranslateModule } from '@ngx-translate/core';
     DialogChildsDirective,
     ConfirmDialogComponent,
     InformDialogComponent,
-  ],
-  entryComponents: [
-    ConfirmDialogComponent,
-    InformDialogComponent,
   ]
 })
 export class ModalModule {

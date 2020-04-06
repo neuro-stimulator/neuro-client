@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ModalComponent } from '../../share/modal/modal.component';
 import { SettingsService } from '../settings.service';
 import { InformDialogComponent } from '../../share/modal/inform/inform-dialog.component';
+import { ParamConfigExperimentsComponent } from './param-config-experiments/param-config-experiments.component';
 
 @Component({
   selector: 'app-param-config',
@@ -22,22 +23,7 @@ export class ParamConfigComponent implements OnInit {
       language: new FormControl(null, [Validators.required]),
       disableTutorial: new FormControl(null)
     }),
-    experiments: new FormGroup({
-      showDescription: new FormControl(null),
-      showTags: new FormControl(null),
-      showCreationDate: new FormControl(null),
-      showOutputType: new FormControl(null),
-      showOutputCount: new FormControl(null),
-      creationDateFormat: new FormGroup({
-        showYears: new FormControl(null),
-        showMonths: new FormControl(null),
-        showDays: new FormControl(null),
-        showHours: new FormControl(null),
-        showMinutes: new FormControl(null),
-        showSeconds: new FormControl(null),
-        showMiliseconds: new FormControl(null),
-      })
-    }),
+    experiments: ParamConfigExperimentsComponent.createForm(),
     player: new FormGroup({}),
     results: new FormGroup({})
   });

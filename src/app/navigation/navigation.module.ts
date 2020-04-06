@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NavigationComponent } from './navigation.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.directive';
+import { ModalModule } from '../share/modal/modal.module';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,12 @@ import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.dire
     SidebarComponent,
     NavigationButtonsAddonDirective
   ],
-  imports: [
-    CommonModule,
-    TranslateModule.forChild(),
-    RouterModule,
-  ],
+    imports: [
+        CommonModule,
+        TranslateModule.forChild(),
+        RouterModule,
+        ModalModule,
+    ],
   exports: [
     NavigationComponent,
     SidebarComponent,

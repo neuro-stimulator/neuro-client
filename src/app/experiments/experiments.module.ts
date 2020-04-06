@@ -37,6 +37,8 @@ import { DropdownBtnModule } from '../share/dropdown-btn/dropdown-btn.module';
 import { SequenceFastDialogComponent } from './experiment-type/experiment-type-erp/sequence-fast-dialog/sequence-fast-dialog.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ExperimentsActivate } from './experiments.activate';
+import { ExperimentsPageToolsComponent } from './experiments-page-tools/experiments-page-tools.component';
+import { SettingsModule } from '../settings/settings.module';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { ExperimentsActivate } from './experiments.activate';
     OutputTypeComponent,
     ExperimentFilterDialogComponent,
     SequenceFastDialogComponent,
+    ExperimentsPageToolsComponent,
   ],
   imports: [
     CommonModule,
@@ -77,20 +80,11 @@ import { ExperimentsActivate } from './experiments.activate';
     AudioPlayerModule,
     ImagePlayerModule,
     TagEditorModule,
-    DropdownBtnModule
+    DropdownBtnModule,
+    SettingsModule
   ],
   providers: [
     ExperimentsActivate
-  ],
-  entryComponents: [
-    ExperimentTypeNoneComponent,
-    ExperimentTypeErpComponent,
-    ExperimentTypeCvepComponent,
-    ExperimentTypeFvepComponent,
-    ExperimentTypeTvepComponent,
-    ExperimentTypeReaComponent,
-    ExperimentFilterDialogComponent,
-    SequenceFastDialogComponent
   ]
 })
 export class ExperimentsModule {

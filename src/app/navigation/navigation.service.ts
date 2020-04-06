@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Type } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, mergeMap } from 'rxjs/operators';
@@ -15,6 +15,7 @@ export class NavigationService {
 
   private readonly _showSidebar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private readonly _navigationChange: EventEmitter<any> = new EventEmitter<any>();
+  private readonly _hasPageTools: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public title: string;
   public titleArgs: {};
@@ -23,8 +24,11 @@ export class NavigationService {
   public icon: string;
   public working: boolean;
   public applyCustomNavColor: boolean;
+  public showPageTools: boolean;
+  public pageToolsComponent: Type<any>;
   public readonly customNavColor: BehaviorSubject<string> = new BehaviorSubject<string>('');
   public readonly navigationChange$: Observable<any> = this._navigationChange.asObservable();
+  public readonly hasPageTools$: Observable<boolean> = this._hasPageTools.asObservable();
 
   constructor(private readonly _route: ActivatedRoute,
               private readonly _router: Router) {
@@ -32,6 +36,7 @@ export class NavigationService {
     this.subtitle = '';
     this.titleArgs = {};
     this.subtitleArgs = {};
+    this.showPageTools = false;
     this.icon = '';
     this.working = false;
     this.applyCustomNavColor = false;
@@ -56,6 +61,8 @@ export class NavigationService {
           this.title = event['title'];
           this.titleArgs = {};
           this.applyCustomNavColor = event['applyCustomNavColor'] !== undefined ? event['applyCustomNavColor'] : false;
+          this.pageToolsComponent = event['pageToolsComponent'];
+          this._hasPageTools.next(this.pageToolsComponent !== undefined);
           this._navigationChange.next(event);
         });
   }

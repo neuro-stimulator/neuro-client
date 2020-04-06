@@ -1,6 +1,8 @@
 import { Component, ComponentFactoryResolver, OnInit, Type, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { ModalComponent } from '../share/modal/modal.component';
+import { PageToolsComponent } from '../share/page-tools/page-tools.component';
 import { NavigationService } from './navigation.service';
 import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.directive';
 
@@ -13,6 +15,7 @@ export class NavigationComponent implements OnInit {
 
   // Rozšíření navigace v podobě tlačítek
   @ViewChild(NavigationButtonsAddonDirective, {static: true}) buttonsAddon: NavigationButtonsAddonDirective;
+  @ViewChild('modal', {static: true}) modal: ModalComponent;
 
   showSidebar: boolean;
 
@@ -48,5 +51,10 @@ export class NavigationComponent implements OnInit {
       this._loadButtonsAddon(data['buttonsAddon']);
     });
 
+  }
+
+  handleTogglePageTools() {
+    this.modal.showComponent = PageToolsComponent;
+    this.modal.open(this.navigation.pageToolsComponent);
   }
 }
