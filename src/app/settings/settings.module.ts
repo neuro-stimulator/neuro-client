@@ -31,9 +31,10 @@ import { ParamConfigApplicationComponent } from './param-config/param-config-app
         ParamConfigServerComponent,
         ParamConfigApplicationComponent
     ],
-    exports: [
-        ParamConfigExperimentsComponent
-    ],
+  exports: [
+    ParamConfigExperimentsComponent,
+    ServiceStateComponent
+  ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
