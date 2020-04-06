@@ -39,6 +39,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ExperimentsActivate } from './experiments.activate';
 import { ExperimentsPageToolsComponent } from './experiments-page-tools/experiments-page-tools.component';
 import { SettingsModule } from '../settings/settings.module';
+import { ExperimentsButtonsAddonComponent } from './experiments-buttons-addon/experiments-buttons-addon.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { SettingsModule } from '../settings/settings.module';
     ExperimentFilterDialogComponent,
     SequenceFastDialogComponent,
     ExperimentsPageToolsComponent,
+    ExperimentsButtonsAddonComponent
   ],
   imports: [
     CommonModule,

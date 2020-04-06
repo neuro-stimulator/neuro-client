@@ -10,7 +10,7 @@ import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 import { ModalComponent } from '../share/modal/modal.component';
 import { FabListEntry } from '../share/fab/fab-list-entry';
 import { ConfirmDialogComponent } from '../share/modal/confirm/confirm-dialog.component';
-import { ExperimentsButtonsAddonService } from '../share/buttons-addons/experiments-buttons-addon/experiments-buttons-addon.service';
+import { ExperimentsButtonsAddonService } from './experiments-buttons-addon/experiments-buttons-addon.service';
 import { IntroService } from '../share/intro.service';
 import { ExperimentsService } from './experiments.service';
 import { ExperimentsSortFilter } from './experiments-sort-filter.service';

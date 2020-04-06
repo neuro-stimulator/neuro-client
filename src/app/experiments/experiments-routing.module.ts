@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ExperimentsButtonsAddonComponent } from '../share/buttons-addons/experiments-buttons-addon/experiments-buttons-addon.component';
+import { ExperimentsButtonsAddonComponent } from './experiments-buttons-addon/experiments-buttons-addon.component';
 import { ExperimentsComponent } from './experiments.component';
 import { ExperimentTypeComponent } from './experiment-type/experiment-type.component';
 import { ExperimentsActivate } from './experiments.activate';
