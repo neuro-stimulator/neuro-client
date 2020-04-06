@@ -1,4 +1,4 @@
-import { by, element, ElementArrayFinder, ElementFinder } from 'protractor';
+import { browser, by, element, ElementArrayFinder, ElementFinder } from 'protractor';
 
 import { Page } from '../../page';
 
@@ -26,8 +26,17 @@ export abstract class ExperimentTypeAbstractPage implements Page {
     return element(by.className('tags')).all(by.className('tag-badge'));
   }
 
+  get validationHeaderNameExists(): ElementFinder {
+    return element(by.id('validation-header-name-exists'));
+  }
+
   public async fillExperimentName(name: string) {
+    // Vložím text do inputu
     await this.fieldExperimentName.sendKeys(name);
+    // Kliknu na jiný element -> tím si vynutím asynchronní validaci názvu
+    await this.fieldExperimentDescription.click();
+    // Dám validaci názvu čas, aby se vykomunikovala se serverem
+    await browser.sleep(500);
   }
 
   public async fillExperimentDescription(description: string) {

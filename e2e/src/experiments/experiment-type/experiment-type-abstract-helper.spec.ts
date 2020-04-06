@@ -31,6 +31,8 @@ export class ExperimentTypeAbstractSpecHelper {
     expect(this.page.experimentSaveButton.getAttribute('disabled')).toBeDefined();
     // Vyplním název experimentu
     await this.page.fillExperimentName(name);
+    // Ověřím, že vyplněný název je unikátní -> nezobrazí se hláška, že jméno již existuje
+    expect(this.page.validationHeaderNameExists).toBeNull('Vyplněné jméno existuje!');
     // Tlačtko pro uložení by nyní již mělo být aktivní
     expect(this.page.experimentSaveButton.getAttribute('disabled')).toBe(null);
     // Proto na něj i kliknu
@@ -39,7 +41,7 @@ export class ExperimentTypeAbstractSpecHelper {
     // Přesunu se na stránku se všemi experimenty, kde zkontroluji, že se vytvořil nový experiment
     await this.experiments.navigateTo();
     // Počkám na načtení stránky se všemi experimenty
-    await browser.sleep(1000);
+    await browser.sleep(2000);
     // Zkontroluji, že se opravdu vytvořil nový experiment
     const rows = await this.experiments.awailableExperimentList.all(by.className('experiment-row'));
     expect(rows.length).toEqual(1);
@@ -50,7 +52,7 @@ export class ExperimentTypeAbstractSpecHelper {
     // Nakonec experiment vymažu
     await this.experiments.deleteAllExperiments();
     // Nakonec ještě chviličku počkám, než se vše uklidní
-    await browser.sleep(500);
+    await browser.sleep(1000);
   }
 
 }

@@ -25,6 +25,14 @@ export class ExperimentsPage implements Page {
     return element(by.className('experiment-list'));
   }
 
+  get addonButtonExperimentsFinder(): ElementFinder {
+    return element(by.id('button-addon-experiments-finder'));
+  }
+
+  get addonButtonExperimentsFilter(): ElementFinder {
+    return element(by.id('button-addon-experiments-filter'));
+  }
+
   async clickToNewExperiment(experimentType: ExperimentType) {
     // Zobrazení nabídky s tlačítky pro jednotlivé experimenty
     await this.experimentNewButton.click();
@@ -37,6 +45,7 @@ export class ExperimentsPage implements Page {
     for (const trashButton of trashButtons) {
       await trashButton.click();
       await element(by.id('modal-button-confirm')).click();
+      await browser.sleep(500);
     }
   }
 

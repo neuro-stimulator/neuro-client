@@ -49,4 +49,15 @@ describe('Experiment list test', () => {
     expect(page.experimentsEmptyHeader.getText()).toEqual('Nebyly nalezeny žádné experimenty...');
   });
 
+  it('Should contains addon buttons for filter and finding experients', async () => {
+    await page.navigateTo();
+
+    // Synchronizace prohlížeče
+    await browser.sleep(2000);
+
+    expect(page.addonButtonExperimentsFilter).toBeDefined('Addon tlačítko pro filtrování experimentů nebylo nalezeno!');
+    expect(page.addonButtonExperimentsFinder).toBeDefined('Addon tlačítko pro vyhledávání experimentů nebylo nalezeno!');
+    expect(app.pageToolsButton).toBeDefined('Tlačítko pro zobrazení nastavení experimentů nebylo nalezeno!');
+  });
+
 });

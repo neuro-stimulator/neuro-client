@@ -7,7 +7,7 @@
              placeholder="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FIND_EXPERIMENT' | translate}}"
              (keyup)="handleSearchInputChange($event)" (change)="handleSearchInputChange($event)" [defaultValue]="initialSearchValue">
       <span class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" (click)="hideFinderBox = !hideFinderBox"
+        <button id="button-addon-experiments-finder" class="btn btn-outline-secondary" type="button" (click)="hideFinderBox = !hideFinderBox"
                 title="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FIND_EXPERIMENT' | translate}}">
           <i class="fa fa-search"></i>
         </button>
@@ -15,7 +15,8 @@
     </div>
   </li>
   <li class="experiment-filter">
-    <button class="btn" title="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FILTER_EXPERIMENT' | translate}}"
+    <button id="button-addon-experiments-filter" class="btn"
+            title="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FILTER_EXPERIMENT' | translate}}"
             (click)="handleShowFilter()"><i class="fas fa-filter"></i></button>
   </li>
 </ul>

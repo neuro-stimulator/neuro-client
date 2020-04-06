@@ -12,4 +12,8 @@ export class ApplicationPage implements Page {
     return element(by.id('page-header'));
   }
 
+  get pageToolsButton(): ElementFinder {
+    return element(by.id('page-tools-button'));
+  }
+
 }
