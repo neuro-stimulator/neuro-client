@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Socket } from 'ngx-socket-io';
 import { TranslateService } from '@ngx-translate/core';
 
-import { ResponseObject, CommandToStimulator, SerialDataEvent, StimulatorStateEvent } from '@stechy1/diplomka-share';
+import { ResponseObject, CommandToStimulator, SerialDataEvent, StimulatorStateEvent, MessageCodes } from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
@@ -139,10 +139,10 @@ export class SerialService {
    * @param path Cesta, na které leží komunikační port
    */
   public open(path: string) {
-    return this._http.post(`${SerialService.BASE_API_URL}/open`, {path})
+    return this._http.post<ResponseObject<any>>(`${SerialService.BASE_API_URL}/open`, {path})
                .toPromise()
-               .then(() => {
-                 this._isSerialConnected = true;
+               .then((response: ResponseObject<any>) => {
+                 this._isSerialConnected = response.message.code === MessageCodes.CODE_SUCCESS_LOW_LEVEL_PORT_OPPENED;
                });
   }
 
