@@ -1,4 +1,4 @@
-import { browser, by, element, ElementFinder } from 'protractor';
+import { browser, by, element, ElementFinder, protractor } from 'protractor';
 
 import { ExperimentType } from '@stechy1/diplomka-share';
 
@@ -44,9 +44,9 @@ export class ExperimentsPage implements Page {
     const trashButtons = await this.awailableExperimentList.all(by.css('.fa-trash.delete'));
     for (const trashButton of trashButtons) {
       await trashButton.click();
-      await element(by.id('modal-button-confirm')).click();
-      await browser.sleep(500);
+      const confirmButton = element(by.buttonText('Potvrzuji'));
+      await browser.wait(protractor.ExpectedConditions.visibilityOf(confirmButton), 5000);
+      await confirmButton.click();
     }
   }
-
 }

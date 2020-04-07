@@ -7,7 +7,7 @@ import { ExperimentsPage } from '../../experiments.po';
 import { ExperimentTypeAbstractSpecHelper } from '../experiment-type-abstract-helper.spec';
 import { ExperimentTypeErpPage } from './experiment-type-erp.po';
 
-describe('Experiment TVEP', () => {
+describe('Experiment ERP', () => {
 
   let app: ApplicationPage;
   let experiments: ExperimentsPage;
@@ -22,7 +22,7 @@ describe('Experiment TVEP', () => {
 
   it('Should be able to create new experiment, check the list and delete the created experiment.', async () => {
     const experimentHelper: ExperimentTypeAbstractSpecHelper = new ExperimentTypeAbstractSpecHelper(app, experiments, page);
-    await experimentHelper.testCreateNewExperiment(ExperimentType.ERP, 'erp-test');
+    await experimentHelper.testExperimentLivecycle(ExperimentType.ERP, 'erp-test');
   });
 
 });

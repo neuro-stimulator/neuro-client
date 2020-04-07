@@ -22,7 +22,7 @@ describe('Experiment CVEP', () => {
 
   it('Should be able to create new experiment, check the list and delete the created experiment.', async () => {
     const experimentHelper: ExperimentTypeAbstractSpecHelper = new ExperimentTypeAbstractSpecHelper(app, experiments, page);
-    await experimentHelper.testCreateNewExperiment(ExperimentType.CVEP, 'cvep-test');
+    await experimentHelper.testExperimentLivecycle(ExperimentType.CVEP, 'cvep-test');
   });
 
 });

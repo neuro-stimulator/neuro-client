@@ -1,4 +1,4 @@
-import { browser, by } from 'protractor';
+import { browser, by, protractor } from 'protractor';
 
 import { ExperimentType } from '@stechy1/diplomka-share';
 
@@ -18,11 +18,11 @@ export class ExperimentTypeAbstractSpecHelper {
    * @param type Typ experimentu
    * @param name Název experimentu
    */
-  public async testCreateNewExperiment(type: ExperimentType, name: string) {
+  public async testExperimentLivecycle(type: ExperimentType, name: string) {
     // Přejdi na hlavní stránku
     await this.experiments.navigateTo();
     // Ujistím se, že není vytvořený žádný předchozí experiment
-    expect(this.experiments.experimentsEmptyHeader.getText()).toBeDefined();
+    await browser.wait(protractor.ExpectedConditions.visibilityOf(this.experiments.experimentsEmptyHeader), 5000);
     // Přejdi na stránku pro založení nového experimentu
     await this.experiments.clickToNewExperiment(type);
     // Test, že se opravdu dostanu na stránku s konfigurací nového experimentu
@@ -32,7 +32,7 @@ export class ExperimentTypeAbstractSpecHelper {
     // Vyplním název experimentu
     await this.page.fillExperimentName(name);
     // Ověřím, že vyplněný název je unikátní -> nezobrazí se hláška, že jméno již existuje
-    expect(this.page.validationHeaderNameExists).toBeNull('Vyplněné jméno existuje!');
+    expect(this.page.validationHeaderNameExists.isPresent()).toBe(false, 'Vyplněné jméno existuje!');
     // Tlačtko pro uložení by nyní již mělo být aktivní
     expect(this.page.experimentSaveButton.getAttribute('disabled')).toBe(null);
     // Proto na něj i kliknu
@@ -44,6 +44,7 @@ export class ExperimentTypeAbstractSpecHelper {
     await browser.sleep(2000);
     // Zkontroluji, že se opravdu vytvořil nový experiment
     const rows = await this.experiments.awailableExperimentList.all(by.className('experiment-row'));
+    // Pracuji pouze s jedním experimentem, ne s vícero
     expect(rows.length).toEqual(1);
     // Dále zkontroluji, že se opravdu vytvořil správný experiment (podle jména)
     expect(this.experiments.awailableExperimentList.element(by.className('experiment-name')).element(by.xpath('//strong')).getText()).toBe(name);
