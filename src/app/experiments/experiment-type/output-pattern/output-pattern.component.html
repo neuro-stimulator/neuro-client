@@ -1,25 +1,27 @@
-<div class="custom-control-inline pattern-checkbox" *ngFor="let checkbox of checkboxes; let i = index">
-  <input type="checkbox" [id]="'checkbox_' + uuid + '-' + (_patternSize - 1 - i)"
-         [checked]="checkbox === 1"
-         (change)="handleCheckboxChange($event, _patternSize - 1 - i)">
-  <label  [for]="'checkbox_' + uuid + '-' + (_patternSize - 1 - i)"><span>{{i + 1}}.</span><div></div></label>
-</div>
+<div class="output-pattern">
+  <div class="custom-control-inline pattern-checkbox" *ngFor="let checkbox of checkboxes; let i = index">
+    <input type="checkbox" [id]="'checkbox_' + uuid + '-' + (_patternSize - 1 - i)"
+           [checked]="checkbox === 1"
+           (change)="handleCheckboxChange($event, _patternSize - 1 - i)">
+    <label  [for]="'checkbox_' + uuid + '-' + (_patternSize - 1 - i)"><span>{{i + 1}}.</span><div></div></label>
+  </div>
 
-<div>
-  <canvas #canvas height="50px"></canvas>
-</div>
+  <div>
+    <canvas #canvas height="50px"></canvas>
+  </div>
 
-<div class="btn-group" role="group">
-  <button type="button" class="btn btn-sm btn-secondary" (click)="handleEmptyPattern()">
-    <i class="far fa-circle"></i> {{ 'EXPERIMENTS.OUTPUT_PATTERN.EMPTY' | translate }}
-  </button>
-  <button type="button" class="btn btn-sm btn-secondary" (click)="handleFullPattern()">
-    <i class="fas fa-circle"></i> {{ 'EXPERIMENTS.OUTPUT_PATTERN.FULL' | translate }}
-  </button>
-  <button type="button" class="btn btn-sm btn-secondary" (click)="handleInvertPattern()">
-    <i class="far fa-dot-circle"></i> {{ 'EXPERIMENTS.OUTPUT_PATTERN.INVERT' | translate }}
-  </button>
-  <button type="button" class="btn btn-sm btn-secondary" (click)="handleRandomPattern()">
-    <i class="fas fa-dice"></i> {{ 'EXPERIMENTS.OUTPUT_PATTERN.RANDOM' | translate }}
-  </button>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-sm btn-secondary" (click)="handleEmptyPattern()">
+      <i class="far fa-circle"></i> {{ 'EXPERIMENTS.OUTPUT_PATTERN.EMPTY' | translate }}
+    </button>
+    <button type="button" class="btn btn-sm btn-secondary" (click)="handleFullPattern()">
+      <i class="fas fa-circle"></i> {{ 'EXPERIMENTS.OUTPUT_PATTERN.FULL' | translate }}
+    </button>
+    <button type="button" class="btn btn-sm btn-secondary" (click)="handleInvertPattern()">
+      <i class="far fa-dot-circle"></i> {{ 'EXPERIMENTS.OUTPUT_PATTERN.INVERT' | translate }}
+    </button>
+    <button type="button" class="btn btn-sm btn-secondary" (click)="handleRandomPattern()">
+      <i class="fas fa-dice"></i> {{ 'EXPERIMENTS.OUTPUT_PATTERN.RANDOM' | translate }}
+    </button>
+  </div>
 </div>

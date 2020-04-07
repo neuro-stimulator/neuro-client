@@ -21,7 +21,7 @@ export class ExperimentsPage implements Page {
     return element(by.className('fab-button-list'));
   }
 
-  get awailableExperimentList(): ElementFinder {
+  get availableExperimentList(): ElementFinder {
     return element(by.className('experiment-list'));
   }
 
@@ -41,7 +41,7 @@ export class ExperimentsPage implements Page {
   }
 
   async deleteAllExperiments(): Promise<any> {
-    const trashButtons = await this.awailableExperimentList.all(by.css('.fa-trash.delete'));
+    const trashButtons = await this.availableExperimentList.all(by.css('.fa-trash.delete'));
     for (const trashButton of trashButtons) {
       await trashButton.click();
       const confirmButton = element(by.buttonText('Potvrzuji'));

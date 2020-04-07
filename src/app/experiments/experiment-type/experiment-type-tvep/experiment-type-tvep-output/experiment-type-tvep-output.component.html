@@ -9,8 +9,8 @@
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'cvep-pattern-length_' + i">{{ 'EXPERIMENTS.EXPERIMENT.TVEP.OUTPUT.PATTERN_LENGTH' | translate }}</label>
-            <ng5-slider [id]="'cvep-pattern-length_' + i" formControlName="patternLength" [options]="patternLengthSliderOptions"></ng5-slider>
+            <label [for]="'tvep-pattern-length_' + i">{{ 'EXPERIMENTS.EXPERIMENT.TVEP.OUTPUT.PATTERN_LENGTH' | translate }}</label>
+            <ng5-slider [id]="'tvep-pattern-length_' + i" formControlName="patternLength" [options]="patternLengthSliderOptions" class="tvep-pattern-length"></ng5-slider>
             <small *ngIf="patternLength(i).touched && patternLength(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
           </div>
         </div>
@@ -19,7 +19,7 @@
           <div class="form-group">
             <label [for]="'tvep-out_' + i">{{ 'EXPERIMENTS.EXPERIMENT.TVEP.OUTPUT.OUT' | translate }}</label>
             <div class="input-group input-group-sm">
-              <input type="number" [id]="'tvep-out_' + i" class="form-control" [class.is-valid]="out(i).valid" [class.is-invalid]="out(i).invalid" formControlName="out">
+              <input type="number" [id]="'tvep-out_' + i" class="form-control tvep-out" [class.is-valid]="out(i).valid" [class.is-invalid]="out(i).invalid" formControlName="out">
               <div class="input-group-append">
                 <span class="input-group-text">ms</span>
               </div>
@@ -33,7 +33,7 @@
           <div class="form-group">
             <label [for]="'tvep-wait_' + i">{{ 'EXPERIMENTS.EXPERIMENT.TVEP.OUTPUT.WAIT' | translate }}</label>
             <div class="input-group input-group-sm">
-              <input type="number" [id]="'tvep-wait_' + i" class="form-control form-control-sm" [class.is-valid]="wait(i).valid" [class.is-invalid]="wait(i).invalid" formControlName="wait">
+              <input type="number" [id]="'tvep-wait_' + i" class="form-control form-control-sm tvep-wait" [class.is-valid]="wait(i).valid" [class.is-invalid]="wait(i).invalid" formControlName="wait">
               <div class="input-group-append">
                 <span class="input-group-text">ms</span>
               </div>
@@ -46,7 +46,7 @@
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
             <label [for]="'brightness_' + i">{{ 'EXPERIMENTS.EXPERIMENT.TVEP.OUTPUT.BRIGHTNESS' | translate }}</label>
-            <ng5-slider [id]="'brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
+            <ng5-slider [id]="'brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions" class="tvep-brightness"></ng5-slider>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness(i).errors?.min.min} }}</small>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness(i).errors?.max.max} }}</small>

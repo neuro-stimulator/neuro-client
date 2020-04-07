@@ -6,6 +6,8 @@ export abstract class ExperimentTypeAbstractPage implements Page {
 
   public abstract navigateTo(): Promise<any>;
 
+  public abstract getPageInputs(): {ids?: string[], classes?: {name: string, count: number}[]};
+
   get experimentSaveButton(): ElementFinder {
     return element(by.className('fab-toggler'));
   }
@@ -30,16 +32,26 @@ export abstract class ExperimentTypeAbstractPage implements Page {
     return element(by.id('validation-header-name-exists'));
   }
 
+  get commonExperimentInputs(): string[] {
+    return [
+      'experiment-description',
+      'experiment-name',
+      'tag-input',
+    ];
+  }
+
   public async fillExperimentName(name: string) {
     // Vložím text do inputu
     await this.fieldExperimentName.sendKeys(name);
     // Kliknu na jiný element -> tím si vynutím asynchronní validaci názvu
     await this.fieldExperimentDescription.click();
-    // Dám validaci názvu čas, aby se vykomunikovala se serverem
-    await browser.sleep(500);
   }
 
   public async fillExperimentDescription(description: string) {
     await this.fieldExperimentDescription.sendKeys(description);
+  }
+
+  public getExperimentRowByName(name: string): ElementFinder {
+    return element(by.css(`li[data-experiment-name=${name}]`));
   }
 }

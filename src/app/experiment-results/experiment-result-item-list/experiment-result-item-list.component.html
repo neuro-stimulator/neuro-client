@@ -1,5 +1,6 @@
 <ul class="list-group experiment-result-list">
-  <li [ngClass]="['list-group-item', 'list-group-item-action experiment-background', ExperimentType[experimentResult.type].toLowerCase()]" *ngFor="let experimentResult of experimentResults | async">
+  <li [ngClass]="['list-group-item', 'list-group-item-action experiment-background', ExperimentType[experimentResult.type].toLowerCase()]"
+      *ngFor="let experimentResult of experimentResults | async" [attr.data-experiment-result-name]="experimentResult.name">
 
     <div class="row expriment-result experiment-result-row">
       <!-- Experiment result image representation -->

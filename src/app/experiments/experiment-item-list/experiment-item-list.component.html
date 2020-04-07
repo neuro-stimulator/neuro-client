@@ -9,7 +9,7 @@
     <div class="col-12" #experimentGroup>
       <ul class="list-group experiment-list">
         <li [ngClass]="['list-group-item', 'list-group-item-action experiment-background', ExperimentType[experiment.type].toLowerCase()]"
-            *ngFor="let experiment of group.experiments">
+            *ngFor="let experiment of group.experiments" [attr.data-experiment-name]="experiment.name">
 
           <!-- Jeden řádek s experimentem -->
           <div class="row expriment experiment-row">

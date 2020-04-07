@@ -8,4 +8,18 @@ export class ExperimentTypeFvepPage extends ExperimentTypeAbstractPage {
     return browser.get('/experiments/fvep/new') as Promise<any>;
   }
 
+  getPageInputs(): {ids?: string[], classes?: {name: string, count: number}[]} {
+    return {
+      ids: [
+        'fvep-output-count'
+      ],
+      classes: [
+        { name: 'fvep-time-on', count: 1 },
+        { name: 'fvep-time-off', count: 1 },
+        { name: 'fvep-frequency', count: 1 },
+        { name: 'fvep-duty-cycle', count: 1 },
+        { name: 'fvep-brightness', count: 1 },
+      ]
+    };
+  }
 }

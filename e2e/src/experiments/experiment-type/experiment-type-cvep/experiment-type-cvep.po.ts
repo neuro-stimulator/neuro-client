@@ -7,6 +7,20 @@ export class ExperimentTypeCvepPage extends ExperimentTypeAbstractPage {
     return browser.get('/experiments/cvep/new') as Promise<any>;
   }
 
+  getPageInputs(): {ids?: string[], classes?: {name: string, count: number}[]} {
+    return {
+      ids: [
+        'cvep-out',
+        'cvep-wait',
+        'cvep-bit-shift',
+        'cvep-brightness',
+      ],
+      classes: [
+        { name: 'output-pattern', count: 1 }
+      ]
+    };
+  }
+
 
 
 }

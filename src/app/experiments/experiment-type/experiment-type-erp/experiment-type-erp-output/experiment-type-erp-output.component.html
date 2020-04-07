@@ -7,10 +7,10 @@
         </div>
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'pulse-up_' + i" class="d-none d-md-block">up</label>
-            <label [for]="'pulse-up_' + i" class="d-md-none">Pulse - up</label>
+            <label [for]="'erp-pulse-up_' + i" class="d-none d-md-block">up</label>
+            <label [for]="'erp-pulse-up_' + i" class="d-md-none">Pulse - up</label>
             <div class="input-group input-group-sm">
-              <input type="number" [id]="'pulse-up_' + i" class="form-control" formControlName="pulseUp" [class.is-valid]="pulseUp(i).valid" [class.is-invalid]="pulseUp(i).invalid">
+              <input type="number" [id]="'erp-pulse-up_' + i" class="form-control erp-pulse-up" formControlName="pulseUp" [class.is-valid]="pulseUp(i).valid" [class.is-invalid]="pulseUp(i).invalid">
               <div class="input-group-append">
                 <span class="input-group-text">ms</span>
               </div>
@@ -21,10 +21,10 @@
         </div>
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'pulse-down_' + i" class="d-none d-md-block">down</label>
-            <label [for]="'pulse-down_' + i" class="d-md-none">Pulse - down</label>
+            <label [for]="'erp-pulse-down_' + i" class="d-none d-md-block">down</label>
+            <label [for]="'erp-pulse-down_' + i" class="d-md-none">Pulse - down</label>
             <div class="input-group input-group-sm">
-              <input type="number" [id]="'pulse-down_' + i" class="form-control form-control-sm" formControlName="pulseDown" [class.is-valid]="pulseDown(i).valid" [class.is-invalid]="pulseDown(i).invalid">
+              <input type="number" [id]="'erp-pulse-down_' + i" class="form-control form-control-sm erp-pulse-down" formControlName="pulseDown" [class.is-valid]="pulseDown(i).valid" [class.is-invalid]="pulseDown(i).invalid">
               <div class="input-group-append">
                 <span class="input-group-text">ms</span>
               </div>
@@ -36,8 +36,8 @@
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'distribution_' + i">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DISTRIBUTION' | translate }}</label>
-            <ng5-slider [id]="'distribution_' + i" formControlName="distribution" [options]="distributionSliderOptions[i]"></ng5-slider>
+            <label [for]="'erp-distribution_' + i">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DISTRIBUTION' | translate }}</label>
+            <ng5-slider [id]="'erp-distribution_' + i" formControlName="distribution" [options]="distributionSliderOptions[i]" class="erp-distribution"></ng5-slider>
             <small *ngIf="distribution(i).touched && distribution(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
             <small *ngIf="distribution(i).touched && distribution(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: distribution(i).errors?.min.min} }}</small>
             <small *ngIf="distribution(i).value == 0" class="form-text text-muted">{{ 'APP.VALIDATION.ZERO_VALUE' | translate }}</small>
@@ -45,8 +45,8 @@
         </div>
         <div class="col-12 col-sm-6 col-md-3">
           <div class="form-group">
-            <label [for]="'brightness_' + i">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.BRIGHTNESS' | translate }}</label>
-            <ng5-slider [id]="'brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
+            <label [for]="'erp-brightness_' + i">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.BRIGHTNESS' | translate }}</label>
+            <ng5-slider [id]="'erp-brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions" class="erp-brightness"></ng5-slider>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness(i).errors?.min.min} }}</small>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness(i).errors?.max.max} }}</small>
@@ -54,16 +54,16 @@
           </div>
         </div>
 
-        <div class="col-12" formArrayName="dependencies">
+        <div class="col-12 erp-dependencies" formArrayName="dependencies">
           <div class="form-group">
             <label [for]="'dependency_' + i">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DEPENDENCIES.TITLE' | translate}}</label>
             <div>
-            <span class="dependency badge badge-info"
+            <span class="badge badge-info"
                   *ngFor="let dependency of dependencies(i).value"
                   title="Odstranit">{{dependency | experimentTypeErpOutputDependency}}
               <i class="fas fa-trash" (click)="handleRemoveDependency(i, dependency)"></i></span>
             <input type="text" [id]="'dependency_' + i"
-                   class="dependency form-control form-control-sm"
+                   class="erp-dependency form-control form-control-sm"
                    placeholder="{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DEPENDENCIES.FORMAT' | translate}}" #input
                    [formControlName]="'1'"
                    (keyup)="handleDependencyKeyUp($event, i, input.value)"

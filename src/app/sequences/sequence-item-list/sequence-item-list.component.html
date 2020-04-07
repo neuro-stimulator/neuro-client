@@ -1,5 +1,6 @@
 <ul class="list-group sequence-list">
-  <li class="list-group-item list-group-item-action" *ngFor="let sequence of sequences | async">
+  <li class="list-group-item list-group-item-action"
+      *ngFor="let sequence of sequences | async" [attr.data-sequence-name]="sequence.name">
 
     <div class="row sequence sequence-row">
 
