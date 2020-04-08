@@ -34,4 +34,11 @@ describe('Experiment REA', () => {
     // Ověř, že jsou přítomny všechny atributy
     await experimentHelper.testExperimentInputPresents();
   });
+
+  it('Should not be able to create experiment with duplicated name', async () => {
+    // Přejdi na hlavní stránku
+    await experiments.navigateTo();
+    // Spusť test na ověření nemožnosti vytvoření experimentu s duplikovaným názvem
+    await experimentHelper.testInvalidName(ExperimentType.REA);
+  });
 });

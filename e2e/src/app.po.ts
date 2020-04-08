@@ -1,6 +1,10 @@
-import { browser, by, element, ElementFinder } from 'protractor';
+import { browser, by, element, ElementArrayFinder, ElementFinder, protractor } from 'protractor';
 
 import { Page } from './page';
+import { falseIfMissing, passBoolean } from 'protractor/built/util';
+import { not } from 'rxjs/internal-compatibility';
+
+// protractor.ExpectedConditions.elementToBeDisabled = () => {};
 
 export class ApplicationPage implements Page {
 
@@ -14,6 +18,10 @@ export class ApplicationPage implements Page {
 
   get pageToolsButton(): ElementFinder {
     return element(by.id('page-tools-button'));
+  }
+
+  getErrorArrayByInputId(inputID: string): ElementArrayFinder {
+    return element(by.id(inputID)).parentElementArrayFinder.first().all(by.tagName('span'));
   }
 
 }

@@ -28,7 +28,7 @@ export class ExperimentTypeAbstractSpecHelper {
     // Vyplním název experimentu
     await this.page.fillExperimentName(name);
     // Počkám na validaci názvu
-    await browser.wait(protractor.ExpectedConditions.elementToBeClickable(this.page.experimentSaveButton));
+    await browser.wait(protractor.ExpectedConditions.elementToBeClickable(this.page.experimentSaveButton), 5000);
     // Ověřím, že vyplněný název je unikátní -> nezobrazí se hláška, že jméno již existuje
     expect(this.page.validationHeaderNameExists.isPresent()).toBe(false, 'Vyplněné jméno existuje!');
     // Tlačtko pro uložení by nyní již mělo být aktivní
@@ -62,6 +62,48 @@ export class ExperimentTypeAbstractSpecHelper {
       expect(inputElements.length).toBe(input.count, `Na stránce se nevyskytuje požadovaný počet elementů třídy: ${input.name}!`);
     }
   }
+
+  public async testInvalidName(type: ExperimentType) {
+    const experimentName = 'invalidName';
+    // Přejdi na stránku s experimenty
+    await this.experiments.navigateTo();
+    // Odtud přejdi do editoru experimentu
+    await this.goToNewExperimentPage(type);
+    // Vyplním název experimentu
+    await this.page.fillExperimentName(experimentName);
+    // Počkám na validaci názvu
+    await browser.wait(protractor.ExpectedConditions.elementToBeClickable(this.page.experimentSaveButton),  5000);
+    // Ověřím, že vyplněný název je unikátní -> nezobrazí se hláška, že jméno již existuje
+    expect(this.page.validationHeaderNameExists.isPresent()).toBe(false, 'Vyplněné jméno existuje!');
+    // Tlačtko pro uložení by nyní již mělo být aktivní
+    expect(this.page.experimentSaveButton.getAttribute('disabled')).toBe(null);
+    // Proto na něj i kliknu
+    await this.page.experimentSaveButton.click();
+    // Zkontroluj, že byl vytvořený
+    await this.checkExperimentCreated(experimentName);
+
+    // Znovu přejdi do editoru experimentu
+    await this.goToNewExperimentPage(type);
+    // Opět vyplň stejný název experimentu
+    await this.page.fillExperimentName(experimentName);
+    // Počkám na validaci názvu
+    // await browser.wait(protractor.ExpectedConditions.elementToBeDisabled(this.page.experimentSaveButton), 5000);
+    // Počkám si, než se zobrazí hláška, že jméno není unikátní
+    await browser.wait(protractor.ExpectedConditions.visibilityOf(this.page.validationHeaderNameExists), 5000);
+    // Ověřím, že vyplněný název již není unikátní -> zobrazí se hláška
+    expect(this.page.validationHeaderNameExists.isDisplayed()).toBe(true, 'Vyplněné jméno existuje!');
+    // Tlačtko pro uložení by nyní již mělo být aktivní
+    expect(this.page.experimentSaveButton.getAttribute('disabled')).toBeDefined();
+
+    // Půjdu zpátky na výpis experimentů
+    await this.experiments.navigateTo();
+    // Počkám na načtení stránky se všemi experimenty
+    await browser.wait(protractor.ExpectedConditions.visibilityOf(this.experiments.availableExperimentList), 5000);
+    // Smažu pomocný experiment
+    await this.experiments.deleteAllExperiments();
+  }
+
+  // ---------------------------------------------------------------------------------------------
 
   /**
    * Přejde do editoru pro nový experiment
@@ -110,6 +152,4 @@ export class ExperimentTypeAbstractSpecHelper {
     // A ješte poslední kontrola, že existuje tlačítko pro smazání experimentu
     await expect(experimentRow.element(by.css('.fa-trash.delete')).isPresent).toBeTruthy();
   }
-
-
 }
