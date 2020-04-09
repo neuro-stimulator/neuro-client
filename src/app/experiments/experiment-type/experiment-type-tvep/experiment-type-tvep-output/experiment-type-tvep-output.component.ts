@@ -57,6 +57,12 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
               this._handleSharePatternLengthChange(this._sharePatternLength, i);
             }
           }));
+
+          this._disablePatternLengthPropagation = true;
+          for (let j = 0; j < experiment.outputCount; j++) {
+            this.patternSizes[j].next(this.patternLength(j).value);
+          }
+          this._disablePatternLengthPropagation = false;
         }
 
         this._sharePatternLengthSubscription = this.sharePatternLength.subscribe((sharePatternLength: boolean) => {
