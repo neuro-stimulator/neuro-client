@@ -28,10 +28,17 @@ export class ExperimentResultsService extends BaseService<ExperimentResult> {
    * @param experimentResult Experiment, pro který chci získat průběh
    */
   resultData(experimentResult: ExperimentResult) {
-    return this._http.get<ResponseObject<IOEvent[]>>(`${ExperimentResultsService.BASE_API_URL}/result-data/${experimentResult.id}`)
+    return this._http.get<ResponseObject<IOEvent[]>>(`${this.dataLink}${experimentResult.id}`)
                .toPromise()
                .then(result => {
                  return result.data;
                });
+  }
+
+  /**
+   * Vrátí adresu na které se nachází data experimentu.
+   */
+  get dataLink(): string {
+    return ExperimentResultsService.BASE_API_URL + /result-data/;
   }
 }
