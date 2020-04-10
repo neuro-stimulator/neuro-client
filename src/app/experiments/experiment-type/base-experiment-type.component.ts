@@ -1,4 +1,4 @@
-import { AfterViewInit, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, EventEmitter, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -11,8 +11,9 @@ import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 import { NavigationService } from '../../navigation/navigation.service';
 import { ExperimentsService } from '../experiments.service';
 import { ExperimentNameValidator } from '../experiment-name-validator';
+import { ComponentCanDeactivate } from '../experiments.deactivate';
 
-export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit, AfterViewInit, OnDestroy {
+export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit, AfterViewInit, OnDestroy, ComponentCanDeactivate {
 
   protected _experiment: E;
   private _experimentLoaded: EventEmitter<E> = new EventEmitter<E>();
@@ -144,6 +145,11 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
     this._workingSubscription.unsubscribe();
   }
 
+  @HostListener('window:beforeunload')
+  canDeactivate(): Observable<boolean> | boolean {
+    return !this.form.dirty;
+  }
+
   /**
    * Reakce na tlačítko pro uložení dat experimentu
    */
@@ -159,7 +165,10 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
           });
     } else {
       this.logger.info(`Aktualizuji experiment s id: ${this._experiment.id}`);
-      this._service.update(this.form.value);
+      this._service.update(this.form.value)
+          .then((experiment: Experiment) => {
+            this.form.reset(experiment);
+          });
     }
   }
 

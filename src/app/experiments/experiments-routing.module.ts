@@ -6,6 +6,7 @@ import { ExperimentsComponent } from './experiments.component';
 import { ExperimentTypeComponent } from './experiment-type/experiment-type.component';
 import { ExperimentsActivate } from './experiments.activate';
 import { ExperimentsPageToolsComponent } from './experiments-page-tools/experiments-page-tools.component';
+import { ExperimentsDeactivate } from './experiments.deactivate';
 
 const routes: Routes = [
   {
@@ -37,7 +38,8 @@ const routes: Routes = [
       title: 'EXPERIMENTS.TITLE_CONFIGURE',
       applyCustomNavColor: true
     },
-    canActivate: [ExperimentsActivate]
+    canActivate: [ExperimentsActivate],
+    canDeactivate: [ExperimentsDeactivate]
   },
   {
     path: '',
