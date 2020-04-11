@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, EventEmitter, OnInit } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -16,13 +16,14 @@ import { outputCountParams } from '../../experiments.share';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-experiment-type-tvep',
   templateUrl: './experiment-type-tvep.component.html',
   styleUrls: ['./experiment-type-tvep.component.sass']
 })
-export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<ExperimentTVEP> implements OnInit, AfterContentInit {
+export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<ExperimentTVEP> implements OnInit, AfterContentInit, OnDestroy {
 
   readonly sharePatternLengthEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 

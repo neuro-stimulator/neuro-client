@@ -8,7 +8,7 @@ import { Observable, Subscription, TimeoutError } from 'rxjs';
 
 import { ExperimentType, ExperimentResult, createEmptyExperimentResult, createEmptyExperiment, IOEvent } from '@stechy1/diplomka-share';
 
-import { environment } from '../../../environments/environment';
+import { environment, makeURL } from '../../../environments/environment';
 import { NavigationService } from '../../navigation/navigation.service';
 import { ExperimentResultsService } from '../experiment-results.service';
 
@@ -115,5 +115,9 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
 
   get name() {
     return this.form.get('name');
+  }
+
+  get dataLink(): string {
+    return this._service.dataLink + this._experimentResult.id;
   }
 }

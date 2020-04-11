@@ -36,6 +36,7 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
   private _experimentReadySubscription: Subscription;
   private _patternLengthSubscriptions: Subscription[] = [];
   private _sharePatternLengthSubscription: Subscription;
+  private _outputCountSubscription: Subscription;
   private _emptyExperiment = true;
   private _sharePatternLength = true;
   private _disablePatternLengthPropagation = false;
@@ -57,13 +58,27 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
               this._handleSharePatternLengthChange(this._sharePatternLength, i);
             }
           }));
+
+          this._updatePatternSizes(experiment.outputCount);
         }
 
         this._sharePatternLengthSubscription = this.sharePatternLength.subscribe((sharePatternLength: boolean) => {
           this._handleSharePatternLengthChange(sharePatternLength, 0);
         });
+
+        this._outputCountSubscription = this.form.root.get('outputCount')
+                                            .valueChanges
+                                            .subscribe((value: number) => this._updatePatternSizes(value));
       }
     });
+  }
+
+  private _updatePatternSizes(outputCount: number) {
+    this._disablePatternLengthPropagation = true;
+    for (let j = 0; j < outputCount; j++) {
+      this.patternSizes[j].next(this.patternLength(j).value);
+    }
+    this._disablePatternLengthPropagation = false;
   }
 
   ngOnDestroy(): void {
@@ -72,6 +87,7 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
         this._patternLengthSubscriptions[i].unsubscribe();
       }
       this._sharePatternLengthSubscription.unsubscribe();
+      this._outputCountSubscription.unsubscribe();
     }
     this._experimentReadySubscription.unsubscribe();
   }

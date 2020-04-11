@@ -40,6 +40,7 @@ import { ExperimentsActivate } from './experiments.activate';
 import { ExperimentsPageToolsComponent } from './experiments-page-tools/experiments-page-tools.component';
 import { SettingsModule } from '../settings/settings.module';
 import { ExperimentsButtonsAddonComponent } from './experiments-buttons-addon/experiments-buttons-addon.component';
+import { ExperimentsDeactivate } from './experiments.deactivate';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { ExperimentsButtonsAddonComponent } from './experiments-buttons-addon/ex
     SettingsModule
   ],
   providers: [
-    ExperimentsActivate
+    ExperimentsActivate,
+    ExperimentsDeactivate
   ]
 })
 export class ExperimentsModule {
