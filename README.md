@@ -9,6 +9,8 @@ Klientská část diplomové práce na téma: **Návrh hardwarového stimulátor
 ![](https://img.shields.io/github/package-json/v/stechy1/diplomka-frontend)
 ![](https://img.shields.io/librariesio/github/stechy1/diplomka-frontend)
 
+![Výsledná aplikace](images/01_angular_experiments_list.png)
+
 ## Funkce
 
  - Experimenty
