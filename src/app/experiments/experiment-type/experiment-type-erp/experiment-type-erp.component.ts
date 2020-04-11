@@ -6,12 +6,13 @@ import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider';
 
-import { ExperimentType, ExperimentERP, Edge, Random, Sequence, createEmptyExperimentERP } from '@stechy1/diplomka-share';
+import { createEmptyExperimentERP, Edge, ExperimentERP, ExperimentType, Random, Sequence } from '@stechy1/diplomka-share';
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
 import { SequenceService } from '../../../sequences/sequence.service';
 import { ModalComponent } from '../../../share/modal/modal.component';
+import { ShareValidators } from '../../../share/share-validators';
 import { dependencyValidatorPattern, outputCountParams } from '../../experiments.share';
 import { ExperimentsService } from '../../experiments.service';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
@@ -19,7 +20,6 @@ import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
 import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fast-dialog.component';
-import { ShareValidators } from '../../../share/ShareValidators';
 
 @Component({
   selector: 'app-experiment-type-erp',
@@ -54,7 +54,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     }
 
     this.sequenceService.forExperiment(experiment)
-        .then(sequences => {
+        .then((sequences: Sequence[]) => {
           this.sequences$.next(sequences);
         });
   }
@@ -126,7 +126,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
   handleCreateNewSequenceFast() {
     this.modal.showComponent = SequenceFastDialogComponent;
     this.modal.openForResult()
-        .catch(reason => {
+        .catch((reason) => {
           this.logger.warn('Nebudu vytvářet žádnou sekvenci.');
         })
         .then((result?: {name: string, size: number}) => {
@@ -135,7 +135,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
           }
 
           this.sequenceService.fromNameAndSize(this.experiment.id, result.name, result.size)
-              .catch(reason => {
+              .catch((reason) => {
                 this.logger.error('Sekvenci se nepodařilo vytvořit!');
               })
               .then((sequence?: Sequence) => {

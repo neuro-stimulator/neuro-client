@@ -4,12 +4,12 @@ import {
   DisplayClearCommand,
   DisplayTextCommand,
   ExperimentClearCommand,
-  ExperimentUploadCommand,
-  ExperimentRunCommand,
-  ExperimentPauseCommand,
   ExperimentFinishCommand,
+  ExperimentPauseCommand,
+  ExperimentRunCommand,
   ExperimentSetupCommand,
-  OutputSetCommand, MemoryCommand, SequencePartCommand, StimulatorStateCommand
+  ExperimentUploadCommand,
+  MemoryCommand, OutputSetCommand, SequencePartCommand, StimulatorStateCommand
 } from './commands';
 
 @Injectable({
@@ -84,7 +84,7 @@ export class CommandService {
 
   public buildHelp(): string {
     const helpText = 'Nápověda: \n';
-    const descriptions = CommandService.COMMANDS.map(command => `${command.getName()} - ${command.description}.`).join('\n');
+    const descriptions = CommandService.COMMANDS.map((command) => `${command.getName()} - ${command.description}.`).join('\n');
     return helpText + descriptions;
   }
 }

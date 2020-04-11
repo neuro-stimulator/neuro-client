@@ -6,7 +6,7 @@ import { Observable, Subscription, TimeoutError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 
-import { Experiment, ExperimentType, Sequence, createEmptyExperimentERP, createEmptySequence } from '@stechy1/diplomka-share';
+import { createEmptyExperimentERP, createEmptySequence, Experiment, ExperimentType, Sequence } from '@stechy1/diplomka-share';
 
 import { ExperimentsService } from '../../experiments/experiments.service';
 import { SequenceService } from '../sequence.service';
@@ -79,7 +79,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
       this._sequence.id = +sequenceID;
 
       this._service.one(+sequenceID)
-          .catch(error => {
+          .catch((error) => {
             // Pokud nenastane timeout => sequence nebyla na serveru nalezena
             if (!(error instanceof TimeoutError)) {
               // Rovnou přesmeruji na seznam všech sequenci
@@ -113,7 +113,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
       this.actualIsOriginal = false;
     }
     this._experimetnService.one(experimentID)
-        .then(experiment => {
+        .then((experiment: Experiment) => {
           this._experiment = experiment;
           this._outputCount.next(this._experiment.outputCount);
         });
@@ -131,11 +131,11 @@ export class SequenceComponent implements OnInit, OnDestroy {
     });
 
     this._service.experimentsAsSequenceSource()
-        .then(experiments => {
+        .then((experiments: Experiment[]) => {
           this._experiments.next(experiments);
         });
 
-    this._workingSubscription = this.working.subscribe(working => {
+    this._workingSubscription = this.working.subscribe((working: boolean) => {
       if (working) {
         this.form.disable();
       } else {
@@ -171,7 +171,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
           });
     } else {
       this.logger.info(`Aktualizuji sequenci s id: ${this._sequence.id}`);
-      this._service.update(this.form.value).then(value => {
+      this._service.update(this.form.value).then((value: Sequence) => {
         this.actualIsOriginal = true;
       });
     }

@@ -66,6 +66,4 @@ export class PageToolsComponent extends DialogChildComponent implements OnInit {
     this._confirmSubscription.unsubscribe();
     this._showSubscription.unsubscribe();
   }
-
-
 }

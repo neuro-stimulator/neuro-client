@@ -15,7 +15,7 @@ function objectKeys(...objects) {
     });
   }
 
-  return objects.map(value => recursiveKeys(value));
+  return objects.map((value) => recursiveKeys(value));
   // const equal = keys.every(v => v === keys[0]);
   // if (!equal) {
   //   console.log(keys);
@@ -26,7 +26,7 @@ function objectKeys(...objects) {
 
 describe('MessageCodeTranslator', () => {
 
-  const supportedLanguages = environment.supportedLanguages.map(language => language.value);
+  const supportedLanguages = environment.supportedLanguages.map((language: {name: string, value: string}) => language.value);
 
   const translations = {};
   for (const language of supportedLanguages) {
@@ -53,7 +53,7 @@ describe('MessageCodeTranslator', () => {
   it('translations should contains same message keys', () => {
     const keys = objectKeys(...Object.values(translations));
     console.log(keys);
-    keys.forEach(v => {
+    keys.forEach((v: string) => {
       expect(v).toBe(keys[0]);
     });
   });

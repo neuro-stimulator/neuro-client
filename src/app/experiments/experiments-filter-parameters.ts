@@ -13,17 +13,17 @@ export class GroupByPosibilities {
     () => '',
     () => true,
     () => false,
-    (group => group));
+    ((group) => group));
   static readonly TYPE = new GroupByPosibilities('EXPERIMENTS.FILTER_DIALOG.GROUP_BY.TYPE', 'TYPE', 'fa-stethoscope',
-    experiment => `${experiment.type}`,
+    (experiment: Experiment) => `${experiment.type}`,
     (experiment: Experiment, group: string) => experiment.type === +group,
     () => false,
     (group: string) => ExperimentType[+group]);
   static readonly TAG = new GroupByPosibilities('EXPERIMENTS.FILTER_DIALOG.GROUP_BY.TAG', 'TAG', 'fa-tags',
-    experiment => experiment.tags,
+    (experiment) => experiment.tags,
     (experiment: Experiment, group: string) => experiment.tags.includes(group),
     (experiment: Experiment, group: string) => experiment.tags.length === 0,
-    group => group);
+    (group) => group);
 
   static readonly VALUES: GroupByPosibilities[] = [
     GroupByPosibilities.NONE,

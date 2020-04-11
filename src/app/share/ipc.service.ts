@@ -42,7 +42,7 @@ export class IpcService {
     this._socket.on('connect', () => {
       this.status();
     });
-    this._socket.on('status', data => {
+    this._socket.on('status', (data) => {
       if (this._isIpcConnected === data.connected) {
         return;
       }
@@ -57,7 +57,7 @@ export class IpcService {
   public status() {
     this._http.get<ResponseObject<{connected: boolean}>>(`${IpcService.BASE_API_URL}/status`)
         .toPromise()
-        .then(response => {
+        .then((response: ResponseObject<{connected: boolean}>) => {
           this._isIpcConnected = response.data.connected;
         });
   }

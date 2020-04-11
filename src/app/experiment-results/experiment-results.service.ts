@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { ResponseObject, ExperimentResult, IOEvent } from '@stechy1/diplomka-share';
+import { ExperimentResult, IOEvent, ResponseObject } from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../environments/environment';
 import { BaseService } from '../share/base-service';
@@ -30,7 +30,7 @@ export class ExperimentResultsService extends BaseService<ExperimentResult> {
   resultData(experimentResult: ExperimentResult) {
     return this._http.get<ResponseObject<IOEvent[]>>(`${this.dataLink}${experimentResult.id}`)
                .toPromise()
-               .then(result => {
+               .then((result: ResponseObject<IOEvent[]>) => {
                  return result.data;
                });
   }

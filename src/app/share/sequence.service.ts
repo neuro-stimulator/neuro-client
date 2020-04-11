@@ -46,7 +46,7 @@ export class SequenceService {
    * @param onProgress Zavolá se pro aktualizaci progresu při generování sekvence
    */
   public generate(experimentID: number, sequenceSize: number, onProgress: (progress: number) => void) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this._socket.on('progress', (data: {progress: number}) => {
         onProgress(data.progress);
       });
@@ -55,11 +55,5 @@ export class SequenceService {
       });
       this._socket.emit('new-for-experiment', {id: experimentID, sequenceSize});
     });
-
-    // return this._http.get<{experiment: Experiment, sequence: number[], analyse: any}>
-    // (`${SequenceService.BASE_API_URL}/new-for-experiment/${experimentID}/${sequenceSize}`)
-    //            .toPromise();
   }
-
-
 }

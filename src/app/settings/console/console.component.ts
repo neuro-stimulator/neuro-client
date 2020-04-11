@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 
@@ -6,6 +6,7 @@ import { SerialDataEvent, StimulatorMemoryEvent, StimulatorSequencePartRequestEv
 
 import { SerialService } from '../../share/serial.service';
 import { ConsoleService } from './console.service';
+import { ConsoleCommand } from './console-command';
 
 @Component({
   selector: 'app-console',
@@ -44,7 +45,7 @@ export class ConsoleComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this._serialRawDataSubscription = this._serial.rawData$.subscribe((event: SerialDataEvent) => this._handleRawData(event));
 
-    this.console.commands$.subscribe(value => {
+    this.console.commands$.subscribe((value: ConsoleCommand[]) => {
       setTimeout(() => {
       const consoleOutput = this.consoleOutput.nativeElement;
       consoleOutput.scrollTop = consoleOutput.scrollHeight;

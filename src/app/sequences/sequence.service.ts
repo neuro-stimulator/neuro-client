@@ -28,7 +28,7 @@ export class SequenceService extends BaseService<Sequence> {
     this._working.next(true);
     return this._http.get<ResponseObject<number[]>>(`${SequenceService.BASE_API_URL}/generate/${experimentId}/${size}`)
                .toPromise()
-               .then(response => {
+               .then((response: ResponseObject<number[]>) => {
                  return response.data;
                })
                .finally(() => {
@@ -40,7 +40,7 @@ export class SequenceService extends BaseService<Sequence> {
     this._working.next(true);
     return this._http.get<ResponseObject<Experiment[]>>(`${SequenceService.BASE_API_URL}/experiments-as-sequence-source`)
                .toPromise()
-               .then(response => {
+               .then((response: ResponseObject<Experiment[]>) => {
                  return response.data;
                })
                .finally(() => {
@@ -52,7 +52,7 @@ export class SequenceService extends BaseService<Sequence> {
     this._working.next(true);
     return this._http.get<ResponseObject<Sequence[]>>(`${SequenceService.BASE_API_URL}/for-experiment/${experiment.id}`)
                .toPromise()
-               .then(response => {
+               .then((response: ResponseObject<Sequence[]>) => {
                  return response.data;
                })
                .finally(() => {
@@ -77,7 +77,7 @@ export class SequenceService extends BaseService<Sequence> {
     this.logger.info(`Odesílám požadavek pro otestování existence názvu sekvence: ${name}.`);
     return this._http.get<ResponseObject<{exists: boolean}>>(`${SequenceService.BASE_API_URL}/name-exists/${name}/${experimentID ?? 'new'}`)
                .toPromise()
-               .then(result => {
+               .then((result: ResponseObject<{exists: boolean}>) => {
                  this.logger.info(`Výsledek existence názvu sekvence: ${result.data.exists}.`);
                  return result.data.exists;
                });

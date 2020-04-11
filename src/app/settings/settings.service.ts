@@ -1,10 +1,13 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ServerSettings, Settings } from './settings';
+
 import { LocalStorageService } from 'angular-2-local-storage';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { environment, makeURL } from '../../environments/environment';
+
 import { ResponseObject } from '@stechy1/diplomka-share';
+
+import { environment, makeURL } from '../../environments/environment';
+import { ServerSettings, Settings } from './settings';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +25,7 @@ export class SettingsService {
   private readonly _working: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public readonly working$: Observable<boolean> = this._working.asObservable();
 
-
   private _settings: Settings;
-
 
   constructor(private readonly _http: HttpClient,
               private readonly _storage: LocalStorageService) {
@@ -42,7 +43,7 @@ export class SettingsService {
                      .catch(() => {
                        return {data: {}};
                      })
-                     .then(response => {
+                     .then((response: ResponseObject<ServerSettings>) => {
                        return response.data;
                      });
   }

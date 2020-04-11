@@ -8,6 +8,7 @@ import { ModalComponent } from '../../share/modal/modal.component';
 import { SettingsService } from '../settings.service';
 import { InformDialogComponent } from '../../share/modal/inform/inform-dialog.component';
 import { ParamConfigExperimentsComponent } from './param-config-experiments/param-config-experiments.component';
+import { ServerSettings } from '../settings';
 
 @Component({
   selector: 'app-param-config',
@@ -40,7 +41,7 @@ export class ParamConfigComponent implements OnInit {
     this.form.setValue(this._service.settings);
     this._originalLanguage = this._service.settings.application.language;
     this._service.loadServerSettings()
-        .then(serverSettings => {
+        .then((serverSettings: ServerSettings) => {
           this.server.patchValue(serverSettings);
         });
   }

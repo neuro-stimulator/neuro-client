@@ -25,7 +25,7 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
     tickStep: 1,
     showSelectionBar: true,
     animate: false,
-    translate: value => `${value}%`
+    translate: (value: number) => `${value}%`
   };
 
   @Input() form: FormGroup;
@@ -99,7 +99,7 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
 
   private _removeDependency(index: number, dependency: OutputDependency) {
     const dependencies = this.dependencies(index).value as OutputDependency[];
-    dependencies.splice(dependencies.findIndex(value => value.id === dependency.id));
+    dependencies.splice(dependencies.findIndex((value: OutputDependency) => value.id === dependency.id));
   }
 
   private _onOutputCountChange(value: number) {
@@ -166,7 +166,7 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   }
 
   private _listenMaxDistributionChange() {
-    this._maxDistributionChangeSubscription = this.maxDistribution.subscribe(maxDistribution => {
+    this._maxDistributionChangeSubscription = this.maxDistribution.subscribe((maxDistribution: number) => {
       const oldMaxDistribution = this._maxDistribution;
       this._maxDistribution = Math.max(maxDistribution, 0);
 

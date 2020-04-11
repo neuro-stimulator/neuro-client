@@ -66,7 +66,7 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDe
 
   ngOnInit() {
     if (this.incommingEvent !== undefined) {
-      this._incommingEventSubscription = this.incommingEvent.subscribe(event => {
+      this._incommingEventSubscription = this.incommingEvent.subscribe((event: IOEvent) => {
         this._handleIncommingEvent(event);
       });
     }

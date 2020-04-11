@@ -6,17 +6,16 @@ import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import { ExperimentTVEP, createEmptyExperimentTVEP } from '@stechy1/diplomka-share';
+import { createEmptyExperimentTVEP, ExperimentTVEP } from '@stechy1/diplomka-share';
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
-import { ShareValidators } from '../../../share/ShareValidators';
+import { ShareValidators } from '../../../share/share-validators';
 import { ExperimentsService } from '../../experiments.service';
 import { outputCountParams } from '../../experiments.share';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-experiment-type-tvep',

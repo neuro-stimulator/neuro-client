@@ -1,41 +1,41 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule} from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
     path: 'player',
     pathMatch: 'prefix',
-    loadChildren: () => import('./player/player.module').then(mod => mod.PlayerModule)
+    loadChildren: () => import('./player/player.module').then((mod) => mod.PlayerModule)
   },
   {
     path: 'settings',
     pathMatch: 'prefix',
-    loadChildren: () => import('./settings/settings.module').then(mod => mod.SettingsModule)
+    loadChildren: () => import('./settings/settings.module').then((mod) => mod.SettingsModule)
   },
   {
     path: 'help',
     pathMatch: 'prefix',
-    loadChildren: () => import('./help/help.module').then(mod => mod.HelpModule)
+    loadChildren: () => import('./help/help.module').then((mod) => mod.HelpModule)
   },
   {
     path: 'about',
     pathMatch: 'prefix',
-    loadChildren: () => import('./about/about.module').then(mod => mod.AboutModule)
+    loadChildren: () => import('./about/about.module').then((mod) => mod.AboutModule)
   },
   {
     path: 'experiments',
-    loadChildren: () => import('./experiments/experiments.module').then(mod => mod.ExperimentsModule)
+    loadChildren: () => import('./experiments/experiments.module').then((mod) => mod.ExperimentsModule)
   },
   {
     path: 'results',
     pathMatch: 'prefix',
-    loadChildren: () => import('./experiment-results/experiment-results.module').then(mod => mod.ExperimentResultsModule)
+    loadChildren: () => import('./experiment-results/experiment-results.module').then((mod) => mod.ExperimentResultsModule)
   },
   {
     path: 'sequences',
     pathMatch: 'prefix',
-    loadChildren: () => import('./sequences/sequences.module').then(mod => mod.SequencesModule)
+    loadChildren: () => import('./sequences/sequences.module').then((mod) => mod.SequencesModule)
   },
 
   {

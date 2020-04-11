@@ -17,7 +17,7 @@ export class SettingsComponent implements OnInit {
               private readonly _router: Router) {}
 
   ngOnInit() {
-    this._route.fragment.subscribe(fragment => {
+    this._route.fragment.subscribe((fragment: string) => {
       this.fragment = fragment;
     });
     if (this._route.snapshot.fragment === undefined) {

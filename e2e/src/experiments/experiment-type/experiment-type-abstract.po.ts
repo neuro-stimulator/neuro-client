@@ -6,7 +6,7 @@ export abstract class ExperimentTypeAbstractPage implements Page {
 
   public abstract navigateTo(): Promise<any>;
 
-  public abstract getPageInputs(): {ids?: string[], classes?: {name: string, count: number}[]};
+  public abstract getPageInputs(): {ids?: string[], classes?: Array<{name: string, count: number}>};
 
   get experimentSaveButton(): ElementFinder {
     return element(by.className('fab-toggler'));

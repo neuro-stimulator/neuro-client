@@ -57,7 +57,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
 
     if (experimentId !== undefined) {
       this._service.one(+experimentId)
-          .catch(error => {
+          .catch((error) => {
             // Pokud nenastane timeout => experiment nebyl na serveru nalezen
             if (!(error instanceof TimeoutError)) {
               // Rovnou přesmeruji na seznam všech experimentů
@@ -126,7 +126,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
       }, 10);
     });
 
-    this._workingSubscription = this.working.subscribe(working => {
+    this._workingSubscription = this.working.subscribe((working: boolean) => {
       if (working) {
         this.form.disable();
       } else {

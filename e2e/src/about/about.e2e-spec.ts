@@ -34,4 +34,3 @@ describe('About page test', () => {
   });
 
 });
-

@@ -65,7 +65,7 @@ export class ExperimentsSortFilter {
     // Načtu filtační parametry z local-storage
     this._loadFilterParameters();
     // Přihlásím se k odběru změn v kolekci s experimenty z hlavní service
-    this.service.records.subscribe(value => {
+    this.service.records.subscribe((value: Experiment[]) => {
       // Provedu mělkou kopii pole
       this._fuseExperiments.splice(0);
       this._fuseExperiments.push(...value);
@@ -104,7 +104,7 @@ export class ExperimentsSortFilter {
     }
     // Hodnota není prázdná, jdu najít všechny odpovídající dotazy
     // @ts-ignore
-    const fuseResult = this._fusejs.search(searchedValue) as Fuse.FuseResult<Experiment>[];
+    const fuseResult = this._fusejs.search(searchedValue) as Array<Fuse.FuseResult<Experiment>>;
     // Vymažu všechny záznamy v pracovní kolekci
     this._filteredExperiments.splice(0);
     // Přidám všechny nalezené záznamy do pracovní kolekce
@@ -217,5 +217,3 @@ export class ExperimentsSortFilter {
     return this._groupExperiments;
   }
 }
-
-

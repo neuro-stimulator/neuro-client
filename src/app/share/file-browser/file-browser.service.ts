@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { ResponseObject, FileRecord } from '@stechy1/diplomka-share';
+import { FileRecord, ResponseObject } from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../../environments/environment';
 
@@ -45,7 +45,7 @@ export class FileBrowserService {
    *        pro kterou se vrátí obsah
    */
   async getContent(folders: FileRecord[]): Promise<FileRecord[]> {
-    const subfolders = folders.map(value => value.name)
+    const subfolders = folders.map((value: FileRecord) => value.name)
                               .join('/');
     const result = await this._http.get<ResponseObject<FileRecord[]>>(`${FileBrowserService.BASE_API_URL}/${subfolders}`)
                            .toPromise();
@@ -59,7 +59,7 @@ export class FileBrowserService {
    * @param folderName Název nové složky
    */
   async createFolder(folders: FileRecord[], folderName: string): Promise<FileRecord[]> {
-    const subfolders = folders.map(value => value.name)
+    const subfolders = folders.map((value: FileRecord) => value.name)
                               .join('/');
     if (subfolders) {
       folderName = `${subfolders}/${folderName}`;
@@ -76,7 +76,7 @@ export class FileBrowserService {
    * @param files Soubory, které se mají nahrát
    */
   async upload(folders: FileRecord[], files: FileList): Promise<FileRecord[]> {
-    const subfolders = folders.map(value => value.name)
+    const subfolders = folders.map((value: FileRecord) => value.name)
                               .join('/');
     const formData = new FormData();
     for (let i = 0; i < files.length; i++) {
@@ -99,7 +99,7 @@ export class FileBrowserService {
   async delete(folders: FileRecord[], file: FileRecord) {
     let folderName = file.name;
 
-    const subfolders = folders.map(value => value.name)
+    const subfolders = folders.map((value: FileRecord) => value.name)
                               .join('/');
     if (subfolders) {
       folderName = `${subfolders}/${folderName}`;

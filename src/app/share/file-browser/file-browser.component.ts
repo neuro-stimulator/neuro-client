@@ -38,9 +38,9 @@ export class FileBrowserComponent extends DialogChildComponent implements OnInit
       this._formInvalid.next(!(state !== 'INVALID'));
     });
 
-    this.folders.subscribe(folders => {
+    this.folders.subscribe((folders: FileRecord[]) => {
       this._service.getContent(folders)
-          .then(files => {
+          .then((files: FileRecord[]) => {
             this.files = files;
           });
     });
@@ -63,7 +63,7 @@ export class FileBrowserComponent extends DialogChildComponent implements OnInit
     const folderName = prompt('Zadejte název složky', 'nová složka');
     if (folderName && folderName.length > 0) {
       this._service.createFolder(this.folders.getValue(), folderName)
-          .then(files => {
+          .then((files: FileRecord[]) => {
             this.files = files;
           });
     }
@@ -98,7 +98,7 @@ export class FileBrowserComponent extends DialogChildComponent implements OnInit
 
   handleDeleteFile(file: FileRecord) {
     this._service.delete(this.folders.getValue(), file)
-        .then(files => {
+        .then((files: FileRecord[]) => {
           this.files = files;
         });
   }
@@ -124,7 +124,7 @@ export class FileBrowserComponent extends DialogChildComponent implements OnInit
   onFilesAdded(event: Event) {
     const target: HTMLInputElement = (event.target as HTMLInputElement);
     this._service.upload(this.folders.getValue(), target.files)
-        .then(files => {
+        .then((files: FileRecord[]) => {
           this.files = files;
         });
   }

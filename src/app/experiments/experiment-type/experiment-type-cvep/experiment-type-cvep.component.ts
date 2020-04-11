@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import { ExperimentCVEP, createEmptyExperimentCVEP } from '@stechy1/diplomka-share';
+import { createEmptyExperimentCVEP, ExperimentCVEP } from '@stechy1/diplomka-share';
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
@@ -15,7 +15,7 @@ import { ExperimentsService } from '../../experiments.service';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
-import { ShareValidators } from '../../../share/ShareValidators';
+import { ShareValidators } from '../../../share/share-validators';
 
 @Component({
   selector: 'app-experiment-type-cvep',

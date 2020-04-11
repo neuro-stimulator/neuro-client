@@ -72,7 +72,6 @@ export class ExperimentFilterDialogComponent extends DialogChildComponent implem
     return this.form.get('orderBy');
   }
 
-
   get groupPosibilities(): GroupByPosibilities[] {
     return GroupByPosibilities.VALUES;
   }

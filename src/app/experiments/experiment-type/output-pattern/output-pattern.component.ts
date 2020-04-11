@@ -77,7 +77,7 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
 
   ngOnInit(): void {
     if (isObservable(this.patternSize)) {
-      this.patternSize.subscribe(patternSize => {
+      this.patternSize.subscribe((patternSize: number) => {
         this._patternSize = patternSize;
         this._initCheckboxes();
         this._drawPattern();

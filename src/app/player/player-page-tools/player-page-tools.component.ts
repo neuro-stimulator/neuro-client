@@ -19,7 +19,4 @@ export class PlayerPageToolsComponent extends PageToolsChildComponent {
 
   initSettings(settings: Settings): void {
   }
-
-
-
 }

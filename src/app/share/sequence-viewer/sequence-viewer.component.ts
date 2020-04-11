@@ -61,7 +61,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
-    this._inputDataSubscription = this.inputData.subscribe(input => {
+    this._inputDataSubscription = this.inputData.subscribe((input) => {
       this.dataHasChanged = !input.overrideOrigin;
       this.flowData.splice(0);
       this.flowData.push(...input.data);
@@ -71,12 +71,11 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
       this._analyse = this._analyseSequence(input.data);
       this._showSequenceAnalyse(this._analyse);
     });
-    this._outputCountSubscription = this.outputCount.subscribe(outputCount => {
+    this._outputCountSubscription = this.outputCount.subscribe((outputCount: number) => {
       this._outputCount = outputCount;
       if (!this._analyse) {
         return;
       }
-
 
       this._showSequenceAnalyse(this._analyse);
     });

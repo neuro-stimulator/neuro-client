@@ -6,14 +6,13 @@ import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { TranslateService } from '@ngx-translate/core';
 
-import { CommandFromStimulator, CommandToStimulator, IOEvent, SerialDataEvent, StimulatorStateEvent } from '@stechy1/diplomka-share';
+import { CommandFromStimulator, CommandToStimulator, Experiment, IOEvent, SerialDataEvent, StimulatorStateEvent } from '@stechy1/diplomka-share';
 
 import { CommandsService } from '../share/commands.service';
 import { SerialService } from '../share/serial.service';
 import { ExperimentsService } from '../experiments/experiments.service';
 import { ExperimentViewerComponent } from '../share/experiment-viewer/experiment-viewer.component';
 import { NavigationService } from '../navigation/navigation.service';
-
 
 @Component({
   selector: 'app-player',
@@ -92,7 +91,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     }
 
     this._experimentID = this._route.snapshot.params['id'];
-    this._service.one(this._experimentID).then(experiment => {
+    this._service.one(this._experimentID).then((experiment: Experiment) => {
       this.outputCount = experiment.outputCount;
       this._navigation.titleArgs = { name: experiment.name };
     });

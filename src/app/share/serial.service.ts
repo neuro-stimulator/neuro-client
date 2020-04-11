@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Socket } from 'ngx-socket-io';
 import { TranslateService } from '@ngx-translate/core';
 
-import { ResponseObject, CommandToStimulator, SerialDataEvent, StimulatorStateEvent, MessageCodes } from '@stechy1/diplomka-share';
+import { CommandToStimulator, MessageCodes, ResponseObject, SerialDataEvent, StimulatorStateEvent } from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../environments/environment';
 import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
@@ -73,7 +73,7 @@ export class SerialService {
         this._handleStimulatorStateEvent(event as StimulatorStateEvent);
       }
     });
-    this._socket.on('status', data => {
+    this._socket.on('status', (data) => {
       if (this._isSerialConnected === data.connected) {
         return;
       }
@@ -128,7 +128,7 @@ export class SerialService {
   public discover() {
     return this._http.get<{data: [{path: string}]}>(`${SerialService.BASE_API_URL}/discover`)
                .toPromise()
-               .then(response => {
+               .then((response: {data: [{path: string}]}) => {
                  return response.data;
                });
   }
@@ -163,7 +163,7 @@ export class SerialService {
   public status() {
     this._http.get<ResponseObject<{connected: boolean}>>(`${SerialService.BASE_API_URL}/status`)
         .toPromise()
-        .then(response => {
+        .then((response: ResponseObject<{connected: boolean}>) => {
           if (this._isSerialConnected === response.data.connected) {
             return;
           }
@@ -183,7 +183,7 @@ export class SerialService {
     formData.append('firmware', firmware);
     this._http.post(`${SerialService.BASE_API_URL}/firmware`, formData)
         .toPromise()
-        .then(result => {
+        .then((result) => {
           console.log(result);
         });
   }

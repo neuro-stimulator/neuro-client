@@ -19,8 +19,6 @@ import { ParamConfigExperimentsComponent } from './param-config/param-config-exp
 import { ParamConfigServerComponent } from './param-config/param-config-server/param-config-server.component';
 import { ParamConfigApplicationComponent } from './param-config/param-config-application/param-config-application.component';
 
-
-
 @NgModule({
     declarations: [
         SettingsComponent,

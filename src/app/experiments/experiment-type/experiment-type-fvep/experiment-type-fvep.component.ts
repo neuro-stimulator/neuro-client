@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import { ExperimentFVEP, createEmptyExperimentFVEP } from '@stechy1/diplomka-share';
+import { createEmptyExperimentFVEP, ExperimentFVEP } from '@stechy1/diplomka-share';
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
@@ -15,7 +15,7 @@ import { outputCountParams } from '../../experiments.share';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
-import { ShareValidators } from '../../../share/ShareValidators';
+import { ShareValidators } from '../../../share/share-validators';
 
 @Component({
   selector: 'app-experiment-type-fvep',
@@ -93,6 +93,4 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
   get outputCount() {
     return this.form.get('outputCount');
   }
-
-
 }

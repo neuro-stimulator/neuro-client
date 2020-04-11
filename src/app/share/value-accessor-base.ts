@@ -17,12 +17,12 @@ export class ValueAccessorBase<T> implements ControlValueAccessor {
   set value(value: T) {
     if (this.innerValue !== value) {
       this.innerValue = value;
-      this.changed.forEach(f => f(value));
+      this.changed.forEach((f) => f(value));
     }
   }
 
   touch() {
-    this.touched.forEach(f => f());
+    this.touched.forEach((f) => f());
   }
 
   writeValue(value: T) {

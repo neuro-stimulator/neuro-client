@@ -34,7 +34,7 @@ export class ResponseInterceptor implements HttpInterceptor {
     const toasterMapIndex = ResponseInterceptor._transformMessageCodeToToasterType(`${message.code}`);
     this.translator.get(`${SERVER_MESSAGE_CODE_PREFIX}${MESSAGE_CODE_TRANSLATOR[message.code]}`, message.params)
         .toPromise()
-        .then(value => {
+        .then((value: string) => {
           this.TOASTER_MAP[toasterMapIndex](value);
         });
   }
@@ -47,7 +47,7 @@ export class ResponseInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)
                .pipe(
-                 map(response => {
+                 map((response) => {
                    if (response instanceof HttpResponse) {
                      if (response.body !== null) {
                        if (response.body.message) {

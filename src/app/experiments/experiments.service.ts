@@ -31,7 +31,7 @@ export class ExperimentsService extends BaseService<Experiment> {
   }
 
   public install(experimentID: number, sequence: number[], onProgress: (progress: number) => void) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this._socket.on('progress', (data: {progress: number}) => {
         onProgress(data.progress);
         if (data.progress >= 100) {
@@ -46,7 +46,7 @@ export class ExperimentsService extends BaseService<Experiment> {
     this.logger.info(`Odesílám požadavek pro otestování existence názvu experimentu: ${name}.`);
     return this._http.get<ResponseObject<{exists: boolean}>>(`${ExperimentsService.BASE_API_URL}/name-exists/${name}/${experimentID ?? 'new'}`)
                .toPromise()
-               .then(result => {
+               .then((result: ResponseObject<{exists: boolean}>) => {
                  this.logger.info(`Výsledek existence názvu experimentu: ${result.data.exists}.`);
                  return result.data.exists;
                });

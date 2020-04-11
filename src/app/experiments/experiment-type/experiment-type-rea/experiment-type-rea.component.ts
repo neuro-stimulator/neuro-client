@@ -10,7 +10,7 @@ import { createEmptyExperimentREA, ExperimentREA, ReaOnResponseFail } from '@ste
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
-import { ShareValidators } from '../../../share/ShareValidators';
+import { ShareValidators } from '../../../share/share-validators';
 import { brightnessSliderOptions, outputCountParams } from '../../experiments.share';
 import { ExperimentsService } from '../../experiments.service';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
@@ -112,6 +112,4 @@ export class ExperimentTypeReaComponent extends BaseExperimentTypeComponent<Expe
   get brightness() {
     return this.form.get('brightness');
   }
-
-
 }

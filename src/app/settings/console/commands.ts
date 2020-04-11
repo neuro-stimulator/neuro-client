@@ -276,7 +276,6 @@ export class MemoryCommand implements ClientCommand<number> {
 
 }
 
-
 // Backdoor do stimulátoru
 export class OutputSetCommand implements ClientCommand<{index: number, brightness: number}> {
   description = `Nastaví jeden konkrétní výstup na zadanou hodnotu: ${this.getName()} index: number, brightness: number`;

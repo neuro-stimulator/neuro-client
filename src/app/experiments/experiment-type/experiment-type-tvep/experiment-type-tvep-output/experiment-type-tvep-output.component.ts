@@ -31,7 +31,7 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
   @Input() experimentReady: Observable<Experiment>;
   @Input() sharePatternLength: Observable<boolean>;
 
-  readonly patternSizes: BehaviorSubject<number>[] = [];
+  readonly patternSizes: Array<BehaviorSubject<number>> = [];
 
   private _experimentReadySubscription: Subscription;
   private _patternLengthSubscriptions: Subscription[] = [];
@@ -52,7 +52,7 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
       if (experiment.type !== ExperimentType.NONE) {
         this._emptyExperiment = false;
         for (let i = 0; i < environment.maxOutputCount; i++) {
-          this._patternLengthSubscriptions.push(this.patternLength(i).valueChanges.subscribe(patternLength => {
+          this._patternLengthSubscriptions.push(this.patternLength(i).valueChanges.subscribe((patternLength: number) => {
             this.patternSizes[i].next(patternLength);
             if (!this._disablePatternLengthPropagation) {
               this._handleSharePatternLengthChange(this._sharePatternLength, i);

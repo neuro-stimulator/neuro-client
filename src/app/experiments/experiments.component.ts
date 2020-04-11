@@ -70,9 +70,11 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
           this._showIntro(count === 0);
         });
     this._filterRequestSubscription = this._buttonsAddonService.filterRequest.subscribe(() => this._showFilterDialog());
-    this._searchBySubscription = this._buttonsAddonService.searchValue.subscribe(value => this._handleSearchBy(value));
-    this._filterParametersChangeSubscription = this._filterService.filterParametersChange$.subscribe(params => this._handleFilterParametersChange(params));
-    this._serviceRecordsSubscription = this._service.records.subscribe(records => {
+    this._searchBySubscription = this._buttonsAddonService.searchValue.subscribe((value) => this._handleSearchBy(value));
+    this._filterParametersChangeSubscription = this._filterService.filterParametersChange$.subscribe((params: FilterParameters) => {
+      this._handleFilterParametersChange(params);
+    });
+    this._serviceRecordsSubscription = this._service.records.subscribe((records) => {
       this._buttonsAddonService.addonVisible.next(records.length !== 0);
     });
   }
@@ -144,7 +146,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
   handleNewExperiment(experimentType: ExperimentType) {
     const type: string = ExperimentType[experimentType].toLowerCase();
     this.logger.info(`Budu vytvářet nový experiment typu: ${type}.`);
-    this._router.navigate([type, 'new'], {relativeTo: this._route.parent}).catch((reason => console.log(reason)));
+    this._router.navigate([type, 'new'], {relativeTo: this._route.parent}).catch(((reason) => console.log(reason)));
   }
 
   get experimentGroups(): ExperimentGroup {

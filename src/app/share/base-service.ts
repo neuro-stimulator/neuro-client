@@ -1,7 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-
 import { BehaviorSubject, Observable, TimeoutError } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { Socket } from 'ngx-socket-io';
@@ -70,17 +69,17 @@ export abstract class BaseService<T extends BaseRecord> {
                  delay(1000)
                )
                .toPromise()
-               .catch(error => {
+               .catch((error) => {
                  if (error instanceof TimeoutError) {
                    return {data: []};
                  }
                  throw new Error();
                })
-               .then(response => {
+               .then((response: ResponseObject<T[]>) => {
                  this._records$.next(response.data);
                  return response.data.length;
                })
-               .catch(error => {
+               .catch((error) => {
                  return 0;
                });
   }
@@ -94,7 +93,7 @@ export abstract class BaseService<T extends BaseRecord> {
     this._working.next(true);
     return this._http.get<ResponseObject<T>>(`${this._accessPoint}/${recordId}`)
                .toPromise()
-               .then(result => {
+               .then((result: ResponseObject<T>) => {
                  if (!result.data) {
                    throw new Error();
                  }
@@ -136,7 +135,7 @@ export abstract class BaseService<T extends BaseRecord> {
     this._working.next(true);
     return this._http.delete<ResponseObject<T>>(`${this._accessPoint}/${recordId}`)
                .toPromise()
-               .then(result => {
+               .then((result: ResponseObject<T>) => {
                  // Odešlu aktualizaci událost pouze, pokud nejsem připojený
                  // na websocket
                  if (this._socket === undefined) {
@@ -158,7 +157,7 @@ export abstract class BaseService<T extends BaseRecord> {
    *
    * @param count Počet ghost záznamů, který se má vygenerovat
    */
-  public makeGhosts(count: number = 5): Array<any> {
+  public makeGhosts(count: number = 5): any[] {
     return new Array(count);
   }
 
@@ -214,7 +213,7 @@ export abstract class BaseService<T extends BaseRecord> {
     this._working.next(true);
     return this._http.post<ResponseObject<T>>(this._accessPoint, data)
                .toPromise()
-               .then(result => {
+               .then((result: ResponseObject<T>) => {
                  // Odešlu aktualizaci událost pouze, pokud nejsem připojený
                  // na websocket
                  if (this._socket === undefined) {
@@ -296,7 +295,7 @@ export abstract class BaseService<T extends BaseRecord> {
 
     const record = event.record;
     const records = this._records$.getValue();
-    const recordIndex = records.findIndex(value => value.id === record.id);
+    const recordIndex = records.findIndex((value) => value.id === record.id);
     switch (event.changeType) {
       case CRUDServiceType.INSERT:
         if (recordIndex !== -1) {

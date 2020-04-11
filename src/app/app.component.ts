@@ -40,7 +40,7 @@ export class AppComponent implements OnInit, AfterViewInit {
               private readonly logger: NGXLogger) {
     logger.registerMonitor(new ConsoleLoggerMonitorService(console));
 
-    translate.addLangs(environment.supportedLanguages.map(language => language.value));
+    translate.addLangs(environment.supportedLanguages.map((language) => language.value));
     translate.setDefaultLang(environment.defaultLanguage);
     translate.use(settings.settings.application.language || environment.defaultLanguage);
     switch (settings.settings.application.language) {
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.navigation.navigationChange$
-        .subscribe(value => {
+        .subscribe((value) => {
           const introComponent = value['intro'] || undefined;
           this.introService.showIntro(introComponent);
         });

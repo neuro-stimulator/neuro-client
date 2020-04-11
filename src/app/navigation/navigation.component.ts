@@ -42,7 +42,7 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
     this.showSidebar = true;
 
-    this.navigation.navigationChange$.subscribe(data => {
+    this.navigation.navigationChange$.subscribe((data) => {
       if (!data['buttonsAddon']) {
         this._clearButtonsAddon();
         return;

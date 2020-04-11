@@ -1,8 +1,10 @@
 import { Component, EventEmitter } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { Subscription } from 'rxjs';
+
 import { DialogChildComponent } from '../../../../share/modal/dialog-child.component';
 import { ModalComponent } from '../../../../share/modal/modal.component';
-import { Subscription } from 'rxjs';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sequence-fast-dialog',
@@ -26,7 +28,7 @@ export class SequenceFastDialogComponent extends DialogChildComponent {
   constructor() {
     super();
 
-    this._formInvalidSubscription = this.form.valueChanges.subscribe(value => {
+    this._formInvalidSubscription = this.form.valueChanges.subscribe((value) => {
       this.formInvalid.next(this.form.invalid);
     });
   }

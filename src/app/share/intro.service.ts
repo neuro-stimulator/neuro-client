@@ -48,10 +48,10 @@ export class IntroService {
               private readonly _settings: SettingsService,
               private readonly logger: NGXLogger) {
     this._loadComponents();
-    stepsByComponentsObservable.subscribe(stepsByComponentsPromise => {
-      stepsByComponentsPromise.then(steps => {
+    stepsByComponentsObservable.subscribe((stepsByComponentsPromise: Promise<ComponentsSteps>) => {
+      stepsByComponentsPromise.then((steps: ComponentsSteps) => {
         this.stepsByComponents = steps;
-      }).catch(reason => {
+      }).catch((reason) => {
         this.stepsByComponents = undefined;
       });
     });

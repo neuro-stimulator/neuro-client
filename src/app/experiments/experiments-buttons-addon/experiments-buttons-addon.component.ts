@@ -25,8 +25,8 @@ export class ExperimentsButtonsAddonComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this._addonVisibleSubscription = this._service.addonVisible.subscribe(visible => this.showButtons = visible);
-    this._route.fragment.subscribe(value => {
+    this._addonVisibleSubscription = this._service.addonVisible.subscribe((visible) => this.showButtons = visible);
+    this._route.fragment.subscribe((value) => {
       this.initialSearchValue = value || '';
       this._notifySearchValue(this.initialSearchValue);
     });

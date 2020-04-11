@@ -42,7 +42,7 @@ export class ExperimentTypeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this._paramsSubscription = this.route.params.subscribe(params => {
+    this._paramsSubscription = this.route.params.subscribe((params: Params) => {
       this._handleRouteParams(params);
     });
   }

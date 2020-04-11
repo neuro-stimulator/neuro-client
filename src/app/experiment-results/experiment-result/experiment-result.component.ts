@@ -6,9 +6,9 @@ import { NGXLogger } from 'ngx-logger';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subscription, TimeoutError } from 'rxjs';
 
-import { ExperimentType, ExperimentResult, createEmptyExperimentResult, createEmptyExperiment, IOEvent } from '@stechy1/diplomka-share';
+import { createEmptyExperiment, createEmptyExperimentResult, ExperimentResult, ExperimentType, IOEvent } from '@stechy1/diplomka-share';
 
-import { environment, makeURL } from '../../../environments/environment';
+import { environment} from '../../../environments/environment';
 import { NavigationService } from '../../navigation/navigation.service';
 import { ExperimentResultsService } from '../experiment-results.service';
 
@@ -57,7 +57,7 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
       this._experimentResult.id = +experimentResultId;
 
       this._service.one(+experimentResultId)
-          .catch(error => {
+          .catch((error) => {
             // Pokud nenastane timeout => výsledek experimentu nebyl na serveru nalezen
             if (!(error instanceof TimeoutError)) {
               // Rovnou přesmeruji na seznam všech výsledků experimentů

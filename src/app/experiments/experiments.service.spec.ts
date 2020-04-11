@@ -57,7 +57,7 @@ describe('ExperimentsService', () => {
            .pipe(
              // Zajímá mě pouze 3. aktualizace
              takeLast(3),
-             tap(records => {
+             tap((records) => {
                expect(records).toBe(mockExperiments);
              }));
     // Zavolám získání všech experimentů

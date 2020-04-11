@@ -35,6 +35,4 @@ export class ExperimentTypeNoneComponent extends BaseExperimentTypeComponent<Exp
   protected _createEmptyExperiment(): Experiment {
     return createEmptyExperiment();
   }
-
-
 }

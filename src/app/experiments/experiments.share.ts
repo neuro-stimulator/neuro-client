@@ -7,7 +7,7 @@ export const dependencyValidatorPattern = `^[0-${environment.maxOutputCount}]x[1
 
 export const outputCountValidatorPattern = `^[0-${environment.maxOutputCount}]{1}$`;
 
-export type ExperimentGroup = { group: string, experiments: Experiment[] }[];
+export type ExperimentGroup = Array<{ group: string, experiments: Experiment[] }>;
 
 export const outputCountParams: SliderOptions = {
   floor: 1,
@@ -26,5 +26,5 @@ export const brightnessSliderOptions: SliderOptions = {
   tickStep: 1,
   showSelectionBar: true,
   animate: false,
-  translate: value => `${value}%`
+  translate: (value: number) => `${value}%`
 };

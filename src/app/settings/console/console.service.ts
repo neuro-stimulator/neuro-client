@@ -63,7 +63,7 @@ export class ConsoleService {
     if (data.code) {
       this._translator.get(`${SERVER_MESSAGE_CODE_PREFIX}${MESSAGE_CODE_TRANSLATOR[data.code]}`, data.params)
           .toPromise()
-          .then(value => {
+          .then((value: string) => {
             this.saveCommandRaw(value);
           });
     }
@@ -98,7 +98,7 @@ export class ConsoleService {
   public saveCommandRaw(text: string, date?: Date) {
     this._translator.get(text)
         .toPromise()
-        .then(value => {
+        .then((value: string) => {
           this._processData({date: date ? date : new Date(), text: value});
         });
   }
