@@ -34,7 +34,7 @@ export class SerialService {
   /**
    * Socket pro komunikaci mezi WebServerem a Webovou aplikací
    */
-  private readonly _socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.socket)}/serial`});
+  private readonly _socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.server)}/serial`});
 
   private _isSerialConnected: boolean;
 

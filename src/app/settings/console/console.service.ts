@@ -23,7 +23,7 @@ export class ConsoleService {
   private readonly _commands: BehaviorSubject<ConsoleCommand[]> = new BehaviorSubject<ConsoleCommand[]>([]);
   public readonly commands$: Observable<ConsoleCommand[]> = this._commands.asObservable();
 
-  private readonly _socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.socket)}/commands`});
+  private readonly _socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.server)}/commands`});
 
   constructor(private readonly aliveChecker: AliveCheckerService,
               private readonly _command: CommandService,

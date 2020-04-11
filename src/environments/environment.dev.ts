@@ -2,7 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import { SERVER_HTTP_PORT, SERVER_SOCKET_PORT } from '@stechy1/diplomka-share';
+import { SERVER_HTTP_PORT } from '@stechy1/diplomka-share';
 import { Settings } from '../app/settings/settings';
 
 const DEFAULT_SETTINGS: Settings = {
@@ -39,7 +39,6 @@ export const environment = {
   },
   port: {
     server: SERVER_HTTP_PORT,
-    socket: SERVER_SOCKET_PORT
   },
   maxOutputCount: 8,
   patternSize: 32,

@@ -21,7 +21,7 @@ export class SequenceService {
   /**
    * Socket pro komunikaci mezi WebServerem a Webovou aplikací
    */
-  private readonly _socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.socket)}/sequence`});
+  private readonly _socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.server)}/sequence`});
 
   constructor(aliveChecker: AliveCheckerService,
               private readonly _http: HttpClient) {

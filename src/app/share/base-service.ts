@@ -181,7 +181,7 @@ export abstract class BaseService<T extends BaseRecord> {
   }
 
   protected _initSocket(namespace: string): void {
-    this._socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.socket)}/${namespace}`});
+    this._socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.server)}/${namespace}`});
     this._socket.on('connect', () => this._socketConnected());
     this._socket.on('disconnect', (reason) => this._socketDisconnected(reason));
     this._socket.on('insert', (data: T) => {

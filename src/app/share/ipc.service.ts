@@ -21,7 +21,7 @@ export class IpcService {
   /**
    * Socket pro komunikaci mezi WebServerem a Webovou aplikací
    */
-  private readonly _socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.socket)}/ipc`});
+  private readonly _socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.server)}/ipc`});
 
   private _isIpcConnected: boolean;
 

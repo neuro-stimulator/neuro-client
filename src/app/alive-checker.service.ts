@@ -31,7 +31,7 @@ export class AliveCheckerService {
   constructor(private readonly navigation: NavigationService,
               private readonly translator: TranslateService,
               private readonly toastr: ToastrService) {
-    this._socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.socket)}`});
+    this._socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.server)}`});
     this._socket.on('connect', () => this._socketConnected());
     this._socket.on('disconnect', (reason) => this._socketDisconnected(reason));
   }
