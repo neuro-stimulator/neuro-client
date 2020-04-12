@@ -1,4 +1,4 @@
-import { AfterViewInit, EventEmitter, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -13,7 +13,7 @@ import { ExperimentsService } from '../experiments.service';
 import { ExperimentNameValidator } from '../experiment-name-validator';
 import { ComponentCanDeactivate } from '../experiments.deactivate';
 
-export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit, AfterViewInit, OnDestroy, ComponentCanDeactivate {
+export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit, OnDestroy, ComponentCanDeactivate {
 
   protected _experiment: E;
   private _experimentLoaded: EventEmitter<E> = new EventEmitter<E>();
@@ -80,6 +80,12 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
             this._updateFormGroup(this._experiment);
             this._navigation.customNavColor.next(ExperimentType[experiment.type].toLowerCase());
             this._experimentLoaded.next(experiment);
+            // Nepříjemný hack, který mi zajistí,
+            // že formulář bude vykazovat známky netknutosti i po nastavení všech
+            // hodnot
+            setTimeout(() => {
+              this.form.markAsUntouched();
+            }, 100);
           });
     }
   }
@@ -92,6 +98,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   protected _updateFormGroup(experiment: E) {
     this.logger.debug('Aktualizuji hodnoty ve formuláři.');
     this.form.patchValue(experiment);
+    this.form.markAsUntouched();
   }
 
   /**
@@ -135,9 +142,6 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
     });
   }
 
-  ngAfterViewInit(): void {
-  }
-
   ngOnDestroy(): void {
     if (this._connectedSubscription) {
       this._connectedSubscription.unsubscribe();
@@ -145,9 +149,8 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
     this._workingSubscription.unsubscribe();
   }
 
-  @HostListener('window:beforeunload')
   canDeactivate(): Observable<boolean> | boolean {
-    return !this.form.dirty;
+    return (!(this.form.dirty && this.form.touched));
   }
 
   /**

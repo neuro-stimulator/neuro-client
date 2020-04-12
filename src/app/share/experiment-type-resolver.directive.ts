@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
 import { ExperimentType } from '@stechy1/diplomka-share';
+import { BaseExperimentTypeComponent } from '../experiments/experiment-type/base-experiment-type.component';
 
 @Directive({
   selector: '[appExperimentTypeResolver]'
@@ -15,6 +16,7 @@ export class ExperimentTypeResolverDirective implements OnInit, OnDestroy {
   @Output() componentChange: EventEmitter<any> = new EventEmitter<any>();
 
   private _typeSubscription: Subscription;
+  private _instance: BaseExperimentTypeComponent<any>;
 
   constructor(private readonly componentFactoryResolver: ComponentFactoryResolver,
               private readonly _viewContainerRef: ViewContainerRef,
@@ -34,6 +36,7 @@ export class ExperimentTypeResolverDirective implements OnInit, OnDestroy {
     const componentRef = this._viewContainerRef.createComponent(factory);
     this.logger.debug(`Komponenta byla úspěšně inicializována.`);
     this.componentChange.next(componentRef.instance);
+    this._instance = componentRef.instance;
   }
 
   ngOnInit(): void {
@@ -46,4 +49,7 @@ export class ExperimentTypeResolverDirective implements OnInit, OnDestroy {
     this._typeSubscription.unsubscribe();
   }
 
+  get experimentComponent(): BaseExperimentTypeComponent<any> {
+    return this._instance;
+  }
 }

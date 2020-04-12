@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 import { ExperimentType, experimentTypeFromRaw } from '@stechy1/diplomka-share';
 
@@ -12,13 +12,17 @@ import { ExperimentTypeCvepComponent } from './experiment-type-cvep/experiment-t
 import { ExperimentTypeFvepComponent } from './experiment-type-fvep/experiment-type-fvep.component';
 import { ExperimentTypeTvepComponent } from './experiment-type-tvep/experiment-type-tvep.component';
 import { ExperimentTypeReaComponent } from './experiment-type-rea/experiment-type-rea.component';
+import { ComponentCanDeactivate } from '../experiments.deactivate';
+import { ExperimentTypeResolverDirective } from '../../share/experiment-type-resolver.directive';
 
 @Component({
   selector: 'app-experiment-type',
   templateUrl: './experiment-type.component.html',
   styleUrls: ['./experiment-type.component.sass']
 })
-export class ExperimentTypeComponent implements OnInit, OnDestroy {
+export class ExperimentTypeComponent implements OnInit, OnDestroy, ComponentCanDeactivate {
+
+  @ViewChild(ExperimentTypeResolverDirective) experimentTypeResolver: ExperimentTypeResolverDirective;
 
   public experimentType: BehaviorSubject<ExperimentType> = new BehaviorSubject<ExperimentType>(ExperimentType.NONE);
 
@@ -49,6 +53,11 @@ export class ExperimentTypeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._paramsSubscription.unsubscribe();
+  }
+
+  @HostListener('window:beforeunload')
+  canDeactivate(): (boolean | Observable<boolean>) {
+    return this.experimentTypeResolver.experimentComponent.canDeactivate();
   }
 
 }
