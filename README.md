@@ -4,7 +4,7 @@ Klientská část diplomové práce na téma: **Návrh hardwarového stimulátor
 
 ![](https://github.com/stechy1/diplomka-frontend/workflows/build/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/stechy1/diplomka-frontend/badge.svg?branch=master)](https://coveralls.io/github/stechy1/diplomka-frontend?branch=master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/34518139f9c84080be1393c855db962f)](https://www.codacy.com/manual/stechy12/diplomka-frontend?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stechy1/diplomka-frontend&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8e32be8838534ae08de36a79e2da835a)](https://www.codacy.com/manual/stechy12/diplomka-frontend)
 ![](https://img.shields.io/github/languages/code-size/stechy1/diplomka-frontend)
 ![](https://img.shields.io/github/package-json/v/stechy1/diplomka-frontend)
 ![](https://img.shields.io/librariesio/github/stechy1/diplomka-frontend)
