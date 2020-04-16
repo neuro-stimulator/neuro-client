@@ -150,7 +150,10 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   }
 
   canDeactivate(): Observable<boolean> | boolean {
-    return (!(this.form.dirty && this.form.touched));
+    // Dočasné zakázání tétu funkcionality, dokud nenajdu
+    // fungující řešení
+    return true;
+    // return (!(this.form.dirty && this.form.touched));
   }
 
   /**
