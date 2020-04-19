@@ -3,13 +3,13 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { NGXLogger } from 'ngx-logger';
-import * as Fuse from 'fuse.js';
 
 import { Experiment} from '@stechy1/diplomka-share';
 
 import { ExperimentsService } from './experiments.service';
 import { FilterParameters, GroupByPosibilities, OrderByPosibilities, SortByPosibilities } from './experiments-filter-parameters';
 import { ExperimentGroup } from './experiments.share';
+import Fuse from 'fuse.js';
 
 /**
  * Služba starající se o filtrování a řezení experimentů, které se následně zobrazí v hlavním přehledu experimentů.
@@ -41,7 +41,7 @@ export class ExperimentsSortFilter {
   };
 
   // Fusejs instance pro fulltextové vyhledávání
-  private readonly _fusejs: Fuse<Experiment, Fuse.FuseOptions<Experiment>>;
+  private readonly _fusejs: Fuse<Experiment, Fuse.IFuseOptions<Experiment>>;
   // Kolekce experimentů pro FuseJS
   private _fuseExperiments: Experiment[] = [];
   // Kolekce vyfiltrovaných experimentů
@@ -104,7 +104,7 @@ export class ExperimentsSortFilter {
     }
     // Hodnota není prázdná, jdu najít všechny odpovídající dotazy
     // @ts-ignore
-    const fuseResult = this._fusejs.search(searchedValue) as Array<Fuse.FuseResult<Experiment>>;
+    const fuseResult = this._fusejs.search(searchedValue) as Fuse.FuseResult<Experiment>[];
     // Vymažu všechny záznamy v pracovní kolekci
     this._filteredExperiments.splice(0);
     // Přidám všechny nalezené záznamy do pracovní kolekce
