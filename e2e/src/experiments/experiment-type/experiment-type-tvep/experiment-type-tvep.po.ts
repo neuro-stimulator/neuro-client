@@ -8,7 +8,7 @@ export class ExperimentTypeTvepPage extends ExperimentTypeAbstractPage {
     return browser.get('/experiments/tvep/new') as Promise<any>;
   }
 
-  getPageInputs(): {ids?: string[], classes?: Array<{name: string, count: number}>} {
+  getPageInputs(): {ids?: string[], classes?: {name: string, count: number}[]} {
     return {
       ids: [
         'tvep-output-count'

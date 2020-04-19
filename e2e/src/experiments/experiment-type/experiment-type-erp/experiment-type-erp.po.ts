@@ -8,7 +8,7 @@ export class ExperimentTypeErpPage extends ExperimentTypeAbstractPage {
     return browser.get('/experiments/erp/new') as Promise<any>;
   }
 
-  getPageInputs(): {ids?: string[], classes?: Array<{name: string, count: number}>} {
+  getPageInputs(): {ids?: string[], classes?: {name: string, count: number}[]} {
     return {
       ids: [
         'erp-random',

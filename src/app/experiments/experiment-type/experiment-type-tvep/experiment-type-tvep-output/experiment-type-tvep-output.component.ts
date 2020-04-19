@@ -31,7 +31,7 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
   @Input() experimentReady: Observable<Experiment>;
   @Input() sharePatternLength: Observable<boolean>;
 
-  readonly patternSizes: Array<BehaviorSubject<number>> = [];
+  readonly patternSizes: BehaviorSubject<number>[] = [];
 
   private _experimentReadySubscription: Subscription;
   private _patternLengthSubscriptions: Subscription[] = [];

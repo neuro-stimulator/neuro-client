@@ -8,7 +8,7 @@ export class ExperimentTypeFvepPage extends ExperimentTypeAbstractPage {
     return browser.get('/experiments/fvep/new') as Promise<any>;
   }
 
-  getPageInputs(): {ids?: string[], classes?: Array<{name: string, count: number}>} {
+  getPageInputs(): {ids?: string[], classes?: {name: string, count: number}[]} {
     return {
       ids: [
         'fvep-output-count'

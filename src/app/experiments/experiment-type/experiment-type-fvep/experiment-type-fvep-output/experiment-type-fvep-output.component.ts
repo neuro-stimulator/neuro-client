@@ -16,7 +16,7 @@ export class ExperimentTypeFvepOutputComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() count: number;
 
-  activeSide: Array<{left: boolean, right: boolean}> = [];
+  activeSide: {left: boolean, right: boolean}[] = [];
 
   constructor() { }
 

@@ -7,7 +7,7 @@ export class ExperimentTypeReaPage extends ExperimentTypeAbstractPage {
     return browser.get('/experiments/rea/new') as Promise<any>;
   }
 
-  getPageInputs(): {ids?: string[], classes?: Array<{name: string, count: number}>} {
+  getPageInputs(): {ids?: string[], classes?: {name: string, count: number}[]} {
     return {
       ids: [
         'rea-output-count',
