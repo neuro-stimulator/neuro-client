@@ -32,7 +32,7 @@
     "@angular/service-worker": "~9.1.2",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
-    "@stechy1/diplomka-share": "^1.0.21",
+    "@stechy1/diplomka-share": "^1.0.22",
     "angular-2-local-storage": "^3.0.2",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
