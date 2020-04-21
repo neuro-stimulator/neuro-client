@@ -18,7 +18,7 @@ describe('Experiment list test', () => {
 
   it('Should be displayed with right title', async () => {
     await page.navigateTo();
-    expect(app.applicationHeader.getText()).toEqual('Experimenty');
+    expect(await app.applicationHeader.getText()).toEqual('Experimenty');
   });
 
   it('Should contains button for new experiment', async () => {
@@ -46,7 +46,7 @@ describe('Experiment list test', () => {
 
     // Synchronizace prohlížeče
     await browser.sleep(2000);
-    expect(page.experimentsEmptyHeader.getText()).toEqual('Nebyly nalezeny žádné experimenty...');
+    expect(await page.experimentsEmptyHeader.getText()).toEqual('Nebyly nalezeny žádné experimenty...');
   });
 
   it('Should contains addon buttons for filter and finding experients', async () => {
