@@ -39,7 +39,7 @@ const routes: Routes = [
       applyCustomNavColor: true
     },
     canActivate: [ExperimentsActivate],
-    canDeactivate: [ExperimentsDeactivate]
+    // canDeactivate: [ExperimentsDeactivate]
   },
   {
     path: '',

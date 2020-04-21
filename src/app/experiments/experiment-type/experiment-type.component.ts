@@ -55,9 +55,10 @@ export class ExperimentTypeComponent implements OnInit, OnDestroy, ComponentCanD
     this._paramsSubscription.unsubscribe();
   }
 
-  @HostListener('window:beforeunload')
+  // @HostListener('window:beforeunload')
   canDeactivate(): (boolean | Observable<boolean>) {
-    return this.experimentTypeResolver.experimentComponent.canDeactivate();
+    return true;
+  //   return this.experimentTypeResolver.experimentComponent.canDeactivate();
   }
 
 }
