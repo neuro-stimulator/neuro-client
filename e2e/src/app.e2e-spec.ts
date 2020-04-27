@@ -66,7 +66,8 @@ describe('Top level e2e tests', () => {
       // Založím nový experiment s výchozími hodnotami
       await experiment.helper().createNewExperiment(experiment.name, experiment.type);
       // Nechám najít toolbar k experimentu
-      const experimentToolbar: { run: ElementFinder, edit: ElementFinder, delete: ElementFinder } = await experimentsPage.findExperimentToolbar(experiment.name);
+      const experimentToolbar: { run: ElementFinder, edit: ElementFinder,
+        delete: ElementFinder } = await experimentsPage.findExperimentToolbar(experiment.name);
       // Kliknu v toolbaru na tlačítko run, čímž se přesměruji na stránku přehrávače
       await experimentToolbar.run.click();
       // Počkám až se přesměruji na stránku s přehrávačem
