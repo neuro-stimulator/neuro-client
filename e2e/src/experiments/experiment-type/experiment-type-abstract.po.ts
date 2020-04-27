@@ -51,7 +51,12 @@ export abstract class ExperimentTypeAbstractPage implements Page {
     await this.fieldExperimentDescription.sendKeys(description);
   }
 
-  public getExperimentRowByName(name: string): ElementFinder {
-    return element(by.css(`li[data-experiment-name=${name}]`));
+  public async changeFieldValues() {
+    return Promise.resolve();
   }
+
+  public async afterExperimentCreated() {
+    return Promise.resolve();
+  }
+
 }

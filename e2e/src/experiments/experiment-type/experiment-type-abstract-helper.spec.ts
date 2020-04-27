@@ -5,6 +5,7 @@ import { ExperimentType } from '@stechy1/diplomka-share';
 import { ApplicationPage } from '../../app.po';
 import { ExperimentsPage } from '../experiments.po';
 import { ExperimentTypeAbstractPage } from './experiment-type-abstract.po';
+import { validateFormFields } from '../../share';
 
 export class ExperimentTypeAbstractSpecHelper {
 
@@ -35,7 +36,7 @@ export class ExperimentTypeAbstractSpecHelper {
     expect(this.page.experimentSaveButton.getAttribute('disabled')).toBe(null);
     // Proto na něj i kliknu
     await this.page.experimentSaveButton.click();
-    // TODO Ověřit, že se zobrazí notifikace
+    // Dám možnost upravit data i po založení hového experimentu
     await this.checkExperimentCreated(name);
     // Ověřím, že existují tlačítka v toolbaru řádku experimentu
     await this.checkExperimentRowToolbar(name);
@@ -50,19 +51,14 @@ export class ExperimentTypeAbstractSpecHelper {
    */
   public async testExperimentInputPresents() {
     const pageInputs = this.page.getPageInputs();
-    const mergedInputs = [...pageInputs.ids ?? [], ...this.page.commonExperimentInputs];
-    for (const input of mergedInputs) {
-      const inputElement = await element(by.id(input));
-      await browser.wait(protractor.ExpectedConditions.visibilityOf(inputElement), 5000);
-      expect(inputElement.isPresent()).toBe(true, `Element: ${input} nebyl nalezen!`);
-    }
-
-    for (const input of pageInputs.classes ?? []) {
-      const inputElements: ElementFinder[] = await element.all(by.className(input.name));
-      expect(inputElements.length).toBe(input.count, `Na stránce se nevyskytuje požadovaný počet elementů třídy: ${input.name}!`);
-    }
+    await validateFormFields({ ids: [...pageInputs.ids ?? [], ...this.page.commonExperimentInputs], classes: pageInputs.classes ?? [] });
   }
 
+  /**
+   * Ověří validátor názvu experimentu
+   *
+   * @param type Typ experimentu, který se má testovat
+   */
   public async testInvalidName(type: ExperimentType) {
     const experimentName = 'invalidName';
     // Přejdi na stránku s experimenty
@@ -130,7 +126,7 @@ export class ExperimentTypeAbstractSpecHelper {
     // Počkám na načtení stránky se všemi experimenty
     await browser.wait(protractor.ExpectedConditions.visibilityOf(this.experiments.availableExperimentList), 5000);
     // Získám řádek s experimentem
-    const experimentRow = this.page.getExperimentRowByName(name);
+    const experimentRow = this.experiments.findExperimentRowByName(name);
     // // Ověřím, že experiment s požadovaným názvem byl vytvořen
     // expect(experimentRow.element(by.partialLinkText(name)).isDisplayed()).toBe(true);
     // Dále zkontroluji, že se opravdu vytvořil správný experiment (podle jména)
@@ -144,12 +140,43 @@ export class ExperimentTypeAbstractSpecHelper {
    */
   public async checkExperimentRowToolbar(name: string) {
     // Získám řádek s experimentem
-    const experimentRow = this.page.getExperimentRowByName(name);
+    const experimentRow = this.experiments.findExperimentRowByName(name);
     // Kontrola, že je k dispotici tlačítko pro spuštění experimentu
     await expect(experimentRow.element(by.css('.fa-trash.run')).isPresent).toBeTruthy();
     // Kontrola, že je k dispotici tlačítko pro editaci experimentu
     await expect(experimentRow.element(by.css('.fa-trash.edit')).isPresent).toBeTruthy();
     // A ješte poslední kontrola, že existuje tlačítko pro smazání experimentu
     await expect(experimentRow.element(by.css('.fa-trash.delete')).isPresent).toBeTruthy();
+  }
+
+  /**
+   * Vytvoří nový validní experiment na základě jména a typu experimentu
+   *
+   * @param name Název experimentu
+   * @param type Typ experimentu
+   */
+  public async createNewExperiment(name: string, type: ExperimentType) {
+    // Půjdu na stránku všech experimentů
+    await this.experiments.navigateTo();
+    // Počkám, až zmizí všechny toastery
+    await this.app.waitForNoToastVisible();
+    // Přejdu do editoru experimentu
+    await this.goToNewExperimentPage(type);
+    // Vyplním název experimentu
+    await this.page.fillExperimentName(name);
+    // Dám možnost upravit hodnoty experimentu
+    await this.page.changeFieldValues();
+    // Počkám na validaci názvu
+    await browser.wait(protractor.ExpectedConditions.elementToBeClickable(this.page.experimentSaveButton), 5000);
+    // Tlačtko pro uložení by nyní již mělo být aktivní
+    expect(this.page.experimentSaveButton.getAttribute('disabled')).toBe(null);
+    // Proto na něj i kliknu
+    await this.page.experimentSaveButton.click();
+    // Počkám, až zmizí všechny toastery
+    await this.app.waitForNoToastVisible();
+    // Dám možnost upravit data i po založení hového experimentu
+    await this.page.afterExperimentCreated();
+    // Pro jistotu ověřím, že experiment byl vytvořen
+    await this.checkExperimentCreated(name);
   }
 }

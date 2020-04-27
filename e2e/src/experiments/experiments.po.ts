@@ -3,6 +3,7 @@ import { browser, by, element, ElementFinder, protractor } from 'protractor';
 import { ExperimentType } from '@stechy1/diplomka-share';
 
 import { Page } from '../page';
+import { deleteAllRecords } from '../share';
 
 export class ExperimentsPage implements Page {
   navigateTo(): Promise<any> {
@@ -33,6 +34,20 @@ export class ExperimentsPage implements Page {
     return element(by.id('button-addon-experiments-filter'));
   }
 
+  public findExperimentRowByName(name: string): ElementFinder {
+    return element(by.css(`li[data-experiment-name=${name}]`));
+  }
+
+  findExperimentToolbar(name: string): {run: ElementFinder, edit: ElementFinder, delete: ElementFinder} {
+    const toolbar: ElementFinder = this.findExperimentRowByName(name).element(by.className('experiment-toolbar'));
+    return {
+      run: toolbar.element(by.className('run')),
+      edit: toolbar.element(by.className('edit')),
+      delete: toolbar.element(by.className('delete'))
+    };
+  }
+
+
   async clickToNewExperiment(experimentType: ExperimentType) {
     // Zobrazení nabídky s tlačítky pro jednotlivé experimenty
     await this.experimentNewButton.click();
@@ -42,11 +57,6 @@ export class ExperimentsPage implements Page {
 
   async deleteAllExperiments(): Promise<any> {
     const trashButtons = await this.availableExperimentList.all(by.css('.fa-trash.delete'));
-    for (const trashButton of trashButtons) {
-      await trashButton.click();
-      const confirmButton = element(by.buttonText('Potvrzuji'));
-      await browser.wait(protractor.ExpectedConditions.visibilityOf(confirmButton), 5000);
-      await confirmButton.click();
-    }
+    await deleteAllRecords(trashButtons);
   }
 }

@@ -1,12 +1,10 @@
-import { browser, by, element, ElementArrayFinder, ElementFinder, protractor } from 'protractor';
+import { browser, by, element, ElementFinder, protractor } from 'protractor';
 
 import { Page } from './page';
-import { falseIfMissing, passBoolean } from 'protractor/built/util';
-import { not } from 'rxjs/internal-compatibility';
-
-// protractor.ExpectedConditions.elementToBeDisabled = () => {};
 
 export class ApplicationPage implements Page {
+
+  private readonly noToastCondition = protractor.ExpectedConditions.and(this._noToastConditionDefinition);
 
   navigateTo(): Promise<any> {
     return browser.get('/') as Promise<any>;
@@ -20,8 +18,22 @@ export class ApplicationPage implements Page {
     return element(by.id('page-tools-button'));
   }
 
-  getErrorArrayByInputId(inputID: string): ElementArrayFinder {
-    return element(by.id(inputID)).parentElementArrayFinder.first().all(by.tagName('span'));
+  get toasterContainer(): ElementFinder {
+    return element(by.id('toast-container'));
+  }
+
+  public async waitForNoToastVisible() {
+    await browser.wait(this.noToastCondition);
+  }
+
+  public async waitForPageChange(pageTitle: string) {
+    await browser.wait(protractor.ExpectedConditions.textToBePresentInElement(this.applicationHeader, pageTitle), 5000,
+      `Titulek: ${pageTitle} nebyl nalezen!`);
+    await this.waitForNoToastVisible();
+  }
+
+  private async _noToastConditionDefinition() {
+    return await element(by.id('toast-container')).all(by.className('ngx-toastr')).count() === 0;
   }
 
 }

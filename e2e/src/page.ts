@@ -1,5 +1,5 @@
 export interface Page {
 
-  navigateTo(): Promise<any>;
+  navigateTo(params?: string[]): Promise<any>;
 
 }
