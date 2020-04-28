@@ -15,9 +15,12 @@ module.exports = function (config) {
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
+    files: [
+      { pattern: "src/app/**/*.+(ts|html)" }
+    ],
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, '../../coverage/lib-modal'),
-      reports: ['html', 'lcovonly', 'text-summary'],
+      reports: ['text', 'lcov', 'json-summary'],
       fixWebpackSourcePaths: true
     },
     reporters: ['progress', 'kjhtml'],
@@ -26,7 +29,7 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false,
-    restartOnFileChange: true
+    singleRun: true,
+    restartOnFileChange: false
   });
 };

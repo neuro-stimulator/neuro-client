@@ -19,7 +19,7 @@ module.exports = function (config) {
       { pattern: "src/app/**/*.+(ts|html)" }
     ],
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, '../../coverage'),
+      dir: require('path').join(__dirname, '../../coverage/app'),
       reports: ['text', 'lcov', 'json-summary'],
       fixWebpackSourcePaths: true
     },
