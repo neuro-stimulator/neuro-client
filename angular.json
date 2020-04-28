@@ -194,26 +194,6 @@
               "tsConfig": "projects/lib-modal/tsconfig.lib.prod.json"
             }
           }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/lib-modal/src/test.ts",
-            "tsConfig": "projects/lib-modal/tsconfig.spec.json",
-            "karmaConfig": "projects/lib-modal/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/lib-modal/tsconfig.lib.json",
-              "projects/lib-modal/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     }},
