@@ -1,0 +1,50 @@
+//noinspection CssUnknownTarget
+@import "_style-variables.sass"
+.list-group-item:hover
+  opacity: 0.9
+
+.experiment-result-toolbar
+  font-size: 15px
+  padding: 4px
+  cursor: pointer
+  text-align: right
+
+  i
+    margin: 2px
+    display: block
+    padding: 4px
+
+
+.experiment-result-creation-date
+  max-width: 100%
+  float: left
+
+@include media-breakpoint-up(sm)
+
+  .experiment-result-toolbar
+    i
+      display: inline
+    i:hover
+      -webkit-box-shadow: 0 0 9px 0 rgba(0,0,0,0.75)
+      -moz-box-shadow: 0 0 9px 0 rgba(0,0,0,0.75)
+      box-shadow: 0 0 9px 0 rgba(0,0,0,0.75)
+
+
+@include media-breakpoint-up(md)
+  //.experiment-result-output
+  //  font-size: 20px
+  //  padding: 7px
+
+  .experiment-result-toolbar
+    font-size: 20px
+    padding: 7px
+
+
+@include media-breakpoint-up(lg)
+  //.experiment-result-output
+  //  font-size: 26px
+  //  padding: 4px
+
+  .experiment-result-toolbar
+    font-size: 26px
+    padding: 4px

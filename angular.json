@@ -10,26 +10,26 @@
           "style": "sass"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/diplomka-frontend",
+      "sourceRoot": "projects/diplomka-frontend/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/diplomka-frontend",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "index": "projects/diplomka-frontend/src/index.html",
+            "main": "projects/diplomka-frontend/src/main.ts",
+            "polyfills": "projects/diplomka-frontend/src/polyfills.ts",
+            "tsConfig": "projects/diplomka-frontend/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest"
+              "projects/diplomka-frontend/src/favicon.ico",
+              "projects/diplomka-frontend/src/assets",
+              "projects/diplomka-frontend/src/manifest.webmanifest"
             ],
             "styles": [
-              "src/sass/styles.sass",
+              "projects/diplomka-frontend/src/sass/styles.sass",
               "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
               "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
               "node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
@@ -39,7 +39,7 @@
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules/bootstrap/scss",
-                "src"
+                "projects/diplomka-frontend/src/sass"
               ]
             },
             "scripts": [
@@ -50,8 +50,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/diplomka-frontend/src/environments/environment.ts",
+                  "with": "projects/diplomka-frontend/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -79,16 +79,16 @@
             "dev": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.dev.ts"
+                  "replace": "projects/diplomka-frontend/src/environments/environment.ts",
+                  "with": "projects/diplomka-frontend/src/environments/environment.dev.ts"
                 }
               ]
             },
             "qa": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.qa.ts"
+                  "replace": "projects/diplomka-frontend/src/environments/environment.ts",
+                  "with": "projects/diplomka-frontend/src/environments/environment.qa.ts"
                 }
               ]
             }
@@ -120,24 +120,32 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "projects/diplomka-frontend/src/test.ts",
+            "polyfills": "projects/diplomka-frontend/src/polyfills.ts",
+            "tsConfig": "projects/diplomka-frontend/tsconfig.spec.json",
+            "karmaConfig": "projects/diplomka-frontend/karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest"
+              "projects/diplomka-frontend/src/favicon.ico",
+              "projects/diplomka-frontend/src/assets",
+              "projects/diplomka-frontend/src/manifest.webmanifest"
             ],
             "styles": [
-              "src/sass/styles.sass"
+              "projects/diplomka-frontend/src/sass/styles.sass",
+              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/intro.js/introjs.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "node_modules/bootstrap/scss"
+                "node_modules/bootstrap/scss",
+                "projects/diplomka-frontend/src/sass"
               ]
             },
-            "scripts": [],
+            "scripts": [
+              "node_modules/intro.js/intro.js"
+            ],
             "codeCoverage": true
           }
         },
@@ -145,9 +153,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "projects/diplomka-frontend/tsconfig.app.json",
+              "projects/diplomka-frontend/tsconfig.spec.json",
+              "projects/diplomka-frontend/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -157,7 +165,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "protractorConfig": "projects/diplomka-frontend/e2e/protractor.conf.js",
             "devServerTarget": "diplomka-frontend:serve"
           },
           "configurations": {
@@ -167,6 +175,46 @@
             "qa": {
               "devServerTarget": "diplomka-frontend:serve:qa"
             }
+          }
+        }
+      }
+    },
+    "lib-modal": {
+      "projectType": "library",
+      "root": "projects/lib-modal",
+      "sourceRoot": "projects/lib-modal/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lib-modal/tsconfig.lib.json",
+            "project": "projects/lib-modal/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lib-modal/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-modal/src/test.ts",
+            "tsConfig": "projects/lib-modal/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-modal/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lib-modal/tsconfig.lib.json",
+              "projects/lib-modal/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

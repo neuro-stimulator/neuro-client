@@ -17,7 +17,13 @@
     "lib": [
       "es2019",
       "dom"
-    ]
+    ],
+    "paths": {
+      "lib-modal": [
+        "dist/lib-modal/lib-modal",
+        "dist/lib-modal"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

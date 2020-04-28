@@ -9,12 +9,14 @@
     "start:dev": "ng serve -c=dev --host 0.0.0.0 --proxy-config proxy.config.json",
     "start:qa": "ng serve -c=qa --host 0.0.0.0 --proxy-config proxy.config.json",
     "build": "ng build",
-    "release": "ng build --prod --base-href=/ --output-path=build --output-hashing none",
+    "build:lib-modal": "ng build lib-modal",
+    "release": "ng build --prod --base-href=/ --output-hashing none",
     "test": "ng test",
     "test:ci": "ng test --browsers ChromeHeadless",
-    "check-translations": "tsc check-translations.ts && node check-translations",
+    "check-translations": "tsc projects/diplomka-frontend/check-translations.ts && node projects/diplomka-frontend/check-translations",
     "lint": "ng lint",
-    "e2e": "ng e2e -c=qa"
+    "e2e": "ng e2e -c=qa",
+    "postinstall": "npm run build:lib-modal"
   },
   "repository": {
     "type": "git",
@@ -50,6 +52,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.1",
+    "@angular-devkit/build-ng-packagr": "~0.901.1",
     "@angular/cli": "~9.1.1",
     "@angular/compiler-cli": "~9.1.2",
     "@angular/language-service": "~9.1.2",
@@ -67,6 +70,7 @@
     "karma-coverage-istanbul-reporter": "~2.1.1",
     "karma-jasmine": "~3.1.1",
     "karma-jasmine-html-reporter": "^1.5.3",
+    "ng-packagr": "^9.0.0",
     "protractor": "~5.4.4",
     "ts-node": "~8.9.0",
     "tslint": "~6.1.1",
