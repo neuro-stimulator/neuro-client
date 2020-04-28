@@ -153,9 +153,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/diplomka-frontend/tsconfig.app.json",
-              "projects/diplomka-frontend/tsconfig.spec.json",
-              "projects/diplomka-frontend/e2e/tsconfig.json"
+              "projects/diplomka-frontend/tsconfig.app.json"
             ],
             "exclude": [
               "**/node_modules/**"

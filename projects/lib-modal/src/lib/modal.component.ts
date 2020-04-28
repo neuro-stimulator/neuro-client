@@ -16,20 +16,20 @@ import { DialogChildComponent } from './dialog-child.component';
  *
  * V read-only režimu je vhodné dialog použít takto:
  *  <pre>
- *    <app-modal id="informationModalDialog" title="Informace"
+ *    <lib-modal id="informationModalDialog" title="Informace"
  *      (confirm)="handleConfirmInformationDialog()"
  *      (cancel)="handleCnacelConfirmationDialog()">
  *      <app-import-dialog></app-import-dialog>
- *    </app-modal>
+ *    </lib-modal>
  *  </pre>
  *
  *  Pro čekání na výsledek je potřeba spárovat proměnnou 'result':
  *  <pre>
- *    <app-modal id="modalContainer" title="Import dotazů"
+ *    <lib-modal id="modalContainer" title="Import dotazů"
  *      [result]="importDialog.entries"
  *      (confirm)="importDialog.doImport()">
  *      <app-import-dialog #importDialog></app-import-dialog>
- *    </app-modal>
+ *    </lib-modal>
  *  </pre>
  *
  * V druhém případě se výsledek musí získat právě z komponenty uvnitř dialogu,
@@ -37,7 +37,7 @@ import { DialogChildComponent } from './dialog-child.component';
  * že má poskytnout výsledek do 'spárované' proměnné.
  */
 @Component({
-  selector: 'app-modal',
+  selector: 'lib-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.sass'],
   animations: [

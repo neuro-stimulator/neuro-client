@@ -6,4 +6,4 @@
 
 <app-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveSettings()" [disabled]="form.invalid || (working | async)"></app-fab>
 
-<app-modal #modal></app-modal>
+<lib-modal #modal></lib-modal>
