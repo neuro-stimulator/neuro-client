@@ -29,6 +29,8 @@ jobs:
       run: npm run release
     - name: Test
       run: npm run test:ci
+    - name: Merge code coverage
+      run: npm run merge-coverage
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
