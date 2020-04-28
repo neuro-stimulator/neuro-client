@@ -30,7 +30,7 @@ async function main() {
   const reportFiles = argv.report as string[];
   const reporters = argv.reporters as string[];
 
-  const map = createCoverageMap({});
+  const map = createCoverageMap();
 
   reportFiles.forEach((file) => {
     const r = fs.readJsonSync(file);
