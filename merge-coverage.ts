@@ -42,3 +42,5 @@ async function main() {
   reporter.write(map);
   console.log('Created a merged coverage report in ./coverage');
 }
+
+fs.unlinkSync(`${__dirname}/merge-coverage.js`);

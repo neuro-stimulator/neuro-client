@@ -16,7 +16,7 @@
     "check-translations": "tsc projects/diplomka-frontend/check-translations.ts && node projects/diplomka-frontend/check-translations",
     "lint": "ng lint",
     "e2e": "ng e2e -c=qa",
-    "merge-coverage": "ts-node merge-coverage.ts --report coverage/app/coverage-summary.json",
+    "merge-coverage": "tsc merge-coverage.ts && node merge-coverage --report coverage/app/coverage-summary.json",
     "postinstall": "npm run build:lib-modal"
   },
   "repository": {
