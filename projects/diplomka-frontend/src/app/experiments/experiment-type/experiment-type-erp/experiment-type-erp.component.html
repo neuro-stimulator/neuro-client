@@ -88,7 +88,7 @@
               <div class="form-group">
                 <label for="erp-random">{{ 'EXPERIMENTS.EXPERIMENT.ERP.RANDOM.TITLE' | translate }}</label>
                 <select name="erp-random" id="erp-random" class="selectpicker form-control form-control-sm" formControlName="random">
-                  <option *ngFor="let random of randoms" [value]="random.id">{{random.name | translate}}</option>
+                  <option *ngFor="let random of randoms" [ngValue]="random.id">{{random.name | translate}}</option>
                 </select>
               </div>
             </div>
@@ -96,7 +96,7 @@
               <div class="form-group">
                 <label for="erp-edge">{{ 'EXPERIMENTS.EXPERIMENT.ERP.EDGE.TITLE' | translate }}</label>
                 <select name="erp-edge" id="erp-edge" class="selectpicker form-control form-control-sm" formControlName="edge">
-                  <option *ngFor="let edge of edges" [value]="edge.id">{{edge.name | translate}}</option>
+                  <option *ngFor="let edge of edges" [ngValue]="edge.id">{{edge.name | translate}}</option>
                 </select>
               </div>
             </div>
