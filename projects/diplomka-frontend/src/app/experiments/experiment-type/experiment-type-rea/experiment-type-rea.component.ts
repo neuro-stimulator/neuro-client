@@ -18,7 +18,7 @@ import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 
 @Component({
-  selector: 'app-experiment-type-rea',
+  selector: 'stim-experiment-type-rea',
   templateUrl: './experiment-type-rea.component.html',
   styleUrls: ['./experiment-type-rea.component.sass']
 })

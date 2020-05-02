@@ -3,13 +3,13 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
 
-import { DialogChildComponent, ModalComponent } from 'lib-modal';
+import { DialogChildComponent, ModalComponent } from 'stim-lib-modal';
 
 import { ExperimentsSortFilter } from '../experiments-sort-filter.service';
 import { FilterParameters, GroupByPosibilities, OrderByPosibilities, SortByPosibilities } from '../experiments-filter-parameters';
 
 @Component({
-  selector: 'app-experiment-filter-dialog',
+  selector: 'stim-experiment-filter-dialog',
   templateUrl: './experiment-filter-dialog.component.html',
   styleUrls: ['./experiment-filter-dialog.component.sass']
 })

@@ -13,7 +13,7 @@ import { NavigationService } from '../../navigation/navigation.service';
 import { ExperimentResultsService } from '../experiment-results.service';
 
 @Component({
-  selector: 'app-experiment-result',
+  selector: 'stim-experiment-result',
   templateUrl: './experiment-result.component.html',
   styleUrls: ['./experiment-result.component.sass']
 })

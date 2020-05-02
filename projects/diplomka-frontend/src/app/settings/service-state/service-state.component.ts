@@ -6,7 +6,7 @@ import { SerialService } from '../../share/serial.service';
 import { IpcService } from '../../share/ipc.service';
 
 @Component({
-  selector: 'app-service-state',
+  selector: 'stim-service-state',
   templateUrl: './service-state.component.html',
   styleUrls: ['./service-state.component.sass']
 })

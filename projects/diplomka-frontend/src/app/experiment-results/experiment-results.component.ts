@@ -6,13 +6,13 @@ import { NGXLogger } from 'ngx-logger';
 
 import { ExperimentResult, ExperimentType } from '@stechy1/diplomka-share';
 
-import { ConfirmDialogComponent, ModalComponent } from 'lib-modal';
+import { ConfirmDialogComponent, ModalComponent } from 'stim-lib-modal';
 
 import { ExperimentResultsService } from './experiment-results.service';
 import { IntroService } from '../share/intro.service';
 
 @Component({
-  selector: 'app-experiment-results',
+  selector: 'stim-experiment-results',
   templateUrl: './experiment-results.component.html',
   styleUrls: ['./experiment-results.component.sass']
 })

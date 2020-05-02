@@ -19,9 +19,9 @@
       "dom"
     ],
     "paths": {
-      "lib-modal": [
-        "dist/lib-modal/lib-modal",
-        "dist/lib-modal"
+      "stim-lib-modal": [
+        "dist/stim-lib-modal/stim-lib-modal",
+        "dist/stim-lib-modal"
       ]
     }
   },

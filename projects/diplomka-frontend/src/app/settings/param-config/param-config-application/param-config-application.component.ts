@@ -3,13 +3,13 @@ import { FormGroup } from '@angular/forms';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { ConfirmDialogComponent, ModalComponent } from 'lib-modal';
+import { ConfirmDialogComponent, ModalComponent } from 'stim-lib-modal';
 
 import { environment } from '../../../../environments/environment';
 import { IntroService } from '../../../share/intro.service';
 
 @Component({
-  selector: 'app-param-config-application',
+  selector: 'stim-param-config-application',
   templateUrl: './param-config-application.component.html',
   styleUrls: ['./param-config-application.component.sass']
 })

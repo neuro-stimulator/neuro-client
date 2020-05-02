@@ -4,14 +4,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
-import { InformDialogComponent, ModalComponent } from 'lib-modal';
+import { InformDialogComponent, ModalComponent } from 'stim-lib-modal';
 
 import { SettingsService } from '../settings.service';
 import { ParamConfigExperimentsComponent } from './param-config-experiments/param-config-experiments.component';
 import { ServerSettings } from '../settings';
 
 @Component({
-  selector: 'app-param-config',
+  selector: 'stim-param-config',
   templateUrl: './param-config.component.html',
   styleUrls: ['./param-config.component.sass']
 })

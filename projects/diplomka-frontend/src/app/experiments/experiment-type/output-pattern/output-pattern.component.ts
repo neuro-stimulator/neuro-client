@@ -7,7 +7,7 @@ import { environment } from '../../../../environments/environment';
 import { ValueAccessorBase } from '../../../share/value-accessor-base';
 
 @Component({
-  selector: 'app-output-pattern',
+  selector: 'stim-output-pattern',
   templateUrl: './output-pattern.component.html',
   styleUrls: ['./output-pattern.component.sass'],
   providers: [

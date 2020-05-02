@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-param-config-server',
+  selector: 'stim-param-config-server',
   templateUrl: './param-config-server.component.html',
   styleUrls: ['./param-config-server.component.sass']
 })

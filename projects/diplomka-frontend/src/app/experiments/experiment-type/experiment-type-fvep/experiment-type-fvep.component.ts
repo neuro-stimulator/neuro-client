@@ -18,7 +18,7 @@ import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-
 import { ShareValidators } from '../../../share/share-validators';
 
 @Component({
-  selector: 'app-experiment-type-fvep',
+  selector: 'stim-experiment-type-fvep',
   templateUrl: './experiment-type-fvep.component.html',
   styleUrls: ['./experiment-type-fvep.component.sass']
 })

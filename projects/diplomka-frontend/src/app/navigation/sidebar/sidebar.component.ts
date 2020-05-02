@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../navigation.service';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'stim-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.sass']
 })

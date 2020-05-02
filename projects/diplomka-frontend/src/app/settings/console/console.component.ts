@@ -9,7 +9,7 @@ import { ConsoleService } from './console.service';
 import { ConsoleCommand } from './console-command';
 
 @Component({
-  selector: 'app-console',
+  selector: 'stim-console',
   templateUrl: './console.component.html',
   styleUrls: ['./console.component.sass']
 })

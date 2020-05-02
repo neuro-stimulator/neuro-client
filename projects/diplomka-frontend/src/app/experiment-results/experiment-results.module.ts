@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { ModalModule } from 'lib-modal';
+import { ModalModule } from 'stim-lib-modal';
 
 import { ExperimentViewerModule } from '../share/experiment-viewer/experiment-viewer.module';
 import { FabModule } from '../share/fab/fab.module';

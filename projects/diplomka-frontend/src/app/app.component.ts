@@ -19,7 +19,7 @@ import { SettingsService } from './settings/settings.service';
 import { IntroService } from './share/intro.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'stim-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dropdown-btn',
+  selector: 'stim-dropdown-btn',
   templateUrl: './dropdown-btn.component.html',
   styleUrls: ['./dropdown-btn.component.sass']
 })

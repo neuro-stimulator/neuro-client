@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-experiment-type-header',
+  selector: 'stim-experiment-type-header',
   templateUrl: './experiment-type-header.component.html',
   styleUrls: ['./experiment-type-header.component.sass']
 })

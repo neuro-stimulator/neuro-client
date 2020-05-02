@@ -13,7 +13,7 @@ import { SequenceService } from '../sequence.service';
 import { SequenceNameValidator } from '../sequence-name-validator';
 
 @Component({
-  selector: 'app-sequence',
+  selector: 'stim-sequence',
   templateUrl: './sequence.component.html',
   styleUrls: ['./sequence.component.sass']
 })

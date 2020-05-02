@@ -6,13 +6,13 @@ import { NGXLogger } from 'ngx-logger';
 
 import { Sequence } from '@stechy1/diplomka-share';
 
-import { ConfirmDialogComponent, ModalComponent } from 'lib-modal';
+import { ConfirmDialogComponent, ModalComponent } from 'stim-lib-modal';
 
 import { SequenceService } from './sequence.service';
 import { IntroService } from '../share/intro.service';
 
 @Component({
-  selector: 'app-sequences',
+  selector: 'stim-sequences',
   templateUrl: './sequences.component.html',
   styleUrls: ['./sequences.component.sass']
 })

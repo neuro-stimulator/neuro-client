@@ -3,13 +3,13 @@
     <form [formGroup]="form">
 
       <!-- Generická hlavička společná pro všechny experimenty -->
-      <app-experiment-type-header [form]="form"></app-experiment-type-header>
+      <stim-experiment-type-header [form]="form"></stim-experiment-type-header>
 
       <div class="row experiment-property">
         <div class="col-10">
           <h4>{{ 'EXPERIMENTS.EXPERIMENT.ERP.TITLE_PARAMS' | translate }}</h4>
         </div>
-        <div class="col-2 text-right" appContentToggler [toggledContent]="erpParams" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+        <div class="col-2 text-right" stimContentToggler [toggledContent]="erpParams" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
 
         <div class="col-12" #erpParams>
           <div class="row">
@@ -25,14 +25,14 @@
                   <div class="col-12 col-lg-8 float-md-right">
                     <a class="btn btn-primary btn-sm" [routerLink]="['/', 'sequences', sequenceId.value || -1]" [class.disabled]="!sequenceId.value"><i class="fas fa-edit"></i> {{ 'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.BUTTON_BAR.EDIT' | translate }}</a>
                     <button class="btn btn-danger btn-sm ml-2" (click)="handleRemoveSequence()" [disabled]="!sequenceId.value"><i class="fas fa-minus"></i> {{ 'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.BUTTON_BAR.DELETE' | translate }}</button>
-                    <app-dropdown-btn small="true" [text]="'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.BUTTON_BAR.NEW.TITLE' | translate" class="ml-2" buttonAsLink="true"
+                    <stim-dropdown-btn small="true" [text]="'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.BUTTON_BAR.NEW.TITLE' | translate" class="ml-2" buttonAsLink="true"
                                       [disabled]="isNew"
                                       [icon]="'fa-plus'"
                                       [navigationLink]="['/', 'sequences', 'new']"
                                       [queryParams]="{sourceExperimentId: experiment ? experiment.id : -1}">
                       <a class="dropdown-item" [routerLink]="['/', 'sequences', 'new']" [queryParams]="{sourceExperimentId: experiment ? experiment.id : -1}"><i class="fas fa-hands-helping"></i> {{ 'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.BUTTON_BAR.NEW.WITH_GUIDE' | translate }}</a>
                       <button class="dropdown-item" (click)="handleCreateNewSequenceFast()"><i class="fas fa-bolt"></i> {{ 'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.BUTTON_BAR.NEW.QUICK' | translate }}</button>
-                    </app-dropdown-btn>
+                    </stim-dropdown-btn>
                     <a class="btn btn-secondary btn-sm ml-2" [routerLink]="['/', 'sequences']"><i class="fas fa-eye"></i> {{ 'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.BUTTON_BAR.EXPLORE' | translate }}</a>
                   </div>
                 </div>
@@ -105,17 +105,17 @@
         </div>
       </div>
 
-      <app-experiment-type-erp-output *ngIf="!isNew"
+      <stim-experiment-type-erp-output *ngIf="!isNew"
                                       [form]="form"
                                       [count]="outputCount.value"
                                       [experimentId]="experiment.id"
                                       [experimentLoaded]="experimentLoaded$"
-                                      [maxDistribution]="maxDistribution.valueChanges"></app-experiment-type-erp-output>
+                                      [maxDistribution]="maxDistribution.valueChanges"></stim-experiment-type-erp-output>
 
     </form>
   </div>
 </div>
 
-<app-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperiment()" [disabled]="form.invalid || (working | async)"></app-fab>
+<stim-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperiment()" [disabled]="form.invalid || (working | async)"></stim-fab>
 
-<lib-modal #modal></lib-modal>
+<stim-lib-modal #modal></stim-lib-modal>

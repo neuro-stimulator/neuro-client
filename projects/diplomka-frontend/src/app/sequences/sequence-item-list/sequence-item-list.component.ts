@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Sequence } from '@stechy1/diplomka-share';
 
 @Component({
-  selector: 'app-sequence-item-list',
+  selector: 'stim-sequence-item-list',
   templateUrl: './sequence-item-list.component.html',
   styleUrls: ['./sequence-item-list.component.sass']
 })

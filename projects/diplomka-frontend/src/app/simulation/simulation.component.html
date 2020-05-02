@@ -33,5 +33,5 @@
 </div>
 
 <div [class.d-none]="fragment !== 'result'">
-  <ng-container appExperimentTypeResolver [componentMap]="componentMap" [type]="experimentType" (componentChange)="handleComponentChange($event)"></ng-container>
+  <ng-container stimExperimentTypeResolver [componentMap]="componentMap" [type]="experimentType" (componentChange)="handleComponentChange($event)"></ng-container>
 </div>

@@ -7,7 +7,7 @@ import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Label } from 'ng2-charts';
 
 @Component({
-  selector: 'app-sequence-viewer',
+  selector: 'stim-sequence-viewer',
   templateUrl: './sequence-viewer.component.html',
   styleUrls: ['./sequence-viewer.component.sass']
 })

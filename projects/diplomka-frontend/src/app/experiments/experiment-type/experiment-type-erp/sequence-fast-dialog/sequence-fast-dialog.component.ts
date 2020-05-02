@@ -3,10 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
 
-import { DialogChildComponent, ModalComponent } from 'lib-modal';
+import { DialogChildComponent, ModalComponent } from 'stim-lib-modal';
 
 @Component({
-  selector: 'app-sequence-fast-dialog',
+  selector: 'stim-sequence-fast-dialog',
   templateUrl: './sequence-fast-dialog.component.html',
   styleUrls: ['./sequence-fast-dialog.component.sass']
 })

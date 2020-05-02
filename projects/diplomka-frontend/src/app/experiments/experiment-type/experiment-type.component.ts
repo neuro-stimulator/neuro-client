@@ -16,7 +16,7 @@ import { ComponentCanDeactivate } from '../experiments.deactivate';
 import { ExperimentTypeResolverDirective } from '../../share/experiment-type-resolver.directive';
 
 @Component({
-  selector: 'app-experiment-type',
+  selector: 'stim-experiment-type',
   templateUrl: './experiment-type.component.html',
   styleUrls: ['./experiment-type.component.sass']
 })

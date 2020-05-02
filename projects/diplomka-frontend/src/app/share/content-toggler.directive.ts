@@ -1,7 +1,7 @@
 import { Directive, HostListener, Input, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[appContentToggler]'
+  selector: '[stimContentToggler]'
 })
 export class ContentTogglerDirective {
 

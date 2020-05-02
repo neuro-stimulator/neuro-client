@@ -6,7 +6,7 @@ import { Settings } from '../../settings/settings';
 import { SettingsService } from '../../settings/settings.service';
 
 @Component({
-  selector: 'app-experiment-item-list',
+  selector: 'stim-experiment-item-list',
   templateUrl: './experiment-item-list.component.html',
   styleUrls: ['./experiment-item-list.component.sass']
 })

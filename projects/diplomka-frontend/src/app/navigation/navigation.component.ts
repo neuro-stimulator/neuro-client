@@ -1,14 +1,14 @@
 import { Component, ComponentFactoryResolver, OnInit, Type, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ModalComponent } from 'lib-modal';
+import { ModalComponent } from 'stim-lib-modal';
 
 import { PageToolsComponent } from '../share/page-tools/page-tools.component';
 import { NavigationService } from './navigation.service';
 import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.directive';
 
 @Component({
-  selector: 'app-navigation',
+  selector: 'stim-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.sass']
 })

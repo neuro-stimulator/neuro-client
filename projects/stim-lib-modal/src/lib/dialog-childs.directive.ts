@@ -1,7 +1,7 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[libDialogChilds]'
+  selector: '[stimLibDialogChilds]'
 })
 export class DialogChildsDirective {
   constructor(public viewContainerRef: ViewContainerRef) {

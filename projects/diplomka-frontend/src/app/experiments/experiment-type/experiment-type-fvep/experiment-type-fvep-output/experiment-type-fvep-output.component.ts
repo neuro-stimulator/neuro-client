@@ -7,7 +7,7 @@ import { environment } from '../../../../../environments/environment';
 import { brightnessSliderOptions} from '../../../experiments.share';
 
 @Component({
-  selector: 'app-experiment-type-fvep-output',
+  selector: 'stim-experiment-type-fvep-output',
   templateUrl: './experiment-type-fvep-output.component.html',
   styleUrls: ['./experiment-type-fvep-output.component.sass']
 })

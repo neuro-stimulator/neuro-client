@@ -7,7 +7,7 @@ import { ExperimentType } from '@stechy1/diplomka-share';
 import { BaseExperimentTypeComponent } from '../experiments/experiment-type/base-experiment-type.component';
 
 @Directive({
-  selector: '[appExperimentTypeResolver]'
+  selector: '[stimExperimentTypeResolver]'
 })
 export class ExperimentTypeResolverDirective implements OnInit, OnDestroy {
 

@@ -12,7 +12,7 @@ import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 
 @Component({
-  selector: 'app-experiment-type-none',
+  selector: 'stim-experiment-type-none',
   templateUrl: './experiment-type-none.component.html',
   styleUrls: ['./experiment-type-none.component.sass']
 })

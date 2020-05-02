@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="col-8">
-        <app-audio-player *ngIf="audio.value === true" [title]="audioFile.value || defaultTitle" [audioUrl]="audioUrl" (fileChange)="handleAudioSelected($event)"></app-audio-player>
+        <stim-audio-player *ngIf="audio.value === true" [title]="audioFile.value || defaultTitle" [audioUrl]="audioUrl" (fileChange)="handleAudioSelected($event)"></stim-audio-player>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="col-7">
-        <app-image-player *ngIf="image.value === true" [title]="imageFile.value || defaultTitle" [imageUrl]="imageUrl" (fileChange)="handleImageSelected($event)"></app-image-player>
+        <stim-image-player *ngIf="image.value === true" [title]="imageFile.value || defaultTitle" [imageUrl]="imageUrl" (fileChange)="handleImageSelected($event)"></stim-image-player>
       </div>
     </div>
 

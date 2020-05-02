@@ -2,12 +2,12 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 
 import { FileRecord } from '@stechy1/diplomka-share';
 
-import { ModalComponent } from 'lib-modal';
+import { ModalComponent } from 'stim-lib-modal';
 
 import { FileBrowserComponent } from '../file-browser/file-browser.component';
 
 @Component({
-  selector: 'app-image-player',
+  selector: 'stim-image-player',
   templateUrl: './image-player.component.html',
   styleUrls: ['./image-player.component.sass']
 })

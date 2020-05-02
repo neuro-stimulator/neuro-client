@@ -5,12 +5,12 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 
 import { FileRecord } from '@stechy1/diplomka-share';
 
-import { DialogChildComponent, ModalComponent } from 'lib-modal';
+import { DialogChildComponent, ModalComponent } from 'stim-lib-modal';
 
 import { FileBrowserService } from './file-browser.service';
 
 @Component({
-  selector: 'app-file-browser',
+  selector: 'stim-file-browser',
   templateUrl: './file-browser.component.html',
   styleUrls: ['./file-browser.component.sass']
 })

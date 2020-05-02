@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { ModalModule } from 'lib-modal';
+import { ModalModule } from 'stim-lib-modal';
 
 import { NavigationComponent } from './navigation.component';
 import { SidebarComponent } from './sidebar/sidebar.component';

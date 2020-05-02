@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ExperimentResult, ExperimentType } from '@stechy1/diplomka-share';
 
 @Component({
-  selector: 'app-experiment-result-item-list',
+  selector: 'stim-experiment-result-item-list',
   templateUrl: './experiment-result-item-list.component.html',
   styleUrls: ['./experiment-result-item-list.component.sass']
 })

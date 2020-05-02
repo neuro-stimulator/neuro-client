@@ -6,7 +6,7 @@ import { FileRecord } from '@stechy1/diplomka-share';
 import { FileBrowserService } from '../../../share/file-browser/file-browser.service';
 
 @Component({
-  selector: 'app-output-type',
+  selector: 'stim-output-type',
   templateUrl: './output-type.component.html',
   styleUrls: ['./output-type.component.sass']
 })

@@ -12,7 +12,7 @@ import { SimulationTypeComponent } from '../simulation-type.component';
 import { ExperimentsService } from '../../../experiments/experiments.service';
 
 @Component({
-  selector: 'app-simulation-type-erp',
+  selector: 'stim-simulation-type-erp',
   templateUrl: './simulation-type-erp.component.html',
   styleUrls: ['./simulation-type-erp.component.sass']
 })

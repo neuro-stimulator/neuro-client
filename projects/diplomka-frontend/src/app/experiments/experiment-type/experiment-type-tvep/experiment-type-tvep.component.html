@@ -3,14 +3,14 @@
     <form [formGroup]="form">
 
       <!-- Generická hlavička společná pro všechny experimenty -->
-      <app-experiment-type-header [form]="form"></app-experiment-type-header>
+      <stim-experiment-type-header [form]="form"></stim-experiment-type-header>
 
 
       <div class="row experiment-property">
         <div class="col-10">
           <h4>{{ 'EXPERIMENTS.EXPERIMENT.TVEP.TITLE_PARAMS' | translate }}</h4>
         </div>
-        <div class="col-2 text-right" appContentToggler [toggledContent]="tvepParams" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+        <div class="col-2 text-right" stimContentToggler [toggledContent]="tvepParams" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
 
         <div class="col-12" #tvepParams>
           <div class="row">
@@ -41,10 +41,10 @@
         </div>
       </div>
 
-      <app-experiment-type-tvep-output [form]="form" [count]="outputCount.value" [experimentReady]="experimentLoaded$" [sharePatternLength]="sharePatternLengthEmitter"></app-experiment-type-tvep-output>
+      <stim-experiment-type-tvep-output [form]="form" [count]="outputCount.value" [experimentReady]="experimentLoaded$" [sharePatternLength]="sharePatternLengthEmitter"></stim-experiment-type-tvep-output>
     </form>
 
   </div>
 </div>
 
-<app-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperiment()" [disabled]="form.invalid || (working | async)"></app-fab>
+<stim-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperiment()" [disabled]="form.invalid || (working | async)"></stim-fab>

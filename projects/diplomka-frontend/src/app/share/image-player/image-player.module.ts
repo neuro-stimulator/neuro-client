@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ModalModule } from 'lib-modal';
+import { ModalModule } from 'stim-lib-modal';
 
 import { FileBrowserModule } from '../file-browser/file-browser.module';
 import { ImagePlayerComponent } from './image-player.component';

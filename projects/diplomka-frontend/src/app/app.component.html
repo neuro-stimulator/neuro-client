@@ -1,12 +1,12 @@
 <div class="d-flex" id="wrapper">
 
   <!-- Sidebar -->
-  <app-sidebar></app-sidebar>
+  <stim-sidebar></stim-sidebar>
 
   <div id="page-content-wrapper" [class.full]="!(navigation.showSidebarValue | async)">
 
     <!-- Navigation -->
-    <app-navigation></app-navigation>
+    <stim-navigation></stim-navigation>
 
     <!-- Page content -->
     <div class="container-fluid" style="height: calc(100% - 56px); overflow-y: auto">

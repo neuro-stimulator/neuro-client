@@ -15,7 +15,7 @@ import { LocalStorageModule } from 'angular-2-local-storage';
 import { AppRoutingModule } from './app-routing.module';
 
 // Application modules
-import { ModalModule } from 'lib-modal';
+import { ModalModule } from 'stim-lib-modal';
 import { ShareModule } from './share/share.module';
 
 // Application components

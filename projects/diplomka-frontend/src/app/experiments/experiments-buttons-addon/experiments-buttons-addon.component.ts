@@ -5,7 +5,7 @@ import { ExperimentsButtonsAddonService } from './experiments-buttons-addon.serv
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-experiments-buttons-addon',
+  selector: 'stim-experiments-buttons-addon',
   templateUrl: './experiments-buttons-addon.component.html',
   styleUrls: ['./experiments-buttons-addon.component.sass']
 })

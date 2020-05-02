@@ -2,7 +2,7 @@
   <div class="col-10">
     <h4>{{ 'EXPERIMENT_RESULTS.EXPERIMENT_RESULT.BASE_INFORMATIONS' | translate }}</h4>
   </div>
-  <div class="col-2 text-right" appContentToggler [toggledContent]="basicInformations" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+  <div class="col-2 text-right" stimContentToggler [toggledContent]="basicInformations" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
 
   <div class="col-12" #basicInformations>
     <div class="row">
@@ -21,10 +21,10 @@
   <div class="col-10">
     <h5>{{ 'EXPERIMENT_RESULTS.EXPERIMENT_RESULT.EXPERIMENT_PROGRESS' | translate}}</h5>
   </div>
-  <div class="col-2 text-right" appContentToggler [toggledContent]="experimentViewer" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+  <div class="col-2 text-right" stimContentToggler [toggledContent]="experimentViewer" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
   <div class="col-12" #experimentViewer>
     <div style="width: 100%">
-      <app-experiment-viewer [incommingEvent]="incommingEvent" [outputCount]="outputCount"></app-experiment-viewer>
+      <stim-experiment-viewer [incommingEvent]="incommingEvent" [outputCount]="outputCount"></stim-experiment-viewer>
     </div>
   </div>
 </div>
@@ -35,4 +35,4 @@
   </div>
 </div>
 
-<app-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperimentResult()" [disabled]="form.invalid || (working | async)"></app-fab>
+<stim-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperimentResult()" [disabled]="form.invalid || (working | async)"></stim-fab>

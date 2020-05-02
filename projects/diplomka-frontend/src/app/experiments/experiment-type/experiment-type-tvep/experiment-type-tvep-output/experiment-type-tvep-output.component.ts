@@ -10,7 +10,7 @@ import { environment } from '../../../../../environments/environment';
 import { brightnessSliderOptions } from '../../../experiments.share';
 
 @Component({
-  selector: 'app-experiment-type-tvep-output',
+  selector: 'stim-experiment-type-tvep-output',
   templateUrl: './experiment-type-tvep-output.component.html',
   styleUrls: ['./experiment-type-tvep-output.component.sass']
 })

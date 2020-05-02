@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SettingsService } from './settings.service';
 
 @Component({
-  selector: 'app-settings',
+  selector: 'stim-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.sass']
 })

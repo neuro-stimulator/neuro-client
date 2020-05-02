@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment';
 import { Round } from '../../player/round';
 
 @Component({
-  selector: 'app-experiment-viewer',
+  selector: 'stim-experiment-viewer',
   templateUrl: './experiment-viewer.component.html',
   styleUrls: ['./experiment-viewer.component.sass']
 })

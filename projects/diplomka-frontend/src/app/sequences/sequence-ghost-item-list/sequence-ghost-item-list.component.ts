@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sequence-ghost-item-list',
+  selector: 'stim-sequence-ghost-item-list',
   templateUrl: './sequence-ghost-item-list.component.html',
   styleUrls: ['./sequence-ghost-item-list.component.sass']
 })

@@ -1,17 +1,17 @@
 <section class="row">
   <div class="col-12">
     <h2 id="experiments-not-found" *ngIf="ghosts.length === 0 && !hasExperiments">{{ 'EXPERIMENTS.NOT_FOUND' | translate}}</h2>
-    <app-experiment-ghost-item-list [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></app-experiment-ghost-item-list>
-    <app-experiment-item-list [experimentGroups]="experimentGroups"
+    <stim-experiment-ghost-item-list [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></stim-experiment-ghost-item-list>
+    <stim-experiment-item-list [experimentGroups]="experimentGroups"
                               (run)="handleRun($event)"
                               (simulate)="handleSimulate($event)"
                               (edit)="handleEdit($event)"
                               (delete)="handleDelete($event)"
                               *ngIf="ghosts.length === 0">
-    </app-experiment-item-list>
+    </stim-experiment-item-list>
   </div>
 </section>
 
-<app-fab icon="fa-plus-circle" [fabButtons]="fabButtonList" (fabClick)="handleNewExperiment($event)" class="experiment-new"></app-fab>
+<stim-fab icon="fa-plus-circle" [fabButtons]="fabButtonList" (fabClick)="handleNewExperiment($event)" class="experiment-new"></stim-fab>
 
-<lib-modal #modal></lib-modal>
+<stim-lib-modal #modal></stim-lib-modal>

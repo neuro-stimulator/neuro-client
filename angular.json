@@ -12,7 +12,7 @@
       },
       "root": "projects/diplomka-frontend",
       "sourceRoot": "projects/diplomka-frontend/src",
-      "prefix": "app",
+      "prefix": "stim",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -177,21 +177,21 @@
         }
       }
     },
-    "lib-modal": {
+    "stim-lib-modal": {
       "projectType": "library",
-      "root": "projects/lib-modal",
-      "sourceRoot": "projects/lib-modal/src",
-      "prefix": "lib",
+      "root": "projects/stim-lib-modal",
+      "sourceRoot": "projects/stim-lib-modal/src",
+      "prefix": "stim-lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/lib-modal/tsconfig.lib.json",
-            "project": "projects/lib-modal/ng-package.json"
+            "tsConfig": "projects/stim-lib-modal/tsconfig.lib.json",
+            "project": "projects/stim-lib-modal/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/lib-modal/tsconfig.lib.prod.json"
+              "tsConfig": "projects/stim-lib-modal/tsconfig.lib.prod.json"
             }
           }
         }

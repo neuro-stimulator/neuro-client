@@ -15,7 +15,7 @@ import { ExperimentViewerComponent } from '../share/experiment-viewer/experiment
 import { NavigationService } from '../navigation/navigation.service';
 
 @Component({
-  selector: 'app-player',
+  selector: 'stim-player',
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.sass']
 })

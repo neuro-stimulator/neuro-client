@@ -4,7 +4,7 @@ import { PageToolsChildComponent } from '../../share/page-tools/page-tools-child
 import { Settings } from '../../settings/settings';
 
 @Component({
-  selector: 'app-player-page-tools',
+  selector: 'stim-player-page-tools',
   templateUrl: './player-page-tools.component.html',
   styleUrls: ['./player-page-tools.component.sass']
 })

@@ -19,7 +19,7 @@ module.exports = function (config) {
       { pattern: "src/app/**/*.+(ts|html)" }
     ],
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, '../../coverage/lib-modal'),
+      dir: require('path').join(__dirname, '../../coverage/stim-lib-modal'),
       reports: ['text', 'lcov', 'json-summary'],
       fixWebpackSourcePaths: true
     },

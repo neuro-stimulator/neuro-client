@@ -7,7 +7,7 @@
         <div class="col-10">
           <h4>{{ 'SEQUENCES.BASE_INFORMATIONS' | translate }}</h4>
         </div>
-        <div class="col-2 text-right" appContentToggler [toggledContent]="basicInformations" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+        <div class="col-2 text-right" stimContentToggler [toggledContent]="basicInformations" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
 
         <div class="col-12" #basicInformations>
           <div class="row">
@@ -42,7 +42,7 @@
           </div>
           <div class="row">
             <div class="col-12">
-              <app-tag-editor [form]="form"></app-tag-editor>
+              <stim-tag-editor [form]="form"></stim-tag-editor>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
   </div>
 </div>
 
-<app-sequence-viewer [inputData]="sequenceData$" [outputCount]="outputCount$" [editable]="true" (dataChanged)="handleSequenceChanged($event)" (update)="handleSequenceUpdate($event)"></app-sequence-viewer>
+<stim-sequence-viewer [inputData]="sequenceData$" [outputCount]="outputCount$" [editable]="true" (dataChanged)="handleSequenceChanged($event)" (update)="handleSequenceUpdate($event)"></stim-sequence-viewer>
 
 
-<app-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveSequence()" [disabled]="form.invalid || (working | async)"></app-fab>
+<stim-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveSequence()" [disabled]="form.invalid || (working | async)"></stim-fab>

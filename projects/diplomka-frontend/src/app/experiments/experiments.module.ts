@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { Ng5SliderModule } from 'ng5-slider';
 
-import { ModalModule } from 'lib-modal';
+import { ModalModule } from 'stim-lib-modal';
 
 import { FabModule } from '../share/fab/fab.module';
 import { ShareModule } from '../share/share.module';

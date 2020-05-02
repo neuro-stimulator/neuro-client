@@ -2,12 +2,12 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 
 import { FileRecord } from '@stechy1/diplomka-share';
 
-import { ModalComponent } from 'lib-modal';
+import { ModalComponent } from 'stim-lib-modal';
 
 import { FileBrowserComponent } from '../file-browser/file-browser.component';
 
 @Component({
-  selector: 'app-audio-player',
+  selector: 'stim-audio-player',
   templateUrl: './audio-player.component.html',
   styleUrls: ['./audio-player.component.sass']
 })

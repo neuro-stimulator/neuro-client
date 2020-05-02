@@ -10,7 +10,7 @@ import { environment } from '../../../../../environments/environment';
 import { brightnessSliderOptions } from '../../../experiments.share';
 
 @Component({
-  selector: 'app-experiment-type-erp-output',
+  selector: 'stim-experiment-type-erp-output',
   templateUrl: './experiment-type-erp-output.component.html',
   styleUrls: ['./experiment-type-erp-output.component.sass'],
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }]

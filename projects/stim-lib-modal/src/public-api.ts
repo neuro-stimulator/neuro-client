@@ -1,5 +1,5 @@
 /*
- * Public API Surface of lib-modal
+ * Public API Surface of stim-lib-modal
  */
 
 export * from './lib/modal.module';

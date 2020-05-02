@@ -8,7 +8,7 @@ import { Options as SliderOptions } from 'ng5-slider';
 
 import { createEmptyExperimentERP, Edge, ExperimentERP, ExperimentType, Random, Sequence } from '@stechy1/diplomka-share';
 
-import { ModalComponent } from 'lib-modal';
+import { ModalComponent } from 'stim-lib-modal';
 
 import { environment } from '../../../../environments/environment';
 import { NavigationService } from '../../../navigation/navigation.service';
@@ -23,7 +23,7 @@ import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-er
 import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fast-dialog.component';
 
 @Component({
-  selector: 'app-experiment-type-erp',
+  selector: 'stim-experiment-type-erp',
   templateUrl: './experiment-type-erp.component.html',
   styleUrls: ['./experiment-type-erp.component.sass']
 })

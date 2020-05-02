@@ -2,14 +2,14 @@ import { Component, ComponentFactoryResolver, OnInit, Type, ViewContainerRef } f
 
 import { of, Subscription } from 'rxjs';
 
-import { DialogChildComponent, ModalComponent } from 'lib-modal';
+import { DialogChildComponent, ModalComponent } from 'stim-lib-modal';
 
 import { Settings } from '../../settings/settings';
 import { SettingsService } from '../../settings/settings.service';
 import { PageToolsChildComponent } from './page-tools-child-component';
 
 @Component({
-  selector: 'app-page-tools',
+  selector: 'stim-page-tools',
   templateUrl: './page-tools.component.html',
   styleUrls: ['./page-tools.component.sass']
 })

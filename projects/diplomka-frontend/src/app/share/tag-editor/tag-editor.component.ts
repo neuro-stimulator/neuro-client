@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-tag-editor',
+  selector: 'stim-tag-editor',
   templateUrl: './tag-editor.component.html',
   styleUrls: ['./tag-editor.component.sass']
 })

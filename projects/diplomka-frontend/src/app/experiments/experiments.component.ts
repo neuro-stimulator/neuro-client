@@ -7,7 +7,7 @@ import { NGXLogger } from 'ngx-logger';
 
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 
-import { ConfirmDialogComponent, ModalComponent } from 'lib-modal';
+import { ConfirmDialogComponent, ModalComponent } from 'stim-lib-modal';
 
 import { FabListEntry } from '../share/fab/fab-list-entry';
 import { ExperimentsButtonsAddonService } from './experiments-buttons-addon/experiments-buttons-addon.service';
@@ -19,7 +19,7 @@ import { FilterParameters } from './experiments-filter-parameters';
 import { ExperimentGroup } from './experiments.share';
 
 @Component({
-  selector: 'app-experiments',
+  selector: 'stim-experiments',
   templateUrl: './experiments.component.html',
   styleUrls: ['./experiments.component.sass']
 })

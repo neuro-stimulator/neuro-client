@@ -12,7 +12,7 @@ import { SimulationTypeComponent } from './simulation-type/simulation-type.compo
 import { SerialService } from '../share/serial.service';
 
 @Component({
-  selector: 'app-simulation',
+  selector: 'stim-simulation',
   templateUrl: './simulation.component.html',
   styleUrls: ['./simulation.component.sass']
 })
