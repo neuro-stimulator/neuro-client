@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ModalModule } from 'stim-lib-modal';
+import { FabModule } from 'stim-lib-fab';
 
-import { FabModule } from '../share/fab/fab.module';
 import { SequenceViewerModule } from '../share/sequence-viewer/sequence-viewer.module';
 import { ShareModule } from '../share/share.module';
 import { TagEditorModule } from '../share/tag-editor/tag-editor.module';

@@ -22,6 +22,10 @@
       "stim-lib-modal": [
         "dist/stim-lib-modal/stim-lib-modal",
         "dist/stim-lib-modal"
+      ],
+      "stim-lib-fab": [
+        "dist/stim-lib-fab/stim-lib-fab",
+        "dist/stim-lib-fab"
       ]
     }
   },

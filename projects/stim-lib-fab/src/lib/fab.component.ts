@@ -4,7 +4,7 @@ import { FabListEntry } from './fab-list-entry';
 import { fabAnimations } from './fab.animations';
 
 @Component({
-  selector: 'stim-fab',
+  selector: 'stim-lib-fab',
   templateUrl: './fab.component.html',
   styleUrls: ['./fab.component.sass'],
   animations: [fabAnimations]

@@ -8,8 +8,8 @@ import { NGXLogger } from 'ngx-logger';
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 
 import { ConfirmDialogComponent, ModalComponent } from 'stim-lib-modal';
+import { FabListEntry } from 'stim-lib-fab';
 
-import { FabListEntry } from '../share/fab/fab-list-entry';
 import { ExperimentsButtonsAddonService } from './experiments-buttons-addon/experiments-buttons-addon.service';
 import { IntroService } from '../share/intro.service';
 import { ExperimentsService } from './experiments.service';

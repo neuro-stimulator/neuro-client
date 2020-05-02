@@ -116,6 +116,6 @@
   </div>
 </div>
 
-<stim-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperiment()" [disabled]="form.invalid || (working | async)"></stim-fab>
+<stim-lib-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperiment()" [disabled]="form.invalid || (working | async)"></stim-lib-fab>
 
 <stim-lib-modal #modal></stim-lib-modal>

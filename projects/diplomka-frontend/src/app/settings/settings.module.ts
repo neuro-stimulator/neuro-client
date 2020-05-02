@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { ModalModule } from 'stim-lib-modal';
+import { FabModule } from 'stim-lib-fab';
 
 import { createTranslateLoader } from '../app.module';
-import { FabModule } from '../share/fab/fab.module';
 import { ShareModule } from '../share/share.module';
 
 import { SettingsComponent } from './settings.component';

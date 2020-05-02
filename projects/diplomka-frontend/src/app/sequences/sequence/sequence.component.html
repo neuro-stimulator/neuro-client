@@ -64,4 +64,4 @@
 <stim-sequence-viewer [inputData]="sequenceData$" [outputCount]="outputCount$" [editable]="true" (dataChanged)="handleSequenceChanged($event)" (update)="handleSequenceUpdate($event)"></stim-sequence-viewer>
 
 
-<stim-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveSequence()" [disabled]="form.invalid || (working | async)"></stim-fab>
+<stim-lib-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveSequence()" [disabled]="form.invalid || (working | async)"></stim-lib-fab>

@@ -5,9 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ModalModule } from 'stim-lib-modal';
+import { FabModule } from 'stim-lib-fab';
 
 import { ExperimentViewerModule } from '../share/experiment-viewer/experiment-viewer.module';
-import { FabModule } from '../share/fab/fab.module';
 import { ShareModule } from '../share/share.module';
 import { ExperimentResultsRoutingModule } from './experiment-results-routing.module';
 import { ExperimentResultsComponent } from './experiment-results.component';

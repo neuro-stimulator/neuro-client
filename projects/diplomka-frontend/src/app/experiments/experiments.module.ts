@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Ng5SliderModule } from 'ng5-slider';
 
 import { ModalModule } from 'stim-lib-modal';
+import { FabModule } from 'stim-lib-fab';
 
-import { FabModule } from '../share/fab/fab.module';
 import { ShareModule } from '../share/share.module';
 import { AudioPlayerModule } from '../share/audio-player/audio-player.module';
 import { ImagePlayerModule } from '../share/image-player/image-player.module';
@@ -85,7 +85,8 @@ import { ExperimentsDeactivate } from './experiments.deactivate';
     ImagePlayerModule,
     TagEditorModule,
     DropdownBtnModule,
-    SettingsModule
+    SettingsModule,
+    FabModule
   ],
   providers: [
     ExperimentsActivate,

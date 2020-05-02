@@ -35,4 +35,4 @@
   </div>
 </div>
 
-<stim-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperimentResult()" [disabled]="form.invalid || (working | async)"></stim-fab>
+<stim-lib-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveExperimentResult()" [disabled]="form.invalid || (working | async)"></stim-lib-fab>
