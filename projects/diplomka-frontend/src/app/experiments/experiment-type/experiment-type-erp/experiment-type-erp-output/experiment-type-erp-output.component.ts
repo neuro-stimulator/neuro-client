@@ -53,7 +53,7 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
 
   ngAfterContentInit(): void {
     this._experimentLoadedSubscription = this.experimentLoaded.subscribe((experiment: ExperimentERP) => {
-      this._oldOutputCount = this.form.root.get('outputCount').value;
+      this._oldOutputCount = experiment.outputCount;
       this._maxDistribution = experiment.maxDistribution;
       if (experiment.type !== ExperimentType.NONE) {
         this._emptyExperiment = false;

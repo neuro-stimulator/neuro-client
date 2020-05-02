@@ -8,6 +8,7 @@ import { NGXLogger } from 'ngx-logger';
 
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 
+import { environment } from '../../../environments/environment';
 import { NavigationService } from '../../navigation/navigation.service';
 import { ExperimentsService } from '../experiments.service';
 import { ExperimentNameValidator } from '../experiment-name-validator';
@@ -40,6 +41,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
    */
   private _loadExperiment(experimentId: string) {
     this._experiment = this._createEmptyExperiment();
+    this._experiment.outputCount = environment.maxOutputCount;
 
     if (experimentId !== undefined) {
       if (isNaN(parseInt(experimentId, 10))) {
