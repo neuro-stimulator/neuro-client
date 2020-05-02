@@ -26,13 +26,14 @@
 
           <div class="col-12">
             <div class="form-group">
-              <div class="form-row">
-                <div class="col">
-                  <input class="form-control form-control-sm" type="checkbox" id="tvep-share-pattern-length"
-                         formControlName="sharePatternLength">
-                </div>
-                <div class="col-11">
-                  <label for="tvep-share-pattern-length">{{ 'EXPERIMENTS.EXPERIMENT.TVEP.SHARE_PATTERN_LENGTH' | translate}}</label>
+              <div class="form-check">
+                <div class="form-row">
+                  <div class="col">
+                  <input type="checkbox" class="form-check-input" id="tvep-share-pattern-length" formControlName="sharePatternLength">
+                  </div>
+                  <div class="col-11">
+                    <label class="form-check-label" for="tvep-share-pattern-length">{{ 'EXPERIMENTS.EXPERIMENT.TVEP.SHARE_PATTERN_LENGTH' | translate}}</label>
+                  </div>
                 </div>
               </div>
             </div>
