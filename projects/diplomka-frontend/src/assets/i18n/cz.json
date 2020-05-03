@@ -310,7 +310,26 @@
       },
       "SERVER": {
         "TITLE": "Konfigurace serveru",
-        "STIMULATOR_AUTOCONNECT": "Automaticky připojit ke stimulátoru"
+        "STIMULATOR_AUTOCONNECT": "Automaticky připojit ke stimulátoru",
+        "SERIAL": {
+          "TITLE": "Konfigurace sérioveho portu",
+          "BAUDRATE": {
+            "TITLE": "Přenosová rychlost",
+            "SELECT": "Zvolte přenosovou rychlost..."
+          },
+          "DATABITS": {
+            "TITLE": "Počet datových bitů",
+            "SELECT": "Zvolte počet datových bitů..."
+          },
+          "STOPBITS": {
+            "TITLE": "Počet stop bitů",
+            "SELECT": "Zvolte počet stop bitů..."
+          },
+          "PARITY": {
+            "TITLE": "Parita",
+            "SELECT": "Zvolte paritu..."
+          }
+        }
       }
     },
     "CONSOLE": {

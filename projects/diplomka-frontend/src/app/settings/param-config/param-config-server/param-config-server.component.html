@@ -24,5 +24,77 @@
       </div>
     </div>
 
+    <!-- Nastavení formátu data vytvoření -->
+    <div class="col-12" [formGroupName]="'serial'">
+      <div class="row">
+        <div class="col-10" >
+          <h3>{{ 'SETTINGS.PARAM_CONFIG.SERVER.SERIAL.TITLE' | translate}}</h3>
+        </div>
+        <div class="col-2 text-right" stimContentToggler [toggledContent]="serial" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+      </div>
+      <div class="form-group" #serial>
+        <!-- BaudRate -->
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-server-stimulator-serial-baudrate">{{ 'SETTINGS.PARAM_CONFIG.SERVER.SERIAL.BAUDRATE.TITLE' | translate}}</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <select id="settings-server-stimulator-serial-baudrate" class="selectpicker form-control form-control-sm" formControlName="baudRate">
+              <option [ngValue]="null" disabled>{{ 'SETTINGS.PARAM_CONFIG.SERVER.SERIAL.BAUDRATE.SELECT' | translate}}</option>
+              <option *ngFor="let baudrate of baudrates" [ngValue]="baudrate">
+                <span><i class="fas fa-flag"></i> {{baudrate}}</span>
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- BaudRate -->
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-server-stimulator-serial-databits">{{ 'SETTINGS.PARAM_CONFIG.SERVER.SERIAL.DATABITS.TITLE' | translate}}</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <select id="settings-server-stimulator-serial-databits" class="selectpicker form-control form-control-sm" formControlName="dataBits">
+              <option [ngValue]="null" disabled>{{ 'SETTINGS.PARAM_CONFIG.SERVER.SERIAL.DATABITS.SELECT' | translate}}</option>
+              <option *ngFor="let dataBit of dataBits" [ngValue]="dataBit">
+                <span><i class="fas fa-flag"></i> {{dataBit}}</span>
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- StopBits -->
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-server-stimulator-serial-stopbits">{{ 'SETTINGS.PARAM_CONFIG.SERVER.SERIAL.STOPBITS.TITLE' | translate}}</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <select id="settings-server-stimulator-serial-stopbits" class="selectpicker form-control form-control-sm" formControlName="stopBits">
+              <option [ngValue]="null" disabled>{{ 'SETTINGS.PARAM_CONFIG.SERVER.SERIAL.STOPBITS.SELECT' | translate}}</option>
+              <option *ngFor="let stopBit of stopBits" [ngValue]="stopBit">
+                <span><i class="fas fa-flag"></i> {{stopBit}}</span>
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Parity -->
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-server-stimulator-serial-parity">{{ 'SETTINGS.PARAM_CONFIG.SERVER.SERIAL.PARITY.TITLE' | translate}}</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <select id="settings-server-stimulator-serial-parity" class="selectpicker form-control form-control-sm" formControlName="parity">
+              <option [ngValue]="null" disabled>{{ 'SETTINGS.PARAM_CONFIG.SERVER.SERIAL.PARITY.SELECT' | translate}}</option>
+              <option *ngFor="let parity of paritys" [ngValue]="parity">
+                <span><i class="fas fa-flag"></i> {{parity}}</span>
+              </option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </form>

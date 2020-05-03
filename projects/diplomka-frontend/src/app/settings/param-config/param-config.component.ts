@@ -7,8 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 import { InformDialogComponent, ModalComponent } from 'stim-lib-modal';
 
 import { SettingsService } from '../settings.service';
-import { ParamConfigExperimentsComponent } from './param-config-experiments/param-config-experiments.component';
 import { ServerSettings } from '../settings';
+import { ParamConfigExperimentsComponent } from './param-config-experiments/param-config-experiments.component';
 
 @Component({
   selector: 'stim-param-config',
@@ -29,7 +29,13 @@ export class ParamConfigComponent implements OnInit {
     results: new FormGroup({})
   });
   server: FormGroup = new FormGroup({
-    autoconnectToStimulator: new FormControl()
+    autoconnectToStimulator: new FormControl(),
+    serial: new FormGroup({
+      baudRate: new FormControl(null, Validators.required),
+      dataBits: new FormControl(null),
+      stopBits: new FormControl(null),
+      parity: new FormControl(null)
+    })
   });
 
   private _originalLanguage: string;

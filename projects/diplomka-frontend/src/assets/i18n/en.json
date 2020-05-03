@@ -310,7 +310,26 @@
       },
       "SERVER": {
         "TITLE": "Server configuration",
-        "STIMULATOR_AUTOCONNECT": "Automatically connect to stimulator"
+        "STIMULATOR_AUTOCONNECT": "Automatically connect to stimulator",
+        "SERIAL": {
+          "TITLE": "Serial port configuration",
+          "BAUDRATE": {
+            "TITLE": "Baudrate",
+            "SELECT": "Select baudrate..."
+          },
+          "DATABITS": {
+            "TITLE": "Databits count",
+            "SELECT": "Select databit..."
+          },
+          "STOPBITS": {
+            "TITLE": "Stopbits count",
+            "SELECT": "Select stopbits..."
+          },
+          "PARITY": {
+            "TITLE": "Parity",
+            "SELECT": "Select parity..."
+          }
+        }
       }
     },
     "CONSOLE": {
