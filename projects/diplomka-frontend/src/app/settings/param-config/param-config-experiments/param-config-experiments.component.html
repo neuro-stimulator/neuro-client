@@ -10,15 +10,13 @@
     <!-- Zobrazení popisu experimentu -->
     <div class="col-12">
       <div class="form-group">
-        <div class="form-check">
-          <div class="form-row">
-            <div class="col-6 vertical-center justify-content-start">
-              <label for="settings-experiments-show-description">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.SHOW_DESCRIPTION' | translate}}</label>
-            </div>
-            <div class="col-6 vertical-center">
-              <input class="form-check-input" type="checkbox" id="settings-experiments-show-description"
-                     formControlName="showDescription">
-            </div>
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-experiments-show-description">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.SHOW_DESCRIPTION' | translate}}</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <input class="form-check-input" type="checkbox" id="settings-experiments-show-description"
+                   formControlName="showDescription">
           </div>
         </div>
       </div>
@@ -27,15 +25,13 @@
     <!-- Zobrazení tagu experimentu -->
     <div class="col-12">
       <div class="form-group">
-        <div class="form-check">
-          <div class="form-row">
-            <div class="col-6 vertical-center justify-content-start">
-              <label for="settings-experiments-show-tags">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.SHOW_TAGS' | translate}}</label>
-            </div>
-            <div class="col-6 vertical-center">
-              <input class="form-check-input" type="checkbox" id="settings-experiments-show-tags"
-                     formControlName="showTags">
-            </div>
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-experiments-show-tags">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.SHOW_TAGS' | translate}}</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <input class="form-check-input" type="checkbox" id="settings-experiments-show-tags"
+                   formControlName="showTags">
           </div>
         </div>
       </div>
@@ -44,15 +40,13 @@
     <!-- Zobrazení data vytvoření experimentu -->
     <div class="col-12">
       <div class="form-group">
-        <div class="form-check">
-          <div class="form-row">
-            <div class="col-6 vertical-center justify-content-start">
-              <label for="settings-experiments-show-creation-date">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.SHOW_CREATION_DATE' | translate}}</label>
-            </div>
-            <div class="col-6 vertical-center">
-              <input class="form-check-input" type="checkbox" id="settings-experiments-show-creation-date"
-                     formControlName="showCreationDate">
-            </div>
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-experiments-show-creation-date">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.SHOW_CREATION_DATE' | translate}}</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <input class="form-check-input" type="checkbox" id="settings-experiments-show-creation-date"
+                   formControlName="showCreationDate">
           </div>
         </div>
       </div>
@@ -61,15 +55,13 @@
     <!-- Zobrazení typ výstupu experimentu -->
     <div class="col-12">
       <div class="form-group">
-        <div class="form-check">
-          <div class="form-row">
-            <div class="col-6 vertical-center justify-content-start">
-              <label for="settings-experiments-show-output-type">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.SHOW_OUTPUT_TYPE' | translate}}</label>
-            </div>
-            <div class="col-6 vertical-center">
-              <input class="form-check-input" type="checkbox" id="settings-experiments-show-output-type"
-                     formControlName="showOutputType">
-            </div>
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-experiments-show-output-type">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.SHOW_OUTPUT_TYPE' | translate}}</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <input class="form-check-input" type="checkbox" id="settings-experiments-show-output-type"
+                   formControlName="showOutputType">
           </div>
         </div>
       </div>
@@ -78,15 +70,13 @@
     <!-- Zobrazení počtu výstupů experimentu -->
     <div class="col-12">
       <div class="form-group">
-        <div class="form-check">
-          <div class="form-row">
-            <div class="col-6 vertical-center justify-content-start">
-              <label for="settings-experiments-show-output-count">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.SHOW_OUTPUT_COUNT' | translate }}</label>
-            </div>
-            <div class="col-6 vertical-center">
-              <input class="form-check-input" type="checkbox" id="settings-experiments-show-output-count"
-                     formControlName="showOutputCount">
-            </div>
+        <div class="form-row">
+          <div class="col-6 vertical-center justify-content-start">
+            <label for="settings-experiments-show-output-count">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.SHOW_OUTPUT_COUNT' | translate }}</label>
+          </div>
+          <div class="col-6 vertical-center">
+            <input class="form-check-input" type="checkbox" id="settings-experiments-show-output-count"
+                   formControlName="showOutputCount">
           </div>
         </div>
       </div>
@@ -101,66 +91,64 @@
         <div class="col-2 text-right" stimContentToggler [toggledContent]="dateTimeFormat" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
       </div>
       <div class="form-group" #dateTimeFormat>
-        <div class="form-check">
-          <div class="form-row">
-            <div class="col">
-              <div class="row">
-                <div class="col-6 vertical-center justify-content-start">
-                  <label for="settings-experiments-output-count-format-hours">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.CREATION_DATE_FORMAT.HOURS' | translate}}</label>
-                </div>
-                <div class="col-6 vertical-center">
-                  <input class="form-check-input col-6" type="checkbox"
-                         id="settings-experiments-output-count-format-hours"
-                         formControlName="showHours">
-                </div>
+        <div class="form-row">
+          <div class="col">
+            <div class="row">
+              <div class="col-6 vertical-center justify-content-start">
+                <label for="settings-experiments-output-count-format-hours">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.CREATION_DATE_FORMAT.HOURS' | translate}}</label>
+              </div>
+              <div class="col-6 vertical-center">
+                <input class="form-check-input col-6" type="checkbox"
+                       id="settings-experiments-output-count-format-hours"
+                       formControlName="showHours">
               </div>
             </div>
-            <div class="col">
-              <div class="row">
-                <div class="col-6 vertical-center justify-content-start">
-                  <label for="settings-experiments-output-count-format-minutes">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.CREATION_DATE_FORMAT.MINUTES' | translate}}</label>
-                </div>
-                <div class="col-6 vertical-center">
-                  <input class="form-check-input col-6" type="checkbox"
-                         id="settings-experiments-output-count-format-minutes"
-                         formControlName="showMinutes">
-                </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-6 vertical-center justify-content-start">
+                <label for="settings-experiments-output-count-format-minutes">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.CREATION_DATE_FORMAT.MINUTES' | translate}}</label>
+              </div>
+              <div class="col-6 vertical-center">
+                <input class="form-check-input col-6" type="checkbox"
+                       id="settings-experiments-output-count-format-minutes"
+                       formControlName="showMinutes">
               </div>
             </div>
-            <div class="col">
-              <div class="row">
-                <div class="col-6 vertical-center justify-content-start">
-                  <label for="settings-experiments-output-count-format-days">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.CREATION_DATE_FORMAT.DAYS' | translate}}</label>
-                </div>
-                <div class="col-6 vertical-center">
-                  <input class="form-check-input col-6" type="checkbox"
-                         id="settings-experiments-output-count-format-days"
-                         formControlName="showDays">
-                </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-6 vertical-center justify-content-start">
+                <label for="settings-experiments-output-count-format-days">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.CREATION_DATE_FORMAT.DAYS' | translate}}</label>
+              </div>
+              <div class="col-6 vertical-center">
+                <input class="form-check-input col-6" type="checkbox"
+                       id="settings-experiments-output-count-format-days"
+                       formControlName="showDays">
               </div>
             </div>
-            <div class="col">
-              <div class="row">
-                <div class="col-6 vertical-center justify-content-start">
-                  <label for="settings-experiments-output-count-format-months">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.CREATION_DATE_FORMAT.MONTHS' | translate}}</label>
-                </div>
-                <div class="col-6 vertical-center">
-                  <input class="form-check-input col-6" type="checkbox"
-                         id="settings-experiments-output-count-format-months"
-                         formControlName="showMonths">
-                </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-6 vertical-center justify-content-start">
+                <label for="settings-experiments-output-count-format-months">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.CREATION_DATE_FORMAT.MONTHS' | translate}}</label>
+              </div>
+              <div class="col-6 vertical-center">
+                <input class="form-check-input col-6" type="checkbox"
+                       id="settings-experiments-output-count-format-months"
+                       formControlName="showMonths">
               </div>
             </div>
-            <div class="col">
-              <div class="row">
-                <div class="col-6 vertical-center justify-content-start">
-                  <label for="settings-experiments-output-count-format-years">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.CREATION_DATE_FORMAT.YEARS' | translate}}</label>
-                </div>
-                <div class="col-6 vertical-center">
-                  <input class="form-check-input col-6" type="checkbox"
-                         id="settings-experiments-output-count-format-years"
-                         formControlName="showYears">
-                </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-6 vertical-center justify-content-start">
+                <label for="settings-experiments-output-count-format-years">{{ 'SETTINGS.PARAM_CONFIG.EXPERIMENTS.CREATION_DATE_FORMAT.YEARS' | translate}}</label>
+              </div>
+              <div class="col-6 vertical-center">
+                <input class="form-check-input col-6" type="checkbox"
+                       id="settings-experiments-output-count-format-years"
+                       formControlName="showYears">
               </div>
             </div>
           </div>
