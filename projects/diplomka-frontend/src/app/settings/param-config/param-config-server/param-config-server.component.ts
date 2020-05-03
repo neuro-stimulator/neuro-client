@@ -20,4 +20,8 @@ export class ParamConfigServerComponent implements OnInit {
   ngOnInit() {
   }
 
+  get stimulatorResponseTimeout() {
+    return this.form.get('stimulatorResponseTimeout');
+  }
+
 }

@@ -24,7 +24,37 @@
       </div>
     </div>
 
-    <!-- Nastavení formátu data vytvoření -->
+    <!-- Maximální doba na odpověď ze stimulátoru -->
+    <div class="col-12">
+      <div class="form-group">
+        <div class="form-check">
+          <div class="form-row">
+            <div class="col-6 vertical-center justify-content-start">
+              <label for="settings-server-stimulator-response-timeout">{{ 'SETTINGS.PARAM_CONFIG.SERVER.STIMULATOR_RESPONSE_TIMEOUT' | translate}}</label>
+            </div>
+            <div class="col-6 vertical-center">
+              <div class="row p-0 m-0 w-100">
+                <div class="col-12 p-0 m-0">
+                  <div class="input-group input-group-sm">
+                    <input class="form-control form-control-sm" type="number" id="settings-server-stimulator-response-timeout"
+                           formControlName="stimulatorResponseTimeout"
+                           [class.is-invalid]="stimulatorResponseTimeout.invalid">
+                    <div class="input-group-append">
+                      <span class="input-group-text">ms</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <small *ngIf="stimulatorResponseTimeout.touched && stimulatorResponseTimeout.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: stimulatorResponseTimeout.errors?.min.min} }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nastavení parametrů pro seriovou linku -->
     <div class="col-12" [formGroupName]="'serial'">
       <div class="row">
         <div class="col-10" >

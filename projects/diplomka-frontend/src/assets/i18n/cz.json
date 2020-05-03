@@ -329,7 +329,8 @@
             "TITLE": "Parita",
             "SELECT": "Zvolte paritu..."
           }
-        }
+        },
+        "STIMULATOR_RESPONSE_TIMEOUT": "Timeout odpovědi ze stimulátoru"
       }
     },
     "CONSOLE": {

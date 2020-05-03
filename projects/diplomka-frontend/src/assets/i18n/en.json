@@ -329,7 +329,8 @@
             "TITLE": "Parity",
             "SELECT": "Select parity..."
           }
-        }
+        },
+        "STIMULATOR_RESPONSE_TIMEOUT": "Stimulator response timeout"
       }
     },
     "CONSOLE": {

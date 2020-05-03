@@ -26,4 +26,5 @@ export interface ServerSettings {
     stopBits?: 1|2;
     parity?: 'none'|'even'|'mark'|'odd'|'space';
   };
+  stimulatorResponseTimeout?: number;
 }

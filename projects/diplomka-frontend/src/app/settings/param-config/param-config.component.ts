@@ -35,7 +35,8 @@ export class ParamConfigComponent implements OnInit {
       dataBits: new FormControl(null),
       stopBits: new FormControl(null),
       parity: new FormControl(null)
-    })
+    }),
+    stimulatorResponseTimeout: new FormControl(null, Validators.min(500))
   });
 
   private _originalLanguage: string;
