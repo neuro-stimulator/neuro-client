@@ -25,12 +25,7 @@
             <div class="col-12">
               <div class="form-group">
                 <label for="rea-cycle-count">{{ 'EXPERIMENTS.EXPERIMENT.REA.CYCLE_COUNT' | translate }}</label>
-                <div class="input-group input-group-sm">
-                  <input type="number" id="rea-cycle-count" class="form-control form-control-sm" [class.is-valid]="cycleCount.valid" [class.is-invalid]="cycleCount.invalid" formControlName="cycleCount">
-                  <div class="input-group-append">
-                    <span class="input-group-text">ms</span>
-                  </div>
-                </div>
+                <input type="number" id="rea-cycle-count" class="form-control form-control-sm" [class.is-valid]="cycleCount.valid" [class.is-invalid]="cycleCount.invalid" formControlName="cycleCount">
                 <small *ngIf="cycleCount.touched && cycleCount.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
                 <small *ngIf="cycleCount.touched && cycleCount.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: cycleCount.errors?.min.min} }}</small>
                 <small *ngIf="cycleCount.touched && cycleCount.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: cycleCount.errors?.min.max} }}</small>
