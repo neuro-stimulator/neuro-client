@@ -83,7 +83,7 @@
               <div class="form-group">
                 <label for="rea-on-fail">{{ 'EXPERIMENTS.EXPERIMENT.REA.ON_FAIL.TITLE' | translate }}</label>
                 <select name="rea-on-fail" id="rea-on-fail" class="selectpicker form-control form-control-sm" formControlName="onFail">
-                  <option *ngFor="let onFail of onFails" [value]="onFail.id">{{onFail.name | translate}}</option>
+                  <option *ngFor="let onFail of onFails" [ngValue]="onFail.id">{{onFail.name | translate}}</option>
                 </select>
               </div>
             </div>
