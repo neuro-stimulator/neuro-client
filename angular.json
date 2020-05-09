@@ -214,26 +214,6 @@
               "tsConfig": "projects/stim-lib-fab/tsconfig.lib.prod.json"
             }
           }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/stim-lib-fab/src/test.ts",
-            "tsConfig": "projects/stim-lib-fab/tsconfig.spec.json",
-            "karmaConfig": "projects/stim-lib-fab/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/stim-lib-fab/tsconfig.lib.json",
-              "projects/stim-lib-fab/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     }},

@@ -142,10 +142,10 @@ export class ExperimentsSortFilter {
     // Přemapuji pole s vyfiltrovanými experimenty na jednotlivé skupiny
     let groupsWithDuplications: any[] = this._filteredExperiments.map(groupConfiguration.mapFunction);
     // Může se stát, že jednotlivé skupiny budou obsahovat ještě podskupiny
-    // [ ['aaa', 'bbb'], ['aaa', ['ccc'] ]
+    // [ ['aaa', 'bbb'], ['aaa', ['ccc'] ] ]
     // Proto musím použít funkci 'flatMap' která mi výše uvedenou strukturu převede na jednoduché pole
     // [ 'aaa', 'bbb', 'aaa', 'ccc' ]
-    groupsWithDuplications = groupsWithDuplications.flatMap( (x, i) => x);
+    groupsWithDuplications = groupsWithDuplications.flatMap( (x, _) => x);
     // Nakonec se zbavím duplicitních skupin a tím získám pole všech unikátních skupin, podle kterých budu experimenty shlukovat
     const groups: any[] = groupsWithDuplications.filter(((value, index, array) => array.indexOf(value) === index));
 
