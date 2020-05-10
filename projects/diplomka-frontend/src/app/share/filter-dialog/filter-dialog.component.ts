@@ -6,6 +6,9 @@ import { Subscription } from 'rxjs';
 import { DialogChildComponent, ModalComponent } from 'stim-lib-modal';
 import { GroupFilter, ListFilterParameters, ListGroupSortFilterService, OrderFilter, SortFilter } from 'stim-lib-list-utils';
 
+/**
+ * Generický filtrovací dialog založení na službě z knihovny pro seskupování, třídění a řazení.
+ */
 export abstract class FilterDialogComponent<T> extends DialogChildComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
