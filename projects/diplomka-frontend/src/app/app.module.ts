@@ -56,10 +56,6 @@ export function createIntroStepsLoader(http: HttpClient, service: TranslateServi
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
-    NavigationModule,
-    ShareModule,
-    ModalModule,
-
     // Third party modules
     TranslateModule.forRoot({
       loader: {
@@ -71,6 +67,10 @@ export function createIntroStepsLoader(http: HttpClient, service: TranslateServi
     ToastrModule.forRoot(),
     LoggerModule.forRoot({level: NgxLoggerLevel.TRACE, enableSourceMaps: !environment.production}),
     LocalStorageModule.forRoot({prefix: 'stim-control', storageType: 'localStorage'}),
+
+    NavigationModule,
+    ShareModule,
+    ModalModule,
 
     // Root routing module
     AppRoutingModule
