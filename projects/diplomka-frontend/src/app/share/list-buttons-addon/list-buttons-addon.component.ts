@@ -1,15 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 
-import { ExperimentsButtonsAddonService } from './experiments-buttons-addon.service';
 import { Subscription } from 'rxjs';
+
+import { ListButtonsAddonService } from './list-buttons-addon.service';
 
 @Component({
   selector: 'stim-experiments-buttons-addon',
-  templateUrl: './experiments-buttons-addon.component.html',
-  styleUrls: ['./experiments-buttons-addon.component.sass']
+  templateUrl: './list-buttons-addon.component.html',
+  styleUrls: ['./list-buttons-addon.component.sass'],
 })
-export class ExperimentsButtonsAddonComponent implements OnInit, OnDestroy {
+export class ListButtonsAddonComponent implements OnInit, OnDestroy {
 
   hideFinderBox = true;
   initialSearchValue: string;
@@ -17,7 +18,7 @@ export class ExperimentsButtonsAddonComponent implements OnInit, OnDestroy {
 
   private _addonVisibleSubscription: Subscription;
 
-  constructor(private readonly _service: ExperimentsButtonsAddonService,
+  constructor(private readonly _service: ListButtonsAddonService,
               private readonly _route: ActivatedRoute) { }
 
   private _notifySearchValue(value: string) {

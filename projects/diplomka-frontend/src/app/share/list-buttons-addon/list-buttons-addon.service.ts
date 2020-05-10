@@ -3,7 +3,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ExperimentsButtonsAddonService {
+export class ListButtonsAddonService {
 
   public readonly filterRequest: EventEmitter<any> = new EventEmitter<any>();
 
