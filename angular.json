@@ -216,6 +216,26 @@
           }
         }
       }
+    },
+    "stim-lib-list-utils": {
+      "projectType": "library",
+      "root": "projects/stim-lib-list-utils",
+      "sourceRoot": "projects/stim-lib-list-utils/src",
+      "prefix": "stim-lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/stim-lib-list-utils/tsconfig.lib.json",
+            "project": "projects/stim-lib-list-utils/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/stim-lib-list-utils/tsconfig.lib.prod.json"
+            }
+          }
+        }
+      }
     }},
   "defaultProject": "diplomka-frontend"
 }

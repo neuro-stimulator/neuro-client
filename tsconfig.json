@@ -26,6 +26,10 @@
       "stim-lib-fab": [
         "dist/stim-lib-fab/stim-lib-fab",
         "dist/stim-lib-fab"
+      ],
+      "stim-lib-list-utils": [
+        "dist/stim-lib-list-utils/stim-lib-list-utils",
+        "dist/stim-lib-list-utils"
       ]
     }
   },

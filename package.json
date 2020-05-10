@@ -11,6 +11,7 @@
     "build": "ng build",
     "build:stim-lib-modal": "ng build stim-lib-modal",
     "build:stim-lib-fab": "ng build stim-lib-fab",
+    "build:stim-lib-list-utils": "ng build stim-lib-list-utils",
     "release": "ng build --prod --base-href=/ --output-hashing none",
     "test": "ng test",
     "test:ci": "ng test --browsers ChromeHeadless",
@@ -18,7 +19,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e -c=qa",
     "merge-coverage": "tsc merge-coverage.ts && node merge-coverage --report coverage/app/coverage-final.json",
-    "postinstall": "npm run build:stim-lib-modal && npm run build:stim-lib-fab"
+    "postinstall": "npm run build:stim-lib-modal && npm run build:stim-lib-fab && npm run build:stim-lib-list-utils"
   },
   "repository": {
     "type": "git",
