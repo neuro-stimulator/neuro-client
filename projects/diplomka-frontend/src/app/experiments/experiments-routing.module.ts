@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ExperimentsButtonsAddonComponent } from './experiments-buttons-addon/experiments-buttons-addon.component';
+import { ListButtonsAddonComponent } from '../share/list-buttons-addon/list-buttons-addon.component';
 import { ExperimentsComponent } from './experiments.component';
 import { ExperimentTypeComponent } from './experiment-type/experiment-type.component';
 import { ExperimentsActivate } from './experiments.activate';
@@ -15,7 +15,7 @@ const routes: Routes = [
     pathMatch: 'full',
     data: {
       title: 'EXPERIMENTS.TITLE',
-      buttonsAddon: ExperimentsButtonsAddonComponent,
+      buttonsAddon: ListButtonsAddonComponent,
       pageToolsComponent: ExperimentsPageToolsComponent
     }
   },

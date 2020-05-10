@@ -1,12 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-
-import { Subscription } from 'rxjs';
+import { Component} from '@angular/core';
 
 import { Experiment } from '@stechy1/diplomka-share';
 
-import { DialogChildComponent, ModalComponent } from 'stim-lib-modal';
-import { GroupFilter, ListFilterParameters, ListGroupSortFilterService, OrderFilter, SortFilter } from 'stim-lib-list-utils';
+import { ListGroupSortFilterService} from 'stim-lib-list-utils';
+
 import { FilterDialogComponent } from '../../share/filter-dialog/filter-dialog.component';
 
 @Component({

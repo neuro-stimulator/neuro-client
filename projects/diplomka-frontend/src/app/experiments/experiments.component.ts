@@ -9,12 +9,12 @@ import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 
 import { ConfirmDialogComponent, ModalComponent } from 'stim-lib-modal';
 import { FabListEntry } from 'stim-lib-fab';
+import { EntityGroup, ListFilterParameters, ListGroupSortFilterService } from 'stim-lib-list-utils';
 
-import { ExperimentsButtonsAddonService } from './experiments-buttons-addon/experiments-buttons-addon.service';
 import { IntroService } from '../share/intro.service';
+import { ListButtonsAddonService } from '../share/list-buttons-addon/list-buttons-addon.service';
 import { ExperimentsService } from './experiments.service';
 import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/experiment-filter-dialog.component';
-import { EntityGroup, ListFilterParameters, ListGroupSortFilterService } from 'stim-lib-list-utils';
 
 @Component({
   selector: 'stim-experiments',
@@ -53,7 +53,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
 
   constructor(private readonly _service: ExperimentsService,
               private readonly _filterService: ListGroupSortFilterService<Experiment>,
-              private readonly _buttonsAddonService: ExperimentsButtonsAddonService,
+              private readonly _buttonsAddonService: ListButtonsAddonService,
               private readonly _router: Router,
               private readonly _route: ActivatedRoute,
               private readonly _location: Location,

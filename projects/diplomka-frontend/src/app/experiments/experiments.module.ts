@@ -14,7 +14,7 @@ import { ListUtilsModule } from 'stim-lib-list-utils';
 import { ShareModule } from '../share/share.module';
 import { AudioPlayerModule } from '../share/audio-player/audio-player.module';
 import { ImagePlayerModule } from '../share/image-player/image-player.module';
-
+import { ListButtonsAddonModule } from '../share/list-buttons-addon/list-buttons-addon.module';
 import { ExperimentsRoutingModule } from './experiments-routing.module';
 import { ExperimentsComponent } from './experiments.component';
 import { ExperimentItemListComponent } from './experiment-item-list/experiment-item-list.component';
@@ -43,7 +43,6 @@ import { SequenceFastDialogComponent } from './experiment-type/experiment-type-e
 import { ExperimentsActivate } from './experiments.activate';
 import { ExperimentsPageToolsComponent } from './experiments-page-tools/experiments-page-tools.component';
 import { SettingsModule } from '../settings/settings.module';
-import { ExperimentsButtonsAddonComponent } from './experiments-buttons-addon/experiments-buttons-addon.component';
 import { ExperimentsDeactivate } from './experiments.deactivate';
 import { GROUP_BY_FILTERS, SORT_BY_FILTERS } from './experiments-filter-parameters';
 
@@ -72,7 +71,6 @@ import { GROUP_BY_FILTERS, SORT_BY_FILTERS } from './experiments-filter-paramete
     ExperimentFilterDialogComponent,
     SequenceFastDialogComponent,
     ExperimentsPageToolsComponent,
-    ExperimentsButtonsAddonComponent
   ],
   imports: [
     CommonModule,
@@ -91,6 +89,7 @@ import { GROUP_BY_FILTERS, SORT_BY_FILTERS } from './experiments-filter-paramete
     DropdownBtnModule,
     SettingsModule,
     FabModule,
+    ListButtonsAddonModule,
     ListUtilsModule.forChild<Experiment>({
       storageSuffix: 'experiments',
       fuseKeys: ['name', 'tag'],
