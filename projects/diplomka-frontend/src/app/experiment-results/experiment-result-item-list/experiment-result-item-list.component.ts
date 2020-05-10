@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { ExperimentResult, ExperimentType } from '@stechy1/diplomka-share';
+
+import { EntityGroup } from 'stim-lib-list-utils';
 
 @Component({
   selector: 'stim-experiment-result-item-list',
@@ -10,7 +11,7 @@ import { ExperimentResult, ExperimentType } from '@stechy1/diplomka-share';
 })
 export class ExperimentResultItemListComponent implements OnInit {
 
-  @Input() experimentResults: Observable<ExperimentResult[]>;
+  @Input() experimentResultGroups: EntityGroup<ExperimentResult>;
   @Output() view: EventEmitter<ExperimentResult> = new EventEmitter<ExperimentResult>();
   @Output() delete: EventEmitter<ExperimentResult> = new EventEmitter<ExperimentResult>();
 
