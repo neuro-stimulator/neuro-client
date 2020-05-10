@@ -14,9 +14,9 @@ import Fuse from 'fuse.js';
 /**
  * Služba starající se o filtrování a řezení experimentů, které se následně zobrazí v hlavním přehledu experimentů.
  */
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 export class ExperimentsSortFilter {
 
   // Konfigurace knihovny pro vyhledávání textů v objektech

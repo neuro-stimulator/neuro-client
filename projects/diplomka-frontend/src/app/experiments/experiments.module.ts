@@ -3,9 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { Ng5SliderModule } from 'ng5-slider';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { Experiment } from '@stechy1/diplomka-share';
 
 import { ModalModule } from 'stim-lib-modal';
 import { FabModule } from 'stim-lib-fab';
+import { ListUtilsModule } from 'stim-lib-list-utils';
 
 import { ShareModule } from '../share/share.module';
 import { AudioPlayerModule } from '../share/audio-player/audio-player.module';
@@ -36,12 +40,12 @@ import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/expe
 import { TagEditorModule } from '../share/tag-editor/tag-editor.module';
 import { DropdownBtnModule } from '../share/dropdown-btn/dropdown-btn.module';
 import { SequenceFastDialogComponent } from './experiment-type/experiment-type-erp/sequence-fast-dialog/sequence-fast-dialog.component';
-import { TranslateModule } from '@ngx-translate/core';
 import { ExperimentsActivate } from './experiments.activate';
 import { ExperimentsPageToolsComponent } from './experiments-page-tools/experiments-page-tools.component';
 import { SettingsModule } from '../settings/settings.module';
 import { ExperimentsButtonsAddonComponent } from './experiments-buttons-addon/experiments-buttons-addon.component';
 import { ExperimentsDeactivate } from './experiments.deactivate';
+import { GROUP_BY_FILTERS, SORT_BY_FILTERS } from './experiments-filter-parameters';
 
 @NgModule({
   declarations: [
@@ -86,7 +90,13 @@ import { ExperimentsDeactivate } from './experiments.deactivate';
     TagEditorModule,
     DropdownBtnModule,
     SettingsModule,
-    FabModule
+    FabModule,
+    ListUtilsModule.forChild<Experiment>({
+      storageSuffix: 'experiments',
+      fuseKeys: ['name', 'tag'],
+      groupBy: GROUP_BY_FILTERS,
+      sortBy: SORT_BY_FILTERS
+    })
   ],
   providers: [
     ExperimentsActivate,

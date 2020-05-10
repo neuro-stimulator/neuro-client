@@ -6,7 +6,7 @@
           <h2><i class="fas fa-object-group"></i> {{ 'EXPERIMENTS.FILTER_DIALOG.GROUP_BY.TITLE' | translate }}</h2>
         </div>
         <div class="col-6 col-sm-5 col-lg-12">
-          <div class="form-check" *ngFor="let group of groupPosibilities">
+          <div class="form-check" *ngFor="let group of groupByFilters">
             <input class="form-check-input" type="radio" name="groupBy" formControlName="groupBy"
                    [id]="'group-by-' + group.value" [value]="group.value">
             <label class="form-check-label" [for]="'group-by-' + group.value"><i
@@ -22,7 +22,7 @@
           <h2><i class="fas fa-filter"></i> {{ 'EXPERIMENTS.FILTER_DIALOG.SORT_BY.TITLE' | translate }}</h2>
         </div>
         <div class="col-6 col-sm-5 col-lg-12">
-          <div class="form-check" *ngFor="let sort of sortPosibilities">
+          <div class="form-check" *ngFor="let sort of sortByFilters">
             <input class="form-check-input" type="radio" name="sortBy" formControlName="sortBy"
                    [id]="'sort-by-' + sort.value" [value]="sort.value">
             <label class="form-check-label" [for]="'sort-by-' + sort.value">
@@ -39,7 +39,7 @@
           <h2><i class="fas fa-sort"></i> {{ 'EXPERIMENTS.FILTER_DIALOG.ORDER_BY.TITLE' | translate }}</h2>
         </div>
         <div class="col-6 col-sm-5 col-lg-12">
-          <div class="form-check" *ngFor="let order of orderPosibilities">
+          <div class="form-check" *ngFor="let order of orderByFilters">
             <input class="form-check-input" type="radio" name="orderBy" formControlName="orderBy"
                    [id]="'order-by-' + order.value" [value]="order.value">
             <label class="form-check-label" [for]="'order-by-' + order.value"><i

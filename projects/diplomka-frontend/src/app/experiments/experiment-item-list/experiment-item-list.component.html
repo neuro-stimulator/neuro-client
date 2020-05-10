@@ -1,15 +1,15 @@
 <div class="row experiment-group" *ngFor="let group of experimentGroups">
   <!-- Pokud skupina neobsahuje žádné experimenty, tak ji ani nebudu vypisovat -->
-  <ng-container *ngIf="group.experiments.length !== 0">
+  <ng-container *ngIf="group.entities.length !== 0">
     <!-- Název skupiny zobrazím pouze tehdy, když nějaký má -->
     <div class="col-10" *ngIf="group.group">
-      <span>{{group.group}} ({{group.experiments.length}})</span>
+      <span>{{group.group}} ({{group.entities.length}})</span>
     </div>
     <div class="col-2 text-right" stimContentToggler [toggledContent]="experimentGroup" [icon]="icon" *ngIf="group.group"><i class="fas fa-minus" #icon></i></div>
     <div class="col-12" #experimentGroup>
       <ul class="list-group experiment-list">
         <li [ngClass]="['list-group-item', 'list-group-item-action experiment-background', ExperimentType[experiment.type].toLowerCase()]"
-            *ngFor="let experiment of group.experiments" [attr.data-experiment-name]="experiment.name">
+            *ngFor="let experiment of group.entities" [attr.data-experiment-name]="experiment.name">
 
           <!-- Jeden řádek s experimentem -->
           <div class="row expriment experiment-row">

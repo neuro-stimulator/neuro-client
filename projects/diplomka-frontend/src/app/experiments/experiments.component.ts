@@ -13,10 +13,8 @@ import { FabListEntry } from 'stim-lib-fab';
 import { ExperimentsButtonsAddonService } from './experiments-buttons-addon/experiments-buttons-addon.service';
 import { IntroService } from '../share/intro.service';
 import { ExperimentsService } from './experiments.service';
-import { ExperimentsSortFilter } from './experiments-sort-filter.service';
 import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/experiment-filter-dialog.component';
-import { FilterParameters } from './experiments-filter-parameters';
-import { ExperimentGroup } from './experiments.share';
+import { EntityGroup, ListFilterParameters, ListGroupSortFilterService } from 'stim-lib-list-utils';
 
 @Component({
   selector: 'stim-experiments',
@@ -51,9 +49,10 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
   private _searchBySubscription: Subscription;
   private _filterParametersChangeSubscription: Subscription;
   private _serviceRecordsSubscription: Subscription;
+  private _filterEntitiesSubscription: Subscription;
 
   constructor(private readonly _service: ExperimentsService,
-              private readonly _filterService: ExperimentsSortFilter,
+              private readonly _filterService: ListGroupSortFilterService<Experiment>,
               private readonly _buttonsAddonService: ExperimentsButtonsAddonService,
               private readonly _router: Router,
               private readonly _route: ActivatedRoute,
@@ -64,6 +63,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this._buttonsAddonService.addonVisible.next(false);
     this.ghosts = this._service.makeGhosts();
+    this._filterEntitiesSubscription = this._filterService.subscribeEntities(this._service.records);
     this._service.all()
         .then((count: number) => {
           this.ghosts = [];
@@ -71,7 +71,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
         });
     this._filterRequestSubscription = this._buttonsAddonService.filterRequest.subscribe(() => this._showFilterDialog());
     this._searchBySubscription = this._buttonsAddonService.searchValue.subscribe((value) => this._handleSearchBy(value));
-    this._filterParametersChangeSubscription = this._filterService.filterParametersChange$.subscribe((params: FilterParameters) => {
+    this._filterParametersChangeSubscription = this._filterService.filterParametersChange$.subscribe((params: ListFilterParameters) => {
       this._handleFilterParametersChange(params);
     });
     this._serviceRecordsSubscription = this._service.records.subscribe((records) => {
@@ -84,6 +84,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
     this._searchBySubscription.unsubscribe();
     this._filterParametersChangeSubscription.unsubscribe();
     this._serviceRecordsSubscription.unsubscribe();
+    this._filterEntitiesSubscription.unsubscribe();
   }
 
   private _showIntro(useIntroRecord: boolean) {
@@ -98,7 +99,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
     });
   }
 
-  private _handleFilterParametersChange(params: FilterParameters) {
+  private _handleFilterParametersChange(params: ListFilterParameters) {
     this._router.navigate([], {queryParams: params, fragment: this._filterService.searchValue, relativeTo: this._route});
   }
 
@@ -149,11 +150,11 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
     this._router.navigate([type, 'new'], {relativeTo: this._route.parent}).catch(((reason) => console.log(reason)));
   }
 
-  get experimentGroups(): ExperimentGroup {
+  get experimentGroups(): EntityGroup<Experiment> {
     return this._filterService.records;
   }
 
   get hasExperiments() {
-    return this._filterService.records && Object.keys(this._filterService.records[0].experiments).length !== 0;
+    return this._filterService.records && Object.keys(this._filterService.records[0]?.entities)?.length !== 0;
   }
 }

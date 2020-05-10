@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
-import { ExperimentGroup } from '../experiments.share';
 import { Settings } from '../../settings/settings';
 import { SettingsService } from '../../settings/settings.service';
+import { EntityGroup } from 'stim-lib-list-utils';
 
 @Component({
   selector: 'stim-experiment-item-list',
@@ -12,7 +12,7 @@ import { SettingsService } from '../../settings/settings.service';
 })
 export class ExperimentItemListComponent implements OnInit {
 
-  @Input() experimentGroups: ExperimentGroup;
+  @Input() experimentGroups: EntityGroup<Experiment>;
   @Output() run: EventEmitter<Experiment> = new EventEmitter<Experiment>();
   @Output() simulate: EventEmitter<Experiment> = new EventEmitter<Experiment>();
   @Output() edit: EventEmitter<Experiment> = new EventEmitter<Experiment>();
