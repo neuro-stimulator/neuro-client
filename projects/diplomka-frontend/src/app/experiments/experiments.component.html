@@ -1,8 +1,8 @@
 <section class="row">
   <div class="col-12">
-    <h2 id="experiments-not-found" *ngIf="ghosts.length === 0 && !hasExperiments">{{ 'EXPERIMENTS.NOT_FOUND' | translate}}</h2>
+    <h2 id="experiments-not-found" *ngIf="ghosts.length === 0 && !hasGroups">{{ 'EXPERIMENTS.NOT_FOUND' | translate}}</h2>
     <stim-experiment-ghost-item-list [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></stim-experiment-ghost-item-list>
-    <stim-experiment-item-list [experimentGroups]="experimentGroups"
+    <stim-experiment-item-list [experimentGroups]="groups"
                               (run)="handleRun($event)"
                               (simulate)="handleSimulate($event)"
                               (edit)="handleEdit($event)"
