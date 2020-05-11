@@ -1,6 +1,6 @@
 <form [formGroup]="form">
   <div class="row">
-    <div class="col-12 col-lg-4 filter-row">
+    <div class="col-12 col-lg filter-row" *ngIf="groupByFilters.length !== 0">
       <div class="row">
         <div class="col-6 col-sm-7 col-lg-12">
           <h2><i class="fas fa-object-group"></i> {{ 'SHARE.DIALOGS.FILTER.GROUP_BY.TITLE' | translate }}</h2>
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="col-12 col-lg-4 filter-row">
+    <div class="col-12 col-lg filter-row" *ngIf="sortByFilters.length !== 0">
       <div class="row">
         <div class="col-6 col-sm-7 col-lg-12">
           <h2><i class="fas fa-filter"></i> {{ 'SHARE.DIALOGS.FILTER.SORT_BY.TITLE' | translate }}</h2>
@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="col-12 col-lg-4 filter-row">
+    <div class="col-12 col-lg filter-row" *ngIf="orderByFilters.length !== 0">
       <div class="row">
         <div class="col-6 col-sm-7 col-lg-12">
           <h2><i class="fas fa-sort"></i> {{ 'SHARE.DIALOGS.FILTER.ORDER_BY.TITLE' | translate }}</h2>

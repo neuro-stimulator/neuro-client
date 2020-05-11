@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Sequence } from '@stechy1/diplomka-share';
+import { EntityGroup } from 'stim-lib-list-utils';
 
 @Component({
   selector: 'stim-sequence-item-list',
@@ -11,7 +12,7 @@ import { Sequence } from '@stechy1/diplomka-share';
 })
 export class SequenceItemListComponent implements OnInit {
 
-  @Input() sequences: Observable<Sequence[]>;
+  @Input() sequenceGroups: EntityGroup<Sequence>;
   @Output() view: EventEmitter<Sequence> = new EventEmitter<Sequence>();
   @Output() delete: EventEmitter<Sequence> = new EventEmitter<Sequence>();
 

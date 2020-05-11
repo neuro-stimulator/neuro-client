@@ -14,7 +14,7 @@ import { EntityGroup, ListFilterParameters, ListGroupSortFilterService } from 's
 import { IntroService } from '../share/intro.service';
 import { ListButtonsAddonService } from '../share/list-buttons-addon/list-buttons-addon.service';
 import { ExperimentsService } from './experiments.service';
-import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/experiment-filter-dialog.component';
+import { ExperimentsFilterDialogComponent } from './experiments-filter-dialog/experiments-filter-dialog.component';
 
 @Component({
   selector: 'stim-experiments',
@@ -113,7 +113,7 @@ export class ExperimentsComponent implements OnInit, OnDestroy {
   }
 
   private _showFilterDialog() {
-    this.modal.showComponent = ExperimentFilterDialogComponent;
+    this.modal.showComponent = ExperimentsFilterDialogComponent;
     this.modal.open();
   }
 

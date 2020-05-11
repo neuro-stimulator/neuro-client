@@ -36,7 +36,7 @@ import { OutputPatternComponent } from './experiment-type/output-pattern/output-
 import { ExperimentTypeFvepOutputComponent } from './experiment-type/experiment-type-fvep/experiment-type-fvep-output/experiment-type-fvep-output.component';
 import { ExperimentTypeFvepOutputCountPipe } from './experiment-type/experiment-type-fvep/experiment-type-fvep-output/experiment-type-tvep-output-count.pipe';
 import { OutputTypeComponent } from './experiment-type/output-type/output-type.component';
-import { ExperimentFilterDialogComponent } from './experiment-filter-dialog/experiment-filter-dialog.component';
+import { ExperimentsFilterDialogComponent } from './experiments-filter-dialog/experiments-filter-dialog.component';
 import { TagEditorModule } from '../share/tag-editor/tag-editor.module';
 import { DropdownBtnModule } from '../share/dropdown-btn/dropdown-btn.module';
 import { SequenceFastDialogComponent } from './experiment-type/experiment-type-erp/sequence-fast-dialog/sequence-fast-dialog.component';
@@ -68,7 +68,7 @@ import { GROUP_BY_FILTERS, SORT_BY_FILTERS } from './experiments-filter-paramete
     ExperimentTypeFvepOutputComponent,
     ExperimentTypeFvepOutputCountPipe,
     OutputTypeComponent,
-    ExperimentFilterDialogComponent,
+    ExperimentsFilterDialogComponent,
     SequenceFastDialogComponent,
     ExperimentsPageToolsComponent,
   ],

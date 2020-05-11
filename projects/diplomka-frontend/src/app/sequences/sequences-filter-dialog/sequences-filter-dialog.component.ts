@@ -1,19 +1,19 @@
 import { Component} from '@angular/core';
 
-import { Experiment } from '@stechy1/diplomka-share';
+import { Sequence } from '@stechy1/diplomka-share';
 
 import { ListGroupSortFilterService} from 'stim-lib-list-utils';
 
 import { FilterDialogComponent } from '../../share/filter-dialog/filter-dialog.component';
 
 @Component({
-  selector: 'stim-experiment-filter-dialog',
+  selector: 'stim-sequences-filter-dialog',
   templateUrl: '../../share/filter-dialog/filter-dialog.component.html',
   styleUrls: ['../../share/filter-dialog/filter-dialog.component.sass']
 })
-export class ExperimentFilterDialogComponent extends FilterDialogComponent<Experiment> {
+export class SequencesFilterDialogComponent extends FilterDialogComponent<Sequence> {
 
-  constructor(filter: ListGroupSortFilterService<Experiment>) {
+  constructor(filter: ListGroupSortFilterService<Sequence>) {
     super(filter);
   }
 

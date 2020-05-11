@@ -1,4 +1,5 @@
 import { EventEmitter, Inject, Injectable } from '@angular/core';
+
 import { Observable, Subscription } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 import { LocalStorageService } from 'angular-2-local-storage';
@@ -19,19 +20,18 @@ import {
 @Injectable()
 export class ListGroupSortFilterService<T> {
 
-  // Konfigurace knihovny pro vyhledávání textů v objektech
-  private static readonly FUSEJS_SETTINGS = {
-    tokenize: true,
-    includeScore: true,
-    includeMatches: true,
-    threshold: 0.4,
-    location: 0,
-    distance: 100,
-    maxPatternLength: 32,
-    minMatchCharLength: 1
-  };
   // Klíč pod kterým se ukládá nastavení filtrů v local-storage aplikace
   private static readonly STORAGE_KEY_FILTER_PARAMETERS = 'filter-parameters';
+  // Konfigurace knihovny pro vyhledávání textů v objektech
+  private readonly FUSEJS_SETTINGS: Fuse.IFuseOptions<T> = {
+    includeScore: true,
+    includeMatches: true,
+    // threshold: 0.4,
+    // location: 0,
+    // distance: 100,
+    // minMatchCharLength: 1,
+    keys: [ 'name' ]
+  };
 
   // Fusejs instance pro fulltextové vyhledávání
   private readonly _fusejs: Fuse<T, Fuse.IFuseOptions<T>>;
@@ -58,7 +58,7 @@ export class ListGroupSortFilterService<T> {
               private readonly logger: NGXLogger,
               private readonly _storage: LocalStorageService) {
     // Vytvořím novou instanci
-    this._fusejs = new Fuse(this._fuseExperiments, {...ListGroupSortFilterService.FUSEJS_SETTINGS, keys: fuseKeys });
+    this._fusejs = new Fuse(this._fuseExperiments, this.FUSEJS_SETTINGS);
     // Načtu filtační parametry z local-storage
     this._loadListFilterParameters();
   }
@@ -96,7 +96,6 @@ export class ListGroupSortFilterService<T> {
       return;
     }
     // Hodnota není prázdná, jdu najít všechny odpovídající dotazy
-    // @ts-ignore
     const fuseResult = this._fusejs.search(searchedValue) as Fuse.FuseResult<T>[];
     // Vymažu všechny záznamy v pracovní kolekci
     this._filteredExperiments.splice(0);
@@ -118,6 +117,7 @@ export class ListGroupSortFilterService<T> {
   public groupBy(filterParameters?: ListFilterParameters): void {
     // Pokud nejsou parametry uvedeny, vezmu poslední použité
     filterParameters = filterParameters || this._lastListFilterParameters;
+    this.logger.debug(`Seskupuji data podle: '${filterParameters.groupBy}'.`);
     // Vyprázdním pole s výsledky seskupení
     this._groupExperiments.splice(0);
     // Pokud nechci seskupovat podle ničeho
@@ -133,6 +133,15 @@ export class ListGroupSortFilterService<T> {
     // Získám instanci třídy pro seskupování
     // const groupConfiguration: GroupByPosibilities = GroupByPosibilities[filterParameters.groupBy];
     const groupFilter: GroupFilter<T> = this._groupFilterProvider.filterByName(filterParameters.groupBy);
+    // Ověřím, že filtr existuje
+    if (!groupFilter) {
+      this.logger.warn('Nebyl rozpoznán seskupovací filtr!');
+      this.logger.debug(`GroupBy: '${filterParameters.groupBy}'`);
+      // Pokud filtr neexistuje, tak seskupování přeskočím a přejdu rovnou na řazení
+      this.sort();
+      // Víc dělat nebudu
+      return;
+    }
     // Přemapuji pole s vyfiltrovanými experimenty na jednotlivé skupiny
     let groupsWithDuplications: any = this._filteredExperiments.map(groupFilter.mapFunction);
     // Může se stát, že jednotlivé skupiny budou obsahovat ještě podskupiny
@@ -175,16 +184,24 @@ export class ListGroupSortFilterService<T> {
   public sort(filterParameters?: ListFilterParameters) {
     // Pokud nejsou parametry uvedeny, vezmu poslední použité
     filterParameters = filterParameters || this._lastListFilterParameters;
-    this.logger.debug(`Řadím data podle: '${filterParameters.sortBy}'.`);
+    this.logger.debug(`Řadím data podle: '${filterParameters.sortBy}' '${filterParameters.orderBy}'.`);
     // Získám instanci třídy pro řažení
     const sortFilter: SortFilter<T> = this._sortFilterProvider.filterByName(filterParameters.sortBy);
     const orderFilter: OrderFilter<T> = this._orderFilterProvider.filterByName(filterParameters.orderBy);
+    if (!sortFilter) {
+      this.logger.warn('Nebyl vybrán žádný třídící filtr!');
+      this.logger.debug(`SortBy: '${filterParameters.sortBy}'`);
+    }
+    if (!orderFilter) {
+      this.logger.warn('Nebyl vybrán, nebo řadící filtr!');
+      this.logger.debug(`OrderBy: '${filterParameters.orderBy}'`);
+    }
     // Projdu všechny skupiny experimentů
     for (const group of this._groupExperiments) {
       // A aplikuji na ně řadící funkci
-      sortFilter.sort(group.entities);
+      sortFilter?.sort(group.entities);
       // Nakonec, pokud je potřeba, invertuji pořadí prvků
-      orderFilter.order(group.entities);
+      orderFilter?.order(group.entities);
     }
   }
 

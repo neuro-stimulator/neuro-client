@@ -3,12 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SequenceComponent } from './sequence/sequence.component';
 import { SequencesComponent } from './sequences.component';
+import { ListButtonsAddonComponent } from '../share/list-buttons-addon/list-buttons-addon.component';
 
 const routes: Routes = [
   {
     path: 'list',
     component: SequencesComponent,
-    data: {title: 'SEQUENCES.TITLE'}
+    data: {
+      title: 'SEQUENCES.TITLE',
+      buttonsAddon: ListButtonsAddonComponent,
+    }
   },
   {
     path: 'new',

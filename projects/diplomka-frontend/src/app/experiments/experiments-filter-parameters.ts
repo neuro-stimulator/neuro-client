@@ -29,6 +29,6 @@ export const SORT_BY_FILTERS: SortFilter<Experiment>[] = [
     {ascending: 'fa-plug', descending: 'fa-plug'},
     (a: Experiment, b: Experiment) => outputTypeToRaw(a.usedOutputs) - outputTypeToRaw(b.usedOutputs)),
   new SortByFilterEntity('SHARE.DIALOGS.FILTER.SORT_BY.OUTPUT_COUNT', 'output_count',
-    {ascending: 'fa-hashtag', descending: 'fa-plug'},
+    {ascending: 'fa-hashtag', descending: 'fa-hashtag'},
     (a: Experiment, b: Experiment) => a.outputCount - b.outputCount),
 ];
