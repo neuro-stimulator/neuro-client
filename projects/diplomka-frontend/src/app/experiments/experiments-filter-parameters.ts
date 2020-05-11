@@ -2,12 +2,12 @@ import { Experiment, ExperimentType, outputTypeToRaw } from '@stechy1/diplomka-s
 import { GroupByFilterEntity, GroupFilter, SortByFilterEntity, SortFilter } from 'stim-lib-list-utils';
 
 export const GROUP_BY_FILTERS: GroupFilter<Experiment>[] = [
-  new GroupByFilterEntity('EXPERIMENTS.FILTER_DIALOG.GROUP_BY.TYPE', 'TYPE', 'fa-stethoscope',
+  new GroupByFilterEntity('SHARE.DIALOGS.FILTER.GROUP_BY.TYPE', 'type', 'fa-stethoscope',
     (experiment: Experiment) => `${experiment.type}`,
     (experiment: Experiment, group: string) => experiment.type === +group,
     () => false,
     (group: string) => ExperimentType[+group]),
-  new GroupByFilterEntity('EXPERIMENTS.FILTER_DIALOG.GROUP_BY.TAG', 'TAG', 'fa-tags',
+  new GroupByFilterEntity('SHARE.DIALOGS.FILTER.GROUP_BY.TAG', 'tag', 'fa-tags',
     (experiment) => experiment.tags,
     (experiment: Experiment, group: string) => experiment.tags.includes(group),
     (experiment: Experiment, group: string) => experiment.tags.length === 0,
@@ -16,19 +16,19 @@ export const GROUP_BY_FILTERS: GroupFilter<Experiment>[] = [
 
 
 export const SORT_BY_FILTERS: SortFilter<Experiment>[] = [
-  new SortByFilterEntity('EXPERIMENTS.FILTER_DIALOG.SORT_BY.ALPHABET', 'ALPHABET',
+  new SortByFilterEntity('SHARE.DIALOGS.FILTER.SORT_BY.ALPHABET', 'alphabet',
     {ascending: 'fa-sort-alpha-up', descending: 'fa-sort-alpha-down'},
     (a: Experiment, b: Experiment) => a.name.localeCompare(b.name)),
-  new SortByFilterEntity('EXPERIMENTS.FILTER_DIALOG.SORT_BY.CREATION_DATE', 'CREATION_DATE',
+  new SortByFilterEntity('SHARE.DIALOGS.FILTER.SORT_BY.CREATION_DATE', 'creation_date',
     {ascending: 'fa-sort-numeric-up', descending: 'fa-sort-numeric-down'},
     (a: Experiment, b: Experiment) => a.created - b.created),
-  new SortByFilterEntity('EXPERIMENTS.FILTER_DIALOG.SORT_BY.TYPE', 'TYPE',
+  new SortByFilterEntity('SHARE.DIALOGS.FILTER.SORT_BY.TYPE', 'type',
     {ascending: 'fa-stethoscope', descending: 'fa-stethoscope'},
     (a: Experiment, b: Experiment) => a.type - b.type),
-  new SortByFilterEntity('EXPERIMENTS.FILTER_DIALOG.SORT_BY.OUTPUT_TYPE', 'OUTPUT_TYPE',
+  new SortByFilterEntity('SHARE.DIALOGS.FILTER.SORT_BY.OUTPUT_TYPE', 'output_type',
     {ascending: 'fa-plug', descending: 'fa-plug'},
     (a: Experiment, b: Experiment) => outputTypeToRaw(a.usedOutputs) - outputTypeToRaw(b.usedOutputs)),
-  new SortByFilterEntity('EXPERIMENTS.FILTER_DIALOG.SORT_BY.OUTPUT_COUNT', 'OUTPUT_COUNT',
+  new SortByFilterEntity('SHARE.DIALOGS.FILTER.SORT_BY.OUTPUT_COUNT', 'output_count',
     {ascending: 'fa-hashtag', descending: 'fa-plug'},
     (a: Experiment, b: Experiment) => a.outputCount - b.outputCount),
 ];

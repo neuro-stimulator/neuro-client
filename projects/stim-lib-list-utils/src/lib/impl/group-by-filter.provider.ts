@@ -10,7 +10,7 @@ export class GroupByFilterProvider<E> implements ListFilterProvider<E> {
   private readonly _registry: { [name: string]: GroupFilter<E> } = {};
 
   constructor() {
-    this._registry['NONE'] = new GroupByFilterEntity('EXPERIMENTS.FILTER_DIALOG.GROUP_BY.NONE', 'NONE', 'fa-ban',
+    this._registry['none'] = new GroupByFilterEntity('SHARE.DIALOGS.FILTER.GROUP_BY.NONE', 'none', 'fa-ban',
       () => '',
       () => true,
       () => false,
@@ -43,22 +43,6 @@ export class GroupByFilterProvider<E> implements ListFilterProvider<E> {
 }
 
 export class GroupByFilterEntity<E> implements GroupFilter<E> {
-
-  static readonly NONE = new GroupByFilterEntity('EXPERIMENTS.FILTER_DIALOG.GROUP_BY.NONE', 'NONE', 'fa-ban',
-    () => '',
-    () => true,
-    () => false,
-    ((group) => group));
-  // static readonly TYPE = new GroupByFilterEntity('EXPERIMENTS.FILTER_DIALOG.GROUP_BY.TYPE', 'TYPE', 'fa-stethoscope',
-  //   (experiment: Experiment) => `${experiment.type}`,
-  //   (experiment: Experiment, group: string) => experiment.type === +group,
-  //   () => false,
-  //   (group: string) => ExperimentType[+group]);
-  // static readonly TAG = new GroupByFilterEntity('EXPERIMENTS.FILTER_DIALOG.GROUP_BY.TAG', 'TAG', 'fa-tags',
-  //   (experiment) => experiment.tags,
-  //   (experiment: Experiment, group: string) => experiment.tags.includes(group),
-  //   (experiment: Experiment, group: string) => experiment.tags.length === 0,
-  //   (group) => group);
 
   public constructor(public readonly name: string, public readonly value: string, public readonly icon: string,
               public readonly mapFunction: (entity: E) => any,

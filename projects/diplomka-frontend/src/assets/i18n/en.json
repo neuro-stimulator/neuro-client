@@ -151,30 +151,6 @@
       "FULL": "Full",
       "INVERT": "Invert",
       "RANDOM": "Random"
-    },
-    "FILTER_DIALOG": {
-      "TITLE": "Experiment filter",
-      "CONFIRM": "Filter",
-      "CANCEL": "Cancel",
-      "GROUP_BY": {
-        "TITLE": "Group by",
-        "NONE": "No groups",
-        "TYPE": "Experiment type",
-        "TAG": "Tag"
-      },
-      "SORT_BY": {
-        "TITLE": "Sort by",
-        "ALPHABET": "Alphabetically",
-        "CREATION_DATE": "Creation date",
-        "TYPE": "Experiment type",
-        "OUTPUT_TYPE": "Output type",
-        "OUTPUT_COUNT": "Output count"
-      },
-      "ORDER_BY": {
-        "TITLE": "Order by",
-        "ASCENDING": "Ascending",
-        "DESCENDING": "Descending"
-      }
     }
   },
 
@@ -407,6 +383,30 @@
         "TITLE": "Announcement",
         "CONFIRM": "Understand",
         "CANCEL": "Cancel"
+      },
+      "FILTER": {
+        "TITLE": "Experiment filter",
+        "CONFIRM": "Filter",
+        "CANCEL": "Cancel",
+        "GROUP_BY": {
+          "TITLE": "Group by",
+          "NONE": "No groups",
+          "TYPE": "Experiment type",
+          "TAG": "Tag"
+        },
+        "SORT_BY": {
+          "TITLE": "Sort by",
+          "ALPHABET": "Alphabetically",
+          "CREATION_DATE": "Creation date",
+          "TYPE": "Experiment type",
+          "OUTPUT_TYPE": "Output type",
+          "OUTPUT_COUNT": "Output count"
+        },
+        "ORDER_BY": {
+          "TITLE": "Order by",
+          "ASCENDING": "Ascending",
+          "DESCENDING": "Descending"
+        }
       }
     }
   },

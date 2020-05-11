@@ -7,9 +7,9 @@ export class OrderByFilterProvider<E> implements ListFilterProvider<E> {
   private readonly _registry: { [name: string]: OrderFilter<E> } = {};
 
   constructor() {
-    this._registry['ascending'] = new OrderByFilterEntity<E>('EXPERIMENTS.FILTER_DIALOG.ORDER_BY.ASCENDING', 'ascending', 'fa-sort-amount-up',
+    this._registry['ascending'] = new OrderByFilterEntity<E>('SHARE.DIALOGS.FILTER.ORDER_BY.ASCENDING', 'ascending', 'fa-sort-amount-up',
       entities => entities.reverse());
-    this._registry['descending'] = new OrderByFilterEntity<E>('EXPERIMENTS.FILTER_DIALOG.ORDER_BY.DESCENDING', 'descending', 'fa-sort-amount-down-alt',
+    this._registry['descending'] = new OrderByFilterEntity<E>('SHARE.DIALOGS.FILTER.ORDER_BY.DESCENDING', 'descending', 'fa-sort-amount-down-alt',
       () => {});
   }
 

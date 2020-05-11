@@ -23,7 +23,7 @@ export abstract class FilterDialogComponent<T> extends DialogChildComponent impl
   private _formValueChangesSubscription: Subscription;
   private _lastConfiguration: ListFilterParameters;
 
-  constructor(private readonly filter: ListGroupSortFilterService<T>) {
+  protected constructor(private readonly filter: ListGroupSortFilterService<T>) {
     super();
   }
 
@@ -39,9 +39,9 @@ export abstract class FilterDialogComponent<T> extends DialogChildComponent impl
   }
 
   bind(modal: ModalComponent) {
-    modal.title = 'SHARE.FILTER_DIALOG.TITLE';
-    modal.confirmText = 'SHARE.FILTER_DIALOG.CONFIRM';
-    modal.cancelText = 'SHARE.FILTER_DIALOG.CANCEL';
+    modal.title = 'SHARE.DIALOGS.FILTER.TITLE';
+    modal.confirmText = 'SHARE.DIALOGS.FILTER.CONFIRM';
+    modal.cancelText = 'SHARE.DIALOGS.FILTER.CANCEL';
     this._confirmSubscription = modal.confirm.subscribe(() => { this.filter.filterParameters = this.form.value; });
     this._cancelSubscription = modal.cancel.subscribe(() => { this.filter.resetFilterParameters(); });
     this._showSubscription = modal.show.subscribe(() => {
