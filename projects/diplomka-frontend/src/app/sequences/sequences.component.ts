@@ -17,7 +17,6 @@ import { FilterDialogComponent } from '../share/filter-dialog/filter-dialog.comp
 import { SequencesFilterDialogComponent } from './sequences-filter-dialog/sequences-filter-dialog.component';
 
 @Component({
-  selector: 'stim-sequences',
   templateUrl: './sequences.component.html',
   styleUrls: ['./sequences.component.sass']
 })

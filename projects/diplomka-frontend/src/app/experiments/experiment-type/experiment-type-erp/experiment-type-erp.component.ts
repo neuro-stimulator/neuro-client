@@ -23,7 +23,6 @@ import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-er
 import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fast-dialog.component';
 
 @Component({
-  selector: 'stim-experiment-type-erp',
   templateUrl: './experiment-type-erp.component.html',
   styleUrls: ['./experiment-type-erp.component.sass']
 })

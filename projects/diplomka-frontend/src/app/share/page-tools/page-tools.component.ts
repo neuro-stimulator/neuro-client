@@ -9,7 +9,6 @@ import { SettingsService } from '../../settings/settings.service';
 import { PageToolsChildComponent } from './page-tools-child-component';
 
 @Component({
-  selector: 'stim-page-tools',
   templateUrl: './page-tools.component.html',
   styleUrls: ['./page-tools.component.sass']
 })

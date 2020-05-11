@@ -5,7 +5,6 @@ import { PageToolsChildComponent } from '../../share/page-tools/page-tools-child
 import { Settings } from '../../settings/settings';
 
 @Component({
-  selector: 'stim-experiments-page-tools',
   templateUrl: './experiments-page-tools.component.html',
   styleUrls: ['./experiments-page-tools.component.sass']
 })

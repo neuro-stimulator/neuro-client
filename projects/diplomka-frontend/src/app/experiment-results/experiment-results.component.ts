@@ -17,7 +17,6 @@ import { FilterDialogComponent } from '../share/filter-dialog/filter-dialog.comp
 import { ExperimentResultsFilterDialogComponent } from './experiment-results-filter-dialog/experiment-results-filter-dialog.component';
 
 @Component({
-  selector: 'stim-experiment-results',
   templateUrl: './experiment-results.component.html',
   styleUrls: ['./experiment-results.component.sass']
 })

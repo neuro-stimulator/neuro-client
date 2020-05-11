@@ -1,8 +1,7 @@
-import { Component, OnDestroy, OnInit, Type, ViewChild } from '@angular/core';
+import { Component, Type} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Subscription } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
@@ -19,7 +18,6 @@ import { FilterDialogComponent } from '../share/filter-dialog/filter-dialog.comp
 import { ExperimentsFilterDialogComponent } from './experiments-filter-dialog/experiments-filter-dialog.component';
 
 @Component({
-  selector: 'stim-experiments',
   templateUrl: './experiments.component.html',
   styleUrls: ['./experiments.component.sass']
 })

@@ -10,7 +10,6 @@ import { DialogChildComponent, ModalComponent } from 'stim-lib-modal';
 import { FileBrowserService } from './file-browser.service';
 
 @Component({
-  selector: 'stim-file-browser',
   templateUrl: './file-browser.component.html',
   styleUrls: ['./file-browser.component.sass']
 })

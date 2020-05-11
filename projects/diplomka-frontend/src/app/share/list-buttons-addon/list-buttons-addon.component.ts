@@ -6,7 +6,6 @@ import { Subscription } from 'rxjs';
 import { ListButtonsAddonService } from './list-buttons-addon.service';
 
 @Component({
-  selector: 'stim-experiments-buttons-addon',
   templateUrl: './list-buttons-addon.component.html',
   styleUrls: ['./list-buttons-addon.component.sass'],
 })

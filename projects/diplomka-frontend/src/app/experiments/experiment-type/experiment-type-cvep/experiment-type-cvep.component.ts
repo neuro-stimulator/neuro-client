@@ -18,7 +18,6 @@ import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 
 @Component({
-  selector: 'stim-experiment-type-cvep',
   templateUrl: './experiment-type-cvep.component.html',
   styleUrls: ['./experiment-type-cvep.component.sass']
 })

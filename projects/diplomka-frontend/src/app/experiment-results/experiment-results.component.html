@@ -1,7 +1,7 @@
 <section class="row">
   <div class="col-12">
     <h2 id="experiment-results-not-found" *ngIf="ghosts.length === 0 && !hasGroups">{{ 'EXPERIMENT_RESULTS.NOT_FOUND' | translate}}</h2>
-    <stim-experiment-result-ghost-item [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></stim-experiment-result-ghost-item>
+    <stim-experiment-result-ghost-item-list [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></stim-experiment-result-ghost-item-list>
     <stim-experiment-result-item-list [experimentResultGroups]="groups"
                                       (view)="handleView($event)"
                                       (delete)="handleDelete($event)"

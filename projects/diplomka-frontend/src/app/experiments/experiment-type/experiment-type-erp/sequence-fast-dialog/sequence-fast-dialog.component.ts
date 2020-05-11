@@ -6,7 +6,6 @@ import { Subscription } from 'rxjs';
 import { DialogChildComponent, ModalComponent } from 'stim-lib-modal';
 
 @Component({
-  selector: 'stim-sequence-fast-dialog',
   templateUrl: './sequence-fast-dialog.component.html',
   styleUrls: ['./sequence-fast-dialog.component.sass']
 })

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'stim-help',
   templateUrl: './help.component.html',
   styleUrls: ['./help.component.sass']
 })
