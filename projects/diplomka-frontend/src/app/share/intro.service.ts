@@ -2,7 +2,7 @@ import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import * as introjs from 'intro.js';
-import { Step } from 'intro.js';
+import { IntroJs, Step } from 'intro.js';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { NGXLogger } from 'ngx-logger';
 import { Observable } from 'rxjs';
@@ -35,7 +35,7 @@ export class IntroService {
 
   private static readonly COMPONENT_INTRO_KEY = 'intro';
 
-  private readonly intro = introjs();
+  private readonly intro: IntroJs = introjs();
   private componentIntros: ComponentIntro;
   private stepsByComponents: ComponentsSteps;
 
