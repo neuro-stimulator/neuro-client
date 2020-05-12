@@ -21,9 +21,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
     },
     plugins: {
       datalabels: {
-        formatter: (value, ctx) => {
-          return `#${value}`;
-        },
+        formatter: (value, _): string => `#${value}`,
       },
     }
   };
@@ -109,7 +107,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
     this.pieChartLabels.splice(0);
     this.pieChartData.splice(0);
     this.outputs.splice(0);
-    for (let i = 0; i <= this._outputCount; i++) {
+    for (let i = 0; i < this._outputCount; i++) {
       this.outputs.push(i);
     }
 
@@ -145,6 +143,6 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
   }
 
   get outputCountArray(): number[] {
-    return new Array((this._outputCount ?? 0) + 1);
+    return new Array((this._outputCount ?? 0));
   }
 }

@@ -15,7 +15,7 @@
           <ul class="list-group stimul-group">
             <li class="list-group-item stimul-entry stimul-entry-heading"
                 *ngFor="let x of outputCountArray; let i = index">
-              <span>{{i}}.</span>
+              <span>{{i+1}}.</span>
             </li>
           </ul>
         </li>
@@ -24,9 +24,9 @@
           <ul class="list-group stimul-group" >
             <li class="list-group-item stimul-entry"
                 *ngFor="let output of outputs"
-                [class.active]="data == output"
-                (click)="handleStimulChange(i, output)">
-              <span>{{output}}</span>
+                [class.active]="data == output + 1"
+                (click)="handleStimulChange(i, output + 1)">
+              <span>{{output + 1}}</span>
             </li>
           </ul>
         </li>
