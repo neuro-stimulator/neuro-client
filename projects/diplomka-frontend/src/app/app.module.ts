@@ -38,11 +38,8 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-export function createIntroStepsLoader(http: HttpClient, service: TranslateService) {
-  return service.onLangChange
-                .pipe(map((event: LangChangeEvent) => {
-                  return http.get(`./assets/steps/${event.lang}.json`).toPromise();
-                }));
+export function createIntroStepsLoader(http: HttpClient) {
+  return http.get(`./assets/steps.json`).toPromise();
 }
 
 @NgModule({
@@ -93,7 +90,7 @@ export function createIntroStepsLoader(http: HttpClient, service: TranslateServi
     {
       provide: INTRO_STEPS,
       useFactory: createIntroStepsLoader,
-      deps: [HttpClient, TranslateService]
+      deps: [HttpClient]
     }
   ],
   bootstrap: [AppComponent]

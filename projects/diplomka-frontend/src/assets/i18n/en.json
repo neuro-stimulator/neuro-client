@@ -151,6 +151,11 @@
       "FULL": "Full",
       "INVERT": "Invert",
       "RANDOM": "Random"
+    },
+    "STEPS": {
+      "EXPERIMENT_LIST": "List of all available experiments.",
+      "EXPERIMENT_ROW": "Record of one experiment.",
+      "EXPERIMENT-ICON": "Image with type of experiment."
     }
   },
 

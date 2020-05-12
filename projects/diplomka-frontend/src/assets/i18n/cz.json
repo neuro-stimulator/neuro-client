@@ -151,6 +151,11 @@
       "FULL": "Plný",
       "INVERT": "Invertovat",
       "RANDOM": "Náhodný"
+    },
+    "STEPS": {
+      "EXPERIMENT_LIST": "Seznam všech dostupných experimentů.",
+      "EXPERIMENT_ROW": "Záznam o jednom experimentu.",
+      "EXPERIMENT-ICON": "Obrázek s typem experimentu."
     }
   },
 

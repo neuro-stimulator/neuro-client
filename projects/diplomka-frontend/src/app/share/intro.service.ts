@@ -41,19 +41,17 @@ export class IntroService {
 
   private translation: IntroTranslation;
 
-  constructor(@Inject(INTRO_STEPS) stepsByComponentsObservable: Observable<Promise<ComponentsSteps>>,
+  constructor(@Inject(INTRO_STEPS) stepsByComponentsPromise: Promise<ComponentsSteps>,
               private readonly _http: HttpClient,
               private readonly _storage: LocalStorageService,
               private readonly _translator: TranslateService,
               private readonly _settings: SettingsService,
               private readonly logger: NGXLogger) {
     this._loadComponents();
-    stepsByComponentsObservable.subscribe((stepsByComponentsPromise: Promise<ComponentsSteps>) => {
-      stepsByComponentsPromise.then((steps: ComponentsSteps) => {
-        this.stepsByComponents = steps;
-      }).catch((reason) => {
-        this.stepsByComponents = undefined;
-      });
+    stepsByComponentsPromise.then((steps: ComponentsSteps) => {
+      this.stepsByComponents = steps;
+    }).catch((reason) => {
+      this.stepsByComponents = undefined;
     });
     this._initTranslation().finally();
   }
@@ -80,7 +78,7 @@ export class IntroService {
     this._storage.set(IntroService.COMPONENT_INTRO_KEY, this.componentIntros);
   }
 
-  private _showIntroSteps(component: string, beforeShow: () => void = () => {}, afterExit: () => void = () => {}) {
+  private _showIntroSteps(component: string, beforeShow: () => void = (): void => {}, afterExit: () => void = (): void => {}) {
     if (!this.stepsByComponents || !this.stepsByComponents[component]) {
       this.logger.error(`Nemůžu zobrazit tutorial pro komponentu: '${component}'!`);
       return;
@@ -91,24 +89,41 @@ export class IntroService {
       return;
     }
 
-    this.logger.info(`Budu zobrazovat tutorial pro komponentu: '${component}'.`);
-    this.intro.setOptions({
-      steps: this.stepsByComponents[component],
-      nextLabel: this.translation.next,
-      prevLabel: this.translation.prev,
-      skipLabel: this.translation.skip,
-      doneLabel: this.translation.done
+    const steps = this.stepsByComponents[component];
+    const promises = [];
+    for (const componentStepsKey of Object.keys(steps)) {
+      const componentStep: Step = steps[componentStepsKey];
+      const promise = this._translator.get(componentStep.intro).toPromise().then(translation => {
+        return componentStep.intro = translation;
+      });
+      promises.push(promise);
+    }
+
+    Promise.all(promises).then(() => {
+      this.logger.info(`Budu zobrazovat tutorial pro komponentu: '${component}'.`);
+      this.intro.setOptions({
+        steps,
+        nextLabel: this.translation.next,
+        prevLabel: this.translation.prev,
+        skipLabel: this.translation.skip,
+        doneLabel: this.translation.done
+      });
+      this.intro.onbeforechange(element => {
+        console.log(element);
+      });
+      this.intro.oncomplete(() => {
+        this._saveComponentIntro(component);
+      });
+      this.intro.onexit(() => {
+        afterExit();
+      });
+      beforeShow();
+      setTimeout(() => {
+        this.intro.start();
+      }, environment.introDelay);
     });
-    this.intro.oncomplete(() => {
-      this._saveComponentIntro(component);
-    });
-    this.intro.onexit(() => {
-      afterExit();
-    });
-    beforeShow();
-    setTimeout(() => {
-      this.intro.start();
-    }, environment.introDelay);
+
+
   }
 
   public showIntro(component: string, beforeShow?: () => void, afterExit?: () => void) {

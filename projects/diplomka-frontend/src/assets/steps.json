@@ -14,17 +14,17 @@
   "experiments-steps": [
     {
       "element": ".experiment-list",
-      "intro": "Seznam všech dostupných experimentů.",
+      "intro": "EXPERIMENTS.STEPS.EXPERIMENT_LIST",
       "position": "bottom"
     },
     {
       "element": ".experiment-row",
-      "intro": "Záznam o jednom experimentu.",
+      "intro": "EXPERIMENTS.STEPS.EXPERIMENT_ROW",
       "position": "bottom"
     },
     {
       "element": ".experiment-icon",
-      "intro": "Obrázek s typem experimentu.",
+      "intro": "EXPERIMENTS.STEPS.EXPERIMENT_ICON",
       "position": "bottom"
     },
     {
