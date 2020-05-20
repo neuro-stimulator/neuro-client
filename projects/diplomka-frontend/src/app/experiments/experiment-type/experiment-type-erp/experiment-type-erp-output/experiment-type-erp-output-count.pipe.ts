@@ -8,7 +8,7 @@ import { AbstractControl } from '@angular/forms';
 export class ExperimentTypeErpOutputCountPipe implements PipeTransform {
 
   transform(outputs: AbstractControl[], count: number): any {
-    return outputs.filter((output: AbstractControl) => output.get('orderId').value <= count);
+    return outputs.filter((output: AbstractControl) => output.get('orderId').value < count);
   }
 
 }
