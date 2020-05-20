@@ -24,8 +24,8 @@
           <ul class="list-group stimul-group" >
             <li class="list-group-item stimul-entry"
                 *ngFor="let output of outputs"
-                [class.active]="data == output + 1"
-                (click)="handleStimulChange(i, output + 1)">
+                [class.active]="data == output"
+                (click)="handleStimulChange(i, output)">
               <span>{{output + 1}}</span>
             </li>
           </ul>
