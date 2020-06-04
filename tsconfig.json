@@ -1,40 +1,31 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "module": "esnext",
     "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2019",
-      "dom"
-    ],
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2019", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
     "paths": {
-      "stim-lib-modal": [
-        "dist/stim-lib-modal/stim-lib-modal",
-        "dist/stim-lib-modal"
+      "@diplomka-frontend/stim-lib-modal": [
+        "libs/stim-lib-modal/src/index.ts"
       ],
-      "stim-lib-fab": [
-        "dist/stim-lib-fab/stim-lib-fab",
-        "dist/stim-lib-fab"
+      "@diplomka-frontend/stim-lib-fab": [
+        "libs/stim-lib-fab/src/index.ts"
       ],
-      "stim-lib-list-utils": [
-        "dist/stim-lib-list-utils/stim-lib-list-utils",
-        "dist/stim-lib-list-utils"
+      "@diplomka-frontend/stim-lib-list-utils": [
+        "libs/stim-lib-list-utils/src/index.ts"
       ]
     }
   },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
-  }
+  "exclude": ["node_modules", "tmp", "old"]
 }
