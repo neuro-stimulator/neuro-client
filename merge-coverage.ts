@@ -48,7 +48,7 @@ async function main() {
   // Nadefinuji nejdříve všechny soubory s parciálními výsledky coverage
   const reportFiles = await findPartialCoverageResults('coverage');
   // Nadefinuji typ reporteru
-  const reporters = ['json'];
+  const reporters = ['json', 'lcov'];
   // Vytvořím novou coverage mapu
   const map = createCoverageMap();
 
