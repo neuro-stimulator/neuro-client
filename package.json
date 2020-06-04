@@ -33,6 +33,7 @@
     "check-translations": "tsc apps/stimulator/check-translations.ts && node apps/stimulator/check-translations",
     "check-unused-selectors": "tsc apps/stimulator/check-unused-selectors.ts && node apps/stimulator/check-unused-selectors",
     "merge-coverage": "tsc merge-coverage.ts && node merge-coverage",
+    "release": "ng build --prod --base-href=/ --output-hashing none",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
   "repository": {
