@@ -11,7 +11,6 @@
     "start:qa": "ng serve -c=qa --host 0.0.0.0 --proxy-config proxy.config.json",
     "build": "ng build",
     "test": "nx test --codeCoverage",
-    "test:ci": "nx test --browsers ChromeHeadless --codeCoverage",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e -c=qa",
     "e2e:dev": "ng e2e -c=qa --watch",
