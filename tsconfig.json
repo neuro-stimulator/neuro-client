@@ -27,6 +27,9 @@
       "@diplomka-frontend/stim-lib-ui": ["libs/stim-lib-ui/src/index.ts"],
       "@diplomka-frontend/stim-feature-file-browser": [
         "libs/stim-feature-file-browser/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-about": [
+        "libs/stim-feature-about/src/index.ts"
       ]
     }
   },

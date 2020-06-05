@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: 'about',
     pathMatch: 'prefix',
-    loadChildren: () => import('./about/about.module').then((mod) => mod.AboutModule)
+    loadChildren: () => import('@diplomka-frontend/stim-feature-about').then((mod) => mod.StimFeatureAboutModule)
   },
   {
     path: 'experiments',

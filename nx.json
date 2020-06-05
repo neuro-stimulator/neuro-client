@@ -40,6 +40,9 @@
     },
     "stim-lib-ui": {
       "tags": []
+    },
+    "stim-feature-about": {
+      "tags": []
     }
   }
 }
