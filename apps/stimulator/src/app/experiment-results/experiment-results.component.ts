@@ -6,14 +6,14 @@ import { NGXLogger } from 'ngx-logger';
 
 import { ExperimentResult, ExperimentType } from '@stechy1/diplomka-share';
 
-import { ConfirmDialogComponent} from '@diplomka-frontend/stim-lib-modal';
+import { ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
 import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
+import { FilterDialogComponent } from "@diplomka-frontend/stim-lib-ui";
 
 import { IntroService } from '../share/intro.service';
 import { BaseListController } from '../share/base-list.controller';
-import { ListButtonsAddonService } from '../share/list-buttons-addon/list-buttons-addon.service';
+import { ListButtonsAddonService } from '../../../../../libs/stim-lib-ui/src/lib/list-buttons-addon/list-buttons-addon.service';
 import { ExperimentResultsService } from './experiment-results.service';
-import { FilterDialogComponent } from '../share/filter-dialog/filter-dialog.component';
 import { ExperimentResultsFilterDialogComponent } from './experiment-results-filter-dialog/experiment-results-filter-dialog.component';
 
 @Component({

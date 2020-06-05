@@ -1,14 +1,14 @@
 import { async, TestBed } from '@angular/core/testing';
-import { ModalModule } from './modal.module';
+import { StimLibModalModule } from './stim-lib-modal.module';
 
 describe('StimLibModalModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ModalModule],
+      imports: [StimLibModalModule],
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(ModalModule).toBeDefined();
+    expect(StimLibModalModule).toBeDefined();
   });
 });

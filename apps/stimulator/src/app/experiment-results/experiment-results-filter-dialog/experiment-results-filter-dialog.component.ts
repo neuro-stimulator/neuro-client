@@ -3,8 +3,7 @@ import { Component} from '@angular/core';
 import { ExperimentResult } from '@stechy1/diplomka-share';
 
 import { ListGroupSortFilterService} from '@diplomka-frontend/stim-lib-list-utils';
-
-import { FilterDialogComponent } from '../../share/filter-dialog/filter-dialog.component';
+import { FilterDialogComponent } from "@diplomka-frontend/stim-lib-ui";
 
 @Component({
   templateUrl: '../../share/filter-dialog/filter-dialog.component.html',

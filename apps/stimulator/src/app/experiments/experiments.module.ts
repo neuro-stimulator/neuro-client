@@ -2,19 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { Ng5SliderModule } from 'ng5-slider';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { Experiment } from '@stechy1/diplomka-share';
 
-import { ModalModule } from '@diplomka-frontend/stim-lib-modal';
-import { FabModule } from '@diplomka-frontend/stim-lib-fab';
-import { ListUtilsModule } from '@diplomka-frontend/stim-lib-list-utils';
+import { StimLibListUtilsModule } from '@diplomka-frontend/stim-lib-list-utils';
+import { StimLibUiModule } from "@diplomka-frontend/stim-lib-ui";
 
 import { ShareModule } from '../share/share.module';
-import { AudioPlayerModule } from '../share/audio-player/audio-player.module';
-import { ImagePlayerModule } from '../share/image-player/image-player.module';
-import { ListButtonsAddonModule } from '../share/list-buttons-addon/list-buttons-addon.module';
 import { ExperimentsRoutingModule } from './experiments-routing.module';
 import { ExperimentsComponent } from './experiments.component';
 import { ExperimentItemListComponent } from './experiment-item-list/experiment-item-list.component';
@@ -37,8 +32,6 @@ import { ExperimentTypeFvepOutputComponent } from './experiment-type/experiment-
 import { ExperimentTypeFvepOutputCountPipe } from './experiment-type/experiment-type-fvep/experiment-type-fvep-output/experiment-type-tvep-output-count.pipe';
 import { OutputTypeComponent } from './experiment-type/output-type/output-type.component';
 import { ExperimentsFilterDialogComponent } from './experiments-filter-dialog/experiments-filter-dialog.component';
-import { TagEditorModule } from '../share/tag-editor/tag-editor.module';
-import { DropdownBtnModule } from '../share/dropdown-btn/dropdown-btn.module';
 import { SequenceFastDialogComponent } from './experiment-type/experiment-type-erp/sequence-fast-dialog/sequence-fast-dialog.component';
 import { ExperimentsActivate } from './experiments.activate';
 import { ExperimentsPageToolsComponent } from './experiments-page-tools/experiments-page-tools.component';
@@ -78,19 +71,11 @@ import { GROUP_BY_FILTERS, SORT_BY_FILTERS } from './experiments-filter-paramete
 
     TranslateModule.forChild(),
 
-    Ng5SliderModule,
     ShareModule,
-    ModalModule,
-    FabModule,
+    StimLibUiModule,
     ExperimentsRoutingModule,
-    AudioPlayerModule,
-    ImagePlayerModule,
-    TagEditorModule,
-    DropdownBtnModule,
     SettingsModule,
-    FabModule,
-    ListButtonsAddonModule,
-    ListUtilsModule.forChild<Experiment>({
+    StimLibListUtilsModule.forChild<Experiment>({
       storageSuffix: 'experiments',
       fuseKeys: ['name', 'tag'],
       groupBy: GROUP_BY_FILTERS,

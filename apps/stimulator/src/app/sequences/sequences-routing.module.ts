@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ListButtonsAddonComponent } from "@diplomka-frontend/stim-lib-ui";
+
 import { SequenceComponent } from './sequence/sequence.component';
 import { SequencesComponent } from './sequences.component';
-import { ListButtonsAddonComponent } from '../share/list-buttons-addon/list-buttons-addon.component';
 
 const routes: Routes = [
   {

@@ -1,5 +1,5 @@
 import { SERVER_HTTP_PORT } from '@stechy1/diplomka-share';
-import { Settings } from '../app/settings/settings';
+import { Settings } from '../../../../libs/stim-lib-common/src/lib/settings/settings';
 
 const DEFAULT_SETTINGS: Settings = {
   application: {

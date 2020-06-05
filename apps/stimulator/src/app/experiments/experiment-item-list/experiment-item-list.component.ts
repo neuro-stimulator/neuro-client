@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
-import { Settings } from '../../settings/settings';
+import { Settings } from '../../../../../../libs/stim-lib-common/src/lib/settings/settings';
 import { SettingsService } from '../../settings/settings.service';
 import { EntityGroup } from '@diplomka-frontend/stim-lib-list-utils';
 

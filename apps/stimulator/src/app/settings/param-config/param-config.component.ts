@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { InformDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 
 import { SettingsService } from '../settings.service';
-import { ServerSettings } from '../settings';
+import { ServerSettings } from '../../../../../../libs/stim-lib-common/src/lib/settings/settings';
 import { ParamConfigExperimentsComponent } from './param-config-experiments/param-config-experiments.component';
 
 @Component({

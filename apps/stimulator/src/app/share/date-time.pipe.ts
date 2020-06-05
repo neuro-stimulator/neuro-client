@@ -1,9 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
+import { DateTimeFormat } from "@diplomka-frontend/stim-lib-common";
+
 import { environment } from '../../environments/environment';
 import { SettingsService } from '../settings/settings.service';
-import { DateTimeFormat } from './date-time-format';
 
 @Pipe({
   name: 'dateTime'

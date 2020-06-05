@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { FormGroup } from '@angular/forms';
 
 import { FileRecord } from '@stechy1/diplomka-share';
 
-import { FileBrowserService } from '../../../share/file-browser/file-browser.service';
+import { ModalComponent } from "@diplomka-frontend/stim-lib-modal";
+import { FileBrowserComponent } from "@diplomka-frontend/stim-lib-ui";
 
 @Component({
   selector: 'stim-output-type',
@@ -11,6 +12,8 @@ import { FileBrowserService } from '../../../share/file-browser/file-browser.ser
   styleUrls: ['./output-type.component.sass']
 })
 export class OutputTypeComponent implements OnInit {
+
+  @ViewChild('modal', {static: true}) modal: ModalComponent;
 
   @Input() form: FormGroup;
 
@@ -28,7 +31,9 @@ export class OutputTypeComponent implements OnInit {
   }
 
   buildFilePath(path: string) {
-    return `${FileBrowserService.BASE_API_URL}/${path}`;
+    // TODO vyřešit originální cestu k obázku
+    return '';
+    // return `${FileBrowserService.BASE_API_URL}/${path}`;
   }
 
   handleLedChange(event: Event) {
@@ -44,14 +49,29 @@ export class OutputTypeComponent implements OnInit {
     }
   }
 
-  handleAudioSelected(fileRecord: FileRecord) {
-    this.audioFile.setValue(fileRecord.path);
-    this.audioUrl = this.buildFilePath(fileRecord.path);
+  handleRequestAudioChange() {
+      this.modal.showComponent = FileBrowserComponent;
+      this.modal.openForResult()
+          .then((fileRecord: FileRecord) => {
+            this.audioFile.setValue(fileRecord.path);
+            this.audioUrl = this.buildFilePath(fileRecord.path);
+          })
+          .catch((e) => {
+            // Dialog was closed
+            console.log(e);
+          });
   }
 
-  handleImageSelected(fileRecord: FileRecord) {
-    this.imageFile.setValue(fileRecord.path);
-    this.imageUrl = this.buildFilePath(fileRecord.path);
+  handleRequestImageChange() {
+    this.modal.showComponent = FileBrowserComponent;
+    this.modal.openForResult()
+        .then((fileRecord: FileRecord) => {
+          this.imageFile.setValue(fileRecord.path);
+          this.imageUrl = this.buildFilePath(fileRecord.path);
+        })
+        .catch(() => {
+          // Dialog was closed
+        });
   }
 
   get led() {

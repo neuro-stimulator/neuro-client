@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 
-import { PageToolsComponent } from '../share/page-tools/page-tools.component';
 import { NavigationService } from './navigation.service';
+import { PageToolsComponent } from "@diplomka-frontend/stim-lib-ui";
+
 import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.directive';
 
 @Component({

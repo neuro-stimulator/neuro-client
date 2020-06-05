@@ -40,9 +40,7 @@
                 "apps/stimulator/src/sass"
               ]
             },
-            "scripts": [
-              "node_modules/intro.js/intro.js"
-            ]
+            "scripts": ["node_modules/intro.js/intro.js"]
           },
           "configurations": {
             "production": {
@@ -254,6 +252,70 @@
             "tsConfig": "libs/stim-lib-list-utils/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "libs/stim-lib-list-utils/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-common": {
+      "projectType": "library",
+      "root": "libs/stim-lib-common",
+      "sourceRoot": "libs/stim-lib-common/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-lib-common/tsconfig.lib.json",
+              "libs/stim-lib-common/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/stim-lib-common/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-common/jest.config.js",
+            "tsConfig": "libs/stim-lib-common/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-lib-common/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-ui": {
+      "projectType": "library",
+      "root": "libs/stim-lib-ui",
+      "sourceRoot": "libs/stim-lib-ui/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-lib-ui/tsconfig.lib.json",
+              "libs/stim-lib-ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/stim-lib-ui/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-ui/jest.config.js",
+            "tsConfig": "libs/stim-lib-ui/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-lib-ui/src/test-setup.ts"
           }
         }
       },

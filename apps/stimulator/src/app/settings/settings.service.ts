@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { ResponseObject } from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../environments/environment';
-import { ServerSettings, Settings } from './settings';
+import { ServerSettings, Settings } from '../../../../../libs/stim-lib-common/src/lib/settings/settings';
 
 @Injectable({
   providedIn: 'root'

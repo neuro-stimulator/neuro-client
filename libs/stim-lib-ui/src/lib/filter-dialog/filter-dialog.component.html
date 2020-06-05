@@ -1,0 +1,52 @@
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-12 col-lg filter-row" *ngIf="groupByFilters.length !== 0">
+      <div class="row">
+        <div class="col-6 col-sm-7 col-lg-12">
+          <h2><i class="fas fa-object-group"></i> {{ 'SHARE.DIALOGS.FILTER.GROUP_BY.TITLE' | translate }}</h2>
+        </div>
+        <div class="col-6 col-sm-5 col-lg-12">
+          <div class="form-check" *ngFor="let group of groupByFilters">
+            <input class="form-check-input" type="radio" name="groupBy" formControlName="groupBy"
+                   [id]="'group-by-' + group.value" [value]="group.value">
+            <label class="form-check-label" [for]="'group-by-' + group.value"><i
+              [ngClass]="['fas', group.icon]"></i> {{group.name | translate}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg filter-row" *ngIf="sortByFilters.length !== 0">
+      <div class="row">
+        <div class="col-6 col-sm-7 col-lg-12">
+          <h2><i class="fas fa-filter"></i> {{ 'SHARE.DIALOGS.FILTER.SORT_BY.TITLE' | translate }}</h2>
+        </div>
+        <div class="col-6 col-sm-5 col-lg-12">
+          <div class="form-check" *ngFor="let sort of sortByFilters">
+            <input class="form-check-input" type="radio" name="sortBy" formControlName="sortBy"
+                   [id]="'sort-by-' + sort.value" [value]="sort.value">
+            <label class="form-check-label" [for]="'sort-by-' + sort.value">
+              <i [ngClass]="['fas', sort.icon[orderBy.value]]"></i> {{sort.name | translate}}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg filter-row" *ngIf="orderByFilters.length !== 0">
+      <div class="row">
+        <div class="col-6 col-sm-7 col-lg-12">
+          <h2><i class="fas fa-sort"></i> {{ 'SHARE.DIALOGS.FILTER.ORDER_BY.TITLE' | translate }}</h2>
+        </div>
+        <div class="col-6 col-sm-5 col-lg-12">
+          <div class="form-check" *ngFor="let order of orderByFilters">
+            <input class="form-check-input" type="radio" name="orderBy" formControlName="orderBy"
+                   [id]="'order-by-' + order.value" [value]="order.value">
+            <label class="form-check-label" [for]="'order-by-' + order.value"><i
+              [ngClass]="['fas', order.icon]"></i> {{order.name | translate}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

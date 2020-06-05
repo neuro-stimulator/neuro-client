@@ -34,6 +34,12 @@
     },
     "stim-lib-list-utils": {
       "tags": []
+    },
+    "stim-lib-common": {
+      "tags": []
+    },
+    "stim-lib-ui": {
+      "tags": []
     }
   }
 }

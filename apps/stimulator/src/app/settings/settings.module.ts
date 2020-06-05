@@ -5,8 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
-import { ModalModule } from '@diplomka-frontend/stim-lib-modal';
-import { FabModule } from '@diplomka-frontend/stim-lib-fab';
+import { StimLibUiModule } from "@diplomka-frontend/stim-lib-ui";
 
 import { createTranslateLoader } from '../app.module';
 import { ShareModule } from '../share/share.module';
@@ -21,36 +20,35 @@ import { ParamConfigServerComponent } from './param-config/param-config-server/p
 import { ParamConfigApplicationComponent } from './param-config/param-config-application/param-config-application.component';
 
 @NgModule({
-    declarations: [
-        SettingsComponent,
-        ServiceStateComponent,
-        ConsoleComponent,
-        ParamConfigComponent,
-        ParamConfigExperimentsComponent,
-        ParamConfigServerComponent,
-        ParamConfigApplicationComponent
-    ],
+  declarations: [
+    SettingsComponent,
+    ServiceStateComponent,
+    ConsoleComponent,
+    ParamConfigComponent,
+    ParamConfigExperimentsComponent,
+    ParamConfigServerComponent,
+    ParamConfigApplicationComponent
+  ],
   exports: [
     ParamConfigExperimentsComponent,
     ServiceStateComponent
   ],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
 
-        TranslateModule.forChild({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: createTranslateLoader,
-                deps: [HttpClient]
-            }
-        }),
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
 
-        SettingsRoutingModule,
-        FabModule,
-        ShareModule,
-        ModalModule,
-    ]
+    SettingsRoutingModule,
+    ShareModule,
+    StimLibUiModule
+  ]
 })
 export class SettingsModule {
 

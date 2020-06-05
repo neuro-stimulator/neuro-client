@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { ModalModule } from '@diplomka-frontend/stim-lib-modal';
+import { StimLibUiModule } from "@diplomka-frontend/stim-lib-ui";
 
 import { NavigationComponent } from './navigation.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -16,12 +16,12 @@ import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.dire
     SidebarComponent,
     NavigationButtonsAddonDirective
   ],
-    imports: [
-        CommonModule,
-        TranslateModule.forChild(),
-        RouterModule,
-        ModalModule,
-    ],
+  imports: [
+    CommonModule,
+    TranslateModule.forChild(),
+    RouterModule,
+    StimLibUiModule
+  ],
   exports: [
     NavigationComponent,
     SidebarComponent,

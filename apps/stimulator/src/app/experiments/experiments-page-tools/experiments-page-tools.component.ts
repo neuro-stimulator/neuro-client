@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
-import { ParamConfigExperimentsComponent } from '../../settings/param-config/param-config-experiments/param-config-experiments.component';
-import { PageToolsChildComponent } from '../../share/page-tools/page-tools-child-component';
-import { Settings } from '../../settings/settings';
+import { PageToolsChildComponent } from "@diplomka-frontend/stim-lib-ui";
+
+import { Settings } from '../../../../../../libs/stim-lib-common/src/lib/settings/settings';
+import { ParamConfigExperimentsComponent } from "../../settings/param-config/param-config-experiments/param-config-experiments.component";
 
 @Component({
   templateUrl: './experiments-page-tools.component.html',

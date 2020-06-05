@@ -1,18 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ExperimentResult } from '@stechy1/diplomka-share';
 
-import { ModalModule } from '@diplomka-frontend/stim-lib-modal';
-import { FabModule } from '@diplomka-frontend/stim-lib-fab';
-import { ListUtilsModule } from '@diplomka-frontend/stim-lib-list-utils';
+import { StimLibUiModule } from "@diplomka-frontend/stim-lib-ui";
+import { StimLibListUtilsModule } from "@diplomka-frontend/stim-lib-list-utils";
 
-import { ExperimentViewerModule } from '../share/experiment-viewer/experiment-viewer.module';
 import { ShareModule } from '../share/share.module';
-import { ListButtonsAddonModule } from '../share/list-buttons-addon/list-buttons-addon.module';
 import { ExperimentResultsRoutingModule } from './experiment-results-routing.module';
 import { ExperimentResultsComponent } from './experiment-results.component';
 import { ExperimentResultItemListComponent } from './experiment-result-item-list/experiment-result-item-list.component';
@@ -34,13 +30,9 @@ import { GROUP_BY_FILTERS, SORT_BY_FILTERS } from './experiment-results-filter-p
     TranslateModule.forChild(),
 
     ExperimentResultsRoutingModule,
-    ExperimentViewerModule,
-    ModalModule,
-    FabModule,
     ShareModule,
-    ReactiveFormsModule,
-    ListButtonsAddonModule,
-    ListUtilsModule.forChild<ExperimentResult>({
+    StimLibUiModule,
+    StimLibListUtilsModule.forChild<ExperimentResult>({
       storageSuffix: 'experiment-results',
       fuseKeys: ['name'],
       groupBy: GROUP_BY_FILTERS,

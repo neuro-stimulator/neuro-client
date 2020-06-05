@@ -5,7 +5,6 @@ import * as introjs from 'intro.js';
 import { IntroJs, Step } from 'intro.js';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { NGXLogger } from 'ngx-logger';
-import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 import { environment} from '../../environments/environment';

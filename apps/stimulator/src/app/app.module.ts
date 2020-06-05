@@ -7,7 +7,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 // Third party modules
 import { ToastrModule } from 'ngx-toastr';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
-import { LangChangeEvent, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LocalStorageModule } from 'angular-2-local-storage';
 
@@ -15,7 +15,7 @@ import { LocalStorageModule } from 'angular-2-local-storage';
 import { AppRoutingModule } from './app-routing.module';
 
 // Application modules
-import { ModalModule } from '@diplomka-frontend/stim-lib-modal';
+import { StimLibUiModule } from "@diplomka-frontend/stim-lib-ui";
 import { ShareModule } from './share/share.module';
 
 // Application components
@@ -24,7 +24,7 @@ import { NavigationModule } from './navigation/navigation.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Aplikační proměnné
-import { environment } from '../environments/environment';
+import { environment} from "../environments/environment";
 import { INTRO_STEPS } from './share/intro.service';
 
 // Interceptory (modifikátory http komunikace)
@@ -62,11 +62,11 @@ export function createIntroStepsLoader(http: HttpClient) {
     }),
     ToastrModule.forRoot(),
     LoggerModule.forRoot({level: NgxLoggerLevel.TRACE, enableSourceMaps: !environment.production}),
-    LocalStorageModule.forRoot({prefix: 'stim-control', storageType: 'localStorage'}),
+    LocalStorageModule.forRoot({ prefix: 'stim-control', storageType: 'localStorage' }),
 
     NavigationModule,
     ShareModule,
-    ModalModule,
+    StimLibUiModule,
 
     // Root routing module
     AppRoutingModule

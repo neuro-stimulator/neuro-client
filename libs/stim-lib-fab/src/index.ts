@@ -2,7 +2,7 @@
  * Public API Surface of stim-lib-fab
  */
 
-export * from './lib/fab.module';
+export * from './lib/stim-lib-fab.module';
 
 export * from './lib/fab.component';
 

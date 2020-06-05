@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="col-8">
-        <stim-audio-player *ngIf="audio.value === true" [title]="audioFile.value || defaultTitle" [audioUrl]="audioUrl" (fileChange)="handleAudioSelected($event)"></stim-audio-player>
+        <stim-lib-ui-audio-player *ngIf="audio.value === true" [title]="audioFile.value || defaultTitle" [audioUrl]="audioUrl" (requestFileChange)="handleRequestAudioChange()"></stim-lib-ui-audio-player>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="col-7">
-        <stim-image-player *ngIf="image.value === true" [title]="imageFile.value || defaultTitle" [imageUrl]="imageUrl" (fileChange)="handleImageSelected($event)"></stim-image-player>
+        <stim-lib-ui-image-player *ngIf="image.value === true" [title]="imageFile.value || defaultTitle" [imageUrl]="imageUrl" (requestFileChange)="handleRequestImageChange()"></stim-lib-ui-image-player>
       </div>
     </div>
 
@@ -52,3 +52,4 @@
 
 </div>
 
+<stim-lib-modal #modal></stim-lib-modal>

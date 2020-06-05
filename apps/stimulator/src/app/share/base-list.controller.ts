@@ -6,11 +6,11 @@ import { Subscription } from 'rxjs';
 
 import { EntityGroup, ListFilterParameters, ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { FilterDialogComponent } from "@diplomka-frontend/stim-lib-ui";
 
-import { ListButtonsAddonService } from './list-buttons-addon/list-buttons-addon.service';
+import { ListButtonsAddonService } from '../../../../../libs/stim-lib-ui/src/lib/list-buttons-addon/list-buttons-addon.service';
 import { IntroService } from './intro.service';
 import { BaseService } from './base-service';
-import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
 
 export abstract class BaseListController<T> implements OnInit, OnDestroy {
 

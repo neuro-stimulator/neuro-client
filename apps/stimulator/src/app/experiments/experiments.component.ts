@@ -9,12 +9,12 @@ import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 import { ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
 import { FabListEntry } from '@diplomka-frontend/stim-lib-fab';
 import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
+import { FilterDialogComponent } from "@diplomka-frontend/stim-lib-ui";
 
 import { IntroService } from '../share/intro.service';
-import { ListButtonsAddonService } from '../share/list-buttons-addon/list-buttons-addon.service';
+import { ListButtonsAddonService } from '../../../../../libs/stim-lib-ui/src/lib/list-buttons-addon/list-buttons-addon.service';
 import { ExperimentsService } from './experiments.service';
 import { BaseListController } from '../share/base-list.controller';
-import { FilterDialogComponent } from '../share/filter-dialog/filter-dialog.component';
 import { ExperimentsFilterDialogComponent } from './experiments-filter-dialog/experiments-filter-dialog.component';
 
 @Component({

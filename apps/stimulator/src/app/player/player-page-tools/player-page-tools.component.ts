@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 
-import { PageToolsChildComponent } from '../../share/page-tools/page-tools-child-component';
-import { Settings } from '../../settings/settings';
+import { PageToolsChildComponent } from "@diplomka-frontend/stim-lib-ui";
+import { Settings } from "@diplomka-frontend/stim-lib-common";
 
 @Component({
   templateUrl: './player-page-tools.component.html',

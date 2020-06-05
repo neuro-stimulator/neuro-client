@@ -42,7 +42,7 @@
           </div>
           <div class="row">
             <div class="col-12">
-              <stim-tag-editor [form]="form"></stim-tag-editor>
+              <stim-lib-ui-tag-editor [form]="form"></stim-lib-ui-tag-editor>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
   </div>
 </div>
 
-<stim-sequence-viewer [inputData]="sequenceData$" [outputCount]="outputCount$" [editable]="true" (dataChanged)="handleSequenceChanged($event)" (update)="handleSequenceUpdate($event)"></stim-sequence-viewer>
+<stim-lib-ui-sequence-viewer [inputData]="sequenceData$" [outputCount]="outputCount$" [editable]="true" (dataChanged)="handleSequenceChanged($event)" (update)="handleSequenceUpdate($event)"></stim-lib-ui-sequence-viewer>
 
 
 <stim-lib-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveSequence()" [disabled]="form.invalid || (working | async)"></stim-lib-fab>
