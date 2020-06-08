@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col">
+    <form [formGroup]="form">
+
+      <!-- Generická hlavička společná pro všechny experimenty -->
+      <stim-feature-experiments-experiment-type-header [form]="form"></stim-feature-experiments-experiment-type-header>
+
+
+      <div class="row experiment-property">
+        <div class="col-10">
+          <h4>{{ 'EXPERIMENTS.EXPERIMENT.CVEP.TITLE_PARAMS' | translate }}</h4>
+        </div>
+        <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="cvepParams" [icon]="cvepParamsIcon"><i class="fas fa-minus" #cvepParamsIcon></i></div>
+
+        <div class="col-12" #cvepParams>
+          <div class="row">
+
+            <div class="col-12">
+              <div class="form-group" style="padding-bottom: 5px">
+                <label for="cvep-output-count">{{ 'EXPERIMENTS.EXPERIMENT.OUTPUT_COUNT' | translate }}</label>
+                <ng5-slider id="cvep-output-count" formControlName="outputCount" [options]="outputCountParams"></ng5-slider>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="form-group">
+                <label for="cvep-out">{{ 'EXPERIMENTS.EXPERIMENT.CVEP.OUT' | translate }}</label>
+                <div class="input-group input-group-sm">
+                  <input type="number" id="cvep-out" class="form-control" [class.is-valid]="out.valid" [class.is-invalid]="out.invalid" formControlName="out">
+                  <div class="input-group-append">
+                    <span class="input-group-text">ms</span>
+                  </div>
+                </div>
+                <small *ngIf="out.touched && out.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="out.touched && out.errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: out.errors?.exclusiveMin.exclusiveMin} }}</small>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="form-group">
+                <label for="cvep-wait">{{ 'EXPERIMENTS.EXPERIMENT.CVEP.WAIT' | translate }}</label>
+                <div class="input-group input-group-sm">
+                  <input type="number" id="cvep-wait" class="form-control form-control-sm" [class.is-valid]="wait.valid" [class.is-invalid]="wait.invalid" formControlName="wait">
+                  <div class="input-group-append">
+                    <span class="input-group-text">ms</span>
+                  </div>
+                </div>
+                <small *ngIf="wait.touched && wait.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="wait.touched && wait.errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: wait.errors?.exclusiveMin.exclusiveMin} }}</small>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="form-group">
+                <label for="cvep-bit-shift">{{ 'EXPERIMENTS.EXPERIMENT.CVEP.BIT_SHIFT' | translate }}</label>
+                <ng5-slider id="cvep-bit-shift" formControlName="bitShift" [options]="bitShiftSliderOptions"></ng5-slider>
+                <small *ngIf="bitShift.touched && bitShift.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="bitShift.value == 0" class="form-text text-muted">{{ 'APP.VALIDATION.ZERO_VALUE' | translate }}</small>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="form-group">
+                <label for="cvep-brightness">{{ 'EXPERIMENTS.EXPERIMENT.CVEP.BRIGHTNESS' | translate }}</label>
+                <ng5-slider id="cvep-brightness" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
+                <small *ngIf="brightness.touched && brightness.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="brightness.touched && brightness.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness.errors?.min.min} }}</small>
+                <small *ngIf="brightness.touched && brightness.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness.errors?.max.max} }}</small>
+                <small *ngIf="brightness.value == 0" class="form-text text-muted">{{ 'APP.VALIDATION.ZERO_VALUE' | translate }}</small>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row experiment-property">
+        <div class="col-10">
+          <h4>{{ 'EXPERIMENTS.OUTPUT_TYPE.TITLE' | translate}}</h4>
+        </div>
+        <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="cvepOutputsType" [icon]="cvepOutputsTypeIcon"><i class="fas fa-minus" #cvepOutputsTypeIcon></i></div>
+
+        <div class="col-12" #cvepOutputsType>
+          <stim-feature-experiments-output-type [form]="usedOutputs"></stim-feature-experiments-output-type>
+        </div>
+      </div>
+
+      <div class="row experiment-property">
+        <div class="col-10">
+          <h4>{{ 'EXPERIMENTS.OUTPUT_PATTERN.TITLE' | translate }}</h4>
+        </div>
+        <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="pattern" [icon]="patternIcon"><i class="fas fa-minus" #patternIcon></i></div>
+
+        <div class="col-12" #pattern>
+          <stim-feature-experiments-output-pattern formControlName="pattern"></stim-feature-experiments-output-pattern>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<stim-lib-fab
+  [icon]="(experimentsState | async).working ? 'fa-save fa-spin' : 'fa-save'"
+  (fabClick)="handleSaveExperiment()"
+  [disabled]="form.invalid || (experimentsState | async).working ">
+</stim-lib-fab>

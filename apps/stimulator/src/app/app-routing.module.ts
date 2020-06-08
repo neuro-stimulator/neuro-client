@@ -3,20 +3,20 @@ import { RouterModule, Routes} from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  {
-    path: 'player',
-    pathMatch: 'prefix',
-    loadChildren: () => import('./player/player.module').then((mod) => mod.PlayerModule)
-  },
+  // {
+  //   path: 'player',
+  //   pathMatch: 'prefix',
+  //   loadChildren: () => import('@diplomka-frontent/stim-feature-player/player').then((mod) => mod.StimFeaturePlayerFeatureModule)
+  // },
   {
     path: 'settings',
     pathMatch: 'prefix',
-    loadChildren: () => import('./settings/settings.module').then((mod) => mod.SettingsModule)
+    loadChildren: () => import('@diplomka-frontend/stim-feature-settings/feature').then((mod) => mod.StimFeatureSettingsFeatureModule)
   },
   {
     path: 'help',
     pathMatch: 'prefix',
-    loadChildren: () => import('./help/help.module').then((mod) => mod.HelpModule)
+    loadChildren: () => import('@diplomka-frontend/stim-feature-help/feature').then((mod) => mod.StimFeatureHelpFeatureModule)
   },
   {
     path: 'about',
@@ -25,17 +25,17 @@ const routes: Routes = [
   },
   {
     path: 'experiments',
-    loadChildren: () => import('./experiments/experiments.module').then((mod) => mod.ExperimentsModule)
+    loadChildren: () => import('@diplomka-frontend/stim-feature-experiments/feature').then((mod) => mod.StimFeatureExperimentsFeatureModule)
   },
   {
     path: 'results',
     pathMatch: 'prefix',
-    loadChildren: () => import('./experiment-results/experiment-results.module').then((mod) => mod.ExperimentResultsModule)
+    loadChildren: () => import('@diplomka-frontend/stim-feature-experiment-results/feature').then((mod) => mod.StimFeatureExperimentResultsFeatureModule)
   },
   {
     path: 'sequences',
     pathMatch: 'prefix',
-    loadChildren: () => import('./sequences/sequences.module').then((mod) => mod.SequencesModule)
+    loadChildren: () => import('@diplomka-frontend/stim-feature-sequences/feature').then((mod) => mod.StimFeatureSequencesFeatureModule)
   },
 
   {
@@ -56,7 +56,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: true})],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

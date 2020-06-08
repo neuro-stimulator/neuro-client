@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@env/*": ["apps/stimulator/src/environments"],
       "@diplomka-frontend/stim-lib-modal": ["libs/stim-lib-modal/src/index.ts"],
       "@diplomka-frontend/stim-lib-fab": ["libs/stim-lib-fab/src/index.ts"],
       "@diplomka-frontend/stim-lib-list-utils": [
@@ -30,6 +31,67 @@
       ],
       "@diplomka-frontend/stim-feature-about": [
         "libs/stim-feature-about/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-settings/feature": [
+        "libs/stim-feature-settings/feature/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-settings/domain": [
+        "libs/stim-feature-settings/domain/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-settings/api": [
+        "libs/stim-feature-settings/api/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-stimulator/domain": [
+        "libs/stim-feature-stimulator/domain/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-lib-store": ["libs/stim-lib-store/src/index.ts"],
+      "@diplomka-frontend/stim-lib-connection": [
+        "libs/stim-lib-connection/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-file-browser-feature": [
+        "libs/stim-feature-file-browser-feature/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-file-browser-domain": [
+        "libs/stim-feature-file-browser-domain/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-file-browser/domain": [
+        "libs/stim-feature-file-browser/domain/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-file-browser/feature": [
+        "libs/stim-feature-file-browser/feature/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-navigation/feature": [
+        "libs/stim-feature-navigation/feature/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-navigation/domain": [
+        "libs/stim-feature-navigation/domain/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-help/feature": [
+        "libs/stim-feature-help/feature/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-player/feature": [
+        "libs/stim-feature-player/feature/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-player/domain": [
+        "libs/stim-feature-player/domain/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-experiments/feature": [
+        "libs/stim-feature-experiments/feature/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-experiments/domain": [
+        "libs/stim-feature-experiments/domain/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-experiment-results/feature": [
+        "libs/stim-feature-experiment-results/feature/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-experiment-results/domain": [
+        "libs/stim-feature-experiment-results/domain/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-sequences/feature": [
+        "libs/stim-feature-sequences/feature/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-sequences/domain": [
+        "libs/stim-feature-sequences/domain/src/index.ts"
       ]
     }
   },

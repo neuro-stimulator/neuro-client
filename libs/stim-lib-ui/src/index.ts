@@ -7,5 +7,10 @@ export { SequenceViewerComponent } from './lib/sequence-viewer/sequence-viewer.c
 export { TagEditorComponent } from './lib/tag-editor/tag-editor.component';
 export { PageToolsComponent } from './lib/page-tools/page-tools.component';
 export { PageToolsChildComponent } from './lib/page-tools/page-tools-child-component';
-export { FileBrowserComponent } from './lib/file-browser/file-browser.component';
 export { ListButtonsAddonComponent } from './lib/list-buttons-addon/list-buttons-addon.component';
+export { ListButtonsAddonService } from './lib/list-buttons-addon/list-buttons-addon.service';
+export { ContentTogglerDirective } from './lib/content-toggler.directive';
+export { BaseListController } from './lib/base-list.controller';
+export { ValueAccessorBase } from './lib/value-accessor-base';
+export { ShareValidators } from './lib/share-validators';
+export { DateTimePipe } from './lib/date-time.pipe';

@@ -1,0 +1,36 @@
+<div class="row experiment-group" *ngFor="let group of sequenceGroups">
+  <!-- Pokud skupina neobsahuje žádné experimenty, tak ji ani nebudu vypisovat -->
+  <ng-container *ngIf="group.entities.length !== 0">
+    <!-- Název skupiny zobrazím pouze tehdy, když nějaký má -->
+    <div class="col-10" *ngIf="group.group">
+      <span>{{group.group}} ({{group.entities.length}})</span>
+    </div>
+    <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="sequenceGroup" [icon]="icon" *ngIf="group.group"><i class="fas fa-minus" #icon></i></div>
+    <div class="col-12" #sequenceGroup>
+
+      <ul class="list-group sequence-list">
+        <li class="list-group-item list-group-item-action"
+            *ngFor="let sequence of group.entities" [attr.data-sequence-name]="sequence.name">
+
+          <div class="row sequence sequence-row">
+
+            <!-- Název sequence -->
+            <div class="col-10">
+              <div>
+                <a [routerLink]="['/', 'sequences', sequence.id]" class="sequence-name"><strong>{{sequence.name}}</strong></a>
+              </div>
+              <div><small class="text-truncate sequence-creation-date">{{sequence.created | date:'HH:mm, dd.MM.yyyy'}}</small></div>
+            </div>
+            <!-- Toolbar s akčními tlačítky -->
+            <div class="col-2 sequence-toolbar">
+              <i class="fas fa-eye text-primary edit" [title]="'SEQUENCES.BUTTON_BAR.SHOW_SEQUENCE' | translate" (click)="handleView(sequence)"></i>
+              <i class="fas fa-trash text-danger delete" [title]="'SEQUENCES.BUTTON_BAR.DELETE_SEQUENCE' | translate" (click)="handleDelete(sequence)"></i>
+            </div>
+
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </ng-container>
+</div>

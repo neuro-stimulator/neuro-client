@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col">
+    <form [formGroup]="form">
+
+      <!-- Generická hlavička společná pro všechny experimenty -->
+      <stim-feature-experiments-experiment-type-header [form]="form"></stim-feature-experiments-experiment-type-header>
+
+
+      <div class="row experiment-property">
+        <div class="col-10">
+          <h4>{{ 'EXPERIMENTS.EXPERIMENT.TVEP.TITLE_PARAMS' | translate }}</h4>
+        </div>
+        <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="tvepParams" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+
+        <div class="col-12" #tvepParams>
+          <div class="row">
+
+            <div class="col-12">
+              <div class="form-group" style="padding-bottom: 5px">
+                <label for="tvep-output-count">{{ 'EXPERIMENTS.EXPERIMENT.OUTPUT_COUNT' | translate }}</label>
+                <ng5-slider id="tvep-output-count" formControlName="outputCount" [options]="outputCountParams"></ng5-slider>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              <div class="form-check">
+                <div class="form-row">
+                  <div class="col">
+                  <input type="checkbox" class="form-check-input" id="tvep-share-pattern-length" formControlName="sharePatternLength">
+                  </div>
+                  <div class="col-11">
+                    <label class="form-check-label" for="tvep-share-pattern-length">{{ 'EXPERIMENTS.EXPERIMENT.TVEP.SHARE_PATTERN_LENGTH' | translate}}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <stim-feature-experiments-experiment-type-tvep-output [form]="form" [count]="outputCount.value" [experimentReady]="experimentLoaded$" [sharePatternLength]="sharePatternLengthEmitter"></stim-feature-experiments-experiment-type-tvep-output>
+    </form>
+
+  </div>
+</div>
+
+<stim-lib-fab
+  [icon]="(experimentsState | async).working ? 'fa-save fa-spin' : 'fa-save'"
+  (fabClick)="handleSaveExperiment()"
+  [disabled]="form.invalid || (experimentsState | async).working ">
+</stim-lib-fab>

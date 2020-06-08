@@ -8,7 +8,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { ToastrModule } from 'ngx-toastr';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { LocalStorageModule } from 'angular-2-local-storage';
 
 // Routing
@@ -16,25 +16,27 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Application modules
 import { StimLibUiModule } from "@diplomka-frontend/stim-lib-ui";
-import { ShareModule } from './share/share.module';
+import { StimLibStoreModule } from "@diplomka-frontend/stim-lib-store";
+import { StimFeatureNavigationFeatureModule } from "@diplomka-frontend/stim-feature-navigation/feature";
 
 // Application components
 import { AppComponent } from './app.component';
-import { NavigationModule } from './navigation/navigation.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Aplikační proměnné
-import { environment} from "../environments/environment";
+import { environment } from "../environments/environment";
 import { INTRO_STEPS } from './share/intro.service';
 
 // Interceptory (modifikátory http komunikace)
 import { DEFAULT_TIMEOUT, RequestTimeoutInterceptor } from './share/interceptors/request-timeout-interceptor.service';
 import { ResponseInterceptor } from './share/interceptors/response-interceptor.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TOKEN_PROVIDERS } from "./token-providers";
+import { StimFeatureSettingsDomainModule } from "@diplomka-frontend/stim-feature-settings/domain";
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 export function createIntroStepsLoader(http: HttpClient) {
@@ -63,15 +65,18 @@ export function createIntroStepsLoader(http: HttpClient) {
     ToastrModule.forRoot(),
     LoggerModule.forRoot({level: NgxLoggerLevel.TRACE, enableSourceMaps: !environment.production}),
     LocalStorageModule.forRoot({ prefix: 'stim-control', storageType: 'localStorage' }),
+    StimLibStoreModule,
+    StimFeatureSettingsDomainModule,
+    StimFeatureNavigationFeatureModule,
 
-    NavigationModule,
-    ShareModule,
+    // ShareModule,
     StimLibUiModule,
 
     // Root routing module
     AppRoutingModule
   ],
   providers: [
+    ...TOKEN_PROVIDERS,
     {
       provide: DEFAULT_TIMEOUT,
       useValue: 3000

@@ -1,0 +1,24 @@
+<div class="bg-light" [class.active]="(navigation.navigationState | async).showSidebar" id="sidebar-wrapper">
+  <div class="sidebar-heading">
+    <img src="assets/nav_header.png" alt="{{ 'APP.HEADER_IMAGE' | translate }}">
+    <p id="application-name" style="font-size: 17px">{{ 'APP.TITLE' | translate }}</p>
+    <small id="application-author">{{ 'APP.AUTHOR' | translate }}</small>
+  </div>
+  <div class="list-group list-group-flush">
+    <a routerLink="/experiments/list" class="list-group-item list-group-item-action bg-light" routerLinkActive="active" (click)="handleCloseSidebar()"><i class="fas fa-stethoscope"></i>
+      {{ 'EXPERIMENTS.TITLE' | translate }}
+    </a>
+    <a routerLink="/results/list" class="list-group-item list-group-item-action bg-light" routerLinkActive="active" (click)="handleCloseSidebar()"><i class="fas fa-poll"></i>
+      {{ 'EXPERIMENT_RESULTS.TITLE' | translate }}
+    </a>
+    <a routerLink="/settings/index" class="list-group-item list-group-item-action bg-light" routerLinkActive="active" (click)="handleCloseSidebar()"><i class="fas fa-cog"></i>
+      {{ 'SETTINGS.TITLE' | translate }}
+    </a>
+    <a routerLink="/help" class="list-group-item list-group-item-action bg-light" routerLinkActive="active" (click)="handleCloseSidebar()"><i class="fas fa-question"></i>
+      {{ 'HELP.TITLE' | translate }}
+    </a>
+    <a routerLink="/about" class="list-group-item list-group-item-action bg-light" routerLinkActive="active" (click)="handleCloseSidebar()"><i class="fas fa-info"></i>
+      {{ 'ABOUT.TITLE' | translate }}
+    </a>
+  </div>
+</div>

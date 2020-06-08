@@ -1,0 +1,89 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { Observable, of } from "rxjs";
+import { ToastrService } from 'ngx-toastr';
+
+import { InformDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+
+import { ParamConfigExperimentsComponent } from './param-config-experiments/param-config-experiments.component';
+import { SettingsFacade } from "@diplomka-frontend/stim-feature-settings/domain";
+import { SettingsStateType } from "../../../../domain/src/lib/domain/settings-state-type";
+
+@Component({
+  selector: 'stim-feature-settings-param-config',
+  templateUrl: './param-config.component.html',
+  styleUrls: ['./param-config.component.sass']
+})
+export class ParamConfigComponent implements OnInit {
+
+  @ViewChild('modal', {static: true}) modal: ModalComponent;
+
+  form: FormGroup = new FormGroup({
+    application: new FormGroup({
+      language: new FormControl(null, [Validators.required]),
+      disableTutorial: new FormControl(null)
+    }),
+    experiments: ParamConfigExperimentsComponent.createForm(),
+    player: new FormGroup({}),
+    results: new FormGroup({})
+  });
+  server: FormGroup = new FormGroup({
+    autoconnectToStimulator: new FormControl(),
+    serial: new FormGroup({
+      baudRate: new FormControl(null, Validators.required),
+      dataBits: new FormControl(null),
+      stopBits: new FormControl(null),
+      parity: new FormControl(null)
+    }),
+    stimulatorResponseTimeout: new FormControl(null, Validators.min(500))
+  });
+
+  private _originalLanguage: string;
+
+  constructor(private readonly _service: SettingsFacade,
+              private readonly _toastr: ToastrService) { }
+
+  ngOnInit() {
+  //   this.form.setValue(this._service.settings);
+  //   this._originalLanguage = this._service.settings.application.language;
+  //   this._service.loadServerSettings()
+  //       .then((serverSettings: ServerSettings) => {
+  //         this.server.patchValue(serverSettings);
+  //       });
+  }
+
+  handleSaveSettings() {
+  //   this._service.settings = this.form.value;
+  //   this._service.uploadServerSettings(this.server.value).then();
+  //   if (this._service.settings.application.language !== this._originalLanguage) {
+  //     this.modal.showComponent = InformDialogComponent;
+  //     this.modal.open({
+  //       message: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.CHANGE_LANGUAGE_INFORMATION'
+  //     });
+  //   }
+  }
+
+  get application(): FormGroup {
+    return this.form.get('application') as FormGroup;
+  }
+
+  get experiments(): FormGroup {
+    return this.form.get('experiments') as FormGroup;
+  }
+
+  get player(): FormGroup {
+    return this.form.get('player') as FormGroup;
+  }
+
+  get results(): FormGroup {
+    return this.form.get('results') as FormGroup;
+  }
+
+  get settingsState(): Observable<SettingsStateType> {
+    return of(undefined);
+  }
+  // get working(): Observable<boolean> {
+  //   return this._service.working$;
+  // }
+}

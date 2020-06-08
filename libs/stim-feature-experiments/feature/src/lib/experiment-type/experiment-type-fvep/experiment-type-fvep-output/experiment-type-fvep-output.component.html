@@ -1,0 +1,68 @@
+<div [formGroup]="form">
+  <div formArrayName="outputs">
+    <div *ngFor="let output of outputs | experimentTypeFvepOutputCount:count; let i=index">
+      <div class="row experiment-property" [attr.data-content]="(i+1)" [formGroupName]="i">
+
+        <div class="col-md-12">
+          <h5>{{ 'EXPERIMENTS.EXPERIMENT.OUTPUT_PARAMETERS' | translate }}</h5>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <input type="radio" [name]="'fvep-input-type-time_' + i" [checked]="activeSide[i].left" (change)="handleChangeActiveSide(i)">
+        </div>
+        <div class="col-sm-6 d-none d-md-block">
+          <input type="radio" [name]="'fvep-input-type-ratio-up_' + i" [checked]="activeSide[i].right" (change)="handleChangeActiveSide(i)">
+        </div>
+        <div class="col-12 col-sm-6 col-md-3" >
+          <div class="form-group">
+            <label [for]="'fvep-time-on_' + i">{{ 'EXPERIMENTS.EXPERIMENT.FVEP.OUTPUT.TIME_ON' | translate }}</label>
+            <input type="number" [id]="'fvep-time-on_' + i" class="form-control form-control-sm fvep-time-on" [class.is-valid]="timeOn(i).valid" [class.is-invalid]="timeOn(i).invalid" [attr.disabled]="!activeSide[i].left ? '' : null" formControlName="timeOn" (change)="handleTimeChange($event, i)">
+            <small *ngIf="timeOn(i).touched && timeOn(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="timeOn(i).touched && timeOn(i).errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: timeOn(i).errors?.exclusiveMin.exclusiveMin} }}</small>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3" >
+          <div class="form-group">
+            <label [for]="'fvep-time-off_' + i">{{ 'EXPERIMENTS.EXPERIMENT.FVEP.OUTPUT.TIME_OFF' | translate }}</label>
+            <input type="number" [id]="'fvep-time-off_' + i" class="form-control form-control-sm fvep-time-off" [class.is-valid]="timeOff(i).valid" [class.is-invalid]="timeOff(i).invalid" [attr.disabled]="!activeSide[i].left ? '' : null" formControlName="timeOff" (change)="handleTimeChange($event, i)">
+            <small *ngIf="timeOff(i).touched && timeOff(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="timeOff(i).touched && timeOff(i).errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: timeOff(i).errors?.exclusiveMin.exclusiveMin} }}</small>
+          </div>
+        </div>
+        <div class="col-12 d-block d-md-none">
+          <input type="radio" [name]="'fvep-input-type-ratio-down_' + i" [checked]="activeSide[i].right" (change)="handleChangeActiveSide(i)">
+        </div>
+        <div class="col-12 col-sm-6 col-md-3" >
+          <div class="form-group">
+            <label [for]="'fvep-frequency_' + i">{{ 'EXPERIMENTS.EXPERIMENT.FVEP.OUTPUT.FREQUENCY' | translate }}</label>
+            <input type="number" [id]="'fvep-frequency_' + i" class="form-control form-control-sm fvep-frequency" [class.is-valid]="frequency(i).valid" [class.is-invalid]="frequency(i).invalid" [attr.disabled]="!activeSide[i].right ? '' : null" formControlName="frequency" (change)="handleRatioChange($event, i)">
+            <small *ngIf="frequency(i).touched && frequency(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="frequency(i).touched && frequency(i).errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: frequency(i).errors?.exclusiveMin.exclusiveMin} }}</small>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3" >
+          <div class="form-group">
+            <label [for]="'fvep-duty-cycle_' + i">{{ 'EXPERIMENTS.EXPERIMENT.FVEP.OUTPUT.DUTY_CYCLE' | translate }}</label>
+            <input type="number" [id]="'fvep-duty-cycle_' + i" class="form-control form-control-sm fvep-duty-cycle" [class.is-valid]="dutyCycle(i).valid" [class.is-invalid]="dutyCycle(i).invalid" [attr.disabled]="!activeSide[i].right ? '' : null" formControlName="dutyCycle" (change)="handleRatioChange($event, i)">
+            <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="dutyCycle(i).touched && dutyCycle(i).errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: dutyCycle(i).errors?.exclusiveMin.exclusiveMin} }}</small>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label [for]="'fvep-brightness_' + i">{{ 'EXPERIMENTS.EXPERIMENT.FVEP.OUTPUT.BRIGHTNESS' | translate }}</label>
+            <ng5-slider [id]="'fvep-brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions" class="fvep-brightness"></ng5-slider>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness(i).errors?.min.min} }}</small>
+            <small *ngIf="brightness(i).touched && brightness(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness(i).errors?.max.max} }}</small>
+            <small *ngIf="brightness(i).value == 0" class="form-text text-muted">{{ 'APP.VALIDATION.ZERO_VALUE' | translate }}</small>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <stim-feature-experiments-output-type [form]="outputType(i)"></stim-feature-experiments-output-type>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

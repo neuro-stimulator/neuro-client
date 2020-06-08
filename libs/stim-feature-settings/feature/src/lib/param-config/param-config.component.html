@@ -1,0 +1,14 @@
+<stim-feature-settings-param-config-application [form]="application"></stim-feature-settings-param-config-application>
+<hr>
+<stim-feature-settings-param-config-server [form]="server"></stim-feature-settings-param-config-server>
+<hr>
+<stim-feature-settings-param-config-experiments [form]="experiments"></stim-feature-settings-param-config-experiments>
+
+<stim-lib-fab
+  [icon]="(settingsState | async).working ? 'fa-save fa-spin' : 'fa-save'"
+  (fabClick)="handleSaveSettings()"
+  [disabled]="form.invalid || (settingsState | async).working ">
+</stim-lib-fab>
+
+
+<stim-lib-modal #modal></stim-lib-modal>

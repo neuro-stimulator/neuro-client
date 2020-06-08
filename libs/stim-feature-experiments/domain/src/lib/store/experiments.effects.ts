@@ -1,0 +1,80 @@
+import { Injectable } from "@angular/core";
+import { catchError, map, switchMap } from "rxjs/operators";
+
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Experiment, ResponseObject } from "@stechy1/diplomka-share";
+
+import { ExperimentsService } from "../infrastructure/experiments.service";
+import * as ExperimentsActions from './experiments.actions';
+import { of } from "rxjs";
+
+@Injectable()
+export class ExperimentsEffects {
+
+  constructor(private readonly actions$: Actions,
+              private readonly experiments: ExperimentsService) {}
+
+  all$ = createEffect(() => this.actions$.pipe(
+    ofType(ExperimentsActions.actionExperimentsAllRequest),
+    switchMap((action) => this.experiments.all()),
+    map((response: ResponseObject<Experiment[]>) => {
+      return ExperimentsActions.actionExperimentsAllRequestDone({ experiments: response.data });
+    }),
+    catchError((errorResponse) => {
+      return of(ExperimentsActions.actionExperimentsAllRequestFail({}));
+    })
+  ));
+
+  one$ = createEffect(() => this.actions$.pipe(
+    ofType(ExperimentsActions.actionExperimentsOneRequest),
+    switchMap((action) => this.experiments.one(action.experimentID)),
+    map((response: ResponseObject<Experiment>) => {
+      return ExperimentsActions.actionExperimentsOneRequestDone({ experiment: response.data });
+    }),
+    catchError((errorResponse) => {
+      return of(ExperimentsActions.actionExperimentsOneRequestFail({}));
+    })
+  ));
+
+  insert$ = createEffect(() => this.actions$.pipe(
+    ofType(ExperimentsActions.actionExperimentsInsertRequest),
+    switchMap((action) => this.experiments.insert(action.experiment)),
+    map((response: ResponseObject<Experiment>) => {
+      return ExperimentsActions.actionExperimentsInsertRequestDone({ experiment: response.data });
+    }),
+    catchError((errorResponse) => {
+      return of(ExperimentsActions.actionExperimentsInsertRequestFail({}));
+    })
+  ));
+  update$ = createEffect(() => this.actions$.pipe(
+    ofType(ExperimentsActions.actionExperimentsUpdateRequest),
+    switchMap((action) => this.experiments.update(action.experiment)),
+    map((response: ResponseObject<Experiment>) => {
+      return ExperimentsActions.actionExperimentsUpdateRequestDone({ experiment: response.data });
+    }),
+    catchError((errorResponse) => {
+      return of(ExperimentsActions.actionExperimentsUpdateRequestFail({}));
+    })
+  ));
+  delete$ = createEffect(() => this.actions$.pipe(
+    ofType(ExperimentsActions.actionExperimentsDeleteRequest),
+    switchMap((action) => this.experiments.delete(action.experimentID)),
+    map((response: ResponseObject<Experiment>) => {
+      return ExperimentsActions.actionExperimentsDeleteRequestDone({ experiment: response.data });
+    }),
+    catchError((errorResponse) => {
+      return of(ExperimentsActions.actionExperimentsDeleteRequestFail({}));
+    })
+  ));
+
+  nameExists$ = createEffect(() => this.actions$.pipe(
+    ofType(ExperimentsActions.actionExperimentsNameExistsRequest),
+    switchMap((action) => this.experiments.nameExists(action.name, action.experimentID)),
+    map((response: ResponseObject<{ exists: boolean }>) => {
+      return ExperimentsActions.actionExperimentsNameExistsRequestDone({ exists: response.data.exists });
+    }),
+    catchError((errorResponse) => {
+      return of(ExperimentsActions.actionExperimentsNameExistsRequestFail({}));
+    })
+  ));
+}

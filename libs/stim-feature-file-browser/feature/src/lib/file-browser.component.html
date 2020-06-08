@@ -1,0 +1,66 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" (click)="handleShowDir()"><span class="btn btn-sm btn-link">Domov</span></li>
+<!--    <li class="breadcrumb-item" (click)="handleShowDir(folder)" *ngFor="let folder of folders | async"><span class="btn btn-sm btn-link">{{folder.name}}</span></li>-->
+  </ol>
+</nav>
+
+<div class="row">
+<!--  <div class="col text-center" *ngIf="files.length == 0">-->
+    <h1>Nebyly nalezeny žádné soubory! </h1>
+<!--  </div>-->
+<!--  <div class="col file-entry-wrapper" *ngIf="files.length != 0">-->
+<!--    <div class="file-entry" *ngFor="let file of files">-->
+
+<!--      <div class="file-entry-toolbar">-->
+<!--      <span *ngIf="!file.isDirectory">-->
+<!--        <i [ngClass]="['md-18', file.selected ? 'fas' : 'far', 'fa-circle']"></i>-->
+<!--      </span>-->
+
+<!--        <span class="delete-file float-right" (click)="handleDeleteFile(file)"><i class="fas fa-trash text-danger pointer"></i></span>-->
+<!--      </div>-->
+
+<!--      <div class="file-entry-view text-center" (click)="handleFileEntryClick(file)">-->
+<!--        &lt;!&ndash; Záznam je složka &ndash;&gt;-->
+<!--        <div class="directory" [title]="file.name" *ngIf="file.isDirectory">-->
+<!--          <div>-->
+<!--            <i class="fas fa-folder fa-3x"></i>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Záznam je obrázek &ndash;&gt;-->
+<!--        <div class="image" [title]="file.name" *ngIf="file.isImage">-->
+<!--          <img class="img-thumbnail" [src]="buildImagePath(file.path)" [alt]="file.name">-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Záznam je standartní soubor soubor &ndash;&gt;-->
+<!--        <div class="file" [title]="file.name" *ngIf="!(file.isImage || file.isDirectory)">-->
+<!--          <span>{{file.extention}}</span>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="file-entry-title text-center" [class.image]="file.isImage">-->
+<!--        <small class="d-block text-truncate">{{file.name}}</small>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-8 text-center">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="custom-file">
+          <input type="file" multiple class="custom-file-input" id="fileUpload"
+                 aria-describedby="fileUpload" required="" (change)="onFilesAdded($event)" #inputElement>Nahrajte soubory
+          <label class="custom-file-label" for="fileUpload">Nahrajte soubory</label>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-sm btn-secondary valign-wrapper" (click)="handleCreateFolder()">
+      <i class="fas fa-folder-plus"></i><span> Vytvořit složku</span>
+    </button>
+
+  </div>
+</div>

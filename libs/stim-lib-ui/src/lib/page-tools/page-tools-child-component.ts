@@ -1,4 +1,4 @@
-import { Settings } from "@diplomka-frontend/stim-lib-common";
+import { Settings } from "@diplomka-frontend/stim-feature-settings/domain";
 
 export abstract class PageToolsChildComponent {
 

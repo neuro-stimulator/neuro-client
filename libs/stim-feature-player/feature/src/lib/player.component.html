@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-12">
+    <h1>{{ 'EXPERIMENT_PLAYER.CONTROL_PANEL' | translate }}</h1>
+  </div>
+
+  <div class="col-12" *ngIf="(stimulatorStatus | async) !== ConnectionStatus.CONNECTED">
+    <p>{{ 'EXPERIMENT_PLAYER.STIMULATOR_NOT_CONNECTED' | translate }}</p>
+  </div>
+
+  <div class="col-12 control-panel-toolbar">
+    <button class="btn btn-primary upload"
+            (click)="handleUploadExperiment()"
+            [disabled]="(stimulatorStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[stimulatorState][0]">
+      <i class="fas fa-upload"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.UPLOAD' | translate}}
+    </button>
+    <button class="btn btn-success run"
+            (click)="handleRunExperiment()"
+            [disabled]="(stimulatorStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[stimulatorState][1]">
+      <i class="fas fa-play"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PLAY' | translate}}
+    </button>
+    <button class="btn btn-success pause"
+            (click)="handlePauseExperiment()"
+            [disabled]="(stimulatorStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[stimulatorState][2]">
+      <i class="fas fa-pause"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PAUSE' | translate}}
+    </button>
+    <button class="btn btn-warning finish"
+            (click)="handleFinishExperiment()"
+            [disabled]="(stimulatorStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[stimulatorState][3]">
+      <i class="fas fa-stop"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.FINISH' | translate}}
+    </button>
+    <button class="btn btn-danger clear"
+            (click)="handleClearExperiment()"
+            [disabled]="(stimulatorStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[stimulatorState][4]">
+      <i class="fas fa-eraser"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.CLEAR' | translate}}
+    </button>
+  </div>
+
+  <div class="col-12">
+    <h2>{{ 'EXPERIMENT_PLAYER.EXPERIMENT_VISUALISATION' | translate}}</h2>
+    <div style="width: 100%;">
+      <stim-lib-ui-experiment-viewer *ngIf="outputCount" [incommingEvent]="eventEmitter" [outputCount]="outputCount"></stim-lib-ui-experiment-viewer>
+    </div>
+  </div>
+</div>

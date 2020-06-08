@@ -1,0 +1,22 @@
+<ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="fragment === 'service-state'" [routerLink]="'.'" [fragment]="'service-state'"><i class="fas fa-wifi"></i> {{ 'SETTINGS.SERVICE_STATE.TITLE' | translate}}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="fragment === 'param-config'" [routerLink]="'.'" [fragment]="'param-config'"><i class="fas fa-cubes"></i> {{ 'SETTINGS.PARAM_CONFIG.TITLE' | translate}}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="fragment === 'console'" [routerLink]="'.'" [fragment]="'console'"><i class="fas fa-terminal"></i> {{ 'SETTINGS.CONSOLE.TITLE' | translate}}</a>
+  </li>
+</ul>
+
+<div class="row">
+  <div class="col-12 col-lg-8 offset-lg-2">
+
+    <router-outlet name="settings"></router-outlet>
+<!--    <stim-feature-settings-service-state *ngIf="fragment === 'service-state'"></stim-feature-settings-service-state>-->
+<!--    <stim-feature-settings-param-config *ngIf="fragment === 'param-config'"></stim-feature-settings-param-config>-->
+<!--    <stim-feature-settings-console *ngIf="fragment === 'console'"></stim-feature-settings-console>-->
+
+  </div>
+</div>

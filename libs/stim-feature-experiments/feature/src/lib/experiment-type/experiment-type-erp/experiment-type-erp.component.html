@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col">
+    <form [formGroup]="form">
+
+      <!-- Generická hlavička společná pro všechny experimenty -->
+      <stim-feature-experiments-experiment-type-header [form]="form"></stim-feature-experiments-experiment-type-header>
+
+      <div class="row experiment-property">
+        <div class="col-10">
+          <h4>{{ 'EXPERIMENTS.EXPERIMENT.ERP.TITLE_PARAMS' | translate }}</h4>
+        </div>
+        <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="erpParams" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+
+        <div class="col-12" #erpParams>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <label for="sequence-source-experiment">{{ 'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.AVAILABLE_SEQUENCES' | translate }}</label>
+                <div class="form-row">
+                  <div class="col-12 col-lg-4">
+                    <select id="sequence-source-experiment" class="selectpicker form-control form-control-sm" formControlName="sequenceId" [disabled]="(experimentsState | async).selectedExperiment.isNew">
+                      <option *ngFor="let sequence of (sequences$ | async)" [value]="sequence.id">{{sequence.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-12 col-lg-8 float-md-right">
+                    <a class="btn btn-primary btn-sm" [routerLink]="['/', 'sequences', sequenceId.value || -1]" [class.disabled]="!sequenceId.value"><i class="fas fa-edit"></i> {{ 'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.BUTTON_BAR.EDIT' | translate }}</a>
+                    <button class="btn btn-danger btn-sm ml-2" (click)="handleRemoveSequence()" [disabled]="!sequenceId.value"><i class="fas fa-minus"></i> {{ 'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.BUTTON_BAR.DELETE' | translate }}</button>
+<!--                    <stim-lib-ui-dropdown-btn small="true" [text]="'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.BUTTON_BAR.NEW.TITLE' | translate" class="ml-2" buttonAsLink="true"-->
+<!--                                      [disabled]="isNew"-->
+<!--                                      [icon]="'fa-plus'"-->
+<!--                                      [navigationLink]="['/', 'sequences', 'new']"-->
+<!--                                      [queryParams]="{sourceExperimentId: experiment ? experiment.id : -1}">-->
+<!--                      <a class="dropdown-item" [routerLink]="['/', 'sequences', 'new']" [queryParams]="{sourceExperimentId: experiment ? experiment.id : -1}"><i class="fas fa-hands-helping"></i> {{ 'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.BUTTON_BAR.NEW.WITH_GUIDE' | translate }}</a>-->
+<!--                      <button class="dropdown-item" (click)="handleCreateNewSequenceFast()"><i class="fas fa-bolt"></i> {{ 'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.BUTTON_BAR.NEW.QUICK' | translate }}</button>-->
+<!--                    </stim-lib-ui-dropdown-btn>-->
+                    <a class="btn btn-secondary btn-sm ml-2" [routerLink]="['/', 'sequences']"><i class="fas fa-eye"></i> {{ 'EXPERIMENTS.EXPERIMENT.ERP.SEQUENCE.BUTTON_BAR.EXPLORE' | translate }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-12">
+              <div class="form-group" style="padding-bottom: 5px">
+                <label for="erp-output-count">{{ 'EXPERIMENTS.EXPERIMENT.OUTPUT_COUNT' | translate }}</label>
+                <ng5-slider id="erp-output-count" formControlName="outputCount" [options]="outputCountParams"></ng5-slider>
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 col-md-3">
+              <div class="form-group">
+                <label for="erp-out">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUT' | translate }}</label>
+                <div class="input-group input-group-sm">
+                  <input type="number" id="erp-out" class="form-control" [class.is-valid]="out.valid" [class.is-invalid]="out.invalid" formControlName="out">
+                  <div class="input-group-append">
+                    <span class="input-group-text">ms</span>
+                  </div>
+                </div>
+                <small *ngIf="out.touched && out.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="out.touched && out.errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: out.errors?.exclusiveMin.exclusiveMin} }}</small>
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 col-md-2">
+              <div class="form-group">
+                <label for="erp-wait">{{ 'EXPERIMENTS.EXPERIMENT.ERP.WAIT' | translate }}</label>
+                <div class="input-group input-group-sm">
+                  <input type="number" id="erp-wait" class="form-control" [class.is-valid]="wait.valid" [class.is-invalid]="wait.invalid" formControlName="wait">
+                  <div class="input-group-append">
+                    <span class="input-group-text">ms</span>
+                  </div>
+                </div>
+                <small *ngIf="wait.touched && wait.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="wait.touched && wait.errors?.exclusiveMin" class="form-text text-muted">{{ 'APP.VALIDATION.EXCLUSIVE_MIN' | translate:{exclusiveMin: wait.errors?.exclusiveMin.exclusiveMin} }}</small>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-4 col-md-3">
+              <div class="form-group">
+                <label for="erp-max-dstribution">{{ 'EXPERIMENTS.EXPERIMENT.ERP.MAX_DISTRIBUTION' | translate }}</label>
+                <input type="number" id="erp-max-dstribution" class="form-control form-control-sm" [class.is-valid]="maxDistribution.valid" [class.is-invalid]="maxDistribution.invalid" formControlName="maxDistribution">
+                <small *ngIf="maxDistribution.touched && maxDistribution.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+                <small *ngIf="maxDistribution.touched && maxDistribution.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: maxDistribution.errors?.min.min} }}</small>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-2">
+              <div class="form-group">
+                <label for="erp-random">{{ 'EXPERIMENTS.EXPERIMENT.ERP.RANDOM.TITLE' | translate }}</label>
+                <select name="erp-random" id="erp-random" class="selectpicker form-control form-control-sm" formControlName="random">
+                  <option *ngFor="let random of randoms" [ngValue]="random.id">{{random.name | translate}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-2">
+              <div class="form-group">
+                <label for="erp-edge">{{ 'EXPERIMENTS.EXPERIMENT.ERP.EDGE.TITLE' | translate }}</label>
+                <select name="erp-edge" id="erp-edge" class="selectpicker form-control form-control-sm" formControlName="edge">
+                  <option *ngFor="let edge of edges" [ngValue]="edge.id">{{edge.name | translate}}</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+<!--      <stim-experiment-type-erp-output *ngIf="!isNew"-->
+<!--                                      [form]="form"-->
+<!--                                      [count]="outputCount.value"-->
+<!--                                      [experimentId]="experiment.id"-->
+<!--                                      [experimentLoaded]="experimentLoaded$"-->
+<!--                                      [maxDistribution]="maxDistribution.valueChanges"></stim-experiment-type-erp-output>-->
+
+    </form>
+  </div>
+</div>
+
+<stim-lib-fab
+  [icon]="(experimentsState | async).working ? 'fa-save fa-spin' : 'fa-save'"
+  (fabClick)="handleSaveExperiment()"
+  [disabled]="form.invalid || (experimentsState | async).working ">
+</stim-lib-fab>
+
+
+<stim-lib-modal #modal></stim-lib-modal>

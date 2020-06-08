@@ -212,6 +212,7 @@ export class ListGroupSortFilterService<T> {
   public subscribeEntities(entities: Observable<T[]>): Subscription {
     // Přihlásím se k odběru změn v kolekci s experimenty z hlavní service
     return entities.subscribe((value: T[]) => {
+      console.log(value);
       // Provedu mělkou kopii pole
       this._fuseExperiments.splice(0);
       this._fuseExperiments.push(...value);

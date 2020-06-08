@@ -1,0 +1,72 @@
+<h3>Service status</h3>
+<div class="row service-status server bg-light">
+  <div class="col-6">
+    <i class="fas fa-server" [title]="'SETTINGS.SERVICE_STATE.WEB_SERVER.TITLE' | translate"></i> {{ 'SETTINGS.SERVICE_STATE.WEB_SERVER.TITLE' | translate }}
+  </div>
+  <div class="col-6 text-right">
+    <span *ngIf="(aliveChecker.connectionInformation | async).server === ConnectionStatus.DISCONNECTED"><i class="fas fa-times text-danger"></i> {{ 'SETTINGS.SERVICE_STATE.DISCONNECTED' | translate }}</span>
+    <span *ngIf="(aliveChecker.connectionInformation | async).server === ConnectionStatus.CONNECTED"><i class="fas fa-check text-success"></i> {{ 'SETTINGS.SERVICE_STATE.CONNECTED' | translate }}</span>
+  </div>
+</div>
+<div class="row service-status serial bg-light">
+  <div class="col-6">
+    <i class="fas fa-microchip" [title]="'SETTINGS.SERVICE_STATE.STIMULATOR.TITLE' | translate"></i> {{ 'SETTINGS.SERVICE_STATE.STIMULATOR.TITLE' | translate }}
+  </div>
+  <div class="col-6 text-right">
+    <span *ngIf="(aliveChecker.connectionInformation | async).stimulator === ConnectionStatus.DISCONNECTED"><i class="fas fa-times text-danger"></i> {{ 'SETTINGS.SERVICE_STATE.DISCONNECTED' | translate }}</span>
+    <span *ngIf="(aliveChecker.connectionInformation | async).stimulator === ConnectionStatus.CONNECTED"><i class="fas fa-check text-success"></i> {{ 'SETTINGS.SERVICE_STATE.CONNECTED' | translate }}</span>
+  </div>
+</div>
+<div class="row service-status serial bg-light">
+  <div class="col-6">
+    <i class="fas fa-bullhorn" [title]="'SETTINGS.SERVICE_STATE.AUDIO_IMAGE_PLAYER' | translate"></i>/<i class="fas fa-camera-retro" title="Přehrávač zvuků a obrázků"></i> {{ 'SETTINGS.SERVICE_STATE.AUDIO_IMAGE_PLAYER' | translate }}
+  </div>
+  <div class="col-6 text-right">
+    <span *ngIf="(aliveChecker.connectionInformation | async).external === ConnectionStatus.DISCONNECTED"><i class="fas fa-times text-danger"></i> {{ 'SETTINGS.SERVICE_STATE.DISCONNECTED' | translate }}</span>
+    <span *ngIf="(aliveChecker.connectionInformation | async).external === ConnectionStatus.CONNECTED"><i class="fas fa-check text-success"></i> {{ 'SETTINGS.SERVICE_STATE.CONNECTED' | translate }}</span>
+  </div>
+</div>
+
+<hr>
+
+<h3>{{ 'SETTINGS.SERVICE_STATE.WEB_SERVER.TITLE' | translate }}</h3>
+<div class="row">
+  <div class="col-12">
+    <button class="btn btn-sm btn-success" *ngIf="(aliveChecker.connectionInformation | async).server === ConnectionStatus.DISCONNECTED" (click)="aliveChecker.requestConnect()"><i class="fas fa-sign-in-alt"></i> {{ 'SETTINGS.SERVICE_STATE.WEB_SERVER.BUTTON_BAR.CONNECT' | translate }}</button>
+    <button class="btn btn-sm btn-danger" *ngIf="(aliveChecker.connectionInformation | async).server === ConnectionStatus.CONNECTED" (click)="aliveChecker.requestDisconnect()"><i class="fas fa-sign-in-alt"></i> {{ 'SETTINGS.SERVICE_STATE.WEB_SERVER.BUTTON_BAR.DISCONNECT' | translate }}</button>
+  </div>
+</div>
+<hr>
+
+<h3>{{ 'SETTINGS.SERVICE_STATE.STIMULATOR.TITLE' | translate }}</h3>
+<div class="row mb-2">
+  <div class="col-12 col-sm-6">
+    <button class="btn btn-sm btn-primary" (click)="handleDiscover()" [disabled]="(aliveChecker.connectionInformation | async).stimulator === ConnectionStatus.DISCONNECTED"><i class="fas fa-search"></i> {{ 'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.EXPLORE' | translate }}</button>
+    <button class="btn btn-sm btn-danger" (click)="handleStop()" *ngIf="(aliveChecker.connectionInformation | async).stimulator === ConnectionStatus.CONNECTED"><i class="fas fa-sign-in-alt"></i> {{ 'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.DISCONNECT' | translate }}</button>
+    <button class="btn btn-sm btn-warning d-sm-none" (click)="devices = []" [disabled]="devices.length == 0"><i class="fas fa-trash"></i> {{ 'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.CLEAR_LIST' | translate }}</button>
+  </div>
+  <div class="d-none d-sm-block col-sm-6 text-right">
+    <button class="btn btn-sm btn-warning" (click)="devices = []" [disabled]="devices.length == 0"><i class="fas fa-trash"></i> {{ 'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.CLEAR_LIST' | translate }}</button>
+  </div>
+
+</div>
+<div class="row bg-light pb-2" *ngFor="let device of devices">
+  <div class="col-6">{{device.path}}</div>
+  <div class="col-6 text-right">
+    <button class="btn btn-sm btn-success" [disabled]="(aliveChecker.connectionInformation | async).stimulator === ConnectionStatus.CONNECTED" (click)="handleOpen(device.path)"><i class="fas fa-sign-in-alt"></i> {{ 'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.CONNECT' | translate }}</button>
+  </div>
+</div>
+
+<form [formGroup]="firmwareForm">
+  <div class="row">
+    <div class="col">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFile" (change)="handleFileSelect($event)">
+        <label class="custom-file-label" for="customFile">{{firmwareFilePath || 'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.SELECT_FIRMWARE_FILE' | translate }}</label>
+      </div>
+    </div>
+    <div class="col-12 col-sm-4 text-right">
+      <button class="btn btn-warning" (click)="handleUpdateStimulatorFirmware()" [disabled]="firmwareForm.invalid"><i class="fas fa-meteor"></i> {{ 'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.UPDATE_FIRMWARE' | translate }}</button>
+    </div>
+  </div>
+</form>

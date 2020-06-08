@@ -1,19 +1,19 @@
 <div class="d-flex" id="wrapper">
 
   <!-- Sidebar -->
-  <stim-sidebar></stim-sidebar>
+  <stim-feature-navigation-sidebar></stim-feature-navigation-sidebar>
 
-  <div id="page-content-wrapper" [class.full]="(navigation.showSidebarValue | async) === false">
+  <div id="page-content-wrapper" [class.full]="((navigation.navigationState | async).showSidebar) === false">
 
     <!-- Navigation -->
-    <stim-navigation></stim-navigation>
+    <stim-feature-navigation></stim-feature-navigation>
 
     <!-- Page content -->
     <div class="container-fluid" style="height: calc(100% - 56px); overflow-y: auto">
       <router-outlet></router-outlet>
     </div>
 
-    <div id="page-shadow" *ngIf="navigation.showSidebarValue | async" (click)="navigation.showSidebar = false"></div>
+    <div id="page-shadow" *ngIf="(navigation.navigationState | async).showSidebar" (click)="navigation.showSidebar = false"></div>
   </div>
 
 </div>
