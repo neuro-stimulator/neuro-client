@@ -30,7 +30,7 @@ jobs:
     - name: Build
       run: npm run release
     - name: Test
-      run: npm run test:ci
+      run: npm run test
     - name: Merge code coverage
       run: npm run merge-coverage
     - name: Coveralls
