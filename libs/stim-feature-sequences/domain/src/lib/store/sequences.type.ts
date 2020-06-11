@@ -5,6 +5,7 @@ import { EntityGroup } from '@diplomka-frontend/stim-lib-list-utils';
 
 export interface SequencesState extends AppState  {
   sequences: Sequence[];
+  ghosts: [];
   selectedSequence: {
     sequence: Sequence;
     nameExists: boolean;

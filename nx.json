@@ -52,15 +52,12 @@
     },
     "stim-feature-settings-feature": {
       "tags": [],
-      "implicitDependencies": [
-        "stim-feature-settings-domain",
-        "stim-feature-settings-api"
-      ]
+      "implicitDependencies": ["stim-feature-settings-domain"]
     },
     "stim-feature-settings-domain": {
       "tags": []
     },
-    "stim-feature-settings-api": {
+    "stim-feature-settings-popup": {
       "tags": []
     },
     "stim-feature-stimulator-domain": {
@@ -111,6 +108,24 @@
       "tags": []
     },
     "stim-feature-sequences-domain": {
+      "tags": []
+    },
+    "stim-feature-settings-feature-console": {
+      "tags": []
+    },
+    "stim-feature-settings-feature-param-config": {
+      "tags": []
+    },
+    "stim-feature-settings-feature-service-state": {
+      "tags": []
+    },
+    "stim-feature-settings-feature-param-config-application": {
+      "tags": []
+    },
+    "stim-feature-settings-feature-param-config-experiments": {
+      "tags": []
+    },
+    "stim-feature-settings-feature-param-config-server": {
       "tags": []
     }
   }

@@ -1,12 +1,12 @@
 <section class="row">
   <div class="col-12">
-    <h2 id="sequences-not-found" *ngIf="ghosts.length === 0 && !hasGroups">{{ 'SEQUENCES.NOT_FOUND' | translate}}</h2>
-    <stim-sequence-ghost-item-list [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></stim-sequence-ghost-item-list>
-    <stim-sequence-item-list [sequenceGroups]="groups"
+    <h2 id="sequences-not-found" *ngIf="(state | async).ghosts.length === 0 && !hasGroups">{{ 'SEQUENCES.NOT_FOUND' | translate}}</h2>
+    <stim-feature-sequences-ghost-item-list [ghosts]="(state | async).ghosts" *ngIf="(state | async).ghosts.length !== 0"></stim-feature-sequences-ghost-item-list>
+    <stim-feature-sequences-item-list [sequenceGroups]="groups"
                              (view)="handleView($event)"
                              (delete)="handleDelete($event)"
-                             *ngIf="ghosts.length === 0">
-    </stim-sequence-item-list>
+                             *ngIf="(state | async).ghosts.length === 0">
+    </stim-feature-sequences-item-list>
   </div>
 </section>
 

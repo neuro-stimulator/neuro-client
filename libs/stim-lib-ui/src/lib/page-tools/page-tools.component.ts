@@ -16,6 +16,7 @@ export class PageToolsComponent extends DialogChildComponent implements OnInit {
   private _pageToolsChildComponent: PageToolsChildComponent;
 
   private _confirmSubscription: Subscription;
+  private _cancelSubscription: Subscription;
   private _showSubscription: Subscription;
 
   constructor(private readonly componentFactoryResolver: ComponentFactoryResolver,
@@ -38,14 +39,20 @@ export class PageToolsComponent extends DialogChildComponent implements OnInit {
   }
 
   private _handleConfirm() {
+    this._pageToolsChildComponent.confirm();
     // Získám aktualizovanou část nastavení
-    const settingsPart = this._pageToolsChildComponent.getUpdatedSettingsPart();
+    // const settingsPart = this._pageToolsChildComponent.getUpdatedSettingsPart();
     // Zmerguju novou část s originálním nastavením
     // this._settings.settings = Object.assign(this._settings.settings, settingsPart);
   }
 
+  private _handleCancel() {
+    this._pageToolsChildComponent.cancel();
+  }
+
   ngOnInit() {
       this._preparePageToolsChildComponent(this._viewComponent);
+      this._pageToolsChildComponent.init();
       // const settings: Settings = this._settings.settings;
       // this._pageToolsChildComponent.initSettings(settings);
   }
@@ -57,11 +64,14 @@ export class PageToolsComponent extends DialogChildComponent implements OnInit {
     modal.confirmClose = false;
     modal.confirmDisabled = of(false);
     this._confirmSubscription = modal.confirm.subscribe(() => this._handleConfirm());
+    this._cancelSubscription = modal.cancel.subscribe(() => this._handleCancel());
     this._showSubscription = modal.show.subscribe((args) => this._viewComponent = args[0]);
   }
 
   unbind(modal: ModalComponent) {
     this._confirmSubscription.unsubscribe();
     this._showSubscription.unsubscribe();
+    this._cancelSubscription.unsubscribe();
+    this._pageToolsChildComponent.deinit();
   }
 }

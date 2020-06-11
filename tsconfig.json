@@ -38,8 +38,8 @@
       "@diplomka-frontend/stim-feature-settings/domain": [
         "libs/stim-feature-settings/domain/src/index.ts"
       ],
-      "@diplomka-frontend/stim-feature-settings/api": [
-        "libs/stim-feature-settings/api/src/index.ts"
+      "@diplomka-frontend/stim-feature-settings/popup": [
+        "libs/stim-feature-settings/popup/src/index.ts"
       ],
       "@diplomka-frontend/stim-feature-stimulator/domain": [
         "libs/stim-feature-stimulator/domain/src/index.ts"
@@ -92,6 +92,24 @@
       ],
       "@diplomka-frontend/stim-feature-sequences/domain": [
         "libs/stim-feature-sequences/domain/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-settings/feature/console": [
+        "libs/stim-feature-settings/feature/console/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-settings/feature/param-config": [
+        "libs/stim-feature-settings/feature/param-config/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-settings/feature/service-state": [
+        "libs/stim-feature-settings/feature/service-state/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-settings/feature/param-config/application": [
+        "libs/stim-feature-settings/feature/param-config/application/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-settings/feature/param-config/experiments": [
+        "libs/stim-feature-settings/feature/param-config/experiments/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-settings/feature/param-config/server": [
+        "libs/stim-feature-settings/feature/param-config/server/src/index.ts"
       ]
     }
   },

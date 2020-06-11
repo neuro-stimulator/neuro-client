@@ -1,14 +1,15 @@
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import { environment } from '../../../../../apps/stimulator/src/environments/environment';
+// TODO environment variable
+export const dependencyValidatorPattern = `^[0-${8/*environment.maxOutputCount*/}]x[1-9]+[0-9]*`;
 
-export const dependencyValidatorPattern = `^[0-${environment.maxOutputCount}]x[1-9]+[0-9]*`;
-
-export const outputCountValidatorPattern = `^[0-${environment.maxOutputCount}]{1}$`;
+// TODO environment variable
+export const outputCountValidatorPattern = `^[0-${8/*environment.maxOutputCount*/}]{1}$`;
 
 export const outputCountParams: SliderOptions = {
   floor: 1,
-  ceil: environment.maxOutputCount,
+  // TODO environment variable
+  ceil: 8/*environment.maxOutputCount*/,
   showTicks: true,
   showTicksValues: true,
   tickStep: 1,

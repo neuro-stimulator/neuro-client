@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 
-import { PageToolsChildComponent } from "@diplomka-frontend/stim-lib-ui";
 import { Settings } from "@diplomka-frontend/stim-feature-settings/domain";
-import { ParamConfigExperimentsComponent } from "@diplomka-frontend/stim-feature-settings/feature";
+import { ParamConfigExperimentsComponent } from "@diplomka-frontend/stim-feature-settings/feature/param-config/experiments";
+import { SettingsPopupComponent } from "@diplomka-frontend/stim-feature-settings/popup"
 
 @Component({
   templateUrl: './experiments-page-tools.component.html',
   styleUrls: ['./experiments-page-tools.component.sass']
 })
-export class ExperimentsPageToolsComponent extends PageToolsChildComponent {
+export class ExperimentsPageToolsComponent extends SettingsPopupComponent {
 
   form = ParamConfigExperimentsComponent.createForm();
 

@@ -7,8 +7,9 @@ import { TranslateModule } from "@ngx-translate/core";
 import { Experiment } from "@stechy1/diplomka-share";
 
 import { StimLibUiModule } from "@diplomka-frontend/stim-lib-ui";
-import { ParamConfigModule} from "@diplomka-frontend/stim-feature-settings/feature";
 import { StimLibListUtilsModule } from "@diplomka-frontend/stim-lib-list-utils";
+import { StimFeatureExperimentsDomainModule } from "@diplomka-frontend/stim-feature-experiments/domain";
+import { StimFeatureSettingsFeatureParamConfigExperimentsModule } from "@diplomka-frontend/stim-feature-settings/feature/param-config/experiments";
 
 import { ExperimentsComponent } from "./experiments.component";
 import { ExperimentsItemListComponent } from "./experiment-item-list/experiments-item-list.component";
@@ -38,7 +39,6 @@ import { GROUP_BY_FILTERS, SORT_BY_FILTERS } from "./experiments-filter-paramete
 import { ExperimentsActivate } from "./experiments.activate";
 import { ExperimentsDeactivate } from "./experiments.deactivate";
 import { ExperimentTypeResolverDirective } from "./experiment-type-resolver.directive";
-import { StimFeatureExperimentsDomainModule } from "@diplomka-frontend/stim-feature-experiments/domain";
 
 @NgModule({
   declarations: [
@@ -75,7 +75,7 @@ import { StimFeatureExperimentsDomainModule } from "@diplomka-frontend/stim-feat
 
     StimLibUiModule,
     ExperimentsRoutingModule,
-    ParamConfigModule,
+    StimFeatureSettingsFeatureParamConfigExperimentsModule,
     StimLibListUtilsModule.forChild<Experiment>({
       storageSuffix: 'experiments',
       fuseKeys: ['name', 'tag'],

@@ -6,11 +6,11 @@ import { Options as SliderOptions } from 'ng5-slider';
 
 import { Experiment, ExperimentERP, ExperimentType, OutputDependency } from '@stechy1/diplomka-share';
 
-import { environment } from '../../../../../../../../apps/stimulator/src/environments/environment';
+// import { environment } from '../../../../../../../../apps/stimulator/src/environments/environment';
 import { brightnessSliderOptions } from '../../../experiments.share';
 
 @Component({
-  selector: 'stim-experiment-type-erp-output',
+  selector: 'stim-feature-experiments-type-erp-output',
   templateUrl: './experiment-type-erp-output.component.html',
   styleUrls: ['./experiment-type-erp-output.component.sass'],
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }]
@@ -37,7 +37,8 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   distributionSliderOptions: SliderOptions[] = [];
 
   private _emptyExperiment = true;
-  private _oldOutputCount = environment.maxOutputCount;
+  // TODO environment.variable
+  private _oldOutputCount = 8/*environment.maxOutputCount*/;
   private _maxDistribution = 100;
 
   private _outputCountSubscription: Subscription;
@@ -46,7 +47,8 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   private _maxDistributionChangeSubscription: Subscription;
 
   constructor() {
-    for (let i = 0; i < environment.maxOutputCount; i++) {
+    // TODO environment variable
+    for (let i = 0; i < 8/*environment.maxOutputCount*/; i++) {
       this.distributionSliderOptions.push({...ExperimentTypeErpOutputComponent.GENERAL_DISTRIBUTION_SLIDER_OPTIONS});
     }
   }
@@ -70,7 +72,8 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   ngOnDestroy(): void {
     if (!this._emptyExperiment) {
       this._outputCountSubscription.unsubscribe();
-      for (let i = 0; i < environment.maxOutputCount; i++) {
+      // TODO environment variable
+      for (let i = 0; i < 8/*environment.maxOutputCount*/; i++) {
         this._outputDistributionSubscriptions[i].unsubscribe();
       }
       this._maxDistributionChangeSubscription.unsubscribe();
@@ -158,7 +161,8 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
   }
 
   private _listenOutputDistributionChange() {
-    for (let i = 0; i < environment.maxOutputCount; i++) {
+    // TODO environment variable
+    for (let i = 0; i < 8/*environment.maxOutputCount*/; i++) {
       this._outputDistributionSubscriptions.push(this.distribution(i)
                                                      .valueChanges
                                                      .subscribe((value: number) => this._onOutputDistributionChange(i)));
@@ -170,7 +174,8 @@ export class ExperimentTypeErpOutputComponent implements AfterContentInit, OnDes
       const oldMaxDistribution = this._maxDistribution;
       this._maxDistribution = Math.max(maxDistribution, 0);
 
-      for (let i = 0; i < environment.maxOutputCount; i++) {
+      // TODO environment variable
+      for (let i = 0; i < 8/*environment.maxOutputCount*/; i++) {
         // shorturl.at/ijAFQ
         const newOptions: SliderOptions = Object.assign({}, this.distributionSliderOptions[i]);
         newOptions.ceil = Math.max(this.distributionSliderOptions[i].ceil - oldMaxDistribution + this._maxDistribution, 0);

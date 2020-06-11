@@ -1,9 +1,11 @@
-import { Settings } from "@diplomka-frontend/stim-feature-settings/domain";
-
 export abstract class PageToolsChildComponent {
 
-  public abstract initSettings(settings: Settings): void;
+  public init(): void {}
 
-  public abstract getUpdatedSettingsPart();
+  public deinit(): void {}
+
+  public confirm(): void {}
+
+  public cancel(): void {}
 
 }

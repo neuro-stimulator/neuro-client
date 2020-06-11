@@ -14,17 +14,17 @@ const routes: Routes = [
   },
   {
     path: 'service-state',
-    loadChildren: () => import('./service-state/service-state.module').then((mod) => mod.ServiceStateModule),
+    loadChildren: () => import('@diplomka-frontend/stim-feature-settings/feature/service-state').then((mod) => mod.StimFeatureSettingsFeatureServiceStateModule),
     outlet: 'settings'
   },
   {
     path: 'param-config',
-    loadChildren: () => import('./param-config/param-config.module').then((mod) => mod.ParamConfigModule),
+    loadChildren: () => import('@diplomka-frontend/stim-feature-settings/feature/param-config').then((mod) => mod.StimFeatureSettingsFeatureParamConfigModule),
     outlet: 'settings'
   },
   {
     path: 'console',
-    loadChildren: () => import('./console/console.module').then((mod) => mod.ConsoleModule),
+    loadChildren: () => import('@diplomka-frontend/stim-feature-settings/feature/console').then((mod) => mod.StimFeatureSettingsFeatureConsoleModule),
     outlet: 'settings'
   }
 ];
