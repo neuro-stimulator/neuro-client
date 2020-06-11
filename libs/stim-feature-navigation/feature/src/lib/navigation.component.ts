@@ -6,7 +6,7 @@ import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { PageToolsComponent } from "@diplomka-frontend/stim-lib-ui";
 
 import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.directive';
-import { NavigationFacade, NavigationStateType } from "@diplomka-frontend/stim-feature-navigation/domain";
+import { NavigationFacade, NavigationState } from "@diplomka-frontend/stim-feature-navigation/domain";
 import { Observable } from "rxjs";
 
 @Component({
@@ -65,7 +65,7 @@ export class NavigationComponent implements OnInit {
     this.navigation.toggleSidebarVisibility();
   }
 
-  get navigationState(): Observable<NavigationStateType> {
+  get navigationState(): Observable<NavigationState> {
     return this.navigation.navigationState;
   }
 }

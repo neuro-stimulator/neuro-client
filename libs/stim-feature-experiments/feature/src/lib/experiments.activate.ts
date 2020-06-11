@@ -26,7 +26,7 @@ export class ExperimentsActivate implements CanActivate {
     Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (!ExperimentsActivate.SUPPORTED_EXPERIMENTS.includes(route.params.type)) {
       this.logger.warn('Uživatel se snaží zobrazit nepodporovaný experiment!');
-      this.toastr.warning('Nepodporovaný typ experimentu!');
+      this.toastr.warning(`Nepodporovaný typ experimentu! [${route.params.type}]`);
       return this.router.parseUrl('/experiments');
     }
 

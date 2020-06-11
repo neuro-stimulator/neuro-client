@@ -20,6 +20,7 @@ export class ExperimentResultsFacade extends BaseFacade<ExperimentResult, Experi
 
   protected get baseActions(): BaseActions {
     return {
+      allWithGhosts: { action: ExperimentResultsActions.actionExperimentResultsAllWithGhostRequest},
       all: { action: ExperimentResultsActions.actionExperimentResultsAllRequest},
       one: { action: ExperimentResultsActions.actionExperimentResultsOneRequest, parameterName: 'experimentResultID'},
       insert: { action: ExperimentResultsActions.actionExperimentResultsInsertRequest, parameterName: 'experimentResult'},
@@ -44,9 +45,8 @@ export class ExperimentResultsFacade extends BaseFacade<ExperimentResult, Experi
     this.store.dispatch(ExperimentResultsActions.actionExperimentResultsNameExistsRequest({ name }));
   }
 
-  get state(): Observable<ExperimentResultsState> {
-    // @ts-ignore
-    return this.store.select(fromExperimentResults.experimentResultsReducerKey);
+  protected get stateKey(): string {
+    return fromExperimentResults.experimentResultsReducerKey;
   }
 
 }

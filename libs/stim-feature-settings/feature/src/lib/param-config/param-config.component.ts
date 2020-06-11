@@ -7,8 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { InformDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 
 import { ParamConfigExperimentsComponent } from './param-config-experiments/param-config-experiments.component';
-import { SettingsFacade } from "@diplomka-frontend/stim-feature-settings/domain";
-import { SettingsStateType } from "../../../../domain/src/lib/domain/settings-state-type";
+import { SettingsFacade, SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
 
 @Component({
   selector: 'stim-feature-settings-param-config',
@@ -80,8 +79,8 @@ export class ParamConfigComponent implements OnInit {
     return this.form.get('results') as FormGroup;
   }
 
-  get settingsState(): Observable<SettingsStateType> {
-    return of(undefined);
+  get settingsState(): Observable<SettingsState> {
+    return this._service.state;
   }
   // get working(): Observable<boolean> {
   //   return this._service.working$;

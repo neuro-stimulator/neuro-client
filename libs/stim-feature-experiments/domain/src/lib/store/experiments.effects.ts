@@ -1,22 +1,27 @@
-import { Injectable } from "@angular/core";
-import { catchError, map, switchMap } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { catchError, delay, map, switchMap, timeout } from 'rxjs/operators';
+import { of } from 'rxjs';
 
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { Experiment, ResponseObject } from "@stechy1/diplomka-share";
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { ExperimentsService } from "../infrastructure/experiments.service";
+import { Experiment, ExperimentType, ResponseObject } from '@stechy1/diplomka-share';
+
+import { ExperimentsService } from '../infrastructure/experiments.service';
 import * as ExperimentsActions from './experiments.actions';
-import { of } from "rxjs";
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ExperimentsEffects {
 
   constructor(private readonly actions$: Actions,
-              private readonly experiments: ExperimentsService) {}
+              private readonly experiments: ExperimentsService,
+              private readonly router: Router) {}
 
   all$ = createEffect(() => this.actions$.pipe(
-    ofType(ExperimentsActions.actionExperimentsAllRequest),
+    ofType(ExperimentsActions.actionExperimentsAllRequest,
+      ExperimentsActions.actionExperimentsAllWithGhostRequest),
     switchMap((action) => this.experiments.all()),
+    delay(1000),
     map((response: ResponseObject<Experiment[]>) => {
       return ExperimentsActions.actionExperimentsAllRequestDone({ experiments: response.data });
     }),
@@ -40,12 +45,17 @@ export class ExperimentsEffects {
     ofType(ExperimentsActions.actionExperimentsInsertRequest),
     switchMap((action) => this.experiments.insert(action.experiment)),
     map((response: ResponseObject<Experiment>) => {
+      this.router.navigate(['/experiments', ExperimentType[response.data.type].toLowerCase(), response.data.id])
       return ExperimentsActions.actionExperimentsInsertRequestDone({ experiment: response.data });
     }),
     catchError((errorResponse) => {
       return of(ExperimentsActions.actionExperimentsInsertRequestFail({}));
     })
   ));
+  // afterInsertRedirect = createEffect(() => this.actions$.pipe(
+  //   ofType(ExperimentsActions.actionExperimentsInsertRequestDone),
+  //   tap((action) => )
+  // ));
   update$ = createEffect(() => this.actions$.pipe(
     ofType(ExperimentsActions.actionExperimentsUpdateRequest),
     switchMap((action) => this.experiments.update(action.experiment)),

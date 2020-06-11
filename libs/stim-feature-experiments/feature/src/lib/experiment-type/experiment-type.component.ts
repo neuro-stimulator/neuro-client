@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 import { ExperimentType, experimentTypeFromRaw } from '@stechy1/diplomka-share';
 
-import { ExperimentsFacade, ExperimentsStateType } from "@diplomka-frontend/stim-feature-experiments/domain";
+import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
 
 import { ExperimentTypeResolverDirective } from "../experiment-type-resolver.directive";
 import { ExperimentTypeNoneComponent } from './experiment-type-none/experiment-type-none.component';
@@ -62,8 +62,8 @@ export class ExperimentTypeComponent implements OnInit, OnDestroy, ComponentCanD
   //   return this.experimentTypeResolver.experimentComponent.canDeactivate();
   }
 
-  get experimentsState(): Observable<ExperimentsStateType> {
-    return this._service.experimentsState;
+  get experimentsState(): Observable<ExperimentsState> {
+    return this._service.state;
   }
 
 }

@@ -36,8 +36,8 @@
 </div>
 
 <stim-lib-fab
-  [icon]="(experimentResultsState | async).working ? 'fa-save fa-spin' : 'fa-save'"
+  [icon]="(state | async).working ? 'fa-save fa-spin' : 'fa-save'"
   (fabClick)="handleSaveExperimentResult()"
-  [disabled]="form.invalid || (experimentResultsState | async).working ">
+  [disabled]="form.invalid || (state | async).working ">
 </stim-lib-fab>
 

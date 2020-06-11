@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider';
 
-import { createEmptyExperimentERP, Edge, ExperimentERP, ExperimentType, Random, Sequence } from '@stechy1/diplomka-share';
+import { createEmptyExperimentERP, Edge, ExperimentERP, Random, Sequence } from '@stechy1/diplomka-share';
 
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 
@@ -32,13 +32,10 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
 
   constructor(service: ExperimentsFacade,
               private readonly sequenceService: SequencesFacade,
-              toastr: ToastrService,
-              router: Router,
               route: ActivatedRoute,
-              navigation: NavigationFacade,
               nameValidator: ExperimentNameValidator,
               logger: NGXLogger) {
-    super(service, toastr, router, route, navigation, nameValidator, logger);
+    super(service, route, nameValidator, logger);
     // this._experimentLoaded$.subscribe((experiment: ExperimentERP) => this._handleLoadedExperiment(experiment));
   }
 

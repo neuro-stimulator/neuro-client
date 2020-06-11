@@ -34,13 +34,9 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
   };
 
   constructor(service: ExperimentsFacade,
-              toastr: ToastrService,
-              router: Router,
               route: ActivatedRoute,
-              navigation: NavigationFacade,
-              nameValidator: ExperimentNameValidator,
               logger: NGXLogger) {
-    super(service, toastr, router, route, navigation, nameValidator, logger);
+    super(service, route, new ExperimentNameValidator(service), logger);
   }
 
   ngOnInit() {

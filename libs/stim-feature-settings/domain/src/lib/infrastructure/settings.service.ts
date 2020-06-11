@@ -8,6 +8,7 @@ import { ResponseObject } from '@stechy1/diplomka-share';
 import { TOKEN_SETTINGS_API_URL } from "@diplomka-frontend/stim-lib-common";
 
 import { ServerSettings, Settings } from "../..";
+import { NGXLogger } from 'ngx-logger';
 
 
 @Injectable({
@@ -30,15 +31,18 @@ export class SettingsService {
 
   constructor(@Inject(TOKEN_SETTINGS_API_URL) private readonly apiURL: string,
               private readonly _http: HttpClient,
-              private readonly _storage: LocalStorageService) {
+              private readonly _storage: LocalStorageService,
+              private readonly logger: NGXLogger) {
     // this._loadSettings();
   }
 
   public loadLocalSettings(): Settings {
+    this.logger.info('Načítám lokální nastavení aplikace...')
     return this._storage.get<Settings>(SettingsService.SETTINGS_STORAGE_KEY);
   }
 
   public loadServerSettings(): Observable<ResponseObject<ServerSettings>> {
+    this.logger.info('Odesílám požadavek pro získání uživatelského nastavení na serveru...');
     return this._http.get<ResponseObject<ServerSettings>>(this.apiURL)
   }
 

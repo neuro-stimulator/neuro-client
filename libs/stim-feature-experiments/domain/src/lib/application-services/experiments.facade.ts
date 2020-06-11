@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
 
 import { Store } from "@ngrx/store";
 
@@ -21,6 +20,7 @@ export class ExperimentsFacade extends BaseFacade<Experiment, ExperimentsState> 
 
   protected get baseActions(): BaseActions {
     return {
+      allWithGhosts: { action: ExperimentsActions.actionExperimentsAllWithGhostRequest},
       all: { action: ExperimentsActions.actionExperimentsAllRequest},
       one: { action: ExperimentsActions.actionExperimentsOneRequest, parameterName: 'experimentID'},
       insert: { action: ExperimentsActions.actionExperimentsInsertRequest, parameterName: 'experiment'},
@@ -34,7 +34,7 @@ export class ExperimentsFacade extends BaseFacade<Experiment, ExperimentsState> 
   }
 
   public save(record: Experiment) {
-    if (record.id === undefined) {
+    if (!record.id) {
       this.insert(record);
     } else {
       this.update(record);
@@ -45,8 +45,7 @@ export class ExperimentsFacade extends BaseFacade<Experiment, ExperimentsState> 
     this.store.dispatch(ExperimentsActions.actionExperimentsNameExistsRequest({ name }));
   }
 
-  get state(): Observable<ExperimentsState> {
-    // @ts-ignore
-    return this.store.select(fromExperiments.experimentsReducerKey);
+  protected get stateKey(): string {
+    return fromExperiments.experimentsReducerKey;
   }
 }

@@ -6,7 +6,6 @@ import { SettingsFacade } from "@diplomka-frontend/stim-feature-settings/domain"
 import { registerLocaleData } from "@angular/common";
 import { NGXLogger } from "ngx-logger";
 import { ConsoleLoggerMonitorService } from "./console-logger-monitor.service";
-// import c from '@angular/common/locales/cs';
 
 @Component({
   selector: "stim-app",

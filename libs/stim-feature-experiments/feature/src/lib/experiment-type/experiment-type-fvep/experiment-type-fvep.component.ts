@@ -25,13 +25,9 @@ import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-
 export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<ExperimentFVEP> implements OnInit {
 
   constructor(service: ExperimentsFacade,
-              toastr: ToastrService,
-              router: Router,
               route: ActivatedRoute,
-              navigation: NavigationFacade,
-              nameValidator: ExperimentNameValidator,
               logger: NGXLogger) {
-    super(service, toastr, router, route, navigation, nameValidator, logger);
+    super(service, route, new ExperimentNameValidator(service), logger);
   }
 
   ngOnInit() {
@@ -76,7 +72,7 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
   }
 
   protected _updateFormGroup(experiment: ExperimentFVEP) {
-    if (experiment.outputs.length > 0) {
+    if (experiment.outputs?.length > 0) {
       // TODO environment variable
       for (let i = 0; i < 8/*environment.maxOutputCount*/; i++) {
         (this.form.get('outputs') as FormArray).push(this._createOutputFormControl());

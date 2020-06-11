@@ -1,8 +1,12 @@
 import { ModuleWithProviders, NgModule } from "@angular/core";
-import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+
+import * as fromSequences from './store/sequences.reducer';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [
+    StoreModule.forFeature(fromSequences.sequencesReducerKey, fromSequences.sequencesReducer)
+  ],
 })
 export class StimFeatureSequencesDomainModule {
   static forRoot(): ModuleWithProviders {

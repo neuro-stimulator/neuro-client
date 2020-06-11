@@ -1,7 +1,8 @@
 import { ServerSettings, Settings } from "../..";
 
 export interface SettingsState {
-  settings: Settings;
+  localSettings: Settings;
+  localSettingsLoaded: boolean;
   serverSettings: ServerSettings;
   working: boolean;
 }

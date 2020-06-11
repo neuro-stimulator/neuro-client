@@ -10,15 +10,17 @@ import { ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
 import { FabListEntry } from '@diplomka-frontend/stim-lib-fab';
 import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
 import { BaseListController, FilterDialogComponent, ListButtonsAddonService } from "@diplomka-frontend/stim-lib-ui";
-import { ExperimentsFacade } from "@diplomka-frontend/stim-feature-experiments/domain";
+import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
 
 import { ExperimentsFilterDialogComponent } from './experiments-filter-dialog/experiments-filter-dialog.component';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   templateUrl: './experiments.component.html',
   styleUrls: ['./experiments.component.sass']
 })
-export class ExperimentsComponent extends BaseListController<Experiment> {
+export class ExperimentsComponent extends BaseListController<Experiment, ExperimentsState> {
 
   private static readonly INTRO_EXPERIMENT: Experiment = {
     id: -1,
@@ -93,5 +95,9 @@ export class ExperimentsComponent extends BaseListController<Experiment> {
 
   protected get introStepsComponentName(): string {
     return 'experiments-steps';
+  }
+
+  protected get records$(): Observable<Experiment[]> {
+    return this.state.pipe(map((state: ExperimentsState) => state.experiments));
   }
 }

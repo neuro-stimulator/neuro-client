@@ -10,15 +10,17 @@ import { ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
 import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
 import { FilterDialogComponent } from "@diplomka-frontend/stim-lib-ui";
 import { ListButtonsAddonService, BaseListController } from "@diplomka-frontend/stim-lib-ui";
-import { SequencesFacade } from "@diplomka-frontend/stim-feature-sequences/domain";
+import { SequencesFacade, SequencesState } from '@diplomka-frontend/stim-feature-sequences/domain';
 
 import { SequencesFilterDialogComponent } from './sequences-filter-dialog/sequences-filter-dialog.component';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   templateUrl: './sequences.component.html',
   styleUrls: ['./sequences.component.sass']
 })
-export class SequencesComponent extends BaseListController<Sequence> {
+export class SequencesComponent extends BaseListController<Sequence, SequencesState> {
 
   private static readonly INTRO_SEQUENCE: Sequence = {
     id: -1,
@@ -71,5 +73,9 @@ export class SequencesComponent extends BaseListController<Sequence> {
 
   protected get introStepsComponentName(): string {
     return 'sequences-steps';
+  }
+
+  protected get records$(): Observable<Sequence[]> {
+    return this.state.pipe(map((state: SequencesState) => state.sequences));
   }
 }

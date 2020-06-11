@@ -9,17 +9,19 @@ import { ExperimentResult, ExperimentType } from '@stechy1/diplomka-share';
 import { ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
 import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
 import { FilterDialogComponent } from "@diplomka-frontend/stim-lib-ui";
-import { ExperimentResultsFacade } from "@diplomka-frontend/stim-feature-experiment-results/domain";
+import { ExperimentResultsFacade, ExperimentResultsState } from '@diplomka-frontend/stim-feature-experiment-results/domain';
 import { BaseListController } from "@diplomka-frontend/stim-lib-ui";
 import { ListButtonsAddonService } from "@diplomka-frontend/stim-lib-ui";
 
 import { ExperimentResultsFilterDialogComponent } from './experiment-results-filter-dialog/experiment-results-filter-dialog.component';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   templateUrl: './experiment-results.component.html',
   styleUrls: ['./experiment-results.component.sass']
 })
-export class ExperimentResultsComponent extends BaseListController<ExperimentResult> {
+export class ExperimentResultsComponent extends BaseListController<ExperimentResult, ExperimentResultsState> {
 
   private static readonly INTRO_EXPERIMENT_RESULT: ExperimentResult = {
     id: -1,
@@ -67,5 +69,9 @@ export class ExperimentResultsComponent extends BaseListController<ExperimentRes
 
   protected get introStepsComponentName(): string {
     return 'experiment-results-steps';
+  }
+
+  protected get records$(): Observable<ExperimentResult[]> {
+    return this.state.pipe(map((state: ExperimentResultsState) => state.experimentResults));
   }
 }

@@ -1,17 +1,22 @@
 <section class="row">
   <div class="col-12">
-    <h2 id="experiments-not-found" *ngIf="ghosts.length === 0 && !hasGroups">{{ 'EXPERIMENTS.NOT_FOUND' | translate}}</h2>
-    <stim-feature-experiments-ghost-item-list [ghosts]="ghosts" *ngIf="ghosts.length !== 0"></stim-feature-experiments-ghost-item-list>
+    <h2 id="experiments-not-found" *ngIf="(state | async).ghosts.length === 0 && !hasGroups">{{ 'EXPERIMENTS.NOT_FOUND' | translate}}</h2>
+    <stim-feature-experiments-ghost-item-list [ghosts]="(state | async).ghosts" *ngIf="(state | async).ghosts.length !== 0"></stim-feature-experiments-ghost-item-list>
     <stim-feature-experiments-item-list [experimentGroups]="groups"
                               (run)="handleRun($event)"
                               (simulate)="handleSimulate($event)"
                               (edit)="handleEdit($event)"
                               (delete)="handleDelete($event)"
-                              *ngIf="ghosts.length === 0">
+                              *ngIf="(state | async).ghosts.length === 0">
     </stim-feature-experiments-item-list>
   </div>
 </section>
 
-<stim-lib-fab icon="fa-plus-circle" [fabButtons]="fabButtonList" (fabClick)="handleNewExperiment($event)" class="experiment-new"></stim-lib-fab>
+<stim-lib-fab icon="fa-plus-circle"
+              class="experiment-new"
+              [fabButtons]="fabButtonList"
+              (fabClick)="handleNewExperiment($event)"
+              [disabled]="(state | async).working">
+</stim-lib-fab>
 
 <stim-lib-modal #modal></stim-lib-modal>

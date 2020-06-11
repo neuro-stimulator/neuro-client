@@ -1,19 +1,17 @@
 import { EventEmitter, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Observable, Subscription} from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
+import { Observable, Subscription } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
-import { Experiment} from '@stechy1/diplomka-share';
+import { Experiment } from '@stechy1/diplomka-share';
 
-import { ExperimentsFacade } from "@diplomka-frontend/stim-feature-experiments/domain";
-import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
-import { ExperimentsStateType } from "@diplomka-frontend/stim-feature-experiments/domain";
+import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
 
 import { ExperimentNameValidator } from '../experiment-name-validator';
 import { ComponentCanDeactivate } from '../experiments.deactivate';
+import { map } from 'rxjs/operators';
 
 export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit, OnDestroy, ComponentCanDeactivate {
 
@@ -23,14 +21,14 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   public form: FormGroup;
   // private _connectedSubscription: Subscription;
   // private _workingSubscription: Subscription;
-  // private _experimentsStateSubscription: Subscription;
+  private _experimentsStateSubscription: Subscription;
   // private _isNew = true;
 
   protected constructor(protected readonly _service: ExperimentsFacade,
-                        protected readonly toastr: ToastrService,
-                        protected readonly _router: Router,
+                        // protected readonly toastr: ToastrService,
+                        // protected readonly _router: Router,
                         protected readonly _route: ActivatedRoute,
-                        protected readonly _navigation: NavigationFacade,
+                        // protected readonly _navigation: NavigationFacade,
                         private readonly _nameValidator: ExperimentNameValidator,
                         protected readonly logger: NGXLogger) {
     this.form = new FormGroup(this._createFormControls());
@@ -47,9 +45,9 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
 
     if (experimentId !== undefined) {
       if (isNaN(parseInt(experimentId, 10))) {
-        this.logger.error(`ID experimentu: '${experimentId}' se nepodařilo naparsovat!`);
-        this.toastr.error(`ID experimentu: '${experimentId}' se nepodařilo naparsovat!`);
-        this._router.navigate(['/', 'experiments']);
+        // this.logger.error(`ID experimentu: '${experimentId}' se nepodařilo naparsovat!`);
+        // this.toastr.error(`ID experimentu: '${experimentId}' se nepodařilo naparsovat!`);
+        // this._router.navigate(['/', 'experiments']);
         return;
       }
 
@@ -133,15 +131,22 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   }
 
   ngOnInit(): void {
+    this._experimentsStateSubscription = this._service.state
+                                             .pipe(map((state: ExperimentsState) => state.selectedExperiment.experiment))
+                                             .subscribe((experiment: Experiment) => {
+                                               this._updateFormGroup(experiment as E);
+                                               this._experimentLoaded.next(experiment as E);
+                                               // this._navigation.customNavColor.next(ExperimentType[experiment.type].toLowerCase());
+                                             });
     // this._experimentsStateSubscription = this._service.experimentsState.subscribe((experimentsState: ExperimentsStateType) => {
     //   this._experimentLoaded.next(experimentsState.selectedExperiment.experiment as E);
     // });
     this._route.params.subscribe((params: Params) => {
-    //   // Tento timeout tu bohužel musí být
-    //   // Řeší mi problém "Expression has changed after it was checked."
-    //   setTimeout(() => {
+      // Tento timeout tu bohužel musí být
+      // Řeší mi problém "Expression has changed after it was checked."
+      // setTimeout(() => {
         this._loadExperiment(params['id']);
-    //   }, 10);
+      // }, 10);
     });
     //
     // this._workingSubscription = this.working.subscribe((working: boolean) => {
@@ -154,7 +159,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
   }
 
   ngOnDestroy(): void {
-    // this._experimentsStateSubscription.unsubscribe();
+    this._experimentsStateSubscription.unsubscribe();
     // if (this._connectedSubscription) {
     //   this._connectedSubscription.unsubscribe();
     // }
@@ -199,7 +204,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
     // return this._service.working$;
   // }
 
-  get experimentsState(): Observable<ExperimentsStateType> {
-    return this._service.experimentsState;
+  get experimentsState(): Observable<ExperimentsState> {
+    return this._service.state;
   }
 }

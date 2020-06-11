@@ -25,7 +25,7 @@ export class ExperimentTypeNoneComponent extends BaseExperimentTypeComponent<Exp
               navigation: NavigationFacade,
               nameValidator: ExperimentNameValidator,
               logger: NGXLogger) {
-    super(service, toastr, router, route, navigation, nameValidator, logger);
+    super(service, route, nameValidator, logger);
   }
 
   ngOnInit() {

@@ -1,19 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Observable } from "rxjs";
 
 import { NGXLogger } from 'ngx-logger';
 import { ToastrService } from 'ngx-toastr';
 
-import { ExperimentResultsFacade } from "@diplomka-frontend/stim-feature-experiment-results/domain";
+import { ExperimentResultsFacade, ExperimentResultsState } from '@diplomka-frontend/stim-feature-experiment-results/domain';
 import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
-import { createEmptyExperiment, createEmptyExperimentResult } from "@stechy1/diplomka-share";
-import { Observable } from "rxjs";
-import { ExperimentResultsStateType } from "../../../../domain/src/lib/domain/experiment-results-state-type";
 
 
 @Component({
-  selector: 'stim-feature-experiement-results-experiment-result',
+  selector: 'stim-feature-experiment-results-experiment-result',
   templateUrl: './experiment-result.component.html',
   styleUrls: ['./experiment-result.component.sass']
 })
@@ -128,7 +126,7 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
     // return this._service.dataLink + this._experimentResult.id;
   }
 
-  get experimentResultsState(): Observable<ExperimentResultsStateType> {
-    return this._service.experimentResultsState;
+  get state(): Observable<ExperimentResultsState> {
+    return this._service.state;
   }
 }

@@ -24,13 +24,10 @@ import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-
 export class ExperimentTypeReaComponent extends BaseExperimentTypeComponent<ExperimentREA> implements OnInit {
 
   constructor(service: ExperimentsFacade,
-              toastr: ToastrService,
-              router: Router,
               route: ActivatedRoute,
-              navigation: NavigationFacade,
               nameValidator: ExperimentNameValidator,
               logger: NGXLogger) {
-    super(service, toastr, router, route, navigation, nameValidator, logger);
+    super(service, route, nameValidator, logger);
   }
 
   ngOnInit() {

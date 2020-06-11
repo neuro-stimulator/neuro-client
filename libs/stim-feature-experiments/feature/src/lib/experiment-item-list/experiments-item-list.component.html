@@ -25,22 +25,22 @@
                   <!-- Název experimentu s odkazem na editaci -->
                   <a [routerLink]="['/', 'experiments', ExperimentType[experiment.type].toLowerCase(), experiment.id]" class="experiment-name"><strong>{{experiment.name}}</strong></a>
                   <!-- Obrázková reprezentace použitých typů výstupů -->
-                  <span class="experiment-output" *ngIf="(settings | async).settings.experiments.showOutputType">
+                  <span class="experiment-output" *ngIf="(settings | async).localSettings.experiments.showOutputType">
                         <i class="fas fa-lightbulb" *ngIf="experiment.usedOutputs['led']" title="LED"></i>
                         <i class="fas fa-music" *ngIf="experiment.usedOutputs['audio']" title="Zvuk"></i>
                         <i class="fas fa-image" *ngIf="experiment.usedOutputs['image']" title="Obrázek"></i>
                   </span>
-                  <span *ngIf="(settings | async).settings.experiments.showCreationDate" class="experiment-creation-date"> - <small>{{experiment.created | dateTime:(settings | async).settings.experiments.creationDateFormat}}</small></span>
-                  <span *ngIf="(settings | async).settings.experiments.showOutputCount" class="experiment-output-count float-right" title="Počet použitých výstupů"><i class="fas fa-hashtag"></i> {{experiment.outputCount}}</span>
+                  <span *ngIf="(settings | async).localSettings.experiments.showCreationDate" class="experiment-creation-date"> - <small>{{experiment.created | dateTime:(settings | async).localSettings.experiments.creationDateFormat}}</small></span>
+                  <span *ngIf="(settings | async).localSettings.experiments.showOutputCount" class="experiment-output-count float-right" title="Počet použitých výstupů"><i class="fas fa-hashtag"></i> {{experiment.outputCount}}</span>
                 </div>
               </div>
               <!-- Popis experimentu -->
-              <div class="row" *ngIf="(settings | async).settings.experiments.showDescription">
+              <div class="row" *ngIf="(settings | async).localSettings.experiments.showDescription">
                 <div class="col-12">
                 <small class="text-truncate experiment-description">{{experiment.description || 'Žádný popis není k dispozici...'}}</small>
                 </div>
               </div>
-              <div class="row experiment-tags" *ngIf="(settings | async).settings.experiments.showTags">
+              <div class="row experiment-tags" *ngIf="(settings | async).localSettings.experiments.showTags">
                 <div class="col-12">
                 <span class="badge" *ngFor="let tag of experiment.tags">{{tag}}</span>
                 </div>

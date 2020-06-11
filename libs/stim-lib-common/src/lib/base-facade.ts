@@ -3,6 +3,7 @@ import { ActionCreator, Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
 export interface BaseActions {
+  allWithGhosts: {action: ActionCreator<any, any>};
   all: {action: ActionCreator<any, any>};
   one: {action: ActionCreator<any, any>, parameterName: string};
   insert: {action: ActionCreator<any, any>, parameterName: string};
@@ -14,6 +15,9 @@ export abstract class BaseFacade<T extends BaseRecord, S> {
 
   protected constructor(protected readonly store: Store<S>) {}
 
+  public allWithGhosts() {
+    this.store.dispatch(this.baseActions.allWithGhosts.action({}));
+  }
   public all() {
     this.store.dispatch(this.baseActions.all.action({}));
   }
@@ -40,5 +44,10 @@ export abstract class BaseFacade<T extends BaseRecord, S> {
 
   protected abstract get baseActions(): BaseActions;
 
-  public abstract get state(): Observable<S>;
+  protected abstract get stateKey(): string;
+
+  public get state(): Observable<S> {
+    // @ts-ignore
+    return this.store.select(this.stateKey);
+  }
 }

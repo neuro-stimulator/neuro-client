@@ -1,21 +1,20 @@
 import { OnDestroy, OnInit, Type, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable, Subscription } from 'rxjs';
 
 import { EntityGroup, ListFilterParameters, ListGroupSortFilterService } from "@diplomka-frontend/stim-lib-list-utils";
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { FilterDialogComponent } from "@diplomka-frontend/stim-lib-ui";
 
 import { ListButtonsAddonService } from './list-buttons-addon/list-buttons-addon.service';
-import { BaseFacade, BaseService } from "@diplomka-frontend/stim-lib-common";
-import { Subscription } from "rxjs";
-import { map } from "rxjs/operators";
+import { BaseFacade} from "@diplomka-frontend/stim-lib-common";
 
-export abstract class BaseListController<T> implements OnInit, OnDestroy {
+export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
 
   @ViewChild('modal', {static: true}) modal: ModalComponent;
 
-  ghosts: any[] = [];
+  // ghosts: any[] = [];
 
   // private _filterRequestSubscription: Subscription;
   // private _searchBySubscription: Subscription;
@@ -23,8 +22,7 @@ export abstract class BaseListController<T> implements OnInit, OnDestroy {
   // private _serviceRecordsSubscription: Subscription;
   private _filterEntitiesSubscription: Subscription;
 
-  // TODO odstranit any
-  protected constructor(protected readonly _service: BaseFacade<T, any>,
+  protected constructor(protected readonly _service: BaseFacade<T, S>,
                         private readonly _filterService: ListGroupSortFilterService<T>,
                         private readonly _buttonsAddonService: ListButtonsAddonService,
                         protected readonly _router: Router,
@@ -32,8 +30,8 @@ export abstract class BaseListController<T> implements OnInit, OnDestroy {
                         private readonly _location: Location) {}
 
   ngOnInit() {
-    this._filterService.subscribeEntities(this._service.state.pipe(map(state => state.experiments)));
-    this._service.all();
+    this._filterEntitiesSubscription = this._filterService.subscribeEntities(this.records$);
+    this._service.allWithGhosts();
     // this._buttonsAddonService.addonVisible.next(false);
     // this.ghosts = this._service.makeGhosts();
     // this._filterEntitiesSubscription = this._filterService.subscribeEntities(this._service.records);
@@ -96,6 +94,8 @@ export abstract class BaseListController<T> implements OnInit, OnDestroy {
 
   protected abstract get introStepsComponentName(): string;
 
+  protected abstract get records$(): Observable<T[]>;
+
   get groups(): EntityGroup<T> {
     return this._filterService.records;
   }
@@ -104,4 +104,7 @@ export abstract class BaseListController<T> implements OnInit, OnDestroy {
     return this.groups.length !== 0 && Object.keys(this.groups[0]?.entities)?.length !== 0;
   }
 
+  get state(): Observable<S> {
+    return this._service.state;
+  }
 }

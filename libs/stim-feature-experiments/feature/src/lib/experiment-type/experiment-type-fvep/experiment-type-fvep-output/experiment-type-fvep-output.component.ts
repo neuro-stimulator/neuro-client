@@ -28,8 +28,8 @@ export class ExperimentTypeFvepOutputComponent implements OnInit {
   }
 
   handleChangeActiveSide(i: number) {
-    this.activeSide[i].left = !this.activeSide[i].left;
-    this.activeSide[i].right = !this.activeSide[i].right;
+    // this.activeSide[i].left = !this.activeSide[i].left;
+    // this.activeSide[i].right = !this.activeSide[i].right;
   }
 
   handleTimeChange(event: Event, index: number) {
