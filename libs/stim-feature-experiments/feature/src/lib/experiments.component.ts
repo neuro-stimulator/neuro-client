@@ -15,6 +15,7 @@ import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-fea
 import { ExperimentsFilterDialogComponent } from './experiments-filter-dialog/experiments-filter-dialog.component';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
 
 @Component({
   templateUrl: './experiments.component.html',
@@ -44,12 +45,12 @@ export class ExperimentsComponent extends BaseListController<Experiment, Experim
 
   constructor(service: ExperimentsFacade,
               filterService: ListGroupSortFilterService<Experiment>,
-              buttonsAddonService: ListButtonsAddonService,
+              navigation: NavigationFacade,
               router: Router,
               route: ActivatedRoute,
               location: Location,
               private readonly logger: NGXLogger) {
-    super(service, filterService, buttonsAddonService, router, route, location);
+    super(service, filterService, navigation, router, route, location);
   }
 
   handleEdit(experiment: Experiment) {

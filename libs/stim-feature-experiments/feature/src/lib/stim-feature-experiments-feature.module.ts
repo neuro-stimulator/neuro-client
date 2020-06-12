@@ -39,6 +39,7 @@ import { GROUP_BY_FILTERS, SORT_BY_FILTERS } from "./experiments-filter-paramete
 import { ExperimentsActivate } from "./experiments.activate";
 import { ExperimentsDeactivate } from "./experiments.deactivate";
 import { ExperimentTypeResolverDirective } from "./experiment-type-resolver.directive";
+import { StimFeatureSequencesDomainModule } from "@diplomka-frontend/stim-feature-sequences/domain";
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { ExperimentTypeResolverDirective } from "./experiment-type-resolver.dire
       groupBy: GROUP_BY_FILTERS,
       sortBy: SORT_BY_FILTERS
     }),
-    StimFeatureExperimentsDomainModule.forRoot()
+    StimFeatureExperimentsDomainModule,
+    StimFeatureSequencesDomainModule
   ],
   providers: [
     ExperimentsActivate,

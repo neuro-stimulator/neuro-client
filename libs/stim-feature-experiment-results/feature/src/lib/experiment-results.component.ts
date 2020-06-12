@@ -16,6 +16,7 @@ import { ListButtonsAddonService } from "@diplomka-frontend/stim-lib-ui";
 import { ExperimentResultsFilterDialogComponent } from './experiment-results-filter-dialog/experiment-results-filter-dialog.component';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
 
 @Component({
   templateUrl: './experiment-results.component.html',
@@ -35,12 +36,12 @@ export class ExperimentResultsComponent extends BaseListController<ExperimentRes
 
   constructor(service: ExperimentResultsFacade,
               filterService: ListGroupSortFilterService<ExperimentResult>,
-              buttonsAddonService: ListButtonsAddonService,
+              navigation: NavigationFacade,
               router: Router,
               route: ActivatedRoute,
               location: Location,
               private readonly logger: NGXLogger) {
-    super(service, filterService, buttonsAddonService, router, route, location);
+    super(service, filterService, navigation, router, route, location);
   }
 
   handleView(experimentResult: ExperimentResult) {

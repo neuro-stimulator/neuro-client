@@ -6,6 +6,6 @@ export const actionLocalSettingsRequest = createAction('[Settings] Local setting
 export const actionLocalSettingsDone = createAction('[Settings] Local settings done', props<{settings: Settings}>());
 export const actionLocalSettingsCreate = createAction('[Settings] Local settings create new from default', props<{}>());
 
-export const actionServerSettingsRequest = createAction('[Settings] Server settings request');
+export const actionServerSettingsRequest = createAction('[Settings] Server settings request', props<{}>());
 export const actionServerSettingsDone = createAction('[Settings] Server settings request done', props<{serverSettings: ServerSettings}>());
 export const actionServerSettingsFail = createAction('[Settings] Server settings request fail', props<{}>());

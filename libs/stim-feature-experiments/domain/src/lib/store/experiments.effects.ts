@@ -1,27 +1,46 @@
 import { Injectable } from '@angular/core';
-import { catchError, delay, map, switchMap, timeout } from 'rxjs/operators';
+import { catchError, delay, map, switchMap, timeout, withLatestFrom } from "rxjs/operators";
 import { of } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from "@ngrx/store";
 
 import { Experiment, ExperimentType, ResponseObject } from '@stechy1/diplomka-share';
 
 import { ExperimentsService } from '../infrastructure/experiments.service';
 import * as ExperimentsActions from './experiments.actions';
-import { Router } from '@angular/router';
+import { ExperimentsState } from "./experiments.type";
 
 @Injectable()
 export class ExperimentsEffects {
 
   constructor(private readonly actions$: Actions,
               private readonly experiments: ExperimentsService,
+              private readonly store: Store<ExperimentsState>,
               private readonly router: Router) {}
 
   all$ = createEffect(() => this.actions$.pipe(
-    ofType(ExperimentsActions.actionExperimentsAllRequest,
-      ExperimentsActions.actionExperimentsAllWithGhostRequest),
+    ofType(ExperimentsActions.actionExperimentsAllRequest),
     switchMap((action) => this.experiments.all()),
-    delay(1000),
+    // delay(1000),
+    map((response: ResponseObject<Experiment[]>) => {
+      return ExperimentsActions.actionExperimentsAllRequestDone({ experiments: response.data });
+    }),
+    catchError((errorResponse) => {
+      return of(ExperimentsActions.actionExperimentsAllRequestFail({}));
+    })
+  ));
+  allWithGhosts$ = createEffect(() => this.actions$.pipe(
+    ofType(ExperimentsActions.actionExperimentsAllWithGhostRequest),
+    withLatestFrom(this.store.select("experiments")),
+    switchMap(([action, experiments]) => {
+      if (experiments.length === 0) {
+        return of({ data: experiments });
+      } else {
+        return this.experiments.all();
+      }
+    }),
     map((response: ResponseObject<Experiment[]>) => {
       return ExperimentsActions.actionExperimentsAllRequestDone({ experiments: response.data });
     }),

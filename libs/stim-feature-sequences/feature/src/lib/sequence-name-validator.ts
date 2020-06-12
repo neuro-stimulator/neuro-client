@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { AbstractControl, AsyncValidator, ValidationErrors } from "@angular/forms";
 
-import { SequenceService } from "../../../domain/src/lib/infrastructure/sequence.service";
+import { SequencesFacade } from "@diplomka-frontend/stim-feature-sequences/domain";
+
 
 @Injectable({ providedIn: "root" })
 export class SequenceNameValidator implements AsyncValidator {
 
-  constructor(private readonly _service: SequenceService) {
+  constructor(private readonly _service: SequencesFacade) {
   }
 
   validate(control: AbstractControl): Promise<ValidationErrors> | null {
@@ -17,7 +18,7 @@ export class SequenceNameValidator implements AsyncValidator {
     const experimentID = control.parent.value.id;
 
     // TODO name validator
-    return null;
+    return new Promise(resolve => null);
     // return this._service.nameExists(control.value, experimentID)
     //            .then((nameExists: boolean) => {
     //              return nameExists ? {nameExists: true} : null;

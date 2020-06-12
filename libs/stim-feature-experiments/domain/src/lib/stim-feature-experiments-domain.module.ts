@@ -11,14 +11,17 @@ import { ExperimentsEffects } from "./store/experiments.effects";
     StoreModule.forFeature(fromExperiments.experimentsReducerKey, fromExperiments.experimentsReducer),
     EffectsModule.forFeature([ExperimentsEffects])
   ],
+  providers: [
+    ExperimentsFacade
+  ]
 })
 export class StimFeatureExperimentsDomainModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: StimFeatureExperimentsDomainModule,
-      providers: [
-        ExperimentsFacade
-      ]
-    }
-  }
+  // static forRoot(): ModuleWithProviders {
+  //   return {
+  //     ngModule: StimFeatureExperimentsDomainModule,
+  //     providers: [
+  //       ExperimentsFacade
+  //     ]
+  //   }
+  // }
 }

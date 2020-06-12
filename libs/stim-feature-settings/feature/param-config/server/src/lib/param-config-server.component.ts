@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'stim-feature-settings-param-config-server',
@@ -14,6 +14,19 @@ export class ParamConfigServerComponent implements OnInit {
   public readonly paritys = [ 'none', 'even', 'mark', 'odd', 'space' ];
 
   @Input() form: FormGroup;
+
+  public static createForm(): FormGroup {
+    return new FormGroup({
+      autoconnectToStimulator: new FormControl(),
+      serial: new FormGroup({
+        baudRate: new FormControl(null, Validators.required),
+        dataBits: new FormControl(null),
+        stopBits: new FormControl(null),
+        parity: new FormControl(null)
+      }),
+      stimulatorResponseTimeout: new FormControl(null, Validators.min(500))
+    });
+  }
 
   constructor() { }
 

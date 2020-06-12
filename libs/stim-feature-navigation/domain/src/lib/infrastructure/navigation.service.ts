@@ -1,11 +1,11 @@
-import { Injectable} from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter, map, mergeMap } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from "@angular/router";
+import { filter, map, mergeMap, tap } from "rxjs/operators";
 
 import { Store } from "@ngrx/store";
 
 import { NavigationState } from "../store/navigation.state";
-import * as NavigationActions from '../store/navigation.actions';
+import * as NavigationActions from "../store/navigation.actions";
 
 /**
  * Služba starající se o navigační a postraní lištu
@@ -13,7 +13,7 @@ import * as NavigationActions from '../store/navigation.actions';
  * a obsahuje vlastnosti pro nastavení nadpisu a podnadpisu stránky
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class NavigationService {
 
@@ -52,7 +52,7 @@ export class NavigationService {
      * dosadí ho jako titulek
      */
     this._router.events.pipe(
-      filter((event) => event instanceof NavigationEnd),
+      filter((event: RouterEvent) => event instanceof NavigationEnd),
       map(() => this._route),
       map((route) => {
         while (route.firstChild) {
@@ -60,15 +60,17 @@ export class NavigationService {
         }
         return route;
       }),
-      filter((route) => route.outlet === 'primary'),
-      mergeMap((route) => route.data))
+      filter((route) => route.outlet === "primary"),
+      mergeMap((route) => route.data)
+    )
         .subscribe((event) => {
-          const title = event['title'];
-          const applyCustomNavColor = event['applyCustomNavColor'] !== undefined ? event['applyCustomNavColor'] : false;
-          const pageToolsComponent = event['pageToolsComponent'];
+          const title = event["title"];
+          const applyCustomNavColor = event["applyCustomNavColor"] !== undefined ? event["applyCustomNavColor"] : false;
+          const pageToolsComponent = event["pageToolsComponent"];
           const hasPageTools = pageToolsComponent !== undefined;
+          const addonComponent = event["buttonsAddon"];
           // const navigationChange = event;
-          this.store.dispatch(NavigationActions.actionNavigationChange({ title, applyCustomNavColor, hasPageTools, pageToolsComponent }));
+          this.store.dispatch(NavigationActions.actionNavigationChange({ title, applyCustomNavColor, hasPageTools, pageToolsComponent, addonComponent }));
         });
   }
 
@@ -76,6 +78,6 @@ export class NavigationService {
    * Vrátí pozorovatelnou hodnotu pro viditelnost postraní lišty
    */
   // get showSidebarValue(): Observable<boolean> {
-    // return this._showSidebar;
+  // return this._showSidebar;
   // }
 }

@@ -8,13 +8,13 @@ import { Options as SliderOptions } from 'ng5-slider/options';
 
 import { createEmptyExperimentTVEP, ExperimentTVEP } from '@stechy1/diplomka-share';
 
+import { ExperimentsFacade } from "@diplomka-frontend/stim-feature-experiments/domain";
+import { ShareValidators } from "@diplomka-frontend/stim-lib-ui";
+
 import { outputCountParams } from '../../experiments.share';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
-import { ExperimentsFacade } from "@diplomka-frontend/stim-feature-experiments/domain";
-import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
-import { ShareValidators } from "@diplomka-frontend/stim-lib-ui";
 
 @Component({
   templateUrl: './experiment-type-tvep.component.html',
@@ -26,9 +26,8 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
 
   constructor(service: ExperimentsFacade,
               route: ActivatedRoute,
-              nameValidator: ExperimentNameValidator,
               logger: NGXLogger) {
-    super(service, route, nameValidator, logger);
+    super(service, route, new ExperimentNameValidator(service), logger);
   }
 
   ngOnInit() {
@@ -78,7 +77,7 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
   }
 
   protected _updateFormGroup(experiment: ExperimentTVEP) {
-    if (experiment.outputs.length > 0) {
+    if (experiment.outputs?.length > 0) {
       // TODO environment variable
       for (let i = 0; i < 8/*environment.maxOutputCount*/; i++) {
         (this.form.get('outputs') as FormArray).push(this._createOutputFormControl());

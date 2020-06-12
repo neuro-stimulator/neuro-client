@@ -9,16 +9,15 @@ import { Options as SliderOptions } from 'ng5-slider';
 import { createEmptyExperimentERP, Edge, ExperimentERP, Random, Sequence } from '@stechy1/diplomka-share';
 
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { ExperimentsFacade } from "@diplomka-frontend/stim-feature-experiments/domain";
+import { SequencesFacade } from "@diplomka-frontend/stim-feature-sequences/domain";
+import { ShareValidators } from "@diplomka-frontend/stim-lib-ui";
 
 import { dependencyValidatorPattern, outputCountParams } from '../../experiments.share';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
-import { ExperimentsFacade } from "@diplomka-frontend/stim-feature-experiments/domain";
-import { SequencesFacade } from "@diplomka-frontend/stim-feature-sequences/domain";
-import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
-import { ShareValidators } from "@diplomka-frontend/stim-lib-ui";
 
 @Component({
   templateUrl: './experiment-type-erp.component.html',
@@ -33,9 +32,8 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
   constructor(service: ExperimentsFacade,
               private readonly sequenceService: SequencesFacade,
               route: ActivatedRoute,
-              nameValidator: ExperimentNameValidator,
               logger: NGXLogger) {
-    super(service, route, nameValidator, logger);
+    super(service, route, new ExperimentNameValidator(service), logger);
     // this._experimentLoaded$.subscribe((experiment: ExperimentERP) => this._handleLoadedExperiment(experiment));
   }
 
@@ -108,7 +106,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
   }
 
   protected _updateFormGroup(experiment: ExperimentERP) {
-    if (experiment.outputs.length > 0) {
+    if (experiment.outputs?.length > 0) {
       // TODO environment variable
       for (let i = 0; i < 8/*environment.maxOutputCount*/; i++) {
         (this.form.get('outputs') as FormArray).push(this._createOutputFormControl());

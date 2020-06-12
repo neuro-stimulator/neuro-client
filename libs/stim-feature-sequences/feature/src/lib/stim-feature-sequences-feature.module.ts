@@ -34,7 +34,7 @@ import { SequencesComponent } from "./sequences.component";
       storageSuffix: 'sequences',
       fuseKeys: ['name'],
     }),
-    StimFeatureSequencesDomainModule.forRoot()
+    StimFeatureSequencesDomainModule
   ]
 })
 export class StimFeatureSequencesFeatureModule {}

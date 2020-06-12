@@ -9,7 +9,6 @@ import { Options as SliderOptions } from 'ng5-slider/options';
 import { createEmptyExperimentREA, ExperimentREA, ReaOnResponseFail } from '@stechy1/diplomka-share';
 
 import { ExperimentsFacade } from "@diplomka-frontend/stim-feature-experiments/domain";
-import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
 import { ShareValidators } from "@diplomka-frontend/stim-lib-ui";
 
 import { brightnessSliderOptions, outputCountParams } from '../../experiments.share';
@@ -25,9 +24,8 @@ export class ExperimentTypeReaComponent extends BaseExperimentTypeComponent<Expe
 
   constructor(service: ExperimentsFacade,
               route: ActivatedRoute,
-              nameValidator: ExperimentNameValidator,
               logger: NGXLogger) {
-    super(service, route, nameValidator, logger);
+    super(service, route, new ExperimentNameValidator(service), logger);
   }
 
   ngOnInit() {

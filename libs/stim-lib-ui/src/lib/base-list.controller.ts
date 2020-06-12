@@ -9,6 +9,8 @@ import { FilterDialogComponent } from "@diplomka-frontend/stim-lib-ui";
 
 import { ListButtonsAddonService } from './list-buttons-addon/list-buttons-addon.service';
 import { BaseFacade} from "@diplomka-frontend/stim-lib-common";
+import { map } from "rxjs/operators";
+import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
 
 export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
 
@@ -19,12 +21,12 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
   // private _filterRequestSubscription: Subscription;
   // private _searchBySubscription: Subscription;
   private _filterParametersChangeSubscription: Subscription;
-  // private _serviceRecordsSubscription: Subscription;
+  private _serviceRecordsSubscription: Subscription;
   private _filterEntitiesSubscription: Subscription;
 
   protected constructor(protected readonly _service: BaseFacade<T, S>,
                         private readonly _filterService: ListGroupSortFilterService<T>,
-                        private readonly _buttonsAddonService: ListButtonsAddonService,
+                        private readonly _navigation: NavigationFacade,
                         protected readonly _router: Router,
                         protected readonly _route: ActivatedRoute,
                         private readonly _location: Location) {}
@@ -33,6 +35,10 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
     this._filterEntitiesSubscription = this._filterService.subscribeEntities(this.records$);
     this._service.allWithGhosts();
     // this._buttonsAddonService.addonVisible.next(false);
+    this._navigation.showAddon = false;
+    this._serviceRecordsSubscription = this.records$.subscribe((records: T[]) => {
+      this._navigation.showAddon = records.length !== 0;
+    });
     // this.ghosts = this._service.makeGhosts();
     // this._filterEntitiesSubscription = this._filterService.subscribeEntities(this._service.records);
     // this._service.all()
@@ -54,7 +60,7 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
   //   this._filterRequestSubscription.unsubscribe();
   //   this._searchBySubscription.unsubscribe();
     this._filterParametersChangeSubscription.unsubscribe();
-  //   this._serviceRecordsSubscription.unsubscribe();
+    this._serviceRecordsSubscription.unsubscribe();
     this._filterEntitiesSubscription.unsubscribe();
   // }
   //

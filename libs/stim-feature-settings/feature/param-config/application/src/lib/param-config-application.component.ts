@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { NGXLogger } from 'ngx-logger';
 
@@ -15,6 +15,13 @@ export class ParamConfigApplicationComponent implements OnInit {
   @ViewChild('modal', {static: true}) modal: ModalComponent;
 
   @Input() form: FormGroup;
+
+  public static createForm(): FormGroup {
+    return new FormGroup({
+      language: new FormControl(null, [Validators.required]),
+      disableTutorial: new FormControl(null)
+    });
+  }
 
   constructor(private readonly logger: NGXLogger) { }
 

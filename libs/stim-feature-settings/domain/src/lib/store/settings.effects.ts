@@ -45,10 +45,10 @@ export class SettingsEffects {
     switchMap(() => {
       return this.settings.loadServerSettings().pipe(
         map((response: ResponseObject<ServerSettings>) => {
-          if (!response.data) {
-            return SettingsActions.actionServerSettingsFail({});
-          } else {
+          if (response.data) {
             return SettingsActions.actionServerSettingsDone({ serverSettings: response.data });
+          } else {
+            return SettingsActions.actionServerSettingsFail({});
           }
         })
       );

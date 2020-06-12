@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule } from "@angular/core";
+import { NgModule } from "@angular/core";
 
 import { StimLibCommonModule } from "@diplomka-frontend/stim-lib-common";
 import { StoreModule } from "@ngrx/store";
@@ -8,6 +8,8 @@ import * as fromSettings from './store/settings.reducer';
 import { SettingsEffects } from "./store/settings.effects";
 import { SettingsFacade } from "./application-services/settings.facade";
 import { ConsoleFacade } from "./application-services/console.facade";
+import { LocalSettingsResolver } from "./application-services/local-settings.resolver";
+import { ServerSettingsResolver } from "./application-services/server-settings.resolver";
 
 @NgModule({
   imports: [
@@ -17,7 +19,9 @@ import { ConsoleFacade } from "./application-services/console.facade";
   ],
   providers: [
     SettingsFacade,
-    ConsoleFacade
+    ConsoleFacade,
+    LocalSettingsResolver,
+    ServerSettingsResolver
   ]
 })
 export class StimFeatureSettingsDomainModule {

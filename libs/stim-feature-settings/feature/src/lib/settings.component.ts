@@ -1,29 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from "@angular/router";
 import { SettingsFacade } from "@diplomka-frontend/stim-feature-settings/domain";
+import { Observable, Subscription } from "rxjs";
+import { filter, map, tap } from "rxjs/operators";
 
 
 @Component({
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.sass']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, OnDestroy {
 
-  fragment: string;
+  private _routerSubscription: Subscription;
 
   constructor(private readonly _settings: SettingsFacade,
               private readonly _route: ActivatedRoute,
               private readonly _router: Router) {}
 
   ngOnInit() {
-    this._settings.loadLocalSettings();
-    this._settings.loadServerSettings();
-    // this._route.fragment.subscribe((fragment: string) => {
-    //   this.fragment = fragment;
-    // });
-    // if (this._route.snapshot.fragment === undefined) {
-    //   this._router.navigate([], {fragment: 'service-state', relativeTo: this._route, replaceUrl: true});
-    //   return;
-    // }
+    this._routerSubscription = this._router.events.pipe(
+      filter((event: RouterEvent) => event instanceof NavigationEnd),
+      filter(() => this._router.getCurrentNavigation().extractedUrl !== undefined),
+      map(() => this._router.getCurrentNavigation()
+        .extractedUrl.root.children.primary.children.tab !== undefined)
+    ).subscribe((isActive) => {
+      if (!isActive) {
+        this._router.navigate([{outlets: {tab: ['service-state']}}], { relativeTo: this._route});
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this._routerSubscription.unsubscribe();
   }
 }

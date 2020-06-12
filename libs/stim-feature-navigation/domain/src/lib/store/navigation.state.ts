@@ -14,4 +14,6 @@ export interface NavigationState extends AppState {
   hasPageTools: boolean;
   pageToolsComponent: Type<any>;
   showSidebar: boolean;
+  showAddon: boolean;
+  addonComponent: Type<any>;
 }

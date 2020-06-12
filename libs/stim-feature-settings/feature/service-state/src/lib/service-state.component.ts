@@ -27,7 +27,7 @@ export class ServiceStateComponent implements OnInit {
   ngOnInit() {
   }
 
-  async handleDiscover() {
+  handleDiscover() {
     this._service.discover();
     // this.devices = await this._service.discover();
   }

@@ -1,13 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
-import { Observable, of } from "rxjs";
+import { Observable } from "rxjs";
 import { ToastrService } from 'ngx-toastr';
 
 import { InformDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 
-import { ParamConfigExperimentsComponent } from '../../experiments/src/lib/param-config-experiments.component';
 import { SettingsFacade, SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
+import { ParamConfigExperimentsComponent } from "@diplomka-frontend/stim-feature-settings/feature/param-config/experiments";
+import { ParamConfigServerComponent } from "@diplomka-frontend/stim-feature-settings/feature/param-config/server";
+import { ParamConfigApplicationComponent } from "@diplomka-frontend/stim-feature-settings/feature/param-config/application";
 
 @Component({
   selector: 'stim-feature-settings-param-config',
@@ -19,24 +21,12 @@ export class ParamConfigComponent implements OnInit {
   @ViewChild('modal', {static: true}) modal: ModalComponent;
 
   form: FormGroup = new FormGroup({
-    application: new FormGroup({
-      language: new FormControl(null, [Validators.required]),
-      disableTutorial: new FormControl(null)
-    }),
+    application: ParamConfigApplicationComponent.createForm(),
     experiments: ParamConfigExperimentsComponent.createForm(),
     player: new FormGroup({}),
     results: new FormGroup({})
   });
-  server: FormGroup = new FormGroup({
-    autoconnectToStimulator: new FormControl(),
-    serial: new FormGroup({
-      baudRate: new FormControl(null, Validators.required),
-      dataBits: new FormControl(null),
-      stopBits: new FormControl(null),
-      parity: new FormControl(null)
-    }),
-    stimulatorResponseTimeout: new FormControl(null, Validators.min(500))
-  });
+  server: FormGroup = ParamConfigServerComponent.createForm();
 
   private _originalLanguage: string;
 

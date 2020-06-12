@@ -17,7 +17,7 @@ export class SettingsFacade {
   }
 
   public loadServerSettings() {
-    this.store.dispatch(SettingsActions.actionLocalSettingsRequest({}));
+    this.store.dispatch(SettingsActions.actionServerSettingsRequest({}));
   }
 
   get state(): Observable<SettingsState> {

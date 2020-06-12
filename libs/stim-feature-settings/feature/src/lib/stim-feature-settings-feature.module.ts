@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from "@angular/common";
 
 import { TranslateModule } from "@ngx-translate/core";
 
@@ -13,7 +14,7 @@ import { SettingsComponent } from "./settings.component";
   ],
   imports: [
     TranslateModule,
-    // CommonModule,
+    CommonModule,
     // ReactiveFormsModule,
     //
     // TranslateModule.forChild({

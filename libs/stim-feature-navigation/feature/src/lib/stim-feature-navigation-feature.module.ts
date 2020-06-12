@@ -7,9 +7,9 @@ import { TranslateModule } from "@ngx-translate/core";
 import { StimFeatureNavigationDomainModule } from "@diplomka-frontend/stim-feature-navigation/domain";
 import { StimLibUiModule } from "@diplomka-frontend/stim-lib-ui";
 
-import { NavigationComponent } from "./navigation.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { NavigationButtonsAddonDirective } from "./navigation-buttons-addon.directive";
+import { NavigationComponent } from "./navigation.component";
 
 @NgModule({
   declarations: [
@@ -25,9 +25,9 @@ import { NavigationButtonsAddonDirective } from "./navigation-buttons-addon.dire
     StimFeatureNavigationDomainModule.forRoot()
   ],
   exports: [
-    NavigationComponent,
     SidebarComponent,
-    NavigationButtonsAddonDirective
+    NavigationButtonsAddonDirective,
+    NavigationComponent
   ]
 })
 export class StimFeatureNavigationFeatureModule {}

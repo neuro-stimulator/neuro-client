@@ -5,7 +5,7 @@ import { ServiceStateComponent } from "./service-state.component";
 const routes: Routes = [
   {
     path: '',
-    component: ServiceStateComponent
+    component: ServiceStateComponent,
   }
 ];
 

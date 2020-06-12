@@ -43,7 +43,7 @@ export class SettingsService {
 
   public loadServerSettings(): Observable<ResponseObject<ServerSettings>> {
     this.logger.info('Odesílám požadavek pro získání uživatelského nastavení na serveru...');
-    return this._http.get<ResponseObject<ServerSettings>>(this.apiURL)
+    return this._http.get<ResponseObject<ServerSettings>>(this.apiURL);
   }
 
   // private _loadSettings() {

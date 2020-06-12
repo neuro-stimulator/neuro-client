@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Type } from "@angular/core";
 import { Observable } from "rxjs";
 
 import { Store } from "@ngrx/store";
@@ -29,6 +29,9 @@ export class NavigationFacade {
   }
   set customNavColor(customNavColor: string) {
     this.store.dispatch(NavigationActions.actionCustomNavColorChange({ customNavColor }));
+  }
+  set showAddon(show: boolean) {
+    this.store.dispatch(NavigationActions.actionSetShowAddon({ showAddon: show }));
   }
 
   /**

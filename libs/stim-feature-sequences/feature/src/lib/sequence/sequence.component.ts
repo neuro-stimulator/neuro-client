@@ -8,10 +8,9 @@ import { NGXLogger } from 'ngx-logger';
 
 import { createEmptyExperimentERP, createEmptySequence, Experiment, ExperimentType, Sequence } from '@stechy1/diplomka-share';
 
-import { ExperimentsService } from '../../../../../stim-feature-experiments/domain/src/lib/infrastructure/experiments.service';
-import { SequenceService } from '../../../../domain/src/lib/infrastructure/sequence.service';
 import { SequenceNameValidator } from '../sequence-name-validator';
 import { SequencesFacade } from "@diplomka-frontend/stim-feature-sequences/domain";
+import { ExperimentsFacade } from "@diplomka-frontend/stim-feature-experiments/domain";
 
 @Component({
   selector: 'stim-feature-sequences-sequence',
@@ -57,7 +56,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
   ExperimentType: ExperimentType;
 
   constructor(private readonly _service: SequencesFacade,
-              private readonly _experimetnService: ExperimentsService,
+              private readonly _experimentService: ExperimentsFacade,
               private readonly toastr: ToastrService,
               private readonly _router: Router,
               private readonly _route: ActivatedRoute,
@@ -113,7 +112,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
     // if (this._originalExperimentId !== experimentID) {
     //   this.actualIsOriginal = false;
     // }
-    // this._experimetnService.one(experimentID)
+    // this._experimentService.one(experimentID)
     //     .then((experiment: Experiment) => {
     //       this._experiment = experiment;
     //       this._outputCount.next(this._experiment.outputCount);
