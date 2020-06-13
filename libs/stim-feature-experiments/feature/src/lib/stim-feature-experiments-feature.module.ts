@@ -72,7 +72,7 @@ import { StimFeatureSequencesDomainModule } from "@diplomka-frontend/stim-featur
     CommonModule,
     ReactiveFormsModule,
 
-    TranslateModule.forChild(),
+    TranslateModule,
 
     StimLibUiModule,
     ExperimentsRoutingModule,

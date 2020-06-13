@@ -17,8 +17,7 @@ export function experimentResultsReducer(experimentResultsState: ExperimentResul
         isNew: true
       },
       groups: [],
-      hasGroups: false,
-      working: false
+      hasGroups: false
     },
     on(ExperimentResultsActions.actionExperimentResultsAllRequestDone, (state: ExperimentResultsState, action) => ({
       ...state,
@@ -26,8 +25,7 @@ export function experimentResultsReducer(experimentResultsState: ExperimentResul
       selectedExperimentResult: {
         ...state.selectedExperimentResult,
         experimentResult: { ...state.selectedExperimentResult.experimentResult }
-      },
-      working: false
+      }
     })),
     on(ExperimentResultsActions.actionExperimentResultsEmpty, (state: ExperimentResultsState, action) => ({
       ...state,
@@ -35,8 +33,7 @@ export function experimentResultsReducer(experimentResultsState: ExperimentResul
         ...state.selectedExperimentResult,
         experimentResult: createEmptyExperimentResult(createEmptyExperiment()),
         isNew: true
-      },
-      working: false
+      }
     })),
     on(ExperimentResultsActions.actionExperimentResultsOneRequestDone, (state: ExperimentResultsState, action) => ({
       ...state,
@@ -44,8 +41,7 @@ export function experimentResultsReducer(experimentResultsState: ExperimentResul
       selectedExperimentResult: {
         ...state.selectedExperimentResult,
         experimentResult: { ...action.experimentResult }
-      },
-      working: false
+      }
     })),
 
     on(ExperimentResultsActions.actionExperimentResultsInsertRequestDone, (state: ExperimentResultsState, action) => ({
@@ -55,8 +51,7 @@ export function experimentResultsReducer(experimentResultsState: ExperimentResul
         ...state.selectedExperimentResult,
         experimentResult: { ...action.experimentResult },
         isNew: false
-      },
-      working: false
+      }
     })),
     on(ExperimentResultsActions.actionExperimentResultsUpdateRequestDone, (state: ExperimentResultsState, action) => {
       const index = state.experimentResults
@@ -74,8 +69,7 @@ export function experimentResultsReducer(experimentResultsState: ExperimentResul
           selectedExperimentResult: {
             ...state.selectedExperimentResult,
             experimentResult: { ...action.experimentResult }
-          },
-          working: false
+          }
         });
       }
 
@@ -88,8 +82,7 @@ export function experimentResultsReducer(experimentResultsState: ExperimentResul
         ...state,
         experimentResults: {
           ...state.experimentResults,
-          experimentResults: data,
-          working: false
+          experimentResults: data
         }
       });
 
@@ -103,8 +96,7 @@ export function experimentResultsReducer(experimentResultsState: ExperimentResul
           selectedExperimentResult: {
             ...state.selectedExperimentResult,
             nameExists: action.exists
-          },
-          working: false
+          }
         }
       });
 

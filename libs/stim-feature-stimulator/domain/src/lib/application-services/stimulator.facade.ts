@@ -6,17 +6,17 @@ import { Store } from "@ngrx/store";
 import * as ConnectionActions from '@diplomka-frontend/stim-lib-connection';
 
 import * as StimulatorActions from '../store/stimulator.actions';
-import * as fromStimulator from '../store/stimulator.state';
-import { StimulatorStateType } from "../domain/stimulator-state";
+import * as fromStimulator from '../store/stimulator.reducer';
+import { StimulatorState } from "../store/stimulator.state";
 
 @Injectable()
 export class StimulatorFacade {
 
-  constructor(private readonly store: Store<fromStimulator.StimulatorState>) {}
+  constructor(private readonly store: Store<StimulatorState>) {}
 
 
   public discover() {
-    this.store.dispatch(StimulatorActions.actionStimulatorDiscover({}));
+    this.store.dispatch(StimulatorActions.actionStimulatorDiscoverRequest({}));
   }
   public connect(path: string) {
     this.store.dispatch(ConnectionActions.actionStimulatorConnectRequest({ path }));
@@ -57,7 +57,8 @@ export class StimulatorFacade {
     this.store.dispatch(StimulatorActions.actionCommandStimulatorClearRequest({}));
   }
 
-  get stimulatorState(): Observable<StimulatorStateType> {
-    return this.store.select("stimulatorState");
+  get stimulatorState(): Observable<StimulatorState> {
+    // @ts-ignore
+    return this.store.select(fromStimulator.stimulatorReducerKey);
   }
 }

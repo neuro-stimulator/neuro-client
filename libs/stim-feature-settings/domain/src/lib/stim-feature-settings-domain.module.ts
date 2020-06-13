@@ -10,12 +10,14 @@ import { SettingsFacade } from "./application-services/settings.facade";
 import { ConsoleFacade } from "./application-services/console.facade";
 import { LocalSettingsResolver } from "./application-services/local-settings.resolver";
 import { ServerSettingsResolver } from "./application-services/server-settings.resolver";
+import { StimFeatureStimulatorDomainModule } from "@diplomka-frontend/stim-feature-stimulator/domain";
 
 @NgModule({
   imports: [
     StimLibCommonModule,
     StoreModule.forFeature(fromSettings.settingsReducerKey, fromSettings.settingsReducer),
-    EffectsModule.forFeature([SettingsEffects])
+    EffectsModule.forFeature([SettingsEffects]),
+    StimFeatureStimulatorDomainModule
   ],
   providers: [
     SettingsFacade,

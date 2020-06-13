@@ -15,5 +15,4 @@ export interface SequencesState extends AppState  {
   }
   groups: EntityGroup<Sequence>
   hasGroups: boolean;
-  working: boolean;
 }

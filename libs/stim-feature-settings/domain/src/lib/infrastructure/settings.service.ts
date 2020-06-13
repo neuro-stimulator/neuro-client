@@ -33,7 +33,6 @@ export class SettingsService {
               private readonly _http: HttpClient,
               private readonly _storage: LocalStorageService,
               private readonly logger: NGXLogger) {
-    // this._loadSettings();
   }
 
   public loadLocalSettings(): Settings {
@@ -41,9 +40,19 @@ export class SettingsService {
     return this._storage.get<Settings>(SettingsService.SETTINGS_STORAGE_KEY);
   }
 
+  public saveLocalSettings(settings: Settings): void {
+    this.logger.info("Ukládám lokální nastavení aplikace...")
+    this._storage.set(SettingsService.SETTINGS_STORAGE_KEY, settings);
+  }
+
   public loadServerSettings(): Observable<ResponseObject<ServerSettings>> {
     this.logger.info('Odesílám požadavek pro získání uživatelského nastavení na serveru...');
     return this._http.get<ResponseObject<ServerSettings>>(this.apiURL);
+  }
+
+  public saveServerSettings(settings: ServerSettings): Observable<ResponseObject<ServerSettings>> {
+    this.logger.info("Odesílám požadavek pro uložení uživatelského nastavení na serveru...")
+    return this._http.post<ResponseObject<any>>(this.apiURL, settings);
   }
 
   // private _loadSettings() {

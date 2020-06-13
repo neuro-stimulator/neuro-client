@@ -51,7 +51,7 @@ export class ConsoleComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._serialRawDataSubscription.unsubscribe();
+    // this._serialRawDataSubscription.unsubscribe();
   }
 
   handleClearHistory() {

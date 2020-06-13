@@ -8,7 +8,6 @@ export interface NavigationState extends AppState {
   subtitle: string;
   subtitleArgs: {};
   icon: string;
-  working: boolean;
   applyCustomNavColor: boolean;
   customNavColor: string;
   hasPageTools: boolean;

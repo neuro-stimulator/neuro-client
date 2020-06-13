@@ -15,5 +15,4 @@ export interface ExperimentsState extends AppState {
   }
   groups: EntityGroup<Experiment>
   hasGroups: boolean;
-  working: boolean;
 }

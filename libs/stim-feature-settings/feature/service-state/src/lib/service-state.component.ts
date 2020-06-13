@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { StimulatorFacade } from "@diplomka-frontend/stim-feature-stimulator/domain";
+import { StimulatorFacade, StimulatorState } from "@diplomka-frontend/stim-feature-stimulator/domain";
 import { AliveCheckerFacade, ConnectionStatus } from "@diplomka-frontend/stim-lib-connection";
+import { Observable } from "rxjs";
 
 
 @Component({
@@ -10,9 +11,8 @@ import { AliveCheckerFacade, ConnectionStatus } from "@diplomka-frontend/stim-li
   templateUrl: './service-state.component.html',
   styleUrls: ['./service-state.component.sass']
 })
-export class ServiceStateComponent implements OnInit {
+export class ServiceStateComponent {
 
-  devices = [];
   firmwareForm = new FormGroup({
     text: new FormControl(null),
     firmware: new FormControl(null, [Validators.required])
@@ -24,20 +24,16 @@ export class ServiceStateComponent implements OnInit {
               public readonly aliveChecker: AliveCheckerFacade,
               /*private readonly _ipc: IpcService*/) { }
 
-  ngOnInit() {
-  }
-
   handleDiscover() {
     this._service.discover();
-    // this.devices = await this._service.discover();
   }
 
   async handleOpen(path: string) {
-    // await this._service.open(path);
+    this._service.connect(path);
   }
 
   async handleStop() {
-    // await this._service.stop();
+    this._service.disconnect();
   }
 
   handleFileSelect(event: Event) {
@@ -68,5 +64,9 @@ export class ServiceStateComponent implements OnInit {
 
   get firmwareFilePath() {
     return this.firmwareForm.get('text').value;
+  }
+
+  get state(): Observable<StimulatorState> {
+    return this._service.stimulatorState;
   }
 }

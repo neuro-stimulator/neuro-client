@@ -16,6 +16,9 @@ import { StimFeatureSettingsFeatureParamConfigServerModule } from "@diplomka-fro
     StimFeatureSettingsFeatureParamConfigApplicationModule,
     StimFeatureSettingsFeatureParamConfigExperimentsModule,
     StimFeatureSettingsFeatureParamConfigServerModule,
+  ],
+  exports: [
+    ParamConfigComponent
   ]
 })
 export class StimFeatureSettingsFeatureParamConfigModule {}

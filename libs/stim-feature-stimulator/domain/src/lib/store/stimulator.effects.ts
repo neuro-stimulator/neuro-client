@@ -15,11 +15,12 @@ export class StimulatorEffects {
               private readonly actions$: Actions) {}
 
   discover$ = createEffect(() => this.actions$.pipe(
-    ofType(StimulatorActions.actionStimulatorDiscover),
+    ofType(StimulatorActions.actionStimulatorDiscoverRequest),
     switchMap(() => {
       return this._service.discover().pipe(
         map((response: {data: [{path: string}]}) => {
-          return StimulatorActions.actionStimulatorDiscoveredPaths(response);
+          // TODO error handling
+          return StimulatorActions.actionStimulatorDiscoverDone(response);
         })
       );
     })

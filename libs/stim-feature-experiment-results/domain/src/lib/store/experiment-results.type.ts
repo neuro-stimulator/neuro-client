@@ -9,6 +9,5 @@ export interface ExperimentResultsState {
     isNew: boolean
   },
   groups: [],
-  hasGroups: boolean,
-  working: boolean
+  hasGroups: boolean
 }

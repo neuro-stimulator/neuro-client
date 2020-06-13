@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from "@angular/common";
 
 import { TranslateModule } from "@ngx-translate/core";
 
 import { ConsoleComponent } from "./console.component";
-import { ConsoleRoutingModule } from "./console-routing.module";
 
 @NgModule({
   declarations: [
     ConsoleComponent
   ],
   imports: [
-    ConsoleRoutingModule,
+    // ConsoleRoutingModule,
+    CommonModule,
     TranslateModule
   ],
   exports: [

@@ -8,7 +8,6 @@ export const actionTitleArgsChange = createAction('[Navigation] title args chang
 export const actionSubtitleChange = createAction('[Navigation] subtitle change', props<{ subtitle: string }>());
 export const actionSubtitleArgsChange = createAction('[Navigation] subtitle args change', props<{ subtitleArgs: {} }>());
 export const actionIconChange = createAction('[Navigation] icon change', props<{ icon: string }>());
-export const actionWorkingChange = createAction('[Navigation] working change', props<{ working: boolean }>());
 export const actionCustomNavColorChange = createAction('[Navigation] custom nav color change', props<{ customNavColor: string }>());
 
 export const actionToggleSidebar = createAction('[Navigation] toggleSidebarVisibility sidebar visibility', props<{}>());

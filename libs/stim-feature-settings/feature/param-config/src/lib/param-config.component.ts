@@ -1,15 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-
+import { take, tap } from "rxjs/operators";
 import { Observable } from "rxjs";
+
 import { ToastrService } from 'ngx-toastr';
 
 import { InformDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-
-import { SettingsFacade, SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
+import { SettingsFacade, SettingsState } from "@diplomka-frontend/stim-feature-settings/domain";
 import { ParamConfigExperimentsComponent } from "@diplomka-frontend/stim-feature-settings/feature/param-config/experiments";
 import { ParamConfigServerComponent } from "@diplomka-frontend/stim-feature-settings/feature/param-config/server";
 import { ParamConfigApplicationComponent } from "@diplomka-frontend/stim-feature-settings/feature/param-config/application";
+import { AliveCheckerFacade, ConnectionInformationState } from "@diplomka-frontend/stim-lib-connection";
 
 @Component({
   selector: 'stim-feature-settings-param-config',
@@ -31,18 +32,22 @@ export class ParamConfigComponent implements OnInit {
   private _originalLanguage: string;
 
   constructor(private readonly _service: SettingsFacade,
+              private readonly _connection: AliveCheckerFacade,
               private readonly _toastr: ToastrService) { }
 
   ngOnInit() {
-  //   this.form.setValue(this._service.settings);
-  //   this._originalLanguage = this._service.settings.application.language;
-  //   this._service.loadServerSettings()
-  //       .then((serverSettings: ServerSettings) => {
-  //         this.server.patchValue(serverSettings);
-  //       });
+    this._service.state.pipe(
+      take(1), // Díky funkci take
+      tap((state: SettingsState) => {
+        this.form.setValue(state.localSettings);
+        this.server.patchValue(state.serverSettings);
+      })
+    ).subscribe(); // Nemusím ukládat subscription
   }
 
   handleSaveSettings() {
+    this._service.localSettings = this.form.value;
+    this._service.serverSettings = this.server.value;
   //   this._service.settings = this.form.value;
   //   this._service.uploadServerSettings(this.server.value).then();
   //   if (this._service.settings.application.language !== this._originalLanguage) {
@@ -72,7 +77,8 @@ export class ParamConfigComponent implements OnInit {
   get settingsState(): Observable<SettingsState> {
     return this._service.state;
   }
-  // get working(): Observable<boolean> {
-  //   return this._service.working$;
-  // }
+
+  get connectionState(): Observable<ConnectionInformationState> {
+    return this._connection.state;
+  }
 }

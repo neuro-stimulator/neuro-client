@@ -1,9 +1,10 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { NGXLogger } from 'ngx-logger';
 
 import { ConfirmDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { TOKEN_SUPPORTED_LANGUAGES } from "@diplomka-frontend/stim-lib-common";
 
 @Component({
   selector: 'stim-feature-settings-param-config-application',
@@ -23,7 +24,8 @@ export class ParamConfigApplicationComponent implements OnInit {
     });
   }
 
-  constructor(private readonly logger: NGXLogger) { }
+  constructor(@Inject(TOKEN_SUPPORTED_LANGUAGES) public readonly languages: { value: string, name: string }[],
+              private readonly logger: NGXLogger) { }
 
   ngOnInit() {
   }
@@ -34,11 +36,6 @@ export class ParamConfigApplicationComponent implements OnInit {
 
   get disableTutorial() {
     return this.form.get('disableTutorial');
-  }
-
-  get languages(): { value: string, name: string }[] {
-    return [];
-    // return environment.supportedLanguages;
   }
 
   handleResetTutorial() {

@@ -11,6 +11,7 @@ import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/dom
 
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
+import { AliveCheckerFacade } from "@diplomka-frontend/stim-lib-connection";
 
 @Component({
   templateUrl: './experiment-type-none.component.html',
@@ -23,9 +24,9 @@ export class ExperimentTypeNoneComponent extends BaseExperimentTypeComponent<Exp
               protected readonly router: Router,
               route: ActivatedRoute,
               navigation: NavigationFacade,
-              nameValidator: ExperimentNameValidator,
+              connection: AliveCheckerFacade,
               logger: NGXLogger) {
-    super(service, route, nameValidator, logger);
+    super(service, route, navigation, connection, new ExperimentNameValidator(service), logger);
   }
 
   ngOnInit() {

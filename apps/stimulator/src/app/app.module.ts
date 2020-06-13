@@ -33,6 +33,7 @@ import { ResponseInterceptor } from './share/interceptors/response-interceptor.s
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TOKEN_PROVIDERS } from "./token-providers";
 import { StimFeatureSettingsDomainModule } from "@diplomka-frontend/stim-feature-settings/domain";
+import { StimLibConnectionModule } from "@diplomka-frontend/stim-lib-connection";
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -66,6 +67,7 @@ export function createIntroStepsLoader(http: HttpClient) {
     LoggerModule.forRoot({level: NgxLoggerLevel.TRACE, enableSourceMaps: !environment.production}),
     LocalStorageModule.forRoot({ prefix: 'stim-control', storageType: 'localStorage' }),
     StimLibStoreModule,
+    StimLibConnectionModule.forRoot(),
     StimFeatureSettingsDomainModule,
     StimFeatureNavigationFeatureModule,
 

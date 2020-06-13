@@ -1,7 +1,10 @@
 import { AppState } from "@diplomka-frontend/stim-lib-store";
-import { ConnectionInformation } from "../domain/connection-information";
+import { ConnectionStatus } from "@diplomka-frontend/stim-lib-connection";
 
 export interface ConnectionInformationState extends AppState {
-  connections: ConnectionInformation
-
+  server: ConnectionStatus;
+  serverConnectionFirstTime: boolean;
+  stimulator: ConnectionStatus;
+  external: ConnectionStatus;
+  working: boolean;
 }

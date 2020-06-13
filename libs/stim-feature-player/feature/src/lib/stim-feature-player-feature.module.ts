@@ -20,7 +20,7 @@ import { PlayerRoutingModule } from "./player-routing.module";
     PlayerRoutingModule,
     StimFeatureSettingsFeatureServiceStateModule,
     TranslateModule,
-    StimFeaturePlayerDomainModule.forRoot()
+    StimFeaturePlayerDomainModule
   ]
 })
 export class StimFeaturePlayerFeatureModule {}

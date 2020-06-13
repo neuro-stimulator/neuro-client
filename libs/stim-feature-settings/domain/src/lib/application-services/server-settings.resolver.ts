@@ -22,10 +22,11 @@ export class ServerSettingsResolver implements Resolve<ServerSettings> {
         this._settings.loadServerSettings();
         return this.actions$.pipe(
           // TODO catch fail
-          ofType(SettingsActions.actionServerSettingsDone),
+          ofType(SettingsActions.actionServerSettingsDone, SettingsActions.actionServerSettingsFail),
           take(1),
           map(action => {
-            return action.serverSettings;
+            // @ts-ignore
+            return action?.serverSettings || {};
           })
         );
       })

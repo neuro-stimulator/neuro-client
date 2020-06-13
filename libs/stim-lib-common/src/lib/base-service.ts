@@ -53,6 +53,7 @@ export abstract class BaseService<T extends BaseRecord> {
    * Získá ze serveru všechny záznamy
    */
   public all(): Observable<ResponseObject<T[]>> {
+    this.logger.info("Odesílám požadavek pro získání všech záznamů... ");
     return this._http.get<ResponseObject<T[]>>(this._accessPoint);
     // if (this._records$.getValue().length !== 0) {
     //   return Promise.resolve(this._records$.getValue().length);
@@ -83,6 +84,7 @@ export abstract class BaseService<T extends BaseRecord> {
    * @param recordId ID záznamu, který se má najít
    */
   public one(recordId: number): Observable<ResponseObject<T>> {
+    this.logger.info(`Odesílám požadavek pro získání jednoho záznamu s ID: ${recordId}...`);
     return this._http.get<ResponseObject<T>>(`${this._accessPoint}/${recordId}`);
     // this._working.next(true);
     // return this._http.get<ResponseObject<T>>(`${this._accessPoint}/${recordId}`)
@@ -205,6 +207,7 @@ export abstract class BaseService<T extends BaseRecord> {
    * @return T Záznam, který reprezentuje data na serveru
    */
   protected _insert(data: FormData | T): Observable<ResponseObject<T>> {
+    this.logger.info("Odesílám požadavek s vložením nového záznamu...");
     return this._http.post<ResponseObject<T>>(this._accessPoint, data);
     // this._working.next(true);
     // return this._http.post<ResponseObject<T>>(this._accessPoint, data)
@@ -233,6 +236,7 @@ export abstract class BaseService<T extends BaseRecord> {
    * @return T Záznam, který reprezentuje data na serveru
    */
   protected _update(data: FormData | T): Observable<ResponseObject<T>> {
+    this.logger.info("Odesílám požadavek s aktualizací existujícího záznamu...");
     return this._http.patch<ResponseObject<T>>(this._accessPoint, data);
     // this._working.next(true);
     // return this._http.patch<ResponseObject<T>>(this._accessPoint, data)

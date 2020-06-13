@@ -1,4 +1,4 @@
-import { Injectable, Type } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
 import { Store } from "@ngrx/store";
@@ -23,9 +23,6 @@ export class NavigationFacade {
   }
   set icon(icon: string) {
     this.store.dispatch(NavigationActions.actionIconChange({ icon }));
-  }
-  set working(working: boolean) {
-    this.store.dispatch(NavigationActions.actionWorkingChange({ working }));
   }
   set customNavColor(customNavColor: string) {
     this.store.dispatch(NavigationActions.actionCustomNavColorChange({ customNavColor }));

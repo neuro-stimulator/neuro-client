@@ -341,6 +341,7 @@
     "SERIAL": {
       "STATUS_DISCONNECTED": "Odpojeno",
       "STATUS_CONNECTED": "Připojeno",
+      "STATUS_CONNECTING": "Připojuji...",
       "MESSAGES": {
         "STIMULATOR_WAS_CONNECTED": "Stimulátor byl připojen.",
         "STIMULATOR_WAS_DISCONNECTED": "Stimulátor byl odpojen."

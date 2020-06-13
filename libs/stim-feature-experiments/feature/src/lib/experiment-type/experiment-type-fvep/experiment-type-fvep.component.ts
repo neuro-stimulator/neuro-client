@@ -16,6 +16,7 @@ import { outputCountParams } from '../../experiments.share';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
+import { AliveCheckerFacade } from "@diplomka-frontend/stim-lib-connection";
 
 @Component({
   selector: 'stim-feature-experiments-experiment-type-fvep',
@@ -26,8 +27,10 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
 
   constructor(service: ExperimentsFacade,
               route: ActivatedRoute,
+              navigation: NavigationFacade,
+              connection: AliveCheckerFacade,
               logger: NGXLogger) {
-    super(service, route, new ExperimentNameValidator(service), logger);
+    super(service, route, navigation, connection, new ExperimentNameValidator(service), logger);
   }
 
   ngOnInit() {

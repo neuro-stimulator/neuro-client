@@ -18,8 +18,7 @@ export function sequencesReducer(sequencesState: SequencesState, sequencesAction
         experiments: []
       },
       groups: [],
-      hasGroups: false,
-      working: false
+      hasGroups: false
     },
     on(SequencesActions.actionSequencesAllRequestDone,
       SequencesActions.actionSequencesForExperimentRequestDone, (state: SequencesState, action) => ({
@@ -28,8 +27,7 @@ export function sequencesReducer(sequencesState: SequencesState, sequencesAction
         selectedSequence: {
           ...state.selectedSequence,
           sequence: { ...state.selectedSequence.sequence }
-        },
-        working: false
+        }
       })),
     on(SequencesActions.actionSequencesOneRequestDone, (state: SequencesState, action) => ({
       ...state,
@@ -37,8 +35,7 @@ export function sequencesReducer(sequencesState: SequencesState, sequencesAction
       selectedSequence: {
         ...state.selectedSequence,
         sequence: { ...action.sequence }
-      },
-      working: false
+      }
     })),
 
     on(SequencesActions.actionSequencesInsertRequestDone, (state: SequencesState, action) => ({
@@ -48,8 +45,7 @@ export function sequencesReducer(sequencesState: SequencesState, sequencesAction
         ...state.selectedSequence,
         sequence: { ...action.sequence },
         isNew: false
-      },
-      working: false
+      }
     })),
     on(SequencesActions.actionSequencesUpdateRequestDone, (state: SequencesState, action) => {
       const index = state.sequences
@@ -67,8 +63,7 @@ export function sequencesReducer(sequencesState: SequencesState, sequencesAction
           selectedSequence: {
             ...state.selectedSequence,
             sequence: { ...action.sequence }
-          },
-          working: false
+          }
         });
       }
 
@@ -79,8 +74,7 @@ export function sequencesReducer(sequencesState: SequencesState, sequencesAction
 
       return ({
         ...state,
-        sequences: data,
-        working: false
+        sequences: data
       });
 
     }),
@@ -91,8 +85,7 @@ export function sequencesReducer(sequencesState: SequencesState, sequencesAction
         selectedSequence: {
           ...state.selectedSequence,
           nameExists: action.exists
-        },
-        working: false
+        }
       });
 
     }),
@@ -103,8 +96,7 @@ export function sequencesReducer(sequencesState: SequencesState, sequencesAction
         selectedSequence: {
           ...state.selectedSequence,
           data: [...action.sequenceData]
-        },
-        working: false
+        }
       });
 
     }),
@@ -114,8 +106,7 @@ export function sequencesReducer(sequencesState: SequencesState, sequencesAction
         selectedSequence: {
           ...state.selectedSequence,
           experiments: [...action.experiments]
-        },
-        working: false
+        }
       });
     })
   )(sequencesState, sequencesAction);

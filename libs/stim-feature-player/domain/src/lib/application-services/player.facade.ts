@@ -15,7 +15,7 @@ export class PlayerFacade {
   constructor(private readonly store: Store<any>,
               private readonly stimulator: StimulatorFacade,
               private readonly connections: AliveCheckerFacade) {
-    this.stimulatorOnline$ = connections.connectionInformation.pipe(
+    this.stimulatorOnline$ = connections.state.pipe(
       map((connectionInformation) => connectionInformation.stimulator)
     );
   }

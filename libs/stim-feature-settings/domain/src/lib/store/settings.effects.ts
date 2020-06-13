@@ -40,6 +40,14 @@ export class SettingsEffects {
     })
   ));
 
+  saveLocalSettings$ = createEffect(() => this.actions$.pipe(
+    ofType(SettingsActions.actionSaveLocalSettingsRequest),
+    switchMap((action) => {
+      this.settings.saveLocalSettings(action.settings);
+      return of(SettingsActions.actionSaveLocalSettingsDone({ settings: action.settings }));
+    })
+  ));
+
   serverSettings$ = createEffect(() => this.actions$.pipe(
     ofType(SettingsActions.actionServerSettingsRequest),
     switchMap(() => {
@@ -50,6 +58,18 @@ export class SettingsEffects {
           } else {
             return SettingsActions.actionServerSettingsFail({});
           }
+        })
+      );
+    })
+  ));
+
+  saveServerSettings$ = createEffect(() => this.actions$.pipe(
+    ofType(SettingsActions.actionSaveServerSettingsRequest),
+    switchMap((action) => {
+      return this.settings.saveServerSettings(action.serverSettings).pipe(
+        map((response: ResponseObject<ServerSettings>) => {
+          // TODO error handling
+          return SettingsActions.actionSaveServerSettingsDone({ serverSettings: response.data });
         })
       );
     })

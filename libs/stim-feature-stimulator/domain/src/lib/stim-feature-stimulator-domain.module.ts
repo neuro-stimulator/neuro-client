@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule } from "@angular/core";
+import { NgModule } from "@angular/core";
 
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
@@ -15,14 +15,8 @@ import { StimulatorFacade } from "./application-services/stimulator.facade";
     StoreModule.forFeature(fromStimulator.stimulatorReducerKey, fromStimulator.stimulatorReducer),
     EffectsModule.forFeature([StimulatorEffects])
   ],
+  providers: [
+    StimulatorFacade
+  ]
 })
-export class StimFeatureStimulatorDomainModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: StimFeatureStimulatorDomainModule,
-      providers: [
-        StimulatorFacade
-      ]
-    }
-  }
-}
+export class StimFeatureStimulatorDomainModule {}

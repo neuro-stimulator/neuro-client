@@ -7,6 +7,11 @@ import { StimFeatureSettingsDomainModule } from "@diplomka-frontend/stim-feature
 
 import { SettingsRoutingModule } from "./settings-routing.module";
 import { SettingsComponent } from "./settings.component";
+import { StimFeatureSettingsFeatureServiceStateModule } from "@diplomka-frontend/stim-feature-settings/feature/service-state";
+import { StimFeatureSettingsFeatureConsoleModule } from "@diplomka-frontend/stim-feature-settings/feature/console";
+import { StimFeatureStimulatorDomainModule } from "@diplomka-frontend/stim-feature-stimulator/domain";
+import { StimLibConnectionModule } from "@diplomka-frontend/stim-lib-connection";
+import { StimFeatureSettingsFeatureParamConfigModule } from "@diplomka-frontend/stim-feature-settings/feature/param-config";
 
 @NgModule({
   declarations: [
@@ -25,9 +30,13 @@ import { SettingsComponent } from "./settings.component";
     //   }
     // }),
     //
+    StimLibConnectionModule,
+    StimFeatureStimulatorDomainModule,
     StimFeatureSettingsDomainModule,
+    StimFeatureSettingsFeatureParamConfigModule,
+    StimFeatureSettingsFeatureServiceStateModule,
+    StimFeatureSettingsFeatureConsoleModule,
     SettingsRoutingModule,
-    // StimLibUiModule
   ]
 })
 export class StimFeatureSettingsFeatureModule {}

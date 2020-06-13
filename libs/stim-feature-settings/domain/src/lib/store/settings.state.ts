@@ -1,8 +1,8 @@
-import { ServerSettings, Settings } from "../..";
+import { ServerSettings, Settings } from "../domain/settings";
 
 export interface SettingsState {
   localSettings: Settings;
   localSettingsLoaded: boolean;
   serverSettings: ServerSettings;
-  working: boolean;
+  viewFragment: string;
 }

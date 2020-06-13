@@ -4,8 +4,11 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 import { TranslateModule } from "@ngx-translate/core";
 
+import { StimFeatureStimulatorDomainModule } from "@diplomka-frontend/stim-feature-stimulator/domain";
+import { StimLibConnectionModule } from "@diplomka-frontend/stim-lib-connection";
+
 import { ServiceStateComponent } from "./service-state.component";
-import { ServiceStateRoutingModule } from "./service-state-routing.module";
+// import { ServiceStateRoutingModule } from "./service-state-routing.module";
 
 @NgModule({
   declarations: [
@@ -15,7 +18,9 @@ import { ServiceStateRoutingModule } from "./service-state-routing.module";
     CommonModule,
     TranslateModule,
     ReactiveFormsModule,
-    ServiceStateRoutingModule
+    // ServiceStateRoutingModule,
+    StimFeatureStimulatorDomainModule,
+    StimLibConnectionModule
   ],
   exports: [
     ServiceStateComponent

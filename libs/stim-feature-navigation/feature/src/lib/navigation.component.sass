@@ -31,3 +31,96 @@ h1
   font-size: 1.25rem
   padding: 0.5rem 0.75rem
   line-height: 1
+
+$duration: 1s
+
+.working
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 100%
+  height: 100%
+
+
+.working_line_wrapper
+  width: 100%
+  height: 2px
+  position: absolute
+  top: 52px
+  left: 0
+
+
+.working_line
+  position: relative
+  top: 0px
+  left: 0px
+  bottom: auto
+  right: auto
+  width: 100%
+  height: 100%
+  transform-origin: 100% 0%
+  animation: kf_working_line $duration cubic-bezier(0.645, 0.045, 0.355, 1) 0s infinite
+
+  .working_line_inner
+    position: absolute
+    top: 0px
+    left: 0px
+    bottom: auto
+    right: auto
+    width: 100%
+    height: 100%
+    background: #000
+    transform-origin: 0% 0%
+
+.working_line_inner--1
+  opacity: 0
+  //change for inner line opacity, currently 0/hidden
+  animation: kf_working_line_inner--1 $duration cubic-bezier(0.645, 0.045, 0.355, 1) 0s infinite
+
+.working_line_inner--2
+  opacity: 1
+  animation: kf_working_line_inner--2 $duration cubic-bezier(0.645, 0.045, 0.355, 1) 0s infinite
+
+.working_line_inner
+  position: absolute
+  top: 0px
+  left: 0px
+  bottom: auto
+  right: auto
+  width: 100%
+  height: 100%
+  background-color: red
+  transform-origin: 0% 0%
+
+
+@keyframes kf_working_line
+  0%
+    transform: scaleX(1)
+  50%
+    transform: scaleX(1)
+  100%
+    transform: scaleX(0)
+
+
+@keyframes kf_working_line_inner--1
+  0%
+    transform: scaleX(0)
+  25%
+    transform: scaleX(1)
+  100%
+    transform: scaleX(1)
+
+
+@keyframes kf_working_line_inner--2
+  0%
+    transform: scaleX(0)
+  25%
+    transform: scaleX(0)
+  50%
+    transform: scaleX(1)
+  100%
+    transform: scaleX(1)

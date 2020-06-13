@@ -3,13 +3,13 @@ import { Store } from "@ngrx/store";
 
 import * as ConnectionActions from "../store/connection.actions";
 import { Observable } from "rxjs";
-import * as fromConnection from "../store/connection.state";
-import { ConnectionInformation } from "../domain/connection-information";
+import * as fromConnection from "../store/connection.reducers";
+import { ConnectionInformationState } from "../store/connection.state";
 
 @Injectable()
 export class AliveCheckerFacade {
 
-  constructor(private readonly store: Store<fromConnection.ConnectionInformationState>) {}
+  constructor(private readonly store: Store<ConnectionInformationState>) {}
 
   /**
    * Pokusí se vytvořit stále spojení se serverem.
@@ -25,7 +25,16 @@ export class AliveCheckerFacade {
     this.store.dispatch(ConnectionActions.actionServerDisconnectRequest({}));
   }
 
-  get connectionInformation(): Observable<ConnectionInformation> {
-    return this.store.select("connections");
+  public startCommunication() {
+    this.store.dispatch(ConnectionActions.actionServerStartCommunicating({}));
+  }
+
+  public stopCommunication() {
+    this.store.dispatch(ConnectionActions.actionServerEndCommunicating({}));
+  }
+
+  get state(): Observable<ConnectionInformationState> {
+    // @ts-ignore
+    return this.store.select(fromConnection.connectionStateKey);
   }
 }

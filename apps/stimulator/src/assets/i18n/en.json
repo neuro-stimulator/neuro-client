@@ -341,6 +341,7 @@
     "SERIAL": {
       "STATUS_DISCONNECTED": "Disconnected",
       "STATUS_CONNECTED": "Connected",
+      "STATUS_CONNECTING": "Connecting...",
       "MESSAGES": {
         "STIMULATOR_WAS_CONNECTED": "Stimulator has been connected.",
         "STIMULATOR_WAS_DISCONNECTED": "Stimulator has been disconnected."

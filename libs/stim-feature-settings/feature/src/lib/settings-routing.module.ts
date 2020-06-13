@@ -12,22 +12,22 @@ const routes: Routes = [
     component: SettingsComponent,
     resolve: [LocalSettingsResolver, ServerSettingsResolver],
     data: {title: 'SETTINGS.TITLE'}
-  },
-  {
-    path: 'service-state',
-    loadChildren: () => import('@diplomka-frontend/stim-feature-settings/feature/service-state').then((mod) => mod.StimFeatureSettingsFeatureServiceStateModule),
-    outlet: 'tab'
-  },
-  {
-    path: 'param-config',
-    loadChildren: () => import('@diplomka-frontend/stim-feature-settings/feature/param-config').then((mod) => mod.StimFeatureSettingsFeatureParamConfigModule),
-    outlet: 'tab'
-  },
-  {
-    path: 'console',
-    loadChildren: () => import('@diplomka-frontend/stim-feature-settings/feature/console').then((mod) => mod.StimFeatureSettingsFeatureConsoleModule),
-    outlet: 'tab'
   }
+  // {
+  //   path: 'service-state',
+  //   loadChildren: () => import('@diplomka-frontend/stim-feature-settings/feature/service-state').then((mod) => mod.StimFeatureSettingsFeatureServiceStateModule),
+  //   outlet: 'tab'
+  // },
+  // {
+  //   path: 'param-config',
+  //   loadChildren: () => import('@diplomka-frontend/stim-feature-settings/feature/param-config').then((mod) => mod.StimFeatureSettingsFeatureParamConfigModule),
+  //   outlet: 'tab'
+  // },
+  // {
+  //   path: 'console',
+  //   loadChildren: () => import('@diplomka-frontend/stim-feature-settings/feature/console').then((mod) => mod.StimFeatureSettingsFeatureConsoleModule),
+  //   outlet: 'tab'
+  // }
 ];
 
 @NgModule({

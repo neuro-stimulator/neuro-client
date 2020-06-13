@@ -5,9 +5,9 @@
 <stim-feature-settings-param-config-experiments [form]="experiments"></stim-feature-settings-param-config-experiments>
 
 <stim-lib-fab
-  [icon]="(settingsState | async).working ? 'fa-save fa-spin' : 'fa-save'"
+  [icon]="(connectionState | async).working ? 'fa-save fa-spin' : 'fa-save'"
   (fabClick)="handleSaveSettings()"
-  [disabled]="form.invalid || (settingsState | async).working ">
+  [disabled]="form.invalid || (connectionState | async).working ">
 </stim-lib-fab>
 
 

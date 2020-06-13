@@ -1,17 +1,20 @@
 import { EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-
 import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { NGXLogger } from 'ngx-logger';
 
-import { Experiment } from '@stechy1/diplomka-share';
+import { Experiment, ExperimentType } from "@stechy1/diplomka-share";
 
 import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
+import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
+import { ConnectionInformationState } from "@diplomka-frontend/stim-lib-connection";
+import { AliveCheckerFacade } from "@diplomka-frontend/stim-lib-connection";
 
 import { ExperimentNameValidator } from '../experiment-name-validator';
 import { ComponentCanDeactivate } from '../experiments.deactivate';
-import { map } from 'rxjs/operators';
 
 export abstract class BaseExperimentTypeComponent<E extends Experiment> implements OnInit, OnDestroy, ComponentCanDeactivate {
 
@@ -28,7 +31,8 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
                         // protected readonly toastr: ToastrService,
                         // protected readonly _router: Router,
                         protected readonly _route: ActivatedRoute,
-                        // protected readonly _navigation: NavigationFacade,
+                        protected readonly _navigation: NavigationFacade,
+                        private readonly _connection: AliveCheckerFacade,
                         private readonly _nameValidator: ExperimentNameValidator,
                         protected readonly logger: NGXLogger) {
     this.form = new FormGroup(this._createFormControls());
@@ -136,6 +140,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
                                              .subscribe((experiment: Experiment) => {
                                                this._updateFormGroup(experiment as E);
                                                this._experimentLoaded.next(experiment as E);
+                                               this._navigation.customNavColor = ExperimentType[experiment.type].toLowerCase();
                                                // this._navigation.customNavColor.next(ExperimentType[experiment.type].toLowerCase());
                                              });
     // this._experimentsStateSubscription = this._service.experimentsState.subscribe((experimentsState: ExperimentsStateType) => {
@@ -206,5 +211,9 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment> implemen
 
   get experimentsState(): Observable<ExperimentsState> {
     return this._service.state;
+  }
+
+  get connectionState(): Observable<ConnectionInformationState> {
+    return this._connection.state;
   }
 }

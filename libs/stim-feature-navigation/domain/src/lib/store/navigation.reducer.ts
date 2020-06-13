@@ -10,10 +10,9 @@ export function navigationReducer(navigationState: NavigationState, navigationAc
     {
       title: "",
       titleArgs: {},
-      subtitle: "",
+      subtitle: "SHARE.SERIAL.STATUS_CONNECTING",
       subtitleArgs: {},
-      icon: "",
-      working: false,
+      icon: "fa-circle text-warning",
       applyCustomNavColor: false,
       customNavColor: "",
       hasPageTools: false,
@@ -26,10 +25,9 @@ export function navigationReducer(navigationState: NavigationState, navigationAc
       ...state,
       title: action.title,
       titleArgs: {},
-      subtitle: "",
-      subtitleArgs: {},
-      icon: "",
-      working: false,
+      subtitle: state.subtitle,
+      subtitleArgs: state.subtitleArgs,
+      icon: state.icon,
       applyCustomNavColor: action.applyCustomNavColor,
       customNavColor: "",
       hasPageTools: action.hasPageTools,
@@ -51,10 +49,6 @@ export function navigationReducer(navigationState: NavigationState, navigationAc
     on(NavigationActions.actionIconChange, (state: NavigationState, action) => ({
       ...state,
       icon: action.icon
-    })),
-    on(NavigationActions.actionWorkingChange, (state: NavigationState, action) => ({
-      ...state,
-      working: action.working
     })),
     on(NavigationActions.actionCustomNavColorChange, (state: NavigationState, action) => ({
       ...state,

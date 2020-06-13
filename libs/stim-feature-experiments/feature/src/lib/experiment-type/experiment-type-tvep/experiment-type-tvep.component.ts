@@ -15,6 +15,8 @@ import { outputCountParams } from '../../experiments.share';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
+import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
+import { AliveCheckerFacade } from "@diplomka-frontend/stim-lib-connection";
 
 @Component({
   templateUrl: './experiment-type-tvep.component.html',
@@ -26,8 +28,10 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
 
   constructor(service: ExperimentsFacade,
               route: ActivatedRoute,
+              navigation: NavigationFacade,
+              connection: AliveCheckerFacade,
               logger: NGXLogger) {
-    super(service, route, new ExperimentNameValidator(service), logger);
+    super(service, route, navigation, connection, new ExperimentNameValidator(service), logger);
   }
 
   ngOnInit() {

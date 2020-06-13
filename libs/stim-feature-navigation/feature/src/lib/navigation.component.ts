@@ -8,7 +8,7 @@ import { ListButtonsAddonComponent, PageToolsComponent } from "@diplomka-fronten
 import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.directive';
 import { NavigationFacade, NavigationState } from "@diplomka-frontend/stim-feature-navigation/domain";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { AliveCheckerFacade, ConnectionInformationState } from "@diplomka-frontend/stim-lib-connection";
 
 @Component({
   selector: 'stim-feature-navigation',
@@ -22,6 +22,7 @@ export class NavigationComponent implements OnInit {
   @ViewChild('modal', {static: true}) modal: ModalComponent;
 
   constructor(private readonly navigation: NavigationFacade,
+              private readonly connection: AliveCheckerFacade,
               private readonly _route: Router,
               private readonly componentFactoryResolver: ComponentFactoryResolver) {}
 
@@ -46,8 +47,7 @@ export class NavigationComponent implements OnInit {
     this.navigation.navigationState.subscribe((state: NavigationState) => {
       this._clearButtonsAddon();
       if (state.showAddon && state.addonComponent) {
-        this._loadButtonsAddon(ListButtonsAddonComponent);
-        //
+        // this._loadButtonsAddon(ListButtonsAddonComponent);
       }
     });
 
@@ -73,5 +73,9 @@ export class NavigationComponent implements OnInit {
 
   get navigationState(): Observable<NavigationState> {
     return this.navigation.navigationState;
+  }
+
+  get connectionState(): Observable<ConnectionInformationState> {
+    return this.connection.state;
   }
 }

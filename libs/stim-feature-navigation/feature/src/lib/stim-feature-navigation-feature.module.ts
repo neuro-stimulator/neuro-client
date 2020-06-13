@@ -10,6 +10,7 @@ import { StimLibUiModule } from "@diplomka-frontend/stim-lib-ui";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { NavigationButtonsAddonDirective } from "./navigation-buttons-addon.directive";
 import { NavigationComponent } from "./navigation.component";
+import { StimLibConnectionModule } from "@diplomka-frontend/stim-lib-connection";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NavigationComponent } from "./navigation.component";
     TranslateModule.forChild(),
     RouterModule,
     StimLibUiModule,
-    StimFeatureNavigationDomainModule.forRoot()
+    StimFeatureNavigationDomainModule,
+    StimLibConnectionModule
   ],
   exports: [
     SidebarComponent,

@@ -2,8 +2,9 @@ import { createAction, props } from "@ngrx/store";
 import { StimulatorStateType } from "../domain/stimulator-state";
 
 
-export const actionStimulatorDiscover = createAction('[Stimulator] discover', props<{}>());
-export const actionStimulatorDiscoveredPaths = createAction('[Stimulator] Discovered paths', props<{data: [{path: string}]}>());
+export const actionStimulatorDiscoverRequest = createAction('[Stimulator] discover', props<{}>());
+export const actionStimulatorDiscoverDone = createAction('[Stimulator] Discovered paths', props<{data: [{path: string}]}>());
+export const actionStimulatorDiscoverFail = createAction('[Stimulator] Discovered paths', props<{}>());
 
 export const actionStimulatorFirmwareUpdateRequest = createAction('[Stimulator] firmware update request', props<{ firmware: Blob }>());
 export const actionStimulatorFirmwareUpdateDone = createAction('[Stimulator] firmware update request done', props<{}>());

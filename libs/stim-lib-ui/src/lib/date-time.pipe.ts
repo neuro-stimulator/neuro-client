@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Inject, LOCALE_ID, Pipe, PipeTransform } from "@angular/core";
 import { DatePipe } from '@angular/common';
 
 import { DateTimeFormat } from "@diplomka-frontend/stim-lib-common";
@@ -10,16 +10,8 @@ export class DateTimePipe implements PipeTransform {
 
   private readonly pipe: DatePipe;
 
-  constructor() {
-    const language = 'cz'/*settings.settings.application.language ||*/ /*environment.defaultLanguage*/;
-    switch (language) {
-      case 'cz':
-        this.pipe = new DatePipe('cs_CZ');
-        break;
-      default:
-        this.pipe = new DatePipe('en_GB');
-        break;
-    }
+  constructor(@Inject(LOCALE_ID) language) {
+    this.pipe = new DatePipe(language);
   }
 
   transform(value: Date|number, format: DateTimeFormat): string {
