@@ -34,8 +34,10 @@ export class ExperimentsEffects {
   allWithGhosts$ = createEffect(() => this.actions$.pipe(
     ofType(ExperimentsActions.actionExperimentsAllWithGhostRequest),
     withLatestFrom(this.store.select("experiments")),
+    // @ts-ignore
+    map(([action, experiments]) => [action, experiments.experiments]),
     switchMap(([action, experiments]) => {
-      if (experiments.length === 0) {
+      if (experiments.length !== 0) {
         return of({ data: experiments });
       } else {
         return this.experiments.all();
