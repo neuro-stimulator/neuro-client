@@ -8,8 +8,8 @@ import { TOKEN_STIMULATOR_API_URL } from "@diplomka-frontend/stim-lib-common";
 })
 export class StimulatorService {
 
-  private readonly commandsURL = `${this.baseURL}commands`;
-  private readonly serialURL = `${this.baseURL}/low-level`;
+  private readonly commandsURL = `${this.baseURL}/stimulator`;
+  private readonly serialURL = `${this.baseURL}/serial`;
 
   constructor(@Inject(TOKEN_STIMULATOR_API_URL) private readonly baseURL,
               private readonly _http: HttpClient) { }
