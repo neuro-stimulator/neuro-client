@@ -33,7 +33,7 @@ export function fileBrowserReducer(fileBrowserState: FileBrowserState, fileBrows
         ];
       }
 
-      if (!state.selectedFile || oldFile.name !== action.file.name) {
+      if ((!state.selectedFile || oldFile.name !== action.file.name) && !action.file.isDirectory) {
         newFile = {...action.file};
         newFile.selected = true;
         const newSelectedFileIndex = folderContentCopy.findIndex(value => value.name === action.file.name);

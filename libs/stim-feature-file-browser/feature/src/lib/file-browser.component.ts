@@ -63,7 +63,11 @@ export class FileBrowserComponent extends DialogChildComponent implements OnInit
   }
 
   handleFileEntryClick(file: FileRecord) {
-    this.facade.toggleFile(file);
+    if (file.isDirectory) {
+      this.facade.getContent(file);
+    } else {
+      this.facade.toggleFile(file);
+    }
     // Kliknu znovu na jeden a ten samý soubor
     // if (this._lastSelectedFile === file) {
     //   this._lastSelectedFile.selected = !this._lastSelectedFile.selected;

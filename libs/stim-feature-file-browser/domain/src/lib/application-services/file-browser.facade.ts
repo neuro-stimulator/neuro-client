@@ -40,6 +40,12 @@ export class FileBrowserFacade {
         // Složka neodpovídá vybrané, proto ji odeberu
         folders.splice(i);
       }
+      // Pokud budou složky prázdné, ale stejně jsme vybral existující složku
+      if (folders.length === 0) {
+        // Tak ji přidám do kolekce
+        // Tím zajistím, že zobrazím její obsah
+        folders = [...this._folders, folder];
+      }
     }
 
     this.store.dispatch(FileBrowserActions.actionGetContentRequest({ folders }));
