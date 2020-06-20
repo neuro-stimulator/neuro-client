@@ -28,23 +28,24 @@ export class FileBrowserFacade {
     if (folder) {
       // Získám cestu složek
       folders = [...this._folders];
-      // Budu iterovat od poslední
-      for (let i = folders.length - 1; i >= 0; i--) {
-        // Získám jeden záznam
-        const subfolder: FileRecord = folders[i];
-        // Pokud tento záznam odpovídá vybrané složce
-        if (subfolder.name === folder.name) {
-          // Ukončím cyklus
-          break;
+        // Budu iterovat od poslední
+        for (let i = folders.length - 1; i >= 0; i--) {
+          // Získám jeden záznam
+          const subfolder: FileRecord = folders[i];
+          // Pokud tento záznam odpovídá vybrané složce
+          // Nebo je cesta kratší, než u vybrané složky
+          if (subfolder.path === folder.path) {
+            // Ukončím cyklus
+            break;
+          }
+          // Složka neodpovídá vybrané, proto ji odeberu
+          folders.splice(i);
         }
-        // Složka neodpovídá vybrané, proto ji odeberu
-        folders.splice(i);
-      }
-      // Pokud budou složky prázdné, ale stejně jsme vybral existující složku
-      if (folders.length === 0) {
-        // Tak ji přidám do kolekce
-        // Tím zajistím, že zobrazím její obsah
-        folders = [...this._folders, folder];
+        // Pokud budou složky prázdné, ale stejně jsem vybral existující složku
+        if (folders.length === 0) {
+          // Tak ji přidám do kolekce
+          // Tím zajistím, že zobrazím její obsah
+          folders = [...this._folders, folder];
       }
     }
 
