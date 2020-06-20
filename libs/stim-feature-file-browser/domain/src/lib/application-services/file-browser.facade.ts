@@ -6,9 +6,9 @@ import { Store } from "@ngrx/store";
 import { FileRecord } from "@stechy1/diplomka-share";
 
 import * as FileBrowserActions from '../store/file-browser-actions';
+import * as fromFileBrowser from '../store/file-browser-reducer';
 
 import { FileBrowserState } from "../..";
-import { FileBrowserStateType } from "../domain/file-browser-state-type";
 
 @Injectable()
 export class FileBrowserFacade {
@@ -16,16 +16,16 @@ export class FileBrowserFacade {
   private _folders: FileRecord[];
 
   constructor(private readonly store: Store<FileBrowserState>) {
-    this.fileBrowserState.subscribe((state: FileBrowserStateType) => {
+    this.fileBrowserState.subscribe((state: FileBrowserState) => {
       this._folders = state.folderPath;
     });
   }
 
-  public getContent(folder: FileRecord) {
+  public getContent(folder?: FileRecord) {
     // Nadefinuji pomocnou proměnnou reprezentující aktuální cestu složek
     let folders = [];
     // Pokud je vybraná nějaká složky
-    if (folder !== null) {
+    if (folder) {
       // Získám cestu složek
       folders = [...this._folders];
       // Budu iterovat od poslední
@@ -57,7 +57,16 @@ export class FileBrowserFacade {
     this.store.dispatch(FileBrowserActions.actionDeleteRequest({ folders: this._folders, file }));
   }
 
-  get fileBrowserState(): Observable<FileBrowserStateType> {
-    return this.store.select("fileBrowser");
+  public selectFile(file: FileRecord) {
+    this.store.dispatch(FileBrowserActions.actionSelectFile({ file }));
+  }
+
+  public toggleFile(file: FileRecord) {
+    this.store.dispatch(FileBrowserActions.actionToggleFile({ file }));
+  }
+
+  get fileBrowserState(): Observable<FileBrowserState> {
+    // @ts-ignore
+    return this.store.select(fromFileBrowser.fileBrowserReducerKey);
   }
 }

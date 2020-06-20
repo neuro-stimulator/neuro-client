@@ -1,18 +1,21 @@
 import { Inject, Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 
-import { FileRecord, ResponseObject } from '@stechy1/diplomka-share';
 import { Observable } from "rxjs";
+import { NGXLogger } from "ngx-logger";
+
+import { FileRecord, ResponseObject } from '@stechy1/diplomka-share';
+
+import { TOKEN_FILE_BROWSER_API_URL } from "@diplomka-frontend/stim-lib-common";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileBrowserService {
 
-  private readonly baseAPIURL = '';
-
-  constructor(/*@Inject(BASE_API_URL_TOKEN) private readonly baseAPIURL: string,*/
-              private readonly _http: HttpClient) { }
+  constructor(@Inject(TOKEN_FILE_BROWSER_API_URL) private readonly baseAPIURL: string,
+              private readonly _http: HttpClient,
+              private readonly logger: NGXLogger) { }
 
   /**
    * Komparátor pro správné řazení souborů v prohlížeči souborů
@@ -47,6 +50,7 @@ export class FileBrowserService {
   getContent(folders: FileRecord[]): Observable<ResponseObject<FileRecord[]>> {
     const subfolders = folders.map((value: FileRecord) => value.name)
                               .join('/');
+    this.logger.debug(`Odesílám požadavek na získání obsahu složky: '${subfolders}'`);
     return this._http.get<ResponseObject<FileRecord[]>>(`${this.baseAPIURL}/${subfolders}`);
   }
 

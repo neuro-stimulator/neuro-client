@@ -1,12 +1,13 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from "rxjs";
 
 import { FileRecord } from '@stechy1/diplomka-share';
 
 import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import { FileBrowserFacade } from "@diplomka-frontend/stim-feature-file-browser/domain";
+import { FileBrowserFacade, FileBrowserState } from "@diplomka-frontend/stim-feature-file-browser/domain";
+import { map } from "rxjs/operators";
 
 @Component({
   templateUrl: './file-browser.component.html',
@@ -14,48 +15,40 @@ import { FileBrowserFacade } from "@diplomka-frontend/stim-feature-file-browser/
 })
 export class FileBrowserComponent extends DialogChildComponent implements OnInit {
 
-  // files: FileRecord[] = [];
-  // folders: BehaviorSubject<FileRecord[]> = new BehaviorSubject<FileRecord[]>([]);
-
-  fileForm = new FormGroup({
-    blob: new FormControl(null, Validators.required)
-  });
-
-  // private _lastSelectedFile: FileRecord = null;
-  private _formInvalid: BehaviorSubject<boolean> = new BehaviorSubject(true);
-  // private _selectedFile: EventEmitter<FileRecord> = new EventEmitter<FileRecord>();
+  private _selectedFileResult: EventEmitter<FileRecord> = new EventEmitter<FileRecord>();
   private _insertFileSubscription: Subscription;
+  private _stateSubscription: Subscription;
   private _modal: ModalComponent;
+  private _selectedFile: FileRecord;
 
   constructor(private readonly facade: FileBrowserFacade) {
     super();
   }
 
   ngOnInit(): void {
-
-    this.fileForm.statusChanges.subscribe((state: string) => {
-      this._formInvalid.next(!(state !== 'INVALID'));
-    });
-
-    // this.folders.subscribe((folders: FileRecord[]) => {
-    //   this._service.getContent(folders)
-    //       .then((files: FileRecord[]) => {
-    //         this.files = files;
-    //       });
-    // });
+    this._stateSubscription = this.facade.fileBrowserState
+        .pipe(
+          map((state) => state.selectedFile)
+        )
+        .subscribe(value => this._selectedFile = value);
+    // Vymažu dříve vybraný soubor (pro jistotu)
+    this.facade.selectFile(null);
+    // Získám obsah kořenové složky
+    this.facade.getContent();
   }
 
   bind(modal: ModalComponent) {
     modal.title = 'Prohlížeč souborů';
     modal.confirmText = 'Vybrat';
-    modal.confirmDisabled = this._formInvalid;
-    // modal.result = this._selectedFile;
+    modal.confirmDisabled = this.facade.fileBrowserState.pipe(map((state) => state.selectedFile === null));
+    modal.result = this._selectedFileResult;/*this.facade.fileBrowserState.pipe(map((state) => state.selectedFile));*/
     this._insertFileSubscription =  modal.confirm.subscribe(() => this.handleInsertFile());
     this._modal = modal;
   }
 
   unbind(modal: ModalComponent) {
     this._insertFileSubscription.unsubscribe();
+    this._stateSubscription.unsubscribe();
   }
 
   handleCreateFolder() {
@@ -70,6 +63,7 @@ export class FileBrowserComponent extends DialogChildComponent implements OnInit
   }
 
   handleFileEntryClick(file: FileRecord) {
+    this.facade.toggleFile(file);
     // Kliknu znovu na jeden a ten samý soubor
     // if (this._lastSelectedFile === file) {
     //   this._lastSelectedFile.selected = !this._lastSelectedFile.selected;
@@ -133,10 +127,14 @@ export class FileBrowserComponent extends DialogChildComponent implements OnInit
   }
 
   private handleInsertFile() {
-    // this._selectedFile.next(this.fileForm.get('blob').value);
+    this._selectedFileResult.next(this._selectedFile);
   }
 
   buildImagePath(path: string) {
     // return `${this._service.apiURL}/${path}`;
+  }
+
+  get state(): Observable<FileBrowserState> {
+    return this.facade.fileBrowserState;
   }
 }

@@ -64,10 +64,11 @@ export class StimulatorEffects {
       );
     })
   ));
+
   updateFirmware$ = createEffect(() => this.actions$.pipe(
     ofType(StimulatorActions.actionStimulatorFirmwareUpdateRequest),
     switchMap((action) => {
-      return this._service.updateFirmware(action.firmware).pipe(
+      return this._service.updateFirmware(action.path).pipe(
         map(() => {
           return StimulatorActions.actionStimulatorFirmwareUpdateDone({});
         })

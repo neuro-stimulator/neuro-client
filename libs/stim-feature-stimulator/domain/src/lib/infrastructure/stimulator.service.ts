@@ -8,8 +8,8 @@ import { TOKEN_STIMULATOR_API_URL } from "@diplomka-frontend/stim-lib-common";
 })
 export class StimulatorService {
 
-  private readonly commandsURL = `${this.baseURL}commands`;
-  private readonly serialURL = `${this.baseURL}/low-level`;
+  private readonly stimulatorURL = `${this.baseURL}/stimulator`;
+  private readonly serialURL = `${this.baseURL}/serial`;
 
   constructor(@Inject(TOKEN_STIMULATOR_API_URL) private readonly baseURL,
               private readonly _http: HttpClient) { }
@@ -68,12 +68,10 @@ export class StimulatorService {
   /**
    * Metoda slouží pro aktualizaci firmware STM
    *
-   * @param firmware Binární soubor s firmware
+   * @param path Relativní cesta k firmware stimulátoru
    */
-  public updateFirmware(firmware: Blob) {
-    const formData = new FormData();
-    formData.append('firmware', firmware);
-    return this._http.post(`${this.serialURL}/firmware`, formData);
+  public updateFirmware(path: string) {
+    return this._http.patch(`${this.stimulatorURL}/update-firmware`, { path });
         // .toPromise()
         // .then((result) => {
         //   console.log(result);
@@ -82,27 +80,27 @@ export class StimulatorService {
 
 
   public reboot() {
-    return this._http.patch(`${this.commandsURL}/reboot`, null);
+    return this._http.patch(`${this.stimulatorURL}/reboot`, null);
   }
   public stimulatorState() {
-    return this._http.get<ResponseObject<StimulatorStateEvent|undefined>>(`${this.commandsURL}/stimulator-state`);
+    return this._http.get<ResponseObject<StimulatorStateEvent|undefined>>(`${this.stimulatorURL}/stimulator-state`);
   }
   public experimentRun(experimentID: number) {
-    return this._http.patch(`${this.commandsURL}/experiment/run/${experimentID}`, null);
+    return this._http.patch(`${this.stimulatorURL}/experiment/run/${experimentID}`, null);
   }
   public experimentPause(experimentID: number) {
-    return this._http.patch(`${this.commandsURL}/experiment/pause/${experimentID}`, null);
+    return this._http.patch(`${this.stimulatorURL}/experiment/pause/${experimentID}`, null);
   }
   public experimentFinish(experimentID: number) {
-    return this._http.patch(`${this.commandsURL}/experiment/finish/${experimentID}`, null);
+    return this._http.patch(`${this.stimulatorURL}/experiment/finish/${experimentID}`, null);
   }
   public experimentUpload(id: number) {
-    return this._http.patch<{message?}>(`${this.commandsURL}/experiment/upload/${id}`, null);
+    return this._http.patch<{message?}>(`${this.stimulatorURL}/experiment/upload/${id}`, null);
   }
   public experimentSetup(id: number) {
-    return this._http.patch<{message?}>(`${this.commandsURL}/experiment/setup/${id}`, null);
+    return this._http.patch<{message?}>(`${this.stimulatorURL}/experiment/setup/${id}`, null);
   }
   public experimentClear() {
-   return this._http.patch(`${this.commandsURL}/experiment/clear`, null);
+   return this._http.patch(`${this.stimulatorURL}/experiment/clear`, null);
   }
 }

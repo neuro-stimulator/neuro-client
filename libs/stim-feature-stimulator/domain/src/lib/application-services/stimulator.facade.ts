@@ -27,8 +27,8 @@ export class StimulatorFacade {
   public status() {
     this.store.dispatch(ConnectionActions.actionStimulatorConnectionStatusRequest({}));
   }
-  public updateFirmware(firmware: Blob) {
-    this.store.dispatch(StimulatorActions.actionStimulatorFirmwareUpdateRequest({ firmware }));
+  public updateFirmware(path: string) {
+    this.store.dispatch(StimulatorActions.actionStimulatorFirmwareUpdateRequest({ path }));
   }
 
   /*  ---------------   Commands ---------------- */

@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ViewChild } from "@angular/core";
+import { Observable } from "rxjs";
+
+import { FileRecord } from "@stechy1/diplomka-share";
 
 import { StimulatorFacade, StimulatorState } from "@diplomka-frontend/stim-feature-stimulator/domain";
-import { AliveCheckerFacade, ConnectionStatus } from "@diplomka-frontend/stim-lib-connection";
-import { Observable } from "rxjs";
+import { AliveCheckerFacade, ConnectionInformationState, ConnectionStatus } from "@diplomka-frontend/stim-lib-connection";
+import { ModalComponent } from "@diplomka-frontend/stim-lib-modal";
+import { FileBrowserComponent } from "@diplomka-frontend/stim-feature-file-browser/feature";
 
 
 @Component({
@@ -13,60 +16,50 @@ import { Observable } from "rxjs";
 })
 export class ServiceStateComponent {
 
-  firmwareForm = new FormGroup({
-    text: new FormControl(null),
-    firmware: new FormControl(null, [Validators.required])
-  });
+  @ViewChild('modal', { static: true }) modal: ModalComponent
 
   public ConnectionStatus = ConnectionStatus;
 
   constructor(private readonly _service: StimulatorFacade,
-              public readonly aliveChecker: AliveCheckerFacade,
-              /*private readonly _ipc: IpcService*/) { }
+              private readonly _aliveChecker: AliveCheckerFacade) { }
+
+  handleRequestServerConnect() {
+    this._aliveChecker.requestConnect();
+  }
+
+  handleRequestServerDisconnect() {
+    this._aliveChecker.requestDisconnect();
+  }
 
   handleDiscover() {
     this._service.discover();
   }
 
-  async handleOpen(path: string) {
+  handleOpen(path: string) {
     this._service.connect(path);
   }
 
-  async handleStop() {
+  handleStop() {
     this._service.disconnect();
   }
 
-  handleFileSelect(event: Event) {
-    const input = (event.target as HTMLInputElement);
-
-    // // Vytvořím novou instanci třídy pro přečtení souboru
-    // const reader = new FileReader();
-    // const self = this;
-    // // Nastavím payload, který se zavolá po přečtení souboru
-    // reader.onload = () => {
-    //   self.firmwareForm.setValue({firmware: reader.result, text: input.files[0].name});
-    // };
-    // reader.readAsDataURL(input.files[0]);
-    this.firmwareForm.setValue({firmware: input.files[0], text: input.files[0].name});
-  }
-
   handleUpdateStimulatorFirmware() {
-    this._service.updateFirmware(this.firmwareForm.get('firmware').value);
+    this.modal.showComponent = FileBrowserComponent;
+    this.modal.openForResult()
+        .then((fileRecord: FileRecord) => {
+          this._service.updateFirmware(fileRecord.path);
+        })
+        .catch((e) => {
+          // Dialog was closed
+          console.log(e);
+        });
   }
 
-  // get serialConnected() {
-  //   return this._service.isSerialConnected;
-  // }
-  //
-  // get ipcConnected() {
-  //   return this._ipc.isIpcConnected;
-  // }
-
-  get firmwareFilePath() {
-    return this.firmwareForm.get('text').value;
+  get connectionState(): Observable<ConnectionInformationState> {
+    return this._aliveChecker.state;
   }
 
-  get state(): Observable<StimulatorState> {
+  get stimulatorState(): Observable<StimulatorState> {
     return this._service.stimulatorState;
   }
 }

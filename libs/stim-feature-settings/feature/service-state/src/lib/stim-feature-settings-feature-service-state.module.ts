@@ -4,11 +4,12 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 import { TranslateModule } from "@ngx-translate/core";
 
-import { StimFeatureStimulatorDomainModule } from "@diplomka-frontend/stim-feature-stimulator/domain";
+import { StimLibModalModule } from "@diplomka-frontend/stim-lib-modal";
 import { StimLibConnectionModule } from "@diplomka-frontend/stim-lib-connection";
+import { StimFeatureStimulatorDomainModule } from "@diplomka-frontend/stim-feature-stimulator/domain";
+import { StimFeatureFileBrowserFeatureModule } from "@diplomka-frontend/stim-feature-file-browser/feature";
 
 import { ServiceStateComponent } from "./service-state.component";
-// import { ServiceStateRoutingModule } from "./service-state-routing.module";
 
 @NgModule({
   declarations: [
@@ -18,8 +19,9 @@ import { ServiceStateComponent } from "./service-state.component";
     CommonModule,
     TranslateModule,
     ReactiveFormsModule,
-    // ServiceStateRoutingModule,
+    StimLibModalModule,
     StimFeatureStimulatorDomainModule,
+    StimFeatureFileBrowserFeatureModule,
     StimLibConnectionModule
   ],
   exports: [
