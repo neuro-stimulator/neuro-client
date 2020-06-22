@@ -23,6 +23,10 @@ export function stimulatorReducer(stimulatorState: StimulatorState | undefined, 
     on(StimulatorActions.actionStimulatorDiscoverDone, (state: StimulatorState, action) => ({
       ...state,
       devices: action.data
+    })),
+    on(StimulatorActions.actionStimulatorClearDiscovered, (state: StimulatorState, action) => ({
+      ...state,
+      devices: []
     }))
   )(stimulatorState, stimulatorAction);
 }

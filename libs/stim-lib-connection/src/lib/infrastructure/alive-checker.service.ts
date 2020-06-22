@@ -49,6 +49,7 @@ export class AliveCheckerService {
   protected _socketConnected() {
     this.logger.info("Spojení se serverem bylo úspěšně navázáno.");
     this.store.dispatch(ConnectionActions.actionServerConnected({}));
+    this._socket.emit('command', { hello: 'world'});
   //   const status = `SHARE.ALIVE_CHECKER.${this._firstTime ? 'SERVER_CONNECTION_CREATED' : 'SERVER_CONNECTION_RESTORED'}`;
   //   this.translator.get(status)
   //       .toPromise()

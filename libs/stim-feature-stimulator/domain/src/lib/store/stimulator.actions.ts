@@ -6,6 +6,8 @@ export const actionStimulatorDiscoverRequest = createAction('[Stimulator] discov
 export const actionStimulatorDiscoverDone = createAction('[Stimulator] Discovered paths', props<{data: [{path: string}]}>());
 export const actionStimulatorDiscoverFail = createAction('[Stimulator] Discovered paths', props<{}>());
 
+export const actionStimulatorClearDiscovered = createAction('[Stimulator] clear discovered', props<{}>());
+
 export const actionStimulatorFirmwareUpdateRequest = createAction('[Stimulator] firmware update request', props<{ path: string }>());
 export const actionStimulatorFirmwareUpdateDone = createAction('[Stimulator] firmware update request done', props<{}>());
 export const actionStimulatorFirmwareUpdateFail = createAction('[Stimulator] firmware update request fail', props<{}>());

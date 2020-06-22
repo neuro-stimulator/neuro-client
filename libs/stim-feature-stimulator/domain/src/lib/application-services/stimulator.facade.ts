@@ -18,6 +18,9 @@ export class StimulatorFacade {
   public discover() {
     this.store.dispatch(StimulatorActions.actionStimulatorDiscoverRequest({}));
   }
+  public clearDiscovered() {
+    this.store.dispatch(StimulatorActions.actionStimulatorClearDiscovered({}));
+  }
   public connect(path: string) {
     this.store.dispatch(ConnectionActions.actionStimulatorConnectRequest({ path }));
   }

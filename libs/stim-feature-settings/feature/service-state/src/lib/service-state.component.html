@@ -46,7 +46,7 @@
     <button class="btn btn-sm btn-warning d-sm-none" [disabled]="(stimulatorState | async).devices.length == 0"><i class="fas fa-trash"></i> {{ 'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.CLEAR_LIST' | translate }}</button>
   </div>
   <div class="d-none d-sm-block col-sm-6 text-right">
-    <button class="btn btn-sm btn-warning" [disabled]="(stimulatorState | async).devices.length == 0"><i class="fas fa-trash"></i> {{ 'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.CLEAR_LIST' | translate }}</button>
+    <button class="btn btn-sm btn-warning" (click)="handleClearDiscovered()" [disabled]="(stimulatorState | async).devices.length == 0"><i class="fas fa-trash"></i> {{ 'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.CLEAR_LIST' | translate }}</button>
   </div>
 
 </div>

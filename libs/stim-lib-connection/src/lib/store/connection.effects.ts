@@ -26,5 +26,10 @@ export class ConnectionEffects {
     })
   ), { dispatch: false});
 
-
+  $data = createEffect(() => this.actions$.pipe(
+    ofType(ConnectionActions.actionSocketData),
+    tap((action) => {
+      console.log(action.data);
+    })
+  ), { dispatch: false});
 }

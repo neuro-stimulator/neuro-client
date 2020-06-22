@@ -35,6 +35,10 @@ export class ServiceStateComponent {
     this._service.discover();
   }
 
+  handleClearDiscovered() {
+    this._service.clearDiscovered();
+  }
+
   handleOpen(path: string) {
     this._service.connect(path);
   }
