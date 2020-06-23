@@ -11,6 +11,7 @@ import { ListButtonsAddonService } from './list-buttons-addon/list-buttons-addon
 import { BaseFacade} from "@diplomka-frontend/stim-lib-common";
 import { map } from "rxjs/operators";
 import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
+import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
 
 export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
 
@@ -27,6 +28,7 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
   protected constructor(protected readonly _service: BaseFacade<T, S>,
                         private readonly _filterService: ListGroupSortFilterService<T>,
                         private readonly _navigation: NavigationFacade,
+                        private readonly _connection: AliveCheckerFacade,
                         protected readonly _router: Router,
                         protected readonly _route: ActivatedRoute,
                         private readonly _location: Location) {}
@@ -112,5 +114,9 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
 
   get state(): Observable<S> {
     return this._service.state;
+  }
+
+  get connectionState(): Observable<ConnectionInformationState> {
+    return this._connection.state;
   }
 }

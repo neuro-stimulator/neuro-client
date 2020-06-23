@@ -16,6 +16,7 @@ import { SequencesFilterDialogComponent } from './sequences-filter-dialog/sequen
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
+import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 
 @Component({
   templateUrl: './sequences.component.html',
@@ -36,11 +37,12 @@ export class SequencesComponent extends BaseListController<Sequence, SequencesSt
   constructor(service: SequencesFacade,
               filterService: ListGroupSortFilterService<Sequence>,
               navigation: NavigationFacade,
+              connection: AliveCheckerFacade,
               router: Router,
               route: ActivatedRoute,
               location: Location,
               private readonly logger: NGXLogger) {
-    super(service, filterService, navigation, router, route, location);
+    super(service, filterService, navigation, connection, router, route, location);
   }
 
   handleView(sequence: Sequence) {

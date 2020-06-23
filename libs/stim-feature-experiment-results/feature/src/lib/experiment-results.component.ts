@@ -17,6 +17,7 @@ import { ExperimentResultsFilterDialogComponent } from './experiment-results-fil
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
+import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 
 @Component({
   templateUrl: './experiment-results.component.html',
@@ -37,11 +38,12 @@ export class ExperimentResultsComponent extends BaseListController<ExperimentRes
   constructor(service: ExperimentResultsFacade,
               filterService: ListGroupSortFilterService<ExperimentResult>,
               navigation: NavigationFacade,
+              connection: AliveCheckerFacade,
               router: Router,
               route: ActivatedRoute,
               location: Location,
               private readonly logger: NGXLogger) {
-    super(service, filterService, navigation, router, route, location);
+    super(service, filterService, navigation, connection, router, route, location);
   }
 
   handleView(experimentResult: ExperimentResult) {
