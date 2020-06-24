@@ -3,11 +3,11 @@ import { RouterModule, Routes} from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  // {
-  //   path: 'player',
-  //   pathMatch: 'prefix',
-  //   loadChildren: () => import('@diplomka-frontent/stim-feature-player/player').then((mod) => mod.StimFeaturePlayerFeatureModule)
-  // },
+  {
+    path: 'player',
+    pathMatch: 'prefix',
+    loadChildren: () => import('@diplomka-frontend/stim-feature-player/feature').then((mod) => mod.StimFeaturePlayerFeatureModule)
+  },
   {
     path: 'settings',
     pathMatch: 'prefix',

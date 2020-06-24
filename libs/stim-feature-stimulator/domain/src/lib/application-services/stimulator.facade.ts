@@ -1,19 +1,17 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-import { Store } from "@ngrx/store";
+import { Store } from '@ngrx/store';
 
 import * as ConnectionActions from '@diplomka-frontend/stim-lib-connection';
 
 import * as StimulatorActions from '../store/stimulator.actions';
 import * as fromStimulator from '../store/stimulator.reducer';
-import { StimulatorState } from "../store/stimulator.state";
+import { StimulatorState } from '../store/stimulator.state';
 
 @Injectable()
 export class StimulatorFacade {
-
   constructor(private readonly store: Store<StimulatorState>) {}
-
 
   public discover() {
     this.store.dispatch(StimulatorActions.actionStimulatorDiscoverRequest({}));
@@ -22,16 +20,24 @@ export class StimulatorFacade {
     this.store.dispatch(StimulatorActions.actionStimulatorClearDiscovered({}));
   }
   public connect(path: string) {
-    this.store.dispatch(ConnectionActions.actionStimulatorConnectRequest({ path }));
+    this.store.dispatch(
+      ConnectionActions.actionStimulatorConnectRequest({ path })
+    );
   }
   public disconnect() {
-    this.store.dispatch(ConnectionActions.actionStimulatorDisconnectRequest({}));
+    this.store.dispatch(
+      ConnectionActions.actionStimulatorDisconnectRequest({})
+    );
   }
   public status() {
-    this.store.dispatch(ConnectionActions.actionStimulatorConnectionStatusRequest({}));
+    this.store.dispatch(
+      ConnectionActions.actionStimulatorConnectionStatusRequest({})
+    );
   }
   public updateFirmware(path: string) {
-    this.store.dispatch(StimulatorActions.actionStimulatorFirmwareUpdateRequest({ path }));
+    this.store.dispatch(
+      StimulatorActions.actionStimulatorFirmwareUpdateRequest({ path })
+    );
   }
 
   /*  ---------------   Commands ---------------- */
@@ -39,25 +45,34 @@ export class StimulatorFacade {
     this.store.dispatch(StimulatorActions.actionCommandRebootRequest({}));
   }
   public requestStimulatorState() {
-    this.store.dispatch(StimulatorActions.actionCommandStimulatorStateRequest({}));
+    this.store.dispatch(
+      StimulatorActions.actionCommandStimulatorStateRequest({})
+    );
   }
-  public experimentRun(experimentID: number) {
-    this.store.dispatch(StimulatorActions.actionCommandStimulatorRunRequest({ experimentID }));
+  public experimentRun() {
+    this.store.dispatch(
+      StimulatorActions.actionCommandStimulatorRunRequest({})
+    );
   }
-  public experimentPause(experimentID: number) {
-    this.store.dispatch(StimulatorActions.actionCommandStimulatorPauseRequest({ experimentID }));
+  public experimentPause() {
+    this.store.dispatch(
+      StimulatorActions.actionCommandStimulatorPauseRequest({})
+    );
   }
-  public experimentFinish(experimentID: number) {
-    this.store.dispatch(StimulatorActions.actionCommandStimulatorFinishRequest({ experimentID }));
+  public experimentFinish() {
+    this.store.dispatch(
+      StimulatorActions.actionCommandStimulatorFinishRequest({})
+    );
   }
-  public experimentUpload(experimentID: number) {
-    this.store.dispatch(StimulatorActions.actionCommandStimulatorUploadRequest({ experimentID }));
-  }
-  public experimentSetup(experimentID: number) {
-    this.store.dispatch(StimulatorActions.actionCommandStimulatorSetupRequest({ experimentID }));
+  public experimentUpload() {
+    this.store.dispatch(
+      StimulatorActions.actionCommandStimulatorUploadRequest({})
+    );
   }
   public experimentClear() {
-    this.store.dispatch(StimulatorActions.actionCommandStimulatorClearRequest({}));
+    this.store.dispatch(
+      StimulatorActions.actionCommandStimulatorClearRequest({})
+    );
   }
 
   get stimulatorState(): Observable<StimulatorState> {
