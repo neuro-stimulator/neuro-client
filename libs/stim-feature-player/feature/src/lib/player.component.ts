@@ -21,6 +21,7 @@ import { ConnectionStatus } from '@diplomka-frontend/stim-lib-connection';
 import { PlayerFacade } from '@diplomka-frontend/stim-feature-player/domain';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
+import { PlayerState } from '../../../domain/src/lib/store/player.state';
 
 @Component({
   templateUrl: './player.component.html',
@@ -30,11 +31,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
   // private _experimentID: number;
   // private _serialRawDataSubscription: Subscription;
   private _experimentSubscription: Subscription;
-  // private _stimulatorState = 0;
-
-  private _eventEmitter: EventEmitter<IOEvent> = new EventEmitter<IOEvent>();
-  eventEmitter: Observable<IOEvent> = this._eventEmitter.asObservable();
-  outputCount;
 
   public readonly BUTTON_DISABLED_STATES = {};
 
@@ -164,5 +160,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   get experiment(): Observable<Experiment> {
     return this.player.playingExperiment$;
+  }
+
+  get state(): Observable<PlayerState> {
+    return this.player.state;
   }
 }

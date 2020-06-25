@@ -38,7 +38,7 @@
   <div class="col-12">
     <h2>{{ 'EXPERIMENT_PLAYER.EXPERIMENT_VISUALISATION' | translate}}</h2>
     <div style="width: 100%;">
-      <stim-lib-ui-experiment-viewer *ngIf="outputCount" [incommingEvent]="eventEmitter" [outputCount]="outputCount"></stim-lib-ui-experiment-viewer>
+      <stim-lib-ui-experiment-viewer *ngIf="(experiment | async).outputCount" [events]="(state | async).ioData" [outputCount]="(experiment | async).outputCount"></stim-lib-ui-experiment-viewer>
     </div>
   </div>
 </div>

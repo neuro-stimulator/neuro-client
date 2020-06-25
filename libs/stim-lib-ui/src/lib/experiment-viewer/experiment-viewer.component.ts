@@ -1,18 +1,27 @@
-import { AfterContentInit, Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ElementRef,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
 import { IOEvent } from '@stechy1/diplomka-share';
-import { Round } from "@diplomka-frontend/stim-lib-common";
+import { Round } from '@diplomka-frontend/stim-lib-common';
 
 @Component({
   selector: 'stim-lib-ui-experiment-viewer',
   templateUrl: './experiment-viewer.component.html',
-  styleUrls: ['./experiment-viewer.component.sass']
+  styleUrls: ['./experiment-viewer.component.sass'],
 })
-export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDestroy {
-
+export class ExperimentViewerComponent
+  implements OnInit, AfterContentInit, OnDestroy {
   private static readonly DEFAULT_OUTPUT_COLORS = [
     'rgba(119,94,64,0.5)',
     'rgba(126,113,95,0.5)',
@@ -37,18 +46,16 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDe
   // Pole všech eventů, které uběhly v aktuálním experimentu
   private _events: IOEvent[] = [];
 
-  private _incommingEventSubscription: Subscription;
-
-  @ViewChild('experimentCanvas', {static: true}) canvas: ElementRef;
+  @ViewChild('experimentCanvas', { static: true }) canvas: ElementRef;
   @Input() maxOutputCount;
   @Input() outputCount = this.maxOutputCount;
   @Input() lineHeight = 30;
   @Input() peakHeight = 20;
   @Input() maxDelta = 30;
   @Input() graphOffset = 30;
-  @Input() incommingEvent: Observable<IOEvent>;
   @Input() set events(events: IOEvent[]) {
     this._events = events;
+    this._renderExperimentProgress();
   }
 
   // Nastavení pro posuvník kol v prohlížeči experimentu
@@ -58,73 +65,63 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDe
     showTicks: true,
     showTicksValues: true,
     tickStep: 1,
-    animate: false
+    animate: false,
   };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-    if (this.incommingEvent !== undefined) {
-      this._incommingEventSubscription = this.incommingEvent.subscribe((event: IOEvent) => {
-        this._handleIncommingEvent(event);
-      });
-    }
-  }
+  ngOnInit() {}
 
   ngAfterContentInit(): void {
     this._renderExperimentProgress();
   }
 
-  ngOnDestroy(): void {
-    if (this._incommingEventSubscription !== undefined) {
-      this._incommingEventSubscription.unsubscribe();
-    }
-  }
+  ngOnDestroy(): void {}
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this._renderExperimentProgress();
   }
 
-  private _handleIncommingEvent(event: IOEvent) {
-    // Uložím si událost do pole všech událostí
-    this._events.push(event);
-
-    // Pokud přišla událost z posledního výstupu s deaktivací
-    if (event.ioType === 'output' && event.state === 'off' && event.index === (this.outputCount - 1)) {
-      this._renderExperimentProgress();
-    }
-
-    // Pokud přišla událost z prvního výstupu s deaktivací
-    if (event.ioType === 'output' && event.state === 'off' && event.index === 0) {
-      // Zvýším počet dostupných kol
-      this._rounds++;
-      // Do pole offsetů vložím aktuální hodnotu z čítače offsetů
-      this._eventOffsetIndexArray.push(this._eventOffsetCounter);
-
-      // Aktualizuji nastavení slideru
-      // shorturl.at/ijAFQ
-      const newOptions: SliderOptions = Object.assign({}, this.eventOffsetIndexOptions);
-      // Maximální hodnota slideru odpovídá počtu kol
-      newOptions.ceil = Math.max(1, this._rounds);
-      newOptions.showTicks = this._rounds < 15;
-      newOptions.showTicksValues = this._rounds < 15;
-      // Zpátky přiřadím nastavení
-      this.eventOffsetIndexOptions = newOptions;
-
-      // A zahájím kreslení
-      this._renderExperimentProgress();
-    }
-    // Vždycky inkrementuji čítač událostí
-    this._eventOffsetCounter++;
-  }
+  // private _handleIncommingEvent(event: IOEvent) {
+  //   // Uložím si událost do pole všech událostí
+  //   this._events.push(event);
+  //
+  //   // Pokud přišla událost z posledního výstupu s deaktivací
+  //   if (event.ioType === 'output' && event.state === 'off' && event.index === (this.outputCount - 1)) {
+  //     this._renderExperimentProgress();
+  //   }
+  //
+  //   // Pokud přišla událost z prvního výstupu s deaktivací
+  //   if (event.ioType === 'output' && event.state === 'off' && event.index === 0) {
+  //     // Zvýším počet dostupných kol
+  //     this._rounds++;
+  //     // Do pole offsetů vložím aktuální hodnotu z čítače offsetů
+  //     this._eventOffsetIndexArray.push(this._eventOffsetCounter);
+  //
+  //     // Aktualizuji nastavení slideru
+  //     // shorturl.at/ijAFQ
+  //     const newOptions: SliderOptions = Object.assign({}, this.eventOffsetIndexOptions);
+  //     // Maximální hodnota slideru odpovídá počtu kol
+  //     newOptions.ceil = Math.max(1, this._rounds);
+  //     newOptions.showTicks = this._rounds < 15;
+  //     newOptions.showTicksValues = this._rounds < 15;
+  //     // Zpátky přiřadím nastavení
+  //     this.eventOffsetIndexOptions = newOptions;
+  //
+  //     // A zahájím kreslení
+  //     this._renderExperimentProgress();
+  //   }
+  //   // Vždycky inkrementuji čítač událostí
+  //   this._eventOffsetCounter++;
+  // }
 
   /**
    * Hlavní funkce starající se o vykreslení celého grafu
    */
   private _renderExperimentProgress() {
     // Získám HTML canvas element
-    const canvas = (this.canvas.nativeElement as HTMLCanvasElement);
+    const canvas = this.canvas.nativeElement as HTMLCanvasElement;
     // Nastavím šířku přes celý rodičovský element
     canvas.width = canvas.parentElement.parentElement.clientWidth;
     // Výška bude odpovídat počtu výstupů + 1 vynásobený výškou jedné řádky
@@ -138,7 +135,11 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDe
     let j = 1;
 
     // Budu iterovat od začátku vybraného kola až do konce (v ideálním případě)
-    for (let i = this._eventOffsetIndexArray[this.eventOffsetIndex]; i < this._events.length; i++) {
+    for (
+      let i = this._eventOffsetIndexArray[this.eventOffsetIndex];
+      i < this._events.length;
+      i++
+    ) {
       // Získám aktuálně zpracovávanou událost
       const event = this._events[i];
       // Pokud se jedná o výstup
@@ -180,7 +181,7 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDe
       // Nová Y-ová souřadnice bude zatím odpovídat staré
       let newY = lastY;
       // Pokud se dostanu na ose X za šířku canvasu
-      if (newX > (canvas.width - this.graphOffset)) {
+      if (newX > canvas.width - this.graphOffset) {
         // Zvýším offset, čímž se celý graf posune o jedno kolo doleva
         this.eventOffsetIndex++;
 
@@ -213,7 +214,8 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDe
           graphics.lineTo(newX, newY);
           // A ještě se ujistím, že se vše správně vykreslilo
           graphics.stroke();
-        } else { // Výstup se deaktivovat
+        } else {
+          // Výstup se deaktivovat
           // Při deaktivaci výstupu musím zkontrolovat předchozí událost
 
           // Pokud se v předchozí události výstup aktivoval
@@ -235,7 +237,8 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDe
             graphics.lineTo(newX, newY);
             // Ujistím se, že vše se vykreslilo
             graphics.stroke();
-          } else { // V opačném případě (předchozí událost byla také deaktivace)
+          } else {
+            // V opačném případě (předchozí událost byla také deaktivace)
             // Podruhé inkrementuji X-ovou souřadnici
             newX += delta;
             // graphics.moveTo(lastX, lastY);
@@ -251,13 +254,17 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDe
         // Také si uložím nově vypočátané X-ové a Y-ové souřadnice
         events[event.index].output.x = newX;
         events[event.index].output.y = newY;
-      } else { // Budu kreslit událost s vstupem
+      } else {
+        // Budu kreslit událost s vstupem
         // Stisk tlačítka budeme kreslit modrou barvou
         graphics.strokeStyle = 'blue';
         // Založím pomocnou proměnnou s hodnotou 0
         let deltaY = 0;
         // Pokud byla předchozí událost typu 'aktivace výstupu'
-        if (previousEvent.output.event && previousEvent.output.event.state === 'on') {
+        if (
+          previousEvent.output.event &&
+          previousEvent.output.event.state === 'on'
+        ) {
           // Uložím do proměnné výšku peaku
           deltaY = this.peakHeight;
         }
@@ -267,7 +274,10 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDe
         // Na tuto pozici se pak přesunu
         graphics.moveTo(newX, newY);
         // Po přesunu opět zkontroluji předchozí událost, tentokrát ale na deaktivaci
-        if (previousEvent.output.event && previousEvent.output.event.state === 'off') {
+        if (
+          previousEvent.output.event &&
+          previousEvent.output.event.state === 'off'
+        ) {
           // Pokud se jednalo o deaktivaci, opět nastavím deltě hodnotu výšku peaku
           deltaY = this.peakHeight;
         }
@@ -285,7 +295,11 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDe
       graphics.closePath();
 
       // Pokud začínám nové kolo
-      if (event.ioType === 'output' && event.state === 'off' && event.index === 0) {
+      if (
+        event.ioType === 'output' &&
+        event.state === 'off' &&
+        event.index === 0
+      ) {
         // Započnu novou cestu
         graphics.beginPath();
         // Nastavím barvu čáry
@@ -303,7 +317,11 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDe
         // Vypočítám X-ovou souřadnici textu jako průměr mezi starou a novou hodnotou
         const textX = (lastX + newX) / 2;
         // Vypíšu pod graf index právě zpracovaného kola
-        graphics.strokeText(`${this.eventOffsetIndex + j}.`, textX, canvas.height - 10);
+        graphics.strokeText(
+          `${this.eventOffsetIndex + j}.`,
+          textX,
+          canvas.height - 10
+        );
         // Inkrementuji počet zpracovaných kol
         j++;
       }
@@ -332,17 +350,34 @@ export class ExperimentViewerComponent implements OnInit, AfterContentInit, OnDe
       // Založím pomocnou proměnou jednoho kola
       const event: Round = {
         // V proměnné bude mít své místo jak 'input', tak 'output'
-        input: {event: null, x: this.graphOffset, y: this.lineHeight + (i * this.lineHeight)},
-        output: {event: null, x: this.graphOffset, y: this.lineHeight + (i * this.lineHeight)},
+        input: {
+          event: null,
+          x: this.graphOffset,
+          y: this.lineHeight + i * this.lineHeight,
+        },
+        output: {
+          event: null,
+          x: this.graphOffset,
+          y: this.lineHeight + i * this.lineHeight,
+        },
       };
       // Vyberu barvu do pozadí
       graphics.fillStyle = ExperimentViewerComponent.DEFAULT_OUTPUT_COLORS[i];
       // A vykreslím obdélník reprezentující jeden řádek = jeden výstup
-      graphics.fillRect(event.output.x - this.graphOffset, event.output.y - this.lineHeight, canvas.width, this.lineHeight);
+      graphics.fillRect(
+        event.output.x - this.graphOffset,
+        event.output.y - this.lineHeight,
+        canvas.width,
+        this.lineHeight
+      );
       // Nastavím černou čáru
       graphics.strokeStyle = 'black';
       // A vypíšu index výstupu k příslušnému řádku
-      graphics.strokeText(`${i + 1}.`, event.output.x - (this.graphOffset / 2), event.output.y - (this.lineHeight / 2) + 3);
+      graphics.strokeText(
+        `${i + 1}.`,
+        event.output.x - this.graphOffset / 2,
+        event.output.y - this.lineHeight / 2 + 3
+      );
       // Přesunu se na začátek grafu
       graphics.moveTo(event.output.x, event.output.y);
       // Nastavím styl čáry na světle šedou s vysokou hodnotou průhlednosti
