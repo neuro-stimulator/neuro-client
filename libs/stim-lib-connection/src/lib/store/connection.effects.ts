@@ -20,7 +20,7 @@ export class ConnectionEffects {
     private readonly actions$: Actions
   ) {}
 
-  $serverConnect = createEffect(
+  serverConnect$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(ConnectionActions.actionServerConnectRequest),
@@ -31,7 +31,7 @@ export class ConnectionEffects {
     { dispatch: false }
   );
 
-  $serverDisconnect = createEffect(
+  serverDisconnect$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(ConnectionActions.actionServerDisconnectRequest),
@@ -42,7 +42,7 @@ export class ConnectionEffects {
     { dispatch: false }
   );
 
-  $data = createEffect(() =>
+  connections$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ConnectionActions.actionSocketData),
       map((action) => action.data as SocketMessage),

@@ -126,3 +126,8 @@ export const actionCommandStimulatorClearRequestFail = createAction(
   '[Settings] Command stimulator clear request fail',
   props<{}>()
 );
+
+export const actionStimulatorNoop = createAction(
+  '[Stimulator] No operation',
+  props<{}>()
+);

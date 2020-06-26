@@ -8,3 +8,5 @@ export { StimulatorFacade } from './lib/application-services/stimulator.facade';
 export * from './lib/store/stimulator.actions';
 export * from './lib/store/stimulator.state';
 export * from './lib/store/stimulator.reducer';
+
+export { StimulatorStateType } from './lib/domain/stimulator-state';

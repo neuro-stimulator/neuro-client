@@ -1,11 +1,22 @@
 import { Injectable } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
+import {
+  filter,
+  map,
+  mergeMap,
+  switchMap,
+  tap,
+  withLatestFrom,
+} from 'rxjs/operators';
 
 import {
   MessageCodes,
   ResponseObject,
+  SocketMessage,
+  SocketMessageSpecialization,
+  SocketMessageType,
+  StimulatorDataStateMessage,
   StimulatorStateEvent,
 } from '@stechy1/diplomka-share';
 import * as ConnectionActions from '@diplomka-frontend/stim-lib-connection';
@@ -271,6 +282,31 @@ export class StimulatorEffects {
             }
           })
         );
+      })
+    )
+  );
+
+  stimulatorState$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ConnectionActions.actionSocketData),
+      map((action) => action.data as SocketMessage),
+      tap((message: SocketMessage) => {
+        console.log(message);
+      }),
+      filter(
+        (message: SocketMessage) =>
+          message.specialization === SocketMessageSpecialization.STIMULATOR
+      ),
+      map((message: SocketMessage) => {
+        switch (message.type) {
+          case SocketMessageType.STIMULATOR_DATA_STATE:
+            const stimulatorDataStateMessage = message as StimulatorDataStateMessage;
+            return StimulatorActions.actionCommandStimulatorStateRequestDone({
+              state: stimulatorDataStateMessage.data.state,
+            });
+          default:
+            return StimulatorActions.actionStimulatorNoop({});
+        }
       })
     )
   );
