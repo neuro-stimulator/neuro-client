@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
@@ -22,6 +22,7 @@ import {
   AliveCheckerFacade,
   ConnectionInformationState,
 } from '@diplomka-frontend/stim-lib-connection';
+import { TOKEN_EXPERIMENT_RESULTS_API_URL } from '@diplomka-frontend/stim-lib-common';
 
 @Component({
   selector: 'stim-feature-experiment-results-experiment-result',
@@ -49,6 +50,7 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
   private _experimentResultsStateSubscription: Subscription;
 
   constructor(
+    @Inject(TOKEN_EXPERIMENT_RESULTS_API_URL) private readonly apiURL: string,
     private readonly _service: ExperimentResultsFacade,
     private readonly toastr: ToastrService,
     private readonly logger: NGXLogger,
@@ -116,7 +118,7 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
 
   get dataLink(): string {
     // TODO datalink
-    return '';
+    return this.apiURL + '/result-data/';
     // return this._service.dataLink + this._experimentResult.id;
   }
 
