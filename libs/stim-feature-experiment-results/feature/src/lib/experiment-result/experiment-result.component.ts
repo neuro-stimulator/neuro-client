@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { NGXLogger } from 'ngx-logger';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +14,10 @@ import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/dom
 import {
   createEmptyExperiment,
   createEmptyExperimentResult,
+  ExperimentResult,
+  ExperimentType,
 } from '@stechy1/diplomka-share';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'stim-feature-experiment-results-experiment-result',
@@ -39,6 +42,7 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
     date: new FormControl(),
     filename: new FormControl(),
   });
+  private _experimentResultsStateSubscription: Subscription;
 
   constructor(
     private readonly _service: ExperimentResultsFacade,
@@ -50,8 +54,6 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
   ) {}
 
   private _loadExperimentResult(experimentResultId: string) {
-    // this._experimentResult = createEmptyExperimentResult(createEmptyExperiment());
-    //
     if (experimentResultId !== undefined) {
       if (isNaN(parseInt(experimentResultId, 10))) {
         this.toastr.error(
@@ -62,54 +64,33 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
       }
 
       this._service.one(+experimentResultId);
-      //
-      //   this._experimentResult.id = +experimentResultId;
-      //
-      //   this._service.one(+experimentResultId)
-      //       .catch((error) => {
-      //         // Pokud nenastane timeout => výsledek experimentu nebyl na serveru nalezen
-      //         if (!(error instanceof TimeoutError)) {
-      //           // Rovnou přesmeruji na seznam všech výsledků experimentů
-      //           this._router.navigate(['/', 'results']);
-      //         }
-      //
-      //         // Nastal timeout
-      //         // vrátím existující prázdný výsledek experimentu a přihlásím se k socketu na událost
-      //         // pro obnovení spojení
-      //         this._connectedSubscription = this._service.connected$.subscribe(() => {
-      //           this._connectedSubscription.unsubscribe();
-      //           this._loadExperimentResult(experimentResultId);
-      //         });
-      //         return this._experimentResult;
-      //       })
-      //       .then((experimentResult: ExperimentResult) => {
-      //         this._experimentResult = experimentResult;
-      //         this.outputCount = experimentResult.outputCount;
-      //         this._navigation.customNavColor.next(ExperimentType[experimentResult.type].toLowerCase());
-      //         if (experimentResult.experimentID === -1) {
-      //           return;
-      //         }
-      //
-      //         this.form.setValue(experimentResult);
-      //         this._service.resultData(experimentResult)
-      //             .then((resultData: IOEvent[]) => {
-      //               for (const data of resultData) {
-      //                 this._incommingEvent.next(data);
-      //               }
-      //             });
-      //       });
     } else {
       this._service.empty(createEmptyExperimentResult(createEmptyExperiment()));
     }
   }
 
   ngOnInit() {
+    this._experimentResultsStateSubscription = this._service.state
+      .pipe(
+        map(
+          (state: ExperimentResultsState) =>
+            state.selectedExperimentResult.experimentResult
+        )
+      )
+      .subscribe((experimentResult: ExperimentResult) => {
+        this.form.patchValue(experimentResult);
+        this._navigation.customNavColor = ExperimentType[
+          experimentResult.type
+        ].toLowerCase();
+      });
+
     this._route.params.subscribe((params: Params) => {
       this._loadExperimentResult(params['id']);
     });
   }
 
   ngOnDestroy(): void {
+    this._experimentResultsStateSubscription.unsubscribe();
     // if (this._connectedSubscription) {
     //   this._connectedSubscription.unsubscribe();
     // }
