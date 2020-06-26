@@ -1,4 +1,4 @@
-import { OnDestroy, OnInit, Type, ViewChild } from '@angular/core';
+import { OnDestroy, OnInit, Type, ViewChild, Directive } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable, Subscription } from 'rxjs';
@@ -13,6 +13,7 @@ import { map } from "rxjs/operators";
 import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
 import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
 
+@Directive()
 export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
 
   @ViewChild('modal', {static: true}) modal: ModalComponent;

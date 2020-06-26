@@ -16,7 +16,7 @@ import { OrderByFilterProvider } from './impl/order-by-filter.provider';
 @NgModule({})
 export class StimLibListUtilsModule {
 
-  static forChild<T>(config: ListUtilsModuleConfig<T>): ModuleWithProviders {
+  static forChild<T>(config: ListUtilsModuleConfig<T>): ModuleWithProviders<StimLibListUtilsModule> {
     return {
       ngModule: StimLibListUtilsModule,
       providers: [

@@ -1,4 +1,4 @@
-import { OnInit } from '@angular/core';
+import { OnInit, Directive } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
@@ -9,6 +9,7 @@ import { GroupFilter, ListFilterParameters, ListGroupSortFilterService, OrderFil
 /**
  * Generický filtrovací dialog založení na službě z knihovny pro seskupování, třídění a řazení.
  */
+@Directive()
 export abstract class FilterDialogComponent<T> extends DialogChildComponent implements OnInit {
 
   form: FormGroup = new FormGroup({

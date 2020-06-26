@@ -14,7 +14,7 @@ import { ConnectionEffects } from "./store/connection.effects";
   ],
 })
 export class StimLibConnectionModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<StimLibConnectionModule> {
     return {
       ngModule: StimLibConnectionModule,
       providers: [

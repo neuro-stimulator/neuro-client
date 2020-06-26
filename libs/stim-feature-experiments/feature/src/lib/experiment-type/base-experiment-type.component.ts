@@ -1,4 +1,4 @@
-import { EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { EventEmitter, OnDestroy, OnInit, Directive } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import {
   AbstractControl,
@@ -24,6 +24,7 @@ import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 import { ExperimentNameValidator } from '../experiment-name-validator';
 import { ComponentCanDeactivate } from '../experiments.deactivate';
 
+@Directive()
 export abstract class BaseExperimentTypeComponent<E extends Experiment>
   implements OnInit, OnDestroy, ComponentCanDeactivate {
   private _experimentLoaded: EventEmitter<E> = new EventEmitter<E>();

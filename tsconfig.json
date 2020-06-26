@@ -1,117 +1,113 @@
+/*
+  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
+  It is not intended to be used to perform a compilation.
+
+  To learn more about this file see: https://angular.io/config/solution-tsconfig.
+*/
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2019", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@env/*": ["apps/stimulator/src/environments"],
-      "@diplomka-frontend/stim-lib-modal": ["libs/stim-lib-modal/src/index.ts"],
-      "@diplomka-frontend/stim-lib-fab": ["libs/stim-lib-fab/src/index.ts"],
-      "@diplomka-frontend/stim-lib-list-utils": [
-        "libs/stim-lib-list-utils/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-lib-common": [
-        "libs/stim-lib-common/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-lib-ui": ["libs/stim-lib-ui/src/index.ts"],
-      "@diplomka-frontend/stim-feature-file-browser": [
-        "libs/stim-feature-file-browser/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-about": [
-        "libs/stim-feature-about/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-settings/feature": [
-        "libs/stim-feature-settings/feature/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-settings/domain": [
-        "libs/stim-feature-settings/domain/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-settings/popup": [
-        "libs/stim-feature-settings/popup/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-stimulator/domain": [
-        "libs/stim-feature-stimulator/domain/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-lib-store": ["libs/stim-lib-store/src/index.ts"],
-      "@diplomka-frontend/stim-lib-connection": [
-        "libs/stim-lib-connection/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-file-browser-feature": [
-        "libs/stim-feature-file-browser-feature/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-file-browser-domain": [
-        "libs/stim-feature-file-browser-domain/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-file-browser/domain": [
-        "libs/stim-feature-file-browser/domain/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-file-browser/feature": [
-        "libs/stim-feature-file-browser/feature/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-navigation/feature": [
-        "libs/stim-feature-navigation/feature/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-navigation/domain": [
-        "libs/stim-feature-navigation/domain/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-help/feature": [
-        "libs/stim-feature-help/feature/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-player/feature": [
-        "libs/stim-feature-player/feature/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-player/domain": [
-        "libs/stim-feature-player/domain/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-experiments/feature": [
-        "libs/stim-feature-experiments/feature/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-experiments/domain": [
-        "libs/stim-feature-experiments/domain/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-experiment-results/feature": [
-        "libs/stim-feature-experiment-results/feature/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-experiment-results/domain": [
-        "libs/stim-feature-experiment-results/domain/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-sequences/feature": [
-        "libs/stim-feature-sequences/feature/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-sequences/domain": [
-        "libs/stim-feature-sequences/domain/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-settings/feature/console": [
-        "libs/stim-feature-settings/feature/console/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-settings/feature/param-config": [
-        "libs/stim-feature-settings/feature/param-config/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-settings/feature/service-state": [
-        "libs/stim-feature-settings/feature/service-state/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-settings/feature/param-config/application": [
-        "libs/stim-feature-settings/feature/param-config/application/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-settings/feature/param-config/experiments": [
-        "libs/stim-feature-settings/feature/param-config/experiments/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-feature-settings/feature/param-config/server": [
-        "libs/stim-feature-settings/feature/param-config/server/src/index.ts"
-      ]
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/stimulator/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/stimulator/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/stimulator-e2e/tsconfig.e2e.json"
+    },
+    {
+      "path": "./libs/stim-lib-modal/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-lib-fab/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-lib-list-utils/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-lib-common/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-lib-ui/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-about/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-stimulator/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-lib-store/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-lib-connection/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-file-browser/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-file-browser/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-navigation/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-navigation/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-help/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-player/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-player/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-experiments/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-experiments/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-experiment-results/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-experiment-results/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-sequences/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-sequences/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/popup/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/console/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/param-config/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/service-state/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/param-config/application/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/param-config/experiments/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/param-config/server/tsconfig.spec.json"
     }
-  },
-  "exclude": ["node_modules", "tmp", "old"]
+  ]
 }

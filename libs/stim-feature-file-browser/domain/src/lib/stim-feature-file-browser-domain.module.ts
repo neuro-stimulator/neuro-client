@@ -13,7 +13,7 @@ import { FileBrowserFacade } from "./application-services/file-browser.facade";
   ],
 })
 export class StimFeatureFileBrowserDomainModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<StimFeatureFileBrowserDomainModule> {
     return {
       ngModule: StimFeatureFileBrowserDomainModule,
       providers: [FileBrowserFacade]
