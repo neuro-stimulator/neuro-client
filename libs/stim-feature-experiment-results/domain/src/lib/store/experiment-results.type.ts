@@ -1,13 +1,17 @@
-import { ExperimentResult } from "@stechy1/diplomka-share";
+import { ExperimentResult } from '@stechy1/diplomka-share';
 
-export interface ExperimentResultsState {
-  experimentResults: ExperimentResult[],
-  ghosts: [],
+import { AppState } from '@diplomka-frontend/stim-lib-store';
+import { EntityGroup } from '@diplomka-frontend/stim-lib-list-utils';
+
+export interface ExperimentResultsState extends AppState {
+  experimentResults: ExperimentResult[];
+  ghosts: [];
   selectedExperimentResult: {
-    experimentResult: ExperimentResult,
-    nameExists: boolean,
-    isNew: boolean
-  },
-  groups: [],
-  hasGroups: boolean
+    experimentResult: ExperimentResult;
+    originalExperimentResult: ExperimentResult;
+    nameExists: boolean;
+    isNew: boolean;
+  };
+  groups: EntityGroup<ExperimentResult>;
+  hasGroups: boolean;
 }

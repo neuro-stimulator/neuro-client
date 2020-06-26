@@ -1,29 +1,34 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 import { NGXLogger } from 'ngx-logger';
 import { ToastrService } from 'ngx-toastr';
 
-import { ExperimentResultsFacade, ExperimentResultsState } from '@diplomka-frontend/stim-feature-experiment-results/domain';
-import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
-
+import {
+  ExperimentResultsFacade,
+  ExperimentResultsState,
+} from '@diplomka-frontend/stim-feature-experiment-results/domain';
+import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
+import {
+  createEmptyExperiment,
+  createEmptyExperimentResult,
+} from '@stechy1/diplomka-share';
 
 @Component({
   selector: 'stim-feature-experiment-results-experiment-result',
   templateUrl: './experiment-result.component.html',
-  styleUrls: ['./experiment-result.component.sass']
+  styleUrls: ['./experiment-result.component.sass'],
 })
 export class ExperimentResultComponent implements OnInit, OnDestroy {
-
   // private _experimentResult: ExperimentResult;
   // private _connectedSubscription: Subscription;
   // private readonly _incommingEvent: EventEmitter<IOEvent> = new EventEmitter<IOEvent>();
 
   // incommingEvent: Observable<IOEvent> = this._incommingEvent.asObservable();
   // TODO environment variable
-  outputCount/*: number*/ = 8/*environment.maxOutputCount*/;
+  outputCount /*: number*/ = 8 /*environment.maxOutputCount*/;
 
   public form: FormGroup = new FormGroup({
     id: new FormControl(),
@@ -35,63 +40,66 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
     filename: new FormControl(),
   });
 
-  constructor(private readonly _service: ExperimentResultsFacade,
-              private readonly toastr: ToastrService,
-              private readonly logger: NGXLogger,
-              private readonly _router: Router,
-              private readonly _route: ActivatedRoute,
-              private readonly _navigation: NavigationFacade) {
-  }
+  constructor(
+    private readonly _service: ExperimentResultsFacade,
+    private readonly toastr: ToastrService,
+    private readonly logger: NGXLogger,
+    private readonly _router: Router,
+    private readonly _route: ActivatedRoute,
+    private readonly _navigation: NavigationFacade
+  ) {}
 
   private _loadExperimentResult(experimentResultId: string) {
     // this._experimentResult = createEmptyExperimentResult(createEmptyExperiment());
     //
     if (experimentResultId !== undefined) {
       if (isNaN(parseInt(experimentResultId, 10))) {
-        this.toastr.error(`ID výsledku experimentu: '${experimentResultId}' se nepodařilo naparsovat!`);
+        this.toastr.error(
+          `ID výsledku experimentu: '${experimentResultId}' se nepodařilo naparsovat!`
+        );
         this._router.navigate(['/', 'results']);
         return;
       }
 
       this._service.one(+experimentResultId);
-    //
-    //   this._experimentResult.id = +experimentResultId;
-    //
-    //   this._service.one(+experimentResultId)
-    //       .catch((error) => {
-    //         // Pokud nenastane timeout => výsledek experimentu nebyl na serveru nalezen
-    //         if (!(error instanceof TimeoutError)) {
-    //           // Rovnou přesmeruji na seznam všech výsledků experimentů
-    //           this._router.navigate(['/', 'results']);
-    //         }
-    //
-    //         // Nastal timeout
-    //         // vrátím existující prázdný výsledek experimentu a přihlásím se k socketu na událost
-    //         // pro obnovení spojení
-    //         this._connectedSubscription = this._service.connected$.subscribe(() => {
-    //           this._connectedSubscription.unsubscribe();
-    //           this._loadExperimentResult(experimentResultId);
-    //         });
-    //         return this._experimentResult;
-    //       })
-    //       .then((experimentResult: ExperimentResult) => {
-    //         this._experimentResult = experimentResult;
-    //         this.outputCount = experimentResult.outputCount;
-    //         this._navigation.customNavColor.next(ExperimentType[experimentResult.type].toLowerCase());
-    //         if (experimentResult.experimentID === -1) {
-    //           return;
-    //         }
-    //
-    //         this.form.setValue(experimentResult);
-    //         this._service.resultData(experimentResult)
-    //             .then((resultData: IOEvent[]) => {
-    //               for (const data of resultData) {
-    //                 this._incommingEvent.next(data);
-    //               }
-    //             });
-    //       });
+      //
+      //   this._experimentResult.id = +experimentResultId;
+      //
+      //   this._service.one(+experimentResultId)
+      //       .catch((error) => {
+      //         // Pokud nenastane timeout => výsledek experimentu nebyl na serveru nalezen
+      //         if (!(error instanceof TimeoutError)) {
+      //           // Rovnou přesmeruji na seznam všech výsledků experimentů
+      //           this._router.navigate(['/', 'results']);
+      //         }
+      //
+      //         // Nastal timeout
+      //         // vrátím existující prázdný výsledek experimentu a přihlásím se k socketu na událost
+      //         // pro obnovení spojení
+      //         this._connectedSubscription = this._service.connected$.subscribe(() => {
+      //           this._connectedSubscription.unsubscribe();
+      //           this._loadExperimentResult(experimentResultId);
+      //         });
+      //         return this._experimentResult;
+      //       })
+      //       .then((experimentResult: ExperimentResult) => {
+      //         this._experimentResult = experimentResult;
+      //         this.outputCount = experimentResult.outputCount;
+      //         this._navigation.customNavColor.next(ExperimentType[experimentResult.type].toLowerCase());
+      //         if (experimentResult.experimentID === -1) {
+      //           return;
+      //         }
+      //
+      //         this.form.setValue(experimentResult);
+      //         this._service.resultData(experimentResult)
+      //             .then((resultData: IOEvent[]) => {
+      //               for (const data of resultData) {
+      //                 this._incommingEvent.next(data);
+      //               }
+      //             });
+      //       });
     } else {
-      this._service.empty();
+      this._service.empty(createEmptyExperimentResult(createEmptyExperiment()));
     }
   }
 

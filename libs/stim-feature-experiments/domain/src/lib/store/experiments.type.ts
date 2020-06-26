@@ -1,8 +1,7 @@
-import { AppState } from "@diplomka-frontend/stim-lib-store";
+import { Experiment } from '@stechy1/diplomka-share';
 
-import { Experiment } from "@stechy1/diplomka-share";
-
-import { EntityGroup } from "@diplomka-frontend/stim-lib-list-utils";
+import { AppState } from '@diplomka-frontend/stim-lib-store';
+import { EntityGroup } from '@diplomka-frontend/stim-lib-list-utils';
 
 export interface ExperimentsState extends AppState {
   experiments: Experiment[];
@@ -12,7 +11,7 @@ export interface ExperimentsState extends AppState {
     originalExperiment: Experiment;
     nameExists: boolean;
     isNew: boolean;
-  }
-  groups: EntityGroup<Experiment>
+  };
+  groups: EntityGroup<Experiment>;
   hasGroups: boolean;
 }
