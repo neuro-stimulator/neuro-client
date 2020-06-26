@@ -131,6 +131,9 @@ export class ExperimentViewerComponent
     // Připravím mřížku
     const events: Round[] = this._prepareCanvasView(graphics);
 
+    if (!this._events) {
+      return;
+    }
     // Tato proměnná je použita při kreslení indexu vykresleného kola
     let j = 1;
 

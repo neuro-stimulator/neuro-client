@@ -25,6 +25,7 @@ export function experimentResultsReducer(
       selectedExperimentResult: {
         experimentResult: emptyExperimentResult,
         originalExperimentResult: emptyExperimentResult,
+        data: [],
         nameExists: false,
         isNew: true,
       },
@@ -88,6 +89,17 @@ export function experimentResultsReducer(
           experimentResult: { ...action.experimentResult },
           originalExperimentResult: { ...action.experimentResult },
           isNew: false,
+        },
+      })
+    ),
+
+    on(
+      ExperimentResultsActions.actionExperimentResultsDataDone,
+      (state: ExperimentResultsState, action) => ({
+        ...state,
+        selectedExperimentResult: {
+          ...state.selectedExperimentResult,
+          data: action.data,
         },
       })
     ),

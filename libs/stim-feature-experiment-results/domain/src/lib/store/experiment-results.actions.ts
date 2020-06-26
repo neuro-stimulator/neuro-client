@@ -1,6 +1,6 @@
 // All record request
 import { createAction, props } from '@ngrx/store';
-import { ExperimentResult } from '@stechy1/diplomka-share';
+import { ExperimentResult, IOEvent } from '@stechy1/diplomka-share';
 
 export const actionExperimentResultsAllWithGhostRequest = createAction(
   '[ExperimentResults] all records request with ghosts',
@@ -34,6 +34,15 @@ export const actionExperimentResultsOneRequestDone = createAction(
 );
 export const actionExperimentResultsOneRequestFail = createAction(
   '[ExperimentResults] one record request fail',
+  props<{}>()
+);
+
+export const actionExperimentResultsDataDone = createAction(
+  '[ExperimentResults] result data done',
+  props<{ data: IOEvent[] }>()
+);
+export const actionExperimentResultsDataFail = createAction(
+  '[ExperimentResults] result data fail',
   props<{}>()
 );
 

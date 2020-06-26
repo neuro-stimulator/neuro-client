@@ -18,6 +18,10 @@ import {
   ExperimentType,
 } from '@stechy1/diplomka-share';
 import { map } from 'rxjs/operators';
+import {
+  AliveCheckerFacade,
+  ConnectionInformationState,
+} from '@diplomka-frontend/stim-lib-connection';
 
 @Component({
   selector: 'stim-feature-experiment-results-experiment-result',
@@ -50,7 +54,8 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
     private readonly logger: NGXLogger,
     private readonly _router: Router,
     private readonly _route: ActivatedRoute,
-    private readonly _navigation: NavigationFacade
+    private readonly _navigation: NavigationFacade,
+    private readonly _connection: AliveCheckerFacade
   ) {}
 
   private _loadExperimentResult(experimentResultId: string) {
@@ -117,5 +122,9 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
 
   get state(): Observable<ExperimentResultsState> {
     return this._service.state;
+  }
+
+  get connectionState(): Observable<ConnectionInformationState> {
+    return this._connection.state;
   }
 }

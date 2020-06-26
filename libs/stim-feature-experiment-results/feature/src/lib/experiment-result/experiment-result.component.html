@@ -24,7 +24,7 @@
   <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="experimentViewer" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
   <div class="col-12" #experimentViewer>
     <div style="width: 100%">
-<!--      <stim-lib-ui-experiment-viewer [incommingEvent]="incommingEvent" [outputCount]="outputCount"></stim-lib-ui-experiment-viewer>-->
+      <stim-lib-ui-experiment-viewer [events]="(state | async).selectedExperimentResult.data" [outputCount]="outputCount"></stim-lib-ui-experiment-viewer>
     </div>
   </div>
 </div>
@@ -36,8 +36,8 @@
 </div>
 
 <stim-lib-fab
-  [icon]="(state | async).working ? 'fa-save fa-spin' : 'fa-save'"
+  [icon]="(connectionState | async).working ? 'fa-save fa-spin' : 'fa-save'"
   (fabClick)="handleSaveExperimentResult()"
-  [disabled]="form.invalid || (state | async).working ">
+  [disabled]="form.invalid || (connectionState | async).working ">
 </stim-lib-fab>
 
