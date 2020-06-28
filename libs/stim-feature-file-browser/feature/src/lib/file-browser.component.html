@@ -23,9 +23,7 @@
       <div class="file-entry-view text-center" (click)="handleFileEntryClick(file)">
         <!-- Záznam je složka -->
         <div class="directory" [title]="file.name" *ngIf="file.isDirectory">
-          <div>
             <i class="fas fa-folder fa-3x"></i>
-          </div>
         </div>
 
         <!-- Záznam je obrázek -->
