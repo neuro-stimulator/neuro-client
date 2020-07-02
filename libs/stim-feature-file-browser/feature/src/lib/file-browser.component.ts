@@ -90,7 +90,11 @@ export class FileBrowserComponent extends DialogChildComponent
 
   onFilesAdded(event: Event) {
     const target: HTMLInputElement = event.target as HTMLInputElement;
-    this.facade.upload(target.files);
+    const files: File[] = [];
+    for (let i = 0; i < target.files.length; i++) {
+      files.push(target.files.item(i));
+    }
+    this.facade.upload(files);
   }
 
   private handleInsertFile() {
