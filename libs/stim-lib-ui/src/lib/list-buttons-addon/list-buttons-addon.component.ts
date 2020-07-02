@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
@@ -10,22 +10,25 @@ import { ListButtonsAddonService } from './list-buttons-addon.service';
   styleUrls: ['./list-buttons-addon.component.sass'],
 })
 export class ListButtonsAddonComponent implements OnInit, OnDestroy {
-
   hideFinderBox = true;
   initialSearchValue: string;
   showButtons = true;
 
   private _addonVisibleSubscription: Subscription;
 
-  constructor(private readonly _service: ListButtonsAddonService,
-              private readonly _route: ActivatedRoute) { }
+  constructor(
+    private readonly _service: ListButtonsAddonService,
+    private readonly _route: ActivatedRoute
+  ) {}
 
   private _notifySearchValue(value: string) {
     this._service.searchValue.next(value);
   }
 
   ngOnInit() {
-    this._addonVisibleSubscription = this._service.addonVisible.subscribe((visible) => this.showButtons = visible);
+    this._addonVisibleSubscription = this._service.addonVisible.subscribe(
+      (visible) => (this.showButtons = visible)
+    );
     this._route.fragment.subscribe((value) => {
       this.initialSearchValue = value || '';
       this._notifySearchValue(this.initialSearchValue);
@@ -33,7 +36,7 @@ export class ListButtonsAddonComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._addonVisibleSubscription.unsubscribe();
+    this._addonVisibleSubscription?.unsubscribe();
   }
 
   handleShowFilter() {

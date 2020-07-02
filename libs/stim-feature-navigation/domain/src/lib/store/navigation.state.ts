@@ -1,6 +1,6 @@
-import { AppState } from "@diplomka-frontend/stim-lib-store";
+import { AppState } from '@diplomka-frontend/stim-lib-store';
 
-import { Type } from "@angular/core";
+import { Type } from '@angular/core';
 
 export interface NavigationState extends AppState {
   title: string;
@@ -11,8 +11,8 @@ export interface NavigationState extends AppState {
   applyCustomNavColor: boolean;
   customNavColor: string;
   hasPageTools: boolean;
-  pageToolsComponent: Type<any>;
+  // pageToolsComponent: Type<any>;
   showSidebar: boolean;
   showAddon: boolean;
-  addonComponent: Type<any>;
+  // addonComponent: Type<any>;
 }

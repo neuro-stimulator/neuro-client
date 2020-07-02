@@ -8,22 +8,30 @@ import { Sequence } from '@stechy1/diplomka-share';
 
 import { ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
 import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
-import { FilterDialogComponent } from "@diplomka-frontend/stim-lib-ui";
-import { ListButtonsAddonService, BaseListController } from "@diplomka-frontend/stim-lib-ui";
-import { SequencesFacade, SequencesState } from '@diplomka-frontend/stim-feature-sequences/domain';
+import { FilterDialogComponent } from '@diplomka-frontend/stim-lib-ui';
+import {
+  ListButtonsAddonService,
+  BaseListController,
+} from '@diplomka-frontend/stim-lib-ui';
+import {
+  SequencesFacade,
+  SequencesState,
+} from '@diplomka-frontend/stim-feature-sequences/domain';
 
 import { SequencesFilterDialogComponent } from './sequences-filter-dialog/sequences-filter-dialog.component';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
+import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 
 @Component({
   templateUrl: './sequences.component.html',
-  styleUrls: ['./sequences.component.sass']
+  styleUrls: ['./sequences.component.sass'],
 })
-export class SequencesComponent extends BaseListController<Sequence, SequencesState> {
-
+export class SequencesComponent extends BaseListController<
+  Sequence,
+  SequencesState
+> {
   private static readonly INTRO_SEQUENCE: Sequence = {
     id: -1,
     experimentId: -1,
@@ -31,23 +39,35 @@ export class SequencesComponent extends BaseListController<Sequence, SequencesSt
     size: 50,
     created: new Date().getTime(),
     data: [],
-    tags: ['tag1', 'tag2']
+    tags: ['tag1', 'tag2'],
   };
 
-  constructor(service: SequencesFacade,
-              filterService: ListGroupSortFilterService<Sequence>,
-              navigation: NavigationFacade,
-              connection: AliveCheckerFacade,
-              router: Router,
-              route: ActivatedRoute,
-              location: Location,
-              private readonly logger: NGXLogger) {
-    super(service, filterService, navigation, connection, router, route, location);
+  constructor(
+    service: SequencesFacade,
+    filterService: ListGroupSortFilterService<Sequence>,
+    navigation: NavigationFacade,
+    connection: AliveCheckerFacade,
+    buttonsAddonService: ListButtonsAddonService,
+    router: Router,
+    route: ActivatedRoute,
+    location: Location,
+    private readonly logger: NGXLogger
+  ) {
+    super(
+      service,
+      filterService,
+      navigation,
+      connection,
+      buttonsAddonService,
+      router,
+      route,
+      location
+    );
   }
 
   handleView(sequence: Sequence) {
     this.logger.info(`Budu zobrazovat sekvenci s id: ${sequence.id}`);
-    this._router.navigate([sequence.id], {relativeTo: this._route.parent});
+    this._router.navigate([sequence.id], { relativeTo: this._route.parent });
   }
 
   handleDelete(sequence: Sequence) {
@@ -58,12 +78,12 @@ export class SequencesComponent extends BaseListController<Sequence, SequencesSt
       confirm: () => {
         self.logger.info(`Budu mazat sequenci s id: ${sequence.id}.`);
         return self._service.delete(sequence.id);
-      }
+      },
     });
   }
 
   handleCreateSequence() {
-    this._router.navigate(['new'], { relativeTo: this._route.parent});
+    this._router.navigate(['new'], { relativeTo: this._route.parent });
   }
 
   protected get introRecord(): Sequence {

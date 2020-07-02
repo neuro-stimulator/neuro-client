@@ -45,6 +45,7 @@ export class ExperimentResultsComponent extends BaseListController<
     filterService: ListGroupSortFilterService<ExperimentResult>,
     navigation: NavigationFacade,
     connection: AliveCheckerFacade,
+    buttonsAddonService: ListButtonsAddonService,
     router: Router,
     route: ActivatedRoute,
     location: Location,
@@ -55,6 +56,7 @@ export class ExperimentResultsComponent extends BaseListController<
       filterService,
       navigation,
       connection,
+      buttonsAddonService,
       router,
       route,
       location

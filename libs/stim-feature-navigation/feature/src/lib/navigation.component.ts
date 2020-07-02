@@ -7,23 +7,24 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Observable } from 'rxjs';
+
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 
 import {
-  ListButtonsAddonComponent,
   PageToolsComponent,
 } from '@diplomka-frontend/stim-lib-ui';
-
-import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.directive';
-import {
-  NavigationFacade,
-  NavigationState,
-} from '@diplomka-frontend/stim-feature-navigation/domain';
-import { Observable } from 'rxjs';
 import {
   AliveCheckerFacade,
   ConnectionInformationState,
 } from '@diplomka-frontend/stim-lib-connection';
+import {
+  NavigationFacade,
+  ComponentStoreService,
+  NavigationState,
+} from '@diplomka-frontend/stim-feature-navigation/domain';
+
+import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.directive';
 
 @Component({
   selector: 'stim-feature-navigation',
@@ -39,6 +40,7 @@ export class NavigationComponent implements OnInit {
   constructor(
     private readonly navigation: NavigationFacade,
     private readonly connection: AliveCheckerFacade,
+    private readonly _components: ComponentStoreService,
     private readonly _route: Router,
     private readonly componentFactoryResolver: ComponentFactoryResolver
   ) {}
@@ -49,7 +51,9 @@ export class NavigationComponent implements OnInit {
 
   private _loadButtonsAddon(addon: Type<any>) {
     // Podle zadané komponenty získám její továrnu
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(addon);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      addon
+    );
     // Uložím si referenci na viewContainer
     const viewContainerRef = this.buttonsAddon.viewContainerRef;
     // Vymažu obsah ve viewContaineru
@@ -63,8 +67,8 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
     this.navigation.navigationState.subscribe((state: NavigationState) => {
       this._clearButtonsAddon();
-      if (state.showAddon && state.addonComponent) {
-        // this._loadButtonsAddon(ListButtonsAddonComponent);
+      if (state.showAddon && this._components.addonComponent) {
+        this._loadButtonsAddon(this._components.addonComponent);
       }
     });
 
@@ -80,7 +84,7 @@ export class NavigationComponent implements OnInit {
 
   handleTogglePageTools() {
     this.modal.showComponent = PageToolsComponent;
-    // this.modal.open(this.navigation.pageToolsComponent);
+    this.modal.open(this._components.pageToolsComponent);
   }
 
   handleToggleSidebar() {
