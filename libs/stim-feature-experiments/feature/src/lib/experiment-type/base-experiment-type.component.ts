@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 import { NGXLogger } from 'ngx-logger';
 
@@ -140,6 +140,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
 
   ngOnInit(): void {
     this._experimentsStateSubscription = this._service.state
+      .pipe(take(2))
       .pipe(
         map((state: ExperimentsState) => state.selectedExperiment.experiment)
       )

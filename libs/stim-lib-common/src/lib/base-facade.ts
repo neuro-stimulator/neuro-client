@@ -1,18 +1,17 @@
-import { BaseRecord } from "@diplomka-frontend/stim-lib-common";
-import { ActionCreator, Store } from "@ngrx/store";
-import { Observable } from "rxjs";
+import { BaseRecord } from '@diplomka-frontend/stim-lib-common';
+import { ActionCreator, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 export interface BaseActions {
-  allWithGhosts: {action: ActionCreator<any, any>};
-  all: {action: ActionCreator<any, any>};
-  one: {action: ActionCreator<any, any>, parameterName: string};
-  insert: {action: ActionCreator<any, any>, parameterName: string};
-  update: {action: ActionCreator<any, any>, parameterName: string};
-  delete: {action: ActionCreator<any, any>, parameterName: string};
+  allWithGhosts: { action: ActionCreator<any, any> };
+  all: { action: ActionCreator<any, any> };
+  one: { action: ActionCreator<any, any>; parameterName: string };
+  insert: { action: ActionCreator<any, any>; parameterName: string };
+  update: { action: ActionCreator<any, any>; parameterName: string };
+  delete: { action: ActionCreator<any, any>; parameterName: string };
 }
 
 export abstract class BaseFacade<T extends BaseRecord, S> {
-
   protected constructor(protected readonly store: Store<S>) {}
 
   public allWithGhosts() {
@@ -49,5 +48,9 @@ export abstract class BaseFacade<T extends BaseRecord, S> {
   public get state(): Observable<S> {
     // @ts-ignore
     return this.store.select(this.stateKey);
+  }
+
+  public select(selector: any): Observable<any> {
+    return this.store.select(selector);
   }
 }

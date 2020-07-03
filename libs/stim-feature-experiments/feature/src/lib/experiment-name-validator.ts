@@ -1,25 +1,34 @@
-import { AbstractControl, AsyncValidator, ValidationErrors } from "@angular/forms";
+import {
+  AbstractControl,
+  AsyncValidator,
+  ValidationErrors,
+} from '@angular/forms';
 
-import { ExperimentsFacade } from "@diplomka-frontend/stim-feature-experiments/domain";
+import { map, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
+import {
+  ExperimentsFacade,
+  isNameValid,
+} from '@diplomka-frontend/stim-feature-experiments/domain';
 
 export class ExperimentNameValidator implements AsyncValidator {
+  constructor(private readonly _facade: ExperimentsFacade) {}
 
-  constructor(private readonly _service: ExperimentsFacade) {
-  }
-
-  validate(control: AbstractControl): Promise<ValidationErrors> | null {
+  validate(control: AbstractControl): Observable<ValidationErrors> | null {
     if (control.parent === undefined) {
       return null;
     }
 
-    const experimentID = control.parent.value.id;
+    this._facade.nameExists(control.value);
 
-    // TODO name validator
-    return new Promise(resolve => null);
-    // return this._service.nameExists(control.value, experimentID)
-    //            .then((nameExists: boolean) => {
-    //              return nameExists ? {nameExists: true} : null;
-    //            });
+    return this._facade
+      .select(isNameValid)
+      .pipe(take(2))
+      .pipe(
+        map((exists: boolean) => {
+          return exists ? { exists: true } : null;
+        })
+      );
   }
-
 }
