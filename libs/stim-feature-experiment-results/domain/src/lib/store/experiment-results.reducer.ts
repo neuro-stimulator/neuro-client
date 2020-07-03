@@ -104,43 +104,43 @@ export function experimentResultsReducer(
       })
     ),
 
-    on(
-      ExperimentResultsActions.actionExperimentResultsInsertRequest,
-      (state: ExperimentResultsState, action) => ({
-        ...state,
-        selectedExperimentResult: {
-          ...state.selectedExperimentResult,
-          experiment: { ...action.experimentResult },
-          isNew: false,
-        },
-      })
-    ),
-    on(
-      ExperimentResultsActions.actionExperimentResultsInsertRequestDone,
-      (state: ExperimentResultsState, action) => ({
-        ...state,
-        experimentResults: [
-          ...state.experimentResults,
-          action.experimentResult,
-        ],
-        selectedExperimentResult: {
-          ...state.selectedExperimentResult,
-          originalExperimentResult: { ...action.experimentResult },
-        },
-      })
-    ),
-    on(
-      ExperimentResultsActions.actionExperimentResultsInsertRequestFail,
-      (state: ExperimentResultsState, action) => ({
-        ...state,
-        selectedExperimentResult: {
-          ...state.selectedExperimentResult,
-          experimentResult: {
-            ...state.selectedExperimentResult.originalExperimentResult,
-          },
-        },
-      })
-    ),
+    // on(
+    //   ExperimentResultsActions.actionExperimentResultsInsertRequest,
+    //   (state: ExperimentResultsState, action) => ({
+    //     ...state,
+    //     selectedExperimentResult: {
+    //       ...state.selectedExperimentResult,
+    //       experiment: { ...action.experimentResult },
+    //       isNew: false,
+    //     },
+    //   })
+    // ),
+    // on(
+    //   ExperimentResultsActions.actionExperimentResultsInsertRequestDone,
+    //   (state: ExperimentResultsState, action) => ({
+    //     ...state,
+    //     experimentResults: [
+    //       ...state.experimentResults,
+    //       action.experimentResult,
+    //     ],
+    //     selectedExperimentResult: {
+    //       ...state.selectedExperimentResult,
+    //       originalExperimentResult: { ...action.experimentResult },
+    //     },
+    //   })
+    // ),
+    // on(
+    //   ExperimentResultsActions.actionExperimentResultsInsertRequestFail,
+    //   (state: ExperimentResultsState, action) => ({
+    //     ...state,
+    //     selectedExperimentResult: {
+    //       ...state.selectedExperimentResult,
+    //       experimentResult: {
+    //         ...state.selectedExperimentResult.originalExperimentResult,
+    //       },
+    //     },
+    //   })
+    // ),
     on(
       ExperimentResultsActions.actionExperimentResultsUpdateRequest,
       (state: ExperimentResultsState, action) => ({

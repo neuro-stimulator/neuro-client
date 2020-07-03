@@ -2,22 +2,20 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
+import { filter, map, switchMap} from 'rxjs/operators';
 
 import {
+  ExperimentResultCreatedMessage,
   IOEvent,
   SocketMessage,
   SocketMessageSpecialization,
   SocketMessageType,
-  StimulatorStateEvent,
-} from '@stechy1/diplomka-share';
+} from "@stechy1/diplomka-share";
 
 import * as fromConnection from '@diplomka-frontend/stim-lib-connection';
 import {
-  StimulatorFacade,
-  StimulatorState,
-  StimulatorStateType,
-} from '@diplomka-frontend/stim-feature-stimulator/domain';
+  ExperimentsFacade,
+} from '@diplomka-frontend/stim-feature-experiments/domain';
 
 import * as PlayerActions from './player.actions';
 
@@ -25,7 +23,7 @@ import * as PlayerActions from './player.actions';
 export class PlayerEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly facade: StimulatorFacade,
+    private readonly facade: ExperimentsFacade,
     private readonly router: Router
   ) {}
 
@@ -53,23 +51,22 @@ export class PlayerEffects {
         map((action) => action.data),
         filter(
           (message: SocketMessage) =>
-            message.specialization === SocketMessageSpecialization.STIMULATOR
+            message.specialization ===
+            SocketMessageSpecialization.EXPERIMENT_RESULTS
         ),
         filter(
           (message: SocketMessage) =>
-            message.type === SocketMessageType.STIMULATOR_DATA_STATE
+            message.type === SocketMessageType.EXPERIMENT_RESULT_CREATED
         ),
-        map((message: SocketMessage) => message.data as StimulatorStateEvent),
-        filter(
-          (event: StimulatorStateEvent) =>
-            event.state === StimulatorStateType.FINISH
+        map(
+          (message: SocketMessage) =>
+            message.data as ExperimentResultCreatedMessage
         ),
-        withLatestFrom(this.facade.stimulatorState),
-        switchMap(([event, state]) =>
+        switchMap((message: ExperimentResultCreatedMessage) =>
           this.router.navigate([
             '/',
             'results',
-            (state as StimulatorState).stimulatorState,
+            message.data.experimentResultID,
           ])
         )
       ),

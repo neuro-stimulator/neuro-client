@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 
@@ -34,8 +33,8 @@ export class ExperimentResultsFacade extends BaseFacade<
         parameterName: 'experimentResultID',
       },
       insert: {
-        action: ExperimentResultsActions.actionExperimentResultsInsertRequest,
-        parameterName: 'experimentResult',
+        action: undefined,
+        parameterName: '',
       },
       update: {
         action: ExperimentResultsActions.actionExperimentResultsUpdateRequest,
@@ -55,6 +54,8 @@ export class ExperimentResultsFacade extends BaseFacade<
       })
     );
   }
+
+  public insert(record: ExperimentResult) {}
 
   public save(record: ExperimentResult) {
     if (record.id === undefined) {

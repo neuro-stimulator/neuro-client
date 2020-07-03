@@ -46,18 +46,9 @@ export const actionExperimentResultsDataFail = createAction(
   props<{}>()
 );
 
-// Insert record request
-export const actionExperimentResultsInsertRequest = createAction(
-  '[ExperimentResults] insert record request',
-  props<{ experimentResult: ExperimentResult }>()
-);
 export const actionExperimentResultsInsertRequestDone = createAction(
   '[ExperimentResults] insert record request done',
   props<{ experimentResult: ExperimentResult }>()
-);
-export const actionExperimentResultsInsertRequestFail = createAction(
-  '[ExperimentResults] insert record request fail',
-  props<{}>()
 );
 
 // Update record request

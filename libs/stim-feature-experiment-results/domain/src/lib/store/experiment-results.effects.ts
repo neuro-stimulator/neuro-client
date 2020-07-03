@@ -107,30 +107,6 @@ export class ExperimentResultssEffects {
     );
   });
 
-  insert$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ExperimentResultsActions.actionExperimentResultsInsertRequest),
-      switchMap((action) =>
-        this.experimentResults.insert(action.experimentResult)
-      ),
-      map((response: ResponseObject<ExperimentResult>) => {
-        this.router.navigate([
-          '/experimentResults',
-          ExperimentType[response.data.type].toLowerCase(),
-          response.data.id,
-        ]);
-        return ExperimentResultsActions.actionExperimentResultsInsertRequestDone(
-          { experimentResult: response.data }
-        );
-      }),
-      catchError((errorResponse) => {
-        return of(
-          ExperimentResultsActions.actionExperimentResultsInsertRequestFail({})
-        );
-      })
-    )
-  );
-
   update$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsUpdateRequest),

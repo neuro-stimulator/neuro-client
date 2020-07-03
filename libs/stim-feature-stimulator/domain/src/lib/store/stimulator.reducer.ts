@@ -19,7 +19,7 @@ export function stimulatorReducer(
       StimulatorActions.actionCommandStimulatorStateRequestDone,
       (state: StimulatorState, action) => ({
         ...state,
-        state: action.state,
+        stimulatorState: action.state,
       })
     ),
     on(
@@ -76,6 +76,13 @@ export function stimulatorReducer(
       (state: StimulatorState, action) => ({
         ...state,
         stimulatorState: StimulatorStateType.FINISH,
+      })
+    ),
+    on(
+      StimulatorActions.actionCommandStimulatorClearRequestDone,
+      (state: StimulatorState, action) => ({
+        ...state,
+        stimulatorState: StimulatorStateType.CLEAR,
       })
     )
   )(stimulatorState, stimulatorAction);
