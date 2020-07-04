@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
 import {
   ExperimentsFacade,
-  isNameValid,
+  ExperimentsState,
 } from '@diplomka-frontend/stim-feature-experiments/domain';
 
 export class ExperimentNameValidator implements AsyncValidator {
@@ -22,13 +22,12 @@ export class ExperimentNameValidator implements AsyncValidator {
 
     this._facade.nameExists(control.value);
 
-    return this._facade
-      .select(isNameValid)
+    return this._facade.state
       .pipe(take(2))
       .pipe(
-        map((exists: boolean) => {
-          return exists ? { exists: true } : null;
-        })
+        map((state: ExperimentsState) =>
+          state.selectedExperiment.nameExists ? { nameExists: true } : null
+        )
       );
   }
 }
