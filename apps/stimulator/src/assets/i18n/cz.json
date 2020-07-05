@@ -202,6 +202,7 @@
       "NAME": "Název sekvence",
       "SOURCE_EXPERIMENT": "Zdrojový experiment",
       "SIZE": "Délka sekvence",
+      "SELECT_SOURCE_EXPERIMENT": "Vyberte experiment...",
       "BUTTON_BAR": {
         "GENERATE": "Generovat sekvenci",
         "SHOW_ORIGINAL": "Zobrazit původní",

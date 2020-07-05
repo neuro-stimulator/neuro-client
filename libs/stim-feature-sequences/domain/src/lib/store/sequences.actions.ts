@@ -1,52 +1,148 @@
 // All record request
-import { createAction, props } from "@ngrx/store";
-import { Experiment, Sequence } from "@stechy1/diplomka-share";
+import { createAction, props } from '@ngrx/store';
+import { Experiment, Sequence } from '@stechy1/diplomka-share';
 
-export const actionSequencesAllRequest = createAction('[Sequences] all records request', props<{}>());
-export const actionSequencesAllRequestDone = createAction('[Sequences] all records request done', props<{ sequences: Sequence[] }>());
-export const actionSequencesAllRequestFail = createAction('[Sequences] all records request fail', props<{}>());
+// All record request
+export const actionSequencesAllWithGhostRequest = createAction(
+  'Sequences] all records request with ghosts',
+  props<{ count?: number }>()
+);
+export const actionSequencesAllRequest = createAction(
+  '[Sequences] all records request',
+  props<{}>()
+);
+export const actionSequencesAllRequestDone = createAction(
+  '[Sequences] all records request done',
+  props<{ sequences: Sequence[] }>()
+);
+export const actionSequencesAllRequestFail = createAction(
+  '[Sequences] all records request fail',
+  props<{}>()
+);
 
 // One record request
-export const actionSequenceEmpty   = createAction('[Sequences] empty record', props<{ emptySequence: Sequence }>());
-export const actionSequencesOneRequest = createAction('[Sequences] one record request', props<{ sequenceID: number }>());
-export const actionSequencesOneRequestDone = createAction('[Sequences] one record request done', props<{ sequence: Sequence }>());
-export const actionSequencesOneRequestFail = createAction('[Sequences] one record request fail', props<{}>());
+export const actionSequenceEmpty = createAction(
+  '[Sequences] empty record',
+  props<{ emptySequence: Sequence }>()
+);
+export const actionSequencesOneRequest = createAction(
+  '[Sequences] one record request',
+  props<{ sequenceID: number }>()
+);
+export const actionSequencesOneRequestDone = createAction(
+  '[Sequences] one record request done',
+  props<{ sequence: Sequence }>()
+);
+export const actionSequencesOneRequestFail = createAction(
+  '[Sequences] one record request fail',
+  props<{}>()
+);
 
 // Insert record request
-export const actionSequencesInsertRequestFast = createAction('[Sequences] insert record request fast', props<{ experimentID: number, name: string, size: number }>());
-export const actionSequencesInsertRequest = createAction('[Sequences] insert record request', props<{ sequence: Sequence }>());
-export const actionSequencesInsertRequestDone = createAction('[Sequences] insert record request done', props<{ sequence: Sequence }>());
-export const actionSequencesInsertRequestFail = createAction('[Sequences] insert record request fail', props<{}>());
+export const actionSequencesInsertRequestFast = createAction(
+  '[Sequences] insert record request fast',
+  props<{ experimentID: number; name: string; size: number }>()
+);
+export const actionSequencesInsertRequest = createAction(
+  '[Sequences] insert record request',
+  props<{ sequence: Sequence }>()
+);
+export const actionSequencesInsertRequestDone = createAction(
+  '[Sequences] insert record request done',
+  props<{ sequence: Sequence }>()
+);
+export const actionSequencesInsertRequestFail = createAction(
+  '[Sequences] insert record request fail',
+  props<{}>()
+);
 
 // Update record request
-export const actionSequencesUpdateRequest = createAction('[Sequences] update record request', props<{ sequence: Sequence }>());
-export const actionSequencesUpdateRequestDone = createAction('[Sequences] update record request done', props<{ sequence: Sequence }>());
-export const actionSequencesUpdateRequestFail = createAction('[Sequences] update record request fail', props<{}>());
+export const actionSequencesUpdateRequest = createAction(
+  '[Sequences] update record request',
+  props<{ sequence: Sequence }>()
+);
+export const actionSequencesUpdateRequestDone = createAction(
+  '[Sequences] update record request done',
+  props<{ sequence: Sequence }>()
+);
+export const actionSequencesUpdateRequestFail = createAction(
+  '[Sequences] update record request fail',
+  props<{}>()
+);
 
 // Delete record request
-export const actionSequencesDeleteRequest = createAction('[Sequences] delete record request', props<{ sequenceID: number }>());
-export const actionSequencesDeleteRequestDone = createAction('[Sequences] delete record request done', props<{ sequence: Sequence }>());
-export const actionSequencesDeleteRequestFail = createAction('[Sequences] delete record request fail', props<{}>());
+export const actionSequencesDeleteRequest = createAction(
+  '[Sequences] delete record request',
+  props<{ sequenceID: number }>()
+);
+export const actionSequencesDeleteRequestDone = createAction(
+  '[Sequences] delete record request done',
+  props<{ sequence: Sequence }>()
+);
+export const actionSequencesDeleteRequestFail = createAction(
+  '[Sequences] delete record request fail',
+  props<{}>()
+);
 
 // Sequence name exist
-export const actionSequencesNameExistsRequest = createAction('[Sequences] name exists request', props<{ name: string, sequenceID?: number }>());
-export const actionSequencesNameExistsRequestDone = createAction('[Sequences] name exists request done', props<{ exists: boolean }>());
-export const actionSequencesNameExistsRequestFail = createAction('[Sequences] name exists request fail', props<{}>());
-
+export const actionSequencesNameExistsRequest = createAction(
+  '[Sequences] name exists request',
+  props<{ name: string; sequenceID?: number }>()
+);
+export const actionSequencesNameExistsRequestDone = createAction(
+  '[Sequences] name exists request done',
+  props<{ exists: boolean }>()
+);
+export const actionSequencesNameExistsRequestFail = createAction(
+  '[Sequences] name exists request fail',
+  props<{}>()
+);
 
 // Sequence specific actions
 
 // Generate new sequence for selected experiment
-export const actionSequencesGenerateRequest = createAction('[Sequences] generate new sequence request', props<{ experimentID: number, size: number }>());
-export const actionSequencesGenerateDone = createAction('[Sequences] generate new sequence request done', props<{ sequenceData: number[] }>());
-export const actionSequencesGenerateFail = createAction('[Sequences] generate new sequence request fail', props<{}>());
+export const actionSequencesGenerateRequest = createAction(
+  '[Sequences] generate new sequence request',
+  props<{ sequence: Sequence }>()
+);
+export const actionSequencesGenerateDone = createAction(
+  '[Sequences] generate new sequence request done',
+  props<{ sequenceData: number[] }>()
+);
+export const actionSequencesGenerateFail = createAction(
+  '[Sequences] generate new sequence request fail',
+  props<{}>()
+);
 
 // Get all experiments as sequence providers
-export const actionSequencesExperimentsAsSequenceSourceRequest = createAction('[Sequences] find sequences for experiments as sequence source', props<{}>());
-export const actionSequencesExperimentsAsSequenceSourceRequestDone = createAction('[Sequences] find sequences for experiments as sequence source done', props<{ experiments: Experiment[] }>());
-export const actionSequencesExperimentsAsSequenceSourceRequestFail = createAction('[Sequences] find sequences for experiments as sequence source fail', props<{}>());
+export const actionSequencesExperimentsAsSequenceSourceRequest = createAction(
+  '[Sequences] find sequences for experiments as sequence source',
+  props<{}>()
+);
+export const actionSequencesExperimentsAsSequenceSourceRequestDone = createAction(
+  '[Sequences] find sequences for experiments as sequence source done',
+  props<{ experiments: Experiment[] }>()
+);
+export const actionSequencesExperimentsAsSequenceSourceRequestFail = createAction(
+  '[Sequences] find sequences for experiments as sequence source fail',
+  props<{}>()
+);
 
 // Get sequences by experiment
-export const actionSequencesForExperimentRequest = createAction('[Sequences] find sequences for experiment', props<{ experiment: Experiment }>());
-export const actionSequencesForExperimentRequestDone = createAction('[Sequences] find sequences for experiment done', props<{ sequences: Sequence[] }>());
-export const actionSequencesForExperimentRequestFail = createAction('[Sequences] find sequences for experiment fail', props<{}>());
+// export const actionSequencesForExperimentRequest = createAction(
+//   '[Sequences] find sequences for experiment',
+//   props<{ experiment: Experiment }>()
+// );
+// export const actionSequencesForExperimentRequestDone = createAction(
+//   '[Sequences] find sequences for experiment done',
+//   props<{ sequences: Sequence[] }>()
+// );
+// export const actionSequencesForExperimentRequestFail = createAction(
+//   '[Sequences] find sequences for experiment fail',
+//   props<{}>()
+// );
+
+export const actionSequencesOriginalAsActual = createAction(
+  '[Sequences] replace original sequence as actual',
+  props<{}>()
+);

@@ -76,6 +76,13 @@
     "no-output-on-prefix": true,
     "no-output-rename": true,
     "no-outputs-metadata-property": true,
+    "max-line-length": [
+      true,
+      {
+        "limit": 180,
+        "ignore-pattern": "^import |^export {(.*?)}"
+      }
+    ],
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,

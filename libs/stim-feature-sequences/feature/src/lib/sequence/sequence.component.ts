@@ -1,111 +1,91 @@
 import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
-import { Observable, of, Subscription, TimeoutError } from "rxjs";
+import { Observable, of, Subscription, TimeoutError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 
-import { createEmptyExperimentERP, createEmptySequence, Experiment, ExperimentType, Sequence } from '@stechy1/diplomka-share';
+import {
+  createEmptyExperimentERP,
+  createEmptySequence,
+  Experiment,
+  ExperimentType,
+  Sequence,
+} from '@stechy1/diplomka-share';
 
 import { SequenceNameValidator } from '../sequence-name-validator';
-import { SequencesFacade } from "@diplomka-frontend/stim-feature-sequences/domain";
-import { ExperimentsFacade } from "@diplomka-frontend/stim-feature-experiments/domain";
+import {
+  SequencesFacade,
+  SequencesState,
+} from '@diplomka-frontend/stim-feature-sequences/domain';
+import {
+  ExperimentsFacade,
+  ExperimentsState,
+} from '@diplomka-frontend/stim-feature-experiments/domain';
+import { map, take } from 'rxjs/operators';
+import {
+  AliveCheckerFacade,
+  ConnectionInformationState,
+} from '@diplomka-frontend/stim-lib-connection';
 
 @Component({
   selector: 'stim-feature-sequences-sequence',
   templateUrl: './sequence.component.html',
-  styleUrls: ['./sequence.component.sass']
+  styleUrls: ['./sequence.component.sass'],
 })
 export class SequenceComponent implements OnInit, OnDestroy {
+  private readonly _nameValidator = new SequenceNameValidator(this._facade);
 
   form: FormGroup = new FormGroup({
     id: new FormControl(),
-    experimentId: new FormControl(null, [Validators.required, Validators.min(1)]),
+    experimentId: new FormControl(null, [
+      Validators.required,
+      Validators.min(1),
+    ]),
     name: new FormControl(null, {
       validators: [Validators.required],
       asyncValidators: [this._nameValidator.validate.bind(this._nameValidator)],
-      updateOn: 'blur'
+      updateOn: 'blur',
     }),
     size: new FormControl(null, [Validators.required, Validators.min(1)]),
     data: new FormControl(null, [Validators.required]),
     created: new FormControl(),
-    tags: new FormControl([])
+    tags: new FormControl([]),
   });
-
-  // private readonly _sequenceData: EventEmitter<{data: number[], overrideOrigin: boolean}> = new EventEmitter<{data: number[], overrideOrigin: boolean}>();
-  // public readonly sequenceData$: Observable<{data: number[], overrideOrigin: boolean}> = this._sequenceData.asObservable();
-
-  // private readonly _experiments: EventEmitter<Experiment[]> = new EventEmitter<Experiment[]>();
-  // public readonly experiments$: Observable<Experiment[]> = this._experiments.asObservable();
-
-  // private readonly _outputCount: EventEmitter<number> = new EventEmitter<number>();
-  // public readonly outputCount$: Observable<number> = this._outputCount.asObservable();
-
-  // private _sequence: Sequence;
-  // private _experiment: Experiment;
-  // private _connectedSubscription: Subscription;
-  // private _workingSubscription: Subscription;
-
-  // private _originalSequenceId: number;
-  // private _originalExperimentId: number;
-  // private _originalSequenceSize: number;
-
-  // actualIsOriginal = true;
 
   ExperimentType: ExperimentType;
 
-  constructor(private readonly _service: SequencesFacade,
-              private readonly _experimentService: ExperimentsFacade,
-              private readonly toastr: ToastrService,
-              private readonly _router: Router,
-              private readonly _route: ActivatedRoute,
-              private readonly _nameValidator: SequenceNameValidator,
-              private readonly logger: NGXLogger) {
-    // this._experiment = createEmptyExperimentERP();
-  }
+  constructor(
+    private readonly _facade: SequencesFacade,
+    private readonly _experimentService: ExperimentsFacade,
+    private readonly toastr: ToastrService,
+    private readonly _router: Router,
+    private readonly _route: ActivatedRoute,
+    private readonly _connection: AliveCheckerFacade,
+    private readonly logger: NGXLogger
+  ) {}
 
   private _loadSequence(sequenceID: string) {
-    // this._sequence = createEmptySequence();
-    // this.form.patchValue(this._sequence);
-    //
-    // if (sequenceID !== undefined) {
-    //   if (isNaN(parseInt(sequenceID, 10))) {
-    //     this.toastr.error(`ID sequence: '${sequenceID}' se nepodařilo naparsovat!`);
-    //     this._router.navigate(['/', 'sequences']);
-    //     return;
-    //   }
-    //
-    //   this._sequence.id = +sequenceID;
-    //
-    //   this._service.one(+sequenceID)
-    //       .catch((error) => {
-    //         // Pokud nenastane timeout => sequence nebyla na serveru nalezena
-    //         if (!(error instanceof TimeoutError)) {
-    //           // Rovnou přesmeruji na seznam všech sequenci
-    //           this._router.navigate(['/sequences']);
-    //         }
-    //
-    //         // Nastal timeout
-    //         // vrátím existující prázdnou sequenci a přihlásím se k socketu na událost
-    //         // pro obnovení spojení
-    //         this._connectedSubscription = this._service.connected$.subscribe(() => {
-    //           this._connectedSubscription.unsubscribe();
-    //           this._loadSequence(sequenceID);
-    //         });
-    //         return this._sequence;
-    //       })
-    //       .then((sequence: Sequence) => {
-    //         this._sequence = sequence;
-    //         this._originalSequenceId = this._sequence.id;
-    //         this._originalExperimentId = this._sequence.experimentId;
-    //         this._originalSequenceSize = this._sequence.size;
-    //         this.actualIsOriginal = true;
-    //         this.form.patchValue(this._sequence);
-    //         this._sequenceData.next({data: this._sequence.data, overrideOrigin: true});
-    //         this._loadExperiment(this._sequence.experimentId);
-    //       });
-    // }
+    if (sequenceID !== undefined) {
+      if (isNaN(parseInt(sequenceID, 10))) {
+        this.toastr.error(
+          `ID sequence: '${sequenceID}' se nepodařilo naparsovat!`
+        );
+        return;
+      }
+
+      this._facade.one(+sequenceID);
+    } else {
+      this._facade.empty(createEmptySequence());
+    }
+
+    this._facade.experimentsAsSequenceSource();
   }
 
   private _loadExperiment(experimentID: number) {
@@ -119,10 +99,35 @@ export class SequenceComponent implements OnInit, OnDestroy {
     //     });
   }
 
+  /**
+   * Pomocná privátní metoda pro aktualizaci formuláře
+   *
+   * @param sequence Sequence, která dodá data do formuláře
+   */
+  protected _updateFormGroup(sequence: Sequence) {
+    this.logger.debug('Aktualizuji hodnoty ve formuláři.');
+    this.form.patchValue(sequence);
+    this.form.markAsUntouched();
+  }
+
   ngOnInit() {
-    // this._route.params.subscribe((params: Params) => {
-    //   this._loadSequence(params['id']);
-    // });
+    this._facade.state
+      .pipe(take(2))
+      .pipe(map((state: SequencesState) => state.selectedSequence.sequence))
+      .subscribe((sequence: Sequence) => {
+        this._updateFormGroup(sequence);
+      });
+    this._facade.state
+      .pipe(
+        map((state: SequencesState) => state.selectedSequence.sequence?.data)
+      )
+      .subscribe((data: number[]) => {
+        this.form.patchValue({ data });
+      });
+
+    this._route.params.subscribe((params: Params) => {
+      this._loadSequence(params['id']);
+    });
     // this._route.queryParams.subscribe((query: Params) => {
     //   if (query['sourceExperimentId']) {
     //     this.form.patchValue({experimentId: query['sourceExperimentId']});
@@ -130,7 +135,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
     //   }
     // });
     //
-    // this._service.experimentsAsSequenceSource()
+    // this._facade.experimentsAsSequenceSource()
     //     .then((experiments: Experiment[]) => {
     //       this._experiments.next(experiments);
     //     });
@@ -152,16 +157,18 @@ export class SequenceComponent implements OnInit, OnDestroy {
   }
 
   handleGenerateSequence() {
-    // this._service.generaceSequence(this.experimentId.value, this.size.value);
-        // .then((result: number[]) => {
-        //   this.form.patchValue({data: result});
-        //   this._sequenceData.next({data: result, overrideOrigin: false});
-        // });
+    this._facade.generateSequence(this.form.value);
+    // this._facade.generaceSequence(this.experimentId.value, this.size.value);
+    // .then((result: number[]) => {
+    //   this.form.patchValue({data: result});
+    //   this._sequenceData.next({data: result, overrideOrigin: false});
+    // });
   }
 
   handleSaveSequence() {
+    this._facade.save(this.form.value);
     // if (this._sequence.id === undefined) {
-    //   this._service.insert(this.form.value)
+    //   this._facade.insert(this.form.value)
     //       .then((sequence: Sequence) => {
     //         this.logger.info(`Zakládám novou sequenci s id: ${sequence.id}`);
     //         this._sequence = sequence;
@@ -171,7 +178,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
     //       });
     // } else {
     //   this.logger.info(`Aktualizuji sequenci s id: ${this._sequence.id}`);
-    //   this._service.update(this.form.value).then((value: Sequence) => {
+    //   this._facade.update(this.form.value).then((value: Sequence) => {
     //     this.actualIsOriginal = true;
     //   });
     // }
@@ -192,12 +199,13 @@ export class SequenceComponent implements OnInit, OnDestroy {
   }
 
   handleShowOriginalSequence() {
+    this._facade.originalSequenceAsActual();
     // this.form.patchValue({experimentId: this._originalExperimentId, size: this._originalSequenceSize});
     // this._loadSequence(`${this._originalSequenceId}`);
   }
 
   handleSequenceUpdate(data: number[]) {
-    this.form.patchValue({data});
+    this.form.patchValue({ data });
     if (this.form.valid) {
       this.handleSaveSequence();
     }
@@ -205,22 +213,6 @@ export class SequenceComponent implements OnInit, OnDestroy {
 
   handleSequenceChanged(changed: boolean) {
     // this.actualIsOriginal = changed;
-  }
-
-  get experiment(): Experiment {
-    // TODO change
-    return undefined;
-    // return this._experiment;
-  }
-
-  get experiments$(): Observable<Experiment[]> {
-    return of([]);
-  }
-
-  get working(): Observable<boolean> {
-    // TODO change
-    return of(false);
-    // return this._service.working$;
   }
 
   get name(): AbstractControl {
@@ -241,5 +233,13 @@ export class SequenceComponent implements OnInit, OnDestroy {
 
   get isNew(): boolean {
     return !this.form.get('id').value;
+  }
+
+  get sequencesState(): Observable<SequencesState> {
+    return this._facade.state;
+  }
+
+  get connectionState(): Observable<ConnectionInformationState> {
+    return this._connection.state;
   }
 }

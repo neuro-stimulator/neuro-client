@@ -1,16 +1,21 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
+
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import * as fromSequences from './store/sequences.reducer';
-import { SequencesFacade } from "./application-services/sequences.facade";
+import { SequencesEffects } from './store/sequences.effects';
+import { SequencesFacade } from './application-services/sequences.facade';
 
 @NgModule({
   imports: [
-    StoreModule.forFeature(fromSequences.sequencesReducerKey, fromSequences.sequencesReducer)
+    StoreModule.forFeature(
+      fromSequences.sequencesReducerKey,
+      fromSequences.sequencesReducer
+    ),
+    EffectsModule.forFeature([SequencesEffects]),
   ],
-  providers: [
-    SequencesFacade
-  ]
+  providers: [SequencesFacade],
 })
 export class StimFeatureSequencesDomainModule {
   // static forRoot(): ModuleWithProviders {

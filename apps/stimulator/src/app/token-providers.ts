@@ -4,6 +4,7 @@ import {
   TOKEN_BASE_API_URL,
   TOKEN_EXPERIMENT_RESULTS_API_URL,
   TOKEN_EXPERIMENTS_API_URL,
+  TOKEN_SEQUENCES_API_URL,
   TOKEN_FILE_BROWSER_API_URL,
   TOKEN_MAX_OUTPUT_COUNT,
   TOKEN_SETTINGS_API_URL,
@@ -39,6 +40,13 @@ export const TOKEN_PROVIDERS: Provider[] = [
       environment.url.server,
       environment.port.server
     )}/api/experiment-results`,
+  },
+  {
+    provide: TOKEN_SEQUENCES_API_URL,
+    useValue: `${makeURL(
+      environment.url.server,
+      environment.port.server
+    )}/api/sequences`,
   },
   {
     provide: TOKEN_SETTINGS_API_URL,
