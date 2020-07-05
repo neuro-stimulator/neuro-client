@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
+import {
+  catchError,
+  map,
+  switchMap,
+  tap,
+  withLatestFrom,
+} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -186,6 +192,18 @@ export class SequencesEffects {
     )
   );
 
+  saveSelectedExperiment$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        SequencesActions.actionSequencesUpdateRequest,
+        SequencesActions.actionSequencesGenerateRequest,
+        SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestDone
+      ),
+      map((action) => {
+        return SequencesActions.actionSequencesUpdateSelectedExperiment({});
+      })
+    )
+  );
   // sequencesForExperiment$ = createEffect(() =>
   //   this.actions$.pipe(
   //     ofType(SequencesActions.actionSequencesForExperimentRequest),

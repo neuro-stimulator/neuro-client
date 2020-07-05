@@ -1,6 +1,11 @@
 import { Action, createReducer, createSelector, on } from '@ngrx/store';
 
-import { createEmptySequence, Sequence } from '@stechy1/diplomka-share';
+import {
+  createEmptyExperiment,
+  createEmptySequence,
+  Experiment,
+  Sequence,
+} from '@stechy1/diplomka-share';
 
 import { SequencesState } from './sequences.type';
 import * as SequencesActions from './sequences.actions';
@@ -8,11 +13,28 @@ import * as SequencesActions from './sequences.actions';
 export const sequencesReducerKey = 'sequences';
 
 const emptySequence: Sequence = createEmptySequence();
+const emptyExperiment: Experiment = createEmptyExperiment();
 
 export function sequencesReducer(
   sequencesState: SequencesState,
   sequencesAction: Action
 ) {
+  function getExperiment(state: SequencesState): Experiment {
+    const experimentID = state.selectedSequence.sequence.experimentId;
+    if (experimentID === -1) {
+      return emptyExperiment;
+    }
+
+    const index = state.selectedSequence.experiments.findIndex(
+      (value: Experiment) => value.id === +experimentID
+    );
+    if (index === -1) {
+      return emptyExperiment;
+    }
+
+    return state.selectedSequence.experiments[index];
+  }
+
   return createReducer(
     {
       sequences: [],
@@ -23,6 +45,7 @@ export function sequencesReducer(
         nameExists: false,
         isNew: true,
         experiments: [],
+        experiment: emptyExperiment,
       },
       groups: [],
       hasGroups: false,
@@ -238,6 +261,16 @@ export function sequencesReducer(
         selectedSequence: {
           ...state.selectedSequence,
           sequence: { ...state.selectedSequence.originalSequence },
+        },
+      })
+    ),
+    on(
+      SequencesActions.actionSequencesUpdateSelectedExperiment,
+      (state: SequencesState, action) => ({
+        ...state,
+        selectedSequence: {
+          ...state.selectedSequence,
+          experiment: getExperiment(state),
         },
       })
     )

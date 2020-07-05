@@ -12,6 +12,7 @@ export interface SequencesState extends AppState {
     nameExists: boolean;
     isNew: boolean;
     experiments: Experiment[];
+    experiment: Experiment;
   };
   groups: EntityGroup<Sequence>;
   hasGroups: boolean;

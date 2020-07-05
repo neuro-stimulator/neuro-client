@@ -146,3 +146,8 @@ export const actionSequencesOriginalAsActual = createAction(
   '[Sequences] replace original sequence as actual',
   props<{}>()
 );
+
+export const actionSequencesUpdateSelectedExperiment = createAction(
+  '[Sequences] update selected experiment',
+  props<{}>()
+);
