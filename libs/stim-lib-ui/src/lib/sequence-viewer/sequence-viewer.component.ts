@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 
@@ -9,10 +16,9 @@ import { Label } from 'ng2-charts';
 @Component({
   selector: 'stim-lib-ui-sequence-viewer',
   templateUrl: './sequence-viewer.component.html',
-  styleUrls: ['./sequence-viewer.component.sass']
+  styleUrls: ['./sequence-viewer.component.sass'],
 })
 export class SequenceViewerComponent implements OnInit, OnDestroy {
-
   // Pie
   readonly pieChartOptions: ChartOptions = {
     responsive: true,
@@ -23,7 +29,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
       datalabels: {
         formatter: (value, _): string => `#${value}`,
       },
-    }
+    },
   };
   pieChartLabels: Label[] = [];
   pieChartData: number[] = [];
@@ -33,22 +39,23 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
   readonly pieChartColors = [
     {
       backgroundColor: [
-        'rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)',
-        '#0b0033', '#370031', '#832232', '#ce8964', '#eaf27c'
+        'rgba(255,0,0,0.3)',
+        'rgba(0,255,0,0.3)',
+        'rgba(0,0,255,0.3)',
+        '#0b0033',
+        '#370031',
+        '#832232',
+        '#ce8964',
+        '#eaf27c',
       ],
     },
   ];
 
-  @Input() inputData: Observable<{data: number[], overrideOrigin: boolean}>;
-  @Input() outputCount: Observable<number>;
   @Input() editable = false;
   flowData: number[] = [];
-  private _outputCount: number;
   private _analyse: {};
   readonly outputs: number[] = [];
-
-  private _inputDataSubscription: Subscription;
-  private _outputCountSubscription: Subscription;
+  private _outputCount: number;
 
   @Output() update: EventEmitter<number[]> = new EventEmitter<number[]>();
   @Output() dataChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -56,32 +63,12 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
   dataHasChanged = false;
   _originalData: number[];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    this._inputDataSubscription = this.inputData.subscribe((input) => {
-      this.dataHasChanged = !input.overrideOrigin;
-      this.flowData.splice(0);
-      this.flowData.push(...input.data);
-      if (input.overrideOrigin) {
-        this._originalData = input.data;
-      }
-      this._analyse = this._analyseSequence(input.data);
-      this._showSequenceAnalyse(this._analyse);
-    });
-    this._outputCountSubscription = this.outputCount.subscribe((outputCount: number) => {
-      this._outputCount = outputCount;
-      if (!this._analyse) {
-        return;
-      }
-
-      this._showSequenceAnalyse(this._analyse);
-    });
   }
 
   ngOnDestroy(): void {
-    this._inputDataSubscription.unsubscribe();
-    this._outputCountSubscription.unsubscribe();
   }
 
   private _analyseSequence(sequence: number[]) {
@@ -131,7 +118,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
   }
 
   handleUpdate() {
-    this.update.next(this.flowData);
+    this.update.next([...this.flowData]);
   }
 
   handleCancelUpdate() {
@@ -143,6 +130,18 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
   }
 
   get outputCountArray(): number[] {
-    return new Array((this._outputCount ?? 0));
+    return new Array(this._outputCount ?? 0);
+  }
+
+  @Input() set inputData(inputData: number[]) {
+    this.flowData.splice(0);
+    this.flowData.push(...inputData);
+    this._analyse = this._analyseSequence(inputData);
+    this._showSequenceAnalyse(this._analyse);
+  }
+
+  @Input() set outputCount(outputCount: number) {
+    this._outputCount = outputCount;
+    this._showSequenceAnalyse(this._analyse);
   }
 }

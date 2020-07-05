@@ -62,7 +62,7 @@
   </div>
 </div>
 
-<!--<stim-lib-ui-sequence-viewer [inputData]="(sequencesState | async).selectedSequence.sequence.data" [outputCount]="(sequencesState | async).selectedSequence.experiment.outputCount" [editable]="true" (dataChanged)="handleSequenceChanged($event)" (update)="handleSequenceUpdate($event)"></stim-lib-ui-sequence-viewer>-->
+<stim-lib-ui-sequence-viewer [inputData]="(sequencesState | async).selectedSequence.sequence.data" [outputCount]="(sequencesState | async).selectedSequence.experiment.outputCount" [editable]="true" (dataChanged)="handleSequenceChanged($event)" (update)="handleSequenceUpdate($event)"></stim-lib-ui-sequence-viewer>
 
 
 <stim-lib-fab
@@ -70,5 +70,3 @@
   (fabClick)="handleSaveSequence()"
   [disabled]="form.invalid || (connectionState | async).working ">
 </stim-lib-fab>
-
-{{sequencesState | async | json }}

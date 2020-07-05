@@ -88,17 +88,6 @@ export class SequenceComponent implements OnInit, OnDestroy {
     this._facade.experimentsAsSequenceSource();
   }
 
-  private _loadExperiment(experimentID: number) {
-    // if (this._originalExperimentId !== experimentID) {
-    //   this.actualIsOriginal = false;
-    // }
-    // this._experimentService.one(experimentID)
-    //     .then((experiment: Experiment) => {
-    //       this._experiment = experiment;
-    //       this._outputCount.next(this._experiment.outputCount);
-    //     });
-  }
-
   /**
    * Pomocná privátní metoda pro aktualizaci formuláře
    *
@@ -128,25 +117,6 @@ export class SequenceComponent implements OnInit, OnDestroy {
     this._route.params.subscribe((params: Params) => {
       this._loadSequence(params['id']);
     });
-    // this._route.queryParams.subscribe((query: Params) => {
-    //   if (query['sourceExperimentId']) {
-    //     this.form.patchValue({experimentId: query['sourceExperimentId']});
-    //     this._loadExperiment(query['sourceExperimentId']);
-    //   }
-    // });
-    //
-    // this._facade.experimentsAsSequenceSource()
-    //     .then((experiments: Experiment[]) => {
-    //       this._experiments.next(experiments);
-    //     });
-    //
-    // this._workingSubscription = this.working.subscribe((working: boolean) => {
-    //   if (working) {
-    //     this.form.disable();
-    //   } else {
-    //     this.form.enable();
-    //   }
-    // });
   }
 
   ngOnDestroy(): void {
@@ -158,50 +128,14 @@ export class SequenceComponent implements OnInit, OnDestroy {
 
   handleGenerateSequence() {
     this._facade.generateSequence(this.form.value);
-    // this._facade.generaceSequence(this.experimentId.value, this.size.value);
-    // .then((result: number[]) => {
-    //   this.form.patchValue({data: result});
-    //   this._sequenceData.next({data: result, overrideOrigin: false});
-    // });
   }
 
   handleSaveSequence() {
     this._facade.save(this.form.value);
-    // if (this._sequence.id === undefined) {
-    //   this._facade.insert(this.form.value)
-    //       .then((sequence: Sequence) => {
-    //         this.logger.info(`Zakládám novou sequenci s id: ${sequence.id}`);
-    //         this._sequence = sequence;
-    //         // Po úspěšném založení nové sequenceu,
-    //         // upravím adresní řádek tak, aby obsahoval ID sequence
-    //         this._router.navigate(['/', 'sequences', sequence.id], {replaceUrl: true });
-    //       });
-    // } else {
-    //   this.logger.info(`Aktualizuji sequenci s id: ${this._sequence.id}`);
-    //   this._facade.update(this.form.value).then((value: Sequence) => {
-    //     this.actualIsOriginal = true;
-    //   });
-    // }
-  }
-
-  handleSourceExperimentChange(event: Event) {
-    // this.data.setValue(null);
-    // this._sequenceData.next({data: [], overrideOrigin: false});
-    // const id = (event.target as HTMLInputElement).value;
-    // this._loadExperiment(+id);
-  }
-
-  handleSequenceSizeChange(event: Event) {
-    // const size = +(event.target as HTMLInputElement).value;
-    // if (this._originalSequenceSize !== size) {
-    //   this.actualIsOriginal = false;
-    // }
   }
 
   handleShowOriginalSequence() {
     this._facade.originalSequenceAsActual();
-    // this.form.patchValue({experimentId: this._originalExperimentId, size: this._originalSequenceSize});
-    // this._loadSequence(`${this._originalSequenceId}`);
   }
 
   handleSequenceUpdate(data: number[]) {
@@ -211,9 +145,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
     }
   }
 
-  handleSequenceChanged(changed: boolean) {
-    // this.actualIsOriginal = changed;
-  }
+  handleSequenceChanged(changed: boolean) {}
 
   get name(): AbstractControl {
     return this.form.get('name');
