@@ -128,20 +128,6 @@ export const actionSequencesExperimentsAsSequenceSourceRequestFail = createActio
   props<{}>()
 );
 
-// Get sequences by experiment
-// export const actionSequencesForExperimentRequest = createAction(
-//   '[Sequences] find sequences for experiment',
-//   props<{ experiment: Experiment }>()
-// );
-// export const actionSequencesForExperimentRequestDone = createAction(
-//   '[Sequences] find sequences for experiment done',
-//   props<{ sequences: Sequence[] }>()
-// );
-// export const actionSequencesForExperimentRequestFail = createAction(
-//   '[Sequences] find sequences for experiment fail',
-//   props<{}>()
-// );
-
 export const actionSequencesOriginalAsActual = createAction(
   '[Sequences] replace original sequence as actual',
   props<{}>()

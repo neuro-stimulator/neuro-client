@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Experiment } from '@stechy1/diplomka-share';
+import { Experiment, Sequence } from '@stechy1/diplomka-share';
 
 // All record request
 export const actionExperimentsAllWithGhostRequest = createAction(
@@ -91,5 +91,19 @@ export const actionExperimentsNameExistsRequestDone = createAction(
 );
 export const actionExperimentsNameExistsRequestFail = createAction(
   '[Experiments] name exists request fail',
+  props<{}>()
+);
+
+// Get sequences by experiment
+export const actionSequencesForExperimentRequest = createAction(
+  '[Sequences] find sequences for experiment',
+  props<{}>()
+);
+export const actionSequencesForExperimentRequestDone = createAction(
+  '[Sequences] find sequences for experiment done',
+  props<{ sequences: Sequence[] }>()
+);
+export const actionSequencesForExperimentRequestFail = createAction(
+  '[Sequences] find sequences for experiment fail',
   props<{}>()
 );

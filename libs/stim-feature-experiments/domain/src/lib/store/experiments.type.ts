@@ -1,4 +1,4 @@
-import { Experiment } from '@stechy1/diplomka-share';
+import { Experiment, Sequence } from '@stechy1/diplomka-share';
 
 import { AppState } from '@diplomka-frontend/stim-lib-store';
 import { EntityGroup } from '@diplomka-frontend/stim-lib-list-utils';
@@ -11,6 +11,7 @@ export interface ExperimentsState extends AppState {
     originalExperiment: Experiment;
     nameExists: boolean;
     isNew: boolean;
+    sequences: Sequence[];
   };
   groups: EntityGroup<Experiment>;
   hasGroups: boolean;

@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  catchError,
-  map,
-  switchMap,
-  withLatestFrom,
-} from 'rxjs/operators';
+import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -15,6 +10,7 @@ import {
   Experiment,
   ExperimentType,
   ResponseObject,
+  Sequence,
 } from '@stechy1/diplomka-share';
 
 import { ExperimentsService } from '../infrastructure/experiments.service';
@@ -155,6 +151,29 @@ export class ExperimentsEffects {
       catchError((errorResponse) => {
         return of(
           ExperimentsActions.actionExperimentsNameExistsRequestFail({})
+        );
+      })
+    )
+  );
+
+  sequencesForExperiment$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ExperimentsActions.actionSequencesForExperimentRequest),
+      withLatestFrom(this.store.select('experiments')),
+      // @ts-ignore
+      switchMap(([action, state]: [any, ExperimentsState]) =>
+        this.experiments.sequencesForExperiment(
+          state.selectedExperiment.experiment
+        )
+      ),
+      map((response: ResponseObject<Sequence[]>) => {
+        return ExperimentsActions.actionSequencesForExperimentRequestDone({
+          sequences: response.data,
+        });
+      }),
+      catchError((errorResponse) => {
+        return of(
+          ExperimentsActions.actionSequencesForExperimentRequestFail({})
         );
       })
     )

@@ -22,6 +22,7 @@ export function experimentsReducer(
         originalExperiment: emptyExperiment,
         nameExists: false,
         isNew: true,
+        sequences: [],
       },
       groups: [],
       hasGroups: false,
@@ -81,6 +82,7 @@ export function experimentsReducer(
           experiment: { ...action.experiment },
           originalExperiment: { ...action.experiment },
           isNew: false,
+          sequences: [],
         },
       })
     ),
@@ -193,6 +195,17 @@ export function experimentsReducer(
           },
         };
       }
+    ),
+
+    on(
+      ExperimentsActions.actionSequencesForExperimentRequestDone,
+      (state: ExperimentsState, action) => ({
+        ...state,
+        selectedExperiment: {
+          ...state.selectedExperiment,
+          sequences: action.sequences,
+        },
+      })
     )
   )(experimentsState, experimentsAction);
 }

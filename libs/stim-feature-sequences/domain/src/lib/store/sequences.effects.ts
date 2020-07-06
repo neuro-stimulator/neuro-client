@@ -204,18 +204,4 @@ export class SequencesEffects {
       })
     )
   );
-  // sequencesForExperiment$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(SequencesActions.actionSequencesForExperimentRequest),
-  //     switchMap((action) => this.sequences.forExperiment(action.experiment)),
-  //     map((response: ResponseObject<Sequence[]>) => {
-  //       return SequencesActions.actionSequencesForExperimentRequestDone({
-  //         sequences: response.data,
-  //       });
-  //     }),
-  //     catchError((errorResponse) => {
-  //       return of(SequencesActions.actionSequencesForExperimentRequestFail({}));
-  //     })
-  //   )
-  // );
 }
