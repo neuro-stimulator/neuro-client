@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { filter, map, switchMap} from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
 
 import {
   ExperimentResultCreatedMessage,
@@ -10,12 +10,10 @@ import {
   SocketMessage,
   SocketMessageSpecialization,
   SocketMessageType,
-} from "@stechy1/diplomka-share";
+} from '@stechy1/diplomka-share';
 
 import * as fromConnection from '@diplomka-frontend/stim-lib-connection';
-import {
-  ExperimentsFacade,
-} from '@diplomka-frontend/stim-feature-experiments/domain';
+import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
 
 import * as PlayerActions from './player.actions';
 
@@ -60,14 +58,10 @@ export class PlayerEffects {
         ),
         map(
           (message: SocketMessage) =>
-            message.data as ExperimentResultCreatedMessage
+            (message as ExperimentResultCreatedMessage).data.experimentResultID
         ),
-        switchMap((message: ExperimentResultCreatedMessage) =>
-          this.router.navigate([
-            '/',
-            'results',
-            message.data.experimentResultID,
-          ])
+        switchMap((experimentResultID: number) =>
+          this.router.navigate(['/', 'results', experimentResultID])
         )
       ),
     { dispatch: false }
