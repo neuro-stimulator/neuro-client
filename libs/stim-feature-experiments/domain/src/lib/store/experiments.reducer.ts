@@ -68,7 +68,10 @@ export function experimentsReducer(
         selectedExperiment: {
           ...state.selectedExperiment,
           experiment: { ...action.emptyExperiment },
+          originalExperiment: { ...action.emptyExperiment },
           isNew: true,
+          nameExists: false,
+          sequences: [],
         },
       })
     ),

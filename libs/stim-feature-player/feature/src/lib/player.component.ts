@@ -127,6 +127,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     // this._serialRawDataSubscription.unsubscribe();
     this._experimentSubscription.unsubscribe();
+    this.player.clearExperiment();
   }
 
   handleUploadExperiment() {

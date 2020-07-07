@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
-import { Experiment } from '@stechy1/diplomka-share';
+import { createEmptyExperiment, Experiment } from '@stechy1/diplomka-share';
 
 import {
   StimulatorFacade,
@@ -69,6 +69,9 @@ export class PlayerFacade {
   }
   public clearExperiment() {
     this.stimulator.experimentClear();
+  }
+  public destroyExperiment() {
+    this.experiments.empty(createEmptyExperiment());
   }
 
   get state(): Observable<PlayerState> {

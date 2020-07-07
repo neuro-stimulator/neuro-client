@@ -159,6 +159,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
 
   ngOnDestroy(): void {
     this._experimentsStateSubscription.unsubscribe();
+    this._service.empty(this._createEmptyExperiment());
   }
 
   canDeactivate(): Observable<boolean> | boolean {
