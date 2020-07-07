@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   Component,
   EventEmitter,
@@ -19,9 +20,8 @@ import {
 import { ExperimentViewerComponent } from '@diplomka-frontend/stim-lib-ui';
 import { ConnectionStatus } from '@diplomka-frontend/stim-lib-connection';
 import { PlayerFacade } from '@diplomka-frontend/stim-feature-player/domain';
-import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
-import { PlayerState } from '../../../domain/src/lib/store/player.state';
+import { PlayerState } from '@diplomka-frontend/stim-feature-player/domain';
 
 @Component({
   templateUrl: './player.component.html',
