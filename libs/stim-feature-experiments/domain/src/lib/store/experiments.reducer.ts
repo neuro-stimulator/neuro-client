@@ -209,6 +209,20 @@ export function experimentsReducer(
           sequences: action.sequences,
         },
       })
+    ),
+    on(
+      ExperimentsActions.actionExperimentsGenerateSequenceFromNameAndSizeRequestDone,
+      (state: ExperimentsState, action) => ({
+        ...state,
+        selectedExperiment: {
+          ...state.selectedExperiment,
+          experiment: {
+            ...state.selectedExperiment.experiment,
+            sequenceId: action.sequence.id,
+          },
+          sequences: [...state.selectedExperiment.sequences, action.sequence],
+        },
+      })
     )
   )(experimentsState, experimentsAction);
 }

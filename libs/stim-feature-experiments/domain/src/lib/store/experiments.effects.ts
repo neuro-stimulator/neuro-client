@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
+import {
+  catchError,
+  flatMap,
+  map,
+  switchMap,
+  withLatestFrom,
+} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -70,10 +76,21 @@ export class ExperimentsEffects {
       ofType(ExperimentsActions.actionExperimentsOneRequest),
       switchMap((action) => this.experiments.one(action.experimentID)),
       map((response: ResponseObject<Experiment>) => {
-        return ExperimentsActions.actionExperimentsOneRequestDone({
-          experiment: response.data,
-        });
+        return [
+          ExperimentsActions.actionExperimentsOneRequestDone({
+            experiment: response.data,
+          }),
+          response.data?.type === ExperimentType.ERP
+            ? ExperimentsActions.actionSequencesForExperimentRequest({
+                experiment: response.data,
+              })
+            : ExperimentsActions.actionExperimentsNoAction({}),
+        ];
+        // return ExperimentsActions.actionExperimentsOneRequestDone({
+        //   experiment: response.data,
+        // });
       }),
+      flatMap((c) => c),
       catchError((errorResponse) => {
         return of(ExperimentsActions.actionExperimentsOneRequestFail({}));
       })
@@ -139,7 +156,7 @@ export class ExperimentsEffects {
       switchMap(([action, experiments]) =>
         this.experiments.nameExists(
           action.name,
-          // @ts-ignoreX
+          // @ts-ignore
           experiments.selectedExperiment.experiment.id
         )
       ),
@@ -159,12 +176,9 @@ export class ExperimentsEffects {
   sequencesForExperiment$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentsActions.actionSequencesForExperimentRequest),
-      withLatestFrom(this.store.select('experiments')),
       // @ts-ignore
-      switchMap(([action, state]: [any, ExperimentsState]) =>
-        this.experiments.sequencesForExperiment(
-          state.selectedExperiment.experiment
-        )
+      switchMap((action) =>
+        this.experiments.sequencesForExperiment(action.experiment)
       ),
       map((response: ResponseObject<Sequence[]>) => {
         return ExperimentsActions.actionSequencesForExperimentRequestDone({
@@ -174,6 +188,28 @@ export class ExperimentsEffects {
       catchError((errorResponse) => {
         return of(
           ExperimentsActions.actionSequencesForExperimentRequestFail({})
+        );
+      })
+    )
+  );
+
+  sequenceFromExperiment$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        ExperimentsActions.actionExperimentsGenerateSequenceFromNameAndSizeRequest
+      ),
+      withLatestFrom(this.store.select('experiments')),
+      switchMap(([action, experiments]) =>
+        this.experiments.sequenceFromExperiment(
+          // @ts-ignore
+          experiments.selectedExperiment.experiment.id,
+          action.name,
+          action.size
+        )
+      ),
+      map((response: ResponseObject<Sequence>) => {
+        return ExperimentsActions.actionExperimentsGenerateSequenceFromNameAndSizeRequestDone(
+          { sequence: response.data }
         );
       })
     )

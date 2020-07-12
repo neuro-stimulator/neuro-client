@@ -171,6 +171,27 @@ export class SequencesEffects {
     )
   );
 
+  sequenceFromNameAndSize$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesInsertRequestFast),
+      switchMap((action) =>
+        this.sequences.fromNameAndSize(
+          action.experimentID,
+          action.name,
+          action.size
+        )
+      ),
+      map((response: ResponseObject<Sequence>) => {
+        return SequencesActions.actionSequencesInsertRequestDone({
+          sequence: response.data,
+        });
+      }),
+      catchError((errorResponse) => {
+        return of(SequencesActions.actionSequencesInsertRequestFail({}));
+      })
+    )
+  );
+
   experimentsAsSequenceProviders$ = createEffect(() =>
     this.actions$.pipe(
       ofType(

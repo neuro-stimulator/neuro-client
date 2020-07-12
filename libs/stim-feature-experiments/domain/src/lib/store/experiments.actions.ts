@@ -96,14 +96,29 @@ export const actionExperimentsNameExistsRequestFail = createAction(
 
 // Get sequences by experiment
 export const actionSequencesForExperimentRequest = createAction(
-  '[Sequences] find sequences for experiment',
-  props<{}>()
+  '[Experiments] find sequences for experiment',
+  props<{ experiment: Experiment }>()
 );
 export const actionSequencesForExperimentRequestDone = createAction(
-  '[Sequences] find sequences for experiment done',
+  '[Experiments] find sequences for experiment done',
   props<{ sequences: Sequence[] }>()
 );
 export const actionSequencesForExperimentRequestFail = createAction(
-  '[Sequences] find sequences for experiment fail',
+  '[Experiments] find sequences for experiment fail',
   props<{}>()
+);
+
+export const actionExperimentsNoAction = createAction(
+  '[Experiments] no action',
+  props<{}>()
+);
+
+export const actionExperimentsGenerateSequenceFromNameAndSizeRequest = createAction(
+  '[Experiments] request for generate sequence from name and size',
+  props<{ size: number; name: string }>()
+);
+
+export const actionExperimentsGenerateSequenceFromNameAndSizeRequestDone = createAction(
+  '[Experiments] request for generate sequence from name and size done',
+  props<{ sequence: Sequence }>()
 );

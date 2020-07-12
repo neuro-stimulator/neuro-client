@@ -42,4 +42,13 @@ export class ExperimentsService extends BaseService<Experiment> {
       `${this._accessPoint}/sequences-for-experiment/${experiment.id}`
     );
   }
+
+  sequenceFromExperiment(experimentID: number, name: string, size: number) {
+    this.logger.info(
+      'Odesílám požadavek na rychlé vygenerování sekvence za pomoci názvu a délky.'
+    );
+    return this._http.get(
+      `${this._accessPoint}/sequence-from-experiment/${experimentID}/${name}/${size}`
+    );
+  }
 }

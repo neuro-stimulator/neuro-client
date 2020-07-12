@@ -79,6 +79,7 @@
         },
         "SEQUENCE": {
           "AVAILABLE_SEQUENCES": "Dostupné sekvence",
+          "SELECT": "Vyberte sekvenci...",
           "BUTTON_BAR": {
             "EDIT": "Editovat",
             "DELETE": "Odebrat",

@@ -77,9 +77,16 @@ export class SequencesFacade extends BaseFacade<Sequence, SequencesState> {
     );
   }
 
-  // public fromNameAndSize(name: string, size: number) {
-  //   this.store.dispatch(SequencesActions.)
-  // }
+  public fromNameAndSize(experimentID: number, name: string, size: number) {
+    this.store.dispatch(
+      SequencesActions.actionSequencesInsertRequestFast({
+        experimentID,
+        name,
+        size,
+      })
+    );
+  }
+
   originalSequenceAsActual() {
     this.store.dispatch(SequencesActions.actionSequencesOriginalAsActual({}));
   }

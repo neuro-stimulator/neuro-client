@@ -79,6 +79,7 @@
         },
         "SEQUENCE": {
           "AVAILABLE_SEQUENCES": "Available sequences",
+          "SELECT": "Select sequence...",
           "BUTTON_BAR": {
             "EDIT": "Edit",
             "DELETE": "Delete",

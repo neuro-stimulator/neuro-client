@@ -1,4 +1,4 @@
-import { Action, createReducer, createSelector, on } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 
 import {
   createEmptyExperiment,
@@ -274,9 +274,5 @@ export function sequencesReducer(
         },
       })
     )
-    // on(
-    //   SequencesActions.actionSequencesForExperimentRequestDone,
-    //   (state: SequencesState, action) => ({})
-    // )
   )(sequencesState, sequencesAction);
 }
