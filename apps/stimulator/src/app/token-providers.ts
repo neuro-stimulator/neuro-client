@@ -10,6 +10,8 @@ import {
   TOKEN_SETTINGS_API_URL,
   TOKEN_STIMULATOR_API_URL,
   TOKEN_SUPPORTED_LANGUAGES,
+  TOKEN_AUTH_API_URL,
+  TOKEN_USERS_API_URL,
 } from '@diplomka-frontend/stim-lib-common';
 
 import { environment, makeURL } from '../environments/environment';
@@ -65,5 +67,20 @@ export const TOKEN_PROVIDERS: Provider[] = [
       environment.url.server,
       environment.port.server
     )}/api/file-browser`,
+  },
+
+  {
+    provide: TOKEN_AUTH_API_URL,
+    useValue: `${makeURL(
+      environment.url.server,
+      environment.port.server
+    )}/api/auth`,
+  },
+  {
+    provide: TOKEN_USERS_API_URL,
+    useValue: `${makeURL(
+      environment.url.server,
+      environment.port.server
+    )}/api/users`,
   },
 ];

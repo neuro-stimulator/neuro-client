@@ -5,6 +5,7 @@ import {
   HttpClient,
   HttpClientModule,
   HTTP_INTERCEPTORS,
+  HttpClientXsrfModule,
 } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -41,6 +42,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TOKEN_PROVIDERS } from './token-providers';
 import { StimFeatureSettingsDomainModule } from '@diplomka-frontend/stim-feature-settings/domain';
 import { StimLibConnectionModule } from '@diplomka-frontend/stim-lib-connection';
+import { ClientIdInterceptorService } from './share/interceptors/client-id-interceptor.service';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -56,6 +58,10 @@ export function createIntroStepsLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'x-xsrf-token',
+    }),
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
@@ -92,6 +98,11 @@ export function createIntroStepsLoader(http: HttpClient) {
     {
       provide: DEFAULT_TIMEOUT,
       useValue: 3000,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ClientIdInterceptorService,
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,

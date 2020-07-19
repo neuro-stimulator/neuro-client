@@ -26,3 +26,6 @@ export const TOKEN_MAX_OUTPUT_COUNT = new InjectionToken(
 export const TOKEN_SUPPORTED_LANGUAGES = new InjectionToken(
   'TOKEN_SUPPORTED_LANGUAGES'
 );
+
+export const TOKEN_AUTH_API_URL = new InjectionToken('TOKEN_AUTH_API_URL');
+export const TOKEN_USERS_API_URL = new InjectionToken('TOKEN_USERS_API_URL');

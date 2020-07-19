@@ -1,5 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-import { Type } from '@angular/core';
 
 export const actionNavigationChange = createAction(
   '[Navigation] change',

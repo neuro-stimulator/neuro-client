@@ -4,10 +4,12 @@
     "AUTHOR": "Petr Štechmüller",
     "HEADER_IMAGE": "Hlavička",
     "VALIDATION": {
-      "REQUIRED": "Parametr je vyžadován!",
+      "REQUIRED": "Hodnota je vyžadována!",
       "MIN": "Minimální hodnota je: {{min}}!",
+      "MIN_LENGTH": "Minimální délka: {{min}}!",
       "EXCLUSIVE_MIN": "Hodnota musí být větší než: {{exclusiveMin}}",
       "MAX": "Maximální hodnota je: {{max}}!",
+      "MAX_LENGTH": "Maximální délka je: {{max}}!",
       "EXCLUSIVE_MAX": "Hodnota musí být menší než: {{exclusiveMax}}",
       "ZERO_VALUE": "Parametr má hodnotu nula!"
     }
@@ -474,5 +476,32 @@
     "CODE_SUCCESS_COMMANDS_EXPERIMENT_OUTPUT_UPLOAD": "Nastavení jednoho výstupu bylo nahráno.",
     "CODE_SUCCESS_COMMANDS_SEQUENCE_PART_UPLOAD": "Část sekvence byla nahrána.",
     "CODE_ERROR_COMMANDS_UNKNOWN": "Na stimulátor přišel neznámý příkaz!"
+  },
+
+  "AUTH": {
+    "LOGIN": {
+      "TITLE": "Přihlášení",
+      "REMEMBER": "Zapamatovat si mě!",
+      "SUBMIT": "Přihlásit",
+      "DONT_HAVE_ACCOUNT": "Nemáte ještě účet?",
+      "REGISTER_HERE": "Registrovat zde"
+    },
+    "REGISTER": {
+      "TITLE": "Registrace",
+      "USERNAME": "Uživatelské jméno",
+      "SUBMIT": "Zaregistrovat",
+      "ALREADY_HAVE_ACCOUNT": "Již máte účet?",
+      "LOGIN_HERE": "Přihlásit zde",
+      "PASSWORD_AGAIN": "Heslo znovu",
+      "VALIDATION": {
+        "INVALID_EMAIL": "E-mail není validní",
+        "PASSWORD_NOT_MATCH": "Zadaná hesla se neshodují!"
+      }
+    },
+    "LOGOUT": {
+      "TITLE": "Odhlásit se"
+    },
+    "EMAIL": "E-mail",
+    "PASSWORD": "Heslo"
   }
 }

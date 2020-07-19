@@ -1,9 +1,3 @@
-/*
-  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
-  It is not intended to be used to perform a compilation.
-
-  To learn more about this file see: https://angular.io/config/solution-tsconfig.
-*/
 {
   "files": [],
   "references": [
@@ -108,6 +102,18 @@
     },
     {
       "path": "./libs/stim-feature-settings/feature/param-config/server/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-users/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-users/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-auth/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-auth/domain/tsconfig.spec.json"
     }
   ]
 }

@@ -1,0 +1,10 @@
+{
+  "extends": "../../../tslint.json",
+  "rules": {
+    "component-selector": [true, "element", "stim-feature-auth", "kebab-case"],
+    "directive-selector": [true, "attribute", "stimFeatureAuth", "camelCase"]
+  },
+  "linterOptions": {
+    "exclude": ["!**/*"]
+  }
+}

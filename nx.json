@@ -127,6 +127,18 @@
     },
     "stim-feature-settings-feature-param-config-server": {
       "tags": []
+    },
+    "stim-feature-users-feature": {
+      "tags": []
+    },
+    "stim-feature-users-domain": {
+      "tags": []
+    },
+    "stim-feature-auth-feature": {
+      "tags": []
+    },
+    "stim-feature-auth-domain": {
+      "tags": []
     }
   }
 }
