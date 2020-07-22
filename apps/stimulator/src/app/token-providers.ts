@@ -71,10 +71,11 @@ export const TOKEN_PROVIDERS: Provider[] = [
 
   {
     provide: TOKEN_AUTH_API_URL,
-    useValue: `${makeURL(
-      environment.url.server,
-      environment.port.server
-    )}/api/auth`,
+    useValue: '/api/auth',
+    // useValue: `${makeURL(
+    //   environment.url.server,
+    //   environment.port.server
+    // )}/api/auth`,
   },
   {
     provide: TOKEN_USERS_API_URL,

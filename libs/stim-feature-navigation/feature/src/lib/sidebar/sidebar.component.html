@@ -15,6 +15,9 @@
     <a routerLink="/auth" class="list-group-item list-group-item-action bg-light" routerLinkActive="active" (click)="handleCloseSidebar()"><i class="fas fa-user"></i>
       {{ 'AUTH.TITLE' | translate }}
     </a>
+    <a routerLink="/auth/logout" class="list-group-item list-group-item-action bg-light" routerLinkActive="active" (click)="handleCloseSidebar()"><i class="fas fa-user"></i>
+      {{ 'AUTH.LOGOUT.TITLE' | translate }}
+    </a>
 
     <a routerLink="/settings" class="list-group-item list-group-item-action bg-light" routerLinkActive="active" (click)="handleCloseSidebar()"><i class="fas fa-cog"></i>
       {{ 'SETTINGS.TITLE' | translate }}

@@ -49,5 +49,6 @@ export const environment = {
 };
 
 export function makeURL(url: string, port: number) {
-  return `http://${url}:${port}`;
+  //return `http://${url}:${port}`;
+  return '';
 }

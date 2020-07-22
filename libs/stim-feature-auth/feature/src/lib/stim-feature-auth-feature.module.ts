@@ -8,9 +8,15 @@ import { StimFeatureAuthFeatureRoutingModule } from './stim-feature-auth-feature
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { LogoutController } from './logout/logout.controller';
 
 @NgModule({
-  declarations: [AuthComponent, LoginComponent, RegisterComponent],
+  declarations: [
+    AuthComponent,
+    LoginComponent,
+    LogoutController,
+    RegisterComponent,
+  ],
   imports: [
     TranslateModule,
 

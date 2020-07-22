@@ -35,6 +35,7 @@ export class ClientIdInterceptorService implements HttpInterceptor {
           ClientIdInterceptorService.KEY_CLIENT_ID
         ),
       },
+      withCredentials: true,
     });
 
     return next.handle(req);

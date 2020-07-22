@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   public refreshToken() {
-    return this._http.get(`${this._accessPoint}/refresh-jwt`);
+    return this._http.patch(`${this._accessPoint}/refresh-jwt`, null);
   }
 
   public logout() {

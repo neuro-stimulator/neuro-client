@@ -94,4 +94,16 @@ export class AuthEffects {
       })
     )
   );
+
+  logoutDone$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(
+          AuthActions.actionLogoutRequestDone,
+          AuthActions.actionLoginRequestFail
+        ),
+        tap(() => this.router.navigate(['auth']))
+      ),
+    { dispatch: false }
+  );
 }

@@ -10,8 +10,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginComponent {
   form = new FormGroup({
-    email: new FormControl(),
-    password: new FormControl(),
+    email: new FormControl('aaa@bbb.cz'),
+    password: new FormControl('1234567890'),
   });
 
   constructor(private readonly facade: AuthFacade) {}
