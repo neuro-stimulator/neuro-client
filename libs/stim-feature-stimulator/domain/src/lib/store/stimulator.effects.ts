@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
+  catchError,
   filter,
   map,
   mergeMap,
@@ -147,19 +148,15 @@ export class StimulatorEffects {
           .experimentUpload(experimentState.selectedExperiment.experiment.id)
           .pipe(
             mergeMap((res: ResponseObject<any>) => {
-              if (res.message.code === MessageCodes.CODE_SUCCESS) {
-                return [
-                  StimulatorActions.actionCommandStimulatorUploadRequestDone(
-                    {}
-                  ),
-                  StimulatorActions.actionCommandStimulatorSetupRequest({}),
-                ];
-              }
               return [
-                StimulatorActions.actionCommandStimulatorSetupRequestFail({}),
+                StimulatorActions.actionCommandStimulatorUploadRequestDone({}),
+                StimulatorActions.actionCommandStimulatorSetupRequest({}),
               ];
             })
           );
+      }),
+      catchError((errorResponse) => {
+        return [StimulatorActions.actionCommandStimulatorSetupRequestFail({})];
       })
     )
   );
@@ -174,17 +171,16 @@ export class StimulatorEffects {
           .pipe(
             map((response: ResponseObject<any>) => {
               const code = response?.message.code;
-              if (code === MessageCodes.CODE_SUCCESS) {
-                return StimulatorActions.actionCommandStimulatorSetupRequestDone(
-                  {}
-                );
-              } else {
-                return StimulatorActions.actionCommandStimulatorSetupRequestFail(
-                  {}
-                );
-              }
+              return StimulatorActions.actionCommandStimulatorSetupRequestDone(
+                {}
+              );
             })
           );
+      }),
+      catchError((errorResponse) => {
+        return of(
+          StimulatorActions.actionCommandStimulatorSetupRequestFail({})
+        );
       })
     )
   );
@@ -198,18 +194,14 @@ export class StimulatorEffects {
           .experimentRun(experimentState.selectedExperiment.experiment.id)
           .pipe(
             map((response: ResponseObject<any>) => {
-              const code = response?.message.code;
-              if (code === MessageCodes.CODE_SUCCESS) {
-                return StimulatorActions.actionCommandStimulatorRunRequestDone(
-                  {}
-                );
-              } else {
-                return StimulatorActions.actionCommandStimulatorRunRequestFail(
-                  {}
-                );
-              }
+              return StimulatorActions.actionCommandStimulatorRunRequestDone(
+                {}
+              );
             })
           );
+      }),
+      catchError((errorResponse) => {
+        return of(StimulatorActions.actionCommandStimulatorRunRequestFail({}));
       })
     )
   );
@@ -223,18 +215,16 @@ export class StimulatorEffects {
           .experimentPause(experimentState.selectedExperiment.experiment.id)
           .pipe(
             map((response: ResponseObject<any>) => {
-              const code = response?.message.code;
-              if (code === MessageCodes.CODE_SUCCESS) {
-                return StimulatorActions.actionCommandStimulatorPauseRequestDone(
-                  {}
-                );
-              } else {
-                return StimulatorActions.actionCommandStimulatorPauseRequestFail(
-                  {}
-                );
-              }
+              return StimulatorActions.actionCommandStimulatorPauseRequestDone(
+                {}
+              );
             })
           );
+      }),
+      catchError((errorResponse) => {
+        return of(
+          StimulatorActions.actionCommandStimulatorPauseRequestFail({})
+        );
       })
     )
   );
@@ -248,18 +238,16 @@ export class StimulatorEffects {
           .experimentFinish(experimentState.selectedExperiment.experiment.id)
           .pipe(
             map((response: ResponseObject<any>) => {
-              const code = response?.message.code;
-              if (code === MessageCodes.CODE_SUCCESS) {
-                return StimulatorActions.actionCommandStimulatorFinishRequestDone(
-                  {}
-                );
-              } else {
-                return StimulatorActions.actionCommandStimulatorFinishRequestFail(
-                  {}
-                );
-              }
+              return StimulatorActions.actionCommandStimulatorFinishRequestDone(
+                {}
+              );
             })
           );
+      }),
+      catchError((errorResponse) => {
+        return of(
+          StimulatorActions.actionCommandStimulatorFinishRequestFail({})
+        );
       })
     )
   );
@@ -281,6 +269,11 @@ export class StimulatorEffects {
               );
             }
           })
+        );
+      }),
+      catchError((errorResponse) => {
+        return of(
+          StimulatorActions.actionCommandStimulatorClearRequestFail({})
         );
       })
     )
@@ -304,6 +297,9 @@ export class StimulatorEffects {
           default:
             return StimulatorActions.actionStimulatorNoop({});
         }
+      }),
+      catchError((errorResponse) => {
+        return of(StimulatorActions.actionStimulatorNoop({}));
       })
     )
   );
