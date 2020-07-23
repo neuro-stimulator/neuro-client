@@ -21,7 +21,7 @@ export const actionLoginRequest = createAction(
 );
 export const actionLoginRequestDone = createAction(
   '[Auth] login request done',
-  props<{ user: User }>()
+  props<{ user: User; jwt: string }>()
 );
 export const actionLoginRequestFail = createAction(
   '[Auth] login request fail',
@@ -34,7 +34,7 @@ export const actionRefreshTokenRequest = createAction(
 );
 export const actionRefreshTokenRequestDone = createAction(
   '[Auth] refresh token request done',
-  props<{}>()
+  props<{ user: User; jwt: string }>()
 );
 export const actionRefreshTokenRequestFail = createAction(
   '[Auth] refresh token request fail',

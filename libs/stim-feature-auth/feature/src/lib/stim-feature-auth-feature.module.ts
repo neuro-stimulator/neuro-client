@@ -9,6 +9,9 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutController } from './logout/logout.controller';
+import { LoginGuard } from './login/login.guard';
+import { AuthGuard } from './auth.guard';
+import { LogoutGuard } from './logout/logout.guard';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,7 @@ import { LogoutController } from './logout/logout.controller';
     LogoutController,
     RegisterComponent,
   ],
+  providers: [AuthGuard, LoginGuard, LogoutGuard],
   imports: [
     TranslateModule,
 

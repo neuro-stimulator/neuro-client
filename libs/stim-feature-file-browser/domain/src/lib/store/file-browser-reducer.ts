@@ -61,11 +61,6 @@ export function fileBrowserReducer(
             ...folderContentCopy.slice(newSelectedFileIndex + 1),
           ];
         }
-        console.log({
-          ...state,
-          selectedFile: newFile,
-          files: folderContentCopy,
-        });
         return {
           ...state,
           selectedFile: newFile,

@@ -1,5 +1,5 @@
 // Core angular modules
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {
   HttpClient,
@@ -23,6 +23,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { StimLibUiModule } from '@diplomka-frontend/stim-lib-ui';
 import { StimLibStoreModule } from '@diplomka-frontend/stim-lib-store';
 import { StimFeatureNavigationFeatureModule } from '@diplomka-frontend/stim-feature-navigation/feature';
+import { StimLibConnectionModule } from '@diplomka-frontend/stim-lib-connection';
+import { StimFeatureSettingsDomainModule } from '@diplomka-frontend/stim-feature-settings/domain';
+import {
+  AuthFacade,
+  AuthState,
+  StimFeatureAuthDomainModule,
+} from '@diplomka-frontend/stim-feature-auth/domain';
 
 // Application components
 import { AppComponent } from './app.component';
@@ -38,11 +45,9 @@ import {
   RequestTimeoutInterceptor,
 } from './share/interceptors/request-timeout-interceptor.service';
 import { ResponseInterceptor } from './share/interceptors/response-interceptor.service';
+import { ClientIdInterceptorService } from './share/interceptors/client-id-interceptor.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TOKEN_PROVIDERS } from './token-providers';
-import { StimFeatureSettingsDomainModule } from '@diplomka-frontend/stim-feature-settings/domain';
-import { StimLibConnectionModule } from '@diplomka-frontend/stim-lib-connection';
-import { ClientIdInterceptorService } from './share/interceptors/client-id-interceptor.service';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -51,6 +56,19 @@ export function createTranslateLoader(http: HttpClient) {
 
 export function createIntroStepsLoader(http: HttpClient) {
   return http.get(`./assets/steps.json`).toPromise();
+}
+
+export function autologinFactory(facade: AuthFacade) {
+  return () => {
+    facade.refreshToken();
+    return new Promise((resolve) => {
+      facade.state.subscribe((state: AuthState) => {
+        if (state.isAuthenticated !== undefined) {
+          resolve();
+        }
+      });
+    });
+  };
 }
 
 @NgModule({
@@ -89,6 +107,7 @@ export function createIntroStepsLoader(http: HttpClient) {
     StimLibUiModule,
     StimFeatureSettingsDomainModule,
     StimFeatureNavigationFeatureModule,
+    StimFeatureAuthDomainModule,
 
     // Root routing module
     AppRoutingModule,
@@ -112,6 +131,12 @@ export function createIntroStepsLoader(http: HttpClient) {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ResponseInterceptor,
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: autologinFactory,
+      deps: [AuthFacade],
       multi: true,
     },
     {

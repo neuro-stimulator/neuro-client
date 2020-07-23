@@ -92,7 +92,7 @@ export class ResponseInterceptor implements HttpInterceptor {
           }
         }
 
-        return NEVER;
+        throw response;
       })
     );
   }

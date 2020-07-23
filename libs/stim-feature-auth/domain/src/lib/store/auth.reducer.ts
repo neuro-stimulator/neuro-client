@@ -12,14 +12,26 @@ const emptyUser: User = createEmptyUser();
 export function authReducer(authState: AuthState, authAction: Action) {
   return createReducer(
     {
-      isAuthenticated: false,
+      isAuthenticated: undefined,
       user: emptyUser,
     },
-    on(AuthActions.actionLoginRequestDone, (state: AuthState, action) => ({
-      ...state,
-      user: action.user,
-      isAuthenticated: true,
-    })),
+    on(
+      AuthActions.actionLoginRequestDone,
+      AuthActions.actionRefreshTokenRequestDone,
+      (state: AuthState, action) => ({
+        ...state,
+        user: action.user,
+        isAuthenticated: true,
+      })
+    ),
+    on(
+      AuthActions.actionRefreshTokenRequestFail,
+      (state: AuthState, action) => ({
+        ...state,
+        isAuthenticated: false,
+        user: emptyUser,
+      })
+    ),
     on(AuthActions.actionLogoutRequestDone, (state: AuthState, action) => ({
       ...state,
       user: emptyUser,

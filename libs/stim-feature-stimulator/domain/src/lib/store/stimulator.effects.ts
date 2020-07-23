@@ -290,9 +290,6 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(ConnectionActions.actionSocketData),
       map((action) => action.data as SocketMessage),
-      tap((message: SocketMessage) => {
-        console.log(message);
-      }),
       filter(
         (message: SocketMessage) =>
           message.specialization === SocketMessageSpecialization.STIMULATOR

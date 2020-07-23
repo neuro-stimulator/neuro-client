@@ -19,15 +19,15 @@ export class AuthComponent implements OnInit, OnDestroy {
     private readonly facade: AuthFacade,
     private readonly router: Router
   ) {
-    this._stateSubscription = this.facade.state.subscribe(
-      (state: AuthState) => {
-        if (!state.isAuthenticated) {
-          this.router.navigate(['auth', 'login']);
-        } else {
-          this.router.navigate(['profile']);
-        }
-      }
-    );
+    // this._stateSubscription = this.facade.state.subscribe(
+    //   (state: AuthState) => {
+    //     if (!state.isAuthenticated) {
+    //       this.router.navigate(['auth', 'login']);
+    //     } else {
+    //       this.router.navigate(['profile']);
+    //     }
+    //   }
+    // );
   }
 
   ngOnInit(): void {}

@@ -47,8 +47,11 @@ export class AuthEffects {
       switchMap((action) => {
         return this.service.login(action.user);
       }),
-      map((response: ResponseObject<User>) =>
-        AuthActions.actionLoginRequestDone({ user: response.data })
+      map((response: ResponseObject<{ user: User; jwt: string }>) =>
+        AuthActions.actionLoginRequestDone({
+          user: response.data.user,
+          jwt: response.data.jwt,
+        })
       ),
       catchError((errorResponse) => {
         return of(AuthActions.actionLoginRequestFail({}));
@@ -60,6 +63,9 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.actionLoginRequestDone),
+        tap((action) => {
+          this.service.jwt = action.jwt;
+        }),
         tap(() => this.router.navigate(['/', 'profile']))
       ),
     { dispatch: false }
@@ -71,13 +77,27 @@ export class AuthEffects {
       switchMap((action) => {
         return this.service.refreshToken();
       }),
-      map((response: ResponseObject<any>) =>
-        AuthActions.actionRefreshTokenRequestDone({})
+      map((response: ResponseObject<{ user: User; jwt: string }>) =>
+        AuthActions.actionRefreshTokenRequestDone({
+          user: response.data.user,
+          jwt: response.data.jwt,
+        })
       ),
       catchError((errorResponse) => {
         return of(AuthActions.actionRefreshTokenRequestFail({}));
       })
     )
+  );
+
+  refreshDone$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.actionRefreshTokenRequestDone),
+        tap((action) => {
+          this.service.jwt = action.jwt;
+        })
+      ),
+    { dispatch: false }
   );
 
   logout$ = createEffect(() =>
@@ -102,6 +122,9 @@ export class AuthEffects {
           AuthActions.actionLogoutRequestDone,
           AuthActions.actionLoginRequestFail
         ),
+        tap(() => {
+          this.service.jwt = undefined;
+        }),
         tap(() => this.router.navigate(['auth']))
       ),
     { dispatch: false }

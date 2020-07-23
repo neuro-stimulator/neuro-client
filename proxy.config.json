@@ -15,6 +15,7 @@
     "target": "http://10.0.0.4:3005",
     "secure": false,
     "logLevel": "debug",
-    "changeOrigin": true
+    "changeOrigin": true,
+    "ws": true
   }
 }
