@@ -1,22 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from "@angular/router";
+import { RouterModule } from '@angular/router';
 
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule } from '@ngx-translate/core';
 
-import { StimFeatureNavigationDomainModule } from "@diplomka-frontend/stim-feature-navigation/domain";
-import { StimLibUiModule } from "@diplomka-frontend/stim-lib-ui";
+import { StimLibUiModule } from '@diplomka-frontend/stim-lib-ui';
+import { StimFeatureNavigationDomainModule } from '@diplomka-frontend/stim-feature-navigation/domain';
+import { StimLibConnectionModule } from '@diplomka-frontend/stim-lib-connection';
+import { StimFeatureAuthDomainModule } from '@diplomka-frontend/stim-feature-auth/domain';
 
-import { SidebarComponent } from "./sidebar/sidebar.component";
-import { NavigationButtonsAddonDirective } from "./navigation-buttons-addon.directive";
-import { NavigationComponent } from "./navigation.component";
-import { StimLibConnectionModule } from "@diplomka-frontend/stim-lib-connection";
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.directive';
+import { NavigationComponent } from './navigation.component';
 
 @NgModule({
   declarations: [
     NavigationComponent,
     SidebarComponent,
-    NavigationButtonsAddonDirective
+    NavigationButtonsAddonDirective,
   ],
   imports: [
     CommonModule,
@@ -24,12 +25,13 @@ import { StimLibConnectionModule } from "@diplomka-frontend/stim-lib-connection"
     RouterModule,
     StimLibUiModule,
     StimFeatureNavigationDomainModule,
-    StimLibConnectionModule
+    StimFeatureAuthDomainModule,
+    StimLibConnectionModule,
   ],
   exports: [
     SidebarComponent,
     NavigationButtonsAddonDirective,
-    NavigationComponent
-  ]
+    NavigationComponent,
+  ],
 })
 export class StimFeatureNavigationFeatureModule {}

@@ -503,5 +503,9 @@
     },
     "EMAIL": "E-mail",
     "PASSWORD": "Heslo"
+  },
+
+  "PROFILE": {
+    "TITLE": "Profil"
   }
 }

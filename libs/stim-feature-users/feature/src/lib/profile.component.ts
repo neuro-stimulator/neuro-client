@@ -41,4 +41,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   get state(): Observable<AuthState> {
     return this.facade.state;
   }
+
+  handleLogout() {
+    this.facade.logout();
+  }
 }
