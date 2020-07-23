@@ -47,10 +47,9 @@ export class AuthEffects {
       switchMap((action) => {
         return this.service.login(action.user);
       }),
-      map((response: ResponseObject<{ user: User; jwt: string }>) =>
+      map((response: ResponseObject<User>) =>
         AuthActions.actionLoginRequestDone({
-          user: response.data.user,
-          jwt: response.data.jwt,
+          user: response.data,
         })
       ),
       catchError((errorResponse) => {
@@ -64,7 +63,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.actionLoginRequestDone),
         tap((action) => {
-          this.service.jwt = action.jwt;
+          this.service.isLogged = true;
         }),
         tap(() => this.router.navigate(['/', 'profile']))
       ),
@@ -77,10 +76,9 @@ export class AuthEffects {
       switchMap((action) => {
         return this.service.refreshToken();
       }),
-      map((response: ResponseObject<{ user: User; jwt: string }>) =>
+      map((response: ResponseObject<User>) =>
         AuthActions.actionRefreshTokenRequestDone({
-          user: response.data.user,
-          jwt: response.data.jwt,
+          user: response.data,
         })
       ),
       catchError((errorResponse) => {
@@ -94,7 +92,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.actionRefreshTokenRequestDone),
         tap((action) => {
-          this.service.jwt = action.jwt;
+          this.service.isLogged = true;
         })
       ),
     { dispatch: false }
@@ -123,7 +121,7 @@ export class AuthEffects {
           AuthActions.actionLoginRequestFail
         ),
         tap(() => {
-          this.service.jwt = undefined;
+          this.service.isLogged = false;
         }),
         tap(() => this.router.navigate(['auth']))
       ),
