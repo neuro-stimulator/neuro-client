@@ -2,7 +2,7 @@
  * Public API Surface of stim-lib-modal
  */
 
-export * from './lib/modal.module';
+export * from './lib/stim-lib-modal.module';
 
 export * from './lib/dialog-childs.directive';
 

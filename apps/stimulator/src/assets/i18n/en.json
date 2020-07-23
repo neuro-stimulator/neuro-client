@@ -79,6 +79,7 @@
         },
         "SEQUENCE": {
           "AVAILABLE_SEQUENCES": "Available sequences",
+          "SELECT": "Select sequence...",
           "BUTTON_BAR": {
             "EDIT": "Edit",
             "DELETE": "Delete",
@@ -202,6 +203,7 @@
       "NAME": "Sequence name",
       "SOURCE_EXPERIMENT": "Source experiment",
       "SIZE": "Sequence length",
+      "SELECT_SOURCE_EXPERIMENT": "Select experiment...",
       "BUTTON_BAR": {
         "GENERATE": "Generate sequence",
         "SHOW_ORIGINAL": "Show original",
@@ -341,6 +343,7 @@
     "SERIAL": {
       "STATUS_DISCONNECTED": "Disconnected",
       "STATUS_CONNECTED": "Connected",
+      "STATUS_CONNECTING": "Connecting...",
       "MESSAGES": {
         "STIMULATOR_WAS_CONNECTED": "Stimulator has been connected.",
         "STIMULATOR_WAS_DISCONNECTED": "Stimulator has been disconnected."

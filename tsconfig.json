@@ -1,31 +1,119 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2019", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@diplomka-frontend/stim-lib-modal": [
-        "libs/stim-lib-modal/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-lib-fab": [
-        "libs/stim-lib-fab/src/index.ts"
-      ],
-      "@diplomka-frontend/stim-lib-list-utils": [
-        "libs/stim-lib-list-utils/src/index.ts"
-      ]
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/stimulator/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/stimulator/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/stimulator-e2e/tsconfig.e2e.json"
+    },
+    {
+      "path": "./libs/stim-lib-modal/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-lib-fab/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-lib-list-utils/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-lib-common/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-lib-ui/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-about/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-stimulator/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-lib-store/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-lib-connection/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-file-browser/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-file-browser/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-navigation/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-navigation/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-help/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-player/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-player/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-experiments/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-experiments/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-experiment-results/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-experiment-results/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-sequences/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-sequences/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/popup/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/console/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/param-config/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/service-state/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/param-config/application/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/param-config/experiments/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-settings/feature/param-config/server/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-users/domain/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-users/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-auth/feature/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/stim-feature-auth/domain/tsconfig.spec.json"
     }
-  },
-  "exclude": ["node_modules", "tmp", "old"]
+  ]
 }

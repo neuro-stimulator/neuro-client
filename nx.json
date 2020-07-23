@@ -20,11 +20,20 @@
   },
   "projects": {
     "stimulator": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["stim-lib-ui"]
     },
     "stimulator-e2e": {
       "tags": [],
       "implicitDependencies": ["stimulator"]
+    },
+    "stim-lib-ui": {
+      "tags": [],
+      "implicitDependencies": [
+        "stim-lib-modal",
+        "stim-lib-fab",
+        "stim-lib-list-utils"
+      ]
     },
     "stim-lib-modal": {
       "tags": []
@@ -33,6 +42,102 @@
       "tags": []
     },
     "stim-lib-list-utils": {
+      "tags": []
+    },
+    "stim-lib-common": {
+      "tags": []
+    },
+    "stim-feature-about": {
+      "tags": []
+    },
+    "stim-feature-settings-feature": {
+      "tags": [],
+      "implicitDependencies": ["stim-feature-settings-domain"]
+    },
+    "stim-feature-settings-domain": {
+      "tags": []
+    },
+    "stim-feature-settings-popup": {
+      "tags": []
+    },
+    "stim-feature-stimulator-domain": {
+      "tags": []
+    },
+    "stim-lib-store": {
+      "tags": []
+    },
+    "stim-lib-connection": {
+      "tags": []
+    },
+    "stim-feature-file-browser-feature": {
+      "tags": [],
+      "implicitDependencies": ["stim-feature-file-browser-domain"]
+    },
+    "stim-feature-file-browser-domain": {
+      "tags": []
+    },
+    "stim-feature-navigation-feature": {
+      "tags": []
+    },
+    "stim-feature-navigation-domain": {
+      "tags": []
+    },
+    "stim-feature-help-feature": {
+      "tags": []
+    },
+    "stim-feature-player-feature": {
+      "tags": [],
+      "implicitDependencies": ["stim-feature-player-domain"]
+    },
+    "stim-feature-player-domain": {
+      "tags": []
+    },
+    "stim-feature-experiments-feature": {
+      "tags": []
+    },
+    "stim-feature-experiments-domain": {
+      "tags": []
+    },
+    "stim-feature-experiment-results-feature": {
+      "tags": []
+    },
+    "stim-feature-experiment-results-domain": {
+      "tags": []
+    },
+    "stim-feature-sequences-feature": {
+      "tags": []
+    },
+    "stim-feature-sequences-domain": {
+      "tags": []
+    },
+    "stim-feature-settings-feature-console": {
+      "tags": []
+    },
+    "stim-feature-settings-feature-param-config": {
+      "tags": []
+    },
+    "stim-feature-settings-feature-service-state": {
+      "tags": []
+    },
+    "stim-feature-settings-feature-param-config-application": {
+      "tags": []
+    },
+    "stim-feature-settings-feature-param-config-experiments": {
+      "tags": []
+    },
+    "stim-feature-settings-feature-param-config-server": {
+      "tags": []
+    },
+    "stim-feature-users-feature": {
+      "tags": []
+    },
+    "stim-feature-users-domain": {
+      "tags": []
+    },
+    "stim-feature-auth-feature": {
+      "tags": []
+    },
+    "stim-feature-auth-domain": {
       "tags": []
     }
   }

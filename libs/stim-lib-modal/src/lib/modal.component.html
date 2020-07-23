@@ -10,7 +10,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <ng-container stimLibDialogChilds></ng-container>
+        <ng-container stimLibModalDialogChilds></ng-container>
       </div>
       <div class="modal-footer">
         <button type="button" id="modal-button-confirm" class="btn btn-primary" [disabled]="confirmDisabled | async" *ngIf="confirmText" (click)="handleConfirm()">{{confirmText | translate}}</button>

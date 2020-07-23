@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Socket } from 'ngx-socket-io';
-
 import { ResponseObject} from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../environments/environment';
-import { AliveCheckerService, ConnectionStatus } from '../alive-checker.service';
+import { AliveCheckerFacade } from "@diplomka-frontend/stim-lib-connection";
 
 @Injectable({
   providedIn: 'root'
@@ -21,34 +19,34 @@ export class IpcService {
   /**
    * Socket pro komunikaci mezi WebServerem a Webovou aplikací
    */
-  private readonly _socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.server)}/ipc`});
+  // private readonly _socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.server)}/ipc`});
 
   private _isIpcConnected: boolean;
 
-  constructor(aliveChecker: AliveCheckerService,
+  constructor(aliveChecker: AliveCheckerFacade,
               private readonly _http: HttpClient) {
     this._isIpcConnected = false;
-    aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
-      if (status === ConnectionStatus.CONNECTED) {
-        this._socket.connect();
-      }
-    });
-    aliveChecker.disconnect.subscribe(() => {
-      if (this._socket !== undefined) {
-        this._socket.disconnect();
-        this._isIpcConnected = false;
-      }
-    });
-    this._socket.on('connect', () => {
-      this.status();
-    });
-    this._socket.on('status', (data) => {
-      if (this._isIpcConnected === data.connected) {
-        return;
-      }
-
-      this._isIpcConnected = data.connected;
-    });
+    // aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
+    //   if (status === ConnectionStatus.CONNECTED) {
+    //     this._socket.connect();
+    //   }
+    // });
+    // aliveChecker.disconnect.subscribe(() => {
+    //   if (this._socket !== undefined) {
+    //     this._socket.disconnect();
+    //     this._isIpcConnected = false;
+    //   }
+    // });
+    // this._socket.on('connect', () => {
+    //   this.status();
+    // });
+    // this._socket.on('status', (data) => {
+    //   if (this._isIpcConnected === data.connected) {
+    //     return;
+    //   }
+    //
+    //   this._isIpcConnected = data.connected;
+    // });
   }
 
   /**

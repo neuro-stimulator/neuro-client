@@ -1,0 +1,55 @@
+<div class="row output-type" [formGroup]="form">
+  <div class="col-12 col-sm-2">
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" [id]="'output-type-led_' + uuid" formControlName="led" (change)="handleLedChange($event)">
+      <label class="form-check-label" [for]="'output-type-led_' + uuid">
+        <i class="fas fa-lightbulb"></i> {{ 'EXPERIMENTS.OUTPUT_TYPE.LED' | translate }}
+      </label>
+    </div>
+  </div>
+  <div class="col-12 col-sm-5">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" [id]="'output-type-audio_' + uuid" formControlName="audio" (change)="handleAudioImageChange($event)">
+          <label class="form-check-label" [for]="'output-type-audio_' + uuid">
+            <i class="fas fa-music"></i> {{ 'EXPERIMENTS.OUTPUT_TYPE.AUDIO' | translate }}
+          </label>
+        </div>
+          <small *ngIf="form.errors?.audioFile" class="form-text text-muted">{{ 'EXPERIMENTS.OUTPUT_TYPE.VALIDATIONS.AUDIO_FILE_INVALID' | translate }}</small>
+        </div>
+      </div>
+      <div class="col-8">
+        <stim-lib-ui-audio-player *ngIf="audio.value === true" [title]="audioFile.value || defaultTitle" [audioUrl]="audioUrl" (requestFileChange)="handleRequestAudioChange()"></stim-lib-ui-audio-player>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-12 col-sm-5">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" [id]="'output-type-image_' + uuid" formControlName="image" (change)="handleAudioImageChange($event)">
+          <label class="form-check-label" [for]="'output-type-image_' + uuid">
+            <i class="fas fa-image"></i> {{ 'EXPERIMENTS.OUTPUT_TYPE.IMAGE' | translate }}
+          </label>
+        </div>
+          <small *ngIf="form.errors?.imageFile" class="form-text text-muted">{{ 'EXPERIMENTS.OUTPUT_TYPE.VALIDATIONS.IMAGE_FILE_INVALID' | translate }}</small>
+        </div>
+      </div>
+      <div class="col-7">
+        <stim-lib-ui-image-player *ngIf="image.value === true" [title]="imageFile.value || defaultTitle" [imageUrl]="imageUrl" (requestFileChange)="handleRequestImageChange()"></stim-lib-ui-image-player>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-12">
+    <small *ngIf="form.touched && form.errors?.noOutputType" class="form-text text-muted">{{ 'EXPERIMENTS.OUTPUT_TYPE.VALIDATIONS.NO_OUTPUT_TYPE' | translate }}</small>
+  </div>
+
+</div>
+
+<stim-lib-modal #modal></stim-lib-modal>

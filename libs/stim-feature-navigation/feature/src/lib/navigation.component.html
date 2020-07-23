@@ -1,0 +1,36 @@
+<nav [ngClass]="['navbar', 'navbar-expand-lg', 'navbar-light', (navigationState | async).applyCustomNavColor ? ((navigationState | async).customNavColor) : '']">
+  <div>
+    <h1 id="page-header" class="p-0 m-0 text-truncate">{{(navigationState | async).title | translate:(navigationState | async).titleArgs }}</h1>
+    <small><i [ngClass]="['fas', ((connectionState | async).working ? 'fa-spin' : ''), (navigationState | async).icon]"></i> {{(navigationState | async).subtitle | translate:(navigationState | async).subtitleArgs}}</small>
+  </div>
+
+  <ul class="ml-auto nav navbar-nav navbar-right button-addon-bar">
+    <li>
+      <ng-template stimFeatureNavigationButtonsAddon></ng-template>
+    </li>
+    <li>
+      <button class="btn navbar-page-tools-toggler d-none d-lg-block" type="button"
+              *ngIf="(navigationState | async).hasPageTools"
+              (click)="handleTogglePageTools()">
+        <i class="fa fa-tools"></i>
+      </button>
+    </li>
+    <li>
+      <button class="navbar-toggler d-lg-none" type="button"
+              (click)="handleToggleSidebar()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </li>
+  </ul>
+</nav>
+
+<div class="working" *ngIf="(connectionState | async).working">
+  <div class="working_line_wrapper">
+    <div class="working_line">
+      <div class="working_line_inner working_line_inner--1"></div>
+      <div class="working_line_inner working_line_inner--2"></div>
+    </div>
+  </div>
+</div>
+
+<stim-lib-modal #modal></stim-lib-modal>

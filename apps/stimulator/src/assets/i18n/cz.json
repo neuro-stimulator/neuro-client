@@ -4,10 +4,12 @@
     "AUTHOR": "Petr Štechmüller",
     "HEADER_IMAGE": "Hlavička",
     "VALIDATION": {
-      "REQUIRED": "Parametr je vyžadován!",
+      "REQUIRED": "Hodnota je vyžadována!",
       "MIN": "Minimální hodnota je: {{min}}!",
+      "MIN_LENGTH": "Minimální délka: {{min}}!",
       "EXCLUSIVE_MIN": "Hodnota musí být větší než: {{exclusiveMin}}",
       "MAX": "Maximální hodnota je: {{max}}!",
+      "MAX_LENGTH": "Maximální délka je: {{max}}!",
       "EXCLUSIVE_MAX": "Hodnota musí být menší než: {{exclusiveMax}}",
       "ZERO_VALUE": "Parametr má hodnotu nula!"
     }
@@ -79,6 +81,7 @@
         },
         "SEQUENCE": {
           "AVAILABLE_SEQUENCES": "Dostupné sekvence",
+          "SELECT": "Vyberte sekvenci...",
           "BUTTON_BAR": {
             "EDIT": "Editovat",
             "DELETE": "Odebrat",
@@ -202,6 +205,7 @@
       "NAME": "Název sekvence",
       "SOURCE_EXPERIMENT": "Zdrojový experiment",
       "SIZE": "Délka sekvence",
+      "SELECT_SOURCE_EXPERIMENT": "Vyberte experiment...",
       "BUTTON_BAR": {
         "GENERATE": "Generovat sekvenci",
         "SHOW_ORIGINAL": "Zobrazit původní",
@@ -341,6 +345,7 @@
     "SERIAL": {
       "STATUS_DISCONNECTED": "Odpojeno",
       "STATUS_CONNECTED": "Připojeno",
+      "STATUS_CONNECTING": "Připojuji...",
       "MESSAGES": {
         "STIMULATOR_WAS_CONNECTED": "Stimulátor byl připojen.",
         "STIMULATOR_WAS_DISCONNECTED": "Stimulátor byl odpojen."
@@ -471,5 +476,36 @@
     "CODE_SUCCESS_COMMANDS_EXPERIMENT_OUTPUT_UPLOAD": "Nastavení jednoho výstupu bylo nahráno.",
     "CODE_SUCCESS_COMMANDS_SEQUENCE_PART_UPLOAD": "Část sekvence byla nahrána.",
     "CODE_ERROR_COMMANDS_UNKNOWN": "Na stimulátor přišel neznámý příkaz!"
+  },
+
+  "AUTH": {
+    "LOGIN": {
+      "TITLE": "Přihlášení",
+      "REMEMBER": "Zapamatovat si mě!",
+      "SUBMIT": "Přihlásit",
+      "DONT_HAVE_ACCOUNT": "Nemáte ještě účet?",
+      "REGISTER_HERE": "Registrovat zde"
+    },
+    "REGISTER": {
+      "TITLE": "Registrace",
+      "USERNAME": "Uživatelské jméno",
+      "SUBMIT": "Zaregistrovat",
+      "ALREADY_HAVE_ACCOUNT": "Již máte účet?",
+      "LOGIN_HERE": "Přihlásit zde",
+      "PASSWORD_AGAIN": "Heslo znovu",
+      "VALIDATION": {
+        "INVALID_EMAIL": "E-mail není validní",
+        "PASSWORD_NOT_MATCH": "Zadaná hesla se neshodují!"
+      }
+    },
+    "LOGOUT": {
+      "TITLE": "Odhlásit se"
+    },
+    "EMAIL": "E-mail",
+    "PASSWORD": "Heslo"
+  },
+
+  "PROFILE": {
+    "TITLE": "Profil"
   }
 }

@@ -1,14 +1,14 @@
 import { async, TestBed } from '@angular/core/testing';
-import { ListUtilsModule } from './list-utils.module';
+import { StimLibListUtilsModule } from './stim-lib-list-utils.module';
 
 describe('StimLibListUtilsModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ListUtilsModule],
+      imports: [StimLibListUtilsModule],
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(ListUtilsModule).toBeDefined();
+    expect(StimLibListUtilsModule).toBeDefined();
   });
 });

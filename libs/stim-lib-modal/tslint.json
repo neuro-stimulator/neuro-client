@@ -1,8 +1,8 @@
 {
   "extends": "../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "stimLib", "camelCase"],
-    "component-selector": [true, "element", "stim-lib", "kebab-case"]
+    "directive-selector": [true, "attribute", "stimLibModal", "camelCase"],
+    "component-selector": [true, "element", "stim-lib-modal", "kebab-case"]
   },
   "linterOptions": {
     "exclude": ["!**/*"]

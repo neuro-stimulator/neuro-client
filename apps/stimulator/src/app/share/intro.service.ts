@@ -5,11 +5,10 @@ import * as introjs from 'intro.js';
 import { IntroJs, Step } from 'intro.js';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { NGXLogger } from 'ngx-logger';
-import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 import { environment} from '../../environments/environment';
-import { SettingsService } from '../settings/settings.service';
+import { SettingsFacade } from "@diplomka-frontend/stim-feature-settings/domain";
 
 export const INTRO_STEPS = new InjectionToken<number>('defaultIntroSteps');
 
@@ -45,7 +44,7 @@ export class IntroService {
               private readonly _http: HttpClient,
               private readonly _storage: LocalStorageService,
               private readonly _translator: TranslateService,
-              private readonly _settings: SettingsService,
+              private readonly _settings: SettingsFacade,
               private readonly logger: NGXLogger) {
     this._loadComponents();
     stepsByComponentsPromise.then((steps: ComponentsSteps) => {
@@ -127,9 +126,9 @@ export class IntroService {
   }
 
   public showIntro(component: string, beforeShow?: () => void, afterExit?: () => void) {
-    if (!component || environment.disableTutorial || this._settings.settings.application.disableTutorial) {
+    /*if (!component || environment.disableTutorial || this._settings.settings.application.disableTutorial) {
       return;
-    }
+    }*/
 
     this._showIntroSteps(component, beforeShow, afterExit);
   }

@@ -1,14 +1,21 @@
 {
   "/api/*": {
-    "target": "localhost:3000",
+    "target": "http://10.0.0.4:3005",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
   },
   "/assets/*": {
-    "target": "localhost:3005",
+    "target": "http://10.0.0.4:3005",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
+  },
+  "/socket.io/*": {
+    "target": "http://10.0.0.4:3005",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "ws": true
   }
 }

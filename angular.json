@@ -40,9 +40,7 @@
                 "apps/stimulator/src/sass"
               ]
             },
-            "scripts": [
-              "node_modules/intro.js/intro.js"
-            ]
+            "scripts": ["node_modules/intro.js/intro.js"]
           },
           "configurations": {
             "production": {
@@ -96,7 +94,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "stimulator:build"
+            "browserTarget": "stimulator:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -254,6 +253,1111 @@
             "tsConfig": "libs/stim-lib-list-utils/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "libs/stim-lib-list-utils/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-common": {
+      "projectType": "library",
+      "root": "libs/stim-lib-common",
+      "sourceRoot": "libs/stim-lib-common/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-lib-common/tsconfig.lib.json",
+              "libs/stim-lib-common/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/stim-lib-common/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-common/jest.config.js",
+            "tsConfig": "libs/stim-lib-common/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-lib-common/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-ui": {
+      "projectType": "library",
+      "root": "libs/stim-lib-ui",
+      "sourceRoot": "libs/stim-lib-ui/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-lib-ui/tsconfig.lib.json",
+              "libs/stim-lib-ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/stim-lib-ui/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-ui/jest.config.js",
+            "tsConfig": "libs/stim-lib-ui/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-lib-ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-about": {
+      "projectType": "library",
+      "root": "libs/stim-feature-about",
+      "sourceRoot": "libs/stim-feature-about/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-about/tsconfig.lib.json",
+              "libs/stim-feature-about/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/stim-feature-about/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-about/jest.config.js",
+            "tsConfig": "libs/stim-feature-about/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-about/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/feature",
+      "sourceRoot": "libs/stim-feature-settings/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-settings/feature/tsconfig.lib.json",
+              "libs/stim-feature-settings/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-settings/feature/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/feature/jest.config.js",
+            "tsConfig": "libs/stim-feature-settings/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-settings/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/domain",
+      "sourceRoot": "libs/stim-feature-settings/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-settings/domain/tsconfig.lib.json",
+              "libs/stim-feature-settings/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-settings/domain/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/domain/jest.config.js",
+            "tsConfig": "libs/stim-feature-settings/domain/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-settings/domain/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-stimulator-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-stimulator/domain",
+      "sourceRoot": "libs/stim-feature-stimulator/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-stimulator/domain/tsconfig.lib.json",
+              "libs/stim-feature-stimulator/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-stimulator/domain/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-stimulator/domain/jest.config.js",
+            "tsConfig": "libs/stim-feature-stimulator/domain/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-stimulator/domain/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-store": {
+      "projectType": "library",
+      "root": "libs/stim-lib-store",
+      "sourceRoot": "libs/stim-lib-store/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-lib-store/tsconfig.lib.json",
+              "libs/stim-lib-store/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/stim-lib-store/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-store/jest.config.js",
+            "tsConfig": "libs/stim-lib-store/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-lib-store/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-connection": {
+      "projectType": "library",
+      "root": "libs/stim-lib-connection",
+      "sourceRoot": "libs/stim-lib-connection/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-lib-connection/tsconfig.lib.json",
+              "libs/stim-lib-connection/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/stim-lib-connection/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-connection/jest.config.js",
+            "tsConfig": "libs/stim-lib-connection/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-lib-connection/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-file-browser-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-file-browser/domain",
+      "sourceRoot": "libs/stim-feature-file-browser/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-file-browser/domain/tsconfig.lib.json",
+              "libs/stim-feature-file-browser/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-file-browser/domain/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-file-browser/domain/jest.config.js",
+            "tsConfig": "libs/stim-feature-file-browser/domain/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-file-browser/domain/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-file-browser-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-file-browser/feature",
+      "sourceRoot": "libs/stim-feature-file-browser/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-file-browser/feature/tsconfig.lib.json",
+              "libs/stim-feature-file-browser/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-file-browser/feature/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-file-browser/feature/jest.config.js",
+            "tsConfig": "libs/stim-feature-file-browser/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-file-browser/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-navigation-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-navigation/feature",
+      "sourceRoot": "libs/stim-feature-navigation/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-navigation/feature/tsconfig.lib.json",
+              "libs/stim-feature-navigation/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-navigation/feature/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-navigation/feature/jest.config.js",
+            "tsConfig": "libs/stim-feature-navigation/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-navigation/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-navigation-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-navigation/domain",
+      "sourceRoot": "libs/stim-feature-navigation/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-navigation/domain/tsconfig.lib.json",
+              "libs/stim-feature-navigation/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-navigation/domain/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-navigation/domain/jest.config.js",
+            "tsConfig": "libs/stim-feature-navigation/domain/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-navigation/domain/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-help-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-help/feature",
+      "sourceRoot": "libs/stim-feature-help/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-help/feature/tsconfig.lib.json",
+              "libs/stim-feature-help/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-help/feature/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-help/feature/jest.config.js",
+            "tsConfig": "libs/stim-feature-help/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-help/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-player-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-player/feature",
+      "sourceRoot": "libs/stim-feature-player/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-player/feature/tsconfig.lib.json",
+              "libs/stim-feature-player/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-player/feature/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-player/feature/jest.config.js",
+            "tsConfig": "libs/stim-feature-player/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-player/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-player-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-player/domain",
+      "sourceRoot": "libs/stim-feature-player/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-player/domain/tsconfig.lib.json",
+              "libs/stim-feature-player/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-player/domain/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-player/domain/jest.config.js",
+            "tsConfig": "libs/stim-feature-player/domain/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-player/domain/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-experiments-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-experiments/feature",
+      "sourceRoot": "libs/stim-feature-experiments/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-experiments/feature/tsconfig.lib.json",
+              "libs/stim-feature-experiments/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-experiments/feature/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-experiments/feature/jest.config.js",
+            "tsConfig": "libs/stim-feature-experiments/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-experiments/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-experiments-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-experiments/domain",
+      "sourceRoot": "libs/stim-feature-experiments/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-experiments/domain/tsconfig.lib.json",
+              "libs/stim-feature-experiments/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-experiments/domain/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-experiments/domain/jest.config.js",
+            "tsConfig": "libs/stim-feature-experiments/domain/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-experiments/domain/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-experiment-results-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-experiment-results/feature",
+      "sourceRoot": "libs/stim-feature-experiment-results/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-experiment-results/feature/tsconfig.lib.json",
+              "libs/stim-feature-experiment-results/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-experiment-results/feature/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-experiment-results/feature/jest.config.js",
+            "tsConfig": "libs/stim-feature-experiment-results/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-experiment-results/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-experiment-results-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-experiment-results/domain",
+      "sourceRoot": "libs/stim-feature-experiment-results/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-experiment-results/domain/tsconfig.lib.json",
+              "libs/stim-feature-experiment-results/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-experiment-results/domain/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-experiment-results/domain/jest.config.js",
+            "tsConfig": "libs/stim-feature-experiment-results/domain/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-experiment-results/domain/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-sequences-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-sequences/feature",
+      "sourceRoot": "libs/stim-feature-sequences/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-sequences/feature/tsconfig.lib.json",
+              "libs/stim-feature-sequences/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-sequences/feature/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-sequences/feature/jest.config.js",
+            "tsConfig": "libs/stim-feature-sequences/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-sequences/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-sequences-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-sequences/domain",
+      "sourceRoot": "libs/stim-feature-sequences/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-sequences/domain/tsconfig.lib.json",
+              "libs/stim-feature-sequences/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-sequences/domain/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-sequences/domain/jest.config.js",
+            "tsConfig": "libs/stim-feature-sequences/domain/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-sequences/domain/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-popup": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/popup",
+      "sourceRoot": "libs/stim-feature-settings/popup/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-settings/popup/tsconfig.lib.json",
+              "libs/stim-feature-settings/popup/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-settings/popup/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/popup/jest.config.js",
+            "tsConfig": "libs/stim-feature-settings/popup/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-settings/popup/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-feature-console": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/feature/console",
+      "sourceRoot": "libs/stim-feature-settings/feature/console/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-settings/feature/console/tsconfig.lib.json",
+              "libs/stim-feature-settings/feature/console/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-settings/feature/console/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/feature/console/jest.config.js",
+            "tsConfig": "libs/stim-feature-settings/feature/console/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-settings/feature/console/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-feature-param-config": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/feature/param-config",
+      "sourceRoot": "libs/stim-feature-settings/feature/param-config/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-settings/feature/param-config/tsconfig.lib.json",
+              "libs/stim-feature-settings/feature/param-config/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-settings/feature/param-config/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/feature/param-config/jest.config.js",
+            "tsConfig": "libs/stim-feature-settings/feature/param-config/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-settings/feature/param-config/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-feature-service-state": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/feature/service-state",
+      "sourceRoot": "libs/stim-feature-settings/feature/service-state/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-settings/feature/service-state/tsconfig.lib.json",
+              "libs/stim-feature-settings/feature/service-state/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-settings/feature/service-state/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/feature/service-state/jest.config.js",
+            "tsConfig": "libs/stim-feature-settings/feature/service-state/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-settings/feature/service-state/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-feature-param-config-application": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/feature/param-config/application",
+      "sourceRoot": "libs/stim-feature-settings/feature/param-config/application/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-settings/feature/param-config/application/tsconfig.lib.json",
+              "libs/stim-feature-settings/feature/param-config/application/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-settings/feature/param-config/application/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/feature/param-config/application/jest.config.js",
+            "tsConfig": "libs/stim-feature-settings/feature/param-config/application/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-settings/feature/param-config/application/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-feature-param-config-experiments": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/feature/param-config/experiments",
+      "sourceRoot": "libs/stim-feature-settings/feature/param-config/experiments/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-settings/feature/param-config/experiments/tsconfig.lib.json",
+              "libs/stim-feature-settings/feature/param-config/experiments/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-settings/feature/param-config/experiments/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/feature/param-config/experiments/jest.config.js",
+            "tsConfig": "libs/stim-feature-settings/feature/param-config/experiments/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-settings/feature/param-config/experiments/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-feature-param-config-server": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/feature/param-config/server",
+      "sourceRoot": "libs/stim-feature-settings/feature/param-config/server/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-settings/feature/param-config/server/tsconfig.lib.json",
+              "libs/stim-feature-settings/feature/param-config/server/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-settings/feature/param-config/server/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/feature/param-config/server/jest.config.js",
+            "tsConfig": "libs/stim-feature-settings/feature/param-config/server/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-settings/feature/param-config/server/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-users-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-users/feature",
+      "sourceRoot": "libs/stim-feature-users/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-users/feature/tsconfig.lib.json",
+              "libs/stim-feature-users/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-users/feature/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-users/feature/jest.config.js",
+            "tsConfig": "libs/stim-feature-users/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-users/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-users-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-users/domain",
+      "sourceRoot": "libs/stim-feature-users/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-users/domain/tsconfig.lib.json",
+              "libs/stim-feature-users/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-users/domain/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-users/domain/jest.config.js",
+            "tsConfig": "libs/stim-feature-users/domain/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-users/domain/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-auth-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-auth/feature",
+      "sourceRoot": "libs/stim-feature-auth/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-auth/feature/tsconfig.lib.json",
+              "libs/stim-feature-auth/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-auth/feature/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-auth/feature/jest.config.js",
+            "tsConfig": "libs/stim-feature-auth/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-auth/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-auth-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-auth/domain",
+      "sourceRoot": "libs/stim-feature-auth/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-auth/domain/tsconfig.lib.json",
+              "libs/stim-feature-auth/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-auth/domain/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-auth/domain/jest.config.js",
+            "tsConfig": "libs/stim-feature-auth/domain/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-auth/domain/src/test-setup.ts"
           }
         }
       },

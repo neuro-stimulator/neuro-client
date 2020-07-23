@@ -1,0 +1,160 @@
+//noinspection CssUnknownTarget
+@import "_style-variables.sass"
+
+.login-dialog
+  width: 50%
+  border-radius: 20px
+  box-shadow: 0 5px 5px rgba(0, 0, 0, .4)
+  margin: 5em auto
+  display: flex
+
+  .left-side
+    background-color: $primary
+    border-top-left-radius: 20px
+    border-bottom-left-radius: 0
+    display: none
+    flex-direction: column
+    justify-content: center
+    color: #fff
+
+    .login-logo
+      display: block
+      max-width: 64px
+      height: auto
+      margin: 0 auto
+      padding: 8px
+
+  .login-form-container
+    background-color: #fff
+    border-top-right-radius: 0
+    border-top-left-radius: 20px
+    border-bottom-right-radius: 20px
+    border-top: 1px solid #ccc
+    border-right: 1px solid #ccc
+
+    .login-form-title-container
+      border-bottom: solid 1px $secondary
+      margin-bottom: 8px
+
+      .login-form-title
+        margin: 0 auto
+        color: $primary
+
+    .login-form
+      padding: 0 2em
+      margin: 0 auto
+
+      .login-btn
+        width: 100%
+        &:hover, &:focus
+          background-color: $secondary
+          color: #fff
+
+@include media-breakpoint-up(sm)
+  .login-dialog
+    .left-side
+      display: flex
+    .login-form-container
+      border-top-left-radius: 0
+
+@include media-breakpoint-up(md)
+  .login-dialog
+    .left-side
+      border-bottom-left-radius: 20px
+
+      .login-logo
+        max-width: 100%
+
+    .login-form-container
+      border-top-right-radius: 20px
+//.main-content
+//  width: 50%
+//  border-radius: 20px
+//  box-shadow: 0 5px 5px rgba(0, 0, 0, .4)
+//  margin: 5em auto
+//  display: flex
+//
+//.login-logo
+//  display: block
+//  max-width: 128px
+//  height: auto
+//  margin: 0 auto
+//  padding: 8px
+//
+//.company__info
+//  background-color: $primary
+//  border-top-left-radius: 20px
+//  border-bottom-left-radius: 20px
+//  display: flex
+//  flex-direction: column
+//  justify-content: center
+//  color: #fff
+//
+//
+//@media screen and (min-width: 642px) and (max-width: 800px)
+//  .main-content
+//    width: 70%
+//
+//@media screen and (min-width: 640px)
+//  .login-logo
+//    max-width: 100%
+//
+//.row > h2
+//  color: $primary
+//
+//.login_form
+//  background-color: #fff
+//  border-top-right-radius: 20px
+//  border-bottom-right-radius: 20px
+//  border-top: 1px solid #ccc
+//  border-right: 1px solid #ccc
+//
+//@media screen and (max-width: 640px)
+//  .main-content
+//    width: 90%
+//  .company__info
+//    display: none
+//  .login_form
+//    border-bottom-left-radius: 20px
+//
+//@media screen and (max-width: 768px)
+//  .login_form
+//    border-top-right-radius: 0
+//  .company__info
+//    border-bottom-left-radius: 0
+//
+//
+//form
+//  padding: 0 2em
+//
+//.form__input
+//  width: 100%
+//  border: 0px solid transparent
+//  border-radius: 0
+//  border-bottom: 1px solid #aaa
+//  padding: 1em .5em .5em
+//  padding-left: 2em
+//  outline: none
+//  margin: 1.5em auto
+//  transition: all .5s ease
+//
+//.form__input:focus
+//  border-bottom-color: $primary
+//  box-shadow: 0 0 5px rgba(0, 80, 80, .4)
+//  border-radius: 4px
+//
+//.btn
+//  transition: all .5s ease
+//  width: 70%
+//  border-radius: 30px
+//  color: $primary
+//  font-weight: 600
+//  background-color: #fff
+//  border: 1px solid $primary
+//  margin-top: 1.5em
+//  margin-bottom: 1em
+//
+//.btn:hover, .btn:focus
+//  background-color: $primary
+//  color: #fff
+//

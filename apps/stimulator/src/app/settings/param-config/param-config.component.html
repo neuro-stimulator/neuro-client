@@ -1,9 +1,0 @@
-<stim-param-config-application [form]="application"></stim-param-config-application>
-<hr>
-<stim-param-config-server [form]="server"></stim-param-config-server>
-<hr>
-<stim-param-config-experiments [form]="experiments"></stim-param-config-experiments>
-
-<stim-lib-fab [icon]="(working | async) ? 'fa-save fa-spin' : 'fa-save'" (fabClick)="handleSaveSettings()" [disabled]="form.invalid || (working | async)"></stim-lib-fab>
-
-<stim-lib-modal #modal></stim-lib-modal>
