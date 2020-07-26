@@ -12,6 +12,7 @@ export function stimulatorReducer(
 ) {
   return createReducer(
     {
+      previousStimulatorState: StimulatorStateType.READY,
       stimulatorState: StimulatorStateType.READY,
       devices: [],
     },
@@ -47,7 +48,15 @@ export function stimulatorReducer(
       StimulatorActions.actionCommandStimulatorUploadRequestDone,
       (state: StimulatorState, action) => ({
         ...state,
+        previousStimulatorState: StimulatorStateType.UPLOAD,
         stimulatorState: StimulatorStateType.UPLOAD,
+      })
+    ),
+    on(
+      StimulatorActions.actionCommandStimulatorUploadRequestFail,
+      (state: StimulatorState, action) => ({
+        ...state,
+        stimulatorState: state.previousStimulatorState,
       })
     ),
     on(

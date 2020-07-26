@@ -2,43 +2,118 @@
   <div class="col-12">
     <h1>{{ 'EXPERIMENT_PLAYER.CONTROL_PANEL' | translate }}</h1>
   </div>
+</div>
 
-  <div class="col-12" *ngIf="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED">
+<div class="row" *ngIf="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED">
+  <div class="col-12">
     <p>{{ 'EXPERIMENT_PLAYER.STIMULATOR_NOT_CONNECTED' | translate }}</p>
   </div>
+</div>
 
-  <div class="col-12 control-panel-toolbar">
-    <button class="btn btn-primary upload"
-            (click)="handleUploadExperiment()"
-            [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][0]">
-      <i class="fas fa-upload"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.UPLOAD' | translate}}
-    </button>
-    <button class="btn btn-success run"
-            (click)="handleRunExperiment()"
-            [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][1]">
-      <i class="fas fa-play"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PLAY' | translate}}
-    </button>
-    <button class="btn btn-success pause"
-            (click)="handlePauseExperiment()"
-            [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][2]">
-      <i class="fas fa-pause"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PAUSE' | translate}}
-    </button>
-    <button class="btn btn-warning finish"
-            (click)="handleFinishExperiment()"
-            [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][3]">
-      <i class="fas fa-stop"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.FINISH' | translate}}
-    </button>
-    <button class="btn btn-danger clear"
-            (click)="handleClearExperiment()"
-            [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][4]">
-      <i class="fas fa-eraser"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.CLEAR' | translate}}
-    </button>
-  </div>
-
-  <div class="col-12">
-    <h2>{{ 'EXPERIMENT_PLAYER.EXPERIMENT_VISUALISATION' | translate}}</h2>
-    <div style="width: 100%;">
-      <stim-lib-ui-experiment-viewer *ngIf="(experiment | async).outputCount" [events]="(state | async).ioData" [outputCount]="(experiment | async).outputCount"></stim-lib-ui-experiment-viewer>
+<ng-container *ngIf="(stimulatorConnectionStatus | async) === ConnectionStatus.CONNECTED">
+  <div class="row">
+    {{ (stimulatorStatus | async) }}
+    <div class="col-12 control-panel-toolbar">
+      <button class="btn btn-primary upload"
+              (click)="handleUploadExperiment()"
+              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][0]">
+        <i class="fas fa-upload"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.UPLOAD' | translate}}
+      </button>
+      <button class="btn btn-success run"
+              (click)="handleRunExperiment()"
+              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][1] || !(state | async).playerInitialized">
+        <i class="fas fa-play"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PLAY' | translate}}
+      </button>
+      <button class="btn btn-success pause"
+              (click)="handlePauseExperiment()"
+              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][2] || !(state | async).playerInitialized">
+        <i class="fas fa-pause"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PAUSE' | translate}}
+      </button>
+      <button class="btn btn-warning finish"
+              (click)="handleFinishExperiment()"
+              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][3] || !(state | async).playerInitialized">
+        <i class="fas fa-stop"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.FINISH' | translate}}
+      </button>
+      <button class="btn btn-danger clear"
+              (click)="handleClearExperiment()"
+              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][4]">
+        <i class="fas fa-eraser"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.CLEAR' | translate}}
+      </button>
     </div>
   </div>
-</div>
+
+  <div class="row">
+    <div class="col-10">
+      <h2>{{ 'EXPERIMENT_PLAYER.PARAMS.TITLE' | translate }}</h2>
+    </div>
+    <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="playerParams"
+         [icon]="playerParamsIcon"><i class="fas fa-minus" #playerParamsIcon></i></div>
+
+    <div class="col-12" #playerParams>
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="form-group">
+              <label
+                for="experiment-repeat">{{ 'EXPERIMENT_PLAYER.PARAMS.EXPERIMENT_REPEAT' | translate }}</label>
+              <div class="input-group input-group-sm">
+                <input type="number" id="experiment-repeat" class="form-control"
+                       formControlName="repeat"
+                       [class.is-valid]="repeat.valid" [class.is-invalid]="repeat.invalid">
+                <div class="input-group-append">
+                  <span class="input-group-text">&times;</span>
+                </div>
+              </div>
+              <small *ngIf="repeat.touched && repeat.errors?.required"
+                     class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="form-group">
+              <label
+                for="between-experiment-interval">{{ 'EXPERIMENT_PLAYER.PARAMS.BETWEEN_EXPERIMENT_INTERVAL' | translate }}</label>
+              <div class="input-group input-group-sm">
+                <input type="time" id="between-experiment-interval" class="form-control"
+                       formControlName="betweenExperimentInterval" step="1"
+                       [class.is-valid]="betweenExperimentInterval.valid"
+                       [class.is-invalid]="betweenExperimentInterval.invalid">
+                <div class="input-group-append">
+                  <span class="input-group-text">sec</span>
+                </div>
+              </div>
+              <small
+                *ngIf="betweenExperimentInterval.touched && betweenExperimentInterval.errors?.min"
+                class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{ min: betweenExperimentInterval.errors?.min.min } }}</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <h3>{{ 'EXPERIMENT_PLAYER.PARAMS.STOP_CONDITION.TITLE' | translate }}</h3>
+            <div class="form-group">
+
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="BUTTON_DISABLED_STATES[(stimulatorStatus | async)][0]">
+    <div class="col-10">
+      <h2>{{ 'EXPERIMENT_PLAYER.EXPERIMENT_MEASUREMENT' | translate:{experimentRound: 0, totalMeasurement: (state | async).experimentRound} }}</h2>
+    </div>
+    <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="experimentViewer"
+         [icon]="experimentViewerIcon"><i class="fas fa-minus" #experimentViewerIcon></i></div>
+    <div class="col-12" #experimentViewer>
+      {{ (state | async).ioData | json }}
+<!--      <div style="width: 100%;">-->
+<!--        <stim-lib-ui-experiment-viewer *ngIf="(experiment | async).outputCount"-->
+<!--                                       [events]="(state | async).ioData"-->
+<!--                                       [outputCount]="(experiment | async).outputCount"></stim-lib-ui-experiment-viewer>-->
+<!--      </div>-->
+    </div>
+  </div>
+</ng-container>

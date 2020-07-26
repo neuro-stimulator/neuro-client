@@ -170,7 +170,6 @@ export class StimulatorEffects {
           .experimentSetup(experimentState.selectedExperiment.experiment.id)
           .pipe(
             map((response: ResponseObject<any>) => {
-              const code = response?.message.code;
               return StimulatorActions.actionCommandStimulatorSetupRequestDone(
                 {}
               );

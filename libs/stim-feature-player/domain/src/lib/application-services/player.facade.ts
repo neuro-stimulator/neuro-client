@@ -55,9 +55,12 @@ export class PlayerFacade {
     this.experiments.one(experimentID);
   }
 
-  public uploadExperiment() {
-    this.stimulator.experimentUpload();
+  public uploadExperiment(options) {
+    this.store.dispatch(
+      PlayerActions.actionPrepareExperimentPlayerRequest({ options })
+    );
   }
+
   public runExperiment() {
     this.stimulator.experimentRun();
   }

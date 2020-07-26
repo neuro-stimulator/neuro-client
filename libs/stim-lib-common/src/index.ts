@@ -8,3 +8,5 @@ export { BaseFacade, BaseActions } from './lib/base-facade';
 export { BaseRecord } from './lib/base-record';
 
 export * from './lib/tokens';
+
+export * from './lib/base-experiment-type-resolver.directive';

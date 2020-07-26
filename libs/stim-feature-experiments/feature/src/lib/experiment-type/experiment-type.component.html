@@ -1,2 +1,2 @@
-<div class="working-overlay" [class.show]="(experimentsState | async).working"></div>
+<div class="working-overlay" [class.show]="(connectionState | async).working"></div>
 <ng-container stimFeatureExperimentsTypeResolver [componentMap]="componentMap" [type]="experimentType"></ng-container>

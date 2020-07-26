@@ -9,6 +9,7 @@ import { StimFeatureExperimentsDomainModule } from '@diplomka-frontend/stim-feat
 import { PlayerFacade } from './application-services/player.facade';
 import * as fromPlayer from './store/player.reducer';
 import { PlayerEffects } from './store/player.effects';
+import { PlayerService } from './infrastructure/player.service';
 
 @NgModule({
   imports: [
@@ -22,6 +23,6 @@ import { PlayerEffects } from './store/player.effects';
     StimFeatureExperimentsDomainModule,
     StimLibConnectionModule,
   ],
-  providers: [PlayerFacade],
+  providers: [PlayerService, PlayerFacade],
 })
 export class StimFeaturePlayerDomainModule {}

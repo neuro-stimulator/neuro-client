@@ -73,7 +73,6 @@ import { StimFeatureFileBrowserFeatureModule } from '@diplomka-frontend/stim-fea
     ExperimentTypeResolverDirective,
   ],
   imports: [
-    CommonModule,
     ReactiveFormsModule,
 
     TranslateModule,
