@@ -73,7 +73,7 @@
               <label
                 for="between-experiment-interval">{{ 'EXPERIMENT_PLAYER.PARAMS.BETWEEN_EXPERIMENT_INTERVAL' | translate }}</label>
               <div class="input-group input-group-sm">
-                <input type="time" id="between-experiment-interval" class="form-control"
+                <input type="number" id="between-experiment-interval" class="form-control"
                        formControlName="betweenExperimentInterval" step="1"
                        [class.is-valid]="betweenExperimentInterval.valid"
                        [class.is-invalid]="betweenExperimentInterval.invalid">

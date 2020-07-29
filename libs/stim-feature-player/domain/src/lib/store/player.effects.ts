@@ -114,6 +114,20 @@ export class PlayerEffects {
     )
   );
 
+  createNewExperimentRound$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromConnection.actionSocketData),
+      map((action) => action.data),
+      filter(
+        (message: SocketMessage) =>
+          message.specialization ===
+          SocketMessageSpecialization.EXPERIMENT_PLAYER
+      ),
+      filter((message: SocketMessage) => message.type === 99),
+      map(() => PlayerActions.actionPlayerCreateNewExperimentRound({}))
+    )
+  );
+
   experimentFinished$ = createEffect(
     () =>
       this.actions$.pipe(

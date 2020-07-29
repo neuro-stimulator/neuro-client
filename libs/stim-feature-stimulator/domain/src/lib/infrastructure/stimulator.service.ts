@@ -128,6 +128,9 @@ export class StimulatorService {
     this.logger.info(
       'Odesílám požadavek na vymazání experimentu ze stimulátoru.'
     );
-    return this._http.patch(`${this.stimulatorURL}/experiment/clear`, null);
+    return this._http.patch(
+      `${this.stimulatorURL}/experiment/clear?asyncStimulatorRequest=true`,
+      null
+    );
   }
 }

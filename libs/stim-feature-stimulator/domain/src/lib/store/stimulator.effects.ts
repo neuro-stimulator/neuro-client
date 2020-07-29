@@ -257,16 +257,9 @@ export class StimulatorEffects {
       switchMap((action) => {
         return this._service.experimentClear().pipe(
           map((response: ResponseObject<any>) => {
-            const code = response?.message.code;
-            if (code === MessageCodes.CODE_SUCCESS) {
-              return StimulatorActions.actionCommandStimulatorClearRequestDone(
-                {}
-              );
-            } else {
-              return StimulatorActions.actionCommandStimulatorClearRequestFail(
-                {}
-              );
-            }
+            return StimulatorActions.actionCommandStimulatorClearRequestDone(
+              {}
+            );
           })
         );
       }),

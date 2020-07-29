@@ -27,7 +27,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
   form = new FormGroup({
     repeat: new FormControl(1, [Validators.required]),
     betweenExperimentInterval: new FormControl(0, [Validators.min(0)]),
-    stopConditions: new FormGroup({}),
+    stopConditions: new FormGroup({
+      maxOutput: new FormControl(10),
+    }),
   });
 
   ConnectionStatus = ConnectionStatus;

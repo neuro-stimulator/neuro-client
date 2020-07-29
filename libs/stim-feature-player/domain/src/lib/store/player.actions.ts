@@ -32,3 +32,8 @@ export const actionPlayerUpdateState = createAction(
     ioData: IOEvent[][];
   }>()
 );
+
+export const actionPlayerCreateNewExperimentRound = createAction(
+  '[Player] create new experiment round',
+  props<{}>()
+);

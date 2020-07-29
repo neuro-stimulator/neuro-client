@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { ExperimentType, ResponseObject } from '@stechy1/diplomka-share';
+import { ResponseObject } from '@stechy1/diplomka-share';
 
 import { TOKEN_PLAYER_API_URL } from '@diplomka-frontend/stim-lib-common';
 import { Observable } from 'rxjs';
@@ -24,7 +24,7 @@ export class PlayerService {
       'Odesílám požadavek na připravení přehrávače experimentu..'
     );
     return this._http.post<ResponseObject<any>>(
-      `${this._accesPoint}/prepare/${id}`,
+      `${this._accesPoint}/prepare/${id}/0`,
       options
     );
   }

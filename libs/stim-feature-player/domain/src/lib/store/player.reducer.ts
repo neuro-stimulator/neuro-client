@@ -19,11 +19,24 @@ export function playerReducer(playerState: PlayerState, playerAction: Action) {
       experimentRound: action.experimentRound,
       ioData: action.ioData,
     })),
+    on(PlayerActions.actionPlayerCreateNewExperimentRound, (state) => {
+      const allData: IOEvent[][] = [];
+      for (const roundData of state.ioData) {
+        allData.push([...roundData]);
+      }
+      allData.push([]);
+      return {
+        ...state,
+        ioData: allData,
+      };
+    }),
     on(
       PlayerActions.actionPrepareExperimentPlayerRequestDone,
       (state: PlayerState, action) => ({
         ...state,
         playerInitialized: true,
+        ioData: [],
+        experimentRound: 0,
       })
     ),
     on(
