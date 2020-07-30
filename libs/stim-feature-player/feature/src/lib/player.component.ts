@@ -2,16 +2,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Observable, of, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { NGXLogger } from 'ngx-logger';
 
 import { CommandToStimulator, Experiment } from '@stechy1/diplomka-share';
 
 import { ExperimentViewerComponent } from '@diplomka-frontend/stim-lib-ui';
 import { ConnectionStatus } from '@diplomka-frontend/stim-lib-connection';
-import { PlayerFacade } from '@diplomka-frontend/stim-feature-player/domain';
+import {
+  PlayerFacade,
+  PlayerState,
+} from '@diplomka-frontend/stim-feature-player/domain';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
-import { PlayerState } from '@diplomka-frontend/stim-feature-player/domain';
-import { map, tap } from 'rxjs/operators';
+import { StimulatorStateType } from '@diplomka-frontend/stim-feature-stimulator/domain';
 
 @Component({
   templateUrl: './player.component.html',
@@ -19,6 +22,9 @@ import { map, tap } from 'rxjs/operators';
 })
 export class PlayerComponent implements OnInit, OnDestroy {
   private _experimentSubscription: Subscription;
+  private _stimulatorStateSubscription: Subscription;
+  private _playerStateSubscription: Subscription;
+  private _repeatValueSubscription: Subscription;
 
   public readonly BUTTON_DISABLED_STATES = {};
 
@@ -26,7 +32,11 @@ export class PlayerComponent implements OnInit, OnDestroy {
   experimentViewer: ExperimentViewerComponent;
   form = new FormGroup({
     repeat: new FormControl(1, [Validators.required]),
-    betweenExperimentInterval: new FormControl(0, [Validators.min(0)]),
+    betweenExperimentInterval: new FormControl({ value: 0, disabled: true }, [
+      Validators.min(0),
+    ]),
+    autoplay: new FormControl({ value: false, disabled: true }),
+    stopConditionType: new FormControl(null, [Validators.required]),
     stopConditions: new FormGroup({
       maxOutput: new FormControl(10),
     }),
@@ -38,7 +48,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
     private readonly player: PlayerFacade,
     private readonly _router: Router,
     private readonly _route: ActivatedRoute,
-    private readonly _navigation: NavigationFacade
+    private readonly _navigation: NavigationFacade,
+    private readonly logger: NGXLogger
   ) {
     this._fillButtonStates();
   }
@@ -82,12 +93,56 @@ export class PlayerComponent implements OnInit, OnDestroy {
       }
     );
     this.player.loadExperiment(this._route.snapshot.params['id']);
+    this._stimulatorStateSubscription = this.player.stimulatorState$.subscribe(
+      (status: number) => {
+        if (
+          status === StimulatorStateType.READY ||
+          status === StimulatorStateType.CLEAR
+        ) {
+          this.logger.info('Aktivuji formulářové prvky.');
+          this.form.enable();
+          this._updateDisabled(this.repeat.value);
+        } else {
+          this.logger.info('Deaktivuji formulářové prvky.');
+          this.form.disable();
+          this._updateDisabled(this.repeat.value);
+        }
+      }
+    );
+    this._playerStateSubscription = this.player.state.subscribe(
+      (state: PlayerState) => {
+        this.form.patchValue({
+          repeat: state.repeat,
+          betweenExperimentInterval: state.betweenExperimentInterval,
+          autoplay: state.autoplay,
+          stopConditionType: state.stopConditionType,
+        });
+      }
+    );
+    this._repeatValueSubscription = this.repeat.valueChanges.subscribe(
+      (repeat: number) => this._updateDisabled(repeat)
+    );
   }
 
   ngOnDestroy(): void {
     this._experimentSubscription.unsubscribe();
     this.player.clearExperiment();
     this.player.destroyExperiment();
+    this._stimulatorStateSubscription.unsubscribe();
+    this._playerStateSubscription.unsubscribe();
+    this._repeatValueSubscription.unsubscribe();
+  }
+
+  private _updateDisabled(repeat: number) {
+    if (repeat > 0) {
+      this.betweenExperimentInterval.enable();
+      this.autoplay.enable();
+    } else {
+      this.betweenExperimentInterval.disable();
+      this.betweenExperimentInterval.reset(0);
+      this.autoplay.disable();
+      this.autoplay.reset(false);
+    }
   }
 
   handleUploadExperiment() {
@@ -134,10 +189,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     return this.form.get('betweenExperimentInterval') as FormControl;
   }
 
-  // readonly useBetweenExperimentInterval: Observable<
-  //   boolean
-  // > = this.form.valueChanges.pipe(
-  //   tap((value) => console.log(value)),
-  //   map((value) => value.repeat == 1)
-  // );
+  get autoplay(): FormControl {
+    return this.form.get('autoplay') as FormControl;
+  }
 }

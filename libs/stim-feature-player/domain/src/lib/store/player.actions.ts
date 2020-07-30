@@ -1,10 +1,8 @@
 import { createAction, props } from '@ngrx/store';
-import { IOEvent } from '@stechy1/diplomka-share/lib/serial-data-events';
 
-export const actionPlayerGetExperimentRequest = createAction(
-  '[Player] get experiment',
-  props<{ experimentID: number }>()
-);
+import { PlayerConfiguration } from '@stechy1/diplomka-share';
+
+import { IOEvent } from '@stechy1/diplomka-share/lib/serial-data-events';
 
 export const actionPlayerIOEvent = createAction(
   '[Player] io event',
@@ -13,11 +11,15 @@ export const actionPlayerIOEvent = createAction(
 
 export const actionPrepareExperimentPlayerRequest = createAction(
   '[Player] prepare experiment player',
-  props<{ options: {} }>()
+  props<{ options: PlayerConfiguration }>()
 );
 export const actionPrepareExperimentPlayerRequestDone = createAction(
   '[Player] prepare experiment player done',
-  props<{}>()
+  props<{
+    autoplay: boolean;
+    betweenExperimentInterval: number;
+    repeat: number;
+  }>()
 );
 export const actionPrepareExperimentPlayerRequestFail = createAction(
   '[Player] prepare experiment player fail',
@@ -30,6 +32,10 @@ export const actionPlayerUpdateState = createAction(
     initialized: boolean;
     experimentRound: number;
     ioData: IOEvent[][];
+    autoplay: boolean;
+    betweenExperimentInterval: number;
+    repeat: number;
+    isBreakTime: boolean;
   }>()
 );
 

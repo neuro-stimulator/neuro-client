@@ -1,7 +1,11 @@
-import { IOEvent } from '@stechy1/diplomka-share';
+import { ExperimentStopConditionType, IOEvent } from '@stechy1/diplomka-share';
 
 export interface PlayerState {
   ioData: IOEvent[][];
-  experimentRound: number;
   playerInitialized: boolean;
+  repeat: number;
+  betweenExperimentInterval: number;
+  autoplay: boolean;
+  isBreakTime: boolean;
+  stopConditionType: ExperimentStopConditionType;
 }

@@ -1,12 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
-import { ResponseObject } from '@stechy1/diplomka-share';
+import { PlayerConfiguration, ResponseObject } from '@stechy1/diplomka-share';
 
 import { TOKEN_PLAYER_API_URL } from '@diplomka-frontend/stim-lib-common';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class PlayerService {
@@ -18,13 +18,13 @@ export class PlayerService {
 
   prepareExperimentPlayer(
     id: number,
-    options: any
+    options: PlayerConfiguration
   ): Observable<ResponseObject<any>> {
     this.logger.info(
       'Odesílám požadavek na připravení přehrávače experimentu..'
     );
     return this._http.post<ResponseObject<any>>(
-      `${this._accesPoint}/prepare/${id}/0`,
+      `${this._accesPoint}/prepare/${id}`,
       options
     );
   }

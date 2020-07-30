@@ -12,7 +12,6 @@
 
 <ng-container *ngIf="(stimulatorConnectionStatus | async) === ConnectionStatus.CONNECTED">
   <div class="row">
-    {{ (stimulatorStatus | async) }}
     <div class="col-12 control-panel-toolbar">
       <button class="btn btn-primary upload"
               (click)="handleUploadExperiment()"
@@ -21,7 +20,7 @@
       </button>
       <button class="btn btn-success run"
               (click)="handleRunExperiment()"
-              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][1] || !(state | async).playerInitialized">
+              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][1] || !(state | async).playerInitialized || ((state | async).autoplay && (state | async).isBreakTime)">
         <i class="fas fa-play"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PLAY' | translate}}
       </button>
       <button class="btn btn-success pause"
@@ -78,7 +77,7 @@
                        [class.is-valid]="betweenExperimentInterval.valid"
                        [class.is-invalid]="betweenExperimentInterval.invalid">
                 <div class="input-group-append">
-                  <span class="input-group-text">sec</span>
+                  <span class="input-group-text">ms</span>
                 </div>
               </div>
               <small
@@ -86,6 +85,11 @@
                 class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{ min: betweenExperimentInterval.errors?.min.min } }}</small>
             </div>
           </div>
+        <div class="col-12 col-md-4 vertical-center">
+            <div class="checkbox">
+              <label><input type="checkbox" formControlName="autoplay"> Automatické přehrávání</label>
+            </div>
+        </div>
         </div>
 
         <div class="row">
@@ -103,7 +107,7 @@
 
   <div class="row" *ngIf="BUTTON_DISABLED_STATES[(stimulatorStatus | async)][0]">
     <div class="col-10">
-      <h2>{{ 'EXPERIMENT_PLAYER.EXPERIMENT_MEASUREMENT' | translate:{experimentRound: 0, totalMeasurement: (state | async).experimentRound} }}</h2>
+      <h2>{{ 'EXPERIMENT_PLAYER.EXPERIMENT_MEASUREMENT' | translate:{experimentRound: (state | async).ioData.length, totalMeasurement: ((state | async).repeat + 1) || 0} }}</h2>
     </div>
     <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="experimentViewer"
          [icon]="experimentViewerIcon"><i class="fas fa-minus" #experimentViewerIcon></i></div>

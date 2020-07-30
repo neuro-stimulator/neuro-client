@@ -50,7 +50,12 @@ export class PlayerEffects {
           )
           .pipe(
             map((response: ResponseObject<any>) => {
-              return PlayerActions.actionPrepareExperimentPlayerRequestDone({});
+              return PlayerActions.actionPrepareExperimentPlayerRequestDone({
+                autoplay: action.options.autoplay,
+                betweenExperimentInterval:
+                  action.options.betweenExperimentInterval,
+                repeat: action.options.repeat,
+              });
             })
           );
       }),
@@ -104,11 +109,19 @@ export class PlayerEffects {
           initialized: boolean;
           experimentRound: number;
           ioData: IOEvent[][];
+          autoplay: boolean;
+          betweenExperimentInterval: number;
+          repeat: number;
+          isBreakTime: boolean;
         }) =>
           PlayerActions.actionPlayerUpdateState({
             initialized: playerData.initialized,
             experimentRound: playerData.experimentRound,
             ioData: playerData.ioData,
+            autoplay: playerData.autoplay,
+            betweenExperimentInterval: playerData.betweenExperimentInterval,
+            repeat: playerData.repeat,
+            isBreakTime: playerData.isBreakTime,
           })
       )
     )

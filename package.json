@@ -55,7 +55,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "@nrwl/angular": "9.5.1",
-    "@stechy1/diplomka-share": "^1.0.29",
+    "@stechy1/diplomka-share": "^1.0.30",
     "angular-2-local-storage": "^3.0.2",
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",

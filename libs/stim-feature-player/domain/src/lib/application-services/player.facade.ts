@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import { createEmptyExperiment, Experiment } from '@stechy1/diplomka-share';
@@ -18,6 +18,7 @@ import {
   ExperimentsFacade,
   ExperimentsState,
 } from '@diplomka-frontend/stim-feature-experiments/domain';
+
 import { PlayerState } from '../store/player.state';
 import * as fromPlayer from '../store/player.reducer';
 import * as PlayerActions from '../store/player.actions';

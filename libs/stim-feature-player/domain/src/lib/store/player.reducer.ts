@@ -1,8 +1,9 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
+import { IOEvent } from '@stechy1/diplomka-share';
+
 import { PlayerState } from './player.state';
 import * as PlayerActions from './player.actions';
-import { IOEvent } from '@stechy1/diplomka-share';
 
 export const playerReducerKey = 'player';
 
@@ -10,14 +11,22 @@ export function playerReducer(playerState: PlayerState, playerAction: Action) {
   return createReducer(
     {
       ioData: [],
-      experimentRound: 0,
       playerInitialized: false,
+      autoplay: false,
+      betweenExperimentInterval: 0,
+      repeat: 1,
+      isBreakTime: false,
+      stopConditionType: null, // TODO use stopConditionType
     },
     on(PlayerActions.actionPlayerUpdateState, (state: PlayerState, action) => ({
       ...state,
       playerInitialized: action.initialized,
       experimentRound: action.experimentRound,
       ioData: action.ioData,
+      autoplay: action.autoplay,
+      betweenExperimentInterval: action.betweenExperimentInterval,
+      repeat: action.repeat,
+      isBreakTime: action.isBreakTime,
     })),
     on(PlayerActions.actionPlayerCreateNewExperimentRound, (state) => {
       const allData: IOEvent[][] = [];
@@ -36,7 +45,9 @@ export function playerReducer(playerState: PlayerState, playerAction: Action) {
         ...state,
         playerInitialized: true,
         ioData: [],
-        experimentRound: 0,
+        autoplay: action.autoplay,
+        betweenExperimentInterval: action.betweenExperimentInterval,
+        repeat: action.repeat,
       })
     ),
     on(
@@ -51,7 +62,7 @@ export function playerReducer(playerState: PlayerState, playerAction: Action) {
       for (const roundData of state.ioData) {
         allData.push([...roundData]);
       }
-      allData[state.experimentRound].push(action.ioEvent);
+      allData[allData.length - 1].push(action.ioEvent);
 
       return {
         ...state,
