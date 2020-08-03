@@ -51,7 +51,7 @@
     <div class="col-12" #playerParams>
       <form [formGroup]="form">
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-4">
+          <div class="col-12">
             <div class="form-group">
               <label
                 for="experiment-repeat">{{ 'EXPERIMENT_PLAYER.PARAMS.EXPERIMENT_REPEAT' | translate }}</label>
@@ -67,7 +67,14 @@
                      class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
             </div>
           </div>
-          <div class="col-12 col-sm-6 col-md-4">
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-6 vertical-center">
+            <div class="checkbox">
+              <label><input type="checkbox" formControlName="autoplay"> Automatické přehrávání</label>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
             <div class="form-group">
               <label
                 for="between-experiment-interval">{{ 'EXPERIMENT_PLAYER.PARAMS.BETWEEN_EXPERIMENT_INTERVAL' | translate }}</label>
@@ -85,11 +92,6 @@
                 class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{ min: betweenExperimentInterval.errors?.min.min } }}</small>
             </div>
           </div>
-        <div class="col-12 col-md-4 vertical-center">
-            <div class="checkbox">
-              <label><input type="checkbox" formControlName="autoplay"> Automatické přehrávání</label>
-            </div>
-        </div>
         </div>
 
         <div class="row">
@@ -107,17 +109,17 @@
 
   <div class="row" *ngIf="BUTTON_DISABLED_STATES[(stimulatorStatus | async)][0]">
     <div class="col-10">
-      <h2>{{ 'EXPERIMENT_PLAYER.EXPERIMENT_MEASUREMENT' | translate:{experimentRound: (state | async).ioData.length, totalMeasurement: ((state | async).repeat + 1) || 0} }}</h2>
+      <h2>{{ 'EXPERIMENT_PLAYER.EXPERIMENT_MEASUREMENT' | translate:{ experimentRound: (state | async).ioData.length, totalMeasurement: ((state | async).repeat + 1) || 0 } }}</h2>
     </div>
     <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="experimentViewer"
          [icon]="experimentViewerIcon"><i class="fas fa-minus" #experimentViewerIcon></i></div>
     <div class="col-12" #experimentViewer>
       {{ (state | async).ioData | json }}
-<!--      <div style="width: 100%;">-->
-<!--        <stim-lib-ui-experiment-viewer *ngIf="(experiment | async).outputCount"-->
-<!--                                       [events]="(state | async).ioData"-->
-<!--                                       [outputCount]="(experiment | async).outputCount"></stim-lib-ui-experiment-viewer>-->
-<!--      </div>-->
+      <!--      <div style="width: 100%;">-->
+      <!--        <stim-lib-ui-experiment-viewer *ngIf="(experiment | async).outputCount"-->
+      <!--                                       [events]="(state | async).ioData"-->
+      <!--                                       [outputCount]="(experiment | async).outputCount"></stim-lib-ui-experiment-viewer>-->
+      <!--      </div>-->
     </div>
   </div>
 </ng-container>

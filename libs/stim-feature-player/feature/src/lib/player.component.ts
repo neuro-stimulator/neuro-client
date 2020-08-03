@@ -25,6 +25,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   private _stimulatorStateSubscription: Subscription;
   private _playerStateSubscription: Subscription;
   private _repeatValueSubscription: Subscription;
+  private _autoplayValueSubscription: Subscription;
 
   public readonly BUTTON_DISABLED_STATES = {};
 
@@ -101,11 +102,11 @@ export class PlayerComponent implements OnInit, OnDestroy {
         ) {
           this.logger.info('Aktivuji formulářové prvky.');
           this.form.enable();
-          this._updateDisabled(this.repeat.value);
+          this._updateDisabledAutoplay(this.repeat.value);
         } else {
           this.logger.info('Deaktivuji formulářové prvky.');
           this.form.disable();
-          this._updateDisabled(this.repeat.value);
+          this._updateDisabledAutoplay(this.repeat.value);
         }
       }
     );
@@ -120,7 +121,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
       }
     );
     this._repeatValueSubscription = this.repeat.valueChanges.subscribe(
-      (repeat: number) => this._updateDisabled(repeat)
+      (repeat: number) => this._updateDisabledAutoplay(repeat)
+    );
+    this._autoplayValueSubscription = this.autoplay.valueChanges.subscribe(
+      (enabled: boolean) => this._updateBetweenExperimentInterval(enabled)
     );
   }
 
@@ -131,17 +135,27 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this._stimulatorStateSubscription.unsubscribe();
     this._playerStateSubscription.unsubscribe();
     this._repeatValueSubscription.unsubscribe();
+    this._autoplayValueSubscription.unsubscribe();
   }
 
-  private _updateDisabled(repeat: number) {
+  private _updateDisabledAutoplay(repeat: number) {
     if (repeat > 0) {
-      this.betweenExperimentInterval.enable();
+      // this.betweenExperimentInterval.enable();
       this.autoplay.enable();
     } else {
-      this.betweenExperimentInterval.disable();
-      this.betweenExperimentInterval.reset(0);
+      // this.betweenExperimentInterval.disable();
+      // this.betweenExperimentInterval.reset(0);
       this.autoplay.disable();
       this.autoplay.reset(false);
+    }
+  }
+
+  private _updateBetweenExperimentInterval(enabled: boolean) {
+    if (enabled) {
+      this.betweenExperimentInterval.enable();
+    } else {
+      this.betweenExperimentInterval.reset(0);
+      this.betweenExperimentInterval.disable();
     }
   }
 
