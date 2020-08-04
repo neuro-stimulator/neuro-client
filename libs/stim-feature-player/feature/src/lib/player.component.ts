@@ -7,7 +7,10 @@ import { NGXLogger } from 'ngx-logger';
 
 import { CommandToStimulator, Experiment } from '@stechy1/diplomka-share';
 
-import { ExperimentViewerComponent } from '@diplomka-frontend/stim-lib-ui';
+import {
+  ContentTogglerDirective,
+  ExperimentViewerComponent,
+} from '@diplomka-frontend/stim-lib-ui';
 import { ConnectionStatus } from '@diplomka-frontend/stim-lib-connection';
 import {
   PlayerFacade,
@@ -31,13 +34,16 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   @ViewChild(ExperimentViewerComponent)
   experimentViewer: ExperimentViewerComponent;
+  @ViewChild('paramsUiContentToggler', { read: ContentTogglerDirective })
+  paramsUiContentToggler: ContentTogglerDirective;
+
   form = new FormGroup({
-    repeat: new FormControl(1, [Validators.required]),
+    repeat: new FormControl(1, [Validators.required, Validators.min(0)]),
     betweenExperimentInterval: new FormControl({ value: 0, disabled: true }, [
       Validators.min(0),
     ]),
     autoplay: new FormControl({ value: false, disabled: true }),
-    stopConditionType: new FormControl(null, [Validators.required]),
+    stopConditionType: new FormControl(0, [Validators.required]),
     stopConditions: new FormGroup({
       maxOutput: new FormControl(10),
     }),
@@ -116,7 +122,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
           repeat: state.repeat,
           betweenExperimentInterval: state.betweenExperimentInterval,
           autoplay: state.autoplay,
-          stopConditionType: state.stopConditionType,
         });
       }
     );
@@ -140,11 +145,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   private _updateDisabledAutoplay(repeat: number) {
     if (repeat > 0) {
-      // this.betweenExperimentInterval.enable();
       this.autoplay.enable();
     } else {
-      // this.betweenExperimentInterval.disable();
-      // this.betweenExperimentInterval.reset(0);
       this.autoplay.disable();
       this.autoplay.reset(false);
     }
@@ -161,6 +163,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   handleUploadExperiment() {
     this.player.uploadExperiment(this.form.value);
+    this.paramsUiContentToggler.visible = false;
   }
 
   handleRunExperiment() {
@@ -177,6 +180,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   handleClearExperiment() {
     this.player.clearExperiment();
+    this.paramsUiContentToggler.visible = true;
   }
 
   get stimulatorConnectionStatus(): Observable<ConnectionStatus> {
