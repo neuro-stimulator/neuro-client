@@ -56,11 +56,13 @@ export class PlayerEffects {
                   action.options.betweenExperimentInterval,
                 repeat: action.options.repeat,
               });
+            }),
+            catchError((error) => {
+              return of(
+                PlayerActions.actionPrepareExperimentPlayerRequestFail({})
+              );
             })
           );
-      }),
-      catchError((errorResponse) => {
-        return of(PlayerActions.actionPrepareExperimentPlayerRequestFail({}));
       })
     )
   );

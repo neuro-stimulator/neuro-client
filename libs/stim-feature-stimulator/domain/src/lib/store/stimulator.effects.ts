@@ -7,7 +7,6 @@ import {
   map,
   mergeMap,
   switchMap,
-  tap,
   withLatestFrom,
 } from 'rxjs/operators';
 
@@ -25,7 +24,8 @@ import * as ConnectionActions from '@diplomka-frontend/stim-lib-connection';
 import { StimulatorService } from '../infrastructure/stimulator.service';
 import * as StimulatorActions from './stimulator.actions';
 import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
-import { EMPTY, of } from 'rxjs';
+import { of } from 'rxjs';
+import { StimulatorStateType } from '@diplomka-frontend/stim-feature-stimulator/domain';
 
 @Injectable()
 export class StimulatorEffects {
@@ -122,18 +122,16 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorStateRequest),
       switchMap(() => {
-        return this._service.stimulatorState().pipe(
-          map((response: ResponseObject<StimulatorStateEvent | undefined>) => {
-            if (response.data) {
-              return StimulatorActions.actionCommandStimulatorStateRequestDone({
-                state: response.data.state,
-              });
-            } else {
-              return StimulatorActions.actionCommandStimulatorStateRequestFail(
-                {}
-              );
-            }
-          })
+        return this._service.stimulatorState();
+      }),
+      map((response: ResponseObject<StimulatorStateEvent | undefined>) => {
+        return StimulatorActions.actionCommandStimulatorStateRequestDone({
+          state: response ? response.data.state : StimulatorStateType.READY,
+        });
+      }),
+      catchError((errorResponse) => {
+        return of(
+          StimulatorActions.actionCommandStimulatorStateRequestFail({})
         );
       })
     )
@@ -143,17 +141,16 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorUploadRequest),
       withLatestFrom(this._facade.state),
-      switchMap(([action, experimentState]) => {
-        return this._service
-          .experimentUpload(experimentState.selectedExperiment.experiment.id)
-          .pipe(
-            mergeMap((res: ResponseObject<any>) => {
-              return [
-                StimulatorActions.actionCommandStimulatorUploadRequestDone({}),
-                StimulatorActions.actionCommandStimulatorSetupRequest({}),
-              ];
-            })
-          );
+      switchMap(([action, experimentState]) =>
+        this._service.experimentUpload(
+          experimentState.selectedExperiment.experiment.id
+        )
+      ),
+      mergeMap((res: ResponseObject<any>) => {
+        return [
+          StimulatorActions.actionCommandStimulatorUploadRequestDone({}),
+          StimulatorActions.actionCommandStimulatorSetupRequest({}),
+        ];
       }),
       catchError((errorResponse) => {
         return [StimulatorActions.actionCommandStimulatorSetupRequestFail({})];
@@ -165,16 +162,13 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorSetupRequest),
       withLatestFrom(this._facade.state),
-      switchMap(([action, experimentState]) => {
-        return this._service
-          .experimentSetup(experimentState.selectedExperiment.experiment.id)
-          .pipe(
-            map((response: ResponseObject<any>) => {
-              return StimulatorActions.actionCommandStimulatorSetupRequestDone(
-                {}
-              );
-            })
-          );
+      switchMap(([action, experimentState]) =>
+        this._service.experimentSetup(
+          experimentState.selectedExperiment.experiment.id
+        )
+      ),
+      map((response: ResponseObject<any>) => {
+        return StimulatorActions.actionCommandStimulatorSetupRequestDone({});
       }),
       catchError((errorResponse) => {
         return of(
@@ -188,16 +182,13 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorRunRequest),
       withLatestFrom(this._facade.state),
-      switchMap(([action, experimentState]) => {
-        return this._service
-          .experimentRun(experimentState.selectedExperiment.experiment.id)
-          .pipe(
-            map((response: ResponseObject<any>) => {
-              return StimulatorActions.actionCommandStimulatorRunRequestDone(
-                {}
-              );
-            })
-          );
+      switchMap(([action, experimentState]) =>
+        this._service.experimentRun(
+          experimentState.selectedExperiment.experiment.id
+        )
+      ),
+      map((response: ResponseObject<any>) => {
+        return StimulatorActions.actionCommandStimulatorRunRequestDone({});
       }),
       catchError((errorResponse) => {
         return of(StimulatorActions.actionCommandStimulatorRunRequestFail({}));
@@ -209,16 +200,13 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorPauseRequest),
       withLatestFrom(this._facade.state),
-      switchMap(([action, experimentState]) => {
-        return this._service
-          .experimentPause(experimentState.selectedExperiment.experiment.id)
-          .pipe(
-            map((response: ResponseObject<any>) => {
-              return StimulatorActions.actionCommandStimulatorPauseRequestDone(
-                {}
-              );
-            })
-          );
+      switchMap(([action, experimentState]) =>
+        this._service.experimentPause(
+          experimentState.selectedExperiment.experiment.id
+        )
+      ),
+      map((response: ResponseObject<any>) => {
+        return StimulatorActions.actionCommandStimulatorPauseRequestDone({});
       }),
       catchError((errorResponse) => {
         return of(
@@ -232,16 +220,13 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorFinishRequest),
       withLatestFrom(this._facade.state),
-      switchMap(([action, experimentState]) => {
-        return this._service
-          .experimentFinish(experimentState.selectedExperiment.experiment.id)
-          .pipe(
-            map((response: ResponseObject<any>) => {
-              return StimulatorActions.actionCommandStimulatorFinishRequestDone(
-                {}
-              );
-            })
-          );
+      switchMap(([action, experimentState]) =>
+        this._service.experimentFinish(
+          experimentState.selectedExperiment.experiment.id
+        )
+      ),
+      map((response: ResponseObject<any>) => {
+        return StimulatorActions.actionCommandStimulatorFinishRequestDone({});
       }),
       catchError((errorResponse) => {
         return of(
@@ -254,14 +239,9 @@ export class StimulatorEffects {
   clear$ = createEffect(() =>
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorClearRequest),
-      switchMap((action) => {
-        return this._service.experimentClear().pipe(
-          map((response: ResponseObject<any>) => {
-            return StimulatorActions.actionCommandStimulatorClearRequestDone(
-              {}
-            );
-          })
-        );
+      switchMap((action) => this._service.experimentClear()),
+      map((response: ResponseObject<any>) => {
+        return StimulatorActions.actionCommandStimulatorClearRequestDone({});
       }),
       catchError((errorResponse) => {
         return of(
