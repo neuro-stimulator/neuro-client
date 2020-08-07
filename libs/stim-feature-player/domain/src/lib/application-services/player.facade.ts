@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import { createEmptyExperiment, Experiment } from '@stechy1/diplomka-share';
@@ -8,6 +8,7 @@ import { createEmptyExperiment, Experiment } from '@stechy1/diplomka-share';
 import {
   StimulatorFacade,
   StimulatorState,
+  StimulatorStateType,
 } from '@diplomka-frontend/stim-feature-stimulator/domain';
 import {
   AliveCheckerFacade,
@@ -29,6 +30,8 @@ export class PlayerFacade {
   public readonly stimulatorState$: Observable<number>;
   public readonly playingExperiment$: Observable<Experiment>;
 
+  private _lastStimulatorState: number;
+
   constructor(
     private readonly store: Store<PlayerState>,
     private readonly experiments: ExperimentsFacade,
@@ -42,7 +45,10 @@ export class PlayerFacade {
       )
     );
     this.stimulatorState$ = this.stimulator.stimulatorState.pipe(
-      map((stimulatorState: StimulatorState) => stimulatorState.stimulatorState)
+      map(
+        (stimulatorState: StimulatorState) => stimulatorState.stimulatorState
+      ),
+      tap((state: number) => (this._lastStimulatorState = state))
     );
     this.playingExperiment$ = experiments.state.pipe(
       map(
@@ -72,7 +78,14 @@ export class PlayerFacade {
     this.stimulator.experimentFinish();
   }
   public clearExperiment() {
-    this.stimulator.experimentClear();
+    // Odeslat příkaz na vyčištění experimentu ze stimulátoru budu odesílat pouze,
+    // pokud je stimulátor ve správném stavu
+    if (
+      this._lastStimulatorState >= StimulatorStateType.SETUP &&
+      this._lastStimulatorState < StimulatorStateType.CLEAR
+    ) {
+      this.stimulator.experimentClear();
+    }
   }
   public destroyExperiment() {
     this.experiments.empty(createEmptyExperiment());
