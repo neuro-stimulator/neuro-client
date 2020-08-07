@@ -231,7 +231,13 @@
         "TITLE": "Stop condition"
       }
     },
-    "EXPERIMENT_MEASUREMENT": "Measurement: {{experimentRound}} / {{totalMeasurement}}"
+    "EXPERIMENT_MEASUREMENT": "Measurement: {{experimentRound}} / {{totalMeasurement}}",
+
+    "PAGE_TOOLS": {
+      "TITLE": "Stimulator settings",
+      "CONFIRM": "Save",
+      "CANCEL": "Cancel"
+    }
   },
 
   "SETTINGS": {

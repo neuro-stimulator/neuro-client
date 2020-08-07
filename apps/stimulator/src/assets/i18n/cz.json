@@ -233,7 +233,13 @@
         "TITLE": "Zastavovací podmínka"
       }
     },
-    "EXPERIMENT_MEASUREMENT": "Měření: {{experimentRound}} / {{totalMeasurement}}"
+    "EXPERIMENT_MEASUREMENT": "Měření: {{experimentRound}} / {{totalMeasurement}}",
+
+    "PAGE_TOOLS": {
+      "TITLE": "Nastavení stimulátoru",
+      "CONFIRM": "Uložit",
+      "CANCEL": "Zrušit"
+    }
   },
 
   "SETTINGS": {

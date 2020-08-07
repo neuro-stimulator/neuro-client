@@ -1,7 +1,7 @@
 export abstract class PageToolsChildComponent {
-  public readonly title: string;
-  public readonly confirmText: string;
-  public readonly cancelText: string;
+  public abstract readonly title: string;
+  public abstract readonly confirmText: string;
+  public abstract readonly cancelText: string;
 
   public init(): void {}
 
