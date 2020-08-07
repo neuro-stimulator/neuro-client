@@ -327,6 +327,12 @@
     "CONSOLE": {
       "TITLE": "Console",
       "INSERT_COMMAND": "Insert command..."
+    },
+
+    "PAGE_TOOLS": {
+      "TITLE": "Page settings",
+      "CONFIRM": "Save",
+      "CANCEL": "Cancel"
     }
   },
 
@@ -382,11 +388,6 @@
       "SERVER_CONNECTION_CREATED": "Server connection was established.",
       "SERVER_CONNECTION_RESTORED": "Server connection was restored.",
       "SERVER_CONNECTION_LOST": "Connection with server was lost!"
-    },
-    "PAGE_TOOLS": {
-      "TITLE": "Page settings",
-      "CONFIRM": "Save",
-      "CANCEL": "Cancel"
     },
 
     "DIALOGS": {
