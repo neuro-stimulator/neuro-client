@@ -58,6 +58,7 @@ export class ResponseInterceptor implements HttpInterceptor {
           this.TOASTER_MAP[toasterMapIndex](value);
         } else {
           this.logger.error(value);
+          this.TOASTER_MAP[3]('Neznámá chyba!');
         }
       });
   }

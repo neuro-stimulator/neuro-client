@@ -4,7 +4,6 @@ import { environment } from '../../../environments/environment';
 import { MESSAGE_CODE_TRANSLATOR } from './message-code-translator';
 
 function objectKeys(...objects) {
-
   function recursiveKeys(object) {
     if (typeof object !== 'object') {
       return '';
@@ -16,17 +15,12 @@ function objectKeys(...objects) {
   }
 
   return objects.map((value) => recursiveKeys(value));
-  // const equal = keys.every(v => v === keys[0]);
-  // if (!equal) {
-  //   console.log(keys);
-  // }
-  //
-  // return equal;
 }
 
 describe('MessageCodeTranslator', () => {
-
-  const supportedLanguages = environment.supportedLanguages.map((language: {name: string, value: string}) => language.value);
+  const supportedLanguages = environment.supportedLanguages.map(
+    (language: { name: string; value: string }) => language.value
+  );
 
   const translations = {};
   for (const language of supportedLanguages) {
@@ -34,7 +28,6 @@ describe('MessageCodeTranslator', () => {
   }
 
   describe('should contains message for each message code', () => {
-
     const keys = Object.keys(MessageCodes);
 
     for (const key of keys) {
@@ -43,8 +36,9 @@ describe('MessageCodeTranslator', () => {
         const translationCode = MESSAGE_CODE_TRANSLATOR[index];
         expect(translationCode).toBeDefined();
         for (const language of supportedLanguages) {
-          expect(translations[language]['SERVER_MESSAGE_CODES'][translationCode]).toBeDefined();
-          // .toBeDefined(`translation for language: ${language} is missing!`);
+          expect(
+            translations[language]['SERVER_MESSAGE_CODES'][translationCode]
+          ).toBeDefined();
         }
       });
     }
