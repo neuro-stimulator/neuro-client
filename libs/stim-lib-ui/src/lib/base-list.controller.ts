@@ -31,6 +31,7 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
   private _filterParametersChangeSubscription: Subscription;
   private _serviceRecordsSubscription: Subscription;
   private _filterEntitiesSubscription: Subscription;
+  private _selectionModeSubscription: Subscription;
 
   protected constructor(
     protected readonly _service: BaseFacade<T, S>,
@@ -71,9 +72,11 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
         this._handleFilterParametersChange(params);
       }
     );
-    // this._serviceRecordsSubscription = this._service.records.subscribe((records) => {
-    //   this._buttonsAddonService.addonVisible.next(records.length !== 0);
-    // });
+    this._selectionModeSubscription = this.selectionMode$.subscribe(
+      (selectionMode: boolean) => {
+        this._buttonsAddonService.selectionMode$.next(selectionMode);
+      }
+    );
   }
 
   ngOnDestroy(): void {
@@ -82,6 +85,7 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
     this._filterParametersChangeSubscription.unsubscribe();
     this._serviceRecordsSubscription.unsubscribe();
     this._filterEntitiesSubscription.unsubscribe();
+    this._selectionModeSubscription.unsubscribe();
     // }
     //
     // private _showIntro(useIntroRecord: boolean) {
@@ -130,6 +134,8 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
   protected abstract get introStepsComponentName(): string;
 
   protected abstract get records$(): Observable<T[]>;
+
+  protected abstract get selectionMode$(): Observable<boolean>;
 
   get groups(): EntityGroup<T> {
     return this._filterService.records;

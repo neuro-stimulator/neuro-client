@@ -16,7 +16,9 @@
             <!-- Značka typu experimentu (1. sloupeček) -->
             <div class="col-2 col-md-1 vertical-center">
               <div [ngClass]="['experiment-icon', ExperimentType[experiment.type].toLowerCase()]">
-                <span class="align-middle">{{ExperimentType[experiment.type]}}</span></div>
+                <span class="align-middle d-none">{{ExperimentType[experiment.type]}}</span>
+                <input type="checkbox" [checked]="selectedExperiments[experiment.id]" (change)="select.emit(experiment)">
+              </div>
             </div>
             <!-- Informace o experimentu -->
             <div class="col-7 col-md-8">

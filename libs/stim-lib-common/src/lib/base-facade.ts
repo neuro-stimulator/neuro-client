@@ -9,6 +9,7 @@ export interface BaseActions {
   insert: { action: ActionCreator<any, any>; parameterName: string };
   update: { action: ActionCreator<any, any>; parameterName: string };
   delete: { action: ActionCreator<any, any>; parameterName: string };
+  select: { action: ActionCreator<any, any>; parameterName: string };
 }
 
 export abstract class BaseFacade<T extends BaseRecord, S> {
@@ -39,6 +40,11 @@ export abstract class BaseFacade<T extends BaseRecord, S> {
     const parameters = {};
     parameters[this.baseActions.delete.parameterName] = recordID;
     this.store.dispatch(this.baseActions.delete.action(parameters));
+  }
+  public selectEntity(record: T) {
+    const parameters = {};
+    parameters[this.baseActions.update.parameterName] = record;
+    this.store.dispatch(this.baseActions.select.action(parameters));
   }
 
   protected abstract get baseActions(): BaseActions;

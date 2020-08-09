@@ -116,6 +116,10 @@ export class ExperimentsComponent extends BaseListController<
       .catch((reason) => console.log(reason));
   }
 
+  handleSelect(experiment: Experiment) {
+    this._service.selectEntity(experiment);
+  }
+
   protected get introRecord(): Experiment {
     return ExperimentsComponent.INTRO_EXPERIMENT;
   }
@@ -132,5 +136,11 @@ export class ExperimentsComponent extends BaseListController<
 
   protected get records$(): Observable<Experiment[]> {
     return this.state.pipe(map((state: ExperimentsState) => state.experiments));
+  }
+
+  protected get selectionMode$(): Observable<boolean> {
+    return this.state.pipe(
+      map((state: ExperimentsState) => state.selectionMode)
+    );
   }
 }

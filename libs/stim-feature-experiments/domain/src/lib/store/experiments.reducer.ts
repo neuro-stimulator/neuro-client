@@ -26,6 +26,8 @@ export function experimentsReducer(
       },
       groups: [],
       hasGroups: false,
+      selectedExperiments: {},
+      selectionMode: false,
     },
     on(
       ExperimentsActions.actionExperimentsAllRequest,
@@ -223,6 +225,31 @@ export function experimentsReducer(
           sequences: [...state.selectedExperiment.sequences, action.sequence],
         },
       })
+    ),
+    on(
+      ExperimentsActions.actionExperimentsToggleSelected,
+      (state: ExperimentsState, action) => {
+        let selectionMode = state.selectionMode;
+        const selectedExperiments = { ...state.selectedExperiments };
+        selectedExperiments[action.experiment.id] = selectedExperiments[
+          action.experiment.id
+        ]
+          ? false
+          : true;
+        if (selectedExperiments[action.experiment.id]) {
+          selectionMode = true;
+        } else {
+          selectionMode = Object.values(selectedExperiments).reduce(
+            (previousValue, currentValue) => previousValue || currentValue
+          );
+        }
+
+        return {
+          ...state,
+          selectedExperiments,
+          selectionMode,
+        };
+      }
     )
   )(experimentsState, experimentsAction);
 }

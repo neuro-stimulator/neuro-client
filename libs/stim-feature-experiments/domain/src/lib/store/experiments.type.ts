@@ -5,6 +5,8 @@ import { EntityGroup } from '@diplomka-frontend/stim-lib-list-utils';
 
 export interface ExperimentsState extends AppState {
   experiments: Experiment[];
+  selectedExperiments: { [id: number]: boolean };
+  selectionMode: boolean;
   ghosts: [];
   selectedExperiment: {
     experiment: Experiment;

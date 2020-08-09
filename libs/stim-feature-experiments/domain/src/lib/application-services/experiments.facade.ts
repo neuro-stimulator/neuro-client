@@ -42,6 +42,10 @@ export class ExperimentsFacade extends BaseFacade<
         action: ExperimentsActions.actionExperimentsDeleteRequest,
         parameterName: 'experimentID',
       },
+      select: {
+        action: ExperimentsActions.actionExperimentsToggleSelected,
+        parameterName: 'experiment',
+      },
     };
   }
 

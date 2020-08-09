@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { ListButtonsAddonService } from './list-buttons-addon.service';
 
@@ -46,5 +46,9 @@ export class ListButtonsAddonComponent implements OnInit, OnDestroy {
   handleSearchInputChange(event: Event) {
     const value: string = (event.target as HTMLInputElement).value;
     this._notifySearchValue(value || '');
+  }
+
+  public get selectionMode$(): Observable<boolean> {
+    return this._service.selectionMode$;
   }
 }

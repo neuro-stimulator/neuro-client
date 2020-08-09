@@ -122,3 +122,8 @@ export const actionExperimentsGenerateSequenceFromNameAndSizeRequestDone = creat
   '[Experiments] request for generate sequence from name and size done',
   props<{ sequence: Sequence }>()
 );
+
+export const actionExperimentsToggleSelected = createAction(
+  '[Experiments] toggle experiment entry selected',
+  props<{ experiment: Experiment }>()
+);

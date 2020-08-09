@@ -1,22 +1,36 @@
 <ul class="nav navbar-nav buttons-addon" *ngIf="showButtons">
-  <li class="experiment-search">
-    <div class="input-group search-input-group">
-      <input class="form-control py-2 border-right-0 border"
-             [class.hidden]="hideFinderBox"
-             type="search"
-             placeholder="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FIND_EXPERIMENT' | translate}}"
-             (keyup)="handleSearchInputChange($event)" (change)="handleSearchInputChange($event)" [defaultValue]="initialSearchValue">
-      <span class="input-group-append">
-        <button id="button-addon-experiments-finder" class="btn btn-outline-secondary" type="button" (click)="hideFinderBox = !hideFinderBox"
-                title="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FIND_EXPERIMENT' | translate}}">
-          <i class="fa fa-search"></i>
-        </button>
-      </span>
-    </div>
-  </li>
-  <li class="experiment-filter">
-    <button id="button-addon-experiments-filter" class="btn"
-            title="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FILTER_EXPERIMENT' | translate}}"
-            (click)="handleShowFilter()"><i class="fas fa-filter"></i></button>
-  </li>
+<!--  <ng-container *ngIf="!(selectionMode$ | async)">-->
+    <li class="experiment-search">
+      <div class="input-group search-input-group">
+        <input class="form-control py-2 border-right-0 border"
+               [class.hidden]="hideFinderBox"
+               type="search"
+               placeholder="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FIND_EXPERIMENT' | translate}}"
+               (keyup)="handleSearchInputChange($event)" (change)="handleSearchInputChange($event)" [defaultValue]="initialSearchValue">
+        <span class="input-group-append">
+          <button id="button-addon-experiments-finder" class="btn btn-outline-secondary" type="button" (click)="hideFinderBox = !hideFinderBox"
+                  title="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FIND_EXPERIMENT' | translate}}">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    </li>
+    <li class="experiment-filter">
+      <button id="button-addon-experiments-filter" class="btn"
+              title="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FILTER_EXPERIMENT' | translate}}"
+              (click)="handleShowFilter()"><i class="fas fa-filter"></i></button>
+    </li>
+<!--  </ng-container>-->
+<!--  <ng-container *ngIf="(selectionMode$ | async)">-->
+    <li class="entry-export" *ngIf="(selectionMode$ | async)">
+      <button id="button-addon-list-import" class="btn" title="Exportovat"><i class="fas fa-file-export"></i></button>
+    </li>
+    <li class="entry-select-all" *ngIf="(selectionMode$ | async)">
+      <button id="button-addon-list-select-all" class="btn" title="Vybrat vše..."><i class="fas fa-anchor"></i></button>
+    </li>
+    <li class="entry-select-none" *ngIf="(selectionMode$ | async)">
+      <button id="button-addon-list-select-none" class="btn" title="Vybrat vše..."><i class="fas fa-amilia"></i></button>
+    </li>
+<!--  </ng-container>-->
 </ul>
+
