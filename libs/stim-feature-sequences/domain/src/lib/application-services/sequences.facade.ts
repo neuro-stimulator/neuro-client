@@ -38,6 +38,10 @@ export class SequencesFacade extends BaseFacade<Sequence, SequencesState> {
         action: SequencesActions.actionSequencesDeleteRequest,
         parameterName: 'sequenceID',
       },
+      select: {
+        action: SequencesActions.actionSequenceEmpty,
+        parameterName: 'sequence',
+      },
     };
   }
 

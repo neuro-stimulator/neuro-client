@@ -103,7 +103,7 @@ export class ExperimentsComponent extends BaseListController<
       message: 'EXPERIMENTS.DIALOGS.DELETE.QUESTION',
       confirm: () => {
         self.logger.info(`Budu mazat experiment s id: ${experiment.id}.`);
-        self._service.delete(experiment.id);
+        self._facade.delete(experiment.id);
       },
     });
   }
@@ -117,7 +117,7 @@ export class ExperimentsComponent extends BaseListController<
   }
 
   handleSelect(experiment: Experiment) {
-    this._service.selectEntity(experiment);
+    this._facade.selectEntity(experiment);
   }
 
   protected get introRecord(): Experiment {

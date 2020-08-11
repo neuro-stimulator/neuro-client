@@ -1,12 +1,13 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ListButtonsAddonService {
-  public readonly selectionMode$: EventEmitter<boolean> = new EventEmitter<
+  public readonly selectionMode$: BehaviorSubject<
     boolean
-  >();
+  > = new BehaviorSubject<boolean>(false);
 
   public readonly filterRequest: EventEmitter<any> = new EventEmitter<any>();
 
@@ -14,7 +15,19 @@ export class ListButtonsAddonService {
     string
   >();
 
-  public readonly addonVisible: EventEmitter<boolean> = new EventEmitter<
+  public readonly addonVisible: BehaviorSubject<boolean> = new BehaviorSubject<
     boolean
+  >(true);
+
+  public readonly selectAllRequest: EventEmitter<any> = new EventEmitter<any>();
+
+  public readonly selectNoneRequest: EventEmitter<any> = new EventEmitter<
+    any
+  >();
+
+  public readonly exportRequest: EventEmitter<any> = new EventEmitter<any>();
+
+  public readonly deleteSelectedRequest: EventEmitter<any> = new EventEmitter<
+    any
   >();
 }

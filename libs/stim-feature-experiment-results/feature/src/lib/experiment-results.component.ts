@@ -1,7 +1,7 @@
 import { Component, Type } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { NGXLogger } from 'ngx-logger';
@@ -78,7 +78,7 @@ export class ExperimentResultsComponent extends BaseListController<
         self.logger.info(
           `Budu mazat výsledek experimentu s id: ${experimentResult.id}.`
         );
-        return self._service.delete(experimentResult.id);
+        return self._facade.delete(experimentResult.id);
       },
     });
   }
@@ -101,5 +101,9 @@ export class ExperimentResultsComponent extends BaseListController<
     return this.state.pipe(
       map((state: ExperimentResultsState) => state.experimentResults)
     );
+  }
+
+  protected get selectionMode$(): Observable<boolean> {
+    return of(false);
   }
 }

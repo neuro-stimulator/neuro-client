@@ -24,17 +24,19 @@ import {
 export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
   @ViewChild('modal', { static: true }) modal: ModalComponent;
 
-  // ghosts: any[] = [];
-
   private _filterRequestSubscription: Subscription;
   // private _searchBySubscription: Subscription;
   private _filterParametersChangeSubscription: Subscription;
   private _serviceRecordsSubscription: Subscription;
   private _filterEntitiesSubscription: Subscription;
   private _selectionModeSubscription: Subscription;
+  private _exportRequestSubscription: Subscription;
+  private _selectAllRequestSubscription: Subscription;
+  private _selectNoneRequestSubscription: Subscription;
+  private _deleteSelectedRequestSubscription: Subscription;
 
   protected constructor(
-    protected readonly _service: BaseFacade<T, S>,
+    protected readonly _facade: BaseFacade<T, S>,
     private readonly _filterService: ListGroupSortFilterService<T>,
     private readonly _navigation: NavigationFacade,
     private readonly _connection: AliveCheckerFacade,
@@ -48,7 +50,7 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
     this._filterEntitiesSubscription = this._filterService.subscribeEntities(
       this.records$
     );
-    this._service.allWithGhosts();
+    this._facade.allWithGhosts();
     // this._buttonsAddonService.addonVisible.next(false);
     this._navigation.showAddon = false;
     this._serviceRecordsSubscription = this.records$.subscribe(
@@ -66,6 +68,19 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
     this._filterRequestSubscription = this._buttonsAddonService.filterRequest.subscribe(
       () => this._showFilterDialog()
     );
+    this._exportRequestSubscription = this._buttonsAddonService.exportRequest.subscribe(
+      () => this._exportEntities()
+    );
+    this._deleteSelectedRequestSubscription = this._buttonsAddonService.deleteSelectedRequest.subscribe(
+      () => this._deleteSelected()
+    );
+    this._selectAllRequestSubscription = this._buttonsAddonService.selectAllRequest.subscribe(
+      () => this._selectAll()
+    );
+    this._selectNoneRequestSubscription = this._buttonsAddonService.selectNoneRequest.subscribe(
+      () => this._selectNone()
+    );
+
     // this._searchBySubscription = this._buttonsAddonService.searchValue.subscribe((value) => this._handleSearchBy(value));
     this._filterParametersChangeSubscription = this._filterService.filterParametersChange$.subscribe(
       (params: ListFilterParameters) => {
@@ -86,6 +101,10 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
     this._serviceRecordsSubscription.unsubscribe();
     this._filterEntitiesSubscription.unsubscribe();
     this._selectionModeSubscription.unsubscribe();
+    this._exportRequestSubscription.unsubscribe();
+    this._selectAllRequestSubscription.unsubscribe();
+    this._selectNoneRequestSubscription.unsubscribe();
+    this._deleteSelectedRequestSubscription.unsubscribe();
     // }
     //
     // private _showIntro(useIntroRecord: boolean) {
@@ -125,6 +144,22 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
     this.modal.open();
   }
 
+  private _exportEntities() {
+    // TODO implementovat export dialog
+  }
+
+  private _deleteSelected() {
+    this._facade.deleteSelected();
+  }
+
+  private _selectAll() {
+    this._facade.selectAll();
+  }
+
+  private _selectNone() {
+    this._facade.selectNone();
+  }
+
   protected abstract get introRecord(): T;
 
   protected abstract get filterDialogComponent(): Type<
@@ -149,7 +184,7 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
   }
 
   get state(): Observable<S> {
-    return this._service.state;
+    return this._facade.state;
   }
 
   get connectionState(): Observable<ConnectionInformationState> {

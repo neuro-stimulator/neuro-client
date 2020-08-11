@@ -12,7 +12,6 @@ import { ListButtonsAddonService } from './list-buttons-addon.service';
 export class ListButtonsAddonComponent implements OnInit, OnDestroy {
   hideFinderBox = true;
   initialSearchValue: string;
-  showButtons = true;
 
   private _addonVisibleSubscription: Subscription;
 
@@ -26,9 +25,6 @@ export class ListButtonsAddonComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this._addonVisibleSubscription = this._service.addonVisible.subscribe(
-      (visible) => (this.showButtons = visible)
-    );
     this._route.fragment.subscribe((value) => {
       this.initialSearchValue = value || '';
       this._notifySearchValue(this.initialSearchValue);
@@ -46,6 +42,26 @@ export class ListButtonsAddonComponent implements OnInit, OnDestroy {
   handleSearchInputChange(event: Event) {
     const value: string = (event.target as HTMLInputElement).value;
     this._notifySearchValue(value || '');
+  }
+
+  handleExport() {
+    this._service.exportRequest.next();
+  }
+
+  handleDeleteSelected() {
+    this._service.deleteSelectedRequest.next();
+  }
+
+  handleSelectAll() {
+    this._service.selectAllRequest.next();
+  }
+
+  handleSelectNone() {
+    this._service.selectNoneRequest.next();
+  }
+
+  public get showButtons$(): Observable<boolean> {
+    return this._service.addonVisible;
   }
 
   public get selectionMode$(): Observable<boolean> {

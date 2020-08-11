@@ -181,10 +181,17 @@ export function experimentsReducer(
         const data = state.experiments.filter(
           (experiment) => experiment.id !== action.experiment.id
         );
+        const selectedExperiments = { ...state.selectedExperiments };
+        delete selectedExperiments[action.experiment.id];
+        const selectionMode = Object.values(selectedExperiments).reduce(
+          (previousValue, currentValue) => previousValue || currentValue
+        );
 
         return {
           ...state,
           experiments: data,
+          selectedExperiments,
+          selectionMode,
         };
       }
     ),
@@ -248,6 +255,30 @@ export function experimentsReducer(
           ...state,
           selectedExperiments,
           selectionMode,
+        };
+      }
+    ),
+    on(
+      ExperimentsActions.actionExperimentsSelectAll,
+      (state: ExperimentsState, action) => {
+        const selectedExperiments = {};
+        for (const experiment of state.experiments) {
+          selectedExperiments[experiment.id] = true;
+        }
+
+        return {
+          ...state,
+          selectedExperiments,
+        };
+      }
+    ),
+    on(
+      ExperimentsActions.actionExperimentsSelectNone,
+      (state: ExperimentsState, action) => {
+        return {
+          ...state,
+          selectedExperiments: [],
+          selectionMode: false,
         };
       }
     )

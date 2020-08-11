@@ -4,12 +4,13 @@
     <stim-feature-experiments-ghost-item-list [ghosts]="(state | async).ghosts" *ngIf="(state | async).ghosts.length !== 0"></stim-feature-experiments-ghost-item-list>
     <stim-feature-experiments-item-list [experimentGroups]="groups"
                                         [selectedExperiments]="(state | async).selectedExperiments"
-                              (run)="handleRun($event)"
-                              (simulate)="handleSimulate($event)"
-                              (edit)="handleEdit($event)"
-                              (delete)="handleDelete($event)"
+                                        [selectionMode]="(state | async).selectionMode"
+                                        (run)="handleRun($event)"
+                                        (simulate)="handleSimulate($event)"
+                                        (edit)="handleEdit($event)"
+                                        (delete)="handleDelete($event)"
                                         (select)="handleSelect($event)"
-                              *ngIf="(state | async).ghosts.length === 0">
+                                        *ngIf="(state | async).ghosts.length === 0">
     </stim-feature-experiments-item-list>
   </div>
 </section>
@@ -18,7 +19,7 @@
               class="experiment-new"
               [fabButtons]="fabButtonList"
               (fabClick)="handleNewExperiment($event)"
-              [disabled]="(connectionState | async).working">
+              [disabled]="(connectionState | async).working || (state | async).selectionMode">
 </stim-lib-fab>
 
 <stim-lib-modal #modal></stim-lib-modal>

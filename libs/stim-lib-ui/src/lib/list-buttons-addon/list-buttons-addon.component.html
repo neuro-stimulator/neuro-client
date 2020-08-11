@@ -1,5 +1,5 @@
-<ul class="nav navbar-nav buttons-addon" *ngIf="showButtons">
-<!--  <ng-container *ngIf="!(selectionMode$ | async)">-->
+<ul class="nav navbar-nav buttons-addon" *ngIf="(showButtons$ | async)">
+  <ng-container *ngIf="!(selectionMode$ | async)">
     <li class="experiment-search">
       <div class="input-group search-input-group">
         <input class="form-control py-2 border-right-0 border"
@@ -20,17 +20,20 @@
               title="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FILTER_EXPERIMENT' | translate}}"
               (click)="handleShowFilter()"><i class="fas fa-filter"></i></button>
     </li>
-<!--  </ng-container>-->
-<!--  <ng-container *ngIf="(selectionMode$ | async)">-->
-    <li class="entry-export" *ngIf="(selectionMode$ | async)">
-      <button id="button-addon-list-import" class="btn" title="Exportovat"><i class="fas fa-file-export"></i></button>
+  </ng-container>
+  <ng-container *ngIf="(selectionMode$ | async)">
+    <li class="entry-export">
+      <button id="button-addon-list-import" class="btn" title="Exportovat" (click)="handleExport()"><i class="fas fa-file-export"></i></button>
     </li>
-    <li class="entry-select-all" *ngIf="(selectionMode$ | async)">
-      <button id="button-addon-list-select-all" class="btn" title="Vybrat vše..."><i class="fas fa-anchor"></i></button>
+    <li class="entry-delete-selected">
+      <button id="button-addon-list-selete-selected" class="btn" title="Vybrat vše..." (click)="handleDeleteSelected()"><i class="fas fa-anchor"></i></button>
     </li>
-    <li class="entry-select-none" *ngIf="(selectionMode$ | async)">
-      <button id="button-addon-list-select-none" class="btn" title="Vybrat vše..."><i class="fas fa-amilia"></i></button>
+    <li class="entry-select-all">
+      <button id="button-addon-list-select-all" class="btn" title="Vybrat vše..." (click)="handleSelectAll()"><i class="fas fa-anchor"></i></button>
     </li>
-<!--  </ng-container>-->
+    <li class="entry-select-none">
+      <button id="button-addon-list-select-none" class="btn" title="Zrušit výběr..." (click)="handleSelectNone()"><i class="fas fa-amilia"></i></button>
+    </li>
+  </ng-container>
 </ul>
 

@@ -20,6 +20,7 @@ import { SelectedEntities } from '../selected-entities';
 export class ExperimentsItemListComponent implements OnInit {
   @Input() experimentGroups: EntityGroup<Experiment>;
   @Input() selectedExperiments: SelectedEntities;
+  @Input() selectionMode: boolean;
   @Output() run: EventEmitter<Experiment> = new EventEmitter<Experiment>();
   @Output() simulate: EventEmitter<Experiment> = new EventEmitter<Experiment>();
   @Output() edit: EventEmitter<Experiment> = new EventEmitter<Experiment>();
@@ -34,5 +35,13 @@ export class ExperimentsItemListComponent implements OnInit {
 
   get settings(): Observable<SettingsState> {
     return this._service.state;
+  }
+
+  handleExperimentIconClick(experiment: Experiment) {
+    if (this.selectionMode) {
+      return;
+    }
+
+    this.select.emit(experiment);
   }
 }

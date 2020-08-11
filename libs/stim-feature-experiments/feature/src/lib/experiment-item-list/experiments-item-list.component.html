@@ -15,9 +15,9 @@
           <div class="row expriment experiment-row">
             <!-- Značka typu experimentu (1. sloupeček) -->
             <div class="col-2 col-md-1 vertical-center">
-              <div [ngClass]="['experiment-icon', ExperimentType[experiment.type].toLowerCase()]">
-                <span class="align-middle d-none">{{ExperimentType[experiment.type]}}</span>
-                <input type="checkbox" [checked]="selectedExperiments[experiment.id]" (change)="select.emit(experiment)">
+              <div [ngClass]="['experiment-icon', ExperimentType[experiment.type].toLowerCase()]" (click)="handleExperimentIconClick(experiment)">
+                <span [ngClass]="['align-middle', selectionMode ? 'd-none' : '']">{{ExperimentType[experiment.type]}}</span>
+                <input type="checkbox" [ngClass]="[selectionMode ? '' : 'd-none']" [checked]="selectedExperiments[experiment.id]" (change)="select.emit(experiment)">
               </div>
             </div>
             <!-- Informace o experimentu -->
@@ -49,10 +49,10 @@
               </div>
             </div>
             <!-- Toolbar s akčními tlačítky -->
-            <div class="col-3 experiment-toolbar">
-              <i class="fas fa-play text-success run" [title]="'EXPERIMENTS.BUTTON_BAR.PLAY_EXPERIMENT' | translate" (click)="run.next(experiment)"></i>
-              <i class="fas fa-edit text-primary edit" [title]="'EXPERIMENTS.BUTTON_BAR.SHOW_EXPERIMENT' | translate" (click)="edit.next(experiment)"></i>
-              <i class="fas fa-trash text-danger delete" [title]="'EXPERIMENTS.BUTTON_BAR.DELETE_EXPERIMENT' | translate" (click)="delete.next(experiment)"></i>
+            <div class="col-3 experiment-toolbar" [class.disabled]="selectionMode">
+              <i class="fas fa-play text-success run" [title]="'EXPERIMENTS.BUTTON_BAR.PLAY_EXPERIMENT' | translate" (click)="!selectionMode && run.next(experiment)"></i>
+              <i class="fas fa-edit text-primary edit" [title]="'EXPERIMENTS.BUTTON_BAR.SHOW_EXPERIMENT' | translate" (click)="!selectionMode && edit.next(experiment)"></i>
+              <i class="fas fa-trash text-danger delete" [title]="'EXPERIMENTS.BUTTON_BAR.DELETE_EXPERIMENT' | translate" (click)="!selectionMode && delete.next(experiment)"></i>
             </div>
           </div>
 

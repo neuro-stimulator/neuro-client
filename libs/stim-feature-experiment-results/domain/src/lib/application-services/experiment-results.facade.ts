@@ -44,6 +44,10 @@ export class ExperimentResultsFacade extends BaseFacade<
         action: ExperimentResultsActions.actionExperimentResultsDeleteRequest,
         parameterName: 'experimentResultID',
       },
+      select: {
+        action: undefined,
+        parameterName: 'experimentResult',
+      },
     };
   }
 

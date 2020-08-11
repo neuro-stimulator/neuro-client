@@ -3,6 +3,7 @@ import {
   catchError,
   flatMap,
   map,
+  mergeMap,
   switchMap,
   withLatestFrom,
 } from 'rxjs/operators';
@@ -212,6 +213,28 @@ export class ExperimentsEffects {
           { sequence: response.data }
         );
       })
+    )
+  );
+
+  deleteSelected$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ExperimentsActions.actionExperimentsDeleteSelected),
+      withLatestFrom(this.store.select('experiments')),
+      switchMap(([action, experiments]) => {
+        // @ts-ignore
+        const selectedExperiments = experiments.selectedExperiments;
+
+        return of(
+          Object.entries<boolean>(selectedExperiments)
+            .filter(([index, selected]) => selected)
+            .map(([index, selected]) =>
+              ExperimentsActions.actionExperimentsDeleteRequest({
+                experimentID: +index,
+              })
+            )
+        );
+      }),
+      mergeMap((c) => c)
     )
   );
 }

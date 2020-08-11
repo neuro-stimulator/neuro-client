@@ -46,6 +46,15 @@ export class ExperimentsFacade extends BaseFacade<
         action: ExperimentsActions.actionExperimentsToggleSelected,
         parameterName: 'experiment',
       },
+      selectAll: {
+        action: ExperimentsActions.actionExperimentsSelectAll,
+      },
+      selectNone: {
+        action: ExperimentsActions.actionExperimentsSelectNone,
+      },
+      deleteSelected: {
+        action: ExperimentsActions.actionExperimentsDeleteSelected,
+      },
     };
   }
 

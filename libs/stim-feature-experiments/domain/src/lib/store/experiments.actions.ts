@@ -127,3 +127,16 @@ export const actionExperimentsToggleSelected = createAction(
   '[Experiments] toggle experiment entry selected',
   props<{ experiment: Experiment }>()
 );
+
+export const actionExperimentsDeleteSelected = createAction(
+  '[Experiments] delete selected experiments'
+);
+
+export const actionExperimentsSelectAll = createAction(
+  '[Experiments] select all experiments',
+  props<{}>()
+);
+export const actionExperimentsSelectNone = createAction(
+  '[Experiments] deselect all experiments',
+  props<{}>()
+);

@@ -19,7 +19,7 @@ import {
 } from '@diplomka-frontend/stim-feature-sequences/domain';
 
 import { SequencesFilterDialogComponent } from './sequences-filter-dialog/sequences-filter-dialog.component';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
@@ -77,7 +77,7 @@ export class SequencesComponent extends BaseListController<
       message: 'SEQUENCES.DIALOGS.DELETE.QUESTION',
       confirm: () => {
         self.logger.info(`Budu mazat sequenci s id: ${sequence.id}.`);
-        return self._service.delete(sequence.id);
+        return self._facade.delete(sequence.id);
       },
     });
   }
@@ -100,5 +100,9 @@ export class SequencesComponent extends BaseListController<
 
   protected get records$(): Observable<Sequence[]> {
     return this.state.pipe(map((state: SequencesState) => state.sequences));
+  }
+
+  protected get selectionMode$(): Observable<boolean> {
+    return of(false);
   }
 }
