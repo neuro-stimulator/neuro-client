@@ -12,10 +12,14 @@
             *ngFor="let experimentResult of group.entities"
             [attr.data-experiment-result-name]="experimentResult.name || 'EXPERIMENT_RESULTS.EXPERIMENT_RESULT.UNNAMED' | translate">
 
+          <!-- Jeden řádek s výsledkem experimentu -->
           <div class="row expriment-result experiment-result-row">
             <!-- Experiment result image representation -->
             <div class="col-2 col-md-1 vertical-center">
-              <div [ngClass]="['experiment-icon', ExperimentType[experimentResult.type].toLowerCase()]"><span class="align-middle">{{ExperimentType[experimentResult.type]}}</span></div>
+              <div [ngClass]="['experiment-icon', ExperimentType[experimentResult.type].toLowerCase()]" (click)="handleExperimentResultIconClick(experimentResult)">
+                <span [ngClass]="['align-middle', selectionMode ? 'd-none' : '']">{{ExperimentType[experimentResult.type]}}</span>
+                <input type="checkbox" [ngClass]="[selectionMode ? '' : 'd-none']" [checked]="selectedExperimentResults[experimentResult.id]" (change)="select.emit(experimentResult)">
+              </div>
             </div>
             <!-- Experiment result Name -->
             <div class="col-8 col-md-9">

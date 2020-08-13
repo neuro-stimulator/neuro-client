@@ -3,9 +3,12 @@
     <h2 id="experiment-results-not-found" *ngIf="(state | async).ghosts.length === 0 && !hasGroups">{{ 'EXPERIMENT_RESULTS.NOT_FOUND' | translate}}</h2>
     <stim-feature-experiment-results-ghost-item-list [ghosts]="(state | async).ghosts" *ngIf="(state | async).ghosts.length !== 0"></stim-feature-experiment-results-ghost-item-list>
     <stim-feature-experiment-results-item-list [experimentResultGroups]="groups"
-                                      (view)="handleView($event)"
-                                      (delete)="handleDelete($event)"
-                                      *ngIf="(state | async).ghosts.length === 0">
+                                               [selectedExperimentResults]="(state | async).selectedExperimentResults"
+                                               [selectionMode]="(state | async).selectionMode"
+                                               (view)="handleView($event)"
+                                               (delete)="handleDelete($event)"
+                                               (select)="handleSelect($event)"
+                                               *ngIf="(state | async).ghosts.length === 0">
     </stim-feature-experiment-results-item-list>
   </div>
 </section>

@@ -1,18 +1,23 @@
-import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { ExperimentResultsState } from '@diplomka-frontend/stim-feature-experiment-results/domain';
-import { ExperimentResultsService } from '../infrastructure/experiment-results.service';
-import * as ExperimentResultsActions from './experiment-results.actions';
 import { Injectable } from '@angular/core';
+
 import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
+import { EMPTY, of } from 'rxjs';
+
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+
 import {
   ExperimentResult,
-  ExperimentType,
   IOEvent,
   ResponseObject,
 } from '@stechy1/diplomka-share';
-import { forkJoin, of } from 'rxjs';
+
+import { ExperimentResultsState } from '@diplomka-frontend/stim-feature-experiment-results/domain';
+import { SelectedEntities } from '@diplomka-frontend/stim-lib-list-utils';
+
+import { ExperimentResultsService } from '../infrastructure/experiment-results.service';
+import * as ExperimentResultsActions from './experiment-results.actions';
 
 @Injectable()
 export class ExperimentResultssEffects {
@@ -126,21 +131,63 @@ export class ExperimentResultssEffects {
     )
   );
 
-  delete$ = createEffect(() =>
-    this.actions$.pipe(
+  delete$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsDeleteRequest),
-      switchMap((action) =>
-        this.experimentResults.delete(action.experimentResultID)
-      ),
-      map((response: ResponseObject<ExperimentResult>) => {
-        return ExperimentResultsActions.actionExperimentResultsDeleteRequestDone(
-          { experimentResult: response.data }
-        );
+      withLatestFrom(this.store.select('experimentResults')),
+      switchMap(([action, experimentResults]) => {
+        if (action.experimentResultID) {
+          return this.experimentResults.delete(action.experimentResultID);
+        } else {
+          // @ts-ignore
+          if (!experimentResults.selectionMode) {
+            return EMPTY;
+          }
+
+          const selectedExperimentResults: SelectedEntities =
+            // @ts-ignore
+            experimentResults.selectedExperimentResults;
+          const filteredSelectedExperiments = Object.entries<boolean>(
+            selectedExperimentResults
+          ).filter(([index, selected]) => selected);
+          const [
+            selectedIndex,
+            selected,
+          ] = filteredSelectedExperiments.values().next().value;
+
+          return this.experimentResults.delete(+selectedIndex);
+        }
       }),
+      map((response: ResponseObject<ExperimentResult>) =>
+        ExperimentResultsActions.actionExperimentResultsDeleteRequestDone({
+          experimentResult: response.data,
+        })
+      ),
       catchError((errorResponse) => {
         return of(
           ExperimentResultsActions.actionExperimentResultsDeleteRequestFail({})
         );
+      })
+    );
+  });
+  deleteDone$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ExperimentResultsActions.actionExperimentResultsDeleteRequestDone),
+      withLatestFrom(this.store.select('experimentResults')),
+      map(([action, experimentResults]) => {
+        // @ts-ignore
+        if (experimentResults.selectionMode) {
+          setTimeout(
+            () =>
+              this.store.dispatch(
+                ExperimentResultsActions.actionExperimentResultsDeleteRequest(
+                  {}
+                )
+              ),
+            250
+          );
+        }
+        return ExperimentResultsActions.actionExperimentResultsNoAction({});
       })
     )
   );

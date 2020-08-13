@@ -45,8 +45,14 @@ export class ExperimentResultsFacade extends BaseFacade<
         parameterName: 'experimentResultID',
       },
       select: {
-        action: undefined,
+        action: ExperimentResultsActions.actionExperimentResultsToggleSelected,
         parameterName: 'experimentResult',
+      },
+      selectAll: {
+        action: ExperimentResultsActions.actionExperimentResultsSelectAll,
+      },
+      selectNone: {
+        action: ExperimentResultsActions.actionExperimentResultsSelectNone,
       },
     };
   }

@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 
-import { DateTimeFormat } from '@diplomka-frontend/stim-lib-common';
 import {
   EntityGroup,
   SelectedEntities,

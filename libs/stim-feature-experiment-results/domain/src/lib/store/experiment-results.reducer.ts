@@ -1,12 +1,13 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { ExperimentResultsState } from './experiment-results.type';
-import * as ExperimentResultsActions from './experiment-results.actions';
 import {
   createEmptyExperiment,
   createEmptyExperimentResult,
   ExperimentResult,
 } from '@stechy1/diplomka-share';
+
+import { ExperimentResultsState } from './experiment-results.type';
+import * as ExperimentResultsActions from './experiment-results.actions';
 
 export const experimentResultsReducerKey = 'experimentResults';
 
@@ -31,6 +32,8 @@ export function experimentResultsReducer(
       },
       groups: [],
       hasGroups: false,
+      selectedExperimentResults: {},
+      selectionMode: false,
     },
     on(
       ExperimentResultsActions.actionExperimentResultsAllRequest,
@@ -104,43 +107,6 @@ export function experimentResultsReducer(
       })
     ),
 
-    // on(
-    //   ExperimentResultsActions.actionExperimentResultsInsertRequest,
-    //   (state: ExperimentResultsState, action) => ({
-    //     ...state,
-    //     selectedExperimentResult: {
-    //       ...state.selectedExperimentResult,
-    //       experiment: { ...action.experimentResult },
-    //       isNew: false,
-    //     },
-    //   })
-    // ),
-    // on(
-    //   ExperimentResultsActions.actionExperimentResultsInsertRequestDone,
-    //   (state: ExperimentResultsState, action) => ({
-    //     ...state,
-    //     experimentResults: [
-    //       ...state.experimentResults,
-    //       action.experimentResult,
-    //     ],
-    //     selectedExperimentResult: {
-    //       ...state.selectedExperimentResult,
-    //       originalExperimentResult: { ...action.experimentResult },
-    //     },
-    //   })
-    // ),
-    // on(
-    //   ExperimentResultsActions.actionExperimentResultsInsertRequestFail,
-    //   (state: ExperimentResultsState, action) => ({
-    //     ...state,
-    //     selectedExperimentResult: {
-    //       ...state.selectedExperimentResult,
-    //       experimentResult: {
-    //         ...state.selectedExperimentResult.originalExperimentResult,
-    //       },
-    //     },
-    //   })
-    // ),
     on(
       ExperimentResultsActions.actionExperimentResultsUpdateRequest,
       (state: ExperimentResultsState, action) => ({
@@ -199,12 +165,28 @@ export function experimentResultsReducer(
       ExperimentResultsActions.actionExperimentResultsDeleteRequestDone,
       (state: ExperimentResultsState, action) => {
         const data = state.experimentResults.filter(
-          (experiment) => experiment.id !== action.experimentResult.id
+          (experimentResult) =>
+            experimentResult.id !== action.experimentResult.id
         );
+        const selectedExperimentResults = {
+          ...state.selectedExperimentResults,
+        };
+        delete selectedExperimentResults[action.experimentResult.id];
+        let selectionMode = false;
+        for (const selected of Object.values<boolean>(
+          selectedExperimentResults
+        )) {
+          if (selected) {
+            selectionMode = true;
+            break;
+          }
+        }
 
         return {
           ...state,
           experimentResults: data,
+          selectedExperimentResults,
+          selectionMode,
         };
       }
     ),
@@ -218,6 +200,58 @@ export function experimentResultsReducer(
             ...state.selectedExperimentResult,
             nameExists: action.exists,
           },
+        };
+      }
+    ),
+
+    on(
+      ExperimentResultsActions.actionExperimentResultsToggleSelected,
+      (state: ExperimentResultsState, action) => {
+        let selectionMode = state.selectionMode;
+        const selectedExperimentResults = {
+          ...state.selectedExperimentResults,
+        };
+        selectedExperimentResults[
+          action.experimentResult.id
+        ] = selectedExperimentResults[action.experimentResult.id]
+          ? false
+          : true;
+        if (selectedExperimentResults[action.experimentResult.id]) {
+          selectionMode = true;
+        } else {
+          selectionMode = Object.values(selectedExperimentResults).reduce(
+            (previousValue, currentValue) => previousValue || currentValue
+          );
+        }
+
+        return {
+          ...state,
+          selectedExperimentResults,
+          selectionMode,
+        };
+      }
+    ),
+    on(
+      ExperimentResultsActions.actionExperimentResultsSelectAll,
+      (state: ExperimentResultsState, action) => {
+        const selectedExperimentResults = {};
+        for (const experimentResult of state.experimentResults) {
+          selectedExperimentResults[experimentResult.id] = true;
+        }
+
+        return {
+          ...state,
+          selectedExperimentResults,
+        };
+      }
+    ),
+    on(
+      ExperimentResultsActions.actionExperimentResultsSelectNone,
+      (state: ExperimentResultsState, action) => {
+        return {
+          ...state,
+          selectedExperimentResults: [],
+          selectionMode: false,
         };
       }
     )

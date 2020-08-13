@@ -83,6 +83,10 @@ export class ExperimentResultsComponent extends BaseListController<
     });
   }
 
+  handleSelect(experimentResult: ExperimentResult) {
+    this._facade.selectEntity(experimentResult);
+  }
+
   protected get introRecord(): ExperimentResult {
     return ExperimentResultsComponent.INTRO_EXPERIMENT_RESULT;
   }
@@ -104,6 +108,8 @@ export class ExperimentResultsComponent extends BaseListController<
   }
 
   protected get selectionMode$(): Observable<boolean> {
-    return of(false);
+    return this.state.pipe(
+      map((state: ExperimentResultsState) => state.selectionMode)
+    );
   }
 }

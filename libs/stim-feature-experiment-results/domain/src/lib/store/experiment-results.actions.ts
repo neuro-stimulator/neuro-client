@@ -1,5 +1,6 @@
 // All record request
 import { createAction, props } from '@ngrx/store';
+
 import { ExperimentResult, IOEvent } from '@stechy1/diplomka-share';
 
 export const actionExperimentResultsAllWithGhostRequest = createAction(
@@ -68,7 +69,7 @@ export const actionExperimentResultsUpdateRequestFail = createAction(
 // Delete record request
 export const actionExperimentResultsDeleteRequest = createAction(
   '[ExperimentResults] delete record request',
-  props<{ experimentResultID: number }>()
+  props<{ experimentResultID?: number }>()
 );
 export const actionExperimentResultsDeleteRequestDone = createAction(
   '[ExperimentResults] delete record request done',
@@ -90,5 +91,24 @@ export const actionExperimentResultsNameExistsRequestDone = createAction(
 );
 export const actionExperimentResultsNameExistsRequestFail = createAction(
   '[ExperimentResults] name exists request fail',
+  props<{}>()
+);
+
+export const actionExperimentResultsToggleSelected = createAction(
+  '[ExperimentResults] toggle experiment result entry selected',
+  props<{ experimentResult: ExperimentResult }>()
+);
+
+export const actionExperimentResultsSelectAll = createAction(
+  '[ExperimentResults] select all experiment results',
+  props<{}>()
+);
+export const actionExperimentResultsSelectNone = createAction(
+  '[ExperimentResults] deselect all experiment results',
+  props<{}>()
+);
+
+export const actionExperimentResultsNoAction = createAction(
+  '[ExperimentsResults] no action',
   props<{}>()
 );
