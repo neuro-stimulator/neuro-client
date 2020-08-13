@@ -183,9 +183,13 @@ export function experimentsReducer(
         );
         const selectedExperiments = { ...state.selectedExperiments };
         delete selectedExperiments[action.experiment.id];
-        const selectionMode = Object.values(selectedExperiments).reduce(
-          (previousValue, currentValue) => previousValue || currentValue
-        );
+        let selectionMode = false;
+        for (const selected of Object.values<boolean>(selectedExperiments)) {
+          if (selected) {
+            selectionMode = true;
+            break;
+          }
+        }
 
         return {
           ...state,

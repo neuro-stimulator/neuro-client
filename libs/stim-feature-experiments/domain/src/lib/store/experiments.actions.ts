@@ -69,7 +69,7 @@ export const actionExperimentsUpdateRequestFail = createAction(
 // Delete record request
 export const actionExperimentsDeleteRequest = createAction(
   '[Experiments] delete record request',
-  props<{ experimentID: number }>()
+  props<{ experimentID?: number }>()
 );
 export const actionExperimentsDeleteRequestDone = createAction(
   '[Experiments] delete record request done',
@@ -126,10 +126,6 @@ export const actionExperimentsGenerateSequenceFromNameAndSizeRequestDone = creat
 export const actionExperimentsToggleSelected = createAction(
   '[Experiments] toggle experiment entry selected',
   props<{ experiment: Experiment }>()
-);
-
-export const actionExperimentsDeleteSelected = createAction(
-  '[Experiments] delete selected experiments'
 );
 
 export const actionExperimentsSelectAll = createAction(

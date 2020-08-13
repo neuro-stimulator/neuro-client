@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   catchError,
   flatMap,
   map,
-  mergeMap,
   switchMap,
   withLatestFrom,
 } from 'rxjs/operators';
-import { of } from 'rxjs';
-import { Router } from '@angular/router';
+import { EMPTY, of } from 'rxjs';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -87,9 +86,6 @@ export class ExperimentsEffects {
               })
             : ExperimentsActions.actionExperimentsNoAction({}),
         ];
-        // return ExperimentsActions.actionExperimentsOneRequestDone({
-        //   experiment: response.data,
-        // });
       }),
       flatMap((c) => c),
       catchError((errorResponse) => {
@@ -117,10 +113,6 @@ export class ExperimentsEffects {
       })
     )
   );
-  // afterInsertRedirect = createEffect(() => this.actions$.pipe(
-  //   ofType(ExperimentsActions.actionExperimentsInsertRequestDone),
-  //   tap((action) => )
-  // ));
   update$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsUpdateRequest),
@@ -135,17 +127,59 @@ export class ExperimentsEffects {
       })
     )
   );
-  delete$ = createEffect(() =>
-    this.actions$.pipe(
+  delete$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsDeleteRequest),
-      switchMap((action) => this.experiments.delete(action.experimentID)),
-      map((response: ResponseObject<Experiment>) => {
-        return ExperimentsActions.actionExperimentsDeleteRequestDone({
-          experiment: response.data,
-        });
+      withLatestFrom(this.store.select('experiments')),
+      switchMap(([action, experiments]) => {
+        if (action.experimentID) {
+          return this.experiments.delete(action.experimentID);
+        } else {
+          // @ts-ignore
+          if (!experiments.selectionMode) {
+            return EMPTY;
+          }
+
+          const selectedExperiments: { [index: number]: boolean } =
+            // @ts-ignore
+            experiments.selectedExperiments;
+          const filteredSelectedExperiments = Object.entries<boolean>(
+            selectedExperiments
+          ).filter(([index, selected]) => selected);
+          const [
+            selectedIndex,
+            selected,
+          ] = filteredSelectedExperiments.values().next().value;
+
+          return this.experiments.delete(+selectedIndex);
+        }
       }),
+      map((response: ResponseObject<Experiment>) =>
+        ExperimentsActions.actionExperimentsDeleteRequestDone({
+          experiment: response.data,
+        })
+      ),
       catchError((errorResponse) => {
         return of(ExperimentsActions.actionExperimentsDeleteRequestFail({}));
+      })
+    );
+  });
+  deleteDone$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ExperimentsActions.actionExperimentsDeleteRequestDone),
+      withLatestFrom(this.store.select('experiments')),
+      map(([action, experiments]) => {
+        // @ts-ignore
+        if (experiments.selectionMode) {
+          setTimeout(
+            () =>
+              this.store.dispatch(
+                ExperimentsActions.actionExperimentsDeleteRequest({})
+              ),
+            250
+          );
+        }
+        return ExperimentsActions.actionExperimentsNoAction({});
       })
     )
   );
@@ -213,28 +247,6 @@ export class ExperimentsEffects {
           { sequence: response.data }
         );
       })
-    )
-  );
-
-  deleteSelected$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ExperimentsActions.actionExperimentsDeleteSelected),
-      withLatestFrom(this.store.select('experiments')),
-      switchMap(([action, experiments]) => {
-        // @ts-ignore
-        const selectedExperiments = experiments.selectedExperiments;
-
-        return of(
-          Object.entries<boolean>(selectedExperiments)
-            .filter(([index, selected]) => selected)
-            .map(([index, selected]) =>
-              ExperimentsActions.actionExperimentsDeleteRequest({
-                experimentID: +index,
-              })
-            )
-        );
-      }),
-      mergeMap((c) => c)
     )
   );
 }

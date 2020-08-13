@@ -52,9 +52,6 @@ export class ExperimentsFacade extends BaseFacade<
       selectNone: {
         action: ExperimentsActions.actionExperimentsSelectNone,
       },
-      deleteSelected: {
-        action: ExperimentsActions.actionExperimentsDeleteSelected,
-      },
     };
   }
 

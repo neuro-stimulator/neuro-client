@@ -12,7 +12,6 @@ export interface BaseActions {
   select?: { action: ActionCreator<any, any>; parameterName: string };
   selectAll?: { action: ActionCreator<any, any> };
   selectNone?: { action: ActionCreator<any, any> };
-  deleteSelected?: { action: ActionCreator<any, any> };
 }
 
 export abstract class BaseFacade<T extends BaseRecord, S> {
@@ -50,7 +49,7 @@ export abstract class BaseFacade<T extends BaseRecord, S> {
     this.store.dispatch(this.baseActions.select.action(parameters));
   }
   public deleteSelected() {
-    this.store.dispatch(this.baseActions.deleteSelected.action({}));
+    this.store.dispatch(this.baseActions.delete.action({}));
   }
   public selectAll() {
     this.store.dispatch(this.baseActions.selectAll.action({}));
