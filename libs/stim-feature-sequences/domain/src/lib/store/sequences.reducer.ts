@@ -49,6 +49,8 @@ export function sequencesReducer(
       },
       groups: [],
       hasGroups: false,
+      selectedSequences: {},
+      selectionMode: false,
     },
     on(
       SequencesActions.actionSequencesAllRequest,
@@ -199,10 +201,21 @@ export function sequencesReducer(
         const data = state.sequences.filter(
           (sequence) => sequence.id !== action.sequence.id
         );
+        const selectedSequences = { ...state.selectedSequences };
+        delete selectedSequences[action.sequence.id];
+        let selectionMode = false;
+        for (const selected of Object.values<boolean>(selectedSequences)) {
+          if (selected) {
+            selectionMode = true;
+            break;
+          }
+        }
 
         return {
           ...state,
           sequences: data,
+          selectedSequences,
+          selectionMode,
         };
       }
     ),
@@ -273,6 +286,56 @@ export function sequencesReducer(
           experiment: getExperiment(state),
         },
       })
+    ),
+
+    on(
+      SequencesActions.actionSequencesToggleSelected,
+      (state: SequencesState, action) => {
+        let selectionMode = state.selectionMode;
+        const selectedSequences = { ...state.selectedSequences };
+        selectedSequences[action.sequence.id] = selectedSequences[
+          action.sequence.id
+        ]
+          ? false
+          : true;
+        if (selectedSequences[action.sequence.id]) {
+          selectionMode = true;
+        } else {
+          selectionMode = Object.values(selectedSequences).reduce(
+            (previousValue, currentValue) => previousValue || currentValue
+          );
+        }
+
+        return {
+          ...state,
+          selectedSequences,
+          selectionMode,
+        };
+      }
+    ),
+    on(
+      SequencesActions.actionSequencesSelectAll,
+      (state: SequencesState, action) => {
+        const selectedSequences = {};
+        for (const sequence of state.sequences) {
+          selectedSequences[sequence.id] = true;
+        }
+
+        return {
+          ...state,
+          selectedSequences,
+        };
+      }
+    ),
+    on(
+      SequencesActions.actionSequencesSelectNone,
+      (state: SequencesState, action) => {
+        return {
+          ...state,
+          selectedSequences: [],
+          selectionMode: false,
+        };
+      }
     )
   )(sequencesState, sequencesAction);
 }

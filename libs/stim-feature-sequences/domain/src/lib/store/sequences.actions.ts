@@ -73,7 +73,7 @@ export const actionSequencesUpdateRequestFail = createAction(
 // Delete record request
 export const actionSequencesDeleteRequest = createAction(
   '[Sequences] delete record request',
-  props<{ sequenceID: number }>()
+  props<{ sequenceID?: number }>()
 );
 export const actionSequencesDeleteRequestDone = createAction(
   '[Sequences] delete record request done',
@@ -135,5 +135,24 @@ export const actionSequencesOriginalAsActual = createAction(
 
 export const actionSequencesUpdateSelectedExperiment = createAction(
   '[Sequences] update selected experiment',
+  props<{}>()
+);
+
+export const actionSequencesToggleSelected = createAction(
+  '[Sequences] toggle sequence entry selected',
+  props<{ sequence: Sequence }>()
+);
+
+export const actionSequencesSelectAll = createAction(
+  '[Sequences] select all sequences',
+  props<{}>()
+);
+export const actionSequencesSelectNone = createAction(
+  '[Sequences] deselect all sequences',
+  props<{}>()
+);
+
+export const actionSequencesNoAction = createAction(
+  '[Sequences] no action',
   props<{}>()
 );

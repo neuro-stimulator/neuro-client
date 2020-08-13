@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
 
 import { DateTimeFormat } from '@diplomka-frontend/stim-lib-common';
-import { EntityGroup } from '@diplomka-frontend/stim-lib-list-utils';
+import {
+  EntityGroup,
+  SelectedEntities,
+} from '@diplomka-frontend/stim-lib-list-utils';
 import {
   SettingsFacade,
   SettingsState,
 } from '@diplomka-frontend/stim-feature-settings/domain';
-
-import { SelectedEntities } from '../selected-entities';
 
 @Component({
   selector: 'stim-feature-experiments-item-list',

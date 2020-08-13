@@ -39,8 +39,14 @@ export class SequencesFacade extends BaseFacade<Sequence, SequencesState> {
         parameterName: 'sequenceID',
       },
       select: {
-        action: SequencesActions.actionSequenceEmpty,
+        action: SequencesActions.actionSequencesToggleSelected,
         parameterName: 'sequence',
+      },
+      selectAll: {
+        action: SequencesActions.actionSequencesSelectAll,
+      },
+      selectNone: {
+        action: SequencesActions.actionSequencesSelectNone,
       },
     };
   }

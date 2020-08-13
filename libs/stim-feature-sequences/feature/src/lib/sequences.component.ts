@@ -86,6 +86,10 @@ export class SequencesComponent extends BaseListController<
     this._router.navigate(['new'], { relativeTo: this._route.parent });
   }
 
+  handleSelect(sequence: Sequence) {
+    this._facade.selectEntity(sequence);
+  }
+
   protected get introRecord(): Sequence {
     return SequencesComponent.INTRO_SEQUENCE;
   }
@@ -103,6 +107,6 @@ export class SequencesComponent extends BaseListController<
   }
 
   protected get selectionMode$(): Observable<boolean> {
-    return of(false);
+    return this.state.pipe(map((state: SequencesState) => state.selectionMode));
   }
 }

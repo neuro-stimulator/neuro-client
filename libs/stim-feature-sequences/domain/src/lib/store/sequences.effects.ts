@@ -1,13 +1,7 @@
 import { Injectable } from '@angular/core';
-import {
-  catchError,
-  map,
-  switchMap,
-  tap,
-  withLatestFrom,
-} from 'rxjs/operators';
-import { of } from 'rxjs';
 import { Router } from '@angular/router';
+import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
+import { EMPTY, of } from 'rxjs';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -17,6 +11,7 @@ import { Sequence, ResponseObject, Experiment } from '@stechy1/diplomka-share';
 import { SequencesService } from '../infrastructure/sequences.service';
 import * as SequencesActions from './sequences.actions';
 import { SequencesState } from './sequences.type';
+import * as ExperimentsActions from '../../../../../stim-feature-experiments/domain/src/lib/store/experiments.actions';
 
 @Injectable()
 export class SequencesEffects {
@@ -110,17 +105,59 @@ export class SequencesEffects {
       })
     )
   );
-  delete$ = createEffect(() =>
-    this.actions$.pipe(
+  delete$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(SequencesActions.actionSequencesDeleteRequest),
-      switchMap((action) => this.sequences.delete(action.sequenceID)),
-      map((response: ResponseObject<Sequence>) => {
-        return SequencesActions.actionSequencesDeleteRequestDone({
-          sequence: response.data,
-        });
+      withLatestFrom(this.store.select('sequences')),
+      switchMap(([action, sequences]) => {
+        if (action.sequenceID) {
+          return this.sequences.delete(action.sequenceID);
+        } else {
+          // @ts-ignore
+          if (!sequences.selectionMode) {
+            return EMPTY;
+          }
+
+          const selectedSequences: { [index: number]: boolean } =
+            // @ts-ignore
+            sequences.selectedSequences;
+          const filteredSelectedSequences = Object.entries<boolean>(
+            selectedSequences
+          ).filter(([index, selected]) => selected);
+          const [
+            selectedIndex,
+            selected,
+          ] = filteredSelectedSequences.values().next().value;
+
+          return this.sequences.delete(+selectedIndex);
+        }
       }),
+      map((response: ResponseObject<Sequence>) =>
+        SequencesActions.actionSequencesDeleteRequestDone({
+          sequence: response.data,
+        })
+      ),
       catchError((errorResponse) => {
         return of(SequencesActions.actionSequencesDeleteRequestFail({}));
+      })
+    );
+  });
+  deleteDone$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesDeleteRequestDone),
+      withLatestFrom(this.store.select('sequences')),
+      map(([action, sequences]) => {
+        // @ts-ignore
+        if (sequences.selectionMode) {
+          setTimeout(
+            () =>
+              this.store.dispatch(
+                SequencesActions.actionSequencesDeleteRequest({})
+              ),
+            250
+          );
+        }
+        return SequencesActions.actionSequencesNoAction({});
       })
     )
   );
