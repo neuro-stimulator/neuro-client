@@ -9,6 +9,7 @@ import {
   switchMap,
   withLatestFrom,
 } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 import {
   MessageCodes,
@@ -20,12 +21,11 @@ import {
   StimulatorStateEvent,
 } from '@stechy1/diplomka-share';
 import * as ConnectionActions from '@diplomka-frontend/stim-lib-connection';
+import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
 
 import { StimulatorService } from '../infrastructure/stimulator.service';
+import { StimulatorStateType } from '../domain/stimulator-state';
 import * as StimulatorActions from './stimulator.actions';
-import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
-import { of } from 'rxjs';
-import { StimulatorStateType } from '@diplomka-frontend/stim-feature-stimulator/domain';
 
 @Injectable()
 export class StimulatorEffects {
