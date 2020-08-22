@@ -44,7 +44,7 @@
               </div>
               <div class="row experiment-tags" *ngIf="(settings | async).localSettings.experiments.showTags">
                 <div class="col-12">
-                <span class="badge" *ngFor="let tag of experiment.tags">{{tag}}</span>
+                  <span class="badge" *ngFor="let tag of experiment.tags">{{tag}}</span>
                 </div>
               </div>
             </div>

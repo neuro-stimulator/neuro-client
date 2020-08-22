@@ -5,6 +5,7 @@ import {
   flatMap,
   map,
   switchMap,
+  tap,
   withLatestFrom,
 } from 'rxjs/operators';
 import { EMPTY, of } from 'rxjs';
@@ -92,6 +93,15 @@ export class ExperimentsEffects {
         return of(ExperimentsActions.actionExperimentsOneRequestFail({}));
       })
     )
+  );
+
+  oneFail$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(ExperimentsActions.actionExperimentsOneRequestFail),
+        tap(() => this.router.navigate(['/experiments']))
+      ),
+    { dispatch: false }
   );
 
   insert$ = createEffect(() =>

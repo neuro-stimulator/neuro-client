@@ -135,6 +135,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
       type: new FormControl(null, [Validators.required]),
       created: new FormControl(null),
       tags: new FormControl([]),
+      supportSequences: new FormControl(null, [Validators.required]),
     };
   }
 
