@@ -1,15 +1,21 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 
 @Component({
   selector: 'stim-lib-ui-image-player',
   templateUrl: './image-player.component.html',
-  styleUrls: ['./image-player.component.sass']
+  styleUrls: ['./image-player.component.sass'],
 })
 export class ImagePlayerComponent implements OnInit {
-
-  @ViewChild('modal', {static: true}) modal: ModalComponent;
+  @ViewChild('modal', { static: true }) modal: ModalComponent;
 
   @Input() title: string;
   @Input() displayTitle = true;
@@ -18,12 +24,12 @@ export class ImagePlayerComponent implements OnInit {
 
   private _imageUrl: string;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
 
-  @Input() set imageUrl(audioUrl: string) {
-    this._imageUrl = audioUrl;
+  @Input() set imageUrl(imageUrl: string) {
+    this._imageUrl = imageUrl;
   }
 
   get imageUrl() {
@@ -32,13 +38,5 @@ export class ImagePlayerComponent implements OnInit {
 
   handleShowFileBrowser() {
     this.requestFileChange.next();
-    // this.modal.showComponent = FileBrowserComponent;
-    // this.modal.openForResult()
-    //     .then((file: FileRecord) => {
-    //       this.fileChange.next(file);
-    //     })
-    //     .catch(() => {
-    //       // Dialog was closed
-    //     });
   }
 }
