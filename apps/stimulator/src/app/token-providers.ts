@@ -28,62 +28,40 @@ export const TOKEN_PROVIDERS: Provider[] = [
   },
   {
     provide: TOKEN_BASE_API_URL,
-    useValue: `${makeURL(environment.url.server, environment.port.server)}`,
+    useValue: `/`,
   },
   {
     provide: TOKEN_EXPERIMENTS_API_URL,
-    useValue: `${makeURL(
-      environment.url.server,
-      environment.port.server
-    )}/api/experiments`,
+    useValue: `/api/experiments`,
   },
   {
     provide: TOKEN_EXPERIMENT_RESULTS_API_URL,
-    useValue: `${makeURL(
-      environment.url.server,
-      environment.port.server
-    )}/api/experiment-results`,
+    useValue: `/api/experiment-results`,
   },
   {
     provide: TOKEN_SEQUENCES_API_URL,
-    useValue: `${makeURL(
-      environment.url.server,
-      environment.port.server
-    )}/api/sequences`,
+    useValue: `/api/sequences`,
   },
   {
     provide: TOKEN_SETTINGS_API_URL,
-    useValue: `${makeURL(
-      environment.url.server,
-      environment.port.server
-    )}/api/settings`,
+    useValue: `/api/settings`,
   },
   {
     provide: TOKEN_STIMULATOR_API_URL,
-    useValue: `${makeURL(environment.url.server, environment.port.server)}/api`,
+    useValue: `/api`,
   },
   {
     provide: TOKEN_FILE_BROWSER_API_URL,
-    useValue: `${makeURL(
-      environment.url.server,
-      environment.port.server
-    )}/api/file-browser`,
+    useValue: `/api/file-browser`,
   },
 
   {
     provide: TOKEN_AUTH_API_URL,
     useValue: '/api/auth',
-    // useValue: `${makeURL(
-    //   environment.url.server,
-    //   environment.port.server
-    // )}/api/auth`,
   },
   {
     provide: TOKEN_USERS_API_URL,
-    useValue: `${makeURL(
-      environment.url.server,
-      environment.port.server
-    )}/api/users`,
+    useValue: `/api/users`,
   },
   {
     provide: TOKEN_PLAYER_API_URL,
