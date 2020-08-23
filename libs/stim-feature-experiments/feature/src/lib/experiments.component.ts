@@ -42,6 +42,7 @@ export class ExperimentsComponent extends BaseListController<
     outputCount: 1,
     usedOutputs: { led: true },
     tags: ['tag1', 'tag2'],
+    supportSequences: false,
   };
 
   fabButtonList: FabListEntry[] = [
