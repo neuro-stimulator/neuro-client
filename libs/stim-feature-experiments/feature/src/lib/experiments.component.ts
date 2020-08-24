@@ -24,6 +24,10 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
+import {
+  AuthFacade,
+  AuthState,
+} from '@diplomka-frontend/stim-feature-auth/domain';
 
 @Component({
   templateUrl: './experiments.component.html',
@@ -62,6 +66,7 @@ export class ExperimentsComponent extends BaseListController<
     router: Router,
     route: ActivatedRoute,
     location: Location,
+    private readonly auth: AuthFacade,
     private readonly logger: NGXLogger
   ) {
     super(
@@ -142,6 +147,12 @@ export class ExperimentsComponent extends BaseListController<
   protected get selectionMode$(): Observable<boolean> {
     return this.state.pipe(
       map((state: ExperimentsState) => state.selectionMode)
+    );
+  }
+
+  get isAuthenticated(): Observable<boolean> {
+    return this.auth.state.pipe(
+      map((state: AuthState) => state.isAuthenticated)
     );
   }
 }

@@ -19,7 +19,7 @@
               class="experiment-new"
               [fabButtons]="fabButtonList"
               (fabClick)="handleNewExperiment($event)"
-              [disabled]="(connectionState | async).working || (state | async).selectionMode">
+              [disabled]="(connectionState | async).working || (state | async).selectionMode || !(isAuthenticated | async)">
 </stim-lib-fab>
 
 <stim-lib-modal #modal></stim-lib-modal>
