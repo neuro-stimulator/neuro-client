@@ -1,9 +1,13 @@
-import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {
+  AbstractControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+} from '@angular/forms';
 import { outputCountValidatorPattern } from '../../experiments.share';
 
 export class ExperimentTypeErpOutputDependencyValidator {
-
-  static createValidator(): ValidatorFn {
+  static createValidator(maxOutputCount: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       if (control.parent === undefined) {
         return null;
@@ -21,11 +25,10 @@ export class ExperimentTypeErpOutputDependencyValidator {
       if (value.length === 0) {
         return null;
       }
-      if (!value.match(outputCountValidatorPattern)) {
-        return {invalidValue: true};
+      if (!value.match(outputCountValidatorPattern(maxOutputCount))) {
+        return { invalidValue: true };
       }
-      return (+value <= +usedOutputs) ? null : {invalidDependency: true};
+      return +value <= +usedOutputs ? null : { invalidDependency: true };
     };
   }
-
 }

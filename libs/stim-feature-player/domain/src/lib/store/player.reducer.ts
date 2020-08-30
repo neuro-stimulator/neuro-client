@@ -16,7 +16,7 @@ export function playerReducer(playerState: PlayerState, playerAction: Action) {
       betweenExperimentInterval: 0,
       repeat: 1,
       isBreakTime: false,
-      stopConditionType: null, // TODO use stopConditionType
+      stopConditionType: null,
     },
     on(PlayerActions.actionPlayerUpdateState, (state: PlayerState, action) => ({
       ...state,

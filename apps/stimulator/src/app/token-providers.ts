@@ -13,6 +13,7 @@ import {
   TOKEN_AUTH_API_URL,
   TOKEN_USERS_API_URL,
   TOKEN_PLAYER_API_URL,
+  TOKEN_PATTERN_SIZE,
 } from '@diplomka-frontend/stim-lib-common';
 
 import { environment, makeURL } from '../environments/environment';
@@ -21,6 +22,10 @@ export const TOKEN_PROVIDERS: Provider[] = [
   {
     provide: TOKEN_MAX_OUTPUT_COUNT,
     useValue: environment.maxOutputCount,
+  },
+  {
+    provide: TOKEN_PATTERN_SIZE,
+    useValue: environment.patternSize,
   },
   {
     provide: TOKEN_SUPPORTED_LANGUAGES,

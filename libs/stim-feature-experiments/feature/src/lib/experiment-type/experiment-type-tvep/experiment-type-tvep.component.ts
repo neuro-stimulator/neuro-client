@@ -1,37 +1,67 @@
-import { AfterContentInit, Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  EventEmitter,
+  Inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import { createEmptyExperimentTVEP, ExperimentTVEP } from '@stechy1/diplomka-share';
+import {
+  createEmptyExperimentTVEP,
+  ExperimentTVEP,
+} from '@stechy1/diplomka-share';
 
-import { ExperimentsFacade } from "@diplomka-frontend/stim-feature-experiments/domain";
-import { ShareValidators } from "@diplomka-frontend/stim-lib-ui";
+import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
+import { ShareValidators } from '@diplomka-frontend/stim-lib-ui';
 
 import { outputCountParams } from '../../experiments.share';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
-import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
-import { AliveCheckerFacade } from "@diplomka-frontend/stim-lib-connection";
+import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
+import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
+import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
 
 @Component({
   templateUrl: './experiment-type-tvep.component.html',
-  styleUrls: ['./experiment-type-tvep.component.sass']
+  styleUrls: ['./experiment-type-tvep.component.sass'],
 })
-export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<ExperimentTVEP> implements OnInit, AfterContentInit, OnDestroy {
+export class ExperimentTypeTvepComponent
+  extends BaseExperimentTypeComponent<ExperimentTVEP>
+  implements OnInit, AfterContentInit, OnDestroy {
+  readonly sharePatternLengthEmitter: EventEmitter<boolean> = new EventEmitter<
+    boolean
+  >();
 
-  readonly sharePatternLengthEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  constructor(service: ExperimentsFacade,
-              route: ActivatedRoute,
-              navigation: NavigationFacade,
-              connection: AliveCheckerFacade,
-              logger: NGXLogger) {
-    super(service, route, navigation, connection, new ExperimentNameValidator(service), logger);
+  constructor(
+    @Inject(TOKEN_MAX_OUTPUT_COUNT) private readonly _maxOutputCount: number,
+    service: ExperimentsFacade,
+    route: ActivatedRoute,
+    navigation: NavigationFacade,
+    connection: AliveCheckerFacade,
+    logger: NGXLogger
+  ) {
+    super(
+      service,
+      route,
+      navigation,
+      connection,
+      new ExperimentNameValidator(service),
+      logger
+    );
   }
 
   ngOnInit() {
@@ -39,7 +69,10 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
   }
 
   ngAfterContentInit(): void {
-    this.sharePatternLength.valueChanges.subscribe((sharePatternLength: boolean) => this.sharePatternLengthEmitter.next(sharePatternLength));
+    this.sharePatternLength.valueChanges.subscribe(
+      (sharePatternLength: boolean) =>
+        this.sharePatternLengthEmitter.next(sharePatternLength)
+    );
   }
 
   protected _createOutputFormControl(): FormGroup {
@@ -47,33 +80,51 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
       id: new FormControl(null, Validators.required),
       experimentId: new FormControl(null, Validators.required),
       orderId: new FormControl(null, Validators.required),
-      out: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
-      wait: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
-      patternLength: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(32)]),
+      out: new FormControl(null, [
+        Validators.required,
+        ShareValidators.exclusiveMin(0),
+      ]),
+      wait: new FormControl(null, [
+        Validators.required,
+        ShareValidators.exclusiveMin(0),
+      ]),
+      patternLength: new FormControl(null, [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(32),
+      ]),
       pattern: new FormControl(null, [Validators.required]),
       brightness: new FormControl(null, [
-        Validators.required, Validators.min(0), Validators.max(100)
+        Validators.required,
+        Validators.min(0),
+        Validators.max(100),
       ]),
-      outputType: new FormGroup({
-        led: new FormControl(null),
-        audio: new FormControl(null),
-        audioFile: new FormControl(null),
-        image: new FormControl(null),
-        imageFile: new FormControl(null)
-      }, [Validators.required, ExperimentOutputTypeValidator.createValidator()])
+      outputType: new FormGroup(
+        {
+          led: new FormControl(null),
+          audio: new FormControl(null),
+          audioFile: new FormControl(null),
+          image: new FormControl(null),
+          imageFile: new FormControl(null),
+        },
+        [Validators.required, ExperimentOutputTypeValidator.createValidator()]
+      ),
     });
   }
 
   protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
     const myControls = {
-      // TODO environment variable
-      outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(8/*environment.maxOutputCount*/)]),
+      outputCount: new FormControl(null, [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(this._maxOutputCount),
+      ]),
       sharePatternLength: new FormControl(null, [Validators.required]),
-      outputs: new FormArray([])
+      outputs: new FormArray([]),
     };
 
-    return {...superControls, ...myControls};
+    return { ...superControls, ...myControls };
   }
 
   protected _createEmptyExperiment(): ExperimentTVEP {
@@ -82,9 +133,10 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
 
   protected _updateFormGroup(experiment: ExperimentTVEP) {
     if (experiment.outputs?.length > 0) {
-      // TODO environment variable
-      for (let i = 0; i < 8/*environment.maxOutputCount*/; i++) {
-        (this.form.get('outputs') as FormArray).push(this._createOutputFormControl());
+      for (let i = 0; i < this._maxOutputCount; i++) {
+        (this.form.get('outputs') as FormArray).push(
+          this._createOutputFormControl()
+        );
       }
     } else {
       (this.form.get('outputs') as FormArray).clear();
@@ -94,7 +146,7 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
   }
 
   get outputCountParams(): SliderOptions {
-    return outputCountParams;
+    return outputCountParams(this._maxOutputCount);
   }
 
   get outputCount() {

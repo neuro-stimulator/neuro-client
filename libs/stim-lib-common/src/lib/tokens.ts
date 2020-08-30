@@ -23,6 +23,7 @@ export const TOKEN_FILE_BROWSER_API_URL = new InjectionToken(
 export const TOKEN_MAX_OUTPUT_COUNT = new InjectionToken(
   'TOKEN_MAX_OUTPUT_COUNT'
 );
+export const TOKEN_PATTERN_SIZE = new InjectionToken('TOKEN_PATTERN_SIZE');
 export const TOKEN_SUPPORTED_LANGUAGES = new InjectionToken(
   'TOKEN_SUPPORTED_LANGUAGES'
 );

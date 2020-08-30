@@ -1,20 +1,23 @@
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-// TODO environment variable
-export const dependencyValidatorPattern = `^[0-${8/*environment.maxOutputCount*/}]x[1-9]+[0-9]*`;
+export function dependencyValidatorPattern(maxOutputCount) {
+  return `^[0-${maxOutputCount}]x[1-9]+[0-9]*`;
+}
 
-// TODO environment variable
-export const outputCountValidatorPattern = `^[0-${8/*environment.maxOutputCount*/}]{1}$`;
+export function outputCountValidatorPattern(maxOutputCount) {
+  return `^[0-${maxOutputCount}]{1}$`;
+}
 
-export const outputCountParams: SliderOptions = {
-  floor: 1,
-  // TODO environment variable
-  ceil: 8/*environment.maxOutputCount*/,
-  showTicks: true,
-  showTicksValues: true,
-  tickStep: 1,
-  animate: false
-};
+export function outputCountParams(maxOutputCount): SliderOptions {
+  return {
+    floor: 1,
+    ceil: maxOutputCount,
+    showTicks: true,
+    showTicksValues: true,
+    tickStep: 1,
+    animate: false,
+  };
+}
 
 export const brightnessSliderOptions: SliderOptions = {
   floor: 0,
@@ -24,5 +27,5 @@ export const brightnessSliderOptions: SliderOptions = {
   tickStep: 1,
   showSelectionBar: true,
   animate: false,
-  translate: (value: number) => `${value}%`
+  translate: (value: number) => `${value}%`,
 };

@@ -1,22 +1,34 @@
-import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  Inject,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { isObservable, Observable} from 'rxjs';
-import { ValueAccessorBase } from "@diplomka-frontend/stim-lib-ui";
+import { isObservable, Observable } from 'rxjs';
+import { ValueAccessorBase } from '@diplomka-frontend/stim-lib-ui';
+import { TOKEN_PATTERN_SIZE } from '@diplomka-frontend/stim-lib-common';
 
 @Component({
   selector: 'stim-feature-experiments-output-pattern',
   templateUrl: './output-pattern.component.html',
   styleUrls: ['./output-pattern.component.sass'],
   providers: [
-    {provide: NG_VALUE_ACCESSOR, useExisting: OutputPatternComponent, multi: true}
-  ]
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: OutputPatternComponent,
+      multi: true,
+    },
+  ],
 })
-export class OutputPatternComponent extends ValueAccessorBase<number> implements OnInit {
-
-  // TODO změnit výchozí velikost pattern size
-  @Input() patternSize: number|Observable<number> = 32;//environment.patternSize;
-  @ViewChild('canvas', {static: true}) canvas: ElementRef;
+export class OutputPatternComponent extends ValueAccessorBase<number>
+  implements OnInit {
+  @Input() patternSize: number | Observable<number> = this._defaultPatternSize;
+  @ViewChild('canvas', { static: true }) canvas: ElementRef;
 
   checkboxes: number[] = [];
   uuid = `${Math.random()}`;
@@ -24,7 +36,9 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
   private _disableChangePropagation = false;
   _patternSize: number;
 
-  constructor() {
+  constructor(
+    @Inject(TOKEN_PATTERN_SIZE) private readonly _defaultPatternSize: number
+  ) {
     super(0);
   }
 
@@ -40,7 +54,7 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
     if (this.canvas === undefined) {
       return;
     }
-    const canvas = (this.canvas.nativeElement as HTMLCanvasElement);
+    const canvas = this.canvas.nativeElement as HTMLCanvasElement;
     canvas.width = canvas.parentElement.clientWidth;
     const graphics = canvas.getContext('2d');
     const width = canvas.width;
@@ -56,11 +70,11 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
     for (let i = 0; i < this._patternSize; i++) {
       const value = (this.value >> (i + 1)) & 1;
       if (value === 1) {
-        x += (patternWidth / 2);
+        x += patternWidth / 2;
         graphics.lineTo(x, y);
         y -= patternHeight;
         graphics.lineTo(x, y);
-        x += (patternWidth / 2);
+        x += patternWidth / 2;
         graphics.lineTo(x, y);
         y += patternHeight;
         graphics.lineTo(x, y);
@@ -114,7 +128,7 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
   }
 
   handleFullPattern() {
-    this.value = 0xFFFFFFFF;
+    this.value = 0xffffffff;
     this._initCheckboxes();
     this._drawPattern();
   }

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   AbstractControl,
@@ -7,6 +7,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
@@ -19,15 +21,18 @@ import {
   Random,
 } from '@stechy1/diplomka-share';
 
+import {
+  DropdownBtnComponent,
+  ShareValidators,
+} from '@diplomka-frontend/stim-lib-ui';
+import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
+import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import {
   ExperimentsFacade,
   ExperimentsState,
 } from '@diplomka-frontend/stim-feature-experiments/domain';
-import {
-  DropdownBtnComponent,
-  ShareValidators,
-} from '@diplomka-frontend/stim-lib-ui';
+import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 
 import {
   dependencyValidatorPattern,
@@ -37,11 +42,7 @@ import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
-import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
-import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fast-dialog.component';
-import { map } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './experiment-type-erp.component.html',
@@ -57,6 +58,7 @@ export class ExperimentTypeErpComponent
   private _sequenceIdSubscription: Subscription;
 
   constructor(
+    @Inject(TOKEN_MAX_OUTPUT_COUNT) private readonly _maxOutputCount: number,
     service: ExperimentsFacade,
     route: ActivatedRoute,
     navigation: NavigationFacade,
@@ -117,8 +119,10 @@ export class ExperimentTypeErpComponent
       dependencies: new FormArray([
         new FormControl([]),
         new FormControl(null, [
-          Validators.pattern(dependencyValidatorPattern),
-          ExperimentTypeErpOutputDependencyValidator.createValidator(),
+          Validators.pattern(dependencyValidatorPattern(this._maxOutputCount)),
+          ExperimentTypeErpOutputDependencyValidator.createValidator(
+            this._maxOutputCount
+          ),
         ]),
       ]),
       outputType: new FormGroup(
@@ -142,11 +146,10 @@ export class ExperimentTypeErpComponent
   protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
     const myControls = {
-      // TODO environment variable
       outputCount: new FormControl(null, [
         Validators.required,
         Validators.min(1),
-        Validators.max(8 /*environment.maxOutputCount*/),
+        Validators.max(this._maxOutputCount),
       ]),
       maxDistribution: new FormControl(null, [
         Validators.required,
@@ -180,8 +183,7 @@ export class ExperimentTypeErpComponent
 
   protected _updateFormGroup(experiment: ExperimentERP) {
     if (experiment.outputs?.length > 0) {
-      // TODO environment variable
-      for (let i = 0; i < 8 /*environment.maxOutputCount*/; i++) {
+      for (let i = 0; i < this._maxOutputCount; i++) {
         (this.form.get('outputs') as FormArray).push(
           this._createOutputFormControl()
         );
@@ -215,7 +217,7 @@ export class ExperimentTypeErpComponent
   }
 
   get outputCountParams(): SliderOptions {
-    return outputCountParams;
+    return outputCountParams(this._maxOutputCount);
   }
 
   get randoms() {

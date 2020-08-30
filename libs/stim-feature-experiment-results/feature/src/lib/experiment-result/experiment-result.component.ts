@@ -22,7 +22,10 @@ import {
   AliveCheckerFacade,
   ConnectionInformationState,
 } from '@diplomka-frontend/stim-lib-connection';
-import { TOKEN_EXPERIMENT_RESULTS_API_URL } from '@diplomka-frontend/stim-lib-common';
+import {
+  TOKEN_EXPERIMENT_RESULTS_API_URL,
+  TOKEN_MAX_OUTPUT_COUNT,
+} from '@diplomka-frontend/stim-lib-common';
 
 @Component({
   selector: 'stim-feature-experiment-results-experiment-result',
@@ -35,8 +38,7 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
   // private readonly _incommingEvent: EventEmitter<IOEvent> = new EventEmitter<IOEvent>();
 
   // incommingEvent: Observable<IOEvent> = this._incommingEvent.asObservable();
-  // TODO environment variable
-  outputCount /*: number*/ = 8 /*environment.maxOutputCount*/;
+  outputCount: number = this._maxOutputCount;
 
   public form: FormGroup = new FormGroup({
     id: new FormControl(),
@@ -51,6 +53,7 @@ export class ExperimentResultComponent implements OnInit, OnDestroy {
 
   constructor(
     @Inject(TOKEN_EXPERIMENT_RESULTS_API_URL) private readonly apiURL: string,
+    @Inject(TOKEN_MAX_OUTPUT_COUNT) private readonly _maxOutputCount: number,
     private readonly _service: ExperimentResultsFacade,
     private readonly toastr: ToastrService,
     private readonly logger: NGXLogger,

@@ -1,29 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import { createEmptyExperimentCVEP, ExperimentCVEP } from '@stechy1/diplomka-share';
+import {
+  createEmptyExperimentCVEP,
+  ExperimentCVEP,
+} from '@stechy1/diplomka-share';
 
-import { ExperimentsFacade } from "@diplomka-frontend/stim-feature-experiments/domain";
-import { NavigationFacade } from "@diplomka-frontend/stim-feature-navigation/domain";
-import { ShareValidators } from "@diplomka-frontend/stim-lib-ui";
+import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
+import { ShareValidators } from '@diplomka-frontend/stim-lib-ui';
+import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
+import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
+import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 
-import { brightnessSliderOptions, outputCountParams } from '../../experiments.share';
+import {
+  brightnessSliderOptions,
+  outputCountParams,
+} from '../../experiments.share';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
-import { AliveCheckerFacade } from "@diplomka-frontend/stim-lib-connection";
 
 @Component({
   templateUrl: './experiment-type-cvep.component.html',
-  styleUrls: ['./experiment-type-cvep.component.sass']
+  styleUrls: ['./experiment-type-cvep.component.sass'],
 })
-export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<ExperimentCVEP> implements OnInit {
-
+export class ExperimentTypeCvepComponent
+  extends BaseExperimentTypeComponent<ExperimentCVEP>
+  implements OnInit {
   bitShiftSliderOptions: SliderOptions = {
     floor: 0,
     ceil: 31,
@@ -31,15 +44,25 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
     showTicksValues: false,
     tickStep: 1,
     showSelectionBar: true,
-    animate: false
+    animate: false,
   };
 
-  constructor(service: ExperimentsFacade,
-              route: ActivatedRoute,
-              navigation: NavigationFacade,
-              connection: AliveCheckerFacade,
-              logger: NGXLogger) {
-    super(service, route, navigation, connection, new ExperimentNameValidator(service), logger);
+  constructor(
+    @Inject(TOKEN_MAX_OUTPUT_COUNT) private readonly _maxOutputCount: number,
+    service: ExperimentsFacade,
+    route: ActivatedRoute,
+    navigation: NavigationFacade,
+    connection: AliveCheckerFacade,
+    logger: NGXLogger
+  ) {
+    super(
+      service,
+      route,
+      navigation,
+      connection,
+      new ExperimentNameValidator(service),
+      logger
+    );
   }
 
   ngOnInit() {
@@ -49,25 +72,43 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
   protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
     const myControls = {
-      // TODO environment variable
-      outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(8/*environment.maxOutputCount*/)]),
-      usedOutputs: new FormGroup({
-        led: new FormControl(null),
-        audio: new FormControl(null),
-        audioFile: new FormControl(null),
-        image: new FormControl(null),
-        imageFile: new FormControl(null)
-      }, [Validators.required, ExperimentOutputTypeValidator.createValidator()]),
-      out: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
-      wait: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      outputCount: new FormControl(null, [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(this._maxOutputCount),
+      ]),
+      usedOutputs: new FormGroup(
+        {
+          led: new FormControl(null),
+          audio: new FormControl(null),
+          audioFile: new FormControl(null),
+          image: new FormControl(null),
+          imageFile: new FormControl(null),
+        },
+        [Validators.required, ExperimentOutputTypeValidator.createValidator()]
+      ),
+      out: new FormControl(null, [
+        Validators.required,
+        ShareValidators.exclusiveMin(0),
+      ]),
+      wait: new FormControl(null, [
+        Validators.required,
+        ShareValidators.exclusiveMin(0),
+      ]),
       pattern: new FormControl(null, [Validators.required]),
-      bitShift: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(31)]),
+      bitShift: new FormControl(null, [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(31),
+      ]),
       brightness: new FormControl(null, [
-        Validators.required, Validators.min(0), Validators.max(100)
-      ])
+        Validators.required,
+        Validators.min(0),
+        Validators.max(100),
+      ]),
     };
 
-    return {...superControls, ...myControls};
+    return { ...superControls, ...myControls };
   }
 
   protected _createEmptyExperiment(): ExperimentCVEP {
@@ -75,7 +116,7 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
   }
 
   get outputCountParams(): SliderOptions {
-    return outputCountParams;
+    return outputCountParams(this._maxOutputCount);
   }
 
   get brightnessSliderOptions(): SliderOptions {
@@ -109,5 +150,4 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
   get brightness() {
     return this.form.get('brightness');
   }
-
 }

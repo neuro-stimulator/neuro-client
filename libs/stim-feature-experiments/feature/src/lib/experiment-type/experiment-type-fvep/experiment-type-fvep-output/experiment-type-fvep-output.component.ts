@@ -1,29 +1,30 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-// import { environment } from '../../../../../../../../apps/stimulator/src/environments/environment';
-import { brightnessSliderOptions} from '../../../experiments.share';
+import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
+
+import { brightnessSliderOptions } from '../../../experiments.share';
 
 @Component({
   selector: 'stim-feature-experiments-experiment-type-fvep-output',
   templateUrl: './experiment-type-fvep-output.component.html',
-  styleUrls: ['./experiment-type-fvep-output.component.sass']
+  styleUrls: ['./experiment-type-fvep-output.component.sass'],
 })
 export class ExperimentTypeFvepOutputComponent implements OnInit {
-
   @Input() form: FormGroup;
   @Input() count: number;
 
-  activeSide: {left: boolean, right: boolean}[] = [];
+  activeSide: { left: boolean; right: boolean }[] = [];
 
-  constructor() { }
+  constructor(
+    @Inject(TOKEN_MAX_OUTPUT_COUNT) private readonly _maxOutputCount: number
+  ) {}
 
   ngOnInit() {
-    // TODO environment variable
-    for (let i = 0; i < 8/*environment.maxOutputCount*/; i++) {
-      this.activeSide.push({left: true, right: false});
+    for (let i = 0; i < this._maxOutputCount; i++) {
+      this.activeSide.push({ left: true, right: false });
     }
   }
 
@@ -57,7 +58,7 @@ export class ExperimentTypeFvepOutputComponent implements OnInit {
     const timeOffControl = this.timeOff(index);
 
     timeOffControl.setValue(frequencyValue / dutyCycleValue);
-    timeOnControl.setValue(frequencyValue - (frequencyValue / dutyCycleValue));
+    timeOnControl.setValue(frequencyValue - frequencyValue / dutyCycleValue);
   }
 
   get brightnessSliderOptions(): SliderOptions {
@@ -90,5 +91,5 @@ export class ExperimentTypeFvepOutputComponent implements OnInit {
 
   brightness(index: number) {
     return this.outputs[index].get('brightness');
-}
+  }
 }
