@@ -4,6 +4,7 @@ import {
   Inject,
   Input,
   OnDestroy,
+  OnInit,
 } from '@angular/core';
 import {
   ControlContainer,
@@ -33,8 +34,7 @@ import { brightnessSliderOptions } from '../../../experiments.share';
   styleUrls: ['./experiment-type-erp-output.component.sass'],
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
-export class ExperimentTypeErpOutputComponent
-  implements AfterContentInit, OnDestroy {
+export class ExperimentTypeErpOutputComponent implements OnInit, OnDestroy {
   private static readonly GENERAL_DISTRIBUTION_SLIDER_OPTIONS: SliderOptions = {
     floor: 0,
     ceil: 100,
@@ -73,7 +73,7 @@ export class ExperimentTypeErpOutputComponent
     }
   }
 
-  ngAfterContentInit(): void {
+  ngOnInit(): void {
     this._experimentLoadedSubscription = this.experimentLoaded.subscribe(
       (experiment: ExperimentERP) => {
         this._oldOutputCount = experiment.outputCount;

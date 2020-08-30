@@ -1,4 +1,12 @@
-import { EventEmitter, OnDestroy, OnInit, Directive } from '@angular/core';
+import {
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Directive,
+  AfterContentInit,
+  AfterContentChecked,
+  AfterViewChecked,
+} from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import {
   AbstractControl,
@@ -147,10 +155,12 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
       )
       .subscribe((experiment: Experiment) => {
         this._updateFormGroup(experiment as E);
-        this._experimentLoaded.next(experiment as E);
         this._navigation.customNavColor = ExperimentType[
           experiment.type
         ].toLowerCase();
+        setTimeout(() => {
+          this._experimentLoaded.next(experiment as E);
+        }, 100);
       });
 
     this._route.params.subscribe((params: Params) => {
