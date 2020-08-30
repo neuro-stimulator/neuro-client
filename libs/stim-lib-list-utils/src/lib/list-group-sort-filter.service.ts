@@ -5,7 +5,13 @@ import { NGXLogger } from 'ngx-logger';
 import { LocalStorageService } from 'angular-2-local-storage';
 import Fuse from 'fuse.js';
 
-import { EntityGroup, GroupFilter, ListFilterParameters, OrderFilter, SortFilter } from './list-filter';
+import {
+  EntityGroup,
+  GroupFilter,
+  ListFilterParameters,
+  OrderFilter,
+  SortFilter,
+} from './list-filter';
 import { OrderByFilterProvider } from './impl/order-by-filter.provider';
 import { GroupByFilterProvider } from './impl/group-by-filter.provider';
 import { SortByFilterProvider } from './impl/sort-by-filter.provider';
@@ -14,12 +20,11 @@ import {
   LIST_UTILS_MODULE_GROUP_BY_TOKEN,
   LIST_UTILS_MODULE_ORDER_BY_TOKEN,
   LIST_UTILS_MODULE_SORT_BY_TOKEN,
-  LIST_UTILS_MODULE_STORAGE_PREFIX
+  LIST_UTILS_MODULE_STORAGE_PREFIX,
 } from './injection-tokens';
 
 @Injectable()
 export class ListGroupSortFilterService<T> {
-
   // Klíč pod kterým se ukládá nastavení filtrů v local-storage aplikace
   private static readonly STORAGE_KEY_FILTER_PARAMETERS = 'filter-parameters';
   // Konfigurace knihovny pro vyhledávání textů v objektech
@@ -30,11 +35,11 @@ export class ListGroupSortFilterService<T> {
     // location: 0,
     // distance: 100,
     // minMatchCharLength: 1,
-    keys: [ 'name' ]
+    keys: ['name'],
   };
 
   // Fusejs instance pro fulltextové vyhledávání
-  private readonly _fusejs: Fuse<T, Fuse.IFuseOptions<T>>;
+  private readonly _fusejs: Fuse<T>;
   // Kolekce experimentů pro FuseJS
   private _fuseExperiments: T[] = [];
   // Kolekce vyfiltrovaných experimentů
@@ -46,17 +51,27 @@ export class ListGroupSortFilterService<T> {
   // Poslední použité filtrační parametry
   private _lastListFilterParameters: ListFilterParameters;
   // Emitter změn nastavení filtračních parametrů
-  private _filterParametersChange: EventEmitter<ListFilterParameters> = new EventEmitter<ListFilterParameters>();
+  private _filterParametersChange: EventEmitter<
+    ListFilterParameters
+  > = new EventEmitter<ListFilterParameters>();
   // Pozorovatelný objekt změn nastavení filtračních parametrů
-  public readonly filterParametersChange$: Observable<ListFilterParameters> = this._filterParametersChange.asObservable();
+  public readonly filterParametersChange$: Observable<
+    ListFilterParameters
+  > = this._filterParametersChange.asObservable();
 
-  constructor(@Inject(LIST_UTILS_MODULE_GROUP_BY_TOKEN) private readonly _groupFilterProvider: GroupByFilterProvider<T>,
-              @Inject(LIST_UTILS_MODULE_SORT_BY_TOKEN) private readonly _sortFilterProvider: SortByFilterProvider<T>,
-              @Inject(LIST_UTILS_MODULE_ORDER_BY_TOKEN) private readonly _orderFilterProvider: OrderByFilterProvider<T>,
-              @Inject(LIST_UTILS_MODULE_STORAGE_PREFIX) private readonly _storageSuffix: string,
-              @Inject(LIST_UTILS_MODULE_FUSE_KEYS) readonly fuseKeys: string[],
-              private readonly logger: NGXLogger,
-              private readonly _storage: LocalStorageService) {
+  constructor(
+    @Inject(LIST_UTILS_MODULE_GROUP_BY_TOKEN)
+    private readonly _groupFilterProvider: GroupByFilterProvider<T>,
+    @Inject(LIST_UTILS_MODULE_SORT_BY_TOKEN)
+    private readonly _sortFilterProvider: SortByFilterProvider<T>,
+    @Inject(LIST_UTILS_MODULE_ORDER_BY_TOKEN)
+    private readonly _orderFilterProvider: OrderByFilterProvider<T>,
+    @Inject(LIST_UTILS_MODULE_STORAGE_PREFIX)
+    private readonly _storageSuffix: string,
+    @Inject(LIST_UTILS_MODULE_FUSE_KEYS) readonly fuseKeys: string[],
+    private readonly logger: NGXLogger,
+    private readonly _storage: LocalStorageService
+  ) {
     // Vytvořím novou instanci
     this._fusejs = new Fuse(this._fuseExperiments, this.FUSEJS_SETTINGS);
     // Načtu filtační parametry z local-storage
@@ -68,8 +83,9 @@ export class ListGroupSortFilterService<T> {
    * Pokud se v local-storage nic nenachází, použije se výchozí nastavení
    */
   private _loadListFilterParameters() {
-    this._lastListFilterParameters = this._storage.get<ListFilterParameters>(this._localStorageKey)
-      || this.defaultFilterParameters;
+    this._lastListFilterParameters =
+      this._storage.get<ListFilterParameters>(this._localStorageKey) ||
+      this.defaultFilterParameters;
     this._filterParametersChange.next(this._lastListFilterParameters);
   }
 
@@ -96,7 +112,9 @@ export class ListGroupSortFilterService<T> {
       return;
     }
     // Hodnota není prázdná, jdu najít všechny odpovídající dotazy
-    const fuseResult = this._fusejs.search(searchedValue) as Fuse.FuseResult<T>[];
+    const fuseResult = this._fusejs.search(searchedValue) as Fuse.FuseResult<
+      T
+    >[];
     // Vymažu všechny záznamy v pracovní kolekci
     this._filteredExperiments.splice(0);
     // Přidám všechny nalezené záznamy do pracovní kolekce
@@ -123,7 +141,10 @@ export class ListGroupSortFilterService<T> {
     // Pokud nechci seskupovat podle ničeho
     if (filterParameters.groupBy === 'none') {
       // Založím jednu virtuální skupinu, do které vložím všechny vyfiltrované experimenty
-      this._groupExperiments.push({ group: '', entities: [...this._filteredExperiments] });
+      this._groupExperiments.push({
+        group: '',
+        entities: [...this._filteredExperiments],
+      });
       // A nechám je seřadit
       this.sort();
       // Víc už dělat nebudu
@@ -132,7 +153,9 @@ export class ListGroupSortFilterService<T> {
 
     // Získám instanci třídy pro seskupování
     // const groupConfiguration: GroupByPosibilities = GroupByPosibilities[filterParameters.groupBy];
-    const groupFilter: GroupFilter<T> = this._groupFilterProvider.filterByName(filterParameters.groupBy);
+    const groupFilter: GroupFilter<T> = this._groupFilterProvider.filterByName(
+      filterParameters.groupBy
+    );
     // Ověřím, že filtr existuje
     if (!groupFilter) {
       this.logger.warn('Nebyl rozpoznán seskupovací filtr!');
@@ -143,19 +166,26 @@ export class ListGroupSortFilterService<T> {
       return;
     }
     // Přemapuji pole s vyfiltrovanými experimenty na jednotlivé skupiny
-    let groupsWithDuplications: any = this._filteredExperiments.map(groupFilter.mapFunction);
+    let groupsWithDuplications: any = this._filteredExperiments.map(
+      groupFilter.mapFunction
+    );
     // Může se stát, že jednotlivé skupiny budou obsahovat ještě podskupiny
     // [ ['aaa', 'bbb'], ['aaa', ['ccc'] ] ]
     // Proto musím použít funkci 'flatMap' která mi výše uvedenou strukturu převede na jednoduché pole
     // [ 'aaa', 'bbb', 'aaa', 'ccc' ]
-    groupsWithDuplications = groupsWithDuplications.flatMap( (x, _) => x);
+    groupsWithDuplications = groupsWithDuplications.flatMap((x, _) => x);
     // Nakonec se zbavím duplicitních skupin a tím získám pole všech unikátních skupin, podle kterých budu experimenty shlukovat
-    const groups: any[] = groupsWithDuplications.filter(((value, index, array) => array.indexOf(value) === index));
+    const groups: any[] = groupsWithDuplications.filter(
+      (value, index, array) => array.indexOf(value) === index
+    );
 
     // Pokud se stane, že žádné skupiny nejsou
     if (groups.length === 0) {
       // Tak opět založím virtuální skupinu, do které vložím všechny vyfiltrované experimenty
-      this._groupExperiments.push({ group: '', entities: [...this._filteredExperiments] });
+      this._groupExperiments.push({
+        group: '',
+        entities: [...this._filteredExperiments],
+      });
       // Nechám je seřadit
       this.sort();
       // A víc už dělat nebudu
@@ -166,12 +196,20 @@ export class ListGroupSortFilterService<T> {
     // Proto projdu každou skupinu
     for (const group of groups) {
       // Vyfiltruji všechny experimenty podle zadané skupiny
-      const experiments = this._filteredExperiments.filter((experiment: T) => groupFilter.groupFunction(experiment, group));
+      const experiments = this._filteredExperiments.filter((experiment: T) =>
+        groupFilter.groupFunction(experiment, group)
+      );
       // A vložím novou skupinu do výsledné kolekce
-      this._groupExperiments.push({ group: groupFilter.nameTransformFunction(group), entities: experiments });
+      this._groupExperiments.push({
+        group: groupFilter.nameTransformFunction(group),
+        entities: experiments,
+      });
     }
     // Nakonec přidám ještě takovou skupinu, která nevyhovuje žádným kritériím
-    this._groupExperiments.push({ group: 'Bez skupiny', entities: this._filteredExperiments.filter(groupFilter.noGroupMatcher)});
+    this._groupExperiments.push({
+      group: 'Bez skupiny',
+      entities: this._filteredExperiments.filter(groupFilter.noGroupMatcher),
+    });
     // Nyní můžu přejít k řazení skupin
     this.sort();
   }
@@ -184,10 +222,16 @@ export class ListGroupSortFilterService<T> {
   public sort(filterParameters?: ListFilterParameters) {
     // Pokud nejsou parametry uvedeny, vezmu poslední použité
     filterParameters = filterParameters || this._lastListFilterParameters;
-    this.logger.debug(`Řadím data podle: '${filterParameters.sortBy}' '${filterParameters.orderBy}'.`);
+    this.logger.debug(
+      `Řadím data podle: '${filterParameters.sortBy}' '${filterParameters.orderBy}'.`
+    );
     // Získám instanci třídy pro řažení
-    const sortFilter: SortFilter<T> = this._sortFilterProvider.filterByName(filterParameters.sortBy);
-    const orderFilter: OrderFilter<T> = this._orderFilterProvider.filterByName(filterParameters.orderBy);
+    const sortFilter: SortFilter<T> = this._sortFilterProvider.filterByName(
+      filterParameters.sortBy
+    );
+    const orderFilter: OrderFilter<T> = this._orderFilterProvider.filterByName(
+      filterParameters.orderBy
+    );
     if (!sortFilter) {
       this.logger.warn('Nebyl vybrán žádný třídící filtr!');
       this.logger.debug(`SortBy: '${filterParameters.sortBy}'`);
@@ -245,7 +289,7 @@ export class ListGroupSortFilterService<T> {
     return {
       groupBy: this._groupFilterProvider?.defaultFilterEntityValue,
       orderBy: this._orderFilterProvider?.defaultFilterEntityValue,
-      sortBy: this._sortFilterProvider?.defaultFilterEntityValue
+      sortBy: this._sortFilterProvider?.defaultFilterEntityValue,
     };
   }
 
