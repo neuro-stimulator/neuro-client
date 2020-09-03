@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20px" height="64px" viewBox="-0.5 -0.5 20 64" (click)="handleClick()">
+  <g>
+    <rect x="5.81" y="27.49" width="1.94" height="24.68" [attr.fill]="legsColor" stroke="none" pointer-events="all"/>
+    <rect x="11.62" y="27.49" width="1.94" height="36.4" [attr.fill]="legsColor" stroke="none" pointer-events="all"/>
+    <ellipse cx="9.68" cy="8.23" rx="5.808" ry="8.228" [attr.fill]="enabled ? mainColorShine : mainColor" stroke="none" pointer-events="all"/>
+    <rect x="3.87" y="8.23" width="11.62" height="19.36" [attr.fill]="enabled ? mainColorShine : mainColor" stroke="none" pointer-events="all"/>
+    <rect x="0" y="22.26" width="19.36" height="5.32" [attr.fill]="enabled ? mainColorShine : mainColor" stroke="none" pointer-events="all"/>
+    <path d="M 8.56 15.44 L 8.56 12.87 L 12.43 9.97 L 12.43 15.44 Z" [attr.fill]="secondaryColor" stroke="none" transform="rotate(-90,10.49,12.7)" pointer-events="all"/>
+    <path d="M 5.61 14.13 L 5.61 14.13 L 9.49 11.71 L 9.49 14.13 Z" [attr.fill]="secondaryColor" stroke="none" transform="rotate(90,7.55,12.92)" pointer-events="all"/>
+    <rect x="6.29" y="14.81" width="2.52" height="6.49" [attr.fill]="secondaryColor" stroke="none" pointer-events="all"/>
+    <rect x="12.2" y="14.62" width="0.97" height="6.68" [attr.fill]="secondaryColor" stroke="none" pointer-events="all"/>
+  </g>
+</svg>

@@ -275,4 +275,15 @@ export class StimulatorEffects {
       })
     )
   );
+
+  setOutput$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(StimulatorActions.actionCommandStimulatorSetOutput),
+        switchMap((action) => {
+          return this._service.setOutput(action.index, action.enabled);
+        })
+      ),
+    { dispatch: false }
+  );
 }

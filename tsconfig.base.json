@@ -111,19 +111,20 @@
       "@diplomka-frontend/stim-feature-settings/feature/param-config/server": [
         "libs/stim-feature-settings/feature/param-config/server/src/index.ts"
       ],
-
       "@diplomka-frontend/stim-feature-auth/feature": [
         "libs/stim-feature-auth/feature/src/index.ts"
       ],
       "@diplomka-frontend/stim-feature-auth/domain": [
         "libs/stim-feature-auth/domain/src/index.ts"
       ],
-
       "@diplomka-frontend/stim-feature-users/feature": [
         "libs/stim-feature-users/feature/src/index.ts"
       ],
       "@diplomka-frontend/stim-feature-users/domain": [
         "libs/stim-feature-users/domain/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-feature-stimulator/feature": [
+        "libs/stim-feature-stimulator/feature/src/index.ts"
       ]
     }
   },

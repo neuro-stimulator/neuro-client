@@ -127,6 +127,11 @@ export const actionCommandStimulatorClearRequestFail = createAction(
   props<{}>()
 );
 
+export const actionCommandStimulatorSetOutput = createAction(
+  '[Stimulator command] Command toggle output',
+  props<{ index: number; enabled: boolean }>()
+);
+
 export const actionStimulatorNoop = createAction(
   '[Stimulator] No operation',
   props<{}>()

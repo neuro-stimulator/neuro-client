@@ -64,14 +64,14 @@ export class StimulatorFacade {
       StimulatorActions.actionCommandStimulatorFinishRequest({})
     );
   }
-  // public experimentUpload() {
-  //   this.store.dispatch(
-  //     StimulatorActions.actionCommandStimulatorUploadRequest({})
-  //   );
-  // }
   public experimentClear() {
     this.store.dispatch(
       StimulatorActions.actionCommandStimulatorClearRequest({})
+    );
+  }
+  public setOutput(index: number, enabled: boolean) {
+    this.store.dispatch(
+      StimulatorActions.actionCommandStimulatorSetOutput({ index, enabled })
     );
   }
 

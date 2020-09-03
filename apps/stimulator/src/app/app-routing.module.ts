@@ -52,6 +52,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'stimulator',
+    pathMatch: 'prefix',
+    loadChildren: () =>
+      import('@diplomka-frontend/stim-feature-stimulator/feature').then(
+        (mod) => mod.StimFeatureStimulatorFeatureModule
+      ),
+  },
+  {
     path: 'experiments',
     loadChildren: () =>
       import('@diplomka-frontend/stim-feature-experiments/feature').then(

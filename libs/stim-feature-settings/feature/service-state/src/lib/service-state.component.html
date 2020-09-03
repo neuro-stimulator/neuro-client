@@ -43,6 +43,7 @@
   <div class="col-12 col-sm-6">
     <button class="btn btn-sm btn-primary" (click)="handleDiscover()" [disabled]="(connectionState | async).stimulator === ConnectionStatus.CONNECTED"><i class="fas fa-search"></i> {{ 'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.EXPLORE' | translate }}</button>
     <button class="btn btn-sm btn-danger" (click)="handleStop()" *ngIf="(connectionState | async).stimulator === ConnectionStatus.CONNECTED"><i class="fas fa-sign-in-alt"></i> {{ 'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.DISCONNECT' | translate }}</button>
+    <a class="btn btn-sm btn-secondary" routerLink="/stimulator/calibration" *ngIf="(connectionState | async).stimulator === ConnectionStatus.CONNECTED">Kalibrovat</a>
     <button class="btn btn-sm btn-warning d-sm-none" [disabled]="(stimulatorState | async).devices.length == 0"><i class="fas fa-trash"></i> {{ 'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.CLEAR_LIST' | translate }}</button>
   </div>
   <div class="d-none d-sm-block col-sm-6 text-right">

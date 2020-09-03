@@ -1366,6 +1366,41 @@
           "style": "scss"
         }
       }
+    },
+    "stim-feature-stimulator-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-stimulator/feature",
+      "sourceRoot": "libs/stim-feature-stimulator/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-feature-stimulator/feature/tsconfig.lib.json",
+              "libs/stim-feature-stimulator/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-feature-stimulator/feature/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-stimulator/feature/jest.config.js",
+            "tsConfig": "libs/stim-feature-stimulator/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-feature-stimulator/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

@@ -14,27 +14,18 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
   "projects": {
     "stimulator": {
       "tags": [],
-      "implicitDependencies": [
-        "stim-lib-ui"
-      ]
+      "implicitDependencies": ["stim-lib-ui"]
     },
     "stimulator-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "stimulator"
-      ]
+      "implicitDependencies": ["stimulator"]
     },
     "stim-lib-ui": {
       "tags": [],
@@ -61,9 +52,7 @@
     },
     "stim-feature-settings-feature": {
       "tags": [],
-      "implicitDependencies": [
-        "stim-feature-settings-domain"
-      ]
+      "implicitDependencies": ["stim-feature-settings-domain"]
     },
     "stim-feature-settings-domain": {
       "tags": []
@@ -82,9 +71,7 @@
     },
     "stim-feature-file-browser-feature": {
       "tags": [],
-      "implicitDependencies": [
-        "stim-feature-file-browser-domain"
-      ]
+      "implicitDependencies": ["stim-feature-file-browser-domain"]
     },
     "stim-feature-file-browser-domain": {
       "tags": []
@@ -100,9 +87,7 @@
     },
     "stim-feature-player-feature": {
       "tags": [],
-      "implicitDependencies": [
-        "stim-feature-player-domain"
-      ]
+      "implicitDependencies": ["stim-feature-player-domain"]
     },
     "stim-feature-player-domain": {
       "tags": []
@@ -153,6 +138,9 @@
       "tags": []
     },
     "stim-feature-auth-domain": {
+      "tags": []
+    },
+    "stim-feature-stimulator-feature": {
       "tags": []
     }
   },

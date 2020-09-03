@@ -133,4 +133,12 @@ export class StimulatorService {
       null
     );
   }
+
+  public setOutput(index: number, enabled: boolean) {
+    this.logger.info('Odesílám požadavek na nastavení jednoho výstupu.');
+    return this._http.patch(
+      `${this.stimulatorURL}/set-output?asyncStimulatorRequest=true`,
+      { index, enabled }
+    );
+  }
 }
