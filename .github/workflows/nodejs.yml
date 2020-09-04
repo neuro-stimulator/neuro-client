@@ -21,19 +21,19 @@ jobs:
         node-version: 12.8
     - name: Install dependencies
       run: npm install
-    - name: Lint
-      run: npm run lint
+#    - name: Lint
+#      run: npm run lint
     - name: Check translations
       run: npm run check-translations
     - name: Check unused selectors
       run: npm run check-unused-selectors
     - name: Build
       run: npm run release
-    - name: Test
-      run: npm run test
-    - name: Merge code coverage
-      run: npm run merge-coverage
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+#    - name: Test
+#      run: npm run test
+#    - name: Merge code coverage
+#      run: npm run merge-coverage
+#    - name: Coveralls
+#      uses: coverallsapp/github-action@master
+#      with:
+#        github-token: ${{ secrets.GITHUB_TOKEN }}
