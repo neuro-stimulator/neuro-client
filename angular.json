@@ -1401,6 +1401,76 @@
           "style": "scss"
         }
       }
+    },
+    "stim-lib-console-feature": {
+      "projectType": "library",
+      "root": "libs/stim-lib-console/feature",
+      "sourceRoot": "libs/stim-lib-console/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-lib-console/feature/tsconfig.lib.json",
+              "libs/stim-lib-console/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-lib-console/feature/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-console/feature/jest.config.js",
+            "tsConfig": "libs/stim-lib-console/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-lib-console/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-console-domain": {
+      "projectType": "library",
+      "root": "libs/stim-lib-console/domain",
+      "sourceRoot": "libs/stim-lib-console/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stim-lib-console/domain/tsconfig.lib.json",
+              "libs/stim-lib-console/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/stim-lib-console/domain/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-console/domain/jest.config.js",
+            "tsConfig": "libs/stim-lib-console/domain/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stim-lib-console/domain/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

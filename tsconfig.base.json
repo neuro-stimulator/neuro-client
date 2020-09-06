@@ -125,6 +125,12 @@
       ],
       "@diplomka-frontend/stim-feature-stimulator/feature": [
         "libs/stim-feature-stimulator/feature/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-lib-console/feature": [
+        "libs/stim-lib-console/feature/src/index.ts"
+      ],
+      "@diplomka-frontend/stim-lib-console/domain": [
+        "libs/stim-lib-console/domain/src/index.ts"
       ]
     }
   },

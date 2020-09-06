@@ -1,24 +1,29 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 
 import { Subscription } from 'rxjs';
 
-import { StimulatorMemoryEvent, StimulatorSequencePartRequestEvent } from '@stechy1/diplomka-share';
-
-import { ConsoleFacade } from "@diplomka-frontend/stim-feature-settings/domain";
+import {
+  StimulatorMemoryEvent,
+  StimulatorSequencePartRequestEvent,
+} from '@stechy1/diplomka-share';
+import { ConsoleFacade } from '@diplomka-frontend/stim-lib-console/domain';
 
 @Component({
-  selector: 'stim-feature-settings-console',
+  selector: 'stim-lib-console',
   templateUrl: './console.component.html',
-  styleUrls: ['./console.component.sass']
+  styleUrls: ['./console.component.sass'],
 })
 export class ConsoleComponent implements OnInit, OnDestroy {
+  @ViewChild('consoleOutput', { static: true }) consoleOutput: ElementRef;
+  @ViewChild('inputCommand', { static: true }) inputCommand: ElementRef;
 
-  @ViewChild('consoleOutput', {static: true}) consoleOutput: ElementRef;
-  @ViewChild('inputCommand', {static: true}) inputCommand: ElementRef;
-
-  private _serialRawDataSubscription: Subscription;
-
-  constructor(public console: ConsoleFacade) { }
+  constructor(public facade: ConsoleFacade) {}
 
   // private _handleRawData(event: SerialDataEvent) {
   //   switch (event.name) {
@@ -31,13 +36,15 @@ export class ConsoleComponent implements OnInit, OnDestroy {
   //   }
   // }
 
-  private _handleStimulatorMemoryEvent(event: StimulatorMemoryEvent) {
-    // this.console.saveCommandRaw(event.data.toString());
-  }
-
-  private _handleStimulatorNextSequencePartRequestEvent(event: StimulatorSequencePartRequestEvent) {
-    // this.console.saveCommandRaw(JSON.stringify(event));
-  }
+  // private _handleStimulatorMemoryEvent(event: StimulatorMemoryEvent) {
+  //   // this.console.saveCommandRaw(event.data.toString());
+  // }
+  //
+  // private _handleStimulatorNextSequencePartRequestEvent(
+  //   event: StimulatorSequencePartRequestEvent
+  // ) {
+  //   // this.console.saveCommandRaw(JSON.stringify(event));
+  // }
 
   ngOnInit() {
     // this._serialRawDataSubscription = this._serial.rawData$.subscribe((event: SerialDataEvent) => this._handleRawData(event));
@@ -60,7 +67,7 @@ export class ConsoleComponent implements OnInit, OnDestroy {
   }
 
   handleCommandTextChange(event: Event) {
-    // this.console.processCommand((event.target as HTMLInputElement).value);
+    this.facade.processCommand((event.target as HTMLInputElement).value);
     (event.target as HTMLInputElement).value = '';
   }
 

@@ -19,6 +19,9 @@ export const TOKEN_STIMULATOR_API_URL = new InjectionToken(
 export const TOKEN_FILE_BROWSER_API_URL = new InjectionToken(
   'TOKEN_FILE_BROWSER_API_URL'
 );
+export const TOKEN_CONSOLE_API_URL = new InjectionToken(
+  'TOKEN_CONSOLE_API_URL'
+);
 
 export const TOKEN_MAX_OUTPUT_COUNT = new InjectionToken(
   'TOKEN_MAX_OUTPUT_COUNT'
