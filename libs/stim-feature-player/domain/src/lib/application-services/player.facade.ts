@@ -62,12 +62,15 @@ export class PlayerFacade {
     this.experiments.one(experimentID);
   }
 
+  public requestPlayerState() {
+    this.store.dispatch(PlayerActions.actionPlayerStateRequest({}));
+  }
+
   public uploadExperiment(options) {
     this.store.dispatch(
       PlayerActions.actionPrepareExperimentPlayerRequest({ options })
     );
   }
-
   public runExperiment() {
     this.stimulator.experimentRun();
   }
@@ -78,15 +81,14 @@ export class PlayerFacade {
     this.stimulator.experimentFinish();
   }
   public clearExperiment() {
+    this.store.dispatch(PlayerActions.actionPlayerClearExperiment({}));
     // Odeslat příkaz na vyčištění experimentu ze stimulátoru budu odesílat pouze,
     // pokud je stimulátor ve správném stavu
-    if (
-      this._lastStimulatorState >= StimulatorStateType.SETUP &&
-      this._lastStimulatorState < StimulatorStateType.CLEAR
-    ) {
-      this.stimulator.experimentClear();
-    }
+    // if (this._lastStimulatorState === StimulatorStateType.FINISH) {
+    // this.stimulator.experimentClear();
+    // }
   }
+
   public destroyExperiment() {
     this.experiments.empty(createEmptyExperiment());
   }
@@ -94,5 +96,9 @@ export class PlayerFacade {
   get state(): Observable<PlayerState> {
     // @ts-ignore
     return this.store.select(fromPlayer.playerReducerKey);
+  }
+
+  get lastStimulatorState(): StimulatorStateType {
+    return this._lastStimulatorState;
   }
 }

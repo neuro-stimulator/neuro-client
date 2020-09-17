@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import {
   catchError,
   filter,
@@ -9,7 +10,7 @@ import {
   switchMap,
   withLatestFrom,
 } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { EMPTY, of } from 'rxjs';
 
 import {
   MessageCodes,
@@ -26,13 +27,16 @@ import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/d
 import { StimulatorService } from '../infrastructure/stimulator.service';
 import { StimulatorStateType } from '../domain/stimulator-state';
 import * as StimulatorActions from './stimulator.actions';
+import * as fromStimulator from './stimulator.reducer';
+import { StimulatorState } from './stimulator.state';
 
 @Injectable()
 export class StimulatorEffects {
   constructor(
     private readonly _service: StimulatorService,
     private readonly _facade: ExperimentsFacade,
-    private readonly actions$: Actions
+    private readonly actions$: Actions,
+    private readonly store: Store<StimulatorState>
   ) {}
 
   discover$ = createEffect(() =>
@@ -239,8 +243,22 @@ export class StimulatorEffects {
   clear$ = createEffect(() =>
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorClearRequest),
-      switchMap((action) => this._service.experimentClear()),
+      // @ts-ignore
+      withLatestFrom(this.store.select(fromStimulator.stimulatorReducerKey)),
+      switchMap(([action, state]: [any, StimulatorState]) => {
+        if (
+          state.stimulatorState <= StimulatorStateType.SETUP ||
+          state.stimulatorState >= StimulatorStateType.FINISH
+        ) {
+          return this._service.experimentClear();
+        } else {
+          return EMPTY;
+        }
+      }),
       map((response: ResponseObject<any>) => {
+        if (response === undefined) {
+          return StimulatorActions.actionStimulatorNoop({});
+        }
         return StimulatorActions.actionCommandStimulatorClearRequestDone({});
       }),
       catchError((errorResponse) => {

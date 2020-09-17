@@ -3,8 +3,6 @@ import { filter, map, tap } from 'rxjs/operators';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { AliveCheckerService } from '../infrastructure/alive-checker.service';
-import * as ConnectionActions from './connection.actions';
 import {
   IpcConnectionStateMessage,
   SocketMessage,
@@ -12,6 +10,9 @@ import {
   SocketMessageType,
   StimulatorConnectionStateMessage,
 } from '@stechy1/diplomka-share';
+
+import { AliveCheckerService } from '../infrastructure/alive-checker.service';
+import * as ConnectionActions from './connection.actions';
 
 @Injectable()
 export class ConnectionEffects {

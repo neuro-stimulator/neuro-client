@@ -4,6 +4,11 @@ import { PlayerConfiguration } from '@stechy1/diplomka-share';
 
 import { IOEvent } from '@stechy1/diplomka-share/lib/serial-data-events';
 
+export const actionPlayerStateRequest = createAction(
+  '[Player] state request',
+  props<{}>()
+);
+
 export const actionPlayerIOEvent = createAction(
   '[Player] io event',
   props<{ ioEvent: IOEvent }>()
@@ -28,18 +33,20 @@ export const actionPrepareExperimentPlayerRequestFail = createAction(
 
 export const actionPlayerUpdateState = createAction(
   '[Player] update player state from server',
-  props<{
-    initialized: boolean;
-    experimentRound: number;
-    ioData: IOEvent[][];
-    autoplay: boolean;
-    betweenExperimentInterval: number;
-    repeat: number;
-    isBreakTime: boolean;
-  }>()
+  props<PlayerConfiguration>()
 );
 
 export const actionPlayerCreateNewExperimentRound = createAction(
   '[Player] create new experiment round',
+  props<{}>()
+);
+
+export const actionPlayerClearExperiment = createAction(
+  '[Player] clear experiment',
+  props<{}>()
+);
+
+export const actionPlayerNoAction = createAction(
+  '[Player] no action',
   props<{}>()
 );

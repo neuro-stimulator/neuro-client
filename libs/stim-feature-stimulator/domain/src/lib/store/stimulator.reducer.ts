@@ -12,8 +12,8 @@ export function stimulatorReducer(
 ) {
   return createReducer(
     {
-      previousStimulatorState: StimulatorStateType.READY,
-      stimulatorState: StimulatorStateType.READY,
+      previousStimulatorState: StimulatorStateType.UNKNOWN,
+      stimulatorState: StimulatorStateType.UNKNOWN,
       devices: [],
     },
     on(

@@ -21,11 +21,18 @@ export class PlayerService {
     options: PlayerConfiguration
   ): Observable<ResponseObject<any>> {
     this.logger.info(
-      'Odesílám požadavek na připravení přehrávače experimentu..'
+      'Odesílám požadavek na připravení přehrávače experimentu...'
     );
     return this._http.post<ResponseObject<any>>(
       `${this._accesPoint}/prepare/${id}`,
       options
     );
+  }
+
+  getPlayerState(): Observable<ResponseObject<any>> {
+    this.logger.info(
+      'Odesílám požadavek na získání aktuálního stavu přehrávače experimentu...'
+    );
+    return this._http.get(`${this._accesPoint}/state`);
   }
 }

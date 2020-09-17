@@ -1,5 +1,22 @@
 import { createAction, props } from '@ngrx/store';
+
 import { ParseCommandResult } from '../domain/parse-command-result';
+import { ConsoleCommand } from '../domain/console-command';
+
+export const loadHistory = createAction(
+  '[Console] load command history',
+  props<{}>()
+);
+
+export const historyLoaded = createAction(
+  '[Console] command history loaded',
+  props<{ commands: ConsoleCommand[] }>()
+);
+
+export const clearHistory = createAction(
+  '[Console] clear history',
+  props<{}>()
+);
 
 export const parseCommand = createAction(
   '[Console] parse command',
@@ -8,7 +25,7 @@ export const parseCommand = createAction(
 
 export const saveCommand = createAction(
   '[Console] save command to local storage',
-  props<{ rawCommand: string }>()
+  props<{ rawCommand: string; fromUser: boolean }>()
 );
 
 export const commandValid = createAction(
@@ -30,3 +47,5 @@ export const processLocalComand = createAction(
   '[Console] sending command request to process localy',
   props<{ command: ParseCommandResult }>()
 );
+
+export const noAction = createAction('[Console] no action', props<{}>());

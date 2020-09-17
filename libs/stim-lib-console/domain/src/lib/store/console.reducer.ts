@@ -1,11 +1,25 @@
-import { Action, createReducer } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
+
 import { ConsoleState } from './console.state';
+import * as ConsoleActions from './console.actions';
 
 export const consoleReducerKey = 'console';
 
 export function consoleReducer(
-  consoleState: ConsoleState | undefined,
+  consoleState: ConsoleState,
   consoleAction: Action
 ) {
-  return createReducer({});
+  return createReducer(
+    {
+      commandHistory: [],
+    },
+    on(ConsoleActions.historyLoaded, (state, action) => ({
+      ...state,
+      commandHistory: [...action.commands],
+    })),
+    on(ConsoleActions.clearHistory, (state, action) => ({
+      ...state,
+      commandHistory: [],
+    }))
+  )(consoleState, consoleAction);
 }

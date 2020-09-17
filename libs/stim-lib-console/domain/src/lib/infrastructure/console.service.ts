@@ -1,17 +1,16 @@
 import { Inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Socket } from 'ngx-socket-io';
+import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 
-import { ResponseObject, ServerCommandResponse } from '@stechy1/diplomka-share';
-import { ParseCommandResult } from '../domain/parse-command-result';
-import { HttpClient } from '@angular/common/http';
+import { ResponseObject } from '@stechy1/diplomka-share';
+
 import { TOKEN_CONSOLE_API_URL } from '@diplomka-frontend/stim-lib-common';
 
-// import { ConsoleCommand } from "../..";
-// import * as commandParser from '../application-services/command-parser';
+import { ParseCommandResult } from '../domain/parse-command-result';
+import { ConsoleCommand } from '../domain/console-command';
 
 @Injectable({
   providedIn: 'root',
@@ -19,38 +18,27 @@ import { TOKEN_CONSOLE_API_URL } from '@diplomka-frontend/stim-lib-common';
 export class ConsoleService {
   private static readonly STORAGE_KEY = 'commands';
 
-  // private readonly _commands: BehaviorSubject<ConsoleCommand[]> = new BehaviorSubject<ConsoleCommand[]>([]);
-  // public readonly commands$: Observable<ConsoleCommand[]> = this._commands.asObservable();
-  //
-  // private readonly _socket = new Socket({url: ''/*`${makeURL(environment.url.socket, environment.port.server)}/commands`*/});
+  private readonly _commands: ConsoleCommand[] = [];
 
   constructor(
-    /*private readonly aliveChecker: AliveCheckerService,*/
     @Inject(TOKEN_CONSOLE_API_URL) private readonly accessPoint: string,
     private readonly _translator: TranslateService,
     private readonly _storage: LocalStorageService,
     private readonly _http: HttpClient
   ) {
-    //   aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
-    //     if (status === ConnectionStatus.CONNECTED) {
-    //       this._socket.connect();
-    //       this._socket.on('command', (data: ServerCommandResponse) => this._processIncommingCommandResponse(data));
-    //     }
-    //   });
-    //   aliveChecker.disconnect.subscribe(() => {
-    //     if (this._socket !== undefined) {
-    //       this._socket.disconnect();
-    //     }
-    //   });
-    //
-    //   this._loadHistory();
+    this._loadHistory();
   }
 
-  // private _loadHistory() {
-  //   const commands = this._storage.get<ConsoleCommand[]>(ConsoleService.STORAGE_KEY) || [];
-  //   this._commands.next(commands);
-  // }
-  //
+  private _loadHistory() {
+    const commands =
+      this._storage.get<ConsoleCommand[]>(ConsoleService.STORAGE_KEY) || [];
+    this._commands.push(...commands);
+  }
+
+  private _saveCommands() {
+    this._storage.set(ConsoleService.STORAGE_KEY, [...this._commands]);
+  }
+
   // private _processIncommingCommandResponse(data: ServerCommandResponse) {
   //   if (data.valid) {
   //     return;
@@ -112,5 +100,27 @@ export class ConsoleService {
       `${this.accessPoint}/${command.commandName}`,
       command.parameters
     );
+  }
+
+  public loadHistory(): ConsoleCommand[] {
+    return [...this._commands];
+  }
+
+  saveCommand(rawCommand: string, fromUser: boolean): ConsoleCommand {
+    const data: ConsoleCommand = {
+      date: new Date(),
+      text: rawCommand,
+      fromUser,
+    };
+
+    this._commands.push(data);
+    this._saveCommands();
+
+    return data;
+  }
+
+  public clearHistory() {
+    this._commands.splice(0);
+    this._saveCommands();
   }
 }

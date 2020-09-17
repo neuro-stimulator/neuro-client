@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 
 import {
   catchError,
@@ -14,12 +15,14 @@ import { of } from 'rxjs';
 import {
   ExperimentResultCreatedMessage,
   IOEvent,
+  PlayerConfiguration,
   ResponseObject,
   SocketMessage,
   SocketMessageSpecialization,
   SocketMessageType,
 } from '@stechy1/diplomka-share';
 
+import { PlayerState } from '@diplomka-frontend/stim-feature-player/domain';
 import * as fromConnection from '@diplomka-frontend/stim-lib-connection';
 import * as fromStimulator from '@diplomka-frontend/stim-feature-stimulator/domain';
 import { StimulatorFacade } from '@diplomka-frontend/stim-feature-stimulator/domain';
@@ -33,10 +36,26 @@ export class PlayerEffects {
   constructor(
     private readonly actions$: Actions,
     private readonly _service: PlayerService,
+    private readonly store: Store<PlayerState>,
     private readonly experimentsFacade: ExperimentsFacade,
     private readonly stimulatorFacade: StimulatorFacade,
     private readonly router: Router
   ) {}
+
+  stateRequest$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PlayerActions.actionPlayerStateRequest),
+      switchMap((action) =>
+        this._service
+          .getPlayerState()
+          .pipe(
+            map((response: ResponseObject<PlayerConfiguration>) =>
+              PlayerActions.actionPlayerUpdateState(response.data)
+            )
+          )
+      )
+    )
+  );
 
   prepareExperimentPlayer$ = createEffect(() =>
     this.actions$.pipe(
@@ -106,25 +125,8 @@ export class PlayerEffects {
           message.type === SocketMessageType.EXPERIMENT_PLAYER_STATE
       ),
       map((message: SocketMessage) => message.data),
-      map(
-        (playerData: {
-          initialized: boolean;
-          experimentRound: number;
-          ioData: IOEvent[][];
-          autoplay: boolean;
-          betweenExperimentInterval: number;
-          repeat: number;
-          isBreakTime: boolean;
-        }) =>
-          PlayerActions.actionPlayerUpdateState({
-            initialized: playerData.initialized,
-            experimentRound: playerData.experimentRound,
-            ioData: playerData.ioData,
-            autoplay: playerData.autoplay,
-            betweenExperimentInterval: playerData.betweenExperimentInterval,
-            repeat: playerData.repeat,
-            isBreakTime: playerData.isBreakTime,
-          })
+      map((playerData: PlayerConfiguration) =>
+        PlayerActions.actionPlayerUpdateState(playerData)
       )
     )
   );
@@ -166,5 +168,21 @@ export class PlayerEffects {
         )
       ),
     { dispatch: false }
+  );
+
+  clearExperiment$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PlayerActions.actionPlayerClearExperiment),
+      // @ts-ignore
+      withLatestFrom(this.store.select('player')),
+      map(([action, state]) => {
+        // @ts-ignore
+        if (state.initialized) {
+          return fromStimulator.actionCommandStimulatorClearRequest({});
+        } else {
+          return PlayerActions.actionPlayerNoAction({});
+        }
+      })
+    )
   );
 }

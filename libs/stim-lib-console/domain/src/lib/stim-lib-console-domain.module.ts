@@ -4,8 +4,8 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { StimLibCommonModule } from '@diplomka-frontend/stim-lib-common';
 import { StimFeatureExperimentsDomainModule } from '@diplomka-frontend/stim-feature-experiments/domain';
-import { StimulatorFacade } from '@diplomka-frontend/stim-feature-stimulator/domain';
 
+import { LOCAL_COMMAND_HANDLER_PROVIDERS } from './local-command-handlers/command-tokens';
 import * as fromConsole from './store/console.reducer';
 import { ConsoleEffects } from './store/console.effects';
 
@@ -19,6 +19,6 @@ import { ConsoleEffects } from './store/console.effects';
     EffectsModule.forFeature([ConsoleEffects]),
     StimFeatureExperimentsDomainModule,
   ],
-  providers: [StimulatorFacade],
+  providers: [...LOCAL_COMMAND_HANDLER_PROVIDERS],
 })
 export class StimLibConsoleDomainModule {}

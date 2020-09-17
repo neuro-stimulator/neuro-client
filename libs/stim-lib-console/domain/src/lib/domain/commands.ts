@@ -4,14 +4,20 @@ export interface ClientCommand<T> {
   isValid: (params: string[]) => [boolean, string?];
   getName: () => string;
   getValue: (params: string[]) => T;
-  description: string;
-  consumer: 'client' | 'server';
+  description: () => string;
+  getConsumer: () => 'client' | 'server';
 }
 
-export class UnknownCommand implements ClientCommand<string> {
+class UnknownCommand implements ClientCommand<string> {
   constructor(private readonly text: string) {}
 
-  description = '';
+  public description() {
+    return '';
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
+  }
 
   public getName(): string {
     return 'unknown';
@@ -24,12 +30,45 @@ export class UnknownCommand implements ClientCommand<string> {
   public getValue(params: string[]): string {
     return this.text;
   }
-
-  consumer: 'server';
 }
 
-export class DisplayClearCommand implements ClientCommand<void> {
-  description = 'Vymaže obsah displaye';
+class HelpCommand implements ClientCommand<void> {
+  public description() {
+    return 'Zobrazí seznam všech dostupných příkazů.';
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'client';
+  }
+
+  public getName(): string {
+    return 'help';
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length !== 0) {
+      return [
+        false,
+        `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`,
+      ];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): void {
+    return null;
+  }
+}
+
+class DisplayClearCommand implements ClientCommand<void> {
+  public description() {
+    return 'Vymaže obsah displaye';
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
+  }
 
   public getName(): string {
     return CommandClientToServer.COMMAND_DISPLAY_CLEAR;
@@ -42,13 +81,17 @@ export class DisplayClearCommand implements ClientCommand<void> {
   public getValue(params: string[]): null {
     return null;
   }
-
-  consumer: 'server';
 }
 
-export class DisplayTextCommand
+class DisplayTextCommand
   implements ClientCommand<{ x: number; y: number; text: string }> {
-  description = `Nastaví text:  ${this.getName()} x: number, y: number, text: string`;
+  public description() {
+    return `Nastaví text:  ${this.getName()} x: number, y: number, text: string`;
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
+  }
 
   public getName(): string {
     return CommandClientToServer.COMMAND_DISPLAY_TEXT;
@@ -78,12 +121,16 @@ export class DisplayTextCommand
   public getValue(params: string[]): { x: number; y: number; text: string } {
     return { x: +params[0], y: +params[1], text: params[2] };
   }
-
-  consumer: 'server';
 }
 
-export class StimulatorStateCommand implements ClientCommand<void> {
-  description = 'Přečte ze stimulátoru aktuální stav.';
+class StimulatorStateCommand implements ClientCommand<void> {
+  public description() {
+    return 'Přečte ze stimulátoru aktuální stav.';
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
+  }
 
   public getName(): string {
     return CommandClientToServer.COMMAND_STIMULATOR_STATE;
@@ -103,12 +150,16 @@ export class StimulatorStateCommand implements ClientCommand<void> {
   public getValue(params: string[]): void {
     return null;
   }
-
-  consumer: 'server';
 }
 
-export class ExperimentUploadCommand implements ClientCommand<number> {
-  description = `Nahraje experiment do stimulátoru: ${this.getName()} id: number`;
+class ExperimentUploadCommand implements ClientCommand<number> {
+  public description() {
+    return `Nahraje experiment do stimulátoru: ${this.getName()} id: number`;
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
+  }
 
   public getName(): string {
     return CommandClientToServer.COMMAND_EXPERIMENT_UPLOAD;
@@ -135,12 +186,16 @@ export class ExperimentUploadCommand implements ClientCommand<number> {
   public getValue(params: string[]): number {
     return +params[0];
   }
-
-  consumer: 'server';
 }
 
-export class ExperimentSetupCommand implements ClientCommand<number> {
-  description = `Inicializuje experiment ve stimulátoru: ${this.getName()} id: number`;
+class ExperimentSetupCommand implements ClientCommand<number> {
+  public description() {
+    return `Inicializuje experiment ve stimulátoru: ${this.getName()} id: number`;
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
+  }
 
   public getName(): string {
     return CommandClientToServer.COMMAND_EXPERIMENT_SETUP;
@@ -167,12 +222,16 @@ export class ExperimentSetupCommand implements ClientCommand<number> {
   public getValue(params: string[]): number {
     return +params[0];
   }
-
-  consumer: 'server';
 }
 
-export class ExperimentRunCommand implements ClientCommand<void> {
-  description = `Spustí experiment: ${this.getName()}`;
+class ExperimentRunCommand implements ClientCommand<void> {
+  public description() {
+    return `Spustí experiment: ${this.getName()}`;
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
+  }
 
   public getName(): string {
     return CommandClientToServer.COMMAND_EXPERIMENT_RUN;
@@ -192,12 +251,16 @@ export class ExperimentRunCommand implements ClientCommand<void> {
   public getValue(params: string[]): number {
     return null;
   }
-
-  consumer: 'server';
 }
 
-export class ExperimentPauseCommand implements ClientCommand<void> {
-  description = `Pozastaví experiment: ${this.getName()}`;
+class ExperimentPauseCommand implements ClientCommand<void> {
+  public description() {
+    return `Pozastaví experiment: ${this.getName()}`;
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
+  }
 
   public getName(): string {
     return CommandClientToServer.COMMAND_EXPERIMENT_PAUSE;
@@ -217,12 +280,16 @@ export class ExperimentPauseCommand implements ClientCommand<void> {
   public getValue(params: string[]): number {
     return null;
   }
-
-  consumer: 'server';
 }
 
-export class ExperimentFinishCommand implements ClientCommand<void> {
-  description = `Ukončí experiment: ${this.getName()}`;
+class ExperimentFinishCommand implements ClientCommand<void> {
+  public description() {
+    return `Ukončí experiment: ${this.getName()}`;
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
+  }
 
   public getName(): string {
     return CommandClientToServer.COMMAND_EXPERIMENT_FINISH;
@@ -242,12 +309,16 @@ export class ExperimentFinishCommand implements ClientCommand<void> {
   public getValue(params: string[]): number {
     return null;
   }
-
-  consumer: 'server';
 }
 
-export class ExperimentClearCommand implements ClientCommand<void> {
-  description = `Vymaže experiment ze stimulátoru: ${this.getName()}`;
+class ExperimentClearCommand implements ClientCommand<void> {
+  public description() {
+    return `Vymaže experiment ze stimulátoru: ${this.getName()}`;
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
+  }
 
   public getName(): string {
     return CommandClientToServer.COMMAND_EXPERIMENT_CLEAR;
@@ -267,13 +338,17 @@ export class ExperimentClearCommand implements ClientCommand<void> {
   public getValue(params: string[]): number {
     return null;
   }
-
-  consumer: 'server';
 }
 
-export class SequencePartCommand
+class SequencePartCommand
   implements ClientCommand<{ offset: number; index: number }> {
-  description = `Nahraje vybranou část sekvence do stimulátoru: ${this.getName()} offset: number, index: number`;
+  public description() {
+    return `Nahraje vybranou část sekvence do stimulátoru: ${this.getName()} offset: number, index: number`;
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
+  }
 
   public getName(): string {
     return CommandClientToServer.COMMAND_SEQUENCE_PART;
@@ -300,18 +375,22 @@ export class SequencePartCommand
   public getValue(params: string[]): { offset: number; index: number } {
     return { offset: +params[0], index: +params[1] };
   }
-
-  consumer: 'server';
 }
 
-export class MemoryCommand implements ClientCommand<number> {
+class MemoryCommand implements ClientCommand<number> {
   private static readonly MEMORY_TYPE: string[] = [
     'config',
     'counters',
     'accumulator',
   ];
 
-  description = `Vypíše zadaný kus paměti ze stimulátoru v raw podobě do konzole: ${this.getName()} memory: [${MemoryCommand.MEMORY_TYPE.toString()}]`;
+  public description() {
+    return `Vypíše zadaný kus paměti ze stimulátoru v raw podobě do konzole: ${this.getName()} memory: [${MemoryCommand.MEMORY_TYPE.toString()}]`;
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
+  }
 
   public getName(): string {
     return CommandClientToServer.COMMAND_MEMORY;
@@ -345,14 +424,18 @@ export class MemoryCommand implements ClientCommand<number> {
   public getValue(params: string[]): number {
     return MemoryCommand.MEMORY_TYPE.indexOf(params[0]);
   }
-
-  consumer: 'server';
 }
 
 // Backdoor do stimulátoru
-export class OutputSetCommand
+class OutputSetCommand
   implements ClientCommand<{ index: number; brightness: number }> {
-  description = `Nastaví jeden konkrétní výstup na zadanou hodnotu: ${this.getName()} index: number, brightness: number`;
+  public description() {
+    return `Nastaví jeden konkrétní výstup na zadanou hodnotu: ${this.getName()} index: number, brightness: number`;
+  }
+
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
+  }
 
   public getName(): string {
     return CommandClientToServer.COMMAND_OUTPUT_SET;
@@ -386,6 +469,21 @@ export class OutputSetCommand
   public getValue(params: string[]): { index: number; brightness: number } {
     return { index: +params[0], brightness: +params[1] };
   }
-
-  consumer: 'server';
 }
+
+export const COMMANDS = [
+  UnknownCommand,
+  HelpCommand,
+  DisplayClearCommand,
+  DisplayTextCommand,
+  StimulatorStateCommand,
+  ExperimentUploadCommand,
+  ExperimentSetupCommand,
+  ExperimentRunCommand,
+  ExperimentPauseCommand,
+  ExperimentFinishCommand,
+  ExperimentClearCommand,
+  SequencePartCommand,
+  MemoryCommand,
+  OutputSetCommand,
+];

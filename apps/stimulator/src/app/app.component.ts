@@ -32,7 +32,7 @@ export class AppComponent /*implements OnInit, AfterViewInit*/ {
     private readonly logger: NGXLogger
   ) {
     // Zaregistruji logovací monitor pro lepší formát logů
-    logger.registerMonitor(new ConsoleLoggerMonitorService(console));
+    // logger.registerMonitor(new ConsoleLoggerMonitorService(console));
     // Načtu lokální nastavení aplikace
     settings.loadLocalSettings();
 

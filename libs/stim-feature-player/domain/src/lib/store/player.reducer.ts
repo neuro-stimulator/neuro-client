@@ -10,23 +10,25 @@ export const playerReducerKey = 'player';
 export function playerReducer(playerState: PlayerState, playerAction: Action) {
   return createReducer(
     {
+      initialized: false,
       ioData: [],
-      playerInitialized: false,
-      autoplay: false,
-      betweenExperimentInterval: 0,
-      repeat: 1,
       isBreakTime: false,
+      repeat: 0,
+      betweenExperimentInterval: 0,
+      autoplay: false,
       stopConditionType: null,
+      stopConditions: {},
     },
     on(PlayerActions.actionPlayerUpdateState, (state: PlayerState, action) => ({
       ...state,
-      playerInitialized: action.initialized,
-      experimentRound: action.experimentRound,
-      ioData: action.ioData,
-      autoplay: action.autoplay,
-      betweenExperimentInterval: action.betweenExperimentInterval,
-      repeat: action.repeat,
+      initialized: action.initialized,
+      ioData: action.ioData || [],
       isBreakTime: action.isBreakTime,
+      repeat: action.repeat,
+      betweenExperimentInterval: action.betweenExperimentInterval,
+      autoplay: action.autoplay,
+      stopConditionType: action.stopConditionType,
+      stopConditions: action.stopConditions,
     })),
     on(PlayerActions.actionPlayerCreateNewExperimentRound, (state) => {
       const allData: IOEvent[][] = [];
@@ -43,7 +45,7 @@ export function playerReducer(playerState: PlayerState, playerAction: Action) {
       PlayerActions.actionPrepareExperimentPlayerRequestDone,
       (state: PlayerState, action) => ({
         ...state,
-        playerInitialized: true,
+        initialized: true,
         ioData: [],
         autoplay: action.autoplay,
         betweenExperimentInterval: action.betweenExperimentInterval,

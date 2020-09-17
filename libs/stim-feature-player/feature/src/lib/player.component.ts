@@ -5,7 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
-import { CommandToStimulator, Experiment } from '@stechy1/diplomka-share';
+import { Experiment } from '@stechy1/diplomka-share';
 
 import {
   ContentTogglerDirective,
@@ -45,7 +45,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     autoplay: new FormControl({ value: false, disabled: true }),
     stopConditionType: new FormControl(0, [Validators.required]),
     stopConditions: new FormGroup({
-      maxOutput: new FormControl(10),
+      maxOutput: new FormControl(100),
     }),
   });
 
@@ -62,27 +62,62 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   private _fillButtonStates() {
-    this.BUTTON_DISABLED_STATES[
-      CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_READY
-    ] = [false, true, true, true, true]; // upload, run, pause, finish, clear
-    this.BUTTON_DISABLED_STATES[
-      CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_UPLOAD
-    ] = [true, true, true, true, false]; // upload, run, pause, finish, clear
-    this.BUTTON_DISABLED_STATES[
-      CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_SETUP
-    ] = [true, false, true, true, false]; // upload, run, pause, finish, clear
-    this.BUTTON_DISABLED_STATES[
-      CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_RUN
-    ] = [true, true, false, false, true]; // upload, run, pause, finish, clear
-    this.BUTTON_DISABLED_STATES[
-      CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_PAUSE
-    ] = [true, false, true, true, true]; // upload, run, pause, finish, clear
-    this.BUTTON_DISABLED_STATES[
-      CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_FINISH
-    ] = [false, true, true, true, true]; // upload, run, pause, finish, clear
-    this.BUTTON_DISABLED_STATES[
-      CommandToStimulator.COMMAND_MANAGE_EXPERIMENT_CLEAR
-    ] = [false, true, true, true, true]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.UNKNOWN] = [
+      true,
+      true,
+      true,
+      true,
+      true,
+    ]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.READY] = [
+      false,
+      true,
+      true,
+      true,
+      true,
+    ]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.UPLOAD] = [
+      true,
+      true,
+      true,
+      true,
+      false,
+    ]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.SETUP] = [
+      true,
+      false,
+      true,
+      true,
+      false,
+    ]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.RUN] = [
+      true,
+      true,
+      false,
+      false,
+      true,
+    ]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.PAUSE] = [
+      true,
+      false,
+      true,
+      true,
+      true,
+    ]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.FINISH] = [
+      false,
+      true,
+      true,
+      true,
+      true,
+    ]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.CLEAR] = [
+      false,
+      true,
+      true,
+      true,
+      true,
+    ]; // upload, run, pause, finish, clear
     Object.freeze(this.BUTTON_DISABLED_STATES);
   }
 
@@ -131,11 +166,17 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this._autoplayValueSubscription = this.autoplay.valueChanges.subscribe(
       (enabled: boolean) => this._updateBetweenExperimentInterval(enabled)
     );
+    this.player.requestPlayerState();
   }
 
   ngOnDestroy(): void {
     this._experimentSubscription.unsubscribe();
+    // if (
+    //   this.player.lastStimulatorState <= StimulatorStateType.SETUP ||
+    //   this.player.lastStimulatorState >= StimulatorStateType.FINISH && this.player.
+    // ) {
     this.player.clearExperiment();
+    // }
     this.player.destroyExperiment();
     this._stimulatorStateSubscription.unsubscribe();
     this._playerStateSubscription.unsubscribe();

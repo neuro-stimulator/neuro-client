@@ -1,3 +1,7 @@
 import { AppState } from '@diplomka-frontend/stim-lib-store';
 
-export interface ConsoleState extends AppState {}
+import { ConsoleCommand } from '../domain/console-command';
+
+export interface ConsoleState extends AppState {
+  commandHistory: ConsoleCommand[];
+}

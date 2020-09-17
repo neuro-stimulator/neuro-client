@@ -4,12 +4,14 @@ import { Store } from '@ngrx/store';
 import { Socket } from 'ngx-socket-io';
 import { NGXLogger } from 'ngx-logger';
 
-import { SocketMessage } from '@stechy1/diplomka-share';
+import { SocketMessage, ClientReadyMessage } from '@stechy1/diplomka-share';
 
 import { TOKEN_BASE_API_URL } from '@diplomka-frontend/stim-lib-common';
 
 import * as ConnectionActions from '../store/connection.actions';
 import { ConnectionInformationState } from '../store/connection.state';
+import { SocketMessageType } from '@stechy1/diplomka-share/lib/communication/client-server/socket-message-type';
+import { SocketMessageSpecialization } from '@stechy1/diplomka-share/lib/communication/client-server/socket-message-specialization';
 
 @Injectable({
   providedIn: 'root',
@@ -55,7 +57,12 @@ export class AliveCheckerService {
   protected _socketConnected() {
     this.logger.info('Spojení se serverem bylo úspěšně navázáno.');
     this.store.dispatch(ConnectionActions.actionServerConnected({}));
-    this._socket.emit('command', { hello: 'world' });
+    setTimeout(() => {
+      this._socket.emit('command', {
+        type: SocketMessageType.CLIENT_READY,
+        specialization: SocketMessageSpecialization.CLIENT,
+      });
+    }, 2000);
     //   const status = `SHARE.ALIVE_CHECKER.${this._firstTime ? 'SERVER_CONNECTION_CREATED' : 'SERVER_CONNECTION_RESTORED'}`;
     //   this.translator.get(status)
     //       .toPromise()

@@ -20,17 +20,17 @@
       </button>
       <button class="btn btn-success run"
               (click)="handleRunExperiment()"
-              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][1] || !(state | async).playerInitialized || ((state | async).autoplay && (state | async).isBreakTime)">
+              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][1] || !(state | async).initialized || ((state | async).autoplay && (state | async).isBreakTime)">
         <i class="fas fa-play"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PLAY' | translate}}
       </button>
       <button class="btn btn-success pause"
               (click)="handlePauseExperiment()"
-              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][2] || !(state | async).playerInitialized">
+              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][2] || !(state | async).initialized">
         <i class="fas fa-pause"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PAUSE' | translate}}
       </button>
       <button class="btn btn-warning finish"
               (click)="handleFinishExperiment()"
-              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][3] || !(state | async).playerInitialized">
+              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][3] || !(state | async).initialized">
         <i class="fas fa-stop"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.FINISH' | translate}}
       </button>
       <button class="btn btn-danger clear"

@@ -1,5 +1,5 @@
 /**
- * Rozrahí reprezentující výsledek naparsovaného dotazu
+ * Rozhraní reprezentující výsledek naparsovaného dotazu
  */
 export interface ParseCommandResult {
   valid: boolean;

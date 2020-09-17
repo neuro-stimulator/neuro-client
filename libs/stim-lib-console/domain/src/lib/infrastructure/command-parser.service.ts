@@ -1,14 +1,24 @@
 import { Injectable } from '@angular/core';
-import { ClientCommand } from '../domain/commands';
+import { ClientCommand, COMMANDS } from '../domain/commands';
 import { ParseCommandResult } from '../domain/parse-command-result';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class CommandParserService {
   private static readonly COMMAND_REGEX = /'[^']*'|"[^"]*"|\S+/g;
 
   private _commandCache: ClientCommand<any>[] = [];
 
-  public registerCommand() {}
+  constructor() {
+    this._registerCommands();
+  }
+
+  private _registerCommands() {
+    for (const command of COMMANDS) {
+      this._commandCache.push(Object.create(command.prototype));
+    }
+  }
 
   /**
    * Pokusí se naparsovat zadaný příkaz z konzole
@@ -63,7 +73,7 @@ export class CommandParserService {
         valid,
         commandName: command.getName(),
         parameters: command.getValue(comandParams),
-        consumer: command.consumer,
+        consumer: command.getConsumer(),
       };
     }
 
