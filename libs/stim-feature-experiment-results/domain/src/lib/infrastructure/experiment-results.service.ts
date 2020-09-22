@@ -35,6 +35,7 @@ export class ExperimentResultsService extends BaseService<ExperimentResult> {
   resultData(
     experimentResult: ExperimentResult
   ): Observable<ResponseObject<IOEvent[]>> {
+    this.logger.info('Odesílám požadavek na získání dat výsledku experimentu.');
     return this._http.get<ResponseObject<IOEvent[]>>(
       `${this.dataLink}${experimentResult.id}`
     );

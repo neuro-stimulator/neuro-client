@@ -34,6 +34,7 @@ export class SequencesService extends BaseService<Sequence> {
     experimentId: number,
     size: number
   ): Observable<ResponseObject<number[]>> {
+    this.logger.info('Odesílám požadavek na vygenerování nové sekvence.');
     return this._http.get<ResponseObject<number[]>>(
       `${this._accessPoint}/generate/${experimentId}/${size}`
     );
@@ -45,6 +46,9 @@ export class SequencesService extends BaseService<Sequence> {
   public experimentsAsSequenceSource(): Observable<
     ResponseObject<Experiment[]>
   > {
+    this.logger.info(
+      'Odesílám požadavek na získání všech experimentů, které podporují sekvence.'
+    );
     return this._http.get<ResponseObject<Experiment[]>>(
       `${this._accessPoint}/experiments-as-sequence-source`
     );
@@ -98,6 +102,7 @@ export class SequencesService extends BaseService<Sequence> {
     name: string,
     sequenceID?: number
   ): Observable<ResponseObject<{ exists: boolean }>> {
+    this.logger.info('Odesílám požadavek na ověření existence názvu sekvence.');
     return this._http.get<ResponseObject<{ exists: boolean }>>(
       `${this._accessPoint}/name-exists/${name}/${sequenceID ?? 'new'}`
     );

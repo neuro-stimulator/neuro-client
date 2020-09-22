@@ -71,6 +71,7 @@ export class FileBrowserService {
     folders: FileRecord[],
     folderName: string
   ): Observable<ResponseObject<FileRecord[]>> {
+    this.logger.info('Odesílám požadavek na vytvoření nové složky.');
     const subfolders = folders.map((value: FileRecord) => value.name).join('/');
     if (subfolders) {
       folderName = `${subfolders}/${folderName}`;
@@ -91,6 +92,7 @@ export class FileBrowserService {
     folders: FileRecord[],
     files: File[]
   ): Observable<ResponseObject<FileRecord[]>> {
+    this.logger.info('Odesílám požadavek na nahrání souboru na server.');
     const subfolders = folders.map((value: FileRecord) => value.name).join('/');
     const formData = new FormData();
     for (let i = 0; i < files.length; i++) {
@@ -114,6 +116,7 @@ export class FileBrowserService {
     folders: FileRecord[],
     file: FileRecord
   ): Observable<ResponseObject<FileRecord[]>> {
+    this.logger.info('Odesílám požadavek na smazání souboru/složky.');
     let folderName = file.name;
 
     const subfolders = folders.map((value: FileRecord) => value.name).join('/');

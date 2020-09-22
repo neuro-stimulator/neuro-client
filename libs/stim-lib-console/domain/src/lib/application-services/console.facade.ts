@@ -28,4 +28,10 @@ export class ConsoleFacade {
     // @ts-ignore
     return this.store.select(fromConsole.consoleReducerKey);
   }
+
+  saveCommand(message: string) {
+    this.store.dispatch(
+      ConsoleActions.saveCommand({ rawCommand: message, fromUser: false })
+    );
+  }
 }

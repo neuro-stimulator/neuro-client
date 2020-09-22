@@ -7,6 +7,7 @@ import { NGXLogger } from 'ngx-logger';
 
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import {
+  ConsoleFacade,
   SettingsFacade,
   SettingsState,
 } from '@diplomka-frontend/stim-feature-settings/domain';
@@ -28,11 +29,12 @@ export class AppComponent /*implements OnInit, AfterViewInit*/ {
     public readonly navigation: NavigationFacade,
     private readonly settings: SettingsFacade,
     private readonly translator: TranslateService,
+    private readonly console: ConsoleFacade,
     private readonly auth: AuthFacade,
     private readonly logger: NGXLogger
   ) {
     // Zaregistruji logovací monitor pro lepší formát logů
-    // logger.registerMonitor(new ConsoleLoggerMonitorService(console));
+    logger.registerMonitor(new ConsoleLoggerMonitorService(console));
     // Načtu lokální nastavení aplikace
     settings.loadLocalSettings();
 

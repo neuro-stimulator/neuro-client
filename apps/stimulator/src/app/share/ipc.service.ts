@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { ResponseObject} from '@stechy1/diplomka-share';
+import { ResponseObject } from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../environments/environment';
-import { AliveCheckerFacade } from "@diplomka-frontend/stim-lib-connection";
+import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
+import { NGXLogger } from 'ngx-logger';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class IpcService {
-
   /**
    * Konstanta reprezentující výchozí URL adresu pro požadavky týkající se seriové linky
    */
-  private static readonly BASE_API_URL = `${makeURL(environment.url.server, environment.port.server)}/api/ipc`;
+  private static readonly BASE_API_URL = `${makeURL(
+    environment.url.server,
+    environment.port.server
+  )}/api/ipc`;
 
   /**
    * Socket pro komunikaci mezi WebServerem a Webovou aplikací
@@ -23,8 +26,11 @@ export class IpcService {
 
   private _isIpcConnected: boolean;
 
-  constructor(aliveChecker: AliveCheckerFacade,
-              private readonly _http: HttpClient) {
+  constructor(
+    aliveChecker: AliveCheckerFacade,
+    private readonly logger: NGXLogger,
+    private readonly _http: HttpClient
+  ) {
     this._isIpcConnected = false;
     // aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
     //   if (status === ConnectionStatus.CONNECTED) {
@@ -53,11 +59,15 @@ export class IpcService {
    * Vyšle požadavek pro získání informaci o připojení podpůrného programu přes IPC
    */
   public status() {
-    this._http.get<ResponseObject<{connected: boolean}>>(`${IpcService.BASE_API_URL}/status`)
-        .toPromise()
-        .then((response: ResponseObject<{connected: boolean}>) => {
-          this._isIpcConnected = response.data.connected;
-        });
+    this.logger.info('Odesílám požadavek na získání stavu IPC programu.');
+    this._http
+      .get<ResponseObject<{ connected: boolean }>>(
+        `${IpcService.BASE_API_URL}/status`
+      )
+      .toPromise()
+      .then((response: ResponseObject<{ connected: boolean }>) => {
+        this._isIpcConnected = response.data.connected;
+      });
   }
 
   /**

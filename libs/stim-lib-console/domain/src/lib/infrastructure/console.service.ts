@@ -11,6 +11,7 @@ import { TOKEN_CONSOLE_API_URL } from '@diplomka-frontend/stim-lib-common';
 
 import { ParseCommandResult } from '../domain/parse-command-result';
 import { ConsoleCommand } from '../domain/console-command';
+import { NGXLogger } from 'ngx-logger';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +25,7 @@ export class ConsoleService {
     @Inject(TOKEN_CONSOLE_API_URL) private readonly accessPoint: string,
     private readonly _translator: TranslateService,
     private readonly _storage: LocalStorageService,
+    private readonly logger: NGXLogger,
     private readonly _http: HttpClient
   ) {
     this._loadHistory();
@@ -96,6 +98,7 @@ export class ConsoleService {
   //   this._processData(data);
   // }
   sendCommand(command: ParseCommandResult): Observable<ResponseObject<any>> {
+    this.logger.info('Odesílám požadavek na zpracování příkazu z konzole.');
     return this._http.post(
       `${this.accessPoint}/${command.commandName}`,
       command.parameters
