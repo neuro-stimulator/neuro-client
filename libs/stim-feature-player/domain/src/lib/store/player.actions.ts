@@ -1,6 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 
-import { PlayerConfiguration } from '@stechy1/diplomka-share';
+import {
+  ExperimentStopConditionType,
+  PlayerConfiguration,
+} from '@stechy1/diplomka-share';
 
 import { IOEvent } from '@stechy1/diplomka-share/lib/serial-data-events';
 
@@ -48,5 +51,18 @@ export const actionPlayerClearExperiment = createAction(
 
 export const actionPlayerNoAction = createAction(
   '[Player] no action',
+  props<{}>()
+);
+
+export const actionPlayerAvailableStopConditionsRequest = createAction(
+  '[Player] available stop conditions request',
+  props<{}>()
+);
+export const actionPlayerAvailableStopConditionsDone = createAction(
+  '[Player] available stop conditions done',
+  props<{ stopConditions: ExperimentStopConditionType[] }>()
+);
+export const actionPlayerAvailableStopConditionsFail = createAction(
+  '[Player] available stop conditions fail',
   props<{}>()
 );

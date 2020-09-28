@@ -11,11 +11,13 @@ import { PlayerComponent } from './player.component';
 import { PlayerPageToolsComponent } from './player-page-tools/player-page-tools.component';
 import { PlayerRoutingModule } from './player-routing.module';
 import { PlayerExperimentTypeResolverDirective } from './player-experiment-type-resolver.directive';
+import { StopConditionsComponent } from './stop-conditions/stop-conditions.component';
 
 @NgModule({
   declarations: [
     PlayerComponent,
     PlayerPageToolsComponent,
+    StopConditionsComponent,
     PlayerExperimentTypeResolverDirective,
   ],
   imports: [

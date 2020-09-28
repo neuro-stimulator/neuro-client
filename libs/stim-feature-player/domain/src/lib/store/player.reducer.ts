@@ -1,9 +1,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { IOEvent } from '@stechy1/diplomka-share';
+import { ExperimentStopConditionType, IOEvent } from '@stechy1/diplomka-share';
 
 import { PlayerState } from './player.state';
 import * as PlayerActions from './player.actions';
+import { mapStopCondition } from '../domain/stop-condition.mapper';
 
 export const playerReducerKey = 'player';
 
@@ -18,6 +19,7 @@ export function playerReducer(playerState: PlayerState, playerAction: Action) {
       autoplay: false,
       stopConditionType: null,
       stopConditions: {},
+      availableStopConditions: [],
     },
     on(PlayerActions.actionPlayerUpdateState, (state: PlayerState, action) => ({
       ...state,
@@ -70,6 +72,20 @@ export function playerReducer(playerState: PlayerState, playerAction: Action) {
         ...state,
         ioData: allData,
       };
-    })
+    }),
+    on(
+      PlayerActions.actionPlayerAvailableStopConditionsDone,
+      (state: PlayerState, action) => {
+        const availableStopConditions = [];
+        for (const stopCondition of action.stopConditions) {
+          availableStopConditions.push(mapStopCondition(stopCondition));
+        }
+
+        return {
+          ...state,
+          availableStopConditions,
+        };
+      }
+    )
   )(playerState, playerAction);
 }

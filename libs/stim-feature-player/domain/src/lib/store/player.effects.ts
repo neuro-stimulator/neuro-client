@@ -14,6 +14,7 @@ import { of } from 'rxjs';
 
 import {
   ExperimentResultCreatedMessage,
+  ExperimentStopConditionType,
   IOEvent,
   PlayerConfiguration,
   ResponseObject,
@@ -26,7 +27,10 @@ import { PlayerState } from '@diplomka-frontend/stim-feature-player/domain';
 import * as fromConnection from '@diplomka-frontend/stim-lib-connection';
 import * as fromStimulator from '@diplomka-frontend/stim-feature-stimulator/domain';
 import { StimulatorFacade } from '@diplomka-frontend/stim-feature-stimulator/domain';
-import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
+import {
+  ExperimentsFacade,
+  ExperimentsState,
+} from '@diplomka-frontend/stim-feature-experiments/domain';
 
 import * as PlayerActions from './player.actions';
 import { PlayerService } from '../infrastructure/player.service';
@@ -183,6 +187,31 @@ export class PlayerEffects {
           return PlayerActions.actionPlayerNoAction({});
         }
       })
+    )
+  );
+
+  availableStopConditions$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PlayerActions.actionPlayerAvailableStopConditionsRequest),
+      withLatestFrom(this.experimentsFacade.state),
+      switchMap(([action, experimentsState]: [any, ExperimentsState]) =>
+        this._service
+          .getAvailableStopConditions(
+            experimentsState.selectedExperiment.experiment.type
+          )
+          .pipe(
+            map((response: ResponseObject<ExperimentStopConditionType[]>) => {
+              return PlayerActions.actionPlayerAvailableStopConditionsDone({
+                stopConditions: response.data,
+              });
+            }),
+            catchError((error) => {
+              return of(
+                PlayerActions.actionPlayerAvailableStopConditionsFail({})
+              );
+            })
+          )
+      )
     )
   );
 }

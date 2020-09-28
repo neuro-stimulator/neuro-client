@@ -4,7 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
-import { PlayerConfiguration, ResponseObject } from '@stechy1/diplomka-share';
+import {
+  ExperimentStopConditionType,
+  ExperimentType,
+  PlayerConfiguration,
+  ResponseObject,
+} from '@stechy1/diplomka-share';
 
 import { TOKEN_PLAYER_API_URL } from '@diplomka-frontend/stim-lib-common';
 
@@ -33,6 +38,17 @@ export class PlayerService {
     this.logger.info(
       'Odesílám požadavek na získání aktuálního stavu přehrávače experimentu...'
     );
-    return this._http.get(`${this._accesPoint}/state`);
+    return this._http.get<ResponseObject<any>>(`${this._accesPoint}/state`);
+  }
+
+  getAvailableStopConditions(
+    experimentType: ExperimentType
+  ): Observable<ResponseObject<ExperimentStopConditionType[]>> {
+    this.logger.info(
+      'Odesílám požadavek na získání zastavovacích podmínek pro typ experimentu.'
+    );
+    return this._http.get<ResponseObject<ExperimentStopConditionType[]>>(
+      `${this._accesPoint}/stop-conditions/${experimentType}`
+    );
   }
 }

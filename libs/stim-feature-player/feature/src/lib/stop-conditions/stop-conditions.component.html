@@ -1,0 +1,23 @@
+<h3>{{ 'EXPERIMENT_PLAYER.PARAMS.STOP_CONDITION.TITLE' | translate }}</h3>
+
+<div class="row" *ngIf="!(supportStopConditions | async)">
+  <div class="col-12">
+    <span class="text-danger">{{ 'EXPERIMENT_PLAYER.PARAMS.STOP_CONDITION.NOT_SUPPORTED' | translate }}</span>
+  </div>
+</div>
+
+<div class="row stop-conditions" [formGroup]="form" *ngIf="supportStopConditions | async">
+  <!-- Select stop condition type -->
+  <div class="col-12 col-sm-4">
+    <div class="form-group">
+      <label for="stop-condition-types">{{ 'EXPERIMENT_PLAYER.PARAMS.STOP_CONDITION.TYPES.TITLE' | translate }}</label>
+      <select name="stop-condition-types" id="stop-condition-types" class="selectpicker form-control form-control-sm" formControlName="stopConditionType">
+        <option value="-1" disabled selected>{{'EXPERIMENT_PLAYER.PARAMS.STOP_CONDITION.TYPES.SELECT' | translate }}</option>
+        <option *ngFor="let stopCondition of availableStopConditions" [ngValue]="stopCondition.id">{{stopCondition.name | translate}}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Configure selected stop condition -->
+
+</div>

@@ -228,7 +228,15 @@
       "EXPERIMENT_REPEAT": "Repeat count",
       "BETWEEN_EXPERIMENT_INTERVAL": "Time between each experiment",
       "STOP_CONDITION": {
-        "TITLE": "Stop condition"
+        "TITLE": "Stop condition",
+        "NOT_SUPPORTED": "Experiment does not support software stop conditions",
+        "TYPES": {
+          "TITLE": "Stop condition type",
+          "SELECT": "Choose...",
+          "NO_STOP_CONDITION": "No condition",
+          "COUNTING_EXPERIMENT_STOP_CONDITION": "Total IO changes count",
+          "COUNTING_CYCLE_STOP_CONDITION": "Total cycle count"
+        }
       }
     },
     "EXPERIMENT_MEASUREMENT": "Measurement: {{experimentRound}} / {{totalMeasurement}}",

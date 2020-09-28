@@ -230,7 +230,15 @@
       "EXPERIMENT_REPEAT": "Počet opakování",
       "BETWEEN_EXPERIMENT_INTERVAL": "Prodleva mezi experimenty",
       "STOP_CONDITION": {
-        "TITLE": "Zastavovací podmínka"
+        "TITLE": "Zastavovací podmínky",
+        "NOT_SUPPORTED": "Experiment nepodporuje softwarové zastavovací podmínky",
+        "TYPES": {
+          "TITLE": "Typ zastavovací podmínky",
+          "SELECT": "Vyberte...",
+          "NO_STOP_CONDITION": "Žádná podmínka",
+          "COUNTING_EXPERIMENT_STOP_CONDITION": "Celkový počet IO změn",
+          "COUNTING_CYCLE_STOP_CONDITION": "Celkový počet cyklů"
+        }
       }
     },
     "EXPERIMENT_MEASUREMENT": "Měření: {{experimentRound}} / {{totalMeasurement}}",

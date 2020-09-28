@@ -43,7 +43,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
       Validators.min(0),
     ]),
     autoplay: new FormControl({ value: false, disabled: true }),
-    stopConditionType: new FormControl(0, [Validators.required]),
+    stopConditionType: new FormControl(-1, [Validators.required]),
     stopConditions: new FormGroup({
       maxOutput: new FormControl(100),
     }),
@@ -132,6 +132,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this._experimentSubscription = this.experiment.subscribe(
       (experiment: Experiment) => {
         this._navigation.titleArgs = { name: experiment.name };
+        this.player.requestAvailableStopConditions();
       }
     );
     this.player.loadExperiment(this._route.snapshot.params['id']);
@@ -157,11 +158,16 @@ export class PlayerComponent implements OnInit, OnDestroy {
           repeat: state.repeat,
           betweenExperimentInterval: state.betweenExperimentInterval,
           autoplay: state.autoplay,
+          stopConditionType: state.stopConditionType,
+          stopConditions: state.stopConditions,
         });
       }
     );
     this._repeatValueSubscription = this.repeat.valueChanges.subscribe(
-      (repeat: number) => this._updateDisabledAutoplay(repeat)
+      (repeat: number) => {
+        this._updateDisabledAutoplay(repeat > 0);
+        this._updateDisabledStopConditions(repeat > 0);
+      }
     );
     this._autoplayValueSubscription = this.autoplay.valueChanges.subscribe(
       (enabled: boolean) => this._updateBetweenExperimentInterval(enabled)
@@ -171,12 +177,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._experimentSubscription.unsubscribe();
-    // if (
-    //   this.player.lastStimulatorState <= StimulatorStateType.SETUP ||
-    //   this.player.lastStimulatorState >= StimulatorStateType.FINISH && this.player.
-    // ) {
     this.player.clearExperiment();
-    // }
     this.player.destroyExperiment();
     this._stimulatorStateSubscription.unsubscribe();
     this._playerStateSubscription.unsubscribe();
@@ -184,8 +185,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this._autoplayValueSubscription.unsubscribe();
   }
 
-  private _updateDisabledAutoplay(repeat: number) {
-    if (repeat > 0) {
+  private _updateDisabledAutoplay(enabled: boolean) {
+    if (enabled) {
       this.autoplay.enable();
     } else {
       this.autoplay.disable();
@@ -199,6 +200,18 @@ export class PlayerComponent implements OnInit, OnDestroy {
     } else {
       this.betweenExperimentInterval.reset(0);
       this.betweenExperimentInterval.disable();
+    }
+  }
+
+  private _updateDisabledStopConditions(enabled: boolean) {
+    if (enabled) {
+      this.stopConditionType.enable();
+      this.stopConditions.enable();
+    } else {
+      this.stopConditionType.disable();
+      this.stopConditions.disable();
+      this.stopConditionType.reset(-1);
+      this.stopConditions.reset({});
     }
   }
 
@@ -232,6 +245,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
     return this.player.stimulatorState$;
   }
 
+  get supportStopConditions(): Observable<boolean> {
+    return this.player.supportStopConditions;
+  }
+
   get experiment(): Observable<Experiment> {
     return this.player.playingExperiment$;
   }
@@ -250,5 +267,12 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   get autoplay(): FormControl {
     return this.form.get('autoplay') as FormControl;
+  }
+
+  get stopConditionType(): FormControl {
+    return this.form.get('stopConditionType') as FormControl;
+  }
+  get stopConditions(): FormGroup {
+    return this.form.get('stopConditions') as FormGroup;
   }
 }

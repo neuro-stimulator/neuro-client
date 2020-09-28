@@ -98,7 +98,19 @@ export class PlayerFacade {
     return this.store.select(fromPlayer.playerReducerKey);
   }
 
+  get supportStopConditions(): Observable<boolean> {
+    return this.state.pipe(
+      map((state: PlayerState) => state.availableStopConditions.length !== 0)
+    );
+  }
+
   get lastStimulatorState(): StimulatorStateType {
     return this._lastStimulatorState;
+  }
+
+  requestAvailableStopConditions() {
+    this.store.dispatch(
+      PlayerActions.actionPlayerAvailableStopConditionsRequest({})
+    );
   }
 }
