@@ -122,5 +122,42 @@
       </div>
     </div>
 
+    <!-- Nebezpečná zóna -->
+    <div class="col-12">
+      <div class="row">
+        <div class="col-10" >
+          <h3 class="text-danger">{{ 'SETTINGS.PARAM_CONFIG.SERVER.DANGER_ZONE.TITLE' | translate}}</h3>
+        </div>
+        <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="dangerZone" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
+      </div>
+      <div class="row" #dangerZone>
+
+        <!-- Inicializovat prázdnou databázi -->
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6">
+              <p>{{ 'SETTINGS.PARAM_CONFIG.SERVER.DANGER_ZONE.SEED_DATABASE_TEXT' | translate }}</p>
+            </div>
+            <div class="col-6 vertical-center">
+              <button class="btn btn-danger right" (click)="handleSeedDatabase()">{{ 'SETTINGS.PARAM_CONFIG.SERVER.DANGER_ZONE.SEED_DATABASE' | translate }}</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vymazat veškeré údaje z databáze -->
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6">
+              <p>{{ 'SETTINGS.PARAM_CONFIG.SERVER.DANGER_ZONE.TRUNCATE_DATABASE_TEXT' | translate}}</p>
+            </div>
+            <div class="col-6 vertical-center">
+              <button class="btn btn-danger right" (click)="handleTruncateDatabase()">{{ 'SETTINGS.PARAM_CONFIG.SERVER.DANGER_ZONE.TRUNCATE_DATABASE' | translate }}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </form>
+
+<stim-lib-modal #modal></stim-lib-modal>

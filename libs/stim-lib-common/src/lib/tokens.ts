@@ -13,6 +13,7 @@ export const TOKEN_SEQUENCES_API_URL = new InjectionToken(
 export const TOKEN_SETTINGS_API_URL = new InjectionToken(
   'TOKEN_SETTINGS_API_URL'
 );
+export const TOKEN_SEED_API_URL = new InjectionToken('TOKEN_SEED_API_URL');
 export const TOKEN_STIMULATOR_API_URL = new InjectionToken(
   'TOKEN_STIMULATOR_API_URL'
 );

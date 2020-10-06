@@ -1,21 +1,22 @@
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Observable } from 'rxjs';
 
 import { ResponseObject } from '@stechy1/diplomka-share';
-import { TOKEN_SETTINGS_API_URL } from "@diplomka-frontend/stim-lib-common";
+import {
+  TOKEN_SEED_API_URL,
+  TOKEN_SETTINGS_API_URL,
+} from '@diplomka-frontend/stim-lib-common';
 
-import { ServerSettings, Settings } from "../..";
+import { ServerSettings, Settings } from '../..';
 import { NGXLogger } from 'ngx-logger';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SettingsService {
-
   private static readonly SETTINGS_STORAGE_KEY = 'settings';
   // private static readonly DEFAULT_SETTINGS: Settings = environment.settings;
 
@@ -29,60 +30,47 @@ export class SettingsService {
 
   // private _settings: Settings;
 
-  constructor(@Inject(TOKEN_SETTINGS_API_URL) private readonly apiURL: string,
-              private readonly _http: HttpClient,
-              private readonly _storage: LocalStorageService,
-              private readonly logger: NGXLogger) {
-  }
+  constructor(
+    @Inject(TOKEN_SETTINGS_API_URL) private readonly apiURL: string,
+    @Inject(TOKEN_SEED_API_URL) private readonly seedApiURL: string,
+    private readonly _http: HttpClient,
+    private readonly _storage: LocalStorageService,
+    private readonly logger: NGXLogger
+  ) {}
 
   public loadLocalSettings(): Settings {
-    this.logger.info('Načítám lokální nastavení aplikace...')
+    this.logger.info('Načítám lokální nastavení aplikace...');
     return this._storage.get<Settings>(SettingsService.SETTINGS_STORAGE_KEY);
   }
 
   public saveLocalSettings(settings: Settings): void {
-    this.logger.info("Ukládám lokální nastavení aplikace...")
+    this.logger.info('Ukládám lokální nastavení aplikace...');
     this._storage.set(SettingsService.SETTINGS_STORAGE_KEY, settings);
   }
 
   public loadServerSettings(): Observable<ResponseObject<ServerSettings>> {
-    this.logger.info('Odesílám požadavek pro získání uživatelského nastavení na serveru...');
+    this.logger.info(
+      'Odesílám požadavek pro získání uživatelského nastavení na serveru...'
+    );
     return this._http.get<ResponseObject<ServerSettings>>(this.apiURL);
   }
 
-  public saveServerSettings(settings: ServerSettings): Observable<ResponseObject<ServerSettings>> {
-    this.logger.info("Odesílám požadavek pro uložení uživatelského nastavení na serveru...")
+  public saveServerSettings(
+    settings: ServerSettings
+  ): Observable<ResponseObject<ServerSettings>> {
+    this.logger.info(
+      'Odesílám požadavek pro uložení uživatelského nastavení na serveru...'
+    );
     return this._http.post<ResponseObject<any>>(this.apiURL, settings);
   }
 
-  // private _loadSettings() {
-  //   this._settings = Object.assign(SettingsService.DEFAULT_SETTINGS, this._storage.get<Settings>(SettingsService.SETTINGS_STORAGE_KEY) || {});
-  //   this._settingsChange.next(this._settings);
-  // }
-  //
-  // public async loadServerSettings(): Promise<ServerSettings> {
-  //   return await this._http.get<ResponseObject<ServerSettings>>(SettingsService.BASE_API_URL)
-  //                    .toPromise()
-  //                    .catch(() => {
-  //                      return {data: {}};
-  //                    })
-  //                    .then((response: ResponseObject<ServerSettings>) => {
-  //                      return response.data;
-  //                    });
-  // }
-  //
-  // public async uploadServerSettings(settings: ServerSettings) {
-  //   await this._http.post(SettingsService.BASE_API_URL, settings).toPromise();
-  // }
+  public seedDatabase(): Observable<ResponseObject<any>> {
+    this.logger.info('Odesílám požadavek na inicializaci databáze...');
+    return this._http.post(this.seedApiURL, null);
+  }
 
-  // get settings(): Settings {
-  //   return this._settings;
-  // }
-  //
-  // set settings(settings: Settings) {
-  //   this._settings = settings;
-  //   this._storage.set(SettingsService.SETTINGS_STORAGE_KEY, settings);
-  //   this._settingsChange.next(settings);
-  // }
-
+  public truncateDatabase(): Observable<ResponseObject<any>> {
+    this.logger.info('Odesílám požadavek na vymazání obsahu databáze...');
+    return this._http.delete(this.seedApiURL);
+  }
 }

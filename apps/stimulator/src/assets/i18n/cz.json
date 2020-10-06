@@ -337,7 +337,23 @@
             "SELECT": "Zvolte paritu..."
           }
         },
-        "STIMULATOR_RESPONSE_TIMEOUT": "Timeout odpovědi ze stimulátoru"
+        "STIMULATOR_RESPONSE_TIMEOUT": "Timeout odpovědi ze stimulátoru",
+        "DANGER_ZONE": {
+          "TITLE": "Nebezpečná zóna",
+          "SEED_DATABASE": "Inicializovat databázi",
+          "SEED_DATABASE_TEXT": "Inicializovat databázi po prvním spuštění",
+          "TRUNCATE_DATABASE": "Vymazat databázi",
+          "TRUNCATE_DATABASE_TEXT": "Vymazat obsah z databáze",
+
+          "DIALOGS": {
+            "SEED": {
+              "QUESTION": "Opravdu si přejete inicializovat databázi?"
+            },
+            "TRUNCATE": {
+              "QUESTION": "Opravdu si přejete vymazat obsah databáze? Tento krok nelze zvrátit!"
+            }
+          }
+        }
       }
     },
     "CONSOLE": {

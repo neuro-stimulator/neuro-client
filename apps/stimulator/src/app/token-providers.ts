@@ -15,6 +15,7 @@ import {
   TOKEN_PLAYER_API_URL,
   TOKEN_PATTERN_SIZE,
   TOKEN_CONSOLE_API_URL,
+  TOKEN_SEED_API_URL,
 } from '@diplomka-frontend/stim-lib-common';
 
 import { environment, makeURL } from '../environments/environment';
@@ -51,6 +52,10 @@ export const TOKEN_PROVIDERS: Provider[] = [
   {
     provide: TOKEN_SETTINGS_API_URL,
     useValue: `/api/settings`,
+  },
+  {
+    provide: TOKEN_SEED_API_URL,
+    useValue: '/api/seed',
   },
   {
     provide: TOKEN_STIMULATOR_API_URL,

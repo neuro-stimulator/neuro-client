@@ -91,4 +91,34 @@ export class SettingsEffects {
       })
     )
   );
+
+  seedDatabase$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SettingsActions.actionServerSeedDatabaseRequest),
+      switchMap((action) => {
+        return this.settings.seedDatabase().pipe(
+          map((response: ResponseObject<any>) => {
+            return SettingsActions.actionServerSeedDatabaseDone({
+              statistics: response.data,
+            });
+          })
+        );
+      })
+    )
+  );
+
+  truncateDatabase$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SettingsActions.actionServerTruncateDatabaseRequest),
+      switchMap((action) => {
+        return this.settings.truncateDatabase().pipe(
+          map((response: ResponseObject<any>) => {
+            return SettingsActions.actionServerTruncateDatabaseDone({
+              statistics: response.data,
+            });
+          })
+        );
+      })
+    )
+  );
 }
