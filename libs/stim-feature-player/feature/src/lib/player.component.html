@@ -33,6 +33,11 @@
               [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][3] || !(state | async).initialized">
         <i class="fas fa-stop"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.FINISH' | translate}}
       </button>
+      <button class="btn btn-warning force-finish"
+              (click)="handleForceFinishExperiment()"
+              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][3] || !(state | async).initialized">
+        <i class="fas fa-stop"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.FORCE_FINISH' | translate}}
+      </button>
       <button class="btn btn-danger clear"
               (click)="handleClearExperiment()"
               [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][4]">

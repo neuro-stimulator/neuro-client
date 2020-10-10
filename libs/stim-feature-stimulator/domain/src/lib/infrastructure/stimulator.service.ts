@@ -101,10 +101,10 @@ export class StimulatorService {
       null
     );
   }
-  public experimentFinish(experimentID: number) {
+  public experimentFinish(experimentID: number, force: boolean) {
     this.logger.info('Odesílám požadavek na ukončení experimentu.');
     return this._http.patch(
-      `${this.stimulatorURL}/experiment/finish/${experimentID}/?asyncStimulatorRequest=true`,
+      `${this.stimulatorURL}/experiment/finish/${experimentID}/?asyncStimulatorRequest=true&force=${force}`,
       null
     );
   }

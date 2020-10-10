@@ -221,6 +221,7 @@
       "PLAY": "Play",
       "PAUSE": "Pause",
       "FINISH": "Finish",
+      "FORCE_FINISH": "Force finish",
       "CLEAR": "Clear"
     },
     "PARAMS": {

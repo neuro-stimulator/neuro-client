@@ -252,6 +252,10 @@ export class PlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     this.player.finishExperiment();
   }
 
+  handleForceFinishExperiment() {
+    this.player.handleForceFinishExperiment();
+  }
+
   handleClearExperiment() {
     this.player.clearExperiment();
     this.paramsUiContentToggler.visible = true;

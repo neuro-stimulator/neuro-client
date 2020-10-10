@@ -103,7 +103,7 @@ export const actionCommandStimulatorPauseRequestFail = createAction(
 
 export const actionCommandStimulatorFinishRequest = createAction(
   '[Stimulator] Command stimulator finish request',
-  props<{}>()
+  props<{ force: boolean }>()
 );
 export const actionCommandStimulatorFinishRequestDone = createAction(
   '[Stimulator] Command stimulator finish request done',

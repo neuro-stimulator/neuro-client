@@ -61,7 +61,12 @@ export class StimulatorFacade {
   }
   public experimentFinish() {
     this.store.dispatch(
-      StimulatorActions.actionCommandStimulatorFinishRequest({})
+      StimulatorActions.actionCommandStimulatorFinishRequest({ force: false })
+    );
+  }
+  public handleForceFinishExperiment() {
+    this.store.dispatch(
+      StimulatorActions.actionCommandStimulatorFinishRequest({ force: true })
     );
   }
   public experimentClear() {

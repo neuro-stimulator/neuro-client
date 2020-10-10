@@ -227,7 +227,8 @@ export class StimulatorEffects {
       withLatestFrom(this._facade.state),
       switchMap(([action, experimentState]) =>
         this._service.experimentFinish(
-          experimentState.selectedExperiment.experiment.id
+          experimentState.selectedExperiment.experiment.id,
+          action.force
         )
       ),
       map((response: ResponseObject<any>) => {

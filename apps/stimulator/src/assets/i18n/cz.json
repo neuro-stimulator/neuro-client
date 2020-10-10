@@ -223,6 +223,7 @@
       "PLAY": "Spustit",
       "PAUSE": "Pozastavit",
       "FINISH": "Ukončit",
+      "FORCE_FINISH": "Vynutit ukončení",
       "CLEAR": "Vymazat"
     },
     "PARAMS": {

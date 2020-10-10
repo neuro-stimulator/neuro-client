@@ -80,6 +80,9 @@ export class PlayerFacade {
   public finishExperiment() {
     this.stimulator.experimentFinish();
   }
+  public handleForceFinishExperiment() {
+    this.stimulator.handleForceFinishExperiment();
+  }
   public clearExperiment() {
     this.store.dispatch(PlayerActions.actionPlayerClearExperiment({}));
     // Odeslat příkaz na vyčištění experimentu ze stimulátoru budu odesílat pouze,
