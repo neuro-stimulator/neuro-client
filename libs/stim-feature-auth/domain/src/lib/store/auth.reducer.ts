@@ -1,4 +1,4 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createFeatureSelector, createReducer, on } from '@ngrx/store';
 
 import { createEmptyUser, User } from '@stechy1/diplomka-share';
 
@@ -39,3 +39,5 @@ export function authReducer(authState: AuthState, authAction: Action) {
     }))
   )(authState, authAction);
 }
+
+export const authFeature = createFeatureSelector<AuthState>(authReducerKey);

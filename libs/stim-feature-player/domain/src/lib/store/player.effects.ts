@@ -34,6 +34,7 @@ import {
 
 import * as PlayerActions from './player.actions';
 import { PlayerService } from '../infrastructure/player.service';
+import { playerFeature } from './player.reducer';
 
 @Injectable()
 export class PlayerEffects {
@@ -177,10 +178,8 @@ export class PlayerEffects {
   clearExperiment$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PlayerActions.actionPlayerClearExperiment),
-      // @ts-ignore
-      withLatestFrom(this.store.select('player')),
+      withLatestFrom(this.store.select(playerFeature)),
       map(([action, state]) => {
-        // @ts-ignore
         if (state.initialized) {
           return fromStimulator.actionCommandStimulatorClearRequest({});
         } else {

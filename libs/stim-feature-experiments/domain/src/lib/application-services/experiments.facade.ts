@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Store } from '@ngrx/store';
+import { DefaultProjectorFn, MemoizedSelector, Store } from '@ngrx/store';
 
 import { Experiment } from '@stechy1/diplomka-share';
 
@@ -75,8 +75,12 @@ export class ExperimentsFacade extends BaseFacade<
     );
   }
 
-  protected get stateKey(): string {
-    return fromExperiments.experimentsReducerKey;
+  protected get featureSelector(): MemoizedSelector<
+    object,
+    ExperimentsState,
+    DefaultProjectorFn<ExperimentsState>
+  > {
+    return fromExperiments.experimentsFeature;
   }
 
   generateSequenceFromNameAndSize(name: string, size: number) {

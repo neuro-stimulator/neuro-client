@@ -1,5 +1,10 @@
 import { BaseRecord } from '@diplomka-frontend/stim-lib-common';
-import { ActionCreator, Store } from '@ngrx/store';
+import {
+  ActionCreator,
+  DefaultProjectorFn,
+  MemoizedSelector,
+  Store,
+} from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 export interface BaseActions {
@@ -60,11 +65,15 @@ export abstract class BaseFacade<T extends BaseRecord, S> {
 
   protected abstract get baseActions(): BaseActions;
 
-  protected abstract get stateKey(): string;
+  protected abstract get featureSelector(): MemoizedSelector<
+    object,
+    S,
+    DefaultProjectorFn<S>
+  >;
 
   public get state(): Observable<S> {
     // @ts-ignore
-    return this.store.select(this.stateKey);
+    return this.store.select(this.featureSelector);
   }
 
   public select(selector: any): Observable<any> {

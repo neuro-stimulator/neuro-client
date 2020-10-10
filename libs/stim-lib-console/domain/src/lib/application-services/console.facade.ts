@@ -25,8 +25,7 @@ export class ConsoleFacade {
   }
 
   public get state(): Observable<ConsoleState> {
-    // @ts-ignore
-    return this.store.select(fromConsole.consoleReducerKey);
+    return this.store.select(fromConsole.consoleFeature);
   }
 
   saveCommand(message: string) {

@@ -13,6 +13,7 @@ import { ParseCommandResult } from '../domain/parse-command-result';
 import { ConsoleCommand } from '../domain/console-command';
 import * as ConsoleActions from './console.actions';
 import { ConsoleState } from './console.state';
+import { consoleFeature } from './console.reducer';
 
 @Injectable()
 export class ConsoleEffects {
@@ -107,14 +108,12 @@ export class ConsoleEffects {
   saveCommand$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ConsoleActions.saveCommand),
-      // @ts-ignore
-      withLatestFrom(this.store.select('console')),
+      withLatestFrom(this.store.select(consoleFeature)),
       map(([action, state]) => {
         const command = this._service.saveCommand(
           action.rawCommand,
           action.fromUser
         );
-        // @ts-ignore
         const commands = [...state.commandHistory];
         commands.push(command);
 

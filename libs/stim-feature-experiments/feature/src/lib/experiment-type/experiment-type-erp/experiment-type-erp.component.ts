@@ -77,7 +77,7 @@ export class ExperimentTypeErpComponent
 
   ngOnInit() {
     super.ngOnInit();
-    this._sequenceIdSubscription = this._service.state
+    this._sequenceIdSubscription = this._facade.state
       .pipe(
         map(
           (state: ExperimentsState) =>
@@ -208,7 +208,7 @@ export class ExperimentTypeErpComponent
           return;
         }
 
-        this._service.generateSequenceFromNameAndSize(result.name, result.size);
+        this._facade.generateSequenceFromNameAndSize(result.name, result.size);
       });
   }
 

@@ -94,8 +94,7 @@ export class PlayerFacade {
   }
 
   get state(): Observable<PlayerState> {
-    // @ts-ignore
-    return this.store.select(fromPlayer.playerReducerKey);
+    return this.store.select(fromPlayer.playerFeature);
   }
 
   get supportStopConditions(): Observable<boolean> {

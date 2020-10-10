@@ -1,5 +1,5 @@
 import { NavigationState } from './navigation.state';
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createFeatureSelector, createReducer, on } from '@ngrx/store';
 
 import * as NavigationActions from './navigation.actions';
 
@@ -95,3 +95,7 @@ export function navigationReducer(
     )
   )(navigationState, navigationAction);
 }
+
+export const navigationFeature = createFeatureSelector<NavigationState>(
+  navigationReducerKey
+);

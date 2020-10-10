@@ -43,7 +43,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
   private _experimentsStateSubscription: Subscription;
 
   protected constructor(
-    protected readonly _service: ExperimentsFacade,
+    protected readonly _facade: ExperimentsFacade,
     // protected readonly toastr: ToastrService,
     // protected readonly _router: Router,
     protected readonly _route: ActivatedRoute,
@@ -70,7 +70,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
         return;
       }
 
-      this._service.one(+experimentId);
+      this._facade.one(+experimentId);
 
       // if (experimentId !== undefined) {
       //   this._service.one(+experimentId)
@@ -105,7 +105,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
       //         }, 100);
       //       });
     } else {
-      this._service.empty(this._createEmptyExperiment());
+      this._facade.empty(this._createEmptyExperiment());
     }
   }
 
@@ -148,7 +148,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
   }
 
   ngOnInit(): void {
-    this._experimentsStateSubscription = this._service.state
+    this._experimentsStateSubscription = this._facade.state
       .pipe(take(2))
       .pipe(
         map((state: ExperimentsState) => state.selectedExperiment.experiment)
@@ -170,7 +170,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
 
   ngOnDestroy(): void {
     this._experimentsStateSubscription.unsubscribe();
-    this._service.empty(this._createEmptyExperiment());
+    this._facade.empty(this._createEmptyExperiment());
   }
 
   canDeactivate(): Observable<boolean> | boolean {
@@ -184,11 +184,11 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
    * Reakce na tlačítko pro uložení dat experimentu
    */
   public handleSaveExperiment() {
-    this._service.save(this.form.value);
+    this._facade.save(this.form.value);
   }
 
   get experimentsState(): Observable<ExperimentsState> {
-    return this._service.state;
+    return this._facade.state;
   }
 
   get connectionState(): Observable<ConnectionInformationState> {

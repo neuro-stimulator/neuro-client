@@ -13,6 +13,7 @@ import { SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
 import { SettingsService } from '../infrastructure/settings.service';
 import { ServerSettings, Settings } from '../domain/settings';
 import * as SettingsActions from './settings.actions';
+import { settingsFeature } from './settings.reducer';
 
 @Injectable()
 export class SettingsEffects {
@@ -25,9 +26,7 @@ export class SettingsEffects {
   localSettings$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SettingsActions.actionLocalSettingsRequest),
-      // @ts-ignore
-      withLatestFrom(this.store.select('settings')),
-      // @ts-ignore
+      withLatestFrom(this.store.select(settingsFeature)),
       filter(([action, settings]) => !settings.localSettingsLoaded),
       switchMap((action) => {
         return of(this.settings.loadLocalSettings()).pipe(

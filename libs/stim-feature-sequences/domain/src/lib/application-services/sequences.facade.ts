@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Store } from '@ngrx/store';
+import { DefaultProjectorFn, MemoizedSelector, Store } from '@ngrx/store';
 
 import { Sequence } from '@stechy1/diplomka-share';
 
@@ -51,8 +51,12 @@ export class SequencesFacade extends BaseFacade<Sequence, SequencesState> {
     };
   }
 
-  protected get stateKey(): string {
-    return fromSequences.sequencesReducerKey;
+  protected get featureSelector(): MemoizedSelector<
+    object,
+    SequencesState,
+    DefaultProjectorFn<SequencesState>
+  > {
+    return fromSequences.sequencesFeature;
   }
 
   public empty(emptySequence: Sequence) {

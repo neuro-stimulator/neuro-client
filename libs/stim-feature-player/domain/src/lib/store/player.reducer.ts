@@ -1,4 +1,4 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createFeatureSelector, createReducer, on } from '@ngrx/store';
 
 import { ExperimentStopConditionType, IOEvent } from '@stechy1/diplomka-share';
 
@@ -89,3 +89,7 @@ export function playerReducer(playerState: PlayerState, playerAction: Action) {
     )
   )(playerState, playerAction);
 }
+
+export const playerFeature = createFeatureSelector<PlayerState>(
+  playerReducerKey
+);

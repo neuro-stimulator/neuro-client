@@ -1,4 +1,4 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createFeatureSelector, createReducer, on } from '@ngrx/store';
 
 import { StimulatorStateType } from '../domain/stimulator-state';
 import * as StimulatorActions from './stimulator.actions';
@@ -96,3 +96,7 @@ export function stimulatorReducer(
     )
   )(stimulatorState, stimulatorAction);
 }
+
+export const stimulatorFeature = createFeatureSelector<StimulatorState>(
+  stimulatorReducerKey
+);

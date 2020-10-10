@@ -1,4 +1,10 @@
-import { Action, createReducer, createSelector, on } from '@ngrx/store';
+import {
+  Action,
+  createFeatureSelector,
+  createReducer,
+  createSelector,
+  on,
+} from '@ngrx/store';
 
 import { createEmptyExperiment, Experiment } from '@stechy1/diplomka-share';
 
@@ -289,9 +295,16 @@ export function experimentsReducer(
   )(experimentsState, experimentsAction);
 }
 
-export const getExperimentsState = (state) => state.experiments;
+export const experimentsFeature = createFeatureSelector<ExperimentsState>(
+  experimentsReducerKey
+);
 
-export const isNameValid: any = createSelector(
-  getExperimentsState,
+export const experimentsSelector = createSelector(
+  experimentsFeature,
+  (state: ExperimentsState) => state.experiments
+);
+
+export const isNameValid = createSelector(
+  experimentsFeature,
   (state: ExperimentsState) => state.selectedExperiment.nameExists
 );

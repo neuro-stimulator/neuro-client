@@ -1,4 +1,10 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import {
+  Action,
+  createFeatureSelector,
+  createReducer,
+  createSelector,
+  on,
+} from '@ngrx/store';
 
 import {
   createEmptyExperiment,
@@ -339,3 +345,12 @@ export function sequencesReducer(
     )
   )(sequencesState, sequencesAction);
 }
+
+export const sequencesFeature = createFeatureSelector<SequencesState>(
+  sequencesReducerKey
+);
+
+export const sequencesSelector = createSelector(
+  sequencesFeature,
+  (state: SequencesState) => state.sequences
+);

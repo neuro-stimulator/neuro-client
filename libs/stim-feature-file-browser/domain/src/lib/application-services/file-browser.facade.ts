@@ -88,7 +88,6 @@ export class FileBrowserFacade {
   }
 
   get fileBrowserState(): Observable<FileBrowserState> {
-    // @ts-ignore
-    return this.store.select(fromFileBrowser.fileBrowserReducerKey);
+    return this.store.select(fromFileBrowser.fileBrowserFeature);
   }
 }

@@ -29,7 +29,6 @@ export class AuthFacade {
   }
 
   public get state(): Observable<AuthState> {
-    // @ts-ignore
-    return this.store.select(fromReducer.authReducerKey);
+    return this.store.select(fromReducer.authFeature);
   }
 }

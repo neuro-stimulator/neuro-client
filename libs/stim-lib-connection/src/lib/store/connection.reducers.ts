@@ -1,4 +1,4 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createFeatureSelector, createReducer, on } from '@ngrx/store';
 
 import { ConnectionStatus } from '../domain/connection-status';
 import * as ConnectionActions from './connection.actions';
@@ -87,3 +87,7 @@ export function connectionStateReducer(
     )
   )(connectionState, connectionAction);
 }
+
+export const connectionFeature = createFeatureSelector<
+  ConnectionInformationState
+>(connectionStateKey);

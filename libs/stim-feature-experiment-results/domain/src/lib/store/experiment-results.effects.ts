@@ -18,6 +18,10 @@ import { SelectedEntities } from '@diplomka-frontend/stim-lib-list-utils';
 
 import { ExperimentResultsService } from '../infrastructure/experiment-results.service';
 import * as ExperimentResultsActions from './experiment-results.actions';
+import {
+  experimentResultsFeature,
+  experimentResultsSelector,
+} from './experiment-results.reducer';
 
 @Injectable()
 export class ExperimentResultssEffects {
@@ -50,12 +54,7 @@ export class ExperimentResultssEffects {
       ofType(
         ExperimentResultsActions.actionExperimentResultsAllWithGhostRequest
       ),
-      withLatestFrom(this.store.select('experimentResults')),
-      map(([action, experimentResults]) => [
-        action,
-        // @ts-ignore
-        experimentResults.experimentResults,
-      ]),
+      withLatestFrom(this.store.select(experimentResultsSelector)),
       switchMap(([action, experimentResults]) => {
         if (experimentResults.length !== 0) {
           return of({ data: experimentResults });
@@ -134,18 +133,16 @@ export class ExperimentResultssEffects {
   delete$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsDeleteRequest),
-      withLatestFrom(this.store.select('experimentResults')),
+      withLatestFrom(this.store.select(experimentResultsFeature)),
       switchMap(([action, experimentResults]) => {
         if (action.experimentResultID) {
           return this.experimentResults.delete(action.experimentResultID);
         } else {
-          // @ts-ignore
           if (!experimentResults.selectionMode) {
             return EMPTY;
           }
 
           const selectedExperimentResults: SelectedEntities =
-            // @ts-ignore
             experimentResults.selectedExperimentResults;
           const filteredSelectedExperiments = Object.entries<boolean>(
             selectedExperimentResults
@@ -173,9 +170,8 @@ export class ExperimentResultssEffects {
   deleteDone$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsDeleteRequestDone),
-      withLatestFrom(this.store.select('experimentResults')),
+      withLatestFrom(this.store.select(experimentResultsFeature)),
       map(([action, experimentResults]) => {
-        // @ts-ignore
         if (experimentResults.selectionMode) {
           setTimeout(
             () =>

@@ -49,7 +49,6 @@ export class SettingsFacade {
   }
 
   get state(): Observable<SettingsState> {
-    // @ts-ignore
-    return this.store.select(fromSettings.settingsReducerKey);
+    return this.store.select(fromSettings.settingsFeature);
   }
 }

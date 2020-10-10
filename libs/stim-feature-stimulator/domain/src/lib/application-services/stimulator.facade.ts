@@ -76,7 +76,6 @@ export class StimulatorFacade {
   }
 
   get stimulatorState(): Observable<StimulatorState> {
-    // @ts-ignore
-    return this.store.select(fromStimulator.stimulatorReducerKey);
+    return this.store.select(fromStimulator.stimulatorFeature);
   }
 }

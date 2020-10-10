@@ -1,4 +1,4 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createFeatureSelector, createReducer, on } from '@ngrx/store';
 
 import { ConsoleState } from './console.state';
 import * as ConsoleActions from './console.actions';
@@ -23,3 +23,7 @@ export function consoleReducer(
     }))
   )(consoleState, consoleAction);
 }
+
+export const consoleFeature = createFeatureSelector<ConsoleState>(
+  consoleReducerKey
+);

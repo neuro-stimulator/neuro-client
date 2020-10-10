@@ -29,6 +29,7 @@ import { StimulatorStateType } from '../domain/stimulator-state';
 import * as StimulatorActions from './stimulator.actions';
 import * as fromStimulator from './stimulator.reducer';
 import { StimulatorState } from './stimulator.state';
+import { stimulatorFeature } from './stimulator.reducer';
 
 @Injectable()
 export class StimulatorEffects {
@@ -243,8 +244,7 @@ export class StimulatorEffects {
   clear$ = createEffect(() =>
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorClearRequest),
-      // @ts-ignore
-      withLatestFrom(this.store.select(fromStimulator.stimulatorReducerKey)),
+      withLatestFrom(this.store.select(stimulatorFeature)),
       switchMap(([action, state]: [any, StimulatorState]) => {
         if (
           state.stimulatorState <= StimulatorStateType.SETUP ||

@@ -12,6 +12,7 @@ import { SequencesService } from '../infrastructure/sequences.service';
 import * as SequencesActions from './sequences.actions';
 import { SequencesState } from './sequences.type';
 import * as ExperimentsActions from '../../../../../stim-feature-experiments/domain/src/lib/store/experiments.actions';
+import { sequencesFeature, sequencesSelector } from './sequences.reducer';
 
 @Injectable()
 export class SequencesEffects {
@@ -40,9 +41,7 @@ export class SequencesEffects {
   allWithGhosts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SequencesActions.actionSequencesAllWithGhostRequest),
-      withLatestFrom(this.store.select('sequences')),
-      // @ts-ignore
-      map(([action, sequences]) => [action, sequences.sequences]),
+      withLatestFrom(this.store.select(sequencesSelector)),
       switchMap(([action, sequences]) => {
         if (sequences.length !== 0) {
           return of({ data: sequences });
@@ -108,18 +107,16 @@ export class SequencesEffects {
   delete$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(SequencesActions.actionSequencesDeleteRequest),
-      withLatestFrom(this.store.select('sequences')),
+      withLatestFrom(this.store.select(sequencesFeature)),
       switchMap(([action, sequences]) => {
         if (action.sequenceID) {
           return this.sequences.delete(action.sequenceID);
         } else {
-          // @ts-ignore
           if (!sequences.selectionMode) {
             return EMPTY;
           }
 
           const selectedSequences: { [index: number]: boolean } =
-            // @ts-ignore
             sequences.selectedSequences;
           const filteredSelectedSequences = Object.entries<boolean>(
             selectedSequences
@@ -145,9 +142,8 @@ export class SequencesEffects {
   deleteDone$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SequencesActions.actionSequencesDeleteRequestDone),
-      withLatestFrom(this.store.select('sequences')),
+      withLatestFrom(this.store.select(sequencesFeature)),
       map(([action, sequences]) => {
-        // @ts-ignore
         if (sequences.selectionMode) {
           setTimeout(
             () =>
@@ -165,11 +161,10 @@ export class SequencesEffects {
   nameExists$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SequencesActions.actionSequencesNameExistsRequest),
-      withLatestFrom(this.store.select('sequences')),
+      withLatestFrom(this.store.select(sequencesFeature)),
       switchMap(([action, sequences]) =>
         this.sequences.nameExists(
           action.name,
-          // @ts-ignoreX
           sequences.selectedSequence.sequence.id
         )
       ),
@@ -189,8 +184,7 @@ export class SequencesEffects {
   sequenceGenerate$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SequencesActions.actionSequencesGenerateRequest),
-      withLatestFrom(this.store.select('sequences')),
-      // @ts-ignore
+      withLatestFrom(this.store.select(sequencesFeature)),
       switchMap(([action, sequences]: [any, SequencesState]) =>
         this.sequences.generaceSequence(
           sequences.selectedSequence.sequence.experimentId,

@@ -23,6 +23,7 @@ import {
 import { ExperimentsService } from '../infrastructure/experiments.service';
 import * as ExperimentsActions from './experiments.actions';
 import { ExperimentsState } from './experiments.type';
+import { experimentsFeature, experimentsSelector } from './experiments.reducer';
 
 @Injectable()
 export class ExperimentsEffects {
@@ -51,9 +52,7 @@ export class ExperimentsEffects {
   allWithGhosts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsAllWithGhostRequest),
-      withLatestFrom(this.store.select('experiments')),
-      // @ts-ignore
-      map(([action, experiments]) => [action, experiments.experiments]),
+      withLatestFrom(this.store.select(experimentsSelector)),
       switchMap(([action, experiments]) => {
         if (experiments.length !== 0) {
           return of({ data: experiments });
@@ -140,18 +139,16 @@ export class ExperimentsEffects {
   delete$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsDeleteRequest),
-      withLatestFrom(this.store.select('experiments')),
+      withLatestFrom(this.store.select(experimentsFeature)),
       switchMap(([action, experiments]) => {
         if (action.experimentID) {
           return this.experiments.delete(action.experimentID);
         } else {
-          // @ts-ignore
           if (!experiments.selectionMode) {
             return EMPTY;
           }
 
           const selectedExperiments: { [index: number]: boolean } =
-            // @ts-ignore
             experiments.selectedExperiments;
           const filteredSelectedExperiments = Object.entries<boolean>(
             selectedExperiments
@@ -177,9 +174,8 @@ export class ExperimentsEffects {
   deleteDone$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsDeleteRequestDone),
-      withLatestFrom(this.store.select('experiments')),
+      withLatestFrom(this.store.select(experimentsFeature)),
       map(([action, experiments]) => {
-        // @ts-ignore
         if (experiments.selectionMode) {
           setTimeout(
             () =>
@@ -197,11 +193,10 @@ export class ExperimentsEffects {
   nameExists$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsNameExistsRequest),
-      withLatestFrom(this.store.select('experiments')),
+      withLatestFrom(this.store.select(experimentsFeature)),
       switchMap(([action, experiments]) =>
         this.experiments.nameExists(
           action.name,
-          // @ts-ignore
           experiments.selectedExperiment.experiment.id
         )
       ),
@@ -221,7 +216,6 @@ export class ExperimentsEffects {
   sequencesForExperiment$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentsActions.actionSequencesForExperimentRequest),
-      // @ts-ignore
       switchMap((action) =>
         this.experiments.sequencesForExperiment(action.experiment)
       ),
@@ -243,10 +237,9 @@ export class ExperimentsEffects {
       ofType(
         ExperimentsActions.actionExperimentsGenerateSequenceFromNameAndSizeRequest
       ),
-      withLatestFrom(this.store.select('experiments')),
+      withLatestFrom(this.store.select(experimentsFeature)),
       switchMap(([action, experiments]) =>
         this.experiments.sequenceFromExperiment(
-          // @ts-ignore
           experiments.selectedExperiment.experiment.id,
           action.name,
           action.size

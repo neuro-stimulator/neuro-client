@@ -1,5 +1,5 @@
 import { FileBrowserState } from './file-browser-state';
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createFeatureSelector, createReducer, on } from '@ngrx/store';
 
 import * as FileBrowserActions from './file-browser-actions';
 
@@ -70,3 +70,7 @@ export function fileBrowserReducer(
     )
   )(fileBrowserState, fileBrowserAction);
 }
+
+export const fileBrowserFeature = createFeatureSelector<FileBrowserState>(
+  fileBrowserReducerKey
+);

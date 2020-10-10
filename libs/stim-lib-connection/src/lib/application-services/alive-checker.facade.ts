@@ -1,14 +1,13 @@
-import { Injectable } from "@angular/core";
-import { Store } from "@ngrx/store";
+import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 
-import * as ConnectionActions from "../store/connection.actions";
-import { Observable } from "rxjs";
-import * as fromConnection from "../store/connection.reducers";
-import { ConnectionInformationState } from "../store/connection.state";
+import * as ConnectionActions from '../store/connection.actions';
+import { Observable } from 'rxjs';
+import * as fromConnection from '../store/connection.reducers';
+import { ConnectionInformationState } from '../store/connection.state';
 
 @Injectable()
 export class AliveCheckerFacade {
-
   constructor(private readonly store: Store<ConnectionInformationState>) {}
 
   /**
@@ -34,7 +33,6 @@ export class AliveCheckerFacade {
   }
 
   get state(): Observable<ConnectionInformationState> {
-    // @ts-ignore
-    return this.store.select(fromConnection.connectionStateKey);
+    return this.store.select(fromConnection.connectionFeature);
   }
 }
