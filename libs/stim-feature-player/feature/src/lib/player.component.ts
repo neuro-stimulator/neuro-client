@@ -1,5 +1,12 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Observable, Subscription } from 'rxjs';
@@ -15,6 +22,7 @@ import { ConnectionStatus } from '@diplomka-frontend/stim-lib-connection';
 import {
   PlayerFacade,
   PlayerState,
+  StopConditionType,
 } from '@diplomka-frontend/stim-feature-player/domain';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { StimulatorStateType } from '@diplomka-frontend/stim-feature-stimulator/domain';
@@ -23,7 +31,7 @@ import { StimulatorStateType } from '@diplomka-frontend/stim-feature-stimulator/
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.sass'],
 })
-export class PlayerComponent implements OnInit, OnDestroy {
+export class PlayerComponent implements OnInit, AfterViewInit, OnDestroy {
   private _experimentSubscription: Subscription;
   private _stimulatorStateSubscription: Subscription;
   private _playerStateSubscription: Subscription;
@@ -43,13 +51,12 @@ export class PlayerComponent implements OnInit, OnDestroy {
       Validators.min(0),
     ]),
     autoplay: new FormControl({ value: false, disabled: true }),
-    stopConditionType: new FormControl(-1, [Validators.required]),
-    stopConditions: new FormGroup({
-      maxOutput: new FormControl(100),
-    }),
+    stopConditionType: new FormControl(0, [Validators.required]),
+    stopConditions: new FormGroup({}),
   });
 
   ConnectionStatus = ConnectionStatus;
+  private _stimulatorState: number;
 
   constructor(
     private readonly player: PlayerFacade,
@@ -138,17 +145,18 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.player.loadExperiment(this._route.snapshot.params['id']);
     this._stimulatorStateSubscription = this.player.stimulatorState$.subscribe(
       (status: number) => {
+        this._stimulatorState = status;
         if (
           status === StimulatorStateType.READY ||
           status === StimulatorStateType.CLEAR
         ) {
           this.logger.info('Aktivuji formulářové prvky.');
           this.form.enable();
-          this._updateDisabledAutoplay(this.repeat.value);
+          this._updateDisabledAutoplay(this.repeat.value, true);
         } else {
           this.logger.info('Deaktivuji formulářové prvky.');
           this.form.disable();
-          this._updateDisabledAutoplay(this.repeat.value);
+          this._updateDisabledAutoplay(this.repeat.value, true);
         }
       }
     );
@@ -159,19 +167,25 @@ export class PlayerComponent implements OnInit, OnDestroy {
           betweenExperimentInterval: state.betweenExperimentInterval,
           autoplay: state.autoplay,
           stopConditionType: state.stopConditionType,
-          stopConditions: state.stopConditions,
         });
       }
     );
     this._repeatValueSubscription = this.repeat.valueChanges.subscribe(
       (repeat: number) => {
-        this._updateDisabledAutoplay(repeat > 0);
-        this._updateDisabledStopConditions(repeat > 0);
+        this._updateDisabledAutoplay(repeat > 0, this._allowControlReset());
+        this._updateDisabledStopConditions(this._allowControlReset());
       }
     );
     this._autoplayValueSubscription = this.autoplay.valueChanges.subscribe(
-      (enabled: boolean) => this._updateBetweenExperimentInterval(enabled)
+      (enabled: boolean) =>
+        this._updateBetweenExperimentInterval(
+          enabled,
+          this._allowControlReset()
+        )
     );
+  }
+
+  ngAfterViewInit(): void {
     this.player.requestPlayerState();
   }
 
@@ -185,32 +199,38 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this._autoplayValueSubscription.unsubscribe();
   }
 
-  private _updateDisabledAutoplay(enabled: boolean) {
+  private _allowControlReset(): boolean {
+    return (
+      this._stimulatorState === StimulatorStateType.READY ||
+      this._stimulatorState === StimulatorStateType.CLEAR
+    );
+  }
+
+  private _updateDisabledAutoplay(enabled: boolean, reset: boolean) {
     if (enabled) {
       this.autoplay.enable();
     } else {
       this.autoplay.disable();
-      this.autoplay.reset(false);
+      if (reset) {
+        this.autoplay.reset(false);
+      }
     }
   }
 
-  private _updateBetweenExperimentInterval(enabled: boolean) {
+  private _updateBetweenExperimentInterval(enabled: boolean, reset: boolean) {
     if (enabled) {
       this.betweenExperimentInterval.enable();
     } else {
-      this.betweenExperimentInterval.reset(0);
+      if (reset) {
+        this.betweenExperimentInterval.reset(0);
+      }
       this.betweenExperimentInterval.disable();
     }
   }
 
-  private _updateDisabledStopConditions(enabled: boolean) {
-    if (enabled) {
-      this.stopConditionType.enable();
-      this.stopConditions.enable();
-    } else {
-      this.stopConditionType.disable();
-      this.stopConditions.disable();
-      this.stopConditionType.reset(-1);
+  private _updateDisabledStopConditions(reset: boolean) {
+    if (reset) {
+      this.stopConditionType.reset(0);
       this.stopConditions.reset({});
     }
   }
@@ -247,6 +267,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   get supportStopConditions(): Observable<boolean> {
     return this.player.supportStopConditions;
+  }
+
+  get availableStopConditions(): Observable<StopConditionType[]> {
+    return this.player.availableStopConditions;
   }
 
   get experiment(): Observable<Experiment> {

@@ -1,4 +1,10 @@
-import { Action, createFeatureSelector, createReducer, on } from '@ngrx/store';
+import {
+  Action,
+  createFeatureSelector,
+  createReducer,
+  createSelector,
+  on,
+} from '@ngrx/store';
 
 import { ExperimentStopConditionType, IOEvent } from '@stechy1/diplomka-share';
 
@@ -92,4 +98,14 @@ export function playerReducer(playerState: PlayerState, playerAction: Action) {
 
 export const playerFeature = createFeatureSelector<PlayerState>(
   playerReducerKey
+);
+
+export const supportStopconditionsSelector = createSelector(
+  playerFeature,
+  (state: PlayerState) => state.availableStopConditions?.length != 0
+);
+
+export const availableStopConditions = createSelector(
+  playerFeature,
+  (state: PlayerState) => state.availableStopConditions
 );

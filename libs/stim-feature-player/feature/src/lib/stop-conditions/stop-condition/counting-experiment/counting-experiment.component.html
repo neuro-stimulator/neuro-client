@@ -1,0 +1,9 @@
+<div class="row" [formGroup]="form">
+  <div class="col-12">
+    <div class="form-group">
+      <label for="experiment-name">{{ 'EXPERIMENT_PLAYER.PARAMS.STOP_CONDITION.TYPES.COUNTING_EXPERIMENT_STOP_CONDITION' | translate }}</label>
+      <input type="number" id="experiment-name" class="form-control form-control-sm" [class.is-valid]="maxOutput.valid" [class.is-invalid]="maxOutput.invalid" formControlName="maxOutput">
+      <small *ngIf="maxOutput.touched && maxOutput.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
+    </div>
+  </div>
+</div>

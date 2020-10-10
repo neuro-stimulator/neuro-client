@@ -20,7 +20,7 @@ import {
   ExperimentsState,
 } from '@diplomka-frontend/stim-feature-experiments/domain';
 
-import { PlayerState } from '../store/player.state';
+import { PlayerState, StopConditionType } from '../store/player.state';
 import * as fromPlayer from '../store/player.reducer';
 import * as PlayerActions from '../store/player.actions';
 
@@ -98,9 +98,11 @@ export class PlayerFacade {
   }
 
   get supportStopConditions(): Observable<boolean> {
-    return this.state.pipe(
-      map((state: PlayerState) => state.availableStopConditions.length !== 0)
-    );
+    return this.store.select(fromPlayer.supportStopconditionsSelector);
+  }
+
+  get availableStopConditions(): Observable<StopConditionType[]> {
+    return this.store.select(fromPlayer.availableStopConditions);
   }
 
   get lastStimulatorState(): StimulatorStateType {

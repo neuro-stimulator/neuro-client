@@ -33,102 +33,102 @@ export const actionStimulatorFirmwareUpdateFail = createAction(
 );
 
 export const actionCommandRebootRequest = createAction(
-  '[Stimulator command] Command reboot request',
+  '[Stimulator] Command reboot request',
   props<{}>()
 );
 export const actionCommandStimulatorStateRequest = createAction(
-  '[Stimulator command] Command stimulator state request',
+  '[Stimulator] Command stimulator state request',
   props<{}>()
 );
 export const actionCommandStimulatorStateRequestDone = createAction(
-  '[Stimulator command] Command stimulator state request done',
+  '[Stimulator] Command stimulator state request done',
   props<{ state: StimulatorStateType }>()
 );
 export const actionCommandStimulatorStateRequestFail = createAction(
-  '[Stimulator command] Command stimulator state request fail',
+  '[Stimulator] Command stimulator state request fail',
   props<{}>()
 );
 
 export const actionCommandStimulatorUploadRequest = createAction(
-  '[Stimulator command] Command stimulator upload request',
+  '[Stimulator] Command stimulator upload request',
   props<{}>()
 );
 export const actionCommandStimulatorUploadRequestDone = createAction(
-  '[Stimulator command] Command stimulator upload request done',
+  '[Stimulator] Command stimulator upload request done',
   props<{}>()
 );
 export const actionCommandStimulatorUploadRequestFail = createAction(
-  '[Stimulator command] Command stimulator upload request fail',
+  '[Stimulator] Command stimulator upload request fail',
   props<{}>()
 );
 
 export const actionCommandStimulatorSetupRequest = createAction(
-  '[Stimulator command] Command stimulator setup request',
+  '[Stimulator] Command stimulator setup request',
   props<{}>()
 );
 export const actionCommandStimulatorSetupRequestDone = createAction(
-  '[Stimulator command] Command stimulator setup request done',
+  '[Stimulator] Command stimulator setup request done',
   props<{}>()
 );
 export const actionCommandStimulatorSetupRequestFail = createAction(
-  '[Stimulator command] Command stimulator setup request fail',
+  '[Stimulator] Command stimulator setup request fail',
   props<{}>()
 );
 
 export const actionCommandStimulatorRunRequest = createAction(
-  '[Stimulator command] Command stimulator run request',
+  '[Stimulator] Command stimulator run request',
   props<{}>()
 );
 export const actionCommandStimulatorRunRequestDone = createAction(
-  '[Stimulator command] Command stimulator run request done',
+  '[Stimulator] Command stimulator run request done',
   props<{}>()
 );
 export const actionCommandStimulatorRunRequestFail = createAction(
-  '[Stimulator command] Command stimulator run request fail',
+  '[Stimulator] Command stimulator run request fail',
   props<{}>()
 );
 
 export const actionCommandStimulatorPauseRequest = createAction(
-  '[Stimulator command] Command stimulator pause request',
+  '[Stimulator] Command stimulator pause request',
   props<{}>()
 );
 export const actionCommandStimulatorPauseRequestDone = createAction(
-  '[Stimulator command] Command stimulator pause request done',
+  '[Stimulator] Command stimulator pause request done',
   props<{}>()
 );
 export const actionCommandStimulatorPauseRequestFail = createAction(
-  '[Stimulator command] Command stimulator pause request fail',
+  '[Stimulator] Command stimulator pause request fail',
   props<{}>()
 );
 
 export const actionCommandStimulatorFinishRequest = createAction(
-  '[Stimulator command] Command stimulator finish request',
+  '[Stimulator] Command stimulator finish request',
   props<{}>()
 );
 export const actionCommandStimulatorFinishRequestDone = createAction(
-  '[Stimulator command] Command stimulator finish request done',
+  '[Stimulator] Command stimulator finish request done',
   props<{}>()
 );
 export const actionCommandStimulatorFinishRequestFail = createAction(
-  '[Stimulator command] Command stimulator finish request fail',
+  '[Stimulator] Command stimulator finish request fail',
   props<{}>()
 );
 
 export const actionCommandStimulatorClearRequest = createAction(
-  '[Stimulator command] Command stimulator clear request',
+  '[Stimulator] Command stimulator clear request',
   props<{}>()
 );
 export const actionCommandStimulatorClearRequestDone = createAction(
-  '[Stimulator command] Command stimulator clear request done',
+  '[Stimulator] Command stimulator clear request done',
   props<{}>()
 );
 export const actionCommandStimulatorClearRequestFail = createAction(
-  '[Stimulator command] Command stimulator clear request fail',
+  '[Stimulator] Command stimulator clear request fail',
   props<{}>()
 );
 
 export const actionCommandStimulatorSetOutput = createAction(
-  '[Stimulator command] Command toggle output',
+  '[Stimulator] Command toggle output',
   props<{ index: number; enabled: boolean }>()
 );
 
