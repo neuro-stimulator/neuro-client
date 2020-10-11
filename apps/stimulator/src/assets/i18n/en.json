@@ -597,5 +597,12 @@
 
   "PROFILE": {
     "TITLE": "Profil"
+  },
+
+  "STIMULATOR": {
+    "TITLE": "Stimulator",
+    "CALIBRATION": {
+      "TITLE": "Stimulator calibration"
+    }
   }
 }

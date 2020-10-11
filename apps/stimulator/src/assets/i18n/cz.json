@@ -600,5 +600,12 @@
 
   "PROFILE": {
     "TITLE": "Profil"
+  },
+
+  "STIMULATOR": {
+    "TITLE": "Stimulátor",
+    "CALIBRATION": {
+      "TITLE": "Kalibrace stimulátoru"
+    }
   }
 }
