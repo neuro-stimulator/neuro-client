@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { DefaultProjectorFn, MemoizedSelector, Store } from '@ngrx/store';
 
-import { Experiment } from '@stechy1/diplomka-share';
+import { Experiment, Output } from '@stechy1/diplomka-share';
 
 import { BaseFacade } from '@diplomka-frontend/stim-lib-common';
 import { BaseActions } from '@diplomka-frontend/stim-lib-common';
@@ -13,7 +13,7 @@ import { ExperimentsState } from '../store/experiments.type';
 
 @Injectable()
 export class ExperimentsFacade extends BaseFacade<
-  Experiment,
+  Experiment<Output>,
   ExperimentsState
 > {
   constructor(store: Store<ExperimentsState>) {
@@ -55,13 +55,13 @@ export class ExperimentsFacade extends BaseFacade<
     };
   }
 
-  public empty(emptyExperiment: Experiment) {
+  public empty(emptyExperiment: Experiment<Output>) {
     this.store.dispatch(
       ExperimentsActions.actionExperimentEmpty({ emptyExperiment })
     );
   }
 
-  public save(record: Experiment) {
+  public save(record: Experiment<Output>) {
     if (!record.id) {
       this.insert(record);
     } else {

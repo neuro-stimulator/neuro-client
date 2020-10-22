@@ -1,6 +1,6 @@
 // All record request
 import { createAction, props } from '@ngrx/store';
-import { Experiment, Sequence } from '@stechy1/diplomka-share';
+import { Experiment, Output, Sequence } from '@stechy1/diplomka-share';
 
 // All record request
 export const actionSequencesAllWithGhostRequest = createAction(
@@ -121,7 +121,7 @@ export const actionSequencesExperimentsAsSequenceSourceRequest = createAction(
 );
 export const actionSequencesExperimentsAsSequenceSourceRequestDone = createAction(
   '[Sequences] find sequences for experiments as sequence source done',
-  props<{ experiments: Experiment[] }>()
+  props<{ experiments: Experiment<Output>[] }>()
 );
 export const actionSequencesExperimentsAsSequenceSourceRequestFail = createAction(
   '[Sequences] find sequences for experiments as sequence source fail',

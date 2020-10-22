@@ -49,7 +49,7 @@
 </div>
 
 <stim-lib-fab
-  [icon]="(experimentsState | async).working ? 'fa-save fa-spin' : 'fa-save'"
+  [icon]="(connectionState | async).working ? 'fa-save fa-spin' : 'fa-save'"
   (fabClick)="handleSaveExperiment()"
-  [disabled]="form.invalid || (experimentsState | async).working ">
+  [disabled]="form.invalid || (connectionState | async).working ">
 </stim-lib-fab>

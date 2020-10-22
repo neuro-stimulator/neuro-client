@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {
   AbstractControl,
   FormArray,
@@ -8,13 +8,13 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
 import {
   createEmptyExperimentFVEP,
   ExperimentFVEP,
+  FvepOutput,
 } from '@stechy1/diplomka-share';
 
 import { ShareValidators } from '@diplomka-frontend/stim-lib-ui';
@@ -34,10 +34,10 @@ import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
   styleUrls: ['./experiment-type-fvep.component.sass'],
 })
 export class ExperimentTypeFvepComponent
-  extends BaseExperimentTypeComponent<ExperimentFVEP>
+  extends BaseExperimentTypeComponent<ExperimentFVEP, FvepOutput>
   implements OnInit {
   constructor(
-    @Inject(TOKEN_MAX_OUTPUT_COUNT) private readonly _maxOutputCount: number,
+    @Inject(TOKEN_MAX_OUTPUT_COUNT) maxOutputCount: number,
     service: ExperimentsFacade,
     route: ActivatedRoute,
     navigation: NavigationFacade,
@@ -45,6 +45,7 @@ export class ExperimentTypeFvepComponent
     logger: NGXLogger
   ) {
     super(
+      maxOutputCount,
       service,
       route,
       navigation,
@@ -58,8 +59,9 @@ export class ExperimentTypeFvepComponent
     super.ngOnInit();
   }
 
-  private _createOutputFormControl(): FormGroup {
-    return new FormGroup({
+  protected _createOutputFormControl(): { [p: string]: AbstractControl } {
+    const superControls = super._createOutputFormControl();
+    const myControls = {
       id: new FormControl(null, Validators.required),
       experimentId: new FormControl(null, Validators.required),
       orderId: new FormControl(null, Validators.required),
@@ -94,7 +96,9 @@ export class ExperimentTypeFvepComponent
         },
         [Validators.required, ExperimentOutputTypeValidator.createValidator()]
       ),
-    });
+    };
+
+    return { ...superControls, ...myControls };
   }
 
   protected _createFormControls(): { [p: string]: AbstractControl } {
@@ -113,27 +117,5 @@ export class ExperimentTypeFvepComponent
 
   protected _createEmptyExperiment(): ExperimentFVEP {
     return createEmptyExperimentFVEP();
-  }
-
-  protected _updateFormGroup(experiment: ExperimentFVEP) {
-    if (experiment.outputs?.length > 0) {
-      for (let i = 0; i < this._maxOutputCount; i++) {
-        (this.form.get('outputs') as FormArray).push(
-          this._createOutputFormControl()
-        );
-      }
-    } else {
-      (this.form.get('outputs') as FormArray).clear();
-    }
-
-    super._updateFormGroup(experiment);
-  }
-
-  get outputCountParams(): SliderOptions {
-    return outputCountParams(this._maxOutputCount);
-  }
-
-  get outputCount() {
-    return this.form.get('outputCount');
   }
 }

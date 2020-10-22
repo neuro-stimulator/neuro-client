@@ -3,7 +3,7 @@
     <form [formGroup]="form">
 
       <!-- Generická hlavička společná pro všechny experimenty -->
-      <stim-feature-experiments-experiment-type-header [form]="form"></stim-feature-experiments-experiment-type-header>
+      <stim-feature-experiments-experiment-type-header [form]="form" (showOutputEditor)="handleShowOutputEditor()"></stim-feature-experiments-experiment-type-header>
 
       <div class="row experiment-property">
         <div class="col-10">

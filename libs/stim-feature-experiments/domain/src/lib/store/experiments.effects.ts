@@ -16,6 +16,7 @@ import { Store } from '@ngrx/store';
 import {
   Experiment,
   ExperimentType,
+  Output,
   ResponseObject,
   Sequence,
 } from '@stechy1/diplomka-share';
@@ -39,7 +40,7 @@ export class ExperimentsEffects {
       ofType(ExperimentsActions.actionExperimentsAllRequest),
       switchMap((action) => this.experiments.all()),
       // delay(1000),
-      map((response: ResponseObject<Experiment[]>) => {
+      map((response: ResponseObject<Experiment<Output>[]>) => {
         return ExperimentsActions.actionExperimentsAllRequestDone({
           experiments: response.data,
         });
@@ -60,7 +61,7 @@ export class ExperimentsEffects {
           return this.experiments.all();
         }
       }),
-      map((response: ResponseObject<Experiment[]>) => {
+      map((response: ResponseObject<Experiment<Output>[]>) => {
         return ExperimentsActions.actionExperimentsAllRequestDone({
           experiments: response.data,
         });
@@ -75,7 +76,7 @@ export class ExperimentsEffects {
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsOneRequest),
       switchMap((action) => this.experiments.one(action.experimentID)),
-      map((response: ResponseObject<Experiment>) => {
+      map((response: ResponseObject<Experiment<Output>>) => {
         return [
           ExperimentsActions.actionExperimentsOneRequestDone({
             experiment: response.data,
@@ -107,7 +108,7 @@ export class ExperimentsEffects {
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsInsertRequest),
       switchMap((action) => this.experiments.insert(action.experiment)),
-      map((response: ResponseObject<Experiment>) => {
+      map((response: ResponseObject<Experiment<Output>>) => {
         this.router.navigate([
           '/experiments',
           ExperimentType[response.data.type].toLowerCase(),
@@ -126,7 +127,7 @@ export class ExperimentsEffects {
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsUpdateRequest),
       switchMap((action) => this.experiments.update(action.experiment)),
-      map((response: ResponseObject<Experiment>) => {
+      map((response: ResponseObject<Experiment<Output>>) => {
         return ExperimentsActions.actionExperimentsUpdateRequestDone({
           experiment: response.data,
         });
@@ -161,7 +162,7 @@ export class ExperimentsEffects {
           return this.experiments.delete(+selectedIndex);
         }
       }),
-      map((response: ResponseObject<Experiment>) =>
+      map((response: ResponseObject<Experiment<Output>>) =>
         ExperimentsActions.actionExperimentsDeleteRequestDone({
           experiment: response.data,
         })

@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { Experiment } from '@stechy1/diplomka-share';
+import { Experiment, Output } from '@stechy1/diplomka-share';
 
 import { StimLibUiModule } from '@diplomka-frontend/stim-lib-ui';
 import { StimLibListUtilsModule } from '@diplomka-frontend/stim-lib-list-utils';
@@ -44,6 +43,7 @@ import { ExperimentsDeactivate } from './experiments.deactivate';
 import { ExperimentTypeResolverDirective } from './experiment-type-resolver.directive';
 import { StimFeatureSequencesDomainModule } from '@diplomka-frontend/stim-feature-sequences/domain';
 import { StimFeatureFileBrowserFeatureModule } from '@diplomka-frontend/stim-feature-file-browser/feature';
+import { OutputEditorComponent } from './experiment-type/output-type/output-editor/output-editor.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +71,7 @@ import { StimFeatureFileBrowserFeatureModule } from '@diplomka-frontend/stim-fea
     SequenceFastDialogComponent,
     ExperimentsPageToolsComponent,
     ExperimentTypeResolverDirective,
+    OutputEditorComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -80,7 +81,7 @@ import { StimFeatureFileBrowserFeatureModule } from '@diplomka-frontend/stim-fea
     StimLibUiModule,
     ExperimentsRoutingModule,
     StimFeatureSettingsFeatureParamConfigExperimentsModule,
-    StimLibListUtilsModule.forChild<Experiment>({
+    StimLibListUtilsModule.forChild<Experiment<Output>>({
       storageSuffix: 'experiments',
       fuseKeys: ['name', 'tag'],
       groupBy: GROUP_BY_FILTERS,

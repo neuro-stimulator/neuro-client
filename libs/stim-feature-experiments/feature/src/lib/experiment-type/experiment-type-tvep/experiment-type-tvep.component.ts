@@ -22,6 +22,7 @@ import { Options as SliderOptions } from 'ng5-slider/options';
 import {
   createEmptyExperimentTVEP,
   ExperimentTVEP,
+  TvepOutput,
 } from '@stechy1/diplomka-share';
 
 import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
@@ -40,14 +41,14 @@ import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
   styleUrls: ['./experiment-type-tvep.component.sass'],
 })
 export class ExperimentTypeTvepComponent
-  extends BaseExperimentTypeComponent<ExperimentTVEP>
+  extends BaseExperimentTypeComponent<ExperimentTVEP, TvepOutput>
   implements OnInit, AfterContentInit, OnDestroy {
   readonly sharePatternLengthEmitter: EventEmitter<boolean> = new EventEmitter<
     boolean
   >();
 
   constructor(
-    @Inject(TOKEN_MAX_OUTPUT_COUNT) private readonly _maxOutputCount: number,
+    @Inject(TOKEN_MAX_OUTPUT_COUNT) maxOutputCount: number,
     service: ExperimentsFacade,
     route: ActivatedRoute,
     navigation: NavigationFacade,
@@ -55,6 +56,7 @@ export class ExperimentTypeTvepComponent
     logger: NGXLogger
   ) {
     super(
+      maxOutputCount,
       service,
       route,
       navigation,
@@ -75,11 +77,9 @@ export class ExperimentTypeTvepComponent
     );
   }
 
-  protected _createOutputFormControl(): FormGroup {
-    return new FormGroup({
-      id: new FormControl(null, Validators.required),
-      experimentId: new FormControl(null, Validators.required),
-      orderId: new FormControl(null, Validators.required),
+  protected _createOutputFormControl(): { [p: string]: AbstractControl } {
+    const superControls = super._createOutputFormControl();
+    const myControls = {
       out: new FormControl(null, [
         Validators.required,
         ShareValidators.exclusiveMin(0),
@@ -94,22 +94,9 @@ export class ExperimentTypeTvepComponent
         Validators.max(32),
       ]),
       pattern: new FormControl(null, [Validators.required]),
-      brightness: new FormControl(null, [
-        Validators.required,
-        Validators.min(0),
-        Validators.max(100),
-      ]),
-      outputType: new FormGroup(
-        {
-          led: new FormControl(null),
-          audio: new FormControl(null),
-          audioFile: new FormControl(null),
-          image: new FormControl(null),
-          imageFile: new FormControl(null),
-        },
-        [Validators.required, ExperimentOutputTypeValidator.createValidator()]
-      ),
-    });
+    };
+
+    return { ...superControls, ...myControls };
   }
 
   protected _createFormControls(): { [p: string]: AbstractControl } {
@@ -129,28 +116,6 @@ export class ExperimentTypeTvepComponent
 
   protected _createEmptyExperiment(): ExperimentTVEP {
     return createEmptyExperimentTVEP();
-  }
-
-  protected _updateFormGroup(experiment: ExperimentTVEP) {
-    if (experiment.outputs?.length > 0) {
-      for (let i = 0; i < this._maxOutputCount; i++) {
-        (this.form.get('outputs') as FormArray).push(
-          this._createOutputFormControl()
-        );
-      }
-    } else {
-      (this.form.get('outputs') as FormArray).clear();
-    }
-
-    super._updateFormGroup(experiment);
-  }
-
-  get outputCountParams(): SliderOptions {
-    return outputCountParams(this._maxOutputCount);
-  }
-
-  get outputCount() {
-    return this.form.get('outputCount');
   }
 
   get sharePatternLength() {

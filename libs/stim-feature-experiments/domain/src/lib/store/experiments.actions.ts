@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Experiment, Sequence } from '@stechy1/diplomka-share';
+import { Experiment, Output, Sequence } from '@stechy1/diplomka-share';
 
 // All record request
 export const actionExperimentsAllWithGhostRequest = createAction(
@@ -13,7 +13,7 @@ export const actionExperimentsAllRequest = createAction(
 );
 export const actionExperimentsAllRequestDone = createAction(
   '[Experiments] all records request done',
-  props<{ experiments: Experiment[] }>()
+  props<{ experiments: Experiment<Output>[] }>()
 );
 export const actionExperimentsAllRequestFail = createAction(
   '[Experiments] all records request fail',
@@ -23,7 +23,7 @@ export const actionExperimentsAllRequestFail = createAction(
 // One record request
 export const actionExperimentEmpty = createAction(
   '[Experiments] empty record',
-  props<{ emptyExperiment: Experiment }>()
+  props<{ emptyExperiment: Experiment<Output> }>()
 );
 export const actionExperimentsOneRequest = createAction(
   '[Experiments] one record request',
@@ -31,7 +31,7 @@ export const actionExperimentsOneRequest = createAction(
 );
 export const actionExperimentsOneRequestDone = createAction(
   '[Experiments] one record request done',
-  props<{ experiment: Experiment }>()
+  props<{ experiment: Experiment<Output> }>()
 );
 export const actionExperimentsOneRequestFail = createAction(
   '[Experiments] one record request fail',
@@ -41,11 +41,11 @@ export const actionExperimentsOneRequestFail = createAction(
 // Insert record request
 export const actionExperimentsInsertRequest = createAction(
   '[Experiments] insert record request',
-  props<{ experiment: Experiment }>()
+  props<{ experiment: Experiment<Output> }>()
 );
 export const actionExperimentsInsertRequestDone = createAction(
   '[Experiments] insert record request done',
-  props<{ experiment: Experiment }>()
+  props<{ experiment: Experiment<Output> }>()
 );
 export const actionExperimentsInsertRequestFail = createAction(
   '[Experiments] insert record request fail',
@@ -55,11 +55,11 @@ export const actionExperimentsInsertRequestFail = createAction(
 // Update record request
 export const actionExperimentsUpdateRequest = createAction(
   '[Experiments] update record request',
-  props<{ experiment: Experiment }>()
+  props<{ experiment: Experiment<Output> }>()
 );
 export const actionExperimentsUpdateRequestDone = createAction(
   '[Experiments] update record request done',
-  props<{ experiment: Experiment }>()
+  props<{ experiment: Experiment<Output> }>()
 );
 export const actionExperimentsUpdateRequestFail = createAction(
   '[Experiments] update record request fail',
@@ -73,7 +73,7 @@ export const actionExperimentsDeleteRequest = createAction(
 );
 export const actionExperimentsDeleteRequestDone = createAction(
   '[Experiments] delete record request done',
-  props<{ experiment: Experiment }>()
+  props<{ experiment: Experiment<Output> }>()
 );
 export const actionExperimentsDeleteRequestFail = createAction(
   '[Experiments] delete record request fail',
@@ -97,7 +97,7 @@ export const actionExperimentsNameExistsRequestFail = createAction(
 // Get sequences by experiment
 export const actionSequencesForExperimentRequest = createAction(
   '[Experiments] find sequences for experiment',
-  props<{ experiment: Experiment }>()
+  props<{ experiment: Experiment<Output> }>()
 );
 export const actionSequencesForExperimentRequestDone = createAction(
   '[Experiments] find sequences for experiment done',
@@ -125,7 +125,7 @@ export const actionExperimentsGenerateSequenceFromNameAndSizeRequestDone = creat
 
 export const actionExperimentsToggleSelected = createAction(
   '[Experiments] toggle experiment entry selected',
-  props<{ experiment: Experiment }>()
+  props<{ experiment: Experiment<Output> }>()
 );
 
 export const actionExperimentsSelectAll = createAction(

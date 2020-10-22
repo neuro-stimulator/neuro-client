@@ -6,14 +6,18 @@ import {
   on,
 } from '@ngrx/store';
 
-import { createEmptyExperiment, Experiment } from '@stechy1/diplomka-share';
+import {
+  createEmptyExperiment,
+  Experiment,
+  Output,
+} from '@stechy1/diplomka-share';
 
 import { ExperimentsState } from './experiments.type';
 import * as ExperimentsActions from './experiments.actions';
 
 export const experimentsReducerKey = 'experiments';
 
-const emptyExperiment: Experiment = createEmptyExperiment();
+const emptyExperiment: Experiment<Output> = createEmptyExperiment();
 
 export function experimentsReducer(
   experimentsState: ExperimentsState,

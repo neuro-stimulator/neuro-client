@@ -12,7 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
-import { Experiment } from '@stechy1/diplomka-share';
+import { Experiment, Output } from '@stechy1/diplomka-share';
 
 import {
   ContentTogglerDirective,
@@ -137,7 +137,7 @@ export class PlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     this._experimentSubscription = this.experiment.subscribe(
-      (experiment: Experiment) => {
+      (experiment: Experiment<Output>) => {
         this._navigation.titleArgs = { name: experiment.name };
         this.player.requestAvailableStopConditions();
       }
@@ -277,7 +277,7 @@ export class PlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.player.availableStopConditions;
   }
 
-  get experiment(): Observable<Experiment> {
+  get experiment(): Observable<Experiment<Output>> {
     return this.player.playingExperiment$;
   }
 

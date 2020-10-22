@@ -13,6 +13,7 @@ import { Options as SliderOptions } from 'ng5-slider/options';
 
 import {
   createEmptyExperimentCVEP,
+  CvepOutput,
   ExperimentCVEP,
 } from '@stechy1/diplomka-share';
 
@@ -35,7 +36,7 @@ import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-
   styleUrls: ['./experiment-type-cvep.component.sass'],
 })
 export class ExperimentTypeCvepComponent
-  extends BaseExperimentTypeComponent<ExperimentCVEP>
+  extends BaseExperimentTypeComponent<ExperimentCVEP, CvepOutput>
   implements OnInit {
   bitShiftSliderOptions: SliderOptions = {
     floor: 0,
@@ -48,7 +49,7 @@ export class ExperimentTypeCvepComponent
   };
 
   constructor(
-    @Inject(TOKEN_MAX_OUTPUT_COUNT) private readonly _maxOutputCount: number,
+    @Inject(TOKEN_MAX_OUTPUT_COUNT) maxOutputCount: number,
     service: ExperimentsFacade,
     route: ActivatedRoute,
     navigation: NavigationFacade,
@@ -56,6 +57,7 @@ export class ExperimentTypeCvepComponent
     logger: NGXLogger
   ) {
     super(
+      maxOutputCount,
       service,
       route,
       navigation,
@@ -115,16 +117,8 @@ export class ExperimentTypeCvepComponent
     return createEmptyExperimentCVEP();
   }
 
-  get outputCountParams(): SliderOptions {
-    return outputCountParams(this._maxOutputCount);
-  }
-
   get brightnessSliderOptions(): SliderOptions {
     return brightnessSliderOptions;
-  }
-
-  get outputCount() {
-    return this.form.get('outputCount');
   }
 
   get usedOutputs(): FormGroup {

@@ -5,7 +5,12 @@ import { Observable } from 'rxjs';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { Experiment, ResponseObject, Sequence } from '@stechy1/diplomka-share';
+import {
+  Experiment,
+  Output,
+  ResponseObject,
+  Sequence,
+} from '@stechy1/diplomka-share';
 
 import {
   BaseService,
@@ -44,12 +49,12 @@ export class SequencesService extends BaseService<Sequence> {
    * Vrátí kolekci experimentů, které podporují sekvence
    */
   public experimentsAsSequenceSource(): Observable<
-    ResponseObject<Experiment[]>
+    ResponseObject<Experiment<Output>[]>
   > {
     this.logger.info(
       'Odesílám požadavek na získání všech experimentů, které podporují sekvence.'
     );
-    return this._http.get<ResponseObject<Experiment[]>>(
+    return this._http.get<ResponseObject<Experiment<Output>[]>>(
       `${this._accessPoint}/experiments-as-sequence-source`
     );
   }
@@ -60,7 +65,7 @@ export class SequencesService extends BaseService<Sequence> {
    * @param experiment Experiment, pro který se mají nalézt všechny sekvence
    */
   public forExperiment(
-    experiment: Experiment
+    experiment: Experiment<Output>
   ): Observable<ResponseObject<Sequence[]>> {
     return this._http.get<ResponseObject<Sequence[]>>(
       `${this._accessPoint}/for-experiment/${experiment.id}`

@@ -10,6 +10,7 @@ import {
 import { ActivatedRoute, Params } from '@angular/router';
 import {
   AbstractControl,
+  FormArray,
   FormControl,
   FormGroup,
   Validators,
@@ -19,7 +20,7 @@ import { map, take } from 'rxjs/operators';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
+import { Experiment, ExperimentType, Output } from '@stechy1/diplomka-share';
 
 import {
   ExperimentsFacade,
@@ -31,10 +32,17 @@ import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 
 import { ExperimentNameValidator } from '../experiment-name-validator';
 import { ComponentCanDeactivate } from '../experiments.deactivate';
+import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { OutputEditorComponent } from './output-type/output-editor/output-editor.component';
+import { ExperimentOutputTypeValidator } from './output-type/experiment-output-type-validator';
+import { Options as SliderOptions } from 'ng5-slider/options';
+import { outputCountParams } from '../experiments.share';
 
 @Directive()
-export abstract class BaseExperimentTypeComponent<E extends Experiment>
-  implements OnInit, OnDestroy, ComponentCanDeactivate {
+export abstract class BaseExperimentTypeComponent<
+  E extends Experiment<O>,
+  O extends Output
+> implements OnInit, OnDestroy, ComponentCanDeactivate {
   private _experimentLoaded: EventEmitter<E> = new EventEmitter<E>();
   public experimentLoaded$: Observable<
     E
@@ -43,9 +51,8 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
   private _experimentsStateSubscription: Subscription;
 
   protected constructor(
+    protected readonly _maxOutputCount: number,
     protected readonly _facade: ExperimentsFacade,
-    // protected readonly toastr: ToastrService,
-    // protected readonly _router: Router,
     protected readonly _route: ActivatedRoute,
     protected readonly _navigation: NavigationFacade,
     private readonly _connection: AliveCheckerFacade,
@@ -66,44 +73,10 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
         this.logger.error(
           `ID experimentu: '${experimentId}' se nepodařilo naparsovat!`
         );
-        // this._router.navigate(['/', 'experiments']);
         return;
       }
 
       this._facade.one(+experimentId);
-
-      // if (experimentId !== undefined) {
-      //   this._service.one(+experimentId)
-      //       .catch((error) => {
-      //         // Pokud nenastane timeout => experiment nebyl na serveru nalezen
-      //         if (!(error instanceof TimeoutError)) {
-      //           // Rovnou přesmeruji na seznam všech experimentů
-      //           this.logger.error('Vyskytl se problém s načítáním experimentu... Přesmerovávám na výčet všech experimentů!');
-      //           this._router.navigate(['/', 'experiments']);
-      //         }
-      //
-      //         // Nastal timeout
-      //         // vrátím existující prázdný experiment a přihlásím se k socketu na událost
-      //         // pro obnovení spojení
-      //         this._connectedSubscription = this._service.connected$.subscribe(() => {
-      //           this._connectedSubscription.unsubscribe();
-      //           this._loadExperiment(experimentId);
-      //         });
-      //         return this._experiment;
-      //       })
-      //       .then((experiment: E) => {
-      //         this.logger.info(`Budu zobrazovat konfiguraci experimentu s ID: ${experiment.id}.`);
-      //         this._experiment = experiment;
-      //         this._updateFormGroup(this._experiment);
-      //         this._navigation.customNavColor.next(ExperimentType[experiment.type].toLowerCase());
-      //         this._experimentLoaded.next(experiment);
-      //         // Nepříjemný hack, který mi zajistí,
-      //         // že formulář bude vykazovat známky netknutosti i po nastavení všech
-      //         // hodnot
-      //         setTimeout(() => {
-      //           this.form.markAsUntouched();
-      //         }, 100);
-      //       });
     } else {
       this._facade.empty(this._createEmptyExperiment());
     }
@@ -114,8 +87,19 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
    *
    * @param experiment Experiment, který dodá data do formuláře
    */
-  protected _updateFormGroup(experiment: E) {
+  private _updateFormGroup(experiment: E) {
     this.logger.debug('Aktualizuji hodnoty ve formuláři.');
+
+    if (experiment.outputs?.length > 0) {
+      for (let i = 0; i < this._maxOutputCount; i++) {
+        (this.form.get('outputs') as FormArray).push(
+          new FormGroup(this._createOutputFormControl())
+        );
+      }
+    } else {
+      (this.form.get('outputs') as FormArray).clear();
+    }
+
     this.form.patchValue(experiment);
     this.form.markAsUntouched();
   }
@@ -124,6 +108,13 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
    * Pomocná abstraktní metoda pro vytvoření prázdné instance experimentu
    */
   protected abstract _createEmptyExperiment(): E;
+
+  /**
+   * Pomocný getter na instanci modální komponenty
+   */
+  protected get modalComponent(): ModalComponent {
+    return null;
+  }
 
   /**
    * Pomocná abstraktní metoda pro vytvoření formulářové skupiny komponent
@@ -147,13 +138,49 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
     };
   }
 
+  protected _createOutputFormControl(): { [p: string]: AbstractControl } {
+    this.logger.debug('Vytvářím kontrolky výstupů pro formulář.');
+    return {
+      id: new FormControl(null, Validators.required),
+      experimentId: new FormControl(null, Validators.required),
+      orderId: new FormControl(null, [Validators.required, Validators.min(0)]),
+      brightness: new FormControl(null, [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(100),
+      ]),
+      outputType: new FormGroup(
+        {
+          led: new FormControl(null),
+          audio: new FormControl(null),
+          audioFile: new FormControl(null),
+          image: new FormControl(null),
+          imageFile: new FormControl(null),
+        },
+        {
+          validators: [
+            Validators.required,
+            ExperimentOutputTypeValidator.createValidator(),
+          ],
+        }
+      ),
+      x: new FormControl(),
+      y: new FormControl(),
+      width: new FormControl(),
+      height: new FormControl(),
+      manualAlignment: new FormControl(),
+      horizontalAlignment: new FormControl(),
+      verticalAlignment: new FormControl(),
+    };
+  }
+
   ngOnInit(): void {
     this._experimentsStateSubscription = this._facade.state
       .pipe(take(2))
       .pipe(
         map((state: ExperimentsState) => state.selectedExperiment.experiment)
       )
-      .subscribe((experiment: Experiment) => {
+      .subscribe((experiment: Experiment<O>) => {
         this._updateFormGroup(experiment as E);
         this._navigation.customNavColor = ExperimentType[
           experiment.type
@@ -187,11 +214,29 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment>
     this._facade.save(this.form.value);
   }
 
+  /**
+   * Reakce na tlačítko pro zobrazení editoru výstupů
+   */
+  public handleShowOutputEditor() {
+    this.modalComponent.showComponent = OutputEditorComponent;
+    this.modalComponent.open({
+      outputs: this.form.value.outputs,
+    });
+  }
+
   get experimentsState(): Observable<ExperimentsState> {
     return this._facade.state;
   }
 
   get connectionState(): Observable<ConnectionInformationState> {
     return this._connection.state;
+  }
+
+  get outputCountParams(): SliderOptions {
+    return outputCountParams(this._maxOutputCount);
+  }
+
+  get outputCount() {
+    return this.form.get('outputCount');
   }
 }

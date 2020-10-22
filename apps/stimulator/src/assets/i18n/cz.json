@@ -155,6 +155,11 @@
       "INVERT": "Invertovat",
       "RANDOM": "Náhodný"
     },
+    "OUTPUT_EDITOR": {
+      "TITLE": "Editor výstupů",
+      "CONFIRM": "Uložit",
+      "CANCEL": "Zrušit"
+    },
     "STEPS": {
       "EXPERIMENT_LIST": "Seznam všech dostupných experimentů.",
       "EXPERIMENT_ROW": "Záznam o jednom experimentu.",

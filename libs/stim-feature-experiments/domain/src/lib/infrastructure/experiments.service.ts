@@ -3,7 +3,12 @@ import { HttpClient } from '@angular/common/http';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { Experiment, ResponseObject, Sequence } from '@stechy1/diplomka-share';
+import {
+  Experiment,
+  Output,
+  ResponseObject,
+  Sequence,
+} from '@stechy1/diplomka-share';
 import {
   BaseService,
   TOKEN_EXPERIMENTS_API_URL,
@@ -13,7 +18,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ExperimentsService extends BaseService<Experiment> {
+export class ExperimentsService extends BaseService<Experiment<Output>> {
   constructor(
     @Inject(TOKEN_EXPERIMENTS_API_URL) apiURL: string,
     protected readonly _http: HttpClient,
@@ -34,7 +39,7 @@ export class ExperimentsService extends BaseService<Experiment> {
     );
   }
 
-  public sequencesForExperiment(experiment: Experiment) {
+  public sequencesForExperiment(experiment: Experiment<Output>) {
     this.logger.info(
       'Odesílám požadavek pro získání všech sekvencí vygenerovaných pro zadaný experiment.'
     );

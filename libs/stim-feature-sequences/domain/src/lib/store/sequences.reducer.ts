@@ -10,6 +10,7 @@ import {
   createEmptyExperiment,
   createEmptySequence,
   Experiment,
+  Output,
   Sequence,
 } from '@stechy1/diplomka-share';
 
@@ -19,20 +20,20 @@ import * as SequencesActions from './sequences.actions';
 export const sequencesReducerKey = 'sequences';
 
 const emptySequence: Sequence = createEmptySequence();
-const emptyExperiment: Experiment = createEmptyExperiment();
+const emptyExperiment: Experiment<Output> = createEmptyExperiment();
 
 export function sequencesReducer(
   sequencesState: SequencesState,
   sequencesAction: Action
 ) {
-  function getExperiment(state: SequencesState): Experiment {
+  function getExperiment(state: SequencesState): Experiment<Output> {
     const experimentID = state.selectedSequence.sequence.experimentId;
     if (experimentID === -1) {
       return emptyExperiment;
     }
 
     const index = state.selectedSequence.experiments.findIndex(
-      (value: Experiment) => value.id === +experimentID
+      (value: Experiment<Output>) => value.id === +experimentID
     );
     if (index === -1) {
       return emptyExperiment;

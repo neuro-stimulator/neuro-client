@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {
   AbstractControl,
   FormControl,
@@ -7,7 +7,6 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
@@ -15,6 +14,7 @@ import {
   createEmptyExperimentREA,
   ExperimentREA,
   ReaOnResponseFail,
+  ReaOutput,
 } from '@stechy1/diplomka-share';
 
 import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
@@ -36,10 +36,10 @@ import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
   styleUrls: ['./experiment-type-rea.component.sass'],
 })
 export class ExperimentTypeReaComponent
-  extends BaseExperimentTypeComponent<ExperimentREA>
+  extends BaseExperimentTypeComponent<ExperimentREA, ReaOutput>
   implements OnInit {
   constructor(
-    @Inject(TOKEN_MAX_OUTPUT_COUNT) private readonly _maxOutputCount: number,
+    @Inject(TOKEN_MAX_OUTPUT_COUNT) maxOutputCount: number,
     service: ExperimentsFacade,
     route: ActivatedRoute,
     navigation: NavigationFacade,
@@ -47,6 +47,7 @@ export class ExperimentTypeReaComponent
     logger: NGXLogger
   ) {
     super(
+      maxOutputCount,
       service,
       route,
       navigation,
@@ -122,16 +123,8 @@ export class ExperimentTypeReaComponent
     ];
   }
 
-  get outputCountParams(): SliderOptions {
-    return outputCountParams(this._maxOutputCount);
-  }
-
   get brightnessSliderOptions(): SliderOptions {
     return brightnessSliderOptions;
-  }
-
-  get outputCount() {
-    return this.form.get('outputCount');
   }
 
   get usedOutputs(): FormGroup {

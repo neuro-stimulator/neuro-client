@@ -10,13 +10,13 @@ import {
 import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
-import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider';
 
 import {
   createEmptyExperimentERP,
   Edge,
+  ErpOutput,
   ExperimentERP,
   Random,
 } from '@stechy1/diplomka-share';
@@ -49,7 +49,7 @@ import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fas
   styleUrls: ['./experiment-type-erp.component.sass'],
 })
 export class ExperimentTypeErpComponent
-  extends BaseExperimentTypeComponent<ExperimentERP>
+  extends BaseExperimentTypeComponent<ExperimentERP, ErpOutput>
   implements OnInit, OnDestroy {
   @ViewChild('modal', { static: true }) modal: ModalComponent;
 
@@ -58,7 +58,7 @@ export class ExperimentTypeErpComponent
   private _sequenceIdSubscription: Subscription;
 
   constructor(
-    @Inject(TOKEN_MAX_OUTPUT_COUNT) private readonly _maxOutputCount: number,
+    @Inject(TOKEN_MAX_OUTPUT_COUNT) maxOutputCount: number,
     service: ExperimentsFacade,
     route: ActivatedRoute,
     navigation: NavigationFacade,
@@ -66,6 +66,7 @@ export class ExperimentTypeErpComponent
     logger: NGXLogger
   ) {
     super(
+      maxOutputCount,
       service,
       route,
       navigation,
@@ -94,11 +95,9 @@ export class ExperimentTypeErpComponent
     this._sequenceIdSubscription.unsubscribe();
   }
 
-  private _createOutputFormControl(): FormGroup {
-    return new FormGroup({
-      id: new FormControl(null, Validators.required),
-      experimentId: new FormControl(null, Validators.required),
-      orderId: new FormControl(null, [Validators.required, Validators.min(0)]),
+  protected _createOutputFormControl(): { [p: string]: AbstractControl } {
+    const superControls = super._createOutputFormControl();
+    const myControls = {
       pulseUp: new FormControl(null, [
         Validators.required,
         ShareValidators.exclusiveMin(0),
@@ -111,11 +110,6 @@ export class ExperimentTypeErpComponent
         Validators.required,
         Validators.min(0),
       ]),
-      brightness: new FormControl(null, [
-        Validators.required,
-        Validators.min(0),
-        Validators.max(100),
-      ]),
       dependencies: new FormArray([
         new FormControl([]),
         new FormControl(null, [
@@ -125,22 +119,9 @@ export class ExperimentTypeErpComponent
           ),
         ]),
       ]),
-      outputType: new FormGroup(
-        {
-          led: new FormControl(null),
-          audio: new FormControl(null),
-          audioFile: new FormControl(null),
-          image: new FormControl(null),
-          imageFile: new FormControl(null),
-        },
-        {
-          validators: [
-            Validators.required,
-            ExperimentOutputTypeValidator.createValidator(),
-          ],
-        }
-      ),
-    });
+    };
+
+    return { ...superControls, ...myControls };
   }
 
   protected _createFormControls(): { [p: string]: AbstractControl } {
@@ -181,20 +162,6 @@ export class ExperimentTypeErpComponent
     return createEmptyExperimentERP();
   }
 
-  protected _updateFormGroup(experiment: ExperimentERP) {
-    if (experiment.outputs?.length > 0) {
-      for (let i = 0; i < this._maxOutputCount; i++) {
-        (this.form.get('outputs') as FormArray).push(
-          this._createOutputFormControl()
-        );
-      }
-    } else {
-      (this.form.get('outputs') as FormArray).clear();
-    }
-
-    super._updateFormGroup(experiment);
-  }
-
   handleCreateNewSequenceFast() {
     this.dropdown.showDropdown = false;
     this.modal.showComponent = SequenceFastDialogComponent;
@@ -216,8 +183,8 @@ export class ExperimentTypeErpComponent
     this.form.patchValue({ sequenceId: null });
   }
 
-  get outputCountParams(): SliderOptions {
-    return outputCountParams(this._maxOutputCount);
+  protected get modalComponent(): ModalComponent {
+    return this.modal;
   }
 
   get randoms() {

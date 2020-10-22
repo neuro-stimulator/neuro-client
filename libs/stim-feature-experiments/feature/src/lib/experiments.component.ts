@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
+import { Experiment, ExperimentType, Output } from '@stechy1/diplomka-share';
 
 import { ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
 import { FabListEntry } from '@diplomka-frontend/stim-lib-fab';
@@ -34,10 +34,10 @@ import {
   styleUrls: ['./experiments.component.sass'],
 })
 export class ExperimentsComponent extends BaseListController<
-  Experiment,
+  Experiment<Output>,
   ExperimentsState
 > {
-  private static readonly INTRO_EXPERIMENT: Experiment = {
+  private static readonly INTRO_EXPERIMENT: Experiment<Output> = {
     id: -1,
     type: ExperimentType.NONE,
     name: 'Test',
@@ -47,6 +47,7 @@ export class ExperimentsComponent extends BaseListController<
     usedOutputs: { led: true },
     tags: ['tag1', 'tag2'],
     supportSequences: false,
+    outputs: [],
   };
 
   fabButtonList: FabListEntry[] = [
@@ -59,7 +60,7 @@ export class ExperimentsComponent extends BaseListController<
 
   constructor(
     service: ExperimentsFacade,
-    filterService: ListGroupSortFilterService<Experiment>,
+    filterService: ListGroupSortFilterService<Experiment<Output>>,
     navigation: NavigationFacade,
     connection: AliveCheckerFacade,
     buttonsAddonService: ListButtonsAddonService,
@@ -81,28 +82,28 @@ export class ExperimentsComponent extends BaseListController<
     );
   }
 
-  handleEdit(experiment: Experiment) {
+  handleEdit(experiment: Experiment<Output>) {
     const type = ExperimentType[experiment.type].toLowerCase();
     this._router.navigate([type, experiment.id], {
       relativeTo: this._route.parent,
     });
   }
 
-  handleRun(experiment: Experiment) {
+  handleRun(experiment: Experiment<Output>) {
     const type = ExperimentType[experiment.type].toLowerCase();
     this._router.navigate(['/', 'player', type, experiment.id], {
       relativeTo: null,
     });
   }
 
-  handleSimulate(experiment: Experiment) {
+  handleSimulate(experiment: Experiment<Output>) {
     const type = ExperimentType[experiment.type].toLowerCase();
     this._router.navigate(['/', 'simulation', type, experiment.id], {
       relativeTo: null,
     });
   }
 
-  handleDelete(experiment: Experiment) {
+  handleDelete(experiment: Experiment<Output>) {
     const self = this;
     this.modal.showComponent = ConfirmDialogComponent;
     this.modal.open({
@@ -122,16 +123,16 @@ export class ExperimentsComponent extends BaseListController<
       .catch((reason) => console.log(reason));
   }
 
-  handleSelect(experiment: Experiment) {
+  handleSelect(experiment: Experiment<Output>) {
     this._facade.selectEntity(experiment);
   }
 
-  protected get introRecord(): Experiment {
+  protected get introRecord(): Experiment<Output> {
     return ExperimentsComponent.INTRO_EXPERIMENT;
   }
 
   protected get filterDialogComponent(): Type<
-    FilterDialogComponent<Experiment>
+    FilterDialogComponent<Experiment<Output>>
   > {
     return ExperimentsFilterDialogComponent;
   }
@@ -140,7 +141,7 @@ export class ExperimentsComponent extends BaseListController<
     return 'experiments-steps';
   }
 
-  protected get records$(): Observable<Experiment[]> {
+  protected get records$(): Observable<Experiment<Output>[]> {
     return this.state.pipe(map((state: ExperimentsState) => state.experiments));
   }
 

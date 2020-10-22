@@ -6,7 +6,12 @@ import { EMPTY, of } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
-import { Sequence, ResponseObject, Experiment } from '@stechy1/diplomka-share';
+import {
+  Sequence,
+  ResponseObject,
+  Experiment,
+  Output,
+} from '@stechy1/diplomka-share';
 
 import { SequencesService } from '../infrastructure/sequences.service';
 import * as SequencesActions from './sequences.actions';
@@ -229,7 +234,7 @@ export class SequencesEffects {
         SequencesActions.actionSequencesExperimentsAsSequenceSourceRequest
       ),
       switchMap((action) => this.sequences.experimentsAsSequenceSource()),
-      map((response: ResponseObject<Experiment[]>) => {
+      map((response: ResponseObject<Experiment<Output>[]>) => {
         return SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestDone(
           { experiments: response.data }
         );

@@ -1,7 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
+import {
+  Experiment,
+  ExperimentType,
+  Output as ExpOutput,
+} from '@stechy1/diplomka-share';
 
 import {
   EntityGroup,
@@ -18,14 +22,24 @@ import {
   styleUrls: ['./experiments-item-list.component.sass'],
 })
 export class ExperimentsItemListComponent implements OnInit {
-  @Input() experimentGroups: EntityGroup<Experiment>;
+  @Input() experimentGroups: EntityGroup<Experiment<ExpOutput>>;
   @Input() selectedExperiments: SelectedEntities;
   @Input() selectionMode: boolean;
-  @Output() run: EventEmitter<Experiment> = new EventEmitter<Experiment>();
-  @Output() simulate: EventEmitter<Experiment> = new EventEmitter<Experiment>();
-  @Output() edit: EventEmitter<Experiment> = new EventEmitter<Experiment>();
-  @Output() delete: EventEmitter<Experiment> = new EventEmitter<Experiment>();
-  @Output() select: EventEmitter<Experiment> = new EventEmitter<Experiment>();
+  @Output() run: EventEmitter<Experiment<ExpOutput>> = new EventEmitter<
+    Experiment<ExpOutput>
+  >();
+  @Output() simulate: EventEmitter<Experiment<ExpOutput>> = new EventEmitter<
+    Experiment<ExpOutput>
+  >();
+  @Output() edit: EventEmitter<Experiment<ExpOutput>> = new EventEmitter<
+    Experiment<ExpOutput>
+  >();
+  @Output() delete: EventEmitter<Experiment<ExpOutput>> = new EventEmitter<
+    Experiment<ExpOutput>
+  >();
+  @Output() select: EventEmitter<Experiment<ExpOutput>> = new EventEmitter<
+    Experiment<ExpOutput>
+  >();
 
   ExperimentType = ExperimentType;
 
@@ -37,7 +51,7 @@ export class ExperimentsItemListComponent implements OnInit {
     return this._service.state;
   }
 
-  handleExperimentIconClick(experiment: Experiment) {
+  handleExperimentIconClick(experiment: Experiment<ExpOutput>) {
     if (this.selectionMode) {
       return;
     }

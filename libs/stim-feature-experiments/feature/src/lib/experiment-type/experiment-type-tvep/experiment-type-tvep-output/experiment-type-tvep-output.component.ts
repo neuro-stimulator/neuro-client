@@ -4,7 +4,11 @@ import { FormArray, FormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import { Experiment, ExperimentType } from '@stechy1/diplomka-share';
+import {
+  Experiment,
+  ExperimentType,
+  TvepOutput,
+} from '@stechy1/diplomka-share';
 
 import { brightnessSliderOptions } from '../../../experiments.share';
 import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
@@ -27,7 +31,7 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
 
   @Input() form: FormGroup;
   @Input() count: number;
-  @Input() experimentReady: Observable<Experiment>;
+  @Input() experimentReady: Observable<Experiment<TvepOutput>>;
   @Input() sharePatternLength: Observable<boolean>;
 
   readonly patternSizes: BehaviorSubject<number>[] = [];
@@ -50,7 +54,7 @@ export class ExperimentTypeTvepOutputComponent implements OnInit, OnDestroy {
     }
 
     this._experimentReadySubscription = this.experimentReady.subscribe(
-      (experiment: Experiment) => {
+      (experiment: Experiment<TvepOutput>) => {
         if (experiment.type !== ExperimentType.NONE) {
           this._emptyExperiment = false;
           for (let i = 0; i < this._maxOutputCount; i++) {

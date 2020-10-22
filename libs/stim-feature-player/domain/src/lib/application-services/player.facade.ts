@@ -3,7 +3,11 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
-import { createEmptyExperiment, Experiment } from '@stechy1/diplomka-share';
+import {
+  createEmptyExperiment,
+  Experiment,
+  Output,
+} from '@stechy1/diplomka-share';
 
 import {
   StimulatorFacade,
@@ -28,7 +32,7 @@ import * as PlayerActions from '../store/player.actions';
 export class PlayerFacade {
   public readonly stimulatorConnectionStatus$: Observable<ConnectionStatus>;
   public readonly stimulatorState$: Observable<number>;
-  public readonly playingExperiment$: Observable<Experiment>;
+  public readonly playingExperiment$: Observable<Experiment<Output>>;
 
   private _lastStimulatorState: number;
 

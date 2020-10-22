@@ -22,6 +22,7 @@ import {
   ExperimentERP,
   ExperimentType,
   ErpOutputDependency,
+  ErpOutput,
 } from '@stechy1/diplomka-share';
 
 import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
@@ -49,7 +50,7 @@ export class ExperimentTypeErpOutputComponent implements OnInit, OnDestroy {
   @Input() form: FormGroup;
   @Input() count: number;
   @Input() experimentId: number;
-  @Input() experimentLoaded: Observable<Experiment>;
+  @Input() experimentLoaded: Observable<Experiment<ErpOutput>>;
   @Input() maxDistribution: Observable<number>;
 
   distributionSliderOptions: SliderOptions[] = [];
