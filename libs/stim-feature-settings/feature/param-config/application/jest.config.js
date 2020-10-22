@@ -1,6 +1,5 @@
 module.exports = {
-  name: 'stim-feature-settings-feature-param-config-application',
-  preset: '../../../../../jest.config.js',
+  preset: '../../../../../jest.preset.js',
   coverageDirectory:
     '../../../../../coverage/libs/stim-feature-settings/feature/param-config/application',
   snapshotSerializers: [
@@ -8,4 +7,5 @@ module.exports = {
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
     'jest-preset-angular/build/HTMLCommentSerializer.js',
   ],
+  displayName: 'stim-feature-settings-feature-param-config-application',
 };

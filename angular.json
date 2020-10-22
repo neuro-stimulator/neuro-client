@@ -129,9 +129,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/stimulator/jest.config.js",
-            "tsConfig": "apps/stimulator/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/stimulator/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -186,9 +184,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-lib-modal/jest.config.js",
-            "tsConfig": "libs/stim-lib-modal/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-lib-modal/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -218,9 +214,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-lib-fab/jest.config.js",
-            "tsConfig": "libs/stim-lib-fab/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-lib-fab/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -250,9 +244,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-lib-list-utils/jest.config.js",
-            "tsConfig": "libs/stim-lib-list-utils/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-lib-list-utils/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -282,9 +274,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-lib-common/jest.config.js",
-            "tsConfig": "libs/stim-lib-common/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-lib-common/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -314,9 +304,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-lib-ui/jest.config.js",
-            "tsConfig": "libs/stim-lib-ui/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-lib-ui/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -346,9 +334,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-about/jest.config.js",
-            "tsConfig": "libs/stim-feature-about/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-about/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -381,9 +367,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-settings/feature/jest.config.js",
-            "tsConfig": "libs/stim-feature-settings/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-settings/feature/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -416,9 +400,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-settings/domain/jest.config.js",
-            "tsConfig": "libs/stim-feature-settings/domain/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-settings/domain/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -451,9 +433,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-stimulator/domain/jest.config.js",
-            "tsConfig": "libs/stim-feature-stimulator/domain/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-stimulator/domain/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -483,9 +463,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-lib-store/jest.config.js",
-            "tsConfig": "libs/stim-lib-store/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-lib-store/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -515,9 +493,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-lib-connection/jest.config.js",
-            "tsConfig": "libs/stim-lib-connection/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-lib-connection/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -550,9 +526,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-file-browser/domain/jest.config.js",
-            "tsConfig": "libs/stim-feature-file-browser/domain/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-file-browser/domain/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -585,9 +559,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-file-browser/feature/jest.config.js",
-            "tsConfig": "libs/stim-feature-file-browser/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-file-browser/feature/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -620,9 +592,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-navigation/feature/jest.config.js",
-            "tsConfig": "libs/stim-feature-navigation/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-navigation/feature/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -655,9 +625,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-navigation/domain/jest.config.js",
-            "tsConfig": "libs/stim-feature-navigation/domain/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-navigation/domain/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -690,9 +658,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-help/feature/jest.config.js",
-            "tsConfig": "libs/stim-feature-help/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-help/feature/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -725,9 +691,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-player/feature/jest.config.js",
-            "tsConfig": "libs/stim-feature-player/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-player/feature/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -760,9 +724,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-player/domain/jest.config.js",
-            "tsConfig": "libs/stim-feature-player/domain/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-player/domain/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -795,9 +757,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-experiments/feature/jest.config.js",
-            "tsConfig": "libs/stim-feature-experiments/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-experiments/feature/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -830,9 +790,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-experiments/domain/jest.config.js",
-            "tsConfig": "libs/stim-feature-experiments/domain/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-experiments/domain/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -865,9 +823,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-experiment-results/feature/jest.config.js",
-            "tsConfig": "libs/stim-feature-experiment-results/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-experiment-results/feature/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -900,9 +856,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-experiment-results/domain/jest.config.js",
-            "tsConfig": "libs/stim-feature-experiment-results/domain/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-experiment-results/domain/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -935,9 +889,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-sequences/feature/jest.config.js",
-            "tsConfig": "libs/stim-feature-sequences/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-sequences/feature/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -970,9 +922,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-sequences/domain/jest.config.js",
-            "tsConfig": "libs/stim-feature-sequences/domain/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-sequences/domain/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1005,9 +955,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-settings/popup/jest.config.js",
-            "tsConfig": "libs/stim-feature-settings/popup/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-settings/popup/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1040,9 +988,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-settings/feature/console/jest.config.js",
-            "tsConfig": "libs/stim-feature-settings/feature/console/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-settings/feature/console/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1075,9 +1021,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-settings/feature/param-config/jest.config.js",
-            "tsConfig": "libs/stim-feature-settings/feature/param-config/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-settings/feature/param-config/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1110,9 +1054,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-settings/feature/service-state/jest.config.js",
-            "tsConfig": "libs/stim-feature-settings/feature/service-state/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-settings/feature/service-state/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1145,9 +1087,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-settings/feature/param-config/application/jest.config.js",
-            "tsConfig": "libs/stim-feature-settings/feature/param-config/application/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-settings/feature/param-config/application/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1180,9 +1120,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-settings/feature/param-config/experiments/jest.config.js",
-            "tsConfig": "libs/stim-feature-settings/feature/param-config/experiments/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-settings/feature/param-config/experiments/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1215,9 +1153,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-settings/feature/param-config/server/jest.config.js",
-            "tsConfig": "libs/stim-feature-settings/feature/param-config/server/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-settings/feature/param-config/server/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1250,9 +1186,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-users/feature/jest.config.js",
-            "tsConfig": "libs/stim-feature-users/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-users/feature/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1285,9 +1219,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-users/domain/jest.config.js",
-            "tsConfig": "libs/stim-feature-users/domain/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-users/domain/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1320,9 +1252,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-auth/feature/jest.config.js",
-            "tsConfig": "libs/stim-feature-auth/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-auth/feature/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1355,9 +1285,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-auth/domain/jest.config.js",
-            "tsConfig": "libs/stim-feature-auth/domain/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-auth/domain/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1390,9 +1318,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-feature-stimulator/feature/jest.config.js",
-            "tsConfig": "libs/stim-feature-stimulator/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-feature-stimulator/feature/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1425,9 +1351,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-lib-console/feature/jest.config.js",
-            "tsConfig": "libs/stim-lib-console/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-lib-console/feature/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1460,9 +1384,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stim-lib-console/domain/jest.config.js",
-            "tsConfig": "libs/stim-lib-console/domain/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stim-lib-console/domain/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },

@@ -1,10 +1,10 @@
 module.exports = {
-  name: 'stim-feature-auth-domain',
-  preset: '../../../jest.config.js',
+  preset: '../../../jest.preset.js',
   coverageDirectory: '../../../coverage/libs/stim-feature-auth/domain',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
     'jest-preset-angular/build/HTMLCommentSerializer.js',
   ],
+  displayName: 'stim-feature-auth-domain',
 };

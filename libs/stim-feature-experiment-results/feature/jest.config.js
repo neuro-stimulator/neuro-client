@@ -1,6 +1,5 @@
 module.exports = {
-  name: 'stim-feature-experiment-results-feature',
-  preset: '../../../jest.config.js',
+  preset: '../../../jest.preset.js',
   coverageDirectory:
     '../../../coverage/libs/stim-feature-experiment-results/feature',
   snapshotSerializers: [
@@ -8,4 +7,5 @@ module.exports = {
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
     'jest-preset-angular/build/HTMLCommentSerializer.js',
   ],
+  displayName: 'stim-feature-experiment-results-feature',
 };
