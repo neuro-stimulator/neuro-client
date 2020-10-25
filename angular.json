@@ -197,15 +197,6 @@
             "jestConfig": "libs/stim-lib-modal/jest.config.js",
             "passWithNoTests": true
           }
-        },
-        "eslint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-lib-modal/**/*.ts",
-              "libs/stim-lib-modal/**/*.component.html"
-            ]
-          }
         }
       },
       "schematics": {
