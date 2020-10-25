@@ -5,7 +5,7 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["libs/stim-feature-experiment-results/feature/tsconfig.*?.json"],
+        "project": ["./tsconfig.json"],
         "createDefaultProgram": true
       },
       "rules": {}

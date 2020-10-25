@@ -5,7 +5,7 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["apps/stimulator-e2e/tsconfig.*?.json"],
+        "project": "./tsconfig.json",
         "createDefaultProgram": true
       },
       "rules": {}

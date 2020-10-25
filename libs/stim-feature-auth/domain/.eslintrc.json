@@ -8,7 +8,7 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["libs/stim-feature-auth/domain/tsconfig.*?.json"],
+        "project": ["./tsconfig.json"],
         "createDefaultProgram": true
       },
       "rules": {}
