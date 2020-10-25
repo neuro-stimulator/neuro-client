@@ -1,5 +1,5 @@
-import { ApplicationPage } from "../../../support/app.po";
-import { ExperimentResultsPage } from "../../../support/experiment-results/experiment-results.po";
+import { ApplicationPage } from '../../../support/app.po';
+import { ExperimentResultsPage } from '../../../support/experiment-results/experiment-results.po';
 
 describe('Experiment results page', () => {
 

@@ -1,7 +1,7 @@
-import { Inject, LOCALE_ID, Pipe, PipeTransform } from "@angular/core";
+import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
-import { DateTimeFormat } from "@diplomka-frontend/stim-lib-common";
+import { DateTimeFormat } from '@diplomka-frontend/stim-lib-common';
 
 @Pipe({
   name: 'dateTime'
@@ -14,7 +14,7 @@ export class DateTimePipe implements PipeTransform {
     this.pipe = new DatePipe(language);
   }
 
-  transform(value: Date|number, format: DateTimeFormat): string {
+  transform(value: Date | number, format: DateTimeFormat): string {
     if (!(value instanceof Date)) {
       value = new Date(value);
     }
@@ -22,35 +22,35 @@ export class DateTimePipe implements PipeTransform {
     let template = '';
 
     if (format.showDays) {
-      template += `dd.`;
+      template += 'dd.';
     }
     if (format.showMonths) {
       if (format.showDays) {
       }
-      template += `M.`;
+      template += 'M.';
     }
     if (format.showYears) {
       if (format.showDays || format.showMonths) {
       }
-      template += `yyyy`;
+      template += 'yyyy';
     }
 
     template += ' ';
 
     if (format.showHours) {
-      template += `HH`;
+      template += 'HH';
     }
     if (format.showMinutes) {
       if (format.showHours) {
         template += ':';
       }
-      template += `mm`;
+      template += 'mm';
     }
     if (format.showSeconds) {
       if (format.showHours || format.showMinutes) {
         template += ':';
       }
-      template += `ss`;
+      template += 'ss';
     }
 
     let result = this.pipe.transform(value, template);

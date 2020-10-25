@@ -58,7 +58,7 @@ export class PlayerEffects {
               repeat: action.options.repeat,
             });
           }),
-          catchError((error) => {
+          catchError((error: unknown) => {
             return of(PlayerActions.actionPrepareExperimentPlayerRequestFail());
           })
         );
@@ -143,7 +143,7 @@ export class PlayerEffects {
               stopConditions: response.data,
             });
           }),
-          catchError((error) => {
+          catchError((error: unknown) => {
             return of(PlayerActions.actionPlayerAvailableStopConditionsFail());
           })
         )

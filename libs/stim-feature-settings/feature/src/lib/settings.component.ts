@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from "@angular/router";
-import { SettingsFacade, SettingsState } from "@diplomka-frontend/stim-feature-settings/domain";
-import { Observable, Subscription } from "rxjs";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { SettingsFacade, SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
+import { Observable, Subscription } from 'rxjs';
 
 
 @Component({

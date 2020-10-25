@@ -1,4 +1,4 @@
-import { DateTimeFormat } from "@diplomka-frontend/stim-lib-common";
+import { DateTimeFormat } from '@diplomka-frontend/stim-lib-common';
 
 export interface Settings {
   application: {

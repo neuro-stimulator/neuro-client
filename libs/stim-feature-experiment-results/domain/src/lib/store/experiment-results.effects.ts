@@ -35,7 +35,7 @@ export class ExperimentResultssEffects {
           experimentResults: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentResultsActions.actionExperimentResultsAllRequestFail());
       })
     )
@@ -56,7 +56,7 @@ export class ExperimentResultssEffects {
           experimentResults: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentResultsActions.actionExperimentResultsAllRequestFail());
       })
     )
@@ -71,7 +71,7 @@ export class ExperimentResultssEffects {
           experimentResult: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentResultsActions.actionExperimentResultsOneRequestFail());
       })
     )
@@ -86,7 +86,7 @@ export class ExperimentResultssEffects {
           data: response.data,
         })
       ),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentResultsActions.actionExperimentResultsDataFail());
       })
     );
@@ -99,7 +99,7 @@ export class ExperimentResultssEffects {
       map((response: ResponseObject<ExperimentResult>) => {
         return ExperimentResultsActions.actionExperimentResultsUpdateRequestDone({ experimentResult: response.data });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentResultsActions.actionExperimentResultsUpdateRequestFail());
       })
     )
@@ -129,7 +129,7 @@ export class ExperimentResultssEffects {
           experimentResult: response.data,
         })
       ),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentResultsActions.actionExperimentResultsDeleteRequestFail());
       })
     );
@@ -154,7 +154,7 @@ export class ExperimentResultssEffects {
       map((response: ResponseObject<{ exists: boolean }>) => {
         return ExperimentResultsActions.actionExperimentResultsNameExistsRequestDone({ exists: response.data.exists });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentResultsActions.actionExperimentResultsNameExistsRequestFail());
       })
     )

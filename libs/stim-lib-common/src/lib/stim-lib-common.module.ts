@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
 
   ],
   exports: [
     CommonModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ]
 })
-export class StimLibCommonModule {}
+export class StimLibCommonModule {
+}

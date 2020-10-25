@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
-import { Actions } from "@ngrx/effects";
+import { Actions } from '@ngrx/effects';
 
-import { NavigationService } from "../infrastructure/navigation.service";
+import { NavigationService } from '../infrastructure/navigation.service';
 
 @Injectable()
 export class NavigationEffects {

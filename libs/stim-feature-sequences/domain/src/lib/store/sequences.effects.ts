@@ -28,7 +28,7 @@ export class SequencesEffects {
           sequences: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(SequencesActions.actionSequencesAllRequestFail());
       })
     )
@@ -49,7 +49,7 @@ export class SequencesEffects {
           sequences: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(SequencesActions.actionSequencesAllRequestFail());
       })
     )
@@ -64,7 +64,7 @@ export class SequencesEffects {
           sequence: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(SequencesActions.actionSequencesOneRequestFail());
       })
     )
@@ -80,7 +80,7 @@ export class SequencesEffects {
           sequence: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(SequencesActions.actionSequencesInsertRequestFail());
       })
     )
@@ -94,7 +94,7 @@ export class SequencesEffects {
           sequence: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(SequencesActions.actionSequencesUpdateRequestFail());
       })
     )
@@ -123,7 +123,7 @@ export class SequencesEffects {
           sequence: response.data,
         })
       ),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(SequencesActions.actionSequencesDeleteRequestFail());
       })
     );
@@ -151,7 +151,7 @@ export class SequencesEffects {
           exists: response.data.exists,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(SequencesActions.actionSequencesNameExistsRequestFail());
       })
     )
@@ -171,7 +171,7 @@ export class SequencesEffects {
           sequenceData: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(SequencesActions.actionSequencesGenerateFail());
       })
     )
@@ -186,7 +186,7 @@ export class SequencesEffects {
           sequence: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(SequencesActions.actionSequencesInsertRequestFail());
       })
     )
@@ -199,7 +199,7 @@ export class SequencesEffects {
       map((response: ResponseObject<Experiment<Output>[]>) => {
         return SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestDone({ experiments: response.data });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestFail());
       })
     )

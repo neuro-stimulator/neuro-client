@@ -1,12 +1,12 @@
 import { ExperimentType } from '@stechy1/diplomka-share';
 
-import { ApplicationPage } from "../../support/app.po";
-import { SequencesPage } from "../../support/sequences/sequences.po";
-import { ExperimentsPage } from "../../support/experiments/experiments.po";
-import { ExperimentTypeErpPage } from "../../support/experiments/experiment-type/experiment-type-erp.po";
-import { SequencePage } from "../../support/sequences/sequence/sequence.po";
-import { ExperimentTypeAbstractSpecHelper } from "../experiments/experiment-type/experiment-type-abstract-helper.spec";
-import { SequencesHelper } from "./sequences-helper.spec";
+import { ApplicationPage } from '../../support/app.po';
+import { SequencesPage } from '../../support/sequences/sequences.po';
+import { ExperimentsPage } from '../../support/experiments/experiments.po';
+import { ExperimentTypeErpPage } from '../../support/experiments/experiment-type/experiment-type-erp.po';
+import { SequencePage } from '../../support/sequences/sequence/sequence.po';
+import { ExperimentTypeAbstractSpecHelper } from '../experiments/experiment-type/experiment-type-abstract-helper.spec';
+import { SequencesHelper } from './sequences-helper.spec';
 
 describe('Sequences page', () => {
 

@@ -1,9 +1,9 @@
 import { ExperimentType } from '@stechy1/diplomka-share';
 
-import { ApplicationPage } from "../../../support/app.po";
-import { ExperimentsPage } from "../../../support/experiments/experiments.po";
-import { ExperimentTypeCvepPage } from "../../../support/experiments/experiment-type/experiment-type-cvep.po";
-import { ExperimentTypeAbstractSpecHelper } from "./experiment-type-abstract-helper.spec";
+import { ApplicationPage } from '../../../support/app.po';
+import { ExperimentsPage } from '../../../support/experiments/experiments.po';
+import { ExperimentTypeCvepPage } from '../../../support/experiments/experiment-type/experiment-type-cvep.po';
+import { ExperimentTypeAbstractSpecHelper } from './experiment-type-abstract-helper.spec';
 
 
 context('Experiment CVEP', () => {

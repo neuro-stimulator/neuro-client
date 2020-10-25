@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FabComponent } from "./fab.component";
+import { FabComponent } from './fab.component';
 
 @NgModule({
   declarations: [
@@ -13,4 +13,5 @@ import { FabComponent } from "./fab.component";
     FabComponent
   ]
 })
-export class StimLibFabModule {}
+export class StimLibFabModule {
+}

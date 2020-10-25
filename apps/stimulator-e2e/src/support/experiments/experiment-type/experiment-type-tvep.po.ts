@@ -1,4 +1,4 @@
-import { ExperimentTypeAbstractPage } from "./experiment-type-abstract.po";
+import { ExperimentTypeAbstractPage } from './experiment-type-abstract.po';
 
 export class ExperimentTypeTvepPage extends ExperimentTypeAbstractPage {
 

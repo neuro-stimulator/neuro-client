@@ -4,7 +4,7 @@
 export interface ParseCommandResult {
   valid: boolean;
   commandName: string;
-  consumer: 'client' | 'server';
+  consumer: "client" | "server";
   invalidReason?: string;
   parameters?: any;
 }

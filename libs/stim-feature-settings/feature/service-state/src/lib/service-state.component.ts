@@ -1,12 +1,12 @@
-import { Component, ViewChild } from "@angular/core";
-import { Observable } from "rxjs";
+import { Component, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
 
-import { FileRecord } from "@stechy1/diplomka-share";
+import { FileRecord } from '@stechy1/diplomka-share';
 
-import { StimulatorFacade, StimulatorState } from "@diplomka-frontend/stim-feature-stimulator/domain";
-import { AliveCheckerFacade, ConnectionInformationState, ConnectionStatus } from "@diplomka-frontend/stim-lib-connection";
-import { ModalComponent } from "@diplomka-frontend/stim-lib-modal";
-import { FileBrowserComponent } from "@diplomka-frontend/stim-feature-file-browser/feature";
+import { StimulatorFacade, StimulatorState } from '@diplomka-frontend/stim-feature-stimulator/domain';
+import { AliveCheckerFacade, ConnectionInformationState, ConnectionStatus } from '@diplomka-frontend/stim-lib-connection';
+import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { FileBrowserComponent } from '@diplomka-frontend/stim-feature-file-browser/feature';
 
 
 @Component({

@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'stim-lib-ui-diode',
   templateUrl: './diode.svg',
-  styleUrls: ['./diode.component.sass'],
+  styleUrls: ['./diode.component.sass']
 })
 export class DiodeComponent {
   @Input() id?: number;

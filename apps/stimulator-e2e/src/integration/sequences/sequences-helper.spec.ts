@@ -1,5 +1,5 @@
-import { SequencesPage } from "../../support/sequences/sequences.po";
-import { SequencePage } from "../../support/sequences/sequence/sequence.po";
+import { SequencesPage } from '../../support/sequences/sequences.po';
+import { SequencePage } from '../../support/sequences/sequence/sequence.po';
 
 export class SequencesHelper {
 

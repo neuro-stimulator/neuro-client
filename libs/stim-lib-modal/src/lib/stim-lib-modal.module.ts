@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule } from '@ngx-translate/core';
 
 import { ModalComponent } from './modal.component';
 import { DialogChildsDirective } from './dialog-childs.directive';
@@ -13,17 +13,18 @@ import { InformDialogComponent } from './inform/inform-dialog.component';
     ModalComponent,
     DialogChildsDirective,
     ConfirmDialogComponent,
-    InformDialogComponent,
+    InformDialogComponent
   ],
   imports: [
     CommonModule,
-    TranslateModule.forChild(),
+    TranslateModule.forChild()
   ],
   exports: [
     ModalComponent,
     DialogChildsDirective,
     ConfirmDialogComponent,
-    InformDialogComponent,
+    InformDialogComponent
   ]
 })
-export class StimLibModalModule {}
+export class StimLibModalModule {
+}

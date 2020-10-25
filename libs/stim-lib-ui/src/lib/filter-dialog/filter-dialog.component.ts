@@ -1,4 +1,4 @@
-import { OnInit, Directive } from '@angular/core';
+import { Directive, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
@@ -15,7 +15,7 @@ export abstract class FilterDialogComponent<T> extends DialogChildComponent impl
   form: FormGroup = new FormGroup({
     groupBy: new FormControl(null),
     sortBy: new FormControl(null),
-    orderBy: new FormControl(null),
+    orderBy: new FormControl(null)
   });
 
   private _confirmSubscription: Subscription;
@@ -26,36 +26,6 @@ export abstract class FilterDialogComponent<T> extends DialogChildComponent impl
 
   protected constructor(private readonly filter: ListGroupSortFilterService<T>) {
     super();
-  }
-
-  ngOnInit() {
-    this._formValueChangesSubscription = this.form.valueChanges.subscribe((value: ListFilterParameters) => {
-      if (value.groupBy !== this._lastConfiguration.groupBy) {
-        this.filter.groupBy(value);
-      } else {
-        this.filter.sort(value);
-      }
-      this._lastConfiguration = value;
-    });
-  }
-
-  bind(modal: ModalComponent) {
-    modal.title = 'SHARE.DIALOGS.FILTER.TITLE';
-    modal.confirmText = 'SHARE.DIALOGS.FILTER.CONFIRM';
-    modal.cancelText = 'SHARE.DIALOGS.FILTER.CANCEL';
-    this._confirmSubscription = modal.confirm.subscribe(() => { this.filter.filterParameters = this.form.value; });
-    this._cancelSubscription = modal.cancel.subscribe(() => { this.filter.resetFilterParameters(); });
-    this._showSubscription = modal.show.subscribe(() => {
-      this.form.setValue(this.filter.filterParameters);
-      this._lastConfiguration = this.filter.filterParameters;
-    });
-  }
-
-  unbind(modal: ModalComponent) {
-    this._confirmSubscription.unsubscribe();
-    this._cancelSubscription.unsubscribe();
-    this._showSubscription.unsubscribe();
-    this._formValueChangesSubscription.unsubscribe();
   }
 
   get groupBy() {
@@ -80,5 +50,39 @@ export abstract class FilterDialogComponent<T> extends DialogChildComponent impl
 
   get orderByFilters(): OrderFilter<T>[] {
     return this.filter.orderByFilters;
+  }
+
+  ngOnInit() {
+    this._formValueChangesSubscription = this.form.valueChanges.subscribe((value: ListFilterParameters) => {
+      if (value.groupBy !== this._lastConfiguration.groupBy) {
+        this.filter.groupBy(value);
+      } else {
+        this.filter.sort(value);
+      }
+      this._lastConfiguration = value;
+    });
+  }
+
+  bind(modal: ModalComponent) {
+    modal.title = 'SHARE.DIALOGS.FILTER.TITLE';
+    modal.confirmText = 'SHARE.DIALOGS.FILTER.CONFIRM';
+    modal.cancelText = 'SHARE.DIALOGS.FILTER.CANCEL';
+    this._confirmSubscription = modal.confirm.subscribe(() => {
+      this.filter.filterParameters = this.form.value;
+    });
+    this._cancelSubscription = modal.cancel.subscribe(() => {
+      this.filter.resetFilterParameters();
+    });
+    this._showSubscription = modal.show.subscribe(() => {
+      this.form.setValue(this.filter.filterParameters);
+      this._lastConfiguration = this.filter.filterParameters;
+    });
+  }
+
+  unbind(modal: ModalComponent) {
+    this._confirmSubscription.unsubscribe();
+    this._cancelSubscription.unsubscribe();
+    this._showSubscription.unsubscribe();
+    this._formValueChangesSubscription.unsubscribe();
   }
 }

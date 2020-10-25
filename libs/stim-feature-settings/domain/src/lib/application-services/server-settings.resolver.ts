@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
-import { Observable, of } from "rxjs";
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { Observable, of } from 'rxjs';
 
-import { Actions, ofType } from "@ngrx/effects";
+import { Actions, ofType } from '@ngrx/effects';
 
-import { ServerSettings } from "../domain/settings";
-import { SettingsFacade } from "./settings.facade";
-import * as SettingsActions from "../store/settings.actions";
-import { map, switchMap, take } from "rxjs/operators";
+import { ServerSettings } from '../domain/settings';
+import { SettingsFacade } from './settings.facade';
+import * as SettingsActions from '../store/settings.actions';
+import { map, switchMap, take } from 'rxjs/operators';
 
 @Injectable()
 export class ServerSettingsResolver implements Resolve<ServerSettings> {

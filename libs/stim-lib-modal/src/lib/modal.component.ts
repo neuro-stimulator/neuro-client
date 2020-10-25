@@ -46,33 +46,8 @@ import { DialogChildComponent } from './dialog-child.component';
 })
 export class ModalComponent implements OnDestroy {
 
-  // ID dialogu
-  private _id: string;
-  // Titulek dialogu
-  private _title: string;
-  // Text v potvrzovacím tlačítku
-  private _confirmText = 'Použít';
-  // Text v cancel tlačítku
-  private _cancelText = 'Zrušit';
-  // Pozorovatelný výsledek, který se použije v metodě openForResult
-  private _result: Observable<any>;
-  // Ovládání přístupnosti cancel tlačítka
-  private _cancelDisabled: boolean;
-  // Ovládání přístupnosti potvrzovacího tlačítka
-  private _confirmDisabled: Observable<boolean>;
-  // Komponenta, která se zobrazí v dialogu
-  private _showComponent: Type<DialogChildComponent>;
-  // Pokud se nastaví na true, musí se "někdo jiný" postarat o zavření dialogu
-  private _confirmClose: boolean;
-  // Zavolá se při zobrazení dialogu
-  private _show = new EventEmitter<any>();
-  // Zrušení akce v dialogu
-  private _cancel = new EventEmitter<void>();
-  // Potvrzení akce v dialogu
-  private _confirm = new EventEmitter<void>();
   // Obsah dialogu
-  @ViewChild(DialogChildsDirective, {static: true}) childDirective: DialogChildsDirective;
-
+  @ViewChild(DialogChildsDirective, { static: true }) childDirective: DialogChildsDirective;
   // Pomocná reference na odběr výsledku
   private _resultSubscription: Subscription;
   // Pomocná reference na odběr akce zrušení dialogu
@@ -83,30 +58,131 @@ export class ModalComponent implements OnDestroy {
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
+  // ID dialogu
+  private _id: string;
+
+  get id(): string {
+    return this._id;
+  }
+
+  set id(id: string) {
+    this._id = id;
+  }
+
+  // Titulek dialogu
+  private _title: string;
+
+  get title(): string {
+    return this._title;
+  }
+
+  @Input() set title(title: string) {
+    this._title = title;
+  }
+
+  // Text v potvrzovacím tlačítku
+  private _confirmText = 'Použít';
+
+  get confirmText(): string {
+    return this._confirmText;
+  }
+
+  @Input() set confirmText(confirmText: string) {
+    this._confirmText = confirmText;
+  }
+
+  // Text v cancel tlačítku
+  private _cancelText = 'Zrušit';
+
+  get cancelText(): string {
+    return this._cancelText;
+  }
+
+  @Input() set cancelText(cancelText: string) {
+    this._cancelText = cancelText;
+  }
+
+  // Pozorovatelný výsledek, který se použije v metodě openForResult
+  private _result: Observable<any>;
+
+  get result(): Observable<any> {
+    return this._result;
+  }
+
+  set result(result: Observable<any>) {
+    this._result = result;
+  }
+
+  // Ovládání přístupnosti cancel tlačítka
+  private _cancelDisabled: boolean;
+
+  get cancelDisabled(): boolean {
+    return this._cancelDisabled;
+  }
+
+  @Input() set cancelDisabled(cancelDisabled: boolean) {
+    this._cancelDisabled = cancelDisabled;
+  }
+
+  // Ovládání přístupnosti potvrzovacího tlačítka
+  private _confirmDisabled: Observable<boolean>;
+
+  get confirmDisabled(): Observable<boolean> {
+    return this._confirmDisabled;
+  }
+
+  set confirmDisabled(confirmDisabled: Observable<boolean>) {
+    this._confirmDisabled = confirmDisabled;
+  }
+
+  // Komponenta, která se zobrazí v dialogu
+  private _showComponent: Type<DialogChildComponent>;
+
+  get showComponent(): Type<DialogChildComponent> {
+    return this._showComponent;
+  }
+
+  set showComponent(showComponent: Type<DialogChildComponent>) {
+    this._showComponent = showComponent;
+  }
+
+  // Pokud se nastaví na true, musí se "někdo jiný" postarat o zavření dialogu
+  private _confirmClose: boolean;
+
+  get confirmClose(): boolean {
+    return this._confirmClose;
+  }
+
+  set confirmClose(confirmClose: boolean) {
+    this._confirmClose = confirmClose;
+  }
+
+  // Zavolá se při zobrazení dialogu
+  private _show = new EventEmitter<any>();
+
+  get show(): Observable<any> {
+    return this._show;
+  }
+
+  // Zrušení akce v dialogu
+  private _cancel = new EventEmitter<void>();
+
+  get cancel(): Observable<any> {
+    return this._cancel;
+  }
+
+  // Potvrzení akce v dialogu
+  private _confirm = new EventEmitter<void>();
+
+  get confirm(): Observable<any> {
+    return this._confirm;
+  }
+
   // Příznak, který říká, zda-li je dialog otevřený
   private _isOpen = false;
 
-  /**
-   * Načte samotnou komponentu, která se v dialogu zobrazí
-   */
-  private _loadDialogContent() {
-    // Nejdříve se ukončí životní cyklus staré komponenty
-    if (this._viewInstance !== undefined) {
-      this._viewInstance.unbind(this);
-    }
-    // Podle zadané komponenty získám její továrnu
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.showComponent);
-    // Uložím si referenci na viewContainer
-    const viewContainerRef = this.childDirective.viewContainerRef;
-    // Vymažu obsah ve viewContaineru
-    viewContainerRef.clear();
-
-    // Vytvořím novou komponentu ve viewContaineru za pomoci továrny
-    const component = viewContainerRef.createComponent(componentFactory);
-    // Získám instanci této komponenty
-    this._viewInstance = (component.instance as DialogChildComponent);
-    // Nechám komponentu inicializovat
-    this._viewInstance.bind(this);
+  get isOpen(): boolean {
+    return this._isOpen;
   }
 
   ngOnDestroy(): void {
@@ -184,6 +260,29 @@ export class ModalComponent implements OnDestroy {
   }
 
   /**
+   * Načte samotnou komponentu, která se v dialogu zobrazí
+   */
+  private _loadDialogContent() {
+    // Nejdříve se ukončí životní cyklus staré komponenty
+    if (this._viewInstance !== undefined) {
+      this._viewInstance.unbind(this);
+    }
+    // Podle zadané komponenty získám její továrnu
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.showComponent);
+    // Uložím si referenci na viewContainer
+    const viewContainerRef = this.childDirective.viewContainerRef;
+    // Vymažu obsah ve viewContaineru
+    viewContainerRef.clear();
+
+    // Vytvořím novou komponentu ve viewContaineru za pomoci továrny
+    const component = viewContainerRef.createComponent(componentFactory);
+    // Získám instanci této komponenty
+    this._viewInstance = (component.instance as DialogChildComponent);
+    // Nechám komponentu inicializovat
+    this._viewInstance.bind(this);
+  }
+
+  /**
    * Odhlásí z odběru subscription result a cancel události
    */
   private _unsubscrie() {
@@ -195,93 +294,5 @@ export class ModalComponent implements OnDestroy {
       this._cancelSubscription.unsubscribe();
       this._cancelSubscription = null;
     }
-  }
-
-  set id(id: string) {
-    this._id = id;
-  }
-
-  get id(): string {
-    return this._id;
-  }
-
-  @Input() set title(title: string) {
-    this._title = title;
-  }
-
-  get title(): string {
-    return this._title;
-  }
-
-  @Input() set confirmText(confirmText: string) {
-    this._confirmText = confirmText;
-  }
-
-  get confirmText(): string {
-    return this._confirmText;
-  }
-
-  @Input() set cancelText(cancelText: string) {
-    this._cancelText = cancelText;
-  }
-
-  get cancelText(): string {
-    return this._cancelText;
-  }
-
-  set result(result: Observable<any>) {
-    this._result = result;
-  }
-
-  get result(): Observable<any> {
-    return this._result;
-  }
-
-  @Input() set cancelDisabled(cancelDisabled: boolean) {
-    this._cancelDisabled = cancelDisabled;
-  }
-
-  get cancelDisabled(): boolean {
-    return this._cancelDisabled;
-  }
-
-  set confirmDisabled(confirmDisabled: Observable<boolean>) {
-    this._confirmDisabled = confirmDisabled;
-  }
-
-  get confirmDisabled(): Observable<boolean> {
-    return this._confirmDisabled;
-  }
-
-  set showComponent(showComponent: Type<DialogChildComponent>) {
-    this._showComponent = showComponent;
-  }
-
-  get showComponent(): Type<DialogChildComponent> {
-    return this._showComponent;
-  }
-
-  set confirmClose(confirmClose: boolean) {
-    this._confirmClose = confirmClose;
-  }
-
-  get confirmClose(): boolean {
-    return this._confirmClose;
-  }
-
-  get show(): Observable<any> {
-    return this._show;
-  }
-
-  get cancel(): Observable<any> {
-    return this._cancel;
-  }
-
-  get confirm(): Observable<any> {
-    return this._confirm;
-  }
-
-  get isOpen(): boolean {
-    return this._isOpen;
   }
 }

@@ -24,22 +24,6 @@ export class ConfirmDialogComponent extends DialogChildComponent {
     super();
   }
 
-  private _prepareForm(args: any) {
-    this.message = args.message;
-    this._handleConfirmDialog = args.confirm || (() => {
-    });
-    this._handleCancelDialog = args.cancel || (() => {
-    });
-  }
-
-  private _handleConfirm() {
-    this._handleConfirmDialog();
-  }
-
-  private _handleNotConfirm() {
-    this._handleCancelDialog();
-  }
-
   bind(modal: ModalComponent) {
     modal.title = 'SHARE.DIALOGS.CONFIRMATION.TITLE';
     modal.confirmText = 'SHARE.DIALOGS.CONFIRMATION.CONFIRM';
@@ -55,5 +39,21 @@ export class ConfirmDialogComponent extends DialogChildComponent {
     this._confirmSubscription.unsubscribe();
     this._cancelSubscription.unsubscribe();
     this._showSubscription.unsubscribe();
+  }
+
+  private _prepareForm(args: any) {
+    this.message = args.message;
+    this._handleConfirmDialog = args.confirm || (() => {
+    });
+    this._handleCancelDialog = args.cancel || (() => {
+    });
+  }
+
+  private _handleConfirm() {
+    this._handleConfirmDialog();
+  }
+
+  private _handleNotConfirm() {
+    this._handleCancelDialog();
   }
 }

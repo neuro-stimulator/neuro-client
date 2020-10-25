@@ -1,24 +1,16 @@
-import { OnDestroy, OnInit, Type, ViewChild, Directive } from '@angular/core';
+import { Directive, OnDestroy, OnInit, Type, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable, Subscription } from 'rxjs';
 
-import {
-  EntityGroup,
-  ListFilterParameters,
-  ListGroupSortFilterService,
-} from '@diplomka-frontend/stim-lib-list-utils';
+import { EntityGroup, ListFilterParameters, ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { FilterDialogComponent } from '@diplomka-frontend/stim-lib-ui';
 
 import { ListButtonsAddonService } from './list-buttons-addon/list-buttons-addon.service';
 import { BaseFacade } from '@diplomka-frontend/stim-lib-common';
-import { map } from 'rxjs/operators';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
-import {
-  AliveCheckerFacade,
-  ConnectionInformationState,
-} from '@diplomka-frontend/stim-lib-connection';
+import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
 
 @Directive()
 export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
@@ -44,7 +36,37 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
     protected readonly _router: Router,
     protected readonly _route: ActivatedRoute,
     private readonly _location: Location
-  ) {}
+  ) {
+  }
+
+  get groups(): EntityGroup<T> {
+    return this._filterService.records;
+  }
+
+  get hasGroups() {
+    return (
+      this.groups.length !== 0 &&
+      Object.keys(this.groups[0]?.entities)?.length !== 0
+    );
+  }
+
+  get state(): Observable<S> {
+    return this._facade.state;
+  }
+
+  get connectionState(): Observable<ConnectionInformationState> {
+    return this._connection.state;
+  }
+
+  protected abstract get introRecord(): T;
+
+  protected abstract get filterDialogComponent(): Type<FilterDialogComponent<T>>;
+
+  protected abstract get introStepsComponentName(): string;
+
+  protected abstract get records$(): Observable<T[]>;
+
+  protected abstract get selectionMode$(): Observable<boolean>;
 
   ngOnInit() {
     this._filterEntitiesSubscription = this._filterService.subscribeEntities(
@@ -123,7 +145,7 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
     this._router.navigate([], {
       queryParams: params,
       fragment: this._filterService.searchValue,
-      relativeTo: this._route,
+      relativeTo: this._route
     });
   }
 
@@ -132,7 +154,7 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
       this._router.createUrlTree([], {
         relativeTo: this._route,
         queryParams: this._filterService.filterParameters,
-        fragment: value,
+        fragment: value
       })
     );
     this._location.go(url);
@@ -158,36 +180,5 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
 
   private _selectNone() {
     this._facade.selectNone();
-  }
-
-  protected abstract get introRecord(): T;
-
-  protected abstract get filterDialogComponent(): Type<
-    FilterDialogComponent<T>
-  >;
-
-  protected abstract get introStepsComponentName(): string;
-
-  protected abstract get records$(): Observable<T[]>;
-
-  protected abstract get selectionMode$(): Observable<boolean>;
-
-  get groups(): EntityGroup<T> {
-    return this._filterService.records;
-  }
-
-  get hasGroups() {
-    return (
-      this.groups.length !== 0 &&
-      Object.keys(this.groups[0]?.entities)?.length !== 0
-    );
-  }
-
-  get state(): Observable<S> {
-    return this._facade.state;
-  }
-
-  get connectionState(): Observable<ConnectionInformationState> {
-    return this._connection.state;
   }
 }

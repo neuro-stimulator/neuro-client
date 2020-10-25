@@ -1,7 +1,7 @@
-import { ExperimentType } from "@stechy1/diplomka-share";
+import { ExperimentType } from '@stechy1/diplomka-share';
 
-import { ApplicationPage } from "../../support/app.po";
-import { ExperimentsPage } from "../../support/experiments/experiments.po";
+import { ApplicationPage } from '../../support/app.po';
+import { ExperimentsPage } from '../../support/experiments/experiments.po';
 
 describe('Experiment list test', () => {
 

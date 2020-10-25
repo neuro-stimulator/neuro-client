@@ -1,30 +1,22 @@
-import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
-import { map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Store } from "@ngrx/store";
+import { map, mergeMap, switchMap, tap, withLatestFrom } from "rxjs/operators";
+import { of } from "rxjs";
 
-import { ResponseObject } from '@stechy1/diplomka-share';
+import { ResponseObject } from "@stechy1/diplomka-share";
 
-import { LocalCommandFactory } from '../local-command-handlers/local-command.factory';
-import { ConsoleService } from '../infrastructure/console.service';
-import { CommandParserService } from '../infrastructure/command-parser.service';
-import { ParseCommandResult } from '../domain/parse-command-result';
-import { ConsoleCommand } from '../domain/console-command';
-import * as ConsoleActions from './console.actions';
-import { ConsoleState } from './console.state';
-import { consoleFeature } from './console.reducer';
+import { LocalCommandFactory } from "../local-command-handlers/local-command.factory";
+import { ConsoleService } from "../infrastructure/console.service";
+import { CommandParserService } from "../infrastructure/command-parser.service";
+import { ParseCommandResult } from "../domain/parse-command-result";
+import { ConsoleCommand } from "../domain/console-command";
+import * as ConsoleActions from "./console.actions";
+import { ConsoleState } from "./console.state";
+import { consoleFeature } from "./console.reducer";
 
 @Injectable()
 export class ConsoleEffects {
-  constructor(
-    private readonly _service: ConsoleService,
-    private readonly _parser: CommandParserService,
-    private readonly _factory: LocalCommandFactory,
-    private readonly actions$: Actions,
-    private readonly store: Store<ConsoleState>
-  ) {}
-
   loadCommands$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ConsoleActions.loadHistory),
@@ -34,7 +26,6 @@ export class ConsoleEffects {
       map((commands: ConsoleCommand[]) => ConsoleActions.historyLoaded({ commands }))
     )
   );
-
   clearHistory$ = createEffect(
     () =>
       this.actions$.pipe(
@@ -45,7 +36,6 @@ export class ConsoleEffects {
       ),
     { dispatch: false }
   );
-
   parseCommand$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ConsoleActions.parseCommand),
@@ -56,15 +46,15 @@ export class ConsoleEffects {
             actions.push(
               ConsoleActions.saveCommand({
                 rawCommand: action.rawCommand,
-                fromUser: true,
+                fromUser: true
               })
             );
             if (result.valid) {
               switch (result.consumer) {
-                case 'client':
+                case "client":
                   actions.push(ConsoleActions.processLocalComand({ command: result }));
                   break;
-                case 'server':
+                case "server":
                   actions.push(ConsoleActions.sendCommandToServer({ command: result }));
                   break;
               }
@@ -73,7 +63,7 @@ export class ConsoleEffects {
                 ConsoleActions.commandInvalid({
                   rawCommand: action.rawCommand,
                   commandName: result.commandName,
-                  invalidReason: result.invalidReason,
+                  invalidReason: result.invalidReason
                 })
               );
             }
@@ -84,19 +74,17 @@ export class ConsoleEffects {
       })
     )
   );
-
   saveInvalidCommand = createEffect(() =>
     this.actions$.pipe(
       ofType(ConsoleActions.commandInvalid),
       map((action) =>
         ConsoleActions.saveCommand({
           rawCommand: action.invalidReason,
-          fromUser: false,
+          fromUser: false
         })
       )
     )
   );
-
   saveCommand$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ConsoleActions.saveCommand),
@@ -110,7 +98,6 @@ export class ConsoleEffects {
       })
     )
   );
-
   sendCommandToServer$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ConsoleActions.sendCommandToServer),
@@ -122,7 +109,6 @@ export class ConsoleEffects {
       })
     )
   );
-
   processLocalCommand$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ConsoleActions.processLocalComand),
@@ -134,7 +120,7 @@ export class ConsoleEffects {
         if (result) {
           return ConsoleActions.saveCommand({
             rawCommand: result,
-            fromUser: false,
+            fromUser: false
           });
         } else {
           return ConsoleActions.noAction();
@@ -142,4 +128,13 @@ export class ConsoleEffects {
       })
     )
   );
+
+  constructor(
+    private readonly _service: ConsoleService,
+    private readonly _parser: CommandParserService,
+    private readonly _factory: LocalCommandFactory,
+    private readonly actions$: Actions,
+    private readonly store: Store<ConsoleState>
+  ) {
+  }
 }

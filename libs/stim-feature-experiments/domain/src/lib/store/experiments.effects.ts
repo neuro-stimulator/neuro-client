@@ -32,7 +32,7 @@ export class ExperimentsEffects {
           experiments: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentsActions.actionExperimentsAllRequestFail());
       })
     )
@@ -53,7 +53,7 @@ export class ExperimentsEffects {
           experiments: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentsActions.actionExperimentsAllRequestFail());
       })
     )
@@ -76,7 +76,7 @@ export class ExperimentsEffects {
         ];
       }),
       flatMap((c) => c),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentsActions.actionExperimentsOneRequestFail());
       })
     )
@@ -101,7 +101,7 @@ export class ExperimentsEffects {
           experiment: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentsActions.actionExperimentsInsertRequestFail());
       })
     )
@@ -115,7 +115,7 @@ export class ExperimentsEffects {
           experiment: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentsActions.actionExperimentsUpdateRequestFail());
       })
     )
@@ -144,7 +144,7 @@ export class ExperimentsEffects {
           experiment: response.data,
         })
       ),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentsActions.actionExperimentsDeleteRequestFail());
       })
     );
@@ -172,7 +172,7 @@ export class ExperimentsEffects {
           exists: response.data.exists,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentsActions.actionExperimentsNameExistsRequestFail());
       })
     )
@@ -187,7 +187,7 @@ export class ExperimentsEffects {
           sequences: response.data,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(ExperimentsActions.actionSequencesForExperimentRequestFail());
       })
     )

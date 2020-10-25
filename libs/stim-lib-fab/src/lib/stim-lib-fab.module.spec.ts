@@ -4,7 +4,7 @@ import { StimLibFabModule } from './stim-lib-fab.module';
 describe('StimLibFabModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [StimLibFabModule],
+      imports: [StimLibFabModule]
     }).compileComponents();
   }));
 

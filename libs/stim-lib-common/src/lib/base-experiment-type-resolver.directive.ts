@@ -1,14 +1,4 @@
-import {
-  ComponentFactoryResolver,
-  Directive,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  Type,
-  ViewContainerRef,
-} from '@angular/core';
+import { ComponentFactoryResolver, Directive, EventEmitter, Input, OnDestroy, OnInit, Output, Type, ViewContainerRef } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 
 import { NGXLogger } from 'ngx-logger';
@@ -29,7 +19,22 @@ export abstract class BaseExperimentTypeResolverDirective<T>
     private readonly componentFactoryResolver: ComponentFactoryResolver,
     private readonly _viewContainerRef: ViewContainerRef,
     private readonly logger: NGXLogger
-  ) {}
+  ) {
+  }
+
+  get experimentComponent(): T {
+    return this._instance;
+  }
+
+  ngOnInit(): void {
+    this._typeSubscription = this.type.subscribe((type: ExperimentType) => {
+      this._experimentTypeChange(type);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this._typeSubscription.unsubscribe();
+  }
 
   private _experimentTypeChange(type: ExperimentType) {
     if (type === ExperimentType.NONE) {
@@ -46,22 +51,8 @@ export abstract class BaseExperimentTypeResolverDirective<T>
 
     this._viewContainerRef.clear();
     const componentRef = this._viewContainerRef.createComponent(factory);
-    this.logger.debug(`Komponenta byla úspěšně inicializována.`);
+    this.logger.debug('Komponenta byla úspěšně inicializována.');
     this.componentChange.next(componentRef.instance);
     this._instance = componentRef.instance;
-  }
-
-  ngOnInit(): void {
-    this._typeSubscription = this.type.subscribe((type: ExperimentType) => {
-      this._experimentTypeChange(type);
-    });
-  }
-
-  ngOnDestroy(): void {
-    this._typeSubscription.unsubscribe();
-  }
-
-  get experimentComponent(): T {
-    return this._instance;
   }
 }

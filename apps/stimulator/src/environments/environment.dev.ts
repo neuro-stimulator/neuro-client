@@ -35,10 +35,10 @@ export const environment = {
   testing: false,
   url: {
     server: 'http://localhost',
-    socket: 'http://localhost',
+    socket: 'http://localhost'
   },
   port: {
-    server: SERVER_HTTP_PORT,
+    server: SERVER_HTTP_PORT
   },
   maxOutputCount: 8,
   patternSize: 32,
@@ -46,8 +46,8 @@ export const environment = {
   disableTutorial: false,
   introDelay: 500,
   supportedLanguages: [
-    { value: 'cz', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.CZ'},
-    { value: 'en', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.EN'}
+    { value: 'cz', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.CZ' },
+    { value: 'en', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.EN' }
   ],
   defaultLanguage: 'cz'
 };

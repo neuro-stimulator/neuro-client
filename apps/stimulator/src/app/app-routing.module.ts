@@ -9,7 +9,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('@diplomka-frontend/stim-feature-auth/feature').then(
         (mod) => mod.StimFeatureAuthFeatureModule
-      ),
+      )
   },
   {
     path: 'profile',
@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('@diplomka-frontend/stim-feature-users/feature').then(
         (mod) => mod.StimFeatureUsersFeatureModule
-      ),
+      )
   },
   {
     path: 'player',
@@ -25,7 +25,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('@diplomka-frontend/stim-feature-player/feature').then(
         (mod) => mod.StimFeaturePlayerFeatureModule
-      ),
+      )
   },
   {
     path: 'settings',
@@ -33,7 +33,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('@diplomka-frontend/stim-feature-settings/feature').then(
         (mod) => mod.StimFeatureSettingsFeatureModule
-      ),
+      )
   },
   {
     path: 'help',
@@ -41,7 +41,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('@diplomka-frontend/stim-feature-help/feature').then(
         (mod) => mod.StimFeatureHelpFeatureModule
-      ),
+      )
   },
   {
     path: 'about',
@@ -49,7 +49,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('@diplomka-frontend/stim-feature-about').then(
         (mod) => mod.StimFeatureAboutModule
-      ),
+      )
   },
   {
     path: 'stimulator',
@@ -57,14 +57,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('@diplomka-frontend/stim-feature-stimulator/feature').then(
         (mod) => mod.StimFeatureStimulatorFeatureModule
-      ),
+      )
   },
   {
     path: 'experiments',
     loadChildren: () =>
       import('@diplomka-frontend/stim-feature-experiments/feature').then(
         (mod) => mod.StimFeatureExperimentsFeatureModule
-      ),
+      )
   },
   {
     path: 'results',
@@ -72,7 +72,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('@diplomka-frontend/stim-feature-experiment-results/feature').then(
         (mod) => mod.StimFeatureExperimentResultsFeatureModule
-      ),
+      )
   },
   {
     path: 'sequences',
@@ -80,28 +80,29 @@ const routes: Routes = [
     loadChildren: () =>
       import('@diplomka-frontend/stim-feature-sequences/feature').then(
         (mod) => mod.StimFeatureSequencesFeatureModule
-      ),
+      )
   },
 
   {
     path: '404',
     component: PageNotFoundComponent,
-    data: { title: 'PAGE_NOT_FOUND.TITLE' },
+    data: { title: 'PAGE_NOT_FOUND.TITLE' }
   },
   {
     path: '',
     pathMatch: 'prefix',
-    redirectTo: 'experiments/list',
+    redirectTo: 'experiments/list'
   },
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: '/404',
-  },
+    redirectTo: '/404'
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { enableTracing: false })],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

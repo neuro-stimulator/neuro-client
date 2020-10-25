@@ -4,7 +4,7 @@ import { StimLibUiModule } from './stim-lib-ui.module';
 describe('StimLibUiModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [StimLibUiModule],
+      imports: [StimLibUiModule]
     }).compileComponents();
   }));
 

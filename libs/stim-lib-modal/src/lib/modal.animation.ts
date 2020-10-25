@@ -17,7 +17,7 @@ export const animation = trigger('modalAnimation', [
   transition('open => close', [
     animate(300, style({
       transform: 'scale(0.8)',
-      opacity: 0,
+      opacity: 0
     }))
   ])
 ]);

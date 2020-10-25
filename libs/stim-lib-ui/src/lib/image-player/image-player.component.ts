@@ -1,18 +1,11 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 
 @Component({
   selector: 'stim-lib-ui-image-player',
   templateUrl: './image-player.component.html',
-  styleUrls: ['./image-player.component.sass'],
+  styleUrls: ['./image-player.component.sass']
 })
 export class ImagePlayerComponent implements OnInit {
   @ViewChild('modal', { static: true }) modal: ModalComponent;
@@ -22,18 +15,20 @@ export class ImagePlayerComponent implements OnInit {
 
   @Output() requestFileChange: EventEmitter<void> = new EventEmitter<void>();
 
+  constructor() {
+  }
+
   private _imageUrl: string;
 
-  constructor() {}
-
-  ngOnInit() {}
+  get imageUrl() {
+    return this._imageUrl;
+  }
 
   @Input() set imageUrl(imageUrl: string) {
     this._imageUrl = imageUrl;
   }
 
-  get imageUrl() {
-    return this._imageUrl;
+  ngOnInit() {
   }
 
   handleShowFileBrowser() {

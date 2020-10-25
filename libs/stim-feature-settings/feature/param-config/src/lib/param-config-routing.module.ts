@@ -1,7 +1,7 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import { ParamConfigComponent } from "./param-config.component";
+import { ParamConfigComponent } from './param-config.component';
 
 const routes: Routes = [
   {

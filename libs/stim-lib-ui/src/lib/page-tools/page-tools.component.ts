@@ -1,23 +1,14 @@
-import {
-  Component,
-  ComponentFactoryResolver,
-  OnInit,
-  Type,
-  ViewContainerRef,
-} from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, Type, ViewContainerRef } from '@angular/core';
 
 import { of, Subscription } from 'rxjs';
 
-import {
-  DialogChildComponent,
-  ModalComponent,
-} from '@diplomka-frontend/stim-lib-modal';
+import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 
 import { PageToolsChildComponent } from './page-tools-child-component';
 
 @Component({
   templateUrl: './page-tools.component.html',
-  styleUrls: ['./page-tools.component.sass'],
+  styleUrls: ['./page-tools.component.sass']
 })
 export class PageToolsComponent extends DialogChildComponent implements OnInit {
   private _viewComponent: Type<any>;
@@ -33,30 +24,6 @@ export class PageToolsComponent extends DialogChildComponent implements OnInit {
     private readonly viewContainerRef: ViewContainerRef
   ) {
     super();
-  }
-
-  private _preparePageToolsChildComponent(
-    pageToolsChildComponentType: Type<any>
-  ) {
-    // Podle zadané komponenty získám její továrnu
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      pageToolsChildComponentType
-    );
-    // Vymažu obsah ve view containeru
-    this.viewContainerRef.clear();
-
-    // Vytvořím novou komponentu ve viewContaineru za pomoci továrny
-    const component = this.viewContainerRef.createComponent(componentFactory);
-
-    this._pageToolsChildComponent = component.instance as PageToolsChildComponent;
-  }
-
-  private _handleConfirm() {
-    this._pageToolsChildComponent.confirm();
-  }
-
-  private _handleCancel() {
-    this._pageToolsChildComponent.cancel();
   }
 
   ngOnInit() {
@@ -91,5 +58,29 @@ export class PageToolsComponent extends DialogChildComponent implements OnInit {
     this._showSubscription.unsubscribe();
     this._cancelSubscription.unsubscribe();
     this._pageToolsChildComponent.deinit();
+  }
+
+  private _preparePageToolsChildComponent(
+    pageToolsChildComponentType: Type<any>
+  ) {
+    // Podle zadané komponenty získám její továrnu
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      pageToolsChildComponentType
+    );
+    // Vymažu obsah ve view containeru
+    this.viewContainerRef.clear();
+
+    // Vytvořím novou komponentu ve viewContaineru za pomoci továrny
+    const component = this.viewContainerRef.createComponent(componentFactory);
+
+    this._pageToolsChildComponent = component.instance as PageToolsChildComponent;
+  }
+
+  private _handleConfirm() {
+    this._pageToolsChildComponent.confirm();
+  }
+
+  private _handleCancel() {
+    this._pageToolsChildComponent.cancel();
   }
 }

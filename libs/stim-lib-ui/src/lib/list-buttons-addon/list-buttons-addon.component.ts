@@ -7,7 +7,7 @@ import { ListButtonsAddonService } from './list-buttons-addon.service';
 
 @Component({
   templateUrl: './list-buttons-addon.component.html',
-  styleUrls: ['./list-buttons-addon.component.sass'],
+  styleUrls: ['./list-buttons-addon.component.sass']
 })
 export class ListButtonsAddonComponent implements OnInit, OnDestroy {
   hideFinderBox = true;
@@ -18,10 +18,15 @@ export class ListButtonsAddonComponent implements OnInit, OnDestroy {
   constructor(
     private readonly _service: ListButtonsAddonService,
     private readonly _route: ActivatedRoute
-  ) {}
+  ) {
+  }
 
-  private _notifySearchValue(value: string) {
-    this._service.searchValue.next(value);
+  public get showButtons$(): Observable<boolean> {
+    return this._service.addonVisible;
+  }
+
+  public get selectionMode$(): Observable<boolean> {
+    return this._service.selectionMode$;
   }
 
   ngOnInit() {
@@ -60,11 +65,7 @@ export class ListButtonsAddonComponent implements OnInit, OnDestroy {
     this._service.selectNoneRequest.next();
   }
 
-  public get showButtons$(): Observable<boolean> {
-    return this._service.addonVisible;
-  }
-
-  public get selectionMode$(): Observable<boolean> {
-    return this._service.selectionMode$;
+  private _notifySearchValue(value: string) {
+    this._service.searchValue.next(value);
   }
 }

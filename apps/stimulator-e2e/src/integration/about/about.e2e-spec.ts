@@ -1,4 +1,4 @@
-import { AboutPage } from "../../support/about/about.po";
+import { AboutPage } from '../../support/about/about.po';
 
 describe('About page test', () => {
 

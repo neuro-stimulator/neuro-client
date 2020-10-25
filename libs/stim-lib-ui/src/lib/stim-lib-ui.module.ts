@@ -38,7 +38,7 @@ import { DiodeComponent } from './diode/diode.component';
     ListButtonsAddonComponent,
     ContentTogglerDirective,
     DateTimePipe,
-    DiodeComponent,
+    DiodeComponent
   ],
   imports: [
     RouterModule,
@@ -48,7 +48,7 @@ import { DiodeComponent } from './diode/diode.component';
     StimLibCommonModule,
     StimLibModalModule,
     StimLibFabModule,
-    StimLibListUtilsModule,
+    StimLibListUtilsModule
   ],
   exports: [
     StimLibCommonModule,
@@ -67,7 +67,8 @@ import { DiodeComponent } from './diode/diode.component';
     ListButtonsAddonComponent,
     ContentTogglerDirective,
     DateTimePipe,
-    DiodeComponent,
-  ],
+    DiodeComponent
+  ]
 })
-export class StimLibUiModule {}
+export class StimLibUiModule {
+}

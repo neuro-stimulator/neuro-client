@@ -1,14 +1,7 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpErrorResponse,
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest,
-  HttpResponse,
-} from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 
-import { NEVER, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -17,10 +10,7 @@ import { NGXLogger } from 'ngx-logger';
 
 import { ResponseMessage } from '@stechy1/diplomka-share';
 
-import {
-  MESSAGE_CODE_TRANSLATOR,
-  SERVER_MESSAGE_CODE_PREFIX,
-} from './message-code-translator';
+import { MESSAGE_CODE_TRANSLATOR, SERVER_MESSAGE_CODE_PREFIX } from './message-code-translator';
 
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {
@@ -41,26 +31,6 @@ export class ResponseInterceptor implements HttpInterceptor {
     messageCode: string
   ): number {
     return Math.min(Math.floor(+messageCode.substr(-3) / 100), 3);
-  }
-
-  private _handleResponseMessage(message: ResponseMessage) {
-    const toasterMapIndex = ResponseInterceptor._transformMessageCodeToToasterType(
-      `${message.code}`
-    );
-    this.translator
-      .get(
-        `${SERVER_MESSAGE_CODE_PREFIX}${MESSAGE_CODE_TRANSLATOR[message.code]}`,
-        message.params
-      )
-      .toPromise()
-      .then((value: string) => {
-        if (this.TOASTER_MAP[toasterMapIndex]) {
-          this.TOASTER_MAP[toasterMapIndex](value);
-        } else {
-          this.logger.error(value);
-          this.TOASTER_MAP[3]('Neznámá chyba!');
-        }
-      });
   }
 
   /**
@@ -84,7 +54,7 @@ export class ResponseInterceptor implements HttpInterceptor {
 
         return response;
       }),
-      catchError((response: any) => {
+      catchError((response: unknown) => {
         this.logger.error(response);
         if (response instanceof HttpErrorResponse) {
           const errorResponse = response as HttpErrorResponse;
@@ -96,5 +66,25 @@ export class ResponseInterceptor implements HttpInterceptor {
         throw response;
       })
     );
+  }
+
+  private _handleResponseMessage(message: ResponseMessage) {
+    const toasterMapIndex = ResponseInterceptor._transformMessageCodeToToasterType(
+      `${message.code}`
+    );
+    this.translator
+        .get(
+          `${SERVER_MESSAGE_CODE_PREFIX}${MESSAGE_CODE_TRANSLATOR[message.code]}`,
+          message.params
+        )
+        .toPromise()
+        .then((value: string) => {
+          if (this.TOASTER_MAP[toasterMapIndex]) {
+            this.TOASTER_MAP[toasterMapIndex](value);
+          } else {
+            this.logger.error(value);
+            this.TOASTER_MAP[3]('Neznámá chyba!');
+          }
+        });
   }
 }

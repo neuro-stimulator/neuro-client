@@ -19,10 +19,6 @@ export class InformDialogComponent extends DialogChildComponent {
     super();
   }
 
-  private _prepareForm(args: any) {
-    this.message = args.message;
-  }
-
   bind(modal: ModalComponent) {
     modal.title = 'SHARE.DIALOGS.INFORMATION.TITLE';
     modal.confirmText = 'SHARE.DIALOGS.INFORMATION.CONFIRM';
@@ -33,6 +29,10 @@ export class InformDialogComponent extends DialogChildComponent {
 
   unbind(modal: ModalComponent) {
     this._showSubscription.unsubscribe();
+  }
+
+  private _prepareForm(args: any) {
+    this.message = args.message;
   }
 
 }

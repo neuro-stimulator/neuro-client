@@ -6,11 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
-import {
-  ConsoleFacade,
-  SettingsFacade,
-  SettingsState,
-} from '@diplomka-frontend/stim-feature-settings/domain';
+import { ConsoleFacade, SettingsFacade, SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
 import { AuthFacade } from '@diplomka-frontend/stim-feature-auth/domain';
 
 import { environment } from '../environments/environment';
@@ -20,7 +16,7 @@ import { getLocaleLoader } from './locale-loader';
 @Component({
   selector: 'stim-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass'],
+  styleUrls: ['./app.component.sass']
 })
 export class AppComponent /*implements OnInit, AfterViewInit*/ {
   private static readonly NO_FIRST_TIME_KEY = 'no-first-time';
@@ -46,26 +42,26 @@ export class AppComponent /*implements OnInit, AfterViewInit*/ {
     translator.setDefaultLang(environment.defaultLanguage);
 
     this.settings.state
-      .pipe(
-        // Vyfiltruji pouze takové stavy, kdy je nastavení již načteno
-        filter((state: SettingsState) => state.localSettingsLoaded),
-        // Pomocí mapování získám aktuální jazyk aplikace
-        map((state: SettingsState) => state.localSettings.application.language),
-        // Řeknu překladačí, jaký jazyk se bude používat
-        tap((language: string) => {
-          translator.use(language);
-        }),
-        // Dále získám locale loader a pomocí switch mapy
-        // přehodím řízení asynchronního kódu na loader
-        switchMap((language: string) => {
-          return getLocaleLoader(language);
-        })
-        // Až loader načte locales
-      )
-      .subscribe((locale: { default: string }) => {
-        // Tak je zeregistruji
-        registerLocaleData(locale.default);
-      });
+        .pipe(
+          // Vyfiltruji pouze takové stavy, kdy je nastavení již načteno
+          filter((state: SettingsState) => state.localSettingsLoaded),
+          // Pomocí mapování získám aktuální jazyk aplikace
+          map((state: SettingsState) => state.localSettings.application.language),
+          // Řeknu překladačí, jaký jazyk se bude používat
+          tap((language: string) => {
+            translator.use(language);
+          }),
+          // Dále získám locale loader a pomocí switch mapy
+          // přehodím řízení asynchronního kódu na loader
+          switchMap((language: string) => {
+            return getLocaleLoader(language);
+          })
+          // Až loader načte locales
+        )
+        .subscribe((locale: { default: string }) => {
+          // Tak je zeregistruji
+          registerLocaleData(locale.default);
+        });
   }
 
   // constructor(public readonly navigation: NavigationService,

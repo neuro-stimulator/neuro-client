@@ -2,7 +2,8 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export class ShareValidators {
 
-  private constructor() {}
+  private constructor() {
+  }
 
   public static exclusiveMin(min: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -12,7 +13,7 @@ export class ShareValidators {
         return null;
       }
 
-      return {exclusiveMin: {exclusiveMin: min}};
+      return { exclusiveMin: { exclusiveMin: min } };
     };
   }
 
@@ -24,7 +25,7 @@ export class ShareValidators {
         return null;
       }
 
-      return {exclusiveMax: {exclusiveMax: max}};
+      return { exclusiveMax: { exclusiveMax: max } };
     };
   }
 }

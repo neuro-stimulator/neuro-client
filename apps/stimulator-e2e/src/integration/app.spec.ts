@@ -1,17 +1,17 @@
 import { ExperimentType } from '@stechy1/diplomka-share';
 
-import { ApplicationPage } from "../support/app.po";
-import { ExperimentsPage } from "../support/experiments/experiments.po";
-import { ExperimentResultsPage } from "../support/experiment-results/experiment-results.po";
-import { ExperimentResultPage } from "../support/experiment-results/experiment-result/experiment-result.po";
-import { PlayerPage } from "../support/player/player.po";
-import { SequencesPage } from "../support/sequences/sequences.po";
-import { ExperimentTypeErpPage } from "../support/experiments/experiment-type/experiment-type-erp.po";
-import { ExperimentTypeCvepPage } from "../support/experiments/experiment-type/experiment-type-cvep.po";
-import { ExperimentTypeFvepPage } from "../support/experiments/experiment-type/experiment-type-fvep.po";
-import { ExperimentTypeTvepPage } from "../support/experiments/experiment-type/experiment-type-tvep.po";
-import { ExperimentTypeReaPage } from "../support/experiments/experiment-type/experiment-type-rea.po";
-import { ExperimentTypeAbstractSpecHelper } from "./experiments/experiment-type/experiment-type-abstract-helper.spec";
+import { ApplicationPage } from '../support/app.po';
+import { ExperimentsPage } from '../support/experiments/experiments.po';
+import { ExperimentResultsPage } from '../support/experiment-results/experiment-results.po';
+import { ExperimentResultPage } from '../support/experiment-results/experiment-result/experiment-result.po';
+import { PlayerPage } from '../support/player/player.po';
+import { SequencesPage } from '../support/sequences/sequences.po';
+import { ExperimentTypeErpPage } from '../support/experiments/experiment-type/experiment-type-erp.po';
+import { ExperimentTypeCvepPage } from '../support/experiments/experiment-type/experiment-type-cvep.po';
+import { ExperimentTypeFvepPage } from '../support/experiments/experiment-type/experiment-type-fvep.po';
+import { ExperimentTypeTvepPage } from '../support/experiments/experiment-type/experiment-type-tvep.po';
+import { ExperimentTypeReaPage } from '../support/experiments/experiment-type/experiment-type-rea.po';
+import { ExperimentTypeAbstractSpecHelper } from './experiments/experiment-type/experiment-type-abstract-helper.spec';
 
 
 describe('Top level e2e tests', () => {

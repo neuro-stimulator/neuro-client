@@ -1,10 +1,10 @@
-import { Component, Inject, Input, OnInit, ViewChild } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { NGXLogger } from 'ngx-logger';
 
 import { ConfirmDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import { TOKEN_SUPPORTED_LANGUAGES } from "@diplomka-frontend/stim-lib-common";
+import { TOKEN_SUPPORTED_LANGUAGES } from '@diplomka-frontend/stim-lib-common';
 
 @Component({
   selector: 'stim-feature-settings-param-config-application',
@@ -44,7 +44,7 @@ export class ParamConfigApplicationComponent implements OnInit {
     this.modal.open({
       message: 'SETTINGS.PARAM_CONFIG.APPLICATION.TUTORIAL.DIALOGS.DELETE.QUESTION',
       confirm: () => {
-        self.logger.info(`Budu resetovat informace o zobrazených tutoriálech.`);
+        self.logger.info('Budu resetovat informace o zobrazených tutoriálech.');
         // self._intro.resetTutorials();
       }
     });

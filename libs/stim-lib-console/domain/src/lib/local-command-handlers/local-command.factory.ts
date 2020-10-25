@@ -1,13 +1,12 @@
-import { Injectable, Injector, Type } from '@angular/core';
+import { Injectable, Injector } from "@angular/core";
+import { LocalCommandHandler } from "./local-command.handler";
+import { TRANSLATE_COMMAND_TOKENS } from "./command-tokens";
+import { ParseCommandResult } from "../domain/parse-command-result";
 
-import { ClientCommand } from '../domain/commands';
-import { LocalCommandHandler } from './local-command.handler';
-import { TRANSLATE_COMMAND_TOKENS } from './command-tokens';
-import { ParseCommandResult } from '../domain/parse-command-result';
-
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class LocalCommandFactory {
-  constructor(private readonly injector: Injector) {}
+  constructor(private readonly injector: Injector) {
+  }
 
   public getCommandHandler(
     localCommand: ParseCommandResult

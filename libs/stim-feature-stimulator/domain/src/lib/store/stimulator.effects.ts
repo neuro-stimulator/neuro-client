@@ -125,7 +125,7 @@ export class StimulatorEffects {
           state: response ? response.data.state : StimulatorStateType.READY,
         });
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(StimulatorActions.actionCommandStimulatorStateRequestFail());
       })
     )
@@ -139,7 +139,7 @@ export class StimulatorEffects {
       mergeMap((res: ResponseObject<any>) => {
         return [StimulatorActions.actionCommandStimulatorUploadRequestDone(), StimulatorActions.actionCommandStimulatorSetupRequest()];
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return [StimulatorActions.actionCommandStimulatorSetupRequestFail()];
       })
     )
@@ -153,7 +153,7 @@ export class StimulatorEffects {
       map((response: ResponseObject<any>) => {
         return StimulatorActions.actionCommandStimulatorSetupRequestDone();
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(StimulatorActions.actionCommandStimulatorSetupRequestFail());
       })
     )
@@ -167,7 +167,7 @@ export class StimulatorEffects {
       map((response: ResponseObject<any>) => {
         return StimulatorActions.actionCommandStimulatorRunRequestDone();
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(StimulatorActions.actionCommandStimulatorRunRequestFail());
       })
     )
@@ -181,7 +181,7 @@ export class StimulatorEffects {
       map((response: ResponseObject<any>) => {
         return StimulatorActions.actionCommandStimulatorPauseRequestDone();
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(StimulatorActions.actionCommandStimulatorPauseRequestFail());
       })
     )
@@ -195,7 +195,7 @@ export class StimulatorEffects {
       map((response: ResponseObject<any>) => {
         return StimulatorActions.actionCommandStimulatorFinishRequestDone();
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(StimulatorActions.actionCommandStimulatorFinishRequestFail());
       })
     )
@@ -218,7 +218,7 @@ export class StimulatorEffects {
         }
         return StimulatorActions.actionCommandStimulatorClearRequestDone();
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(StimulatorActions.actionCommandStimulatorClearRequestFail());
       })
     )
@@ -240,7 +240,7 @@ export class StimulatorEffects {
             return StimulatorActions.actionStimulatorNoop();
         }
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: unknown) => {
         return of(StimulatorActions.actionStimulatorNoop());
       })
     )

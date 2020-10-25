@@ -1,4 +1,4 @@
-import { ServerSettings, Settings } from "../domain/settings";
+import { ServerSettings, Settings } from '../domain/settings';
 
 export interface SettingsState {
   localSettings: Settings;

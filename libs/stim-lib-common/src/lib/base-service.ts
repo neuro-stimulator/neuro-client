@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
 import { ResponseObject } from '@stechy1/diplomka-share';
@@ -53,7 +53,7 @@ export abstract class BaseService<T extends BaseRecord> {
    * Získá ze serveru všechny záznamy
    */
   public all(): Observable<ResponseObject<T[]>> {
-    this.logger.info("Odesílám požadavek pro získání všech záznamů... ");
+    this.logger.info('Odesílám požadavek pro získání všech záznamů... ');
     return this._http.get<ResponseObject<T[]>>(this._accessPoint);
     // if (this._records$.getValue().length !== 0) {
     //   return Promise.resolve(this._records$.getValue().length);
@@ -177,27 +177,27 @@ export abstract class BaseService<T extends BaseRecord> {
   }
 
   // protected _initSocket(namespace: string): void {
-    // this._socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.server)}/${namespace}`});
-    // this._socket.on('connect', () => this._socketConnected());
-    // this._socket.on('disconnect', (reason) => this._socketDisconnected(reason));
-    // this._socket.on('insert', (data: T) => {
-    //   this._changeServiceEventHandler({
-    //     record: data,
-    //     changeType: CRUDServiceType.INSERT
-    //   });
-    // });
-    // this._socket.on('update', (data: T) => {
-    //   this._changeServiceEventHandler({
-    //     record: data,
-    //     changeType: CRUDServiceType.UPDATE
-    //   });
-    // });
-    // this._socket.on('delete', (data: T) => {
-    //   this._changeServiceEventHandler({
-    //     record: data,
-    //     changeType: CRUDServiceType.DELETE
-    //   });
-    // });
+  // this._socket = new Socket({url: `${makeURL(environment.url.socket, environment.port.server)}/${namespace}`});
+  // this._socket.on('connect', () => this._socketConnected());
+  // this._socket.on('disconnect', (reason) => this._socketDisconnected(reason));
+  // this._socket.on('insert', (data: T) => {
+  //   this._changeServiceEventHandler({
+  //     record: data,
+  //     changeType: CRUDServiceType.INSERT
+  //   });
+  // });
+  // this._socket.on('update', (data: T) => {
+  //   this._changeServiceEventHandler({
+  //     record: data,
+  //     changeType: CRUDServiceType.UPDATE
+  //   });
+  // });
+  // this._socket.on('delete', (data: T) => {
+  //   this._changeServiceEventHandler({
+  //     record: data,
+  //     changeType: CRUDServiceType.DELETE
+  //   });
+  // });
   // }
 
   /**
@@ -207,7 +207,7 @@ export abstract class BaseService<T extends BaseRecord> {
    * @return T Záznam, který reprezentuje data na serveru
    */
   protected _insert(data: FormData | T): Observable<ResponseObject<T>> {
-    this.logger.info("Odesílám požadavek s vložením nového záznamu...");
+    this.logger.info('Odesílám požadavek s vložením nového záznamu...');
     return this._http.post<ResponseObject<T>>(this._accessPoint, data);
     // this._working.next(true);
     // return this._http.post<ResponseObject<T>>(this._accessPoint, data)
@@ -236,7 +236,7 @@ export abstract class BaseService<T extends BaseRecord> {
    * @return T Záznam, který reprezentuje data na serveru
    */
   protected _update(data: FormData | T): Observable<ResponseObject<T>> {
-    this.logger.info("Odesílám požadavek s aktualizací existujícího záznamu...");
+    this.logger.info('Odesílám požadavek s aktualizací existujícího záznamu...');
     return this._http.patch<ResponseObject<T>>(this._accessPoint, data);
     // this._working.next(true);
     // return this._http.patch<ResponseObject<T>>(this._accessPoint, data)
@@ -294,39 +294,39 @@ export abstract class BaseService<T extends BaseRecord> {
   //     return;
   //   }
 
-    // const record = event.record;
-    // const records = this._records$.getValue();
-    // const recordIndex = records.findIndex((value) => value.id === record.id);
-    // switch (event.changeType) {
-    //   case CRUDServiceType.INSERT:
-    //     if (recordIndex !== -1) {
-    //       this.logger.warn(`Záznam s ID: ${record.id} již existuje!`);
-    //       return;
-    //     }
-    //
-    //     this.logger.debug(`Vkládám nový záznam: ${JSON.stringify(record)}`);
-    //     records.push(record);
-    //     break;
-    //   case CRUDServiceType.UPDATE:
-    //     if (recordIndex === -1) {
-    //       this.logger.warn(`Záznam s ID: ${record.id} nebyl nalezen!`);
-    //       return;
-    //     }
-    //
-    //     this.logger.debug(`Aktualizuji záznam: ${JSON.stringify(record)}`);
-    //     records[recordIndex] = record;
-    //     break;
-    //   case CRUDServiceType.DELETE:
-    //     if (recordIndex === -1) {
-    //       this.logger.warn(`Záznam s ID: ${record.id} nebyl nalezen!`);
-    //       return;
-    //     }
-    //
-    //     this.logger.debug(`Mažu záznam: ${JSON.stringify(record)}`);
-    //     records.splice(recordIndex, 1);
-    //     break;
-    // }
-    // this._records$.next(records);
+  // const record = event.record;
+  // const records = this._records$.getValue();
+  // const recordIndex = records.findIndex((value) => value.id === record.id);
+  // switch (event.changeType) {
+  //   case CRUDServiceType.INSERT:
+  //     if (recordIndex !== -1) {
+  //       this.logger.warn(`Záznam s ID: ${record.id} již existuje!`);
+  //       return;
+  //     }
+  //
+  //     this.logger.debug(`Vkládám nový záznam: ${JSON.stringify(record)}`);
+  //     records.push(record);
+  //     break;
+  //   case CRUDServiceType.UPDATE:
+  //     if (recordIndex === -1) {
+  //       this.logger.warn(`Záznam s ID: ${record.id} nebyl nalezen!`);
+  //       return;
+  //     }
+  //
+  //     this.logger.debug(`Aktualizuji záznam: ${JSON.stringify(record)}`);
+  //     records[recordIndex] = record;
+  //     break;
+  //   case CRUDServiceType.DELETE:
+  //     if (recordIndex === -1) {
+  //       this.logger.warn(`Záznam s ID: ${record.id} nebyl nalezen!`);
+  //       return;
+  //     }
+  //
+  //     this.logger.debug(`Mažu záznam: ${JSON.stringify(record)}`);
+  //     records.splice(recordIndex, 1);
+  //     break;
+  // }
+  // this._records$.next(records);
   // }
 
   // private _handleAliveStatus(status: ConnectionStatus) {

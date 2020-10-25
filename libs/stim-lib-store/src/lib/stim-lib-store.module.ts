@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { StoreModule } from "@ngrx/store";
-import { EffectsModule } from "@ngrx/effects";
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
-import * as fromApp from "./store/app.reducers";
-import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import * as fromApp from './store/app.reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   imports: [
@@ -13,4 +13,5 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
     StoreDevtoolsModule.instrument()
   ]
 })
-export class StimLibStoreModule {}
+export class StimLibStoreModule {
+}

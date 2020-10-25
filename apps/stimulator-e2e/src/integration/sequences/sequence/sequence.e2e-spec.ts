@@ -1,6 +1,6 @@
-import { ApplicationPage } from "../../../support/app.po";
-import { SequencePage } from "../../../support/sequences/sequence/sequence.po";
-import { validateFormFields } from "../../../support/share";
+import { ApplicationPage } from '../../../support/app.po';
+import { SequencePage } from '../../../support/sequences/sequence/sequence.po';
+import { validateFormFields } from '../../../support/share';
 
 describe('Sequence editor page', () => {
 

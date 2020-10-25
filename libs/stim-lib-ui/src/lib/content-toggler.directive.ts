@@ -1,26 +1,20 @@
 import { Directive, HostListener, Input, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[stimLibUiContentToggler]',
+  selector: '[stimLibUiContentToggler]'
 })
 export class ContentTogglerDirective {
   @Input() toggledContent: HTMLDivElement;
   @Input() icon: HTMLElement;
 
+  constructor(private readonly _renderer: Renderer2) {
+  }
+
   private _visible = true;
 
-  constructor(private readonly _renderer: Renderer2) {}
-
-  private _handleVisible() {
-    if (this._visible) {
-      this._renderer.removeClass(this.toggledContent, 'd-none');
-      this._renderer.removeClass(this.icon, 'fa-plus');
-      this._renderer.addClass(this.icon, 'fa-minus');
-    } else {
-      this._renderer.addClass(this.toggledContent, 'd-none');
-      this._renderer.addClass(this.icon, 'fa-plus');
-      this._renderer.removeClass(this.icon, 'fa-minus');
-    }
+  public set visible(visible: boolean) {
+    this._visible = visible;
+    this._handleVisible();
   }
 
   @HostListener('click', ['$event'])
@@ -32,8 +26,15 @@ export class ContentTogglerDirective {
     this._handleVisible();
   }
 
-  public set visible(visible: boolean) {
-    this._visible = visible;
-    this._handleVisible();
+  private _handleVisible() {
+    if (this._visible) {
+      this._renderer.removeClass(this.toggledContent, 'd-none');
+      this._renderer.removeClass(this.icon, 'fa-plus');
+      this._renderer.addClass(this.icon, 'fa-minus');
+    } else {
+      this._renderer.addClass(this.toggledContent, 'd-none');
+      this._renderer.addClass(this.icon, 'fa-plus');
+      this._renderer.removeClass(this.icon, 'fa-minus');
+    }
   }
 }

@@ -48,7 +48,7 @@ export class OutputEditorComponent
   private _manualAlignmentRefresh: boolean;
   private _showSubscription: Subscription;
 
-  public selectedID: number = -1;
+  public selectedID = -1;
 
   public readonly controlPositionX = new FormControl();
   public readonly controlPositionY = new FormControl();

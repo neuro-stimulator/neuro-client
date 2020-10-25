@@ -7,8 +7,8 @@ import { LocalStorageService } from 'angular-2-local-storage';
 import { NGXLogger } from 'ngx-logger';
 import { TranslateService } from '@ngx-translate/core';
 
-import { environment} from '../../environments/environment';
-import { SettingsFacade } from "@diplomka-frontend/stim-feature-settings/domain";
+import { environment } from '../../environments/environment';
+import { SettingsFacade } from '@diplomka-frontend/stim-feature-settings/domain';
 
 export const INTRO_STEPS = new InjectionToken<number>('defaultIntroSteps');
 
@@ -55,6 +55,19 @@ export class IntroService {
     this._initTranslation().then();
   }
 
+  public showIntro(component: string, beforeShow?: () => void, afterExit?: () => void) {
+    /*if (!component || environment.disableTutorial || this._settings.settings.application.disableTutorial) {
+      return;
+    }*/
+
+    this._showIntroSteps(component, beforeShow, afterExit);
+  }
+
+  public resetTutorials() {
+    this.componentIntros = {};
+    this._storage.remove(IntroService.COMPONENT_INTRO_KEY);
+  }
+
   private _loadComponents() {
     this.componentIntros = this._storage.get<ComponentIntro>(IntroService.COMPONENT_INTRO_KEY) || {};
   }
@@ -77,14 +90,16 @@ export class IntroService {
     this._storage.set(IntroService.COMPONENT_INTRO_KEY, this.componentIntros);
   }
 
-  private _showIntroSteps(component: string, beforeShow: () => void = (): void => {}, afterExit: () => void = (): void => {}) {
+  private _showIntroSteps(component: string, beforeShow: () => void = (): void => {
+  }, afterExit: () => void = (): void => {
+  }) {
     if (!this.stepsByComponents || !this.stepsByComponents[component]) {
       this.logger.error(`Nemůžu zobrazit tutorial pro komponentu: '${component}'!`);
       return;
     }
 
     if (this.componentIntros[component]) {
-      this.logger.trace(`Tutorial pro komponentu jsem již zobrazil, takže ho nebudu zobrazovat znovu.`);
+      this.logger.trace('Tutorial pro komponentu jsem již zobrazil, takže ho nebudu zobrazovat znovu.');
       return;
     }
 
@@ -123,18 +138,5 @@ export class IntroService {
     });
 
 
-  }
-
-  public showIntro(component: string, beforeShow?: () => void, afterExit?: () => void) {
-    /*if (!component || environment.disableTutorial || this._settings.settings.application.disableTutorial) {
-      return;
-    }*/
-
-    this._showIntroSteps(component, beforeShow, afterExit);
-  }
-
-  public resetTutorials() {
-    this.componentIntros = {};
-    this._storage.remove(IntroService.COMPONENT_INTRO_KEY);
   }
 }

@@ -1,8 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { LocalSettingsResolver } from "@diplomka-frontend/stim-feature-settings/domain";
-import { ServerSettingsResolver } from "@diplomka-frontend/stim-feature-settings/domain";
+import { LocalSettingsResolver } from '@diplomka-frontend/stim-feature-settings/domain';
+import { ServerSettingsResolver } from '@diplomka-frontend/stim-feature-settings/domain';
 
 import { SettingsComponent } from './settings.component';
 

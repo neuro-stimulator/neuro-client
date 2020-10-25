@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({name: 'secondsToMinutes'})
+@Pipe({ name: 'secondsToMinutes' })
 export class SecondsToMinutesPipe implements PipeTransform {
   transform(time: number): string {
     const minutes = (`0${Math.floor(time / 60)}`).slice(-2);

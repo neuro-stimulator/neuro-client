@@ -1,13 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
-
-import { Observable, Subscription } from 'rxjs';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 
 import { ChartOptions, ChartType } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
@@ -16,20 +7,20 @@ import { Label } from 'ng2-charts';
 @Component({
   selector: 'stim-lib-ui-sequence-viewer',
   templateUrl: './sequence-viewer.component.html',
-  styleUrls: ['./sequence-viewer.component.sass'],
+  styleUrls: ['./sequence-viewer.component.sass']
 })
 export class SequenceViewerComponent implements OnInit, OnDestroy {
   // Pie
   readonly pieChartOptions: ChartOptions = {
     responsive: true,
     legend: {
-      position: 'top',
+      position: 'top'
     },
     plugins: {
       datalabels: {
-        formatter: (value, _): string => `#${value}`,
-      },
-    },
+        formatter: (value, _): string => `#${value}`
+      }
+    }
   };
   pieChartLabels: Label[] = [];
   pieChartData: number[] = [];
@@ -46,29 +37,69 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
         '#370031',
         '#832232',
         '#ce8964',
-        '#eaf27c',
-      ],
-    },
+        '#eaf27c'
+      ]
+    }
   ];
 
   @Input() editable = false;
   flowData: number[] = [];
-  private _analyse: {};
   readonly outputs: number[] = [];
-  private _outputCount: number;
-
   @Output() update: EventEmitter<number[]> = new EventEmitter<number[]>();
   @Output() dataChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   dataHasChanged = false;
   _originalData: number[];
+  private _analyse: {};
 
-  constructor() {}
+  constructor() {
+  }
+
+  private _outputCount: number;
+
+  @Input() set outputCount(outputCount: number) {
+    this._outputCount = outputCount;
+    this._showSequenceAnalyse(this._analyse);
+  }
+
+  get outputCountArray(): number[] {
+    return new Array(this._outputCount ?? 0);
+  }
+
+  @Input() set inputData(inputData: number[]) {
+    this.flowData.splice(0);
+    this.flowData.push(...inputData);
+    this._analyse = this._analyseSequence(inputData);
+    this._showSequenceAnalyse(this._analyse);
+  }
 
   ngOnInit() {
   }
 
   ngOnDestroy(): void {
+  }
+
+  handleStimulChange(i: number, output: number) {
+    if (!this.editable) {
+      return;
+    }
+
+    this.flowData[i] = output;
+    this._analyse = this._analyseSequence(this.flowData);
+    this._showSequenceAnalyse(this._analyse);
+    this.dataHasChanged = true;
+    this.dataChanged.next(true);
+  }
+
+  handleUpdate() {
+    this.update.next([...this.flowData]);
+  }
+
+  handleCancelUpdate() {
+    this.flowData.splice(0);
+    this.flowData.push(...this._originalData);
+    this._analyse = this._analyseSequence(this.flowData);
+    this._showSequenceAnalyse(this._analyse);
+    this.dataHasChanged = false;
   }
 
   private _analyseSequence(sequence: number[]) {
@@ -103,45 +134,5 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
       this.pieChartLabels.push(`${key} (${data.percent * 100}%)`);
       this.pieChartData.push(data['value']);
     }
-  }
-
-  handleStimulChange(i: number, output: number) {
-    if (!this.editable) {
-      return;
-    }
-
-    this.flowData[i] = output;
-    this._analyse = this._analyseSequence(this.flowData);
-    this._showSequenceAnalyse(this._analyse);
-    this.dataHasChanged = true;
-    this.dataChanged.next(true);
-  }
-
-  handleUpdate() {
-    this.update.next([...this.flowData]);
-  }
-
-  handleCancelUpdate() {
-    this.flowData.splice(0);
-    this.flowData.push(...this._originalData);
-    this._analyse = this._analyseSequence(this.flowData);
-    this._showSequenceAnalyse(this._analyse);
-    this.dataHasChanged = false;
-  }
-
-  get outputCountArray(): number[] {
-    return new Array(this._outputCount ?? 0);
-  }
-
-  @Input() set inputData(inputData: number[]) {
-    this.flowData.splice(0);
-    this.flowData.push(...inputData);
-    this._analyse = this._analyseSequence(inputData);
-    this._showSequenceAnalyse(this._analyse);
-  }
-
-  @Input() set outputCount(outputCount: number) {
-    this._outputCount = outputCount;
-    this._showSequenceAnalyse(this._analyse);
   }
 }

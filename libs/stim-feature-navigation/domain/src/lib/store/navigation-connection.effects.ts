@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core";
-import { tap } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { tap } from 'rxjs/operators';
 
-import { Store } from "@ngrx/store";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Store } from '@ngrx/store';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { AliveCheckerFacade, actionServerConnected, actionServerDisconnected, actionServerConnecting } from "@diplomka-frontend/stim-lib-connection";
-import { NavigationState } from "@diplomka-frontend/stim-feature-navigation/domain";
+import { AliveCheckerFacade, actionServerConnected, actionServerDisconnected, actionServerConnecting } from '@diplomka-frontend/stim-lib-connection';
+import { NavigationState } from '@diplomka-frontend/stim-feature-navigation/domain';
 
-import { NavigationService } from "../infrastructure/navigation.service";
+import { NavigationService } from '../infrastructure/navigation.service';
 import * as NavigationActions from './navigation.actions';
 
 @Injectable()

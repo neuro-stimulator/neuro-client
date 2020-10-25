@@ -18,7 +18,8 @@ export class DropdownBtnComponent implements OnInit {
 
   showDropdown = false;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

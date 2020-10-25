@@ -4,7 +4,7 @@ import { StimLibModalModule } from './stim-lib-modal.module';
 describe('StimLibModalModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [StimLibModalModule],
+      imports: [StimLibModalModule]
     }).compileComponents();
   }));
 

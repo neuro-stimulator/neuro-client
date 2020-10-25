@@ -1,15 +1,4 @@
-import {
-  AfterContentInit,
-  Component,
-  ElementRef,
-  HostListener,
-  Input,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-
-import { Observable, Subscription } from 'rxjs';
+import { AfterContentInit, Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
 import { IOEvent } from '@stechy1/diplomka-share';
@@ -18,7 +7,7 @@ import { Round } from '@diplomka-frontend/stim-lib-common';
 @Component({
   selector: 'stim-lib-ui-experiment-viewer',
   templateUrl: './experiment-viewer.component.html',
-  styleUrls: ['./experiment-viewer.component.sass'],
+  styleUrls: ['./experiment-viewer.component.sass']
 })
 export class ExperimentViewerComponent
   implements OnInit, AfterContentInit, OnDestroy {
@@ -30,22 +19,12 @@ export class ExperimentViewerComponent
     'rgba(101,73,119,0.5)',
     'rgba(62,72,85,0.5)',
     'rgba(69,109,147,0.5)',
-    'rgba(123,156,172,0.5)',
+    'rgba(123,156,172,0.5)'
   ];
 
   // Čítač pro uběhlá kola experimentu
-  // 1 kolo experimentu = poslední výstup zhasnul
-  private _rounds = 0;
-  // Čítač všech eventů
-  private _eventOffsetCounter = 0;
   // Index do pole offsetů
   eventOffsetIndex = 0;
-  // Pole offsetů pro začátek kol
-  private _eventOffsetIndexArray = [];
-
-  // Pole všech eventů, které uběhly v aktuálním experimentu
-  private _events: IOEvent[] = [];
-
   @ViewChild('experimentCanvas', { static: true }) canvas: ElementRef;
   @Input() maxOutputCount;
   @Input() outputCount = this.maxOutputCount;
@@ -53,11 +32,6 @@ export class ExperimentViewerComponent
   @Input() peakHeight = 20;
   @Input() maxDelta = 30;
   @Input() graphOffset = 30;
-  @Input() set events(events: IOEvent[]) {
-    this._events = events;
-    this._renderExperimentProgress();
-  }
-
   // Nastavení pro posuvník kol v prohlížeči experimentu
   eventOffsetIndexOptions: SliderOptions = {
     floor: 1,
@@ -65,18 +39,35 @@ export class ExperimentViewerComponent
     showTicks: true,
     showTicksValues: true,
     tickStep: 1,
-    animate: false,
+    animate: false
   };
+  // 1 kolo experimentu = poslední výstup zhasnul
+  private _rounds = 0;
+  // Čítač všech eventů
+  private _eventOffsetCounter = 0;
+  // Pole offsetů pro začátek kol
+  private _eventOffsetIndexArray = [];
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit() {}
+  // Pole všech eventů, které uběhly v aktuálním experimentu
+  private _events: IOEvent[] = [];
+
+  @Input() set events(events: IOEvent[]) {
+    this._events = events;
+    this._renderExperimentProgress();
+  }
+
+  ngOnInit() {
+  }
 
   ngAfterContentInit(): void {
     this._renderExperimentProgress();
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -115,6 +106,11 @@ export class ExperimentViewerComponent
   //   // Vždycky inkrementuji čítač událostí
   //   this._eventOffsetCounter++;
   // }
+
+  handleOffsetIndexChange(offsetIndex: number) {
+    this.eventOffsetIndex = offsetIndex - 1;
+    this._renderExperimentProgress();
+  }
 
   /**
    * Hlavní funkce starající se o vykreslení celého grafu
@@ -356,13 +352,13 @@ export class ExperimentViewerComponent
         input: {
           event: null,
           x: this.graphOffset,
-          y: this.lineHeight + i * this.lineHeight,
+          y: this.lineHeight + i * this.lineHeight
         },
         output: {
           event: null,
           x: this.graphOffset,
-          y: this.lineHeight + i * this.lineHeight,
-        },
+          y: this.lineHeight + i * this.lineHeight
+        }
       };
       // Vyberu barvu do pozadí
       graphics.fillStyle = ExperimentViewerComponent.DEFAULT_OUTPUT_COLORS[i];
@@ -401,10 +397,5 @@ export class ExperimentViewerComponent
     graphics.moveTo(0, 0);
 
     return events;
-  }
-
-  handleOffsetIndexChange(offsetIndex: number) {
-    this.eventOffsetIndex = offsetIndex - 1;
-    this._renderExperimentProgress();
   }
 }

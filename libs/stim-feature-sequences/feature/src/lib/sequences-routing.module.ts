@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ListButtonsAddonComponent } from "@diplomka-frontend/stim-lib-ui";
+import { ListButtonsAddonComponent } from '@diplomka-frontend/stim-lib-ui';
 
 import { SequenceComponent } from './sequence/sequence.component';
 import { SequencesComponent } from './sequences.component';

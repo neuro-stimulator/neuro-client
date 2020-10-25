@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule } from '@ngx-translate/core';
 
-import { StimLibUiModule } from "@diplomka-frontend/stim-lib-ui";
+import { StimLibUiModule } from '@diplomka-frontend/stim-lib-ui';
 
-import { ParamConfigApplicationComponent } from "./param-config-application.component";
+import { ParamConfigApplicationComponent } from './param-config-application.component';
 
 @NgModule({
   declarations: [

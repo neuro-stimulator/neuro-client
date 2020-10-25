@@ -1,9 +1,4 @@
-import {
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest,
-} from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -14,26 +9,16 @@ export class ClientIdInterceptorService implements HttpInterceptor {
   private static readonly KEY_CLIENT_ID = 'client-id';
 
   constructor(private readonly localStorage: LocalStorageService) {
-    const value = localStorage.get<string>(
-      ClientIdInterceptorService.KEY_CLIENT_ID
-    );
+    const value = localStorage.get<string>(ClientIdInterceptorService.KEY_CLIENT_ID);
     if (!value) {
-      localStorage.set(
-        ClientIdInterceptorService.KEY_CLIENT_ID,
-        'random-client-id'
-      );
+      localStorage.set(ClientIdInterceptorService.KEY_CLIENT_ID, 'random-client-id');
     }
   }
 
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     req = req.clone({
       setHeaders: {
-        'x-client-id': this.localStorage.get<string>(
-          ClientIdInterceptorService.KEY_CLIENT_ID
-        ),
+        'x-client-id': this.localStorage.get<string>(ClientIdInterceptorService.KEY_CLIENT_ID),
       },
       withCredentials: true,
     });

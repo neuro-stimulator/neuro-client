@@ -1,9 +1,9 @@
 import { ExperimentType } from '@stechy1/diplomka-share';
 
-import { ApplicationPage } from "../../../support/app.po";
-import { ExperimentsPage } from "../../../support/experiments/experiments.po";
-import { ExperimentTypeAbstractPage } from "../../../support/experiments/experiment-type/experiment-type-abstract.po";
-import { validateFormFields } from "../../../support/share";
+import { ApplicationPage } from '../../../support/app.po';
+import { ExperimentsPage } from '../../../support/experiments/experiments.po';
+import { ExperimentTypeAbstractPage } from '../../../support/experiments/experiment-type/experiment-type-abstract.po';
+import { validateFormFields } from '../../../support/share';
 
 
 export class ExperimentTypeAbstractSpecHelper {

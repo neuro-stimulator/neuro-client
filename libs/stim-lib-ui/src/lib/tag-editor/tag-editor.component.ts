@@ -11,7 +11,12 @@ export class TagEditorComponent implements OnInit {
   @Input() form: FormGroup;
   newTagValid = true;
 
-  constructor() { }
+  constructor() {
+  }
+
+  get tags() {
+    return this.form.get('tags');
+  }
 
   ngOnInit() {
     this.tags.setValidators([]);
@@ -47,9 +52,5 @@ export class TagEditorComponent implements OnInit {
     } else {
       this.tags.markAsUntouched();
     }
-  }
-
-  get tags() {
-    return this.form.get('tags');
   }
 }

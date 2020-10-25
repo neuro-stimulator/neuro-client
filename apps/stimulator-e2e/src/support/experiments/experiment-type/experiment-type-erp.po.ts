@@ -1,7 +1,7 @@
-import { ExperimentTypeAbstractPage } from "./experiment-type-abstract.po";
-import { SequencesHelper } from "../../../integration/sequences/sequences-helper.spec";
-import { SequencesPage } from "../../sequences/sequences.po";
-import { SequencePage } from "../../sequences/sequence/sequence.po";
+import { ExperimentTypeAbstractPage } from './experiment-type-abstract.po';
+import { SequencesHelper } from '../../../integration/sequences/sequences-helper.spec';
+import { SequencesPage } from '../../sequences/sequences.po';
+import { SequencePage } from '../../sequences/sequence/sequence.po';
 
 export class ExperimentTypeErpPage extends ExperimentTypeAbstractPage {
 

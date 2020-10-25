@@ -4,7 +4,7 @@ import { StimLibStoreModule } from './stim-lib-store.module';
 describe('StimLibStoreModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [StimLibStoreModule],
+      imports: [StimLibStoreModule]
     }).compileComponents();
   }));
 

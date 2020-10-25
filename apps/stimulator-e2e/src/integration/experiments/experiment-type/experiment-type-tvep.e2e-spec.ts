@@ -1,8 +1,8 @@
 import { ExperimentType } from '@stechy1/diplomka-share';
-import { ApplicationPage } from "../../../support/app.po";
-import { ExperimentsPage } from "../../../support/experiments/experiments.po";
-import { ExperimentTypeTvepPage } from "../../../support/experiments/experiment-type/experiment-type-tvep.po";
-import { ExperimentTypeAbstractSpecHelper } from "./experiment-type-abstract-helper.spec";
+import { ApplicationPage } from '../../../support/app.po';
+import { ExperimentsPage } from '../../../support/experiments/experiments.po';
+import { ExperimentTypeTvepPage } from '../../../support/experiments/experiment-type/experiment-type-tvep.po';
+import { ExperimentTypeAbstractSpecHelper } from './experiment-type-abstract-helper.spec';
 
 describe('Experiment TVEP', () => {
 
