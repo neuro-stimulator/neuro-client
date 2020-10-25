@@ -3,23 +3,14 @@ import { filter, map, tap } from 'rxjs/operators';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import {
-  IpcConnectionStateMessage,
-  SocketMessage,
-  SocketMessageSpecialization,
-  SocketMessageType,
-  StimulatorConnectionStateMessage,
-} from '@stechy1/diplomka-share';
+import { IpcConnectionStateMessage, SocketMessage, SocketMessageSpecialization, SocketMessageType, StimulatorConnectionStateMessage } from '@stechy1/diplomka-share';
 
 import { AliveCheckerService } from '../infrastructure/alive-checker.service';
 import * as ConnectionActions from './connection.actions';
 
 @Injectable()
 export class ConnectionEffects {
-  constructor(
-    private readonly _service: AliveCheckerService,
-    private readonly actions$: Actions
-  ) {}
+  constructor(private readonly _service: AliveCheckerService, private readonly actions$: Actions) {}
 
   serverConnect$ = createEffect(
     () =>
@@ -50,22 +41,15 @@ export class ConnectionEffects {
       tap((message: SocketMessage) => {
         console.log(message);
       }),
-      filter(
-        (message: SocketMessage) =>
-          message.specialization === SocketMessageSpecialization.CONNECTION
-      ),
+      filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.CONNECTION),
       map((message: SocketMessage) => {
         switch (message.type) {
           case SocketMessageType.STIMULATOR_CONNECTION_STATE:
             const stimulatorConnectionMessage = message as StimulatorConnectionStateMessage;
-            return stimulatorConnectionMessage.data.connected
-              ? ConnectionActions.actionStimulatorConnected({})
-              : ConnectionActions.actionStimulatorDisconnected({});
+            return stimulatorConnectionMessage.data.connected ? ConnectionActions.actionStimulatorConnected() : ConnectionActions.actionStimulatorDisconnected();
           case SocketMessageType.IPC_CONNECTION_STATE:
             const ipcConnectionMessage = message as IpcConnectionStateMessage;
-            return ipcConnectionMessage.data.connected
-              ? ConnectionActions.actionExternalConnected({})
-              : ConnectionActions.actionExternalDisconnected({});
+            return ipcConnectionMessage.data.connected ? ConnectionActions.actionExternalConnected() : ConnectionActions.actionExternalDisconnected();
         }
       })
     )

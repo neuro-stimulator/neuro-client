@@ -14,70 +14,48 @@ export class StimulatorFacade {
   constructor(private readonly store: Store<StimulatorState>) {}
 
   public discover() {
-    this.store.dispatch(StimulatorActions.actionStimulatorDiscoverRequest({}));
+    this.store.dispatch(StimulatorActions.actionStimulatorDiscoverRequest());
   }
   public clearDiscovered() {
-    this.store.dispatch(StimulatorActions.actionStimulatorClearDiscovered({}));
+    this.store.dispatch(StimulatorActions.actionStimulatorClearDiscovered());
   }
   public connect(path: string) {
-    this.store.dispatch(
-      ConnectionActions.actionStimulatorConnectRequest({ path })
-    );
+    this.store.dispatch(ConnectionActions.actionStimulatorConnectRequest({ path }));
   }
   public disconnect() {
-    this.store.dispatch(
-      ConnectionActions.actionStimulatorDisconnectRequest({})
-    );
+    this.store.dispatch(ConnectionActions.actionStimulatorDisconnectRequest());
   }
   public status() {
-    this.store.dispatch(
-      ConnectionActions.actionStimulatorConnectionStatusRequest({})
-    );
+    this.store.dispatch(ConnectionActions.actionStimulatorConnectionStatusRequest());
   }
   public updateFirmware(path: string) {
-    this.store.dispatch(
-      StimulatorActions.actionStimulatorFirmwareUpdateRequest({ path })
-    );
+    this.store.dispatch(StimulatorActions.actionStimulatorFirmwareUpdateRequest({ path }));
   }
 
   /*  ---------------   Commands ---------------- */
   public reboot() {
-    this.store.dispatch(StimulatorActions.actionCommandRebootRequest({}));
+    this.store.dispatch(StimulatorActions.actionCommandRebootRequest());
   }
   public requestStimulatorState() {
-    this.store.dispatch(
-      StimulatorActions.actionCommandStimulatorStateRequest({})
-    );
+    this.store.dispatch(StimulatorActions.actionCommandStimulatorStateRequest());
   }
   public experimentRun() {
-    this.store.dispatch(
-      StimulatorActions.actionCommandStimulatorRunRequest({})
-    );
+    this.store.dispatch(StimulatorActions.actionCommandStimulatorRunRequest());
   }
   public experimentPause() {
-    this.store.dispatch(
-      StimulatorActions.actionCommandStimulatorPauseRequest({})
-    );
+    this.store.dispatch(StimulatorActions.actionCommandStimulatorPauseRequest());
   }
   public experimentFinish() {
-    this.store.dispatch(
-      StimulatorActions.actionCommandStimulatorFinishRequest({ force: false })
-    );
+    this.store.dispatch(StimulatorActions.actionCommandStimulatorFinishRequest({ force: false }));
   }
   public handleForceFinishExperiment() {
-    this.store.dispatch(
-      StimulatorActions.actionCommandStimulatorFinishRequest({ force: true })
-    );
+    this.store.dispatch(StimulatorActions.actionCommandStimulatorFinishRequest({ force: true }));
   }
   public experimentClear() {
-    this.store.dispatch(
-      StimulatorActions.actionCommandStimulatorClearRequest({})
-    );
+    this.store.dispatch(StimulatorActions.actionCommandStimulatorClearRequest());
   }
   public setOutput(index: number, enabled: boolean) {
-    this.store.dispatch(
-      StimulatorActions.actionCommandStimulatorSetOutput({ index, enabled })
-    );
+    this.store.dispatch(StimulatorActions.actionCommandStimulatorSetOutput({ index, enabled }));
   }
 
   get stimulatorState(): Observable<StimulatorState> {

@@ -11,11 +11,7 @@ import * as AuthActions from './auth.actions';
 
 @Injectable()
 export class AuthEffects {
-  constructor(
-    private readonly actions$: Actions,
-    private readonly service: AuthService,
-    private readonly router: Router
-  ) {}
+  constructor(private readonly actions$: Actions, private readonly service: AuthService, private readonly router: Router) {}
 
   register$ = createEffect(() =>
     this.actions$.pipe(
@@ -23,11 +19,9 @@ export class AuthEffects {
       switchMap((action) => {
         return this.service.register(action.user);
       }),
-      map((response: ResponseObject<User>) =>
-        AuthActions.actionRegisterRequestDone({ user: response.data })
-      ),
+      map((response: ResponseObject<User>) => AuthActions.actionRegisterRequestDone({ user: response.data })),
       catchError((errorResponse) => {
-        return of(AuthActions.actionRegisterRequestFail({}));
+        return of(AuthActions.actionRegisterRequestFail());
       })
     )
   );
@@ -53,7 +47,7 @@ export class AuthEffects {
         })
       ),
       catchError((errorResponse) => {
-        return of(AuthActions.actionLoginRequestFail({}));
+        return of(AuthActions.actionLoginRequestFail());
       })
     )
   );
@@ -82,7 +76,7 @@ export class AuthEffects {
         })
       ),
       catchError((errorResponse) => {
-        return of(AuthActions.actionRefreshTokenRequestFail({}));
+        return of(AuthActions.actionRefreshTokenRequestFail());
       })
     )
   );
@@ -104,11 +98,9 @@ export class AuthEffects {
       switchMap((action) => {
         return this.service.logout();
       }),
-      map((response: ResponseObject<User>) =>
-        AuthActions.actionLogoutRequestDone({})
-      ),
+      map((response: ResponseObject<User>) => AuthActions.actionLogoutRequestDone()),
       catchError((errorResponse) => {
-        return of(AuthActions.actionLogoutRequestFail({}));
+        return of(AuthActions.actionLogoutRequestFail());
       })
     )
   );
@@ -116,10 +108,7 @@ export class AuthEffects {
   logoutDone$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(
-          AuthActions.actionLogoutRequestDone,
-          AuthActions.actionLoginRequestFail
-        ),
+        ofType(AuthActions.actionLogoutRequestDone, AuthActions.actionLoginRequestFail),
         tap(() => {
           this.service.isLogged = false;
         }),

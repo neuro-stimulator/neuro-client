@@ -21,11 +21,11 @@ export class AuthFacade {
   }
 
   public refreshToken() {
-    this.store.dispatch(AuthActions.actionRefreshTokenRequest({}));
+    this.store.dispatch(AuthActions.actionRefreshTokenRequest());
   }
 
   public logout() {
-    this.store.dispatch(AuthActions.actionLogoutRequest({}));
+    this.store.dispatch(AuthActions.actionLogoutRequest());
   }
 
   public get state(): Observable<AuthState> {

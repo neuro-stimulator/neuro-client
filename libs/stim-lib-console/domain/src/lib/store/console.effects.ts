@@ -31,9 +31,7 @@ export class ConsoleEffects {
       switchMap((action) => {
         return of(this._service.loadHistory());
       }),
-      map((commands: ConsoleCommand[]) =>
-        ConsoleActions.historyLoaded({ commands })
-      )
+      map((commands: ConsoleCommand[]) => ConsoleActions.historyLoaded({ commands }))
     )
   );
 
@@ -52,9 +50,7 @@ export class ConsoleEffects {
     this.actions$.pipe(
       ofType(ConsoleActions.parseCommand),
       switchMap((action) => {
-        return of<ParseCommandResult>(
-          this._parser.parseCommand(action.rawCommand)
-        ).pipe(
+        return of<ParseCommandResult>(this._parser.parseCommand(action.rawCommand)).pipe(
           map((result: ParseCommandResult) => {
             const actions = [];
             actions.push(
@@ -66,14 +62,10 @@ export class ConsoleEffects {
             if (result.valid) {
               switch (result.consumer) {
                 case 'client':
-                  actions.push(
-                    ConsoleActions.processLocalComand({ command: result })
-                  );
+                  actions.push(ConsoleActions.processLocalComand({ command: result }));
                   break;
                 case 'server':
-                  actions.push(
-                    ConsoleActions.sendCommandToServer({ command: result })
-                  );
+                  actions.push(ConsoleActions.sendCommandToServer({ command: result }));
                   break;
               }
             } else {
@@ -110,10 +102,7 @@ export class ConsoleEffects {
       ofType(ConsoleActions.saveCommand),
       withLatestFrom(this.store.select(consoleFeature)),
       map(([action, state]) => {
-        const command = this._service.saveCommand(
-          action.rawCommand,
-          action.fromUser
-        );
+        const command = this._service.saveCommand(action.rawCommand, action.fromUser);
         const commands = [...state.commandHistory];
         commands.push(command);
 
@@ -129,7 +118,7 @@ export class ConsoleEffects {
         return this._service.sendCommand(action.command);
       }),
       map((response: ResponseObject<any>) => {
-        return ConsoleActions.noAction({});
+        return ConsoleActions.noAction();
       })
     )
   );
@@ -148,7 +137,7 @@ export class ConsoleEffects {
             fromUser: false,
           });
         } else {
-          return ConsoleActions.noAction({});
+          return ConsoleActions.noAction();
         }
       })
     )

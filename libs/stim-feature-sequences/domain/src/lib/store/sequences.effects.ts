@@ -6,12 +6,7 @@ import { EMPTY, of } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
-import {
-  Sequence,
-  ResponseObject,
-  Experiment,
-  Output,
-} from '@stechy1/diplomka-share';
+import { Sequence, ResponseObject, Experiment, Output } from '@stechy1/diplomka-share';
 
 import { SequencesService } from '../infrastructure/sequences.service';
 import * as SequencesActions from './sequences.actions';
@@ -21,12 +16,7 @@ import { sequencesFeature, sequencesSelector } from './sequences.reducer';
 
 @Injectable()
 export class SequencesEffects {
-  constructor(
-    private readonly actions$: Actions,
-    private readonly sequences: SequencesService,
-    private readonly store: Store<SequencesState>,
-    private readonly router: Router
-  ) {}
+  constructor(private readonly actions$: Actions, private readonly sequences: SequencesService, private readonly store: Store<SequencesState>, private readonly router: Router) {}
 
   all$ = createEffect(() =>
     this.actions$.pipe(
@@ -39,7 +29,7 @@ export class SequencesEffects {
         });
       }),
       catchError((errorResponse) => {
-        return of(SequencesActions.actionSequencesAllRequestFail({}));
+        return of(SequencesActions.actionSequencesAllRequestFail());
       })
     )
   );
@@ -60,7 +50,7 @@ export class SequencesEffects {
         });
       }),
       catchError((errorResponse) => {
-        return of(SequencesActions.actionSequencesAllRequestFail({}));
+        return of(SequencesActions.actionSequencesAllRequestFail());
       })
     )
   );
@@ -75,7 +65,7 @@ export class SequencesEffects {
         });
       }),
       catchError((errorResponse) => {
-        return of(SequencesActions.actionSequencesOneRequestFail({}));
+        return of(SequencesActions.actionSequencesOneRequestFail());
       })
     )
   );
@@ -91,7 +81,7 @@ export class SequencesEffects {
         });
       }),
       catchError((errorResponse) => {
-        return of(SequencesActions.actionSequencesInsertRequestFail({}));
+        return of(SequencesActions.actionSequencesInsertRequestFail());
       })
     )
   );
@@ -105,7 +95,7 @@ export class SequencesEffects {
         });
       }),
       catchError((errorResponse) => {
-        return of(SequencesActions.actionSequencesUpdateRequestFail({}));
+        return of(SequencesActions.actionSequencesUpdateRequestFail());
       })
     )
   );
@@ -121,15 +111,9 @@ export class SequencesEffects {
             return EMPTY;
           }
 
-          const selectedSequences: { [index: number]: boolean } =
-            sequences.selectedSequences;
-          const filteredSelectedSequences = Object.entries<boolean>(
-            selectedSequences
-          ).filter(([index, selected]) => selected);
-          const [
-            selectedIndex,
-            selected,
-          ] = filteredSelectedSequences.values().next().value;
+          const selectedSequences: { [index: number]: boolean } = sequences.selectedSequences;
+          const filteredSelectedSequences = Object.entries<boolean>(selectedSequences).filter(([index, selected]) => selected);
+          const [selectedIndex, selected] = filteredSelectedSequences.values().next().value;
 
           return this.sequences.delete(+selectedIndex);
         }
@@ -140,7 +124,7 @@ export class SequencesEffects {
         })
       ),
       catchError((errorResponse) => {
-        return of(SequencesActions.actionSequencesDeleteRequestFail({}));
+        return of(SequencesActions.actionSequencesDeleteRequestFail());
       })
     );
   });
@@ -150,15 +134,9 @@ export class SequencesEffects {
       withLatestFrom(this.store.select(sequencesFeature)),
       map(([action, sequences]) => {
         if (sequences.selectionMode) {
-          setTimeout(
-            () =>
-              this.store.dispatch(
-                SequencesActions.actionSequencesDeleteRequest({})
-              ),
-            250
-          );
+          setTimeout(() => this.store.dispatch(SequencesActions.actionSequencesDeleteRequest({ sequenceID: action.sequence.id })), 250);
         }
-        return SequencesActions.actionSequencesNoAction({});
+        return SequencesActions.actionSequencesNoAction();
       })
     )
   );
@@ -167,19 +145,14 @@ export class SequencesEffects {
     this.actions$.pipe(
       ofType(SequencesActions.actionSequencesNameExistsRequest),
       withLatestFrom(this.store.select(sequencesFeature)),
-      switchMap(([action, sequences]) =>
-        this.sequences.nameExists(
-          action.name,
-          sequences.selectedSequence.sequence.id
-        )
-      ),
+      switchMap(([action, sequences]) => this.sequences.nameExists(action.name, sequences.selectedSequence.sequence.id)),
       map((response: ResponseObject<{ exists: boolean }>) => {
         return SequencesActions.actionSequencesNameExistsRequestDone({
           exists: response.data.exists,
         });
       }),
       catchError((errorResponse) => {
-        return of(SequencesActions.actionSequencesNameExistsRequestFail({}));
+        return of(SequencesActions.actionSequencesNameExistsRequestFail());
       })
     )
   );
@@ -191,10 +164,7 @@ export class SequencesEffects {
       ofType(SequencesActions.actionSequencesGenerateRequest),
       withLatestFrom(this.store.select(sequencesFeature)),
       switchMap(([action, sequences]: [any, SequencesState]) =>
-        this.sequences.generaceSequence(
-          sequences.selectedSequence.sequence.experimentId,
-          sequences.selectedSequence.sequence.size
-        )
+        this.sequences.generaceSequence(sequences.selectedSequence.sequence.experimentId, sequences.selectedSequence.sequence.size)
       ),
       map((response: ResponseObject<number[]>) => {
         return SequencesActions.actionSequencesGenerateDone({
@@ -202,7 +172,7 @@ export class SequencesEffects {
         });
       }),
       catchError((errorResponse) => {
-        return of(SequencesActions.actionSequencesGenerateFail({}));
+        return of(SequencesActions.actionSequencesGenerateFail());
       })
     )
   );
@@ -210,41 +180,27 @@ export class SequencesEffects {
   sequenceFromNameAndSize$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SequencesActions.actionSequencesInsertRequestFast),
-      switchMap((action) =>
-        this.sequences.fromNameAndSize(
-          action.experimentID,
-          action.name,
-          action.size
-        )
-      ),
+      switchMap((action) => this.sequences.fromNameAndSize(action.experimentID, action.name, action.size)),
       map((response: ResponseObject<Sequence>) => {
         return SequencesActions.actionSequencesInsertRequestDone({
           sequence: response.data,
         });
       }),
       catchError((errorResponse) => {
-        return of(SequencesActions.actionSequencesInsertRequestFail({}));
+        return of(SequencesActions.actionSequencesInsertRequestFail());
       })
     )
   );
 
   experimentsAsSequenceProviders$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(
-        SequencesActions.actionSequencesExperimentsAsSequenceSourceRequest
-      ),
+      ofType(SequencesActions.actionSequencesExperimentsAsSequenceSourceRequest),
       switchMap((action) => this.sequences.experimentsAsSequenceSource()),
       map((response: ResponseObject<Experiment<Output>[]>) => {
-        return SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestDone(
-          { experiments: response.data }
-        );
+        return SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestDone({ experiments: response.data });
       }),
       catchError((errorResponse) => {
-        return of(
-          SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestFail(
-            {}
-          )
-        );
+        return of(SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestFail());
       })
     )
   );
@@ -257,7 +213,7 @@ export class SequencesEffects {
         SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestDone
       ),
       map((action) => {
-        return SequencesActions.actionSequencesUpdateSelectedExperiment({});
+        return SequencesActions.actionSequencesUpdateSelectedExperiment();
       })
     )
   );

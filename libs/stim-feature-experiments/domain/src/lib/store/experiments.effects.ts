@@ -1,25 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  catchError,
-  flatMap,
-  map,
-  switchMap,
-  tap,
-  withLatestFrom,
-} from 'rxjs/operators';
+import { catchError, flatMap, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { EMPTY, of } from 'rxjs';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
-import {
-  Experiment,
-  ExperimentType,
-  Output,
-  ResponseObject,
-  Sequence,
-} from '@stechy1/diplomka-share';
+import { Experiment, ExperimentType, Output, ResponseObject, Sequence } from '@stechy1/diplomka-share';
 
 import { ExperimentsService } from '../infrastructure/experiments.service';
 import * as ExperimentsActions from './experiments.actions';
@@ -46,7 +33,7 @@ export class ExperimentsEffects {
         });
       }),
       catchError((errorResponse) => {
-        return of(ExperimentsActions.actionExperimentsAllRequestFail({}));
+        return of(ExperimentsActions.actionExperimentsAllRequestFail());
       })
     )
   );
@@ -67,7 +54,7 @@ export class ExperimentsEffects {
         });
       }),
       catchError((errorResponse) => {
-        return of(ExperimentsActions.actionExperimentsAllRequestFail({}));
+        return of(ExperimentsActions.actionExperimentsAllRequestFail());
       })
     )
   );
@@ -85,12 +72,12 @@ export class ExperimentsEffects {
             ? ExperimentsActions.actionSequencesForExperimentRequest({
                 experiment: response.data,
               })
-            : ExperimentsActions.actionExperimentsNoAction({}),
+            : ExperimentsActions.actionExperimentsNoAction(),
         ];
       }),
       flatMap((c) => c),
       catchError((errorResponse) => {
-        return of(ExperimentsActions.actionExperimentsOneRequestFail({}));
+        return of(ExperimentsActions.actionExperimentsOneRequestFail());
       })
     )
   );
@@ -109,17 +96,13 @@ export class ExperimentsEffects {
       ofType(ExperimentsActions.actionExperimentsInsertRequest),
       switchMap((action) => this.experiments.insert(action.experiment)),
       map((response: ResponseObject<Experiment<Output>>) => {
-        this.router.navigate([
-          '/experiments',
-          ExperimentType[response.data.type].toLowerCase(),
-          response.data.id,
-        ]);
+        this.router.navigate(['/experiments', ExperimentType[response.data.type].toLowerCase(), response.data.id]);
         return ExperimentsActions.actionExperimentsInsertRequestDone({
           experiment: response.data,
         });
       }),
       catchError((errorResponse) => {
-        return of(ExperimentsActions.actionExperimentsInsertRequestFail({}));
+        return of(ExperimentsActions.actionExperimentsInsertRequestFail());
       })
     )
   );
@@ -133,7 +116,7 @@ export class ExperimentsEffects {
         });
       }),
       catchError((errorResponse) => {
-        return of(ExperimentsActions.actionExperimentsUpdateRequestFail({}));
+        return of(ExperimentsActions.actionExperimentsUpdateRequestFail());
       })
     )
   );
@@ -149,15 +132,9 @@ export class ExperimentsEffects {
             return EMPTY;
           }
 
-          const selectedExperiments: { [index: number]: boolean } =
-            experiments.selectedExperiments;
-          const filteredSelectedExperiments = Object.entries<boolean>(
-            selectedExperiments
-          ).filter(([index, selected]) => selected);
-          const [
-            selectedIndex,
-            selected,
-          ] = filteredSelectedExperiments.values().next().value;
+          const selectedExperiments: { [index: number]: boolean } = experiments.selectedExperiments;
+          const filteredSelectedExperiments = Object.entries<boolean>(selectedExperiments).filter(([index, selected]) => selected);
+          const [selectedIndex, selected] = filteredSelectedExperiments.values().next().value;
 
           return this.experiments.delete(+selectedIndex);
         }
@@ -168,7 +145,7 @@ export class ExperimentsEffects {
         })
       ),
       catchError((errorResponse) => {
-        return of(ExperimentsActions.actionExperimentsDeleteRequestFail({}));
+        return of(ExperimentsActions.actionExperimentsDeleteRequestFail());
       })
     );
   });
@@ -178,15 +155,9 @@ export class ExperimentsEffects {
       withLatestFrom(this.store.select(experimentsFeature)),
       map(([action, experiments]) => {
         if (experiments.selectionMode) {
-          setTimeout(
-            () =>
-              this.store.dispatch(
-                ExperimentsActions.actionExperimentsDeleteRequest({})
-              ),
-            250
-          );
+          setTimeout(() => this.store.dispatch(ExperimentsActions.actionExperimentsDeleteRequest({ experimentID: action.experiment.id })), 250);
         }
-        return ExperimentsActions.actionExperimentsNoAction({});
+        return ExperimentsActions.actionExperimentsNoAction();
       })
     )
   );
@@ -195,21 +166,14 @@ export class ExperimentsEffects {
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsNameExistsRequest),
       withLatestFrom(this.store.select(experimentsFeature)),
-      switchMap(([action, experiments]) =>
-        this.experiments.nameExists(
-          action.name,
-          experiments.selectedExperiment.experiment.id
-        )
-      ),
+      switchMap(([action, experiments]) => this.experiments.nameExists(action.name, experiments.selectedExperiment.experiment.id)),
       map((response: ResponseObject<{ exists: boolean }>) => {
         return ExperimentsActions.actionExperimentsNameExistsRequestDone({
           exists: response.data.exists,
         });
       }),
       catchError((errorResponse) => {
-        return of(
-          ExperimentsActions.actionExperimentsNameExistsRequestFail({})
-        );
+        return of(ExperimentsActions.actionExperimentsNameExistsRequestFail());
       })
     )
   );
@@ -217,39 +181,25 @@ export class ExperimentsEffects {
   sequencesForExperiment$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentsActions.actionSequencesForExperimentRequest),
-      switchMap((action) =>
-        this.experiments.sequencesForExperiment(action.experiment)
-      ),
+      switchMap((action) => this.experiments.sequencesForExperiment(action.experiment)),
       map((response: ResponseObject<Sequence[]>) => {
         return ExperimentsActions.actionSequencesForExperimentRequestDone({
           sequences: response.data,
         });
       }),
       catchError((errorResponse) => {
-        return of(
-          ExperimentsActions.actionSequencesForExperimentRequestFail({})
-        );
+        return of(ExperimentsActions.actionSequencesForExperimentRequestFail());
       })
     )
   );
 
   sequenceFromExperiment$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(
-        ExperimentsActions.actionExperimentsGenerateSequenceFromNameAndSizeRequest
-      ),
+      ofType(ExperimentsActions.actionExperimentsGenerateSequenceFromNameAndSizeRequest),
       withLatestFrom(this.store.select(experimentsFeature)),
-      switchMap(([action, experiments]) =>
-        this.experiments.sequenceFromExperiment(
-          experiments.selectedExperiment.experiment.id,
-          action.name,
-          action.size
-        )
-      ),
+      switchMap(([action, experiments]) => this.experiments.sequenceFromExperiment(experiments.selectedExperiment.experiment.id, action.name, action.size)),
       map((response: ResponseObject<Sequence>) => {
-        return ExperimentsActions.actionExperimentsGenerateSequenceFromNameAndSizeRequestDone(
-          { sequence: response.data }
-        );
+        return ExperimentsActions.actionExperimentsGenerateSequenceFromNameAndSizeRequestDone({ sequence: response.data });
       })
     )
   );

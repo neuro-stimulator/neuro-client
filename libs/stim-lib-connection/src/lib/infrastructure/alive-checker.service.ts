@@ -22,17 +22,11 @@ export class AliveCheckerService {
    */
   private readonly _socket: Socket;
 
-  constructor(
-    @Inject(TOKEN_BASE_API_URL) baseURL: string,
-    private readonly store: Store<ConnectionInformationState>,
-    private readonly logger: NGXLogger
-  ) {
+  constructor(@Inject(TOKEN_BASE_API_URL) baseURL: string, private readonly store: Store<ConnectionInformationState>, private readonly logger: NGXLogger) {
     this._socket = new Socket({ url: baseURL });
     this._socket.on('connect', () => this._socketConnected());
     this._socket.on('disconnect', (reason) => this._socketDisconnected(reason));
-    this._socket.on('command', (data: SocketMessage) =>
-      this.store.dispatch(ConnectionActions.actionSocketData({ data }))
-    );
+    this._socket.on('command', (data: SocketMessage) => this.store.dispatch(ConnectionActions.actionSocketData({ data })));
   }
 
   /**
@@ -56,7 +50,7 @@ export class AliveCheckerService {
    */
   protected _socketConnected() {
     this.logger.info('Spojení se serverem bylo úspěšně navázáno.');
-    this.store.dispatch(ConnectionActions.actionServerConnected({}));
+    this.store.dispatch(ConnectionActions.actionServerConnected());
     setTimeout(() => {
       this._socket.emit('command', {
         type: SocketMessageType.CLIENT_READY,

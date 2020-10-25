@@ -51,18 +51,12 @@ export class SequencesFacade extends BaseFacade<Sequence, SequencesState> {
     };
   }
 
-  protected get featureSelector(): MemoizedSelector<
-    object,
-    SequencesState,
-    DefaultProjectorFn<SequencesState>
-  > {
+  protected get featureSelector(): MemoizedSelector<object, SequencesState, DefaultProjectorFn<SequencesState>> {
     return fromSequences.sequencesFeature;
   }
 
   public empty(emptySequence: Sequence) {
-    this.store.dispatch(
-      SequencesActions.actionSequenceEmpty({ emptySequence })
-    );
+    this.store.dispatch(SequencesActions.actionSequenceEmpty({ emptySequence }));
   }
 
   public save(record: Sequence) {
@@ -74,21 +68,15 @@ export class SequencesFacade extends BaseFacade<Sequence, SequencesState> {
   }
 
   public nameExists(name: string) {
-    this.store.dispatch(
-      SequencesActions.actionSequencesNameExistsRequest({ name })
-    );
+    this.store.dispatch(SequencesActions.actionSequencesNameExistsRequest({ name }));
   }
 
   public experimentsAsSequenceSource() {
-    this.store.dispatch(
-      SequencesActions.actionSequencesExperimentsAsSequenceSourceRequest({})
-    );
+    this.store.dispatch(SequencesActions.actionSequencesExperimentsAsSequenceSourceRequest());
   }
 
   public generateSequence(sequence: Sequence) {
-    this.store.dispatch(
-      SequencesActions.actionSequencesGenerateRequest({ sequence })
-    );
+    this.store.dispatch(SequencesActions.actionSequencesGenerateRequest({ sequence }));
   }
 
   public fromNameAndSize(experimentID: number, name: string, size: number) {
@@ -102,6 +90,6 @@ export class SequencesFacade extends BaseFacade<Sequence, SequencesState> {
   }
 
   originalSequenceAsActual() {
-    this.store.dispatch(SequencesActions.actionSequencesOriginalAsActual({}));
+    this.store.dispatch(SequencesActions.actionSequencesOriginalAsActual());
   }
 }

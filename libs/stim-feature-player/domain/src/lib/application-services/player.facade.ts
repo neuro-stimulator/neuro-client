@@ -3,26 +3,11 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
-import {
-  createEmptyExperiment,
-  Experiment,
-  Output,
-} from '@stechy1/diplomka-share';
+import { createEmptyExperiment, Experiment, Output } from '@stechy1/diplomka-share';
 
-import {
-  StimulatorFacade,
-  StimulatorState,
-  StimulatorStateType,
-} from '@diplomka-frontend/stim-feature-stimulator/domain';
-import {
-  AliveCheckerFacade,
-  ConnectionInformationState,
-  ConnectionStatus,
-} from '@diplomka-frontend/stim-lib-connection';
-import {
-  ExperimentsFacade,
-  ExperimentsState,
-} from '@diplomka-frontend/stim-feature-experiments/domain';
+import { StimulatorFacade, StimulatorState, StimulatorStateType } from '@diplomka-frontend/stim-feature-stimulator/domain';
+import { AliveCheckerFacade, ConnectionInformationState, ConnectionStatus } from '@diplomka-frontend/stim-lib-connection';
+import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
 
 import { PlayerState, StopConditionType } from '../store/player.state';
 import * as fromPlayer from '../store/player.reducer';
@@ -42,24 +27,12 @@ export class PlayerFacade {
     private readonly stimulator: StimulatorFacade,
     private readonly connections: AliveCheckerFacade
   ) {
-    this.stimulatorConnectionStatus$ = connections.state.pipe(
-      map(
-        (connectionInformation: ConnectionInformationState) =>
-          connectionInformation.stimulator
-      )
-    );
+    this.stimulatorConnectionStatus$ = connections.state.pipe(map((connectionInformation: ConnectionInformationState) => connectionInformation.stimulator));
     this.stimulatorState$ = this.stimulator.stimulatorState.pipe(
-      map(
-        (stimulatorState: StimulatorState) => stimulatorState.stimulatorState
-      ),
+      map((stimulatorState: StimulatorState) => stimulatorState.stimulatorState),
       tap((state: number) => (this._lastStimulatorState = state))
     );
-    this.playingExperiment$ = experiments.state.pipe(
-      map(
-        (experimentsState: ExperimentsState) =>
-          experimentsState.selectedExperiment.experiment
-      )
-    );
+    this.playingExperiment$ = experiments.state.pipe(map((experimentsState: ExperimentsState) => experimentsState.selectedExperiment.experiment));
   }
 
   public loadExperiment(experimentID: number) {
@@ -67,13 +40,11 @@ export class PlayerFacade {
   }
 
   public requestPlayerState() {
-    this.store.dispatch(PlayerActions.actionPlayerStateRequest({}));
+    this.store.dispatch(PlayerActions.actionPlayerStateRequest());
   }
 
   public uploadExperiment(options) {
-    this.store.dispatch(
-      PlayerActions.actionPrepareExperimentPlayerRequest({ options })
-    );
+    this.store.dispatch(PlayerActions.actionPrepareExperimentPlayerRequest({ options }));
   }
   public runExperiment() {
     this.stimulator.experimentRun();
@@ -88,7 +59,7 @@ export class PlayerFacade {
     this.stimulator.handleForceFinishExperiment();
   }
   public clearExperiment() {
-    this.store.dispatch(PlayerActions.actionPlayerClearExperiment({}));
+    this.store.dispatch(PlayerActions.actionPlayerClearExperiment());
     // Odeslat příkaz na vyčištění experimentu ze stimulátoru budu odesílat pouze,
     // pokud je stimulátor ve správném stavu
     // if (this._lastStimulatorState === StimulatorStateType.FINISH) {
@@ -117,8 +88,6 @@ export class PlayerFacade {
   }
 
   requestAvailableStopConditions() {
-    this.store.dispatch(
-      PlayerActions.actionPlayerAvailableStopConditionsRequest({})
-    );
+    this.store.dispatch(PlayerActions.actionPlayerAvailableStopConditionsRequest());
   }
 }

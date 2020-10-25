@@ -17,11 +17,11 @@ export class ConsoleFacade {
   }
 
   loadHistory() {
-    this.store.dispatch(ConsoleActions.loadHistory({}));
+    this.store.dispatch(ConsoleActions.loadHistory());
   }
 
   clearHistory() {
-    this.store.dispatch(ConsoleActions.clearHistory({}));
+    this.store.dispatch(ConsoleActions.clearHistory());
   }
 
   public get state(): Observable<ConsoleState> {
@@ -29,8 +29,6 @@ export class ConsoleFacade {
   }
 
   saveCommand(message: string) {
-    this.store.dispatch(
-      ConsoleActions.saveCommand({ rawCommand: message, fromUser: false })
-    );
+    this.store.dispatch(ConsoleActions.saveCommand({ rawCommand: message, fromUser: false }));
   }
 }

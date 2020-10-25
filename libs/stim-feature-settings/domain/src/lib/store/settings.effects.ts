@@ -17,11 +17,7 @@ import { settingsFeature } from './settings.reducer';
 
 @Injectable()
 export class SettingsEffects {
-  constructor(
-    private readonly settings: SettingsService,
-    private readonly actions$: Actions,
-    private readonly store: Store<SettingsState>
-  ) {}
+  constructor(private readonly settings: SettingsService, private readonly actions$: Actions, private readonly store: Store<SettingsState>) {}
 
   localSettings$ = createEffect(() =>
     this.actions$.pipe(
@@ -34,7 +30,7 @@ export class SettingsEffects {
             if (settings) {
               return SettingsActions.actionLocalSettingsDone({ settings });
             } else {
-              return SettingsActions.actionLocalSettingsCreate({});
+              return SettingsActions.actionLocalSettingsCreate();
             }
           })
         );
@@ -67,7 +63,7 @@ export class SettingsEffects {
                 serverSettings: response.data,
               });
             } else {
-              return SettingsActions.actionServerSettingsFail({});
+              return SettingsActions.actionServerSettingsFail();
             }
           })
         );

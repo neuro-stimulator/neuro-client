@@ -1,10 +1,5 @@
 import { BaseRecord } from '@diplomka-frontend/stim-lib-common';
-import {
-  ActionCreator,
-  DefaultProjectorFn,
-  MemoizedSelector,
-  Store,
-} from '@ngrx/store';
+import { ActionCreator, DefaultProjectorFn, MemoizedSelector, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 export interface BaseActions {
@@ -23,10 +18,10 @@ export abstract class BaseFacade<T extends BaseRecord, S> {
   protected constructor(protected readonly store: Store<S>) {}
 
   public allWithGhosts() {
-    this.store.dispatch(this.baseActions.allWithGhosts.action({}));
+    this.store.dispatch(this.baseActions.allWithGhosts.action());
   }
   public all() {
-    this.store.dispatch(this.baseActions.all.action({}));
+    this.store.dispatch(this.baseActions.all.action());
   }
   public one(recordID: number) {
     const parameters = {};
@@ -54,22 +49,18 @@ export abstract class BaseFacade<T extends BaseRecord, S> {
     this.store.dispatch(this.baseActions.select.action(parameters));
   }
   public deleteSelected() {
-    this.store.dispatch(this.baseActions.delete.action({}));
+    this.store.dispatch(this.baseActions.delete.action());
   }
   public selectAll() {
-    this.store.dispatch(this.baseActions.selectAll.action({}));
+    this.store.dispatch(this.baseActions.selectAll.action());
   }
   public selectNone() {
-    this.store.dispatch(this.baseActions.selectNone.action({}));
+    this.store.dispatch(this.baseActions.selectNone.action());
   }
 
   protected abstract get baseActions(): BaseActions;
 
-  protected abstract get featureSelector(): MemoizedSelector<
-    object,
-    S,
-    DefaultProjectorFn<S>
-  >;
+  protected abstract get featureSelector(): MemoizedSelector<object, S, DefaultProjectorFn<S>>;
 
   public get state(): Observable<S> {
     // @ts-ignore

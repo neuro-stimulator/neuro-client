@@ -7,21 +7,14 @@ import { EMPTY, of } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
-import {
-  ExperimentResult,
-  IOEvent,
-  ResponseObject,
-} from '@stechy1/diplomka-share';
+import { ExperimentResult, IOEvent, ResponseObject } from '@stechy1/diplomka-share';
 
 import { ExperimentResultsState } from '@diplomka-frontend/stim-feature-experiment-results/domain';
 import { SelectedEntities } from '@diplomka-frontend/stim-lib-list-utils';
 
 import { ExperimentResultsService } from '../infrastructure/experiment-results.service';
 import * as ExperimentResultsActions from './experiment-results.actions';
-import {
-  experimentResultsFeature,
-  experimentResultsSelector,
-} from './experiment-results.reducer';
+import { experimentResultsFeature, experimentResultsSelector } from './experiment-results.reducer';
 
 @Injectable()
 export class ExperimentResultssEffects {
@@ -43,17 +36,13 @@ export class ExperimentResultssEffects {
         });
       }),
       catchError((errorResponse) => {
-        return of(
-          ExperimentResultsActions.actionExperimentResultsAllRequestFail({})
-        );
+        return of(ExperimentResultsActions.actionExperimentResultsAllRequestFail());
       })
     )
   );
   allWithGhosts$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(
-        ExperimentResultsActions.actionExperimentResultsAllWithGhostRequest
-      ),
+      ofType(ExperimentResultsActions.actionExperimentResultsAllWithGhostRequest),
       withLatestFrom(this.store.select(experimentResultsSelector)),
       switchMap(([action, experimentResults]) => {
         if (experimentResults.length !== 0) {
@@ -68,9 +57,7 @@ export class ExperimentResultssEffects {
         });
       }),
       catchError((errorResponse) => {
-        return of(
-          ExperimentResultsActions.actionExperimentResultsAllRequestFail({})
-        );
+        return of(ExperimentResultsActions.actionExperimentResultsAllRequestFail());
       })
     )
   );
@@ -78,18 +65,14 @@ export class ExperimentResultssEffects {
   one$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsOneRequest),
-      switchMap((action) =>
-        this.experimentResults.one(action.experimentResultID)
-      ),
+      switchMap((action) => this.experimentResults.one(action.experimentResultID)),
       map((response: ResponseObject<ExperimentResult>) => {
         return ExperimentResultsActions.actionExperimentResultsOneRequestDone({
           experimentResult: response.data,
         });
       }),
       catchError((errorResponse) => {
-        return of(
-          ExperimentResultsActions.actionExperimentResultsOneRequestFail({})
-        );
+        return of(ExperimentResultsActions.actionExperimentResultsOneRequestFail());
       })
     )
   );
@@ -97,16 +80,14 @@ export class ExperimentResultssEffects {
   resultData$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsOneRequestDone),
-      switchMap((action) =>
-        this.experimentResults.resultData(action.experimentResult)
-      ),
+      switchMap((action) => this.experimentResults.resultData(action.experimentResult)),
       map((response: ResponseObject<IOEvent[]>) =>
         ExperimentResultsActions.actionExperimentResultsDataDone({
           data: response.data,
         })
       ),
       catchError((errorResponse) => {
-        return of(ExperimentResultsActions.actionExperimentResultsDataFail({}));
+        return of(ExperimentResultsActions.actionExperimentResultsDataFail());
       })
     );
   });
@@ -114,18 +95,12 @@ export class ExperimentResultssEffects {
   update$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsUpdateRequest),
-      switchMap((action) =>
-        this.experimentResults.update(action.experimentResult)
-      ),
+      switchMap((action) => this.experimentResults.update(action.experimentResult)),
       map((response: ResponseObject<ExperimentResult>) => {
-        return ExperimentResultsActions.actionExperimentResultsUpdateRequestDone(
-          { experimentResult: response.data }
-        );
+        return ExperimentResultsActions.actionExperimentResultsUpdateRequestDone({ experimentResult: response.data });
       }),
       catchError((errorResponse) => {
-        return of(
-          ExperimentResultsActions.actionExperimentResultsUpdateRequestFail({})
-        );
+        return of(ExperimentResultsActions.actionExperimentResultsUpdateRequestFail());
       })
     )
   );
@@ -142,15 +117,9 @@ export class ExperimentResultssEffects {
             return EMPTY;
           }
 
-          const selectedExperimentResults: SelectedEntities =
-            experimentResults.selectedExperimentResults;
-          const filteredSelectedExperiments = Object.entries<boolean>(
-            selectedExperimentResults
-          ).filter(([index, selected]) => selected);
-          const [
-            selectedIndex,
-            selected,
-          ] = filteredSelectedExperiments.values().next().value;
+          const selectedExperimentResults: SelectedEntities = experimentResults.selectedExperimentResults;
+          const filteredSelectedExperiments = Object.entries<boolean>(selectedExperimentResults).filter(([index, selected]) => selected);
+          const [selectedIndex, selected] = filteredSelectedExperiments.values().next().value;
 
           return this.experimentResults.delete(+selectedIndex);
         }
@@ -161,9 +130,7 @@ export class ExperimentResultssEffects {
         })
       ),
       catchError((errorResponse) => {
-        return of(
-          ExperimentResultsActions.actionExperimentResultsDeleteRequestFail({})
-        );
+        return of(ExperimentResultsActions.actionExperimentResultsDeleteRequestFail());
       })
     );
   });
@@ -173,17 +140,9 @@ export class ExperimentResultssEffects {
       withLatestFrom(this.store.select(experimentResultsFeature)),
       map(([action, experimentResults]) => {
         if (experimentResults.selectionMode) {
-          setTimeout(
-            () =>
-              this.store.dispatch(
-                ExperimentResultsActions.actionExperimentResultsDeleteRequest(
-                  {}
-                )
-              ),
-            250
-          );
+          setTimeout(() => this.store.dispatch(ExperimentResultsActions.actionExperimentResultsDeleteRequest({ experimentResultID: action.experimentResult.id })), 250);
         }
-        return ExperimentResultsActions.actionExperimentResultsNoAction({});
+        return ExperimentResultsActions.actionExperimentResultsNoAction();
       })
     )
   );
@@ -191,23 +150,12 @@ export class ExperimentResultssEffects {
   nameExists$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsNameExistsRequest),
-      switchMap((action) =>
-        this.experimentResults.nameExists(
-          action.name,
-          action.experimentResultID
-        )
-      ),
+      switchMap((action) => this.experimentResults.nameExists(action.name, action.experimentResultID)),
       map((response: ResponseObject<{ exists: boolean }>) => {
-        return ExperimentResultsActions.actionExperimentResultsNameExistsRequestDone(
-          { exists: response.data.exists }
-        );
+        return ExperimentResultsActions.actionExperimentResultsNameExistsRequestDone({ exists: response.data.exists });
       }),
       catchError((errorResponse) => {
-        return of(
-          ExperimentResultsActions.actionExperimentResultsNameExistsRequestFail(
-            {}
-          )
-        );
+        return of(ExperimentResultsActions.actionExperimentResultsNameExistsRequestFail());
       })
     )
   );

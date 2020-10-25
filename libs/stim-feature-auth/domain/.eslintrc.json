@@ -1,0 +1,21 @@
+{
+  "extends": ["../../../.eslintrc.json"],
+  "parserOptions": {
+    "project": "./tsconfig.*?.json"
+  },
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["libs/stim-feature-auth/domain/tsconfig.*?.json"],
+        "createDefaultProgram": true
+      },
+      "rules": {}
+    },
+    {
+      "files": ["*.component.html"],
+      "rules": {}
+    }
+  ]
+}

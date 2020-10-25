@@ -18,29 +18,23 @@ export class NavigationFacade {
     this.store.dispatch(NavigationActions.actionSubtitleChange({ subtitle }));
   }
   set subtitleArgs(subtitleArgs: {}) {
-    this.store.dispatch(
-      NavigationActions.actionSubtitleArgsChange({ subtitleArgs })
-    );
+    this.store.dispatch(NavigationActions.actionSubtitleArgsChange({ subtitleArgs }));
   }
   set icon(icon: string) {
     this.store.dispatch(NavigationActions.actionIconChange({ icon }));
   }
   set customNavColor(customNavColor: string) {
-    this.store.dispatch(
-      NavigationActions.actionCustomNavColorChange({ customNavColor })
-    );
+    this.store.dispatch(NavigationActions.actionCustomNavColorChange({ customNavColor }));
   }
   set showAddon(show: boolean) {
-    this.store.dispatch(
-      NavigationActions.actionSetShowAddon({ showAddon: show })
-    );
+    this.store.dispatch(NavigationActions.actionSetShowAddon({ showAddon: show }));
   }
 
   /**
    * Přepne viditelnost postraní lišty
    */
   toggleSidebarVisibility() {
-    this.store.dispatch(NavigationActions.actionToggleSidebar({}));
+    this.store.dispatch(NavigationActions.actionToggleSidebar());
   }
 
   /**
@@ -49,9 +43,7 @@ export class NavigationFacade {
    * @param show True, pokud se má lišta zobrazit, jinak false
    */
   set showSidebar(show: boolean) {
-    this.store.dispatch(
-      NavigationActions.actionSetShowSidebar({ showSidebar: show })
-    );
+    this.store.dispatch(NavigationActions.actionSetShowSidebar({ showSidebar: show }));
   }
 
   get navigationState(): Observable<NavigationState> {

@@ -2,14 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import {
-  catchError,
-  filter,
-  map,
-  mergeMap,
-  switchMap,
-  withLatestFrom,
-} from 'rxjs/operators';
+import { catchError, filter, map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
 import { EMPTY, of } from 'rxjs';
 
 import {
@@ -61,11 +54,11 @@ export class StimulatorEffects {
           map((response: ResponseObject<any>) => {
             switch (response.message.code) {
               case MessageCodes.CODE_SUCCESS_LOW_LEVEL_PORT_OPPENED:
-                return ConnectionActions.actionStimulatorConnected({});
+                return ConnectionActions.actionStimulatorConnected();
               case MessageCodes.CODE_ERROR_LOW_LEVEL_PORT_NOT_OPPENED:
-                return ConnectionActions.actionStimulatorConnected({});
+                return ConnectionActions.actionStimulatorConnected();
               default:
-                return ConnectionActions.actionStimulatorConnected({});
+                return ConnectionActions.actionStimulatorConnected();
             }
           })
         );
@@ -78,7 +71,7 @@ export class StimulatorEffects {
       switchMap(() => {
         return this._service.close().pipe(
           map((response) => {
-            return ConnectionActions.actionStimulatorDisconnected({});
+            return ConnectionActions.actionStimulatorDisconnected();
           })
         );
       })
@@ -90,9 +83,7 @@ export class StimulatorEffects {
       switchMap(() => {
         return this._service.connectionStatus().pipe(
           map((response: ResponseObject<{ connected: boolean }>) => {
-            return response.data.connected
-              ? ConnectionActions.actionStimulatorConnected({})
-              : ConnectionActions.actionStimulatorDisconnected({});
+            return response.data.connected ? ConnectionActions.actionStimulatorConnected() : ConnectionActions.actionStimulatorDisconnected();
           })
         );
       })
@@ -105,7 +96,7 @@ export class StimulatorEffects {
       switchMap((action) => {
         return this._service.updateFirmware(action.path).pipe(
           map(() => {
-            return StimulatorActions.actionStimulatorFirmwareUpdateDone({});
+            return StimulatorActions.actionStimulatorFirmwareUpdateDone();
           })
         );
       })
@@ -135,9 +126,7 @@ export class StimulatorEffects {
         });
       }),
       catchError((errorResponse) => {
-        return of(
-          StimulatorActions.actionCommandStimulatorStateRequestFail({})
-        );
+        return of(StimulatorActions.actionCommandStimulatorStateRequestFail());
       })
     )
   );
@@ -146,19 +135,12 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorUploadRequest),
       withLatestFrom(this._facade.state),
-      switchMap(([action, experimentState]) =>
-        this._service.experimentUpload(
-          experimentState.selectedExperiment.experiment.id
-        )
-      ),
+      switchMap(([action, experimentState]) => this._service.experimentUpload(experimentState.selectedExperiment.experiment.id)),
       mergeMap((res: ResponseObject<any>) => {
-        return [
-          StimulatorActions.actionCommandStimulatorUploadRequestDone({}),
-          StimulatorActions.actionCommandStimulatorSetupRequest({}),
-        ];
+        return [StimulatorActions.actionCommandStimulatorUploadRequestDone(), StimulatorActions.actionCommandStimulatorSetupRequest()];
       }),
       catchError((errorResponse) => {
-        return [StimulatorActions.actionCommandStimulatorSetupRequestFail({})];
+        return [StimulatorActions.actionCommandStimulatorSetupRequestFail()];
       })
     )
   );
@@ -167,18 +149,12 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorSetupRequest),
       withLatestFrom(this._facade.state),
-      switchMap(([action, experimentState]) =>
-        this._service.experimentSetup(
-          experimentState.selectedExperiment.experiment.id
-        )
-      ),
+      switchMap(([action, experimentState]) => this._service.experimentSetup(experimentState.selectedExperiment.experiment.id)),
       map((response: ResponseObject<any>) => {
-        return StimulatorActions.actionCommandStimulatorSetupRequestDone({});
+        return StimulatorActions.actionCommandStimulatorSetupRequestDone();
       }),
       catchError((errorResponse) => {
-        return of(
-          StimulatorActions.actionCommandStimulatorSetupRequestFail({})
-        );
+        return of(StimulatorActions.actionCommandStimulatorSetupRequestFail());
       })
     )
   );
@@ -187,16 +163,12 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorRunRequest),
       withLatestFrom(this._facade.state),
-      switchMap(([action, experimentState]) =>
-        this._service.experimentRun(
-          experimentState.selectedExperiment.experiment.id
-        )
-      ),
+      switchMap(([action, experimentState]) => this._service.experimentRun(experimentState.selectedExperiment.experiment.id)),
       map((response: ResponseObject<any>) => {
-        return StimulatorActions.actionCommandStimulatorRunRequestDone({});
+        return StimulatorActions.actionCommandStimulatorRunRequestDone();
       }),
       catchError((errorResponse) => {
-        return of(StimulatorActions.actionCommandStimulatorRunRequestFail({}));
+        return of(StimulatorActions.actionCommandStimulatorRunRequestFail());
       })
     )
   );
@@ -205,18 +177,12 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorPauseRequest),
       withLatestFrom(this._facade.state),
-      switchMap(([action, experimentState]) =>
-        this._service.experimentPause(
-          experimentState.selectedExperiment.experiment.id
-        )
-      ),
+      switchMap(([action, experimentState]) => this._service.experimentPause(experimentState.selectedExperiment.experiment.id)),
       map((response: ResponseObject<any>) => {
-        return StimulatorActions.actionCommandStimulatorPauseRequestDone({});
+        return StimulatorActions.actionCommandStimulatorPauseRequestDone();
       }),
       catchError((errorResponse) => {
-        return of(
-          StimulatorActions.actionCommandStimulatorPauseRequestFail({})
-        );
+        return of(StimulatorActions.actionCommandStimulatorPauseRequestFail());
       })
     )
   );
@@ -225,19 +191,12 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorFinishRequest),
       withLatestFrom(this._facade.state),
-      switchMap(([action, experimentState]) =>
-        this._service.experimentFinish(
-          experimentState.selectedExperiment.experiment.id,
-          action.force
-        )
-      ),
+      switchMap(([action, experimentState]) => this._service.experimentFinish(experimentState.selectedExperiment.experiment.id, action.force)),
       map((response: ResponseObject<any>) => {
-        return StimulatorActions.actionCommandStimulatorFinishRequestDone({});
+        return StimulatorActions.actionCommandStimulatorFinishRequestDone();
       }),
       catchError((errorResponse) => {
-        return of(
-          StimulatorActions.actionCommandStimulatorFinishRequestFail({})
-        );
+        return of(StimulatorActions.actionCommandStimulatorFinishRequestFail());
       })
     )
   );
@@ -247,10 +206,7 @@ export class StimulatorEffects {
       ofType(StimulatorActions.actionCommandStimulatorClearRequest),
       withLatestFrom(this.store.select(stimulatorFeature)),
       switchMap(([action, state]: [any, StimulatorState]) => {
-        if (
-          state.stimulatorState <= StimulatorStateType.SETUP ||
-          state.stimulatorState >= StimulatorStateType.FINISH
-        ) {
+        if (state.stimulatorState <= StimulatorStateType.SETUP || state.stimulatorState >= StimulatorStateType.FINISH) {
           return this._service.experimentClear();
         } else {
           return EMPTY;
@@ -258,14 +214,12 @@ export class StimulatorEffects {
       }),
       map((response: ResponseObject<any>) => {
         if (response === undefined) {
-          return StimulatorActions.actionStimulatorNoop({});
+          return StimulatorActions.actionStimulatorNoop();
         }
-        return StimulatorActions.actionCommandStimulatorClearRequestDone({});
+        return StimulatorActions.actionCommandStimulatorClearRequestDone();
       }),
       catchError((errorResponse) => {
-        return of(
-          StimulatorActions.actionCommandStimulatorClearRequestFail({})
-        );
+        return of(StimulatorActions.actionCommandStimulatorClearRequestFail());
       })
     )
   );
@@ -274,10 +228,7 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(ConnectionActions.actionSocketData),
       map((action) => action.data as SocketMessage),
-      filter(
-        (message: SocketMessage) =>
-          message.specialization === SocketMessageSpecialization.STIMULATOR
-      ),
+      filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.STIMULATOR),
       map((message: SocketMessage) => {
         switch (message.type) {
           case SocketMessageType.STIMULATOR_DATA_STATE:
@@ -286,11 +237,11 @@ export class StimulatorEffects {
               state: stimulatorDataStateMessage.data.state,
             });
           default:
-            return StimulatorActions.actionStimulatorNoop({});
+            return StimulatorActions.actionStimulatorNoop();
         }
       }),
       catchError((errorResponse) => {
-        return of(StimulatorActions.actionStimulatorNoop({}));
+        return of(StimulatorActions.actionStimulatorNoop());
       })
     )
   );

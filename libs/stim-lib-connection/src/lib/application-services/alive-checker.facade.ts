@@ -14,22 +14,22 @@ export class AliveCheckerFacade {
    * Pokusí se vytvořit stále spojení se serverem.
    */
   public requestConnect() {
-    this.store.dispatch(ConnectionActions.actionServerConnectRequest({}));
+    this.store.dispatch(ConnectionActions.actionServerConnectRequest());
   }
 
   /**
    * Oznámí zbytku aplikace, aby byla ukončena komunikace přes WebSockety se serverem.
    */
   public requestDisconnect() {
-    this.store.dispatch(ConnectionActions.actionServerDisconnectRequest({}));
+    this.store.dispatch(ConnectionActions.actionServerDisconnectRequest());
   }
 
   public startCommunication() {
-    this.store.dispatch(ConnectionActions.actionServerStartCommunicating({}));
+    this.store.dispatch(ConnectionActions.actionServerStartCommunicating());
   }
 
   public stopCommunication() {
-    this.store.dispatch(ConnectionActions.actionServerEndCommunicating({}));
+    this.store.dispatch(ConnectionActions.actionServerEndCommunicating());
   }
 
   get state(): Observable<ConnectionInformationState> {

@@ -3,13 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
-import {
-  catchError,
-  filter,
-  map,
-  switchMap,
-  withLatestFrom,
-} from 'rxjs/operators';
+import { catchError, filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import {
@@ -27,10 +21,7 @@ import { PlayerState } from '@diplomka-frontend/stim-feature-player/domain';
 import * as fromConnection from '@diplomka-frontend/stim-lib-connection';
 import * as fromStimulator from '@diplomka-frontend/stim-feature-stimulator/domain';
 import { StimulatorFacade } from '@diplomka-frontend/stim-feature-stimulator/domain';
-import {
-  ExperimentsFacade,
-  ExperimentsState,
-} from '@diplomka-frontend/stim-feature-experiments/domain';
+import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
 
 import * as PlayerActions from './player.actions';
 import { PlayerService } from '../infrastructure/player.service';
@@ -50,15 +41,7 @@ export class PlayerEffects {
   stateRequest$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PlayerActions.actionPlayerStateRequest),
-      switchMap((action) =>
-        this._service
-          .getPlayerState()
-          .pipe(
-            map((response: ResponseObject<PlayerConfiguration>) =>
-              PlayerActions.actionPlayerUpdateState(response.data)
-            )
-          )
-      )
+      switchMap((action) => this._service.getPlayerState().pipe(map((response: ResponseObject<PlayerConfiguration>) => PlayerActions.actionPlayerUpdateState(response.data))))
     )
   );
 
@@ -67,26 +50,18 @@ export class PlayerEffects {
       ofType(PlayerActions.actionPrepareExperimentPlayerRequest),
       withLatestFrom(this.experimentsFacade.state),
       switchMap(([action, experimentState]) => {
-        return this._service
-          .prepareExperimentPlayer(
-            experimentState.selectedExperiment.experiment.id,
-            action.options
-          )
-          .pipe(
-            map((response: ResponseObject<any>) => {
-              return PlayerActions.actionPrepareExperimentPlayerRequestDone({
-                autoplay: action.options.autoplay,
-                betweenExperimentInterval:
-                  action.options.betweenExperimentInterval,
-                repeat: action.options.repeat,
-              });
-            }),
-            catchError((error) => {
-              return of(
-                PlayerActions.actionPrepareExperimentPlayerRequestFail({})
-              );
-            })
-          );
+        return this._service.prepareExperimentPlayer(experimentState.selectedExperiment.experiment.id, action.options).pipe(
+          map((response: ResponseObject<any>) => {
+            return PlayerActions.actionPrepareExperimentPlayerRequestDone({
+              autoplay: action.options.autoplay,
+              betweenExperimentInterval: action.options.betweenExperimentInterval,
+              repeat: action.options.repeat,
+            });
+          }),
+          catchError((error) => {
+            return of(PlayerActions.actionPrepareExperimentPlayerRequestFail());
+          })
+        );
       })
     )
   );
@@ -94,7 +69,7 @@ export class PlayerEffects {
   prepareExperimentPlayerDone$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PlayerActions.actionPrepareExperimentPlayerRequestDone),
-      map(() => fromStimulator.actionCommandStimulatorUploadRequest({}))
+      map(() => fromStimulator.actionCommandStimulatorUploadRequest())
     )
   );
 
@@ -102,15 +77,8 @@ export class PlayerEffects {
     this.actions$.pipe(
       ofType(fromConnection.actionSocketData),
       map((action) => action.data),
-      filter(
-        (message: SocketMessage) =>
-          message.specialization ===
-          SocketMessageSpecialization.EXPERIMENT_PLAYER
-      ),
-      filter(
-        (message: SocketMessage) =>
-          message.type === SocketMessageType.EXPERIMENT_PLAYER_DATA_IO
-      ),
+      filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.EXPERIMENT_PLAYER),
+      filter((message: SocketMessage) => message.type === SocketMessageType.EXPERIMENT_PLAYER_DATA_IO),
       map((message: SocketMessage) => message.data as IOEvent),
       map((ioEvent: IOEvent) => PlayerActions.actionPlayerIOEvent({ ioEvent }))
     )
@@ -120,19 +88,10 @@ export class PlayerEffects {
     this.actions$.pipe(
       ofType(fromConnection.actionSocketData),
       map((action) => action.data),
-      filter(
-        (message: SocketMessage) =>
-          message.specialization ===
-          SocketMessageSpecialization.EXPERIMENT_PLAYER
-      ),
-      filter(
-        (message: SocketMessage) =>
-          message.type === SocketMessageType.EXPERIMENT_PLAYER_STATE
-      ),
+      filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.EXPERIMENT_PLAYER),
+      filter((message: SocketMessage) => message.type === SocketMessageType.EXPERIMENT_PLAYER_STATE),
       map((message: SocketMessage) => message.data),
-      map((playerData: PlayerConfiguration) =>
-        PlayerActions.actionPlayerUpdateState(playerData)
-      )
+      map((playerData: PlayerConfiguration) => PlayerActions.actionPlayerUpdateState(playerData))
     )
   );
 
@@ -140,13 +99,9 @@ export class PlayerEffects {
     this.actions$.pipe(
       ofType(fromConnection.actionSocketData),
       map((action) => action.data),
-      filter(
-        (message: SocketMessage) =>
-          message.specialization ===
-          SocketMessageSpecialization.EXPERIMENT_PLAYER
-      ),
+      filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.EXPERIMENT_PLAYER),
       filter((message: SocketMessage) => message.type === 99),
-      map(() => PlayerActions.actionPlayerCreateNewExperimentRound({}))
+      map(() => PlayerActions.actionPlayerCreateNewExperimentRound())
     )
   );
 
@@ -155,22 +110,10 @@ export class PlayerEffects {
       this.actions$.pipe(
         ofType(fromConnection.actionSocketData),
         map((action) => action.data),
-        filter(
-          (message: SocketMessage) =>
-            message.specialization ===
-            SocketMessageSpecialization.EXPERIMENT_RESULTS
-        ),
-        filter(
-          (message: SocketMessage) =>
-            message.type === SocketMessageType.EXPERIMENT_RESULT_CREATED
-        ),
-        map(
-          (message: SocketMessage) =>
-            (message as ExperimentResultCreatedMessage).data.experimentResultID
-        ),
-        switchMap((experimentResultID: number) =>
-          this.router.navigate(['/', 'results', experimentResultID])
-        )
+        filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.EXPERIMENT_RESULTS),
+        filter((message: SocketMessage) => message.type === SocketMessageType.EXPERIMENT_RESULT_CREATED),
+        map((message: SocketMessage) => (message as ExperimentResultCreatedMessage).data.experimentResultID),
+        switchMap((experimentResultID: number) => this.router.navigate(['/', 'results', experimentResultID]))
       ),
     { dispatch: false }
   );
@@ -181,9 +124,9 @@ export class PlayerEffects {
       withLatestFrom(this.store.select(playerFeature)),
       map(([action, state]) => {
         if (state.initialized) {
-          return fromStimulator.actionCommandStimulatorClearRequest({});
+          return fromStimulator.actionCommandStimulatorClearRequest();
         } else {
-          return PlayerActions.actionPlayerNoAction({});
+          return PlayerActions.actionPlayerNoAction();
         }
       })
     )
@@ -194,22 +137,16 @@ export class PlayerEffects {
       ofType(PlayerActions.actionPlayerAvailableStopConditionsRequest),
       withLatestFrom(this.experimentsFacade.state),
       switchMap(([action, experimentsState]: [any, ExperimentsState]) =>
-        this._service
-          .getAvailableStopConditions(
-            experimentsState.selectedExperiment.experiment.type
-          )
-          .pipe(
-            map((response: ResponseObject<ExperimentStopConditionType[]>) => {
-              return PlayerActions.actionPlayerAvailableStopConditionsDone({
-                stopConditions: response.data,
-              });
-            }),
-            catchError((error) => {
-              return of(
-                PlayerActions.actionPlayerAvailableStopConditionsFail({})
-              );
-            })
-          )
+        this._service.getAvailableStopConditions(experimentsState.selectedExperiment.experiment.type).pipe(
+          map((response: ResponseObject<ExperimentStopConditionType[]>) => {
+            return PlayerActions.actionPlayerAvailableStopConditionsDone({
+              stopConditions: response.data,
+            });
+          }),
+          catchError((error) => {
+            return of(PlayerActions.actionPlayerAvailableStopConditionsFail());
+          })
+        )
       )
     )
   );
