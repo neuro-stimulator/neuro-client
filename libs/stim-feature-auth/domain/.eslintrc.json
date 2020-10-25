@@ -15,7 +15,12 @@
     },
     {
       "files": ["*.component.html"],
-      "rules": {}
+      "parserOptions": {
+        "project": "./tsconfig.json",
+        "createDefaultProgram": true
+      },
+      "rules": {},
+      "plugins": ["@angular-eslint/template"]
     }
   ]
 }

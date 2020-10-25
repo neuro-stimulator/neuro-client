@@ -5,7 +5,7 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": "./tsconfig.*?.json",
+        "project": "./tsconfig.json",
         "createDefaultProgram": true
       },
       "rules": {
@@ -29,7 +29,12 @@
     },
     {
       "files": ["*.component.html"],
-      "rules": {}
+      "parserOptions": {
+        "project": "./tsconfig.json",
+        "createDefaultProgram": true
+      },
+      "rules": {},
+      "plugins": ["@angular-eslint/template"]
     }
   ]
 }
