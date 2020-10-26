@@ -39,6 +39,7 @@
         ]
       }
     ],
+    "ngrx/on-function-explicit-return-type": "off",
     "quotes": ["error", "single"]
   },
   "overrides": [
