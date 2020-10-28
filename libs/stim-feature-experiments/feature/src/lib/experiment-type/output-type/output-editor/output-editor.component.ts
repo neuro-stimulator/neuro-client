@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { HorizontalAlignment, Output, VerticalAlignment } from '@stechy1/diplomka-share';
@@ -22,6 +22,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
   } = { x: 640, y: 480 };
 
   private readonly vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) * 0.5;
+  private readonly _resultEmitter: EventEmitter<OutputEntry[]> = new EventEmitter<OutputEntry[]>();
 
   private _dragging = false;
   private _offsetX: number;
@@ -34,6 +35,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
   private _coordinatesRefresh: boolean;
   private _manualAlignmentRefresh: boolean;
   private _showSubscription: Subscription;
+  private _confirmSubscription: Subscription;
   private _enableCoordinatesLines: boolean;
 
   public selectedID = -1;
@@ -126,6 +128,10 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     outputEntry.manualAlignment = value;
   }
 
+  private _handleConfirm() {
+    this._resultEmitter.next(this.outputEntries);
+  }
+
   ngOnInit(): void {
     this.controlPositionX.valueChanges.subscribe((valueX) => this._onValueChange(+valueX, 'x'));
     this.controlPositionY.valueChanges.subscribe((valueY) => this._onValueChange(+valueY, 'y'));
@@ -136,9 +142,11 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     modal.title = 'EXPERIMENTS.OUTPUT_EDITOR.TITLE';
     modal.confirmText = 'EXPERIMENTS.OUTPUT_EDITOR.CONFIRM';
     modal.cancelText = 'EXPERIMENTS.OUTPUT_EDITOR.CANCEL';
+    modal.result = this._resultEmitter;
 
-    // this._confirmSubscription = modal.confirm.subscribe(() => { this.filter.filterParameters = this.form.value; });
-    // this._cancelSubscription = modal.cancel.subscribe(() => { this.filter.resetFilterParameters(); });
+    this._confirmSubscription = modal.confirm.subscribe(() => {
+      this._handleConfirm();
+    });
     this._showSubscription = modal.show.subscribe((args: [{ outputs: Output[] }]) => {
       this.outputEntries = args[0].outputs.map((output: Output) => {
         return {
@@ -147,13 +155,12 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
           dragging: false,
         };
       });
-      //   this.form.setValue(this.filter.filterParameters);
-      //   this._lastConfiguration = this.filter.filterParameters;
     });
   }
 
   unbind() {
-    // empty body
+    this._showSubscription.unsubscribe();
+    this._confirmSubscription.unsubscribe();
   }
 
   handleCanvasClick() {

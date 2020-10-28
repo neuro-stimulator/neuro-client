@@ -40,12 +40,9 @@ import { DialogChildComponent } from './dialog-child.component';
   selector: 'stim-lib-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.sass'],
-  animations: [
-    animation
-  ]
+  animations: [animation],
 })
 export class ModalComponent implements OnDestroy {
-
   // Obsah dialogu
   @ViewChild(DialogChildsDirective, { static: true }) childDirective: DialogChildsDirective;
   // Pomocná reference na odběr výsledku
@@ -55,8 +52,7 @@ export class ModalComponent implements OnDestroy {
   // Instance zobrazované komponenty
   private _viewInstance: DialogChildComponent;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
-  }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
   // ID dialogu
   private _id: string;
@@ -212,7 +208,7 @@ export class ModalComponent implements OnDestroy {
     // Vrátím novou promise
     return new Promise<any>((resolve, reject) => {
       // Otevřu dialog
-      this.open(args);
+      this.open(...args);
       // Přihlásím se k odběru výsledku
       this._resultSubscription = this.result.subscribe((value) => {
         // Příjde-li výsledek, považuji to za úspěšné vyřešení dialogu
@@ -277,7 +273,7 @@ export class ModalComponent implements OnDestroy {
     // Vytvořím novou komponentu ve viewContaineru za pomoci továrny
     const component = viewContainerRef.createComponent(componentFactory);
     // Získám instanci této komponenty
-    this._viewInstance = (component.instance as DialogChildComponent);
+    this._viewInstance = component.instance as DialogChildComponent;
     // Nechám komponentu inicializovat
     this._viewInstance.bind(this);
   }

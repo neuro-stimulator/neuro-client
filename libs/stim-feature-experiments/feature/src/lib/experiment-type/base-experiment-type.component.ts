@@ -14,13 +14,14 @@ import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/dom
 import { ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
 
 import { ExperimentNameValidator } from '../experiment-name-validator';
 import { ComponentCanDeactivate } from '../experiments.deactivate';
 import { outputCountParams } from '../experiments.share';
 import { OutputEditorComponent } from './output-type/output-editor/output-editor.component';
 import { ExperimentOutputTypeValidator } from './output-type/experiment-output-type-validator';
-import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
+import { OutputEntry } from './output-type/output-editor/output-entry';
 
 @Component({ template: '' })
 export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O extends Output> implements OnInit, OnDestroy, ComponentCanDeactivate {
@@ -140,6 +141,27 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
     };
   }
 
+  /**
+   * Projde odpovídající počet výstupů a aktualizuje hodnoty z editoru výstupů
+   *
+   * @param outputEntries Kolekce nastavených výstupů
+   */
+  private _updateOutputsFromEditor(outputEntries: OutputEntry[]): void {
+    const formOutputs = this.outputs.controls;
+    for (let i = 0; i < this.outputCount.value; i++) {
+      const formOutput: FormControl = formOutputs[i] as FormControl;
+      const outputEntry = outputEntries[i];
+
+      formOutput.patchValue({
+        x: outputEntry.x,
+        y: outputEntry.y,
+        manualAlignment: outputEntry.manualAlignment,
+        horizontalAlignment: outputEntry.horizontalAlignment,
+        verticalAlignment: outputEntry.verticalAlignment,
+      });
+    }
+  }
+
   ngOnInit(): void {
     this._experimentsStateSubscription = this._facade.state
       .pipe(take(2))
@@ -181,9 +203,20 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
    */
   public handleShowOutputEditor() {
     this.modalComponent.showComponent = OutputEditorComponent;
-    this.modalComponent.open({
-      outputs: this.form.value.outputs,
-    });
+    this.modalComponent
+      .openForResult({
+        outputs: this.form.value.outputs,
+      })
+      .catch(() => {
+        this.logger.warn('Nebudu aktualizovat výstupy.');
+      })
+      .then((outputEntries?: OutputEntry[]) => {
+        if (outputEntries === undefined) {
+          return;
+        }
+
+        this._updateOutputsFromEditor(outputEntries);
+      });
   }
 
   get experimentsState(): Observable<ExperimentsState> {
@@ -200,5 +233,9 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
 
   get outputCount() {
     return this.form.get('outputCount');
+  }
+
+  get outputs(): FormArray {
+    return this.form.get('outputs') as FormArray;
   }
 }
