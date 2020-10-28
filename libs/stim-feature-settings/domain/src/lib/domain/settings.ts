@@ -30,4 +30,9 @@ export interface ServerSettings {
     parity?: 'none' | 'even' | 'mark' | 'odd' | 'space';
   };
   stimulatorResponseTimeout?: number;
+  assetPlayer: {
+    width: number;
+    height: number;
+    fullScreen: boolean;
+  };
 }

@@ -19,7 +19,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
   @ViewChild('canvas', { static: true }) canvas: ElementRef;
 
   @Input() outputEntries: OutputEntry[] = [];
-  @Input() realViewport: {
+  private realViewport: {
     x: number;
     y: number;
   } = { x: 640, y: 480 };
@@ -143,7 +143,10 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     this.manualAlignment.valueChanges.subscribe((value) => this._onManualAlignmentChange(value));
     this.settings.state.subscribe((settings: SettingsState) => {
       this._canvasHeightMultiplier = settings.localSettings.experiments.outputEditor.canvasHeightMultiplier;
+      this.realViewport.x = settings.serverSettings.assetPlayer?.width;
+      this.realViewport.y = settings.serverSettings.assetPlayer?.height;
     });
+    this.settings.loadServerSettings();
     this.settings.invokeLocalSettings();
   }
 

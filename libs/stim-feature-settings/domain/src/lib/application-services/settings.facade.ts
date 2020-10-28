@@ -24,6 +24,10 @@ export class SettingsFacade {
     this.store.dispatch(SettingsActions.actionServerSettingsRequest());
   }
 
+  public invokeServerSettings() {
+    this.store.dispatch(SettingsActions.actionServerSettingsInvoke());
+  }
+
   public seedDatabase() {
     this.store.dispatch(SettingsActions.actionServerSeedDatabaseRequest());
   }

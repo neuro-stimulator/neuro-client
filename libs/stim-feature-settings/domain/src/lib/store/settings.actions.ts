@@ -11,6 +11,7 @@ export const actionSaveLocalSettingsRequest = createAction('[Settings] Save loca
 export const actionSaveLocalSettingsDone = createAction('[Settings] Save local settings done', props<{ settings: Settings }>());
 
 export const actionServerSettingsRequest = createAction('[Settings] Server settings request');
+export const actionServerSettingsInvoke = createAction('[Settings] Server settings invoke request');
 export const actionServerSettingsDone = createAction('[Settings] Server settings request done', props<{ serverSettings: ServerSettings }>());
 export const actionServerSettingsFail = createAction('[Settings] Server settings request fail', props<{ serverSettings: ServerSettings }>());
 

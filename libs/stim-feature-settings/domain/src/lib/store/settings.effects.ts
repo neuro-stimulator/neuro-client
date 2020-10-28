@@ -77,6 +77,14 @@ export class SettingsEffects {
     )
   );
 
+  invokeServerSettings$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SettingsActions.actionServerSettingsInvoke),
+      withLatestFrom(this.store.select(settingsFeature)),
+      map(([action, settings]) => SettingsActions.actionServerSettingsDone({ serverSettings: settings.serverSettings }))
+    )
+  );
+
   saveServerSettings$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SettingsActions.actionSaveServerSettingsRequest),
