@@ -40,6 +40,7 @@
       }
     ],
     "ngrx/on-function-explicit-return-type": "off",
+    "ngrx/no-multiple-actions-in-effects": "off",
     "quotes": ["error", "single"]
   },
   "overrides": [
