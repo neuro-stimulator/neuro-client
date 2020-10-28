@@ -319,6 +319,10 @@
           "DAYS": "Dny",
           "MONTHS": "Měsíce",
           "YEARS": "Roky"
+        },
+        "OUTPUT_EDITOR": {
+          "TITLE": "Editor výstupů",
+          "CANVAS_HEIGHT_MULTIPLIER": "Multiplikátor výšky plátna"
         }
       },
       "SERVER": {

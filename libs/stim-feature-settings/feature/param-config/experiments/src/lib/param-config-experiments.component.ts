@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'stim-feature-settings-param-config-experiments',
@@ -25,6 +25,17 @@ export class ParamConfigExperimentsComponent {
         showSeconds: new FormControl(null),
         showMiliseconds: new FormControl(null),
       }),
+      outputEditor: new FormGroup({
+        canvasHeightMultiplier: new FormControl(null, [Validators.required, Validators.min(0.1), Validators.max(1)]),
+      }),
     });
+  }
+
+  get outputEditor(): FormGroup {
+    return this.form.get('outputEditor') as FormGroup;
+  }
+
+  get canvasHeightMultiplier(): FormControl {
+    return this.outputEditor.get('canvasHeightMultiplier') as FormControl;
   }
 }

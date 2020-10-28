@@ -16,6 +16,10 @@ export class SettingsFacade {
     this.store.dispatch(SettingsActions.actionLocalSettingsRequest());
   }
 
+  public invokeLocalSettings() {
+    this.store.dispatch(SettingsActions.actionLocalSettingsInvoke());
+  }
+
   public loadServerSettings() {
     this.store.dispatch(SettingsActions.actionServerSettingsRequest());
   }

@@ -12,6 +12,9 @@ export interface Settings {
     showOutputType: boolean;
     showOutputCount: boolean;
     creationDateFormat: DateTimeFormat;
+    outputEditor: {
+      canvasHeightMultiplier: number;
+    };
   };
   player: Record<string, unknown>;
   results: Record<string, unknown>;

@@ -3,6 +3,7 @@ import { createAction, props } from '@ngrx/store';
 import { ServerSettings, Settings } from '../..';
 
 export const actionLocalSettingsRequest = createAction('[Settings] Local settings request');
+export const actionLocalSettingsInvoke = createAction('[Settings] Local settings invoke request');
 export const actionLocalSettingsDone = createAction('[Settings] Local settings done', props<{ settings: Settings }>());
 export const actionLocalSettingsCreate = createAction('[Settings] Local settings create new from default');
 

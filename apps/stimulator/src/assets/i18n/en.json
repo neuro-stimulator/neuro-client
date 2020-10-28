@@ -312,6 +312,10 @@
           "DAYS": "Days",
           "MONTHS": "Months",
           "YEARS": "Years"
+        },
+        "OUTPUT_EDITOR": {
+          "TITLE": "Output editor",
+          "CANVAS_HEIGHT_MULTIPLIER": "Canvas height multiplier"
         }
       },
       "SERVER": {

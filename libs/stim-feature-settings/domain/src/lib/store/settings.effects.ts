@@ -36,6 +36,14 @@ export class SettingsEffects {
     )
   );
 
+  invokeSettings$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SettingsActions.actionLocalSettingsInvoke),
+      withLatestFrom(this.store.select(settingsFeature)),
+      map(([action, settings]) => SettingsActions.actionLocalSettingsDone({ settings: settings.localSettings }))
+    )
+  );
+
   saveLocalSettings$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SettingsActions.actionSaveLocalSettingsRequest),

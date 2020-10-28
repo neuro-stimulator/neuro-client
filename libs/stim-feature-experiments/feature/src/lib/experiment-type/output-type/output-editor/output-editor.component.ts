@@ -1,11 +1,14 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
+import { Subscription } from 'rxjs';
+
 import { HorizontalAlignment, Output, VerticalAlignment } from '@stechy1/diplomka-share';
 
 import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { SettingsFacade, SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
+
 import { OutputEntry } from './output-entry';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'diplomka-frontend-output-editor',
@@ -21,7 +24,9 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     y: number;
   } = { x: 640, y: 480 };
 
-  private readonly vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) * 0.5;
+  private _canvasHeightMultiplier = 0.5;
+
+  private readonly vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
   private readonly _resultEmitter: EventEmitter<OutputEntry[]> = new EventEmitter<OutputEntry[]>();
 
   private _dragging = false;
@@ -45,7 +50,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
   public readonly manualAlignment = new FormControl();
   public readonly HorizontalAlignment = HorizontalAlignment;
 
-  constructor() {
+  constructor(private readonly settings: SettingsFacade) {
     super();
   }
 
@@ -55,7 +60,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     }
     const canvas = this.canvas.nativeElement as HTMLCanvasElement;
     canvas.width = canvas.parentElement.clientWidth;
-    canvas.height = this.vh;
+    canvas.height = this.vh * this._canvasHeightMultiplier;
     const BB = canvas.getBoundingClientRect();
     const graphics = canvas.getContext('2d');
     const width = canvas.width;
@@ -136,6 +141,10 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     this.controlPositionX.valueChanges.subscribe((valueX) => this._onValueChange(+valueX, 'x'));
     this.controlPositionY.valueChanges.subscribe((valueY) => this._onValueChange(+valueY, 'y'));
     this.manualAlignment.valueChanges.subscribe((value) => this._onManualAlignmentChange(value));
+    this.settings.state.subscribe((settings: SettingsState) => {
+      this._canvasHeightMultiplier = settings.localSettings.experiments.outputEditor.canvasHeightMultiplier;
+    });
+    this.settings.invokeLocalSettings();
   }
 
   bind(modal: ModalComponent) {

@@ -24,6 +24,9 @@ const DEFAULT_STATE: SettingsState = {
         showSeconds: false,
         showMiliseconds: false,
       },
+      outputEditor: {
+        canvasHeightMultiplier: 0.5,
+      },
     },
     player: {},
     results: {},
