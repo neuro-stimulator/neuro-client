@@ -34,6 +34,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
   private _coordinatesRefresh: boolean;
   private _manualAlignmentRefresh: boolean;
   private _showSubscription: Subscription;
+  private _enableCoordinatesLines: boolean;
 
   public selectedID = -1;
 
@@ -88,7 +89,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
       }
     }
 
-    if (!window.TouchEvent) {
+    if (!window.TouchEvent && this._enableCoordinatesLines) {
       graphics.strokeStyle = 'red';
       graphics.moveTo(this._startX, 0);
       graphics.lineTo(this._startX, height);
@@ -241,11 +242,12 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
   }
 
   handleCanvasPointerEnter() {
-    // empty body
+    this._enableCoordinatesLines = true;
   }
 
   handleCanvasPointerLeave() {
-    // empty body
+    this._enableCoordinatesLines = false;
+    this._drawOutputs();
   }
 
   handleSetOutputHorizontalAlignment(alignment: HorizontalAlignment) {
