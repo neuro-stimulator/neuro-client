@@ -341,6 +341,12 @@
           }
         },
         "STIMULATOR_RESPONSE_TIMEOUT": "Stimulator response timeout",
+        "ASSET_PLAYER": {
+          "TITLE": "Asset player",
+          "WIDTH": "Window width",
+          "HEIGHT": "Window height",
+          "FULL_SCREEN": "Full screen"
+        },
         "DANGER_ZONE": {
           "TITLE": "Danger zone",
           "SEED_DATABASE": "Seed database",

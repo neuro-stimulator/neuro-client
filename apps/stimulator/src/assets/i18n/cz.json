@@ -348,6 +348,12 @@
           }
         },
         "STIMULATOR_RESPONSE_TIMEOUT": "Timeout odpovědi ze stimulátoru",
+        "ASSET_PLAYER": {
+          "TITLE": "Přehrávač multimédií",
+          "WIDTH": "Šířka okna",
+          "HEIGHT": "Výška okna",
+          "FULL_SCREEN": "Celá obrazovka"
+        },
         "DANGER_ZONE": {
           "TITLE": "Nebezpečná zóna",
           "SEED_DATABASE": "Inicializovat databázi",

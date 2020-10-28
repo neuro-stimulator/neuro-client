@@ -29,6 +29,11 @@ export class ParamConfigServerComponent {
         parity: new FormControl(null),
       }),
       stimulatorResponseTimeout: new FormControl(null, Validators.min(500)),
+      assetPlayer: new FormGroup({
+        width: new FormControl(),
+        height: new FormControl(),
+        fullScreen: new FormControl(),
+      }),
     });
   }
 
