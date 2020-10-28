@@ -1,12 +1,6 @@
-import {
-  Action,
-  createFeatureSelector,
-  createReducer,
-  createSelector,
-  on,
-} from '@ngrx/store';
+import { Action, createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
 
-import { ExperimentStopConditionType, IOEvent } from '@stechy1/diplomka-share';
+import { IOEvent } from '@stechy1/diplomka-share';
 
 import { PlayerState } from './player.state';
 import * as PlayerActions from './player.actions';
@@ -49,24 +43,18 @@ export function playerReducer(playerState: PlayerState, playerAction: Action) {
         ioData: allData,
       };
     }),
-    on(
-      PlayerActions.actionPrepareExperimentPlayerRequestDone,
-      (state: PlayerState, action) => ({
-        ...state,
-        initialized: true,
-        ioData: [],
-        autoplay: action.autoplay,
-        betweenExperimentInterval: action.betweenExperimentInterval,
-        repeat: action.repeat,
-      })
-    ),
-    on(
-      PlayerActions.actionPrepareExperimentPlayerRequestFail,
-      (state: PlayerState, action) => ({
-        ...state,
-        playerInitialized: false,
-      })
-    ),
+    on(PlayerActions.actionPrepareExperimentPlayerRequestDone, (state: PlayerState, action) => ({
+      ...state,
+      initialized: true,
+      ioData: [],
+      autoplay: action.autoplay,
+      betweenExperimentInterval: action.betweenExperimentInterval,
+      repeat: action.repeat,
+    })),
+    on(PlayerActions.actionPrepareExperimentPlayerRequestFail, (state: PlayerState) => ({
+      ...state,
+      playerInitialized: false,
+    })),
     on(PlayerActions.actionPlayerIOEvent, (state: PlayerState, action) => {
       const allData: IOEvent[][] = [];
       for (const roundData of state.ioData) {
@@ -79,33 +67,22 @@ export function playerReducer(playerState: PlayerState, playerAction: Action) {
         ioData: allData,
       };
     }),
-    on(
-      PlayerActions.actionPlayerAvailableStopConditionsDone,
-      (state: PlayerState, action) => {
-        const availableStopConditions = [];
-        for (const stopCondition of action.stopConditions) {
-          availableStopConditions.push(mapStopCondition(stopCondition));
-        }
-
-        return {
-          ...state,
-          availableStopConditions,
-        };
+    on(PlayerActions.actionPlayerAvailableStopConditionsDone, (state: PlayerState, action) => {
+      const availableStopConditions = [];
+      for (const stopCondition of action.stopConditions) {
+        availableStopConditions.push(mapStopCondition(stopCondition));
       }
-    )
+
+      return {
+        ...state,
+        availableStopConditions,
+      };
+    })
   )(playerState, playerAction);
 }
 
-export const playerFeature = createFeatureSelector<PlayerState>(
-  playerReducerKey
-);
+export const playerFeature = createFeatureSelector<PlayerState>(playerReducerKey);
 
-export const supportStopconditionsSelector = createSelector(
-  playerFeature,
-  (state: PlayerState) => state.availableStopConditions?.length != 0
-);
+export const supportStopconditionsSelector = createSelector(playerFeature, (state: PlayerState) => state.availableStopConditions?.length != 0);
 
-export const availableStopConditions = createSelector(
-  playerFeature,
-  (state: PlayerState) => state.availableStopConditions
-);
+export const availableStopConditions = createSelector(playerFeature, (state: PlayerState) => state.availableStopConditions);

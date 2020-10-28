@@ -1,39 +1,18 @@
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import {
-  AuthFacade,
-  AuthState,
-} from '@diplomka-frontend/stim-feature-auth/domain';
+import { AuthFacade, AuthState } from '@diplomka-frontend/stim-feature-auth/domain';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class LogoutGuard implements CanActivate {
-  constructor(
-    private readonly facade: AuthFacade,
-    private readonly router: Router
-  ) {}
+  constructor(private readonly facade: AuthFacade, private readonly router: Router) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.facade.state.pipe(
       map((state: AuthState) => {
-        return state.isAuthenticated
-          ? true
-          : this.router.createUrlTree(['auth']);
+        return state.isAuthenticated ? true : this.router.createUrlTree(['auth']);
       })
     );
   }

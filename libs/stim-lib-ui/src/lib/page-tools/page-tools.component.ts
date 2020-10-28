@@ -8,7 +8,7 @@ import { PageToolsChildComponent } from './page-tools-child-component';
 
 @Component({
   templateUrl: './page-tools.component.html',
-  styleUrls: ['./page-tools.component.sass']
+  styleUrls: ['./page-tools.component.sass'],
 })
 export class PageToolsComponent extends DialogChildComponent implements OnInit {
   private _viewComponent: Type<any>;
@@ -19,10 +19,7 @@ export class PageToolsComponent extends DialogChildComponent implements OnInit {
   private _cancelSubscription: Subscription;
   private _showSubscription: Subscription;
 
-  constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
-    private readonly viewContainerRef: ViewContainerRef
-  ) {
+  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver, private readonly viewContainerRef: ViewContainerRef) {
     super();
   }
 
@@ -41,18 +38,12 @@ export class PageToolsComponent extends DialogChildComponent implements OnInit {
     this._modal = modal;
     modal.confirmClose = false;
     modal.confirmDisabled = of(false);
-    this._confirmSubscription = modal.confirm.subscribe(() =>
-      this._handleConfirm()
-    );
-    this._cancelSubscription = modal.cancel.subscribe(() =>
-      this._handleCancel()
-    );
-    this._showSubscription = modal.show.subscribe(
-      (args) => (this._viewComponent = args[0])
-    );
+    this._confirmSubscription = modal.confirm.subscribe(() => this._handleConfirm());
+    this._cancelSubscription = modal.cancel.subscribe(() => this._handleCancel());
+    this._showSubscription = modal.show.subscribe((args) => (this._viewComponent = args[0]));
   }
 
-  unbind(modal: ModalComponent) {
+  unbind() {
     this._modal = undefined;
     this._confirmSubscription.unsubscribe();
     this._showSubscription.unsubscribe();
@@ -60,13 +51,9 @@ export class PageToolsComponent extends DialogChildComponent implements OnInit {
     this._pageToolsChildComponent.deinit();
   }
 
-  private _preparePageToolsChildComponent(
-    pageToolsChildComponentType: Type<any>
-  ) {
+  private _preparePageToolsChildComponent(pageToolsChildComponentType: Type<PageToolsChildComponent>) {
     // Podle zadané komponenty získám její továrnu
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      pageToolsChildComponentType
-    );
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(pageToolsChildComponentType);
     // Vymažu obsah ve view containeru
     this.viewContainerRef.clear();
 

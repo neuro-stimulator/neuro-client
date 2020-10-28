@@ -35,59 +35,36 @@ const DEFAULT_STATE: SettingsState = {
 
 export const settingsReducerKey = 'settings';
 
-export function settingsReducer(
-  settingsState: SettingsState | undefined,
-  settingsAction: Action
-) {
+export function settingsReducer(settingsState: SettingsState | undefined, settingsAction: Action) {
   return createReducer(
     DEFAULT_STATE,
-    on(
-      SettingsActions.actionLocalSettingsCreate,
-      (state: SettingsState, action) => ({
-        ...state,
-        localSettings: { ...DEFAULT_STATE.localSettings },
-        localSettingsLoaded: true,
-      })
-    ),
-    on(
-      SettingsActions.actionLocalSettingsDone,
-      (state: SettingsState, action) => ({
-        ...state,
-        localSettings: action.settings,
-        localSettingsLoaded: true,
-      })
-    ),
-    on(
-      SettingsActions.actionSaveLocalSettingsDone,
-      (state: SettingsState, action) => ({
-        ...state,
-        localSettings: action.settings,
-      })
-    ),
-    on(
-      SettingsActions.actionServerSettingsDone,
-      (state: SettingsState, action) => ({
-        ...state,
-        serverSettings: action.serverSettings,
-      })
-    ),
-    on(
-      SettingsActions.actionSaveServerSettingsDone,
-      (state: SettingsState, action) => ({
-        ...state,
-        serverSettings: action.serverSettings,
-      })
-    ),
-    on(
-      SettingsActions.actionSettingsChangeFragment,
-      (state: SettingsState, action) => ({
-        ...state,
-        viewFragment: action.fragment,
-      })
-    )
+    on(SettingsActions.actionLocalSettingsCreate, (state: SettingsState) => ({
+      ...state,
+      localSettings: { ...DEFAULT_STATE.localSettings },
+      localSettingsLoaded: true,
+    })),
+    on(SettingsActions.actionLocalSettingsDone, (state: SettingsState, action) => ({
+      ...state,
+      localSettings: action.settings,
+      localSettingsLoaded: true,
+    })),
+    on(SettingsActions.actionSaveLocalSettingsDone, (state: SettingsState, action) => ({
+      ...state,
+      localSettings: action.settings,
+    })),
+    on(SettingsActions.actionServerSettingsDone, (state: SettingsState, action) => ({
+      ...state,
+      serverSettings: action.serverSettings,
+    })),
+    on(SettingsActions.actionSaveServerSettingsDone, (state: SettingsState, action) => ({
+      ...state,
+      serverSettings: action.serverSettings,
+    })),
+    on(SettingsActions.actionSettingsChangeFragment, (state: SettingsState, action) => ({
+      ...state,
+      viewFragment: action.fragment,
+    }))
   )(settingsState, settingsAction);
 }
 
-export const settingsFeature = createFeatureSelector<SettingsState>(
-  settingsReducerKey
-);
+export const settingsFeature = createFeatureSelector<SettingsState>(settingsReducerKey);

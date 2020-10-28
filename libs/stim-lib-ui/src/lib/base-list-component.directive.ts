@@ -1,4 +1,4 @@
-import { Directive, OnDestroy, OnInit, Type, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, Type, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable, Subscription } from 'rxjs';
@@ -12,8 +12,8 @@ import { BaseFacade } from '@diplomka-frontend/stim-lib-common';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
 
-@Directive()
-export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
+@Component({ template: '' })
+export abstract class BaseListComponent<T, S> implements OnInit, OnDestroy {
   @ViewChild('modal', { static: true }) modal: ModalComponent;
 
   private _filterRequestSubscription: Subscription;
@@ -36,18 +36,14 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
     protected readonly _router: Router,
     protected readonly _route: ActivatedRoute,
     private readonly _location: Location
-  ) {
-  }
+  ) {}
 
   get groups(): EntityGroup<T> {
     return this._filterService.records;
   }
 
   get hasGroups() {
-    return (
-      this.groups.length !== 0 &&
-      Object.keys(this.groups[0]?.entities)?.length !== 0
-    );
+    return this.groups.length !== 0 && Object.keys(this.groups[0]?.entities)?.length !== 0;
   }
 
   get state(): Observable<S> {
@@ -69,17 +65,13 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
   protected abstract get selectionMode$(): Observable<boolean>;
 
   ngOnInit() {
-    this._filterEntitiesSubscription = this._filterService.subscribeEntities(
-      this.records$
-    );
+    this._filterEntitiesSubscription = this._filterService.subscribeEntities(this.records$);
     this._facade.allWithGhosts();
     // this._buttonsAddonService.addonVisible.next(false);
     this._navigation.showAddon = false;
-    this._serviceRecordsSubscription = this.records$.subscribe(
-      (records: T[]) => {
-        this._navigation.showAddon = records.length !== 0;
-      }
-    );
+    this._serviceRecordsSubscription = this.records$.subscribe((records: T[]) => {
+      this._navigation.showAddon = records.length !== 0;
+    });
     // this.ghosts = this._service.makeGhosts();
     // this._filterEntitiesSubscription = this._filterService.subscribeEntities(this._service.records);
     // this._service.all()
@@ -87,33 +79,19 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
     //       this.ghosts = [];
     //       this._showIntro(count === 0);
     //     });
-    this._filterRequestSubscription = this._buttonsAddonService.filterRequest.subscribe(
-      () => this._showFilterDialog()
-    );
-    this._exportRequestSubscription = this._buttonsAddonService.exportRequest.subscribe(
-      () => this._exportEntities()
-    );
-    this._deleteSelectedRequestSubscription = this._buttonsAddonService.deleteSelectedRequest.subscribe(
-      () => this._deleteSelected()
-    );
-    this._selectAllRequestSubscription = this._buttonsAddonService.selectAllRequest.subscribe(
-      () => this._selectAll()
-    );
-    this._selectNoneRequestSubscription = this._buttonsAddonService.selectNoneRequest.subscribe(
-      () => this._selectNone()
-    );
+    this._filterRequestSubscription = this._buttonsAddonService.filterRequest.subscribe(() => this._showFilterDialog());
+    this._exportRequestSubscription = this._buttonsAddonService.exportRequest.subscribe(() => this._exportEntities());
+    this._deleteSelectedRequestSubscription = this._buttonsAddonService.deleteSelectedRequest.subscribe(() => this._deleteSelected());
+    this._selectAllRequestSubscription = this._buttonsAddonService.selectAllRequest.subscribe(() => this._selectAll());
+    this._selectNoneRequestSubscription = this._buttonsAddonService.selectNoneRequest.subscribe(() => this._selectNone());
 
     // this._searchBySubscription = this._buttonsAddonService.searchValue.subscribe((value) => this._handleSearchBy(value));
-    this._filterParametersChangeSubscription = this._filterService.filterParametersChange$.subscribe(
-      (params: ListFilterParameters) => {
-        this._handleFilterParametersChange(params);
-      }
-    );
-    this._selectionModeSubscription = this.selectionMode$.subscribe(
-      (selectionMode: boolean) => {
-        this._buttonsAddonService.selectionMode$.next(selectionMode);
-      }
-    );
+    this._filterParametersChangeSubscription = this._filterService.filterParametersChange$.subscribe((params: ListFilterParameters) => {
+      this._handleFilterParametersChange(params);
+    });
+    this._selectionModeSubscription = this.selectionMode$.subscribe((selectionMode: boolean) => {
+      this._buttonsAddonService.selectionMode$.next(selectionMode);
+    });
   }
 
   ngOnDestroy(): void {
@@ -145,7 +123,7 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
     this._router.navigate([], {
       queryParams: params,
       fragment: this._filterService.searchValue,
-      relativeTo: this._route
+      relativeTo: this._route,
     });
   }
 
@@ -154,7 +132,7 @@ export abstract class BaseListController<T, S> implements OnInit, OnDestroy {
       this._router.createUrlTree([], {
         relativeTo: this._route,
         queryParams: this._filterService.filterParameters,
-        fragment: value
+        fragment: value,
       })
     );
     this._location.go(url);

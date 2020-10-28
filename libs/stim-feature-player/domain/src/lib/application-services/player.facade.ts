@@ -22,7 +22,7 @@ export class PlayerFacade {
   private _lastStimulatorState: number;
 
   constructor(
-    private readonly store: Store<PlayerState>,
+    private readonly store: Store,
     private readonly experiments: ExperimentsFacade,
     private readonly stimulator: StimulatorFacade,
     private readonly connections: AliveCheckerFacade

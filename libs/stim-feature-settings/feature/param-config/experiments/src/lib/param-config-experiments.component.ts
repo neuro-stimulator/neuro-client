@@ -1,13 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'stim-feature-settings-param-config-experiments',
   templateUrl: './param-config-experiments.component.html',
-  styleUrls: ['./param-config-experiments.component.sass']
+  styleUrls: ['./param-config-experiments.component.sass'],
 })
-export class ParamConfigExperimentsComponent implements OnInit {
-
+export class ParamConfigExperimentsComponent {
   @Input() form: FormGroup;
 
   public static createForm(): FormGroup {
@@ -25,12 +24,7 @@ export class ParamConfigExperimentsComponent implements OnInit {
         showMinutes: new FormControl(null),
         showSeconds: new FormControl(null),
         showMiliseconds: new FormControl(null),
-      })
+      }),
     });
-  }
-
-  constructor() { }
-
-  ngOnInit() {
   }
 }

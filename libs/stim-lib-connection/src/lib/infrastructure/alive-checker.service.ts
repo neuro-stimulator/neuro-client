@@ -4,12 +4,11 @@ import { Store } from '@ngrx/store';
 import { Socket } from 'ngx-socket-io';
 import { NGXLogger } from 'ngx-logger';
 
-import { SocketMessage, ClientReadyMessage } from '@stechy1/diplomka-share';
+import { SocketMessage } from '@stechy1/diplomka-share';
 
 import { TOKEN_BASE_API_URL } from '@diplomka-frontend/stim-lib-common';
 
 import * as ConnectionActions from '../store/connection.actions';
-import { ConnectionInformationState } from '../store/connection.state';
 import { SocketMessageType } from '@stechy1/diplomka-share/lib/communication/client-server/socket-message-type';
 import { SocketMessageSpecialization } from '@stechy1/diplomka-share/lib/communication/client-server/socket-message-specialization';
 
@@ -22,7 +21,7 @@ export class AliveCheckerService {
    */
   private readonly _socket: Socket;
 
-  constructor(@Inject(TOKEN_BASE_API_URL) baseURL: string, private readonly store: Store<ConnectionInformationState>, private readonly logger: NGXLogger) {
+  constructor(@Inject(TOKEN_BASE_API_URL) baseURL: string, private readonly store: Store, private readonly logger: NGXLogger) {
     this._socket = new Socket({ url: baseURL });
     this._socket.on('connect', () => this._socketConnected());
     this._socket.on('disconnect', (reason) => this._socketDisconnected(reason));

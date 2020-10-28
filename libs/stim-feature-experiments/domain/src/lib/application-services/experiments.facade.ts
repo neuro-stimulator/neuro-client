@@ -12,11 +12,8 @@ import * as fromExperiments from '../store/experiments.reducer';
 import { ExperimentsState } from '../store/experiments.type';
 
 @Injectable()
-export class ExperimentsFacade extends BaseFacade<
-  Experiment<Output>,
-  ExperimentsState
-> {
-  constructor(store: Store<ExperimentsState>) {
+export class ExperimentsFacade extends BaseFacade<Experiment<Output>, ExperimentsState> {
+  constructor(store: Store) {
     super(store);
   }
 
@@ -56,9 +53,7 @@ export class ExperimentsFacade extends BaseFacade<
   }
 
   public empty(emptyExperiment: Experiment<Output>) {
-    this.store.dispatch(
-      ExperimentsActions.actionExperimentEmpty({ emptyExperiment })
-    );
+    this.store.dispatch(ExperimentsActions.actionExperimentEmpty({ emptyExperiment }));
   }
 
   public save(record: Experiment<Output>) {
@@ -70,24 +65,14 @@ export class ExperimentsFacade extends BaseFacade<
   }
 
   public nameExists(name: string) {
-    this.store.dispatch(
-      ExperimentsActions.actionExperimentsNameExistsRequest({ name })
-    );
+    this.store.dispatch(ExperimentsActions.actionExperimentsNameExistsRequest({ name }));
   }
 
-  protected get featureSelector(): MemoizedSelector<
-    object,
-    ExperimentsState,
-    DefaultProjectorFn<ExperimentsState>
-  > {
+  protected get featureSelector(): MemoizedSelector<Record<string, unknown>, ExperimentsState, DefaultProjectorFn<ExperimentsState>> {
     return fromExperiments.experimentsFeature;
   }
 
   generateSequenceFromNameAndSize(name: string, size: number) {
-    this.store.dispatch(
-      ExperimentsActions.actionExperimentsGenerateSequenceFromNameAndSizeRequest(
-        { name, size }
-      )
-    );
+    this.store.dispatch(ExperimentsActions.actionExperimentsGenerateSequenceFromNameAndSizeRequest({ name, size }));
   }
 }

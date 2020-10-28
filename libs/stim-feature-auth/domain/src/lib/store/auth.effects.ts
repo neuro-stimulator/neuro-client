@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Router } from '@angular/router';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+
 import { of } from 'rxjs';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, concatMap, map, mergeMap, tap } from 'rxjs/operators';
 
 import { ResponseObject, User } from '@stechy1/diplomka-share';
 
@@ -16,12 +17,13 @@ export class AuthEffects {
   register$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.actionRegisterRequest),
-      switchMap((action) => {
-        return this.service.register(action.user);
-      }),
-      map((response: ResponseObject<User>) => AuthActions.actionRegisterRequestDone({ user: response.data })),
-      catchError((errorResponse) => {
-        return of(AuthActions.actionRegisterRequestFail());
+      concatMap((action) => {
+        return this.service.register(action.user).pipe(
+          map((response: ResponseObject<User>) => AuthActions.actionRegisterRequestDone({ user: response.data })),
+          catchError(() => {
+            return of(AuthActions.actionRegisterRequestFail());
+          })
+        );
       })
     )
   );
@@ -38,16 +40,17 @@ export class AuthEffects {
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.actionLoginRequest),
-      switchMap((action) => {
-        return this.service.login(action.user);
-      }),
-      map((response: ResponseObject<User>) =>
-        AuthActions.actionLoginRequestDone({
-          user: response.data,
-        })
-      ),
-      catchError((errorResponse) => {
-        return of(AuthActions.actionLoginRequestFail());
+      concatMap((action) => {
+        return this.service.login(action.user).pipe(
+          map((response: ResponseObject<User>) =>
+            AuthActions.actionLoginRequestDone({
+              user: response.data,
+            })
+          ),
+          catchError(() => {
+            return of(AuthActions.actionLoginRequestFail());
+          })
+        );
       })
     )
   );
@@ -56,7 +59,7 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.actionLoginRequestDone),
-        tap((action) => {
+        tap(() => {
           this.service.isLogged = true;
         }),
         tap(() => this.router.navigate(['/', 'profile']))
@@ -67,16 +70,17 @@ export class AuthEffects {
   refreshToken$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.actionRefreshTokenRequest),
-      switchMap((action) => {
-        return this.service.refreshToken();
-      }),
-      map((response: ResponseObject<User>) =>
-        AuthActions.actionRefreshTokenRequestDone({
-          user: response.data,
-        })
-      ),
-      catchError((errorResponse) => {
-        return of(AuthActions.actionRefreshTokenRequestFail());
+      mergeMap(() => {
+        return this.service.refreshToken().pipe(
+          map((response: ResponseObject<User>) =>
+            AuthActions.actionRefreshTokenRequestDone({
+              user: response.data,
+            })
+          ),
+          catchError(() => {
+            return of(AuthActions.actionRefreshTokenRequestFail());
+          })
+        );
       })
     )
   );
@@ -85,7 +89,7 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.actionRefreshTokenRequestDone),
-        tap((action) => {
+        tap(() => {
           this.service.isLogged = true;
         })
       ),
@@ -95,12 +99,14 @@ export class AuthEffects {
   logout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.actionLogoutRequest),
-      switchMap((action) => {
-        return this.service.logout();
-      }),
-      map((response: ResponseObject<User>) => AuthActions.actionLogoutRequestDone()),
-      catchError((errorResponse) => {
-        return of(AuthActions.actionLogoutRequestFail());
+      concatMap(() => {
+        return this.service.logout().pipe(
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          map((response: ResponseObject<User>) => AuthActions.actionLogoutRequestDone()),
+          catchError(() => {
+            return of(AuthActions.actionLogoutRequestFail());
+          })
+        );
       })
     )
   );

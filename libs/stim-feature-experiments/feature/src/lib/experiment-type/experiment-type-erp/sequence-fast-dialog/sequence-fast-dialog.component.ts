@@ -7,13 +7,12 @@ import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-li
 
 @Component({
   templateUrl: './sequence-fast-dialog.component.html',
-  styleUrls: ['./sequence-fast-dialog.component.sass']
+  styleUrls: ['./sequence-fast-dialog.component.sass'],
 })
 export class SequenceFastDialogComponent extends DialogChildComponent {
-
   form: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required]),
-    size: new FormControl(null, [Validators.required, Validators.min(1)])
+    size: new FormControl(null, [Validators.required, Validators.min(1)]),
   });
 
   private _confirmSubscription: Subscription;
@@ -26,7 +25,7 @@ export class SequenceFastDialogComponent extends DialogChildComponent {
   constructor() {
     super();
 
-    this._formInvalidSubscription = this.form.valueChanges.subscribe((value) => {
+    this._formInvalidSubscription = this.form.valueChanges.subscribe(() => {
       this.formInvalid.next(this.form.invalid);
     });
   }
@@ -45,7 +44,7 @@ export class SequenceFastDialogComponent extends DialogChildComponent {
     this._confirmSubscription = modal.confirm.subscribe(() => this._handleConfirm());
   }
 
-  unbind(modal: ModalComponent) {
+  unbind() {
     this._confirmSubscription.unsubscribe();
     this._formInvalidSubscription.unsubscribe();
   }

@@ -8,25 +8,14 @@ import { StimFeatureAuthFeatureRoutingModule } from './stim-feature-auth-feature
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { LogoutController } from './logout/logout.controller';
+import { LogoutComponent } from './logout/logout.component';
 import { LoginGuard } from './login/login.guard';
 import { AuthGuard } from './auth.guard';
 import { LogoutGuard } from './logout/logout.guard';
 
 @NgModule({
-  declarations: [
-    AuthComponent,
-    LoginComponent,
-    LogoutController,
-    RegisterComponent,
-  ],
+  declarations: [AuthComponent, LoginComponent, LogoutComponent, RegisterComponent],
   providers: [AuthGuard, LoginGuard, LogoutGuard],
-  imports: [
-    TranslateModule,
-
-    StimLibCommonModule,
-    StimFeatureAuthFeatureRoutingModule,
-    StimFeatureAuthDomainModule,
-  ],
+  imports: [TranslateModule, StimLibCommonModule, StimFeatureAuthFeatureRoutingModule, StimFeatureAuthDomainModule],
 })
 export class StimFeatureAuthFeatureModule {}

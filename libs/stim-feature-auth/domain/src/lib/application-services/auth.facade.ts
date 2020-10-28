@@ -10,7 +10,7 @@ import * as fromReducer from '../store/auth.reducer';
 
 @Injectable()
 export class AuthFacade {
-  constructor(private readonly store: Store<AuthState>) {}
+  constructor(private readonly store: Store) {}
 
   public register(user: User) {
     this.store.dispatch(AuthActions.actionRegisterRequest({ user }));

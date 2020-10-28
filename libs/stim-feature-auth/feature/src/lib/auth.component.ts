@@ -1,10 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import {
-  AuthFacade,
-  AuthState,
-} from '@diplomka-frontend/stim-feature-auth/domain';
+import { AuthFacade } from '@diplomka-frontend/stim-feature-auth/domain';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,13 +9,10 @@ import { Router } from '@angular/router';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.sass'],
 })
-export class AuthComponent implements OnInit, OnDestroy {
+export class AuthComponent implements OnDestroy {
   private _stateSubscription: Subscription;
 
-  constructor(
-    private readonly facade: AuthFacade,
-    private readonly router: Router
-  ) {
+  constructor(private readonly facade: AuthFacade, private readonly router: Router) {
     // this._stateSubscription = this.facade.state.subscribe(
     //   (state: AuthState) => {
     //     if (!state.isAuthenticated) {
@@ -29,8 +23,6 @@ export class AuthComponent implements OnInit, OnDestroy {
     //   }
     // );
   }
-
-  ngOnInit(): void {}
 
   ngOnDestroy() {
     this._stateSubscription.unsubscribe();

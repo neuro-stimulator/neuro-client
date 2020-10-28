@@ -6,10 +6,7 @@ import { ConnectionInformationState } from './connection.state';
 
 export const connectionStateKey = 'connection';
 
-export function connectionStateReducer(
-  connectionState: ConnectionInformationState | undefined,
-  connectionAction: Action
-) {
+export function connectionStateReducer(connectionState: ConnectionInformationState | undefined, connectionAction: Action) {
   return createReducer(
     {
       server: ConnectionStatus.CONNECTING,
@@ -18,76 +15,47 @@ export function connectionStateReducer(
       external: ConnectionStatus.DISCONNECTED,
       working: false,
     },
-    on(
-      ConnectionActions.actionServerConnecting,
-      (state: ConnectionInformationState, action) => ({
-        ...state,
-        server: ConnectionStatus.CONNECTING,
-      })
-    ),
-    on(
-      ConnectionActions.actionServerConnected,
-      (state: ConnectionInformationState, action) => ({
-        ...state,
-        server: ConnectionStatus.CONNECTED,
-      })
-    ),
-    on(
-      ConnectionActions.actionServerDisconnected,
-      (state: ConnectionInformationState, action) => ({
-        ...state,
-        server: ConnectionStatus.DISCONNECTED,
-        serverConnectionFirstTime: false,
-      })
-    ),
+    on(ConnectionActions.actionServerConnecting, (state: ConnectionInformationState) => ({
+      ...state,
+      server: ConnectionStatus.CONNECTING,
+    })),
+    on(ConnectionActions.actionServerConnected, (state: ConnectionInformationState) => ({
+      ...state,
+      server: ConnectionStatus.CONNECTED,
+    })),
+    on(ConnectionActions.actionServerDisconnected, (state: ConnectionInformationState) => ({
+      ...state,
+      server: ConnectionStatus.DISCONNECTED,
+      serverConnectionFirstTime: false,
+    })),
 
-    on(
-      ConnectionActions.actionStimulatorConnected,
-      (state: ConnectionInformationState, action) => ({
-        ...state,
-        stimulator: ConnectionStatus.CONNECTED,
-      })
-    ),
-    on(
-      ConnectionActions.actionStimulatorDisconnected,
-      (state: ConnectionInformationState, action) => ({
-        ...state,
-        stimulator: ConnectionStatus.DISCONNECTED,
-      })
-    ),
+    on(ConnectionActions.actionStimulatorConnected, (state: ConnectionInformationState) => ({
+      ...state,
+      stimulator: ConnectionStatus.CONNECTED,
+    })),
+    on(ConnectionActions.actionStimulatorDisconnected, (state: ConnectionInformationState) => ({
+      ...state,
+      stimulator: ConnectionStatus.DISCONNECTED,
+    })),
 
-    on(
-      ConnectionActions.actionExternalConnected,
-      (state: ConnectionInformationState, action) => ({
-        ...state,
-        external: ConnectionStatus.CONNECTED,
-      })
-    ),
-    on(
-      ConnectionActions.actionExternalDisconnected,
-      (state: ConnectionInformationState, action) => ({
-        ...state,
-        external: ConnectionStatus.DISCONNECTED,
-      })
-    ),
+    on(ConnectionActions.actionExternalConnected, (state: ConnectionInformationState) => ({
+      ...state,
+      external: ConnectionStatus.CONNECTED,
+    })),
+    on(ConnectionActions.actionExternalDisconnected, (state: ConnectionInformationState) => ({
+      ...state,
+      external: ConnectionStatus.DISCONNECTED,
+    })),
 
-    on(
-      ConnectionActions.actionServerStartCommunicating,
-      (state: ConnectionInformationState, action) => ({
-        ...state,
-        working: true,
-      })
-    ),
-    on(
-      ConnectionActions.actionServerEndCommunicating,
-      (state: ConnectionInformationState, action) => ({
-        ...state,
-        working: false,
-      })
-    )
+    on(ConnectionActions.actionServerStartCommunicating, (state: ConnectionInformationState) => ({
+      ...state,
+      working: true,
+    })),
+    on(ConnectionActions.actionServerEndCommunicating, (state: ConnectionInformationState) => ({
+      ...state,
+      working: false,
+    }))
   )(connectionState, connectionAction);
 }
 
-export const connectionFeature = createFeatureSelector<
-  ConnectionInformationState
->(connectionStateKey);
+export const connectionFeature = createFeatureSelector<ConnectionInformationState>(connectionStateKey);

@@ -1,8 +1,4 @@
-import {
-  ExperimentStopConditionType,
-  IOEvent,
-  PlayerConfiguration,
-} from '@stechy1/diplomka-share';
+import { PlayerConfiguration } from '@stechy1/diplomka-share';
 
 export interface StopConditionType {
   id: number;

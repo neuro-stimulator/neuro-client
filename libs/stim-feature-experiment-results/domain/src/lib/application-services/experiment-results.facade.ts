@@ -11,19 +11,15 @@ import * as ExperimentResultsActions from '../store/experiment-results.actions';
 import * as fromExperimentResults from '../store/experiment-results.reducer';
 
 @Injectable()
-export class ExperimentResultsFacade extends BaseFacade<
-  ExperimentResult,
-  ExperimentResultsState
-> {
-  constructor(store: Store<ExperimentResultsState>) {
+export class ExperimentResultsFacade extends BaseFacade<ExperimentResult, ExperimentResultsState> {
+  constructor(store: Store) {
     super(store);
   }
 
   protected get baseActions(): BaseActions {
     return {
       allWithGhosts: {
-        action:
-          ExperimentResultsActions.actionExperimentResultsAllWithGhostRequest,
+        action: ExperimentResultsActions.actionExperimentResultsAllWithGhostRequest,
       },
       all: {
         action: ExperimentResultsActions.actionExperimentResultsAllRequest,
@@ -65,11 +61,13 @@ export class ExperimentResultsFacade extends BaseFacade<
     );
   }
 
-  public insert(record: ExperimentResult) {}
+  public insert() {
+    // empty body
+  }
 
   public save(record: ExperimentResult) {
     if (record.id === undefined) {
-      this.insert(record);
+      this.insert();
     } else {
       this.update(record);
     }
@@ -83,11 +81,7 @@ export class ExperimentResultsFacade extends BaseFacade<
     );
   }
 
-  protected get featureSelector(): MemoizedSelector<
-    object,
-    ExperimentResultsState,
-    DefaultProjectorFn<ExperimentResultsState>
-  > {
+  protected get featureSelector(): MemoizedSelector<Record<string, unknown>, ExperimentResultsState, DefaultProjectorFn<ExperimentResultsState>> {
     return fromExperimentResults.experimentResultsFeature;
   }
 }

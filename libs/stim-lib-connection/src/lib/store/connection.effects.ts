@@ -44,12 +44,14 @@ export class ConnectionEffects {
       filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.CONNECTION),
       map((message: SocketMessage) => {
         switch (message.type) {
-          case SocketMessageType.STIMULATOR_CONNECTION_STATE:
+          case SocketMessageType.STIMULATOR_CONNECTION_STATE: {
             const stimulatorConnectionMessage = message as StimulatorConnectionStateMessage;
             return stimulatorConnectionMessage.data.connected ? ConnectionActions.actionStimulatorConnected() : ConnectionActions.actionStimulatorDisconnected();
-          case SocketMessageType.IPC_CONNECTION_STATE:
+          }
+          case SocketMessageType.IPC_CONNECTION_STATE: {
             const ipcConnectionMessage = message as IpcConnectionStateMessage;
             return ipcConnectionMessage.data.connected ? ConnectionActions.actionExternalConnected() : ConnectionActions.actionExternalDisconnected();
+          }
         }
       })
     )

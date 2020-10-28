@@ -28,10 +28,9 @@ declare interface IntroTranslation {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class IntroService {
-
   private static readonly COMPONENT_INTRO_KEY = 'intro';
 
   private readonly intro: IntroJs = introjs();
@@ -40,18 +39,22 @@ export class IntroService {
 
   private translation: IntroTranslation;
 
-  constructor(@Inject(INTRO_STEPS) stepsByComponentsPromise: Promise<ComponentsSteps>,
-              private readonly _http: HttpClient,
-              private readonly _storage: LocalStorageService,
-              private readonly _translator: TranslateService,
-              private readonly _settings: SettingsFacade,
-              private readonly logger: NGXLogger) {
+  constructor(
+    @Inject(INTRO_STEPS) stepsByComponentsPromise: Promise<ComponentsSteps>,
+    private readonly _http: HttpClient,
+    private readonly _storage: LocalStorageService,
+    private readonly _translator: TranslateService,
+    private readonly _settings: SettingsFacade,
+    private readonly logger: NGXLogger
+  ) {
     this._loadComponents();
-    stepsByComponentsPromise.then((steps: ComponentsSteps) => {
-      this.stepsByComponents = steps;
-    }).catch((reason) => {
-      this.stepsByComponents = undefined;
-    });
+    stepsByComponentsPromise
+      .then((steps: ComponentsSteps) => {
+        this.stepsByComponents = steps;
+      })
+      .catch(() => {
+        this.stepsByComponents = undefined;
+      });
     this._initTranslation().then();
   }
 
@@ -81,7 +84,10 @@ export class IntroService {
     const skip = await this._translator.get('SHARE.INTRO.SKIP').toPromise();
     const done = await this._translator.get('SHARE.INTRO.DONE').toPromise();
     this.translation = {
-      next, prev, skip, done
+      next,
+      prev,
+      skip,
+      done,
     };
   }
 
@@ -90,9 +96,15 @@ export class IntroService {
     this._storage.set(IntroService.COMPONENT_INTRO_KEY, this.componentIntros);
   }
 
-  private _showIntroSteps(component: string, beforeShow: () => void = (): void => {
-  }, afterExit: () => void = (): void => {
-  }) {
+  private _showIntroSteps(
+    component: string,
+    beforeShow: () => void = (): void => {
+      // empty body
+    },
+    afterExit: () => void = (): void => {
+      // empty body
+    }
+  ) {
     if (!this.stepsByComponents || !this.stepsByComponents[component]) {
       this.logger.error(`Nemůžu zobrazit tutorial pro komponentu: '${component}'!`);
       return;
@@ -107,9 +119,12 @@ export class IntroService {
     const promises = [];
     for (const componentStepsKey of Object.keys(steps)) {
       const componentStep: Step = steps[componentStepsKey];
-      const promise = this._translator.get(componentStep.intro).toPromise().then(translation => {
-        return componentStep.intro = translation;
-      });
+      const promise = this._translator
+        .get(componentStep.intro)
+        .toPromise()
+        .then((translation) => {
+          return (componentStep.intro = translation);
+        });
       promises.push(promise);
     }
 
@@ -120,9 +135,9 @@ export class IntroService {
         nextLabel: this.translation.next,
         prevLabel: this.translation.prev,
         skipLabel: this.translation.skip,
-        doneLabel: this.translation.done
+        doneLabel: this.translation.done,
       });
-      this.intro.onbeforechange(element => {
+      this.intro.onbeforechange((element) => {
         console.log(element);
       });
       this.intro.oncomplete(() => {
@@ -136,7 +151,5 @@ export class IntroService {
         this.intro.start();
       }, environment.introDelay);
     });
-
-
   }
 }

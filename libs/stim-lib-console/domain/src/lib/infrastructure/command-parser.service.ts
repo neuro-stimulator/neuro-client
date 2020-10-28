@@ -1,14 +1,15 @@
-import { Injectable } from "@angular/core";
-import { ClientCommand, COMMANDS } from "../domain/commands";
-import { ParseCommandResult } from "../domain/parse-command-result";
+import { Injectable } from '@angular/core';
+import { ClientCommand, COMMANDS } from '../domain/commands';
+import { ParseCommandResult } from '../domain/parse-command-result';
+import { throwError } from 'rxjs';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class CommandParserService {
   private static readonly COMMAND_REGEX = /'[^']*'|"[^"]*"|\S+/g;
 
-  private _commandCache: ClientCommand<any>[] = [];
+  private _commandCache: ClientCommand<unknown>[] = [];
 
   constructor() {
     this._registerCommands();
@@ -17,7 +18,7 @@ export class CommandParserService {
   /**
    * Vrátí kopii zaregistrovaných příkazů
    */
-  public get commands(): ClientCommand<any>[] {
+  public get commands(): ClientCommand<unknown>[] {
     return [...this._commandCache];
   }
 
@@ -28,19 +29,18 @@ export class CommandParserService {
    * @return ParseCommandResult výsledek naparsovaného příkazu
    */
   public parseCommand(rawCommand: string): ParseCommandResult {
-    const commands: string[] =
-      rawCommand.match(CommandParserService.COMMAND_REGEX) || [];
+    const commands: string[] = rawCommand.match(CommandParserService.COMMAND_REGEX) || [];
     if (commands.length === 0) {
-      throw new Error("Není co parsovat!");
+      throwError(new Error('Není co parsovat!'));
     }
 
     let valid = false;
-    let invalidReason = "Příkaz nebyl rozpoznán!";
+    let invalidReason = 'Příkaz nebyl rozpoznán!';
     for (const command of this._commandCache) {
       let nameMatch = true;
       // Název příkazu se může skládat z více slov oddělených znakem '-'
       // Proto název nejdříve splitnu podle toho znaku
-      const splitedName: string[] = command.getName().split("-");
+      const splitedName: string[] = command.getName().split('-');
       // Proiteruji rozdělený název příkazu
       for (let i = 0; i < splitedName.length; i++) {
         // A porovnám token po tokenu
@@ -74,16 +74,16 @@ export class CommandParserService {
         valid,
         commandName: command.getName(),
         parameters: command.getValue(comandParams),
-        consumer: command.getConsumer()
+        consumer: command.getConsumer(),
       };
     }
 
     // return [valid, 'unknown', invalidReason];
     return {
       valid,
-      commandName: "unknown",
+      commandName: 'unknown',
       invalidReason,
-      consumer: "client"
+      consumer: 'client',
     };
   }
 

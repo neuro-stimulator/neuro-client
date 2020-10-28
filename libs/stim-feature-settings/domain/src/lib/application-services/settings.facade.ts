@@ -10,7 +10,7 @@ import * as fromSettings from '../store/settings.reducer';
 
 @Injectable()
 export class SettingsFacade {
-  constructor(private readonly store: Store<SettingsState>) {}
+  constructor(private readonly store: Store) {}
 
   public loadLocalSettings() {
     this.store.dispatch(SettingsActions.actionLocalSettingsRequest());

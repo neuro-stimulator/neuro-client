@@ -4,15 +4,11 @@ import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'stim-lib-ui-tag-editor',
   templateUrl: './tag-editor.component.html',
-  styleUrls: ['./tag-editor.component.sass']
+  styleUrls: ['./tag-editor.component.sass'],
 })
 export class TagEditorComponent implements OnInit {
-
   @Input() form: FormGroup;
   newTagValid = true;
-
-  constructor() {
-  }
 
   get tags() {
     return this.form.get('tags');
@@ -35,7 +31,7 @@ export class TagEditorComponent implements OnInit {
     srcElement.focus();
   }
 
-  handleRemove(tag: any) {
+  handleRemove(tag: string) {
     const tags: string[] = this.tags.value;
     const index = tags.indexOf(tag);
 
@@ -46,7 +42,7 @@ export class TagEditorComponent implements OnInit {
 
   handleTagValueChange(event: KeyboardEvent) {
     const value = (event.target as HTMLInputElement).value;
-    this.newTagValid = ((this.tags.value as string[]).indexOf(value) === -1);
+    this.newTagValid = (this.tags.value as string[]).indexOf(value) === -1;
     if (value) {
       this.tags.markAsTouched();
     } else {

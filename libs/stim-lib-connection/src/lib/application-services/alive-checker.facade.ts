@@ -8,7 +8,7 @@ import { ConnectionInformationState } from '../store/connection.state';
 
 @Injectable()
 export class AliveCheckerFacade {
-  constructor(private readonly store: Store<ConnectionInformationState>) {}
+  constructor(private readonly store: Store) {}
 
   /**
    * Pokusí se vytvořit stále spojení se serverem.

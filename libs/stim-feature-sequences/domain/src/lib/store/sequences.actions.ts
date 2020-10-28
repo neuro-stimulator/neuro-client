@@ -3,7 +3,7 @@ import { createAction, props } from '@ngrx/store';
 import { Experiment, Output, Sequence } from '@stechy1/diplomka-share';
 
 // All record request
-export const actionSequencesAllWithGhostRequest = createAction('Sequences] all records request with ghosts', props<{ count?: number }>());
+export const actionSequencesAllWithGhostRequest = createAction('[Sequences] all records request with ghosts', props<{ count?: number }>());
 export const actionSequencesAllRequest = createAction('[Sequences] all records request');
 export const actionSequencesAllRequestDone = createAction('[Sequences] all records request done', props<{ sequences: Sequence[] }>());
 export const actionSequencesAllRequestFail = createAction('[Sequences] all records request fail');

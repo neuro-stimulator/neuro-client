@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,13 +6,9 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './experiment-type-header.component.html',
   styleUrls: ['./experiment-type-header.component.sass'],
 })
-export class ExperimentTypeHeaderComponent implements OnInit {
+export class ExperimentTypeHeaderComponent {
   @Input() form: FormGroup;
   @Output() showOutputEditor: EventEmitter<void> = new EventEmitter<void>();
-
-  constructor() {}
-
-  ngOnInit() {}
 
   get name() {
     return this.form.get('name');

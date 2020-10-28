@@ -31,10 +31,10 @@ export const environment = {
   testing: true,
   url: {
     server: '10.0.1.25',
-    socket: '10.0.1.25'
+    socket: '10.0.1.25',
   },
   port: {
-    server: SERVER_HTTP_PORT
+    server: SERVER_HTTP_PORT,
   },
   maxOutputCount: 8,
   patternSize: 32,
@@ -43,12 +43,7 @@ export const environment = {
   introDelay: 500,
   supportedLanguages: [
     { value: 'cz', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.CZ' },
-    { value: 'en', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.EN' }
+    { value: 'en', name: 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.EN' },
   ],
-  defaultLanguage: 'cz'
+  defaultLanguage: 'cz',
 };
-
-export function makeURL(url: string, port: number) {
-  //return `http://${url}:${port}`;
-  return '';
-}

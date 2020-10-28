@@ -1,46 +1,31 @@
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { FileRecord } from '@stechy1/diplomka-share';
 
-import {
-  DialogChildComponent,
-  ModalComponent,
-} from '@diplomka-frontend/stim-lib-modal';
-import {
-  FileBrowserFacade,
-  FileBrowserState,
-} from '@diplomka-frontend/stim-feature-file-browser/domain';
-import { map } from 'rxjs/operators';
+import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { FileBrowserFacade, FileBrowserState } from '@diplomka-frontend/stim-feature-file-browser/domain';
 import { TOKEN_FILE_BROWSER_API_URL } from '@diplomka-frontend/stim-lib-common';
 
 @Component({
   templateUrl: './file-browser.component.html',
   styleUrls: ['./file-browser.component.sass'],
 })
-export class FileBrowserComponent extends DialogChildComponent
-  implements OnInit {
-  private _selectedFileResult: EventEmitter<FileRecord> = new EventEmitter<
-    FileRecord
-  >();
+export class FileBrowserComponent extends DialogChildComponent implements OnInit {
+  private _selectedFileResult: EventEmitter<FileRecord> = new EventEmitter<FileRecord>();
   private _insertFileSubscription: Subscription;
   private _stateSubscription: Subscription;
   private _modal: ModalComponent;
   private _selectedFile: FileRecord;
 
-  constructor(
-    @Inject(TOKEN_FILE_BROWSER_API_URL) private readonly apiURL: string,
-    private readonly facade: FileBrowserFacade
-  ) {
+  constructor(@Inject(TOKEN_FILE_BROWSER_API_URL) private readonly apiURL: string, private readonly facade: FileBrowserFacade) {
     super();
   }
 
   ngOnInit(): void {
-    this._stateSubscription = this.facade.fileBrowserState
-      .pipe(map((state) => state.selectedFile))
-      .subscribe((value) => (this._selectedFile = value));
+    this._stateSubscription = this.facade.fileBrowserState.pipe(map((state) => state.selectedFile)).subscribe((value) => (this._selectedFile = value));
     // Vymažu dříve vybraný soubor (pro jistotu)
     this.facade.selectFile(null);
     // Získám obsah kořenové složky
@@ -50,17 +35,13 @@ export class FileBrowserComponent extends DialogChildComponent
   bind(modal: ModalComponent) {
     modal.title = 'Prohlížeč souborů';
     modal.confirmText = 'Vybrat';
-    modal.confirmDisabled = this.facade.fileBrowserState.pipe(
-      map((state) => state.selectedFile === null)
-    );
+    modal.confirmDisabled = this.facade.fileBrowserState.pipe(map((state) => state.selectedFile === null));
     modal.result = this._selectedFileResult;
-    this._insertFileSubscription = modal.confirm.subscribe(() =>
-      this.handleInsertFile()
-    );
+    this._insertFileSubscription = modal.confirm.subscribe(() => this.handleInsertFile());
     this._modal = modal;
   }
 
-  unbind(modal: ModalComponent) {
+  unbind() {
     this._insertFileSubscription.unsubscribe();
     this._stateSubscription.unsubscribe();
   }

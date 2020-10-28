@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
 import { IOEvent } from '@stechy1/diplomka-share';
@@ -7,10 +7,9 @@ import { Round } from '@diplomka-frontend/stim-lib-common';
 @Component({
   selector: 'stim-lib-ui-experiment-viewer',
   templateUrl: './experiment-viewer.component.html',
-  styleUrls: ['./experiment-viewer.component.sass']
+  styleUrls: ['./experiment-viewer.component.sass'],
 })
-export class ExperimentViewerComponent
-  implements OnInit, AfterContentInit, OnDestroy {
+export class ExperimentViewerComponent implements AfterContentInit {
   private static readonly DEFAULT_OUTPUT_COLORS = [
     'rgba(119,94,64,0.5)',
     'rgba(126,113,95,0.5)',
@@ -19,7 +18,7 @@ export class ExperimentViewerComponent
     'rgba(101,73,119,0.5)',
     'rgba(62,72,85,0.5)',
     'rgba(69,109,147,0.5)',
-    'rgba(123,156,172,0.5)'
+    'rgba(123,156,172,0.5)',
   ];
 
   // Čítač pro uběhlá kola experimentu
@@ -39,7 +38,7 @@ export class ExperimentViewerComponent
     showTicks: true,
     showTicksValues: true,
     tickStep: 1,
-    animate: false
+    animate: false,
   };
   // 1 kolo experimentu = poslední výstup zhasnul
   private _rounds = 0;
@@ -47,9 +46,6 @@ export class ExperimentViewerComponent
   private _eventOffsetCounter = 0;
   // Pole offsetů pro začátek kol
   private _eventOffsetIndexArray = [];
-
-  constructor() {
-  }
 
   // Pole všech eventů, které uběhly v aktuálním experimentu
   private _events: IOEvent[] = [];
@@ -59,18 +55,12 @@ export class ExperimentViewerComponent
     this._renderExperimentProgress();
   }
 
-  ngOnInit() {
-  }
-
   ngAfterContentInit(): void {
     this._renderExperimentProgress();
   }
 
-  ngOnDestroy(): void {
-  }
-
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  onResize() {
     this._renderExperimentProgress();
   }
 
@@ -134,11 +124,7 @@ export class ExperimentViewerComponent
     let j = 1;
 
     // Budu iterovat od začátku vybraného kola až do konce (v ideálním případě)
-    for (
-      let i = this._eventOffsetIndexArray[this.eventOffsetIndex];
-      i < this._events.length;
-      i++
-    ) {
+    for (let i = this._eventOffsetIndexArray[this.eventOffsetIndex]; i < this._events.length; i++) {
       // Získám aktuálně zpracovávanou událost
       const event = this._events[i];
       // Pokud se jedná o výstup
@@ -260,10 +246,7 @@ export class ExperimentViewerComponent
         // Založím pomocnou proměnnou s hodnotou 0
         let deltaY = 0;
         // Pokud byla předchozí událost typu 'aktivace výstupu'
-        if (
-          previousEvent.output.event &&
-          previousEvent.output.event.state === 'on'
-        ) {
+        if (previousEvent.output.event && previousEvent.output.event.state === 'on') {
           // Uložím do proměnné výšku peaku
           deltaY = this.peakHeight;
         }
@@ -273,10 +256,7 @@ export class ExperimentViewerComponent
         // Na tuto pozici se pak přesunu
         graphics.moveTo(newX, newY);
         // Po přesunu opět zkontroluji předchozí událost, tentokrát ale na deaktivaci
-        if (
-          previousEvent.output.event &&
-          previousEvent.output.event.state === 'off'
-        ) {
+        if (previousEvent.output.event && previousEvent.output.event.state === 'off') {
           // Pokud se jednalo o deaktivaci, opět nastavím deltě hodnotu výšku peaku
           deltaY = this.peakHeight;
         }
@@ -294,11 +274,7 @@ export class ExperimentViewerComponent
       graphics.closePath();
 
       // Pokud začínám nové kolo
-      if (
-        event.ioType === 'output' &&
-        event.state === 'off' &&
-        event.index === 0
-      ) {
+      if (event.ioType === 'output' && event.state === 'off' && event.index === 0) {
         // Započnu novou cestu
         graphics.beginPath();
         // Nastavím barvu čáry
@@ -316,11 +292,7 @@ export class ExperimentViewerComponent
         // Vypočítám X-ovou souřadnici textu jako průměr mezi starou a novou hodnotou
         const textX = (lastX + newX) / 2;
         // Vypíšu pod graf index právě zpracovaného kola
-        graphics.strokeText(
-          `${this.eventOffsetIndex + j}.`,
-          textX,
-          canvas.height - 10
-        );
+        graphics.strokeText(`${this.eventOffsetIndex + j}.`, textX, canvas.height - 10);
         // Inkrementuji počet zpracovaných kol
         j++;
       }
@@ -352,31 +324,22 @@ export class ExperimentViewerComponent
         input: {
           event: null,
           x: this.graphOffset,
-          y: this.lineHeight + i * this.lineHeight
+          y: this.lineHeight + i * this.lineHeight,
         },
         output: {
           event: null,
           x: this.graphOffset,
-          y: this.lineHeight + i * this.lineHeight
-        }
+          y: this.lineHeight + i * this.lineHeight,
+        },
       };
       // Vyberu barvu do pozadí
       graphics.fillStyle = ExperimentViewerComponent.DEFAULT_OUTPUT_COLORS[i];
       // A vykreslím obdélník reprezentující jeden řádek = jeden výstup
-      graphics.fillRect(
-        event.output.x - this.graphOffset,
-        event.output.y - this.lineHeight,
-        canvas.width,
-        this.lineHeight
-      );
+      graphics.fillRect(event.output.x - this.graphOffset, event.output.y - this.lineHeight, canvas.width, this.lineHeight);
       // Nastavím černou čáru
       graphics.strokeStyle = 'black';
       // A vypíšu index výstupu k příslušnému řádku
-      graphics.strokeText(
-        `${i + 1}.`,
-        event.output.x - this.graphOffset / 2,
-        event.output.y - this.lineHeight / 2 + 3
-      );
+      graphics.strokeText(`${i + 1}.`, event.output.x - this.graphOffset / 2, event.output.y - this.lineHeight / 2 + 3);
       // Přesunu se na začátek grafu
       graphics.moveTo(event.output.x, event.output.y);
       // Nastavím styl čáry na světle šedou s vysokou hodnotou průhlednosti

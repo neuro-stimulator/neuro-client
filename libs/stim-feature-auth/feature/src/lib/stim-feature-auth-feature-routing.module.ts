@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { LogoutController } from './logout/logout.controller';
+import { LogoutComponent } from './logout/logout.component';
 import { LoginGuard } from './login/login.guard';
 import { AuthGuard } from './auth.guard';
 import { LogoutGuard } from './logout/logout.guard';
@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'logout',
-    component: LogoutController,
+    component: LogoutComponent,
     data: { title: 'AUTH.LOGOUT.TITLE' },
     canActivate: [LogoutGuard],
   },

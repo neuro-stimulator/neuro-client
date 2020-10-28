@@ -1,57 +1,36 @@
-import {
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Directive,
-  AfterContentInit,
-  AfterContentChecked,
-  AfterViewChecked,
-} from '@angular/core';
+import { EventEmitter, OnDestroy, OnInit, Component, Inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import {
-  AbstractControl,
-  FormArray,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
 import { NGXLogger } from 'ngx-logger';
+import { Options as SliderOptions } from 'ng5-slider/options';
 
 import { Experiment, ExperimentType, Output } from '@stechy1/diplomka-share';
 
-import {
-  ExperimentsFacade,
-  ExperimentsState,
-} from '@diplomka-frontend/stim-feature-experiments/domain';
+import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
+import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 
 import { ExperimentNameValidator } from '../experiment-name-validator';
 import { ComponentCanDeactivate } from '../experiments.deactivate';
-import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { outputCountParams } from '../experiments.share';
 import { OutputEditorComponent } from './output-type/output-editor/output-editor.component';
 import { ExperimentOutputTypeValidator } from './output-type/experiment-output-type-validator';
-import { Options as SliderOptions } from 'ng5-slider/options';
-import { outputCountParams } from '../experiments.share';
+import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
 
-@Directive()
-export abstract class BaseExperimentTypeComponent<
-  E extends Experiment<O>,
-  O extends Output
-> implements OnInit, OnDestroy, ComponentCanDeactivate {
+@Component({ template: '' })
+export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O extends Output> implements OnInit, OnDestroy, ComponentCanDeactivate {
   private _experimentLoaded: EventEmitter<E> = new EventEmitter<E>();
-  public experimentLoaded$: Observable<
-    E
-  > = this._experimentLoaded.asObservable();
+  public experimentLoaded$: Observable<E> = this._experimentLoaded.asObservable();
   public form: FormGroup;
   private _experimentsStateSubscription: Subscription;
 
   protected constructor(
-    protected readonly _maxOutputCount: number,
+    @Inject(TOKEN_MAX_OUTPUT_COUNT) protected readonly _maxOutputCount: number,
     protected readonly _facade: ExperimentsFacade,
     protected readonly _route: ActivatedRoute,
     protected readonly _navigation: NavigationFacade,
@@ -70,9 +49,7 @@ export abstract class BaseExperimentTypeComponent<
   private _loadExperiment(experimentId: string) {
     if (experimentId !== undefined) {
       if (isNaN(parseInt(experimentId, 10))) {
-        this.logger.error(
-          `ID experimentu: '${experimentId}' se nepodařilo naparsovat!`
-        );
+        this.logger.error(`ID experimentu: '${experimentId}' se nepodařilo naparsovat!`);
         return;
       }
 
@@ -92,9 +69,7 @@ export abstract class BaseExperimentTypeComponent<
 
     if (experiment.outputs?.length > 0) {
       for (let i = 0; i < this._maxOutputCount; i++) {
-        (this.form.get('outputs') as FormArray).push(
-          new FormGroup(this._createOutputFormControl())
-        );
+        (this.form.get('outputs') as FormArray).push(new FormGroup(this._createOutputFormControl()));
       }
     } else {
       (this.form.get('outputs') as FormArray).clear();
@@ -125,9 +100,7 @@ export abstract class BaseExperimentTypeComponent<
       id: new FormControl(null),
       name: new FormControl(null, {
         validators: [Validators.required],
-        asyncValidators: [
-          this._nameValidator.validate.bind(this._nameValidator),
-        ],
+        asyncValidators: [this._nameValidator.validate.bind(this._nameValidator)],
         updateOn: 'blur',
       }),
       description: new FormControl(),
@@ -144,11 +117,7 @@ export abstract class BaseExperimentTypeComponent<
       id: new FormControl(null, Validators.required),
       experimentId: new FormControl(null, Validators.required),
       orderId: new FormControl(null, [Validators.required, Validators.min(0)]),
-      brightness: new FormControl(null, [
-        Validators.required,
-        Validators.min(0),
-        Validators.max(100),
-      ]),
+      brightness: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
       outputType: new FormGroup(
         {
           led: new FormControl(null),
@@ -158,10 +127,7 @@ export abstract class BaseExperimentTypeComponent<
           imageFile: new FormControl(null),
         },
         {
-          validators: [
-            Validators.required,
-            ExperimentOutputTypeValidator.createValidator(),
-          ],
+          validators: [Validators.required, ExperimentOutputTypeValidator.createValidator()],
         }
       ),
       x: new FormControl(),
@@ -177,14 +143,10 @@ export abstract class BaseExperimentTypeComponent<
   ngOnInit(): void {
     this._experimentsStateSubscription = this._facade.state
       .pipe(take(2))
-      .pipe(
-        map((state: ExperimentsState) => state.selectedExperiment.experiment)
-      )
+      .pipe(map((state: ExperimentsState) => state.selectedExperiment.experiment))
       .subscribe((experiment: Experiment<O>) => {
         this._updateFormGroup(experiment as E);
-        this._navigation.customNavColor = ExperimentType[
-          experiment.type
-        ].toLowerCase();
+        this._navigation.customNavColor = ExperimentType[experiment.type].toLowerCase();
         setTimeout(() => {
           this._experimentLoaded.next(experiment as E);
         }, 100);

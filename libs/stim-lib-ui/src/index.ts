@@ -10,7 +10,7 @@ export { PageToolsChildComponent } from './lib/page-tools/page-tools-child-compo
 export { ListButtonsAddonComponent } from './lib/list-buttons-addon/list-buttons-addon.component';
 export { ListButtonsAddonService } from './lib/list-buttons-addon/list-buttons-addon.service';
 export { ContentTogglerDirective } from './lib/content-toggler.directive';
-export { BaseListController } from './lib/base-list.controller';
+export { BaseListComponent } from './lib/base-list-component.directive';
 export { ValueAccessorBase } from './lib/value-accessor-base';
 export { ShareValidators } from './lib/share-validators';
 export { DateTimePipe } from './lib/date-time.pipe';

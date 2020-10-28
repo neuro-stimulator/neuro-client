@@ -12,11 +12,7 @@ import { TOKEN_FILE_BROWSER_API_URL } from '@diplomka-frontend/stim-lib-common';
   providedIn: 'root',
 })
 export class FileBrowserService {
-  constructor(
-    @Inject(TOKEN_FILE_BROWSER_API_URL) private readonly baseAPIURL: string,
-    private readonly _http: HttpClient,
-    private readonly logger: NGXLogger
-  ) {}
+  constructor(@Inject(TOKEN_FILE_BROWSER_API_URL) private readonly baseAPIURL: string, private readonly _http: HttpClient, private readonly logger: NGXLogger) {}
 
   /**
    * Komparátor pro správné řazení souborů v prohlížeči souborů
@@ -26,10 +22,8 @@ export class FileBrowserService {
    * @param b rhs Soubor
    */
   readonly comparator = (a: FileRecord, b: FileRecord) => {
-    if (
-      (a.isDirectory && b.isDirectory) ||
-      (!a.isDirectory && !b.isDirectory)
-    ) {
+    if ((a.isDirectory && b.isDirectory) || (!a.isDirectory && !b.isDirectory)) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       return a.name.toLowerCase() - b.name.toLowerCase();
     }
@@ -53,12 +47,8 @@ export class FileBrowserService {
    */
   getContent(folders: FileRecord[]): Observable<ResponseObject<FileRecord[]>> {
     const subfolders = folders.map((value: FileRecord) => value.name).join('/');
-    this.logger.debug(
-      `Odesílám požadavek na získání obsahu složky: '${subfolders}'`
-    );
-    return this._http.get<ResponseObject<FileRecord[]>>(
-      `${this.baseAPIURL}/${subfolders}`
-    );
+    this.logger.debug(`Odesílám požadavek na získání obsahu složky: '${subfolders}'`);
+    return this._http.get<ResponseObject<FileRecord[]>>(`${this.baseAPIURL}/${subfolders}`);
   }
 
   /**
@@ -67,19 +57,13 @@ export class FileBrowserService {
    * @param folders Pole složek, ve které se na konci vytvoří nová složka
    * @param folderName Název nové složky
    */
-  createFolder(
-    folders: FileRecord[],
-    folderName: string
-  ): Observable<ResponseObject<FileRecord[]>> {
+  createFolder(folders: FileRecord[], folderName: string): Observable<ResponseObject<FileRecord[]>> {
     this.logger.info('Odesílám požadavek na vytvoření nové složky.');
     const subfolders = folders.map((value: FileRecord) => value.name).join('/');
     if (subfolders) {
       folderName = `${subfolders}/${folderName}`;
     }
-    return this._http.put<ResponseObject<FileRecord[]>>(
-      `${this.baseAPIURL}/${folderName}`,
-      null
-    );
+    return this._http.put<ResponseObject<FileRecord[]>>(`${this.baseAPIURL}/${folderName}`, null);
   }
 
   /**
@@ -88,10 +72,7 @@ export class FileBrowserService {
    * @param folders Pole složek, ve kterém se do poslední složky nahrají soubory
    * @param files Soubory, které se mají nahrát
    */
-  upload(
-    folders: FileRecord[],
-    files: File[]
-  ): Observable<ResponseObject<FileRecord[]>> {
+  upload(folders: FileRecord[], files: File[]): Observable<ResponseObject<FileRecord[]>> {
     this.logger.info('Odesílám požadavek na nahrání souboru na server.');
     const subfolders = folders.map((value: FileRecord) => value.name).join('/');
     const formData = new FormData();
@@ -100,10 +81,7 @@ export class FileBrowserService {
       formData.append('files[]', file, file.name);
     }
 
-    return this._http.post<ResponseObject<FileRecord[]>>(
-      `${this.baseAPIURL}/${subfolders}`,
-      formData
-    );
+    return this._http.post<ResponseObject<FileRecord[]>>(`${this.baseAPIURL}/${subfolders}`, formData);
   }
   /**
    * Smaže soubor/složku z cesty
@@ -112,10 +90,7 @@ export class FileBrowserService {
    * @param file Soubor/složka, která se má smazat
    *        v případě složky se smaže rekurzivně i její obsah!
    */
-  delete(
-    folders: FileRecord[],
-    file: FileRecord
-  ): Observable<ResponseObject<FileRecord[]>> {
+  delete(folders: FileRecord[], file: FileRecord): Observable<ResponseObject<FileRecord[]>> {
     this.logger.info('Odesílám požadavek na smazání souboru/složky.');
     let folderName = file.name;
 
@@ -123,8 +98,6 @@ export class FileBrowserService {
     if (subfolders) {
       folderName = `${subfolders}/${folderName}`;
     }
-    return this._http.delete<ResponseObject<FileRecord[]>>(
-      `${this.baseAPIURL}/${folderName}`
-    );
+    return this._http.delete<ResponseObject<FileRecord[]>>(`${this.baseAPIURL}/${folderName}`);
   }
 }

@@ -2,9 +2,9 @@ import { AppState } from '@diplomka-frontend/stim-lib-store';
 
 export interface NavigationState extends AppState {
   title: string;
-  titleArgs: {};
+  titleArgs: Record<string, unknown>;
   subtitle: string;
-  subtitleArgs: {};
+  subtitleArgs: Record<string, unknown>;
   icon: string;
   applyCustomNavColor: boolean;
   customNavColor: string;

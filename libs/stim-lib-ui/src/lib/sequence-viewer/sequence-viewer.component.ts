@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { ChartOptions, ChartType } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
@@ -7,20 +7,20 @@ import { Label } from 'ng2-charts';
 @Component({
   selector: 'stim-lib-ui-sequence-viewer',
   templateUrl: './sequence-viewer.component.html',
-  styleUrls: ['./sequence-viewer.component.sass']
+  styleUrls: ['./sequence-viewer.component.sass'],
 })
-export class SequenceViewerComponent implements OnInit, OnDestroy {
+export class SequenceViewerComponent {
   // Pie
   readonly pieChartOptions: ChartOptions = {
     responsive: true,
     legend: {
-      position: 'top'
+      position: 'top',
     },
     plugins: {
       datalabels: {
-        formatter: (value, _): string => `#${value}`
-      }
-    }
+        formatter: (value, _): string => `#${value}`,
+      },
+    },
   };
   pieChartLabels: Label[] = [];
   pieChartData: number[] = [];
@@ -29,17 +29,8 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
   readonly pieChartPlugins = [pluginDataLabels];
   readonly pieChartColors = [
     {
-      backgroundColor: [
-        'rgba(255,0,0,0.3)',
-        'rgba(0,255,0,0.3)',
-        'rgba(0,0,255,0.3)',
-        '#0b0033',
-        '#370031',
-        '#832232',
-        '#ce8964',
-        '#eaf27c'
-      ]
-    }
+      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)', '#0b0033', '#370031', '#832232', '#ce8964', '#eaf27c'],
+    },
   ];
 
   @Input() editable = false;
@@ -49,10 +40,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
   @Output() dataChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
   dataHasChanged = false;
   _originalData: number[];
-  private _analyse: {};
-
-  constructor() {
-  }
+  private _analyse: Record<string, string>;
 
   private _outputCount: number;
 
@@ -70,12 +58,6 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
     this.flowData.push(...inputData);
     this._analyse = this._analyseSequence(inputData);
     this._showSequenceAnalyse(this._analyse);
-  }
-
-  ngOnInit() {
-  }
-
-  ngOnDestroy(): void {
   }
 
   handleStimulChange(i: number, output: number) {
@@ -121,7 +103,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
     return map;
   }
 
-  private _showSequenceAnalyse(analyse: {}) {
+  private _showSequenceAnalyse(analyse: Record<string, string>) {
     this.pieChartLabels.splice(0);
     this.pieChartData.splice(0);
     this.outputs.splice(0);
@@ -131,7 +113,7 @@ export class SequenceViewerComponent implements OnInit, OnDestroy {
 
     for (const key of Object.keys(analyse)) {
       const data = analyse[key];
-      this.pieChartLabels.push(`${key} (${data.percent * 100}%)`);
+      this.pieChartLabels.push(`${key} (${data['percent'] * 100}%)`);
       this.pieChartData.push(data['value']);
     }
   }

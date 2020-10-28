@@ -1,12 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  HostListener,
-  Inject,
-  Input,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, HostListener, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { isObservable, Observable } from 'rxjs';
@@ -25,8 +17,7 @@ import { TOKEN_PATTERN_SIZE } from '@diplomka-frontend/stim-lib-common';
     },
   ],
 })
-export class OutputPatternComponent extends ValueAccessorBase<number>
-  implements OnInit {
+export class OutputPatternComponent extends ValueAccessorBase<number> implements OnInit {
   @Input() patternSize: number | Observable<number> = this._defaultPatternSize;
   @ViewChild('canvas', { static: true }) canvas: ElementRef;
 
@@ -36,9 +27,7 @@ export class OutputPatternComponent extends ValueAccessorBase<number>
   private _disableChangePropagation = false;
   _patternSize: number;
 
-  constructor(
-    @Inject(TOKEN_PATTERN_SIZE) private readonly _defaultPatternSize: number
-  ) {
+  constructor(@Inject(TOKEN_PATTERN_SIZE) private readonly _defaultPatternSize: number) {
     super(0);
   }
 
@@ -106,11 +95,11 @@ export class OutputPatternComponent extends ValueAccessorBase<number>
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  onResize() {
     this._drawPattern();
   }
 
-  handleCheckboxChange(event: any, index: number) {
+  handleCheckboxChange(event: Event, index: number) {
     if (this._disableChangePropagation) {
       return;
     }

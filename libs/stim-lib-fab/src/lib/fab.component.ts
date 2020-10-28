@@ -7,10 +7,9 @@ import { fabAnimations } from './fab.animations';
   selector: 'stim-lib-fab',
   templateUrl: './fab.component.html',
   styleUrls: ['./fab.component.sass'],
-  animations: [fabAnimations]
+  animations: [fabAnimations],
 })
 export class FabComponent implements OnInit {
-
   @Input() disabled = false;
   @Input() icon: string;
   @Input() fabButtons: FabListEntry[] = [];
@@ -18,9 +17,6 @@ export class FabComponent implements OnInit {
 
   fabTogglerState = 'inactive';
   buttons: FabListEntry[] = [];
-
-  constructor() {
-  }
 
   ngOnInit() {
     if (this.fabButtons === undefined) {
@@ -58,5 +54,4 @@ export class FabComponent implements OnInit {
     // Schovám veškerá tlačítka
     this.hideItems();
   }
-
 }

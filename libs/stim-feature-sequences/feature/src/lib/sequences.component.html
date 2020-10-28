@@ -7,7 +7,7 @@
                                       [selectionMode]="(state | async).selectionMode"
                                       (view)="handleView($event)"
                                       (delete)="handleDelete($event)"
-                                      (select)="handleSelect($event)"
+                                      (selectSequence)="handleSelect($event)"
                                      *ngIf="(state | async).ghosts.length === 0">
     </stim-feature-sequences-item-list>
   </div>

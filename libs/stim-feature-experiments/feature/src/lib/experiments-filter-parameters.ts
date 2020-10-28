@@ -1,16 +1,6 @@
-import {
-  Experiment,
-  ExperimentType,
-  Output,
-  outputTypeToRaw,
-} from '@stechy1/diplomka-share';
+import { Experiment, ExperimentType, Output, outputTypeToRaw } from '@stechy1/diplomka-share';
 
-import {
-  GroupByFilterEntity,
-  GroupFilter,
-  SortByFilterEntity,
-  SortFilter,
-} from '@diplomka-frontend/stim-lib-list-utils';
+import { GroupByFilterEntity, GroupFilter, SortByFilterEntity, SortFilter } from '@diplomka-frontend/stim-lib-list-utils';
 
 export const GROUP_BY_FILTERS: GroupFilter<Experiment<Output>>[] = [
   new GroupByFilterEntity(
@@ -18,8 +8,7 @@ export const GROUP_BY_FILTERS: GroupFilter<Experiment<Output>>[] = [
     'type',
     'fa-stethoscope',
     (experiment: Experiment<Output>) => `${experiment.type}`,
-    (experiment: Experiment<Output>, group: string) =>
-      experiment.type === +group,
+    (experiment: Experiment<Output>, group: string) => experiment.type === +group,
     () => false,
     (group: string) => ExperimentType[+group]
   ),
@@ -28,10 +17,8 @@ export const GROUP_BY_FILTERS: GroupFilter<Experiment<Output>>[] = [
     'tag',
     'fa-tags',
     (experiment) => experiment.tags,
-    (experiment: Experiment<Output>, group: string) =>
-      experiment.tags.includes(group),
-    (experiment: Experiment<Output>, group: string) =>
-      experiment.tags.length === 0,
+    (experiment: Experiment<Output>, group: string) => experiment.tags.includes(group),
+    (experiment: Experiment<Output>) => experiment.tags.length === 0,
     (group) => group
   ),
 ];
@@ -41,8 +28,7 @@ export const SORT_BY_FILTERS: SortFilter<Experiment<Output>>[] = [
     'SHARE.DIALOGS.FILTER.SORT_BY.ALPHABET',
     'alphabet',
     { ascending: 'fa-sort-alpha-up', descending: 'fa-sort-alpha-down' },
-    (a: Experiment<Output>, b: Experiment<Output>) =>
-      a.name.localeCompare(b.name)
+    (a: Experiment<Output>, b: Experiment<Output>) => a.name.localeCompare(b.name)
   ),
   new SortByFilterEntity(
     'SHARE.DIALOGS.FILTER.SORT_BY.CREATION_DATE',
@@ -60,14 +46,12 @@ export const SORT_BY_FILTERS: SortFilter<Experiment<Output>>[] = [
     'SHARE.DIALOGS.FILTER.SORT_BY.OUTPUT_TYPE',
     'output_type',
     { ascending: 'fa-plug', descending: 'fa-plug' },
-    (a: Experiment<Output>, b: Experiment<Output>) =>
-      outputTypeToRaw(a.usedOutputs) - outputTypeToRaw(b.usedOutputs)
+    (a: Experiment<Output>, b: Experiment<Output>) => outputTypeToRaw(a.usedOutputs) - outputTypeToRaw(b.usedOutputs)
   ),
   new SortByFilterEntity(
     'SHARE.DIALOGS.FILTER.SORT_BY.OUTPUT_COUNT',
     'output_count',
     { ascending: 'fa-hashtag', descending: 'fa-hashtag' },
-    (a: Experiment<Output>, b: Experiment<Output>) =>
-      a.outputCount - b.outputCount
+    (a: Experiment<Output>, b: Experiment<Output>) => a.outputCount - b.outputCount
   ),
 ];

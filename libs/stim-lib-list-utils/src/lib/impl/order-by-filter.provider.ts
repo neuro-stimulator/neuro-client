@@ -1,16 +1,15 @@
 import { ListFilterProvider, OrderFilter } from '../list-filter';
 
 export class OrderByFilterProvider<E> implements ListFilterProvider<E> {
-
   private static readonly KEY = 'orderBy';
 
   private readonly _registry: { [name: string]: OrderFilter<E> } = {};
 
   constructor() {
-    this._registry['ascending'] = new OrderByFilterEntity<E>('SHARE.DIALOGS.FILTER.ORDER_BY.ASCENDING', 'ascending', 'fa-sort-amount-up',
-      entities => entities.reverse());
-    this._registry['descending'] = new OrderByFilterEntity<E>('SHARE.DIALOGS.FILTER.ORDER_BY.DESCENDING', 'descending', 'fa-sort-amount-down-alt',
-      () => {});
+    this._registry['ascending'] = new OrderByFilterEntity<E>('SHARE.DIALOGS.FILTER.ORDER_BY.ASCENDING', 'ascending', 'fa-sort-amount-up', (entities) => entities.reverse());
+    this._registry['descending'] = new OrderByFilterEntity<E>('SHARE.DIALOGS.FILTER.ORDER_BY.DESCENDING', 'descending', 'fa-sort-amount-down-alt', () => {
+      // empty body
+    });
   }
 
   get key(): string {
@@ -39,8 +38,5 @@ export class OrderByFilterProvider<E> implements ListFilterProvider<E> {
 }
 
 export class OrderByFilterEntity<E> implements OrderFilter<E> {
-  public constructor(public readonly name: string,
-              public readonly value: string,
-              public readonly icon,
-              public readonly order: (entities: E[]) => void) {}
+  public constructor(public readonly name: string, public readonly value: string, public readonly icon, public readonly order: (entities: E[]) => void) {}
 }

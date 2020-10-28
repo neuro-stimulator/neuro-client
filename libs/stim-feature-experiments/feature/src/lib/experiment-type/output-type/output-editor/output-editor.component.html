@@ -57,12 +57,12 @@
   <div class="col-12">
     <div>
       <canvas #canvas height="80px" style="touch-action: none"
-              (click)="handleCanvasClick($event)"
-              (pointerenter)="handleCanvasPointerEnter($event)"
+              (click)="handleCanvasClick()"
+              (pointerenter)="handleCanvasPointerEnter()"
               (pointerdown)="handleCanvasPointerDown($event)"
               (pointermove)="handleCanvasPointerMove($event)"
               (pointerup)="handleCanvasPointerUp($event)"
-              (pointerleave)="handleCanvasPointerLeave($event)">
+              (pointerleave)="handleCanvasPointerLeave()">
       </canvas>
     </div>
   </div>

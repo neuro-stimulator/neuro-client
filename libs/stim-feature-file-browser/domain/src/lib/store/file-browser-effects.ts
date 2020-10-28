@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { map, switchMap } from 'rxjs/operators';
+import { map, mergeMap, switchMap } from 'rxjs/operators';
 
 import { FileRecord, ResponseObject } from '@stechy1/diplomka-share';
 
@@ -10,10 +10,7 @@ import * as FileBrowserActions from './file-browser-actions';
 
 @Injectable()
 export class FileBrowserEffects {
-  constructor(
-    private readonly actions$: Actions,
-    private readonly _service: FileBrowserService
-  ) {}
+  constructor(private readonly actions$: Actions, private readonly _service: FileBrowserService) {}
 
   folderContent$ = createEffect(() =>
     this.actions$.pipe(
@@ -35,18 +32,16 @@ export class FileBrowserEffects {
   createFolder$ = createEffect(() =>
     this.actions$.pipe(
       ofType(FileBrowserActions.actionCreateFolderRequest),
-      switchMap((action) => {
-        return this._service
-          .createFolder(action.folders, action.folderName)
-          .pipe(
-            map((response: ResponseObject<FileRecord[]>) => {
-              response.data.sort(this._service.comparator);
-              return FileBrowserActions.actionGetContentResponse({
-                folders: action.folders,
-                files: response.data,
-              });
-            })
-          );
+      mergeMap((action) => {
+        return this._service.createFolder(action.folders, action.folderName).pipe(
+          map((response: ResponseObject<FileRecord[]>) => {
+            response.data.sort(this._service.comparator);
+            return FileBrowserActions.actionGetContentResponse({
+              folders: action.folders,
+              files: response.data,
+            });
+          })
+        );
       })
     )
   );
@@ -71,7 +66,7 @@ export class FileBrowserEffects {
   delete$ = createEffect(() =>
     this.actions$.pipe(
       ofType(FileBrowserActions.actionDeleteRequest),
-      switchMap((action) => {
+      mergeMap((action) => {
         return this._service.delete(action.folders, action.file).pipe(
           map((response: ResponseObject<FileRecord[]>) => {
             response.data.sort(this._service.comparator);

@@ -11,11 +11,10 @@ import { GroupFilter, ListFilterParameters, ListGroupSortFilterService, OrderFil
  */
 @Directive()
 export abstract class FilterDialogComponent<T> extends DialogChildComponent implements OnInit {
-
   form: FormGroup = new FormGroup({
     groupBy: new FormControl(null),
     sortBy: new FormControl(null),
-    orderBy: new FormControl(null)
+    orderBy: new FormControl(null),
   });
 
   private _confirmSubscription: Subscription;
@@ -79,7 +78,7 @@ export abstract class FilterDialogComponent<T> extends DialogChildComponent impl
     });
   }
 
-  unbind(modal: ModalComponent) {
+  unbind() {
     this._confirmSubscription.unsubscribe();
     this._cancelSubscription.unsubscribe();
     this._showSubscription.unsubscribe();

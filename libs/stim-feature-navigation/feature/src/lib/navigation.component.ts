@@ -1,28 +1,13 @@
-import {
-  Component,
-  ComponentFactoryResolver,
-  OnInit,
-  Type,
-  ViewChild,
-} from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, Type, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 
-import {
-  PageToolsComponent,
-} from '@diplomka-frontend/stim-lib-ui';
-import {
-  AliveCheckerFacade,
-  ConnectionInformationState,
-} from '@diplomka-frontend/stim-lib-connection';
-import {
-  NavigationFacade,
-  ComponentStoreService,
-  NavigationState,
-} from '@diplomka-frontend/stim-feature-navigation/domain';
+import { PageToolsComponent } from '@diplomka-frontend/stim-lib-ui';
+import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
+import { NavigationFacade, ComponentStoreService, NavigationState } from '@diplomka-frontend/stim-feature-navigation/domain';
 
 import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.directive';
 
@@ -49,11 +34,9 @@ export class NavigationComponent implements OnInit {
     this.buttonsAddon.viewContainerRef.clear();
   }
 
-  private _loadButtonsAddon(addon: Type<any>) {
+  private _loadButtonsAddon(addon: Type<unknown>) {
     // Podle zadané komponenty získám její továrnu
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      addon
-    );
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(addon);
     // Uložím si referenci na viewContainer
     const viewContainerRef = this.buttonsAddon.viewContainerRef;
     // Vymažu obsah ve viewContaineru

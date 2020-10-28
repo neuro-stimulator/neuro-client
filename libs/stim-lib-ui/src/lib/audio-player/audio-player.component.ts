@@ -5,10 +5,9 @@ import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 @Component({
   selector: 'stim-lib-ui-audio-player',
   templateUrl: './audio-player.component.html',
-  styleUrls: ['./audio-player.component.sass']
+  styleUrls: ['./audio-player.component.sass'],
 })
 export class AudioPlayerComponent implements OnInit {
-
   @ViewChild('audioPlayer', { static: true }) player: ElementRef;
   @ViewChild('modal', { static: true }) modal: ModalComponent;
 
@@ -26,9 +25,6 @@ export class AudioPlayerComponent implements OnInit {
   duration = 0.01;
   private _inicialized = false;
 
-  constructor() {
-  }
-
   private _audioUrl: string;
 
   get audioUrl() {
@@ -38,7 +34,6 @@ export class AudioPlayerComponent implements OnInit {
   @Input() set audioUrl(audioUrl: string) {
     this._audioUrl = audioUrl;
     this._player().src = audioUrl;
-
   }
 
   ngOnInit() {

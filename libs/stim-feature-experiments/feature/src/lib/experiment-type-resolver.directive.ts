@@ -1,8 +1,4 @@
-import {
-  ComponentFactoryResolver,
-  Directive,
-  ViewContainerRef,
-} from '@angular/core';
+import { ComponentFactoryResolver, Directive, ViewContainerRef } from '@angular/core';
 
 import { BaseExperimentTypeResolverDirective } from '@diplomka-frontend/stim-lib-common';
 
@@ -13,14 +9,8 @@ import { Experiment, Output } from '@stechy1/diplomka-share';
 @Directive({
   selector: '[stimFeatureExperimentsTypeResolver]',
 })
-export class ExperimentTypeResolverDirective extends BaseExperimentTypeResolverDirective<
-  BaseExperimentTypeComponent<Experiment<Output>, Output>
-> {
-  constructor(
-    componentFactoryResolver: ComponentFactoryResolver,
-    _viewContainerRef: ViewContainerRef,
-    logger: NGXLogger
-  ) {
+export class ExperimentTypeResolverDirective extends BaseExperimentTypeResolverDirective<BaseExperimentTypeComponent<Experiment<Output>, Output>> {
+  constructor(componentFactoryResolver: ComponentFactoryResolver, _viewContainerRef: ViewContainerRef, logger: NGXLogger) {
     super(componentFactoryResolver, _viewContainerRef, logger);
   }
 }

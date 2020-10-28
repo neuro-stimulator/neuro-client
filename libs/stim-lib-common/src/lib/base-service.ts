@@ -11,7 +11,6 @@ import { BaseRecord } from './base-record';
  * Základní třída pro správu CRUD operací
  */
 export abstract class BaseService<T extends BaseRecord> {
-
   /**
    * Kolekce záznamů
    * Třída BehaviorSubject je pozorovatelná, takže lze reagovat
@@ -28,9 +27,7 @@ export abstract class BaseService<T extends BaseRecord> {
   // protected readonly _working: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   // public readonly working$: Observable<boolean> = this._working.asObservable();
 
-  protected constructor(protected readonly _accessPoint: string,
-                        protected readonly _http: HttpClient,
-                        protected readonly logger: NGXLogger) {
+  protected constructor(protected readonly _accessPoint: string, protected readonly _http: HttpClient, protected readonly logger: NGXLogger) {
     // aliveChecker.connectionStatus.subscribe((status: ConnectionStatus) => {
     //   this._handleAliveStatus(status);
     // });
@@ -154,8 +151,8 @@ export abstract class BaseService<T extends BaseRecord> {
    *
    * @param count Počet ghost záznamů, který se má vygenerovat
    */
-  public makeGhosts(count: number = 5): any[] {
-    return new Array(count);
+  public makeGhosts(count: number = 5): T[] {
+    return new Array<T>(count);
   }
 
   /**

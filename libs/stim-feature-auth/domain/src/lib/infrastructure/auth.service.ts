@@ -6,10 +6,8 @@ import { LocalStorageService } from 'angular-2-local-storage';
 
 import { ResponseObject, User } from '@stechy1/diplomka-share';
 
-import {
-  TOKEN_AUTH_API_URL,
-  TOKEN_USERS_API_URL,
-} from '@diplomka-frontend/stim-lib-common';
+import { TOKEN_AUTH_API_URL, TOKEN_USERS_API_URL } from '@diplomka-frontend/stim-lib-common';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -27,30 +25,21 @@ export class AuthService {
 
   public register(user: User) {
     this.logger.info('Odesílám požadavek na registraci uživatele.');
-    return this._http.post<ResponseObject<User>>(
-      `${this._usersAccessPoint}/register`,
-      user
-    );
+    return this._http.post<ResponseObject<User>>(`${this._usersAccessPoint}/register`, user);
   }
 
   public login(user: User) {
     this.logger.info('Odesílám požadavek na přihlášení uživatele.');
-    return this._http.post<ResponseObject<User>>(
-      `${this._accessPoint}/login`,
-      user
-    );
+    return this._http.post<ResponseObject<User>>(`${this._accessPoint}/login`, user);
   }
 
   public refreshToken() {
     if (this.isLogged) {
       this.logger.info('Odesílám požadavek na obnovení tokenu.');
-      return this._http.patch<ResponseObject<User>>(
-        `${this._accessPoint}/refresh-jwt`,
-        null
-      );
+      return this._http.patch<ResponseObject<User>>(`${this._accessPoint}/refresh-jwt`, null);
     } else {
       this.logger.info('Nemám žádný token, který bych mohl obnovit.');
-      throw new Error();
+      return throwError(new Error());
     }
   }
 

@@ -3,12 +3,10 @@ import { AbstractControl } from '@angular/forms';
 
 @Pipe({
   name: 'experimentTypeFvepOutputCount',
-  pure: false
+  pure: false,
 })
 export class ExperimentTypeFvepOutputCountPipe implements PipeTransform {
-
-  transform(outputs: AbstractControl[], count: number): any {
+  transform(outputs: AbstractControl[], count: number): AbstractControl[] {
     return outputs.filter((output: AbstractControl) => output.get('orderId').value < count);
   }
-
 }

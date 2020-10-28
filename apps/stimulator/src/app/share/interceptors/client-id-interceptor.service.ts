@@ -15,7 +15,7 @@ export class ClientIdInterceptorService implements HttpInterceptor {
     }
   }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     req = req.clone({
       setHeaders: {
         'x-client-id': this.localStorage.get<string>(ClientIdInterceptorService.KEY_CLIENT_ID),

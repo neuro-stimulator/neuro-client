@@ -1,6 +1,8 @@
 import { Component, Type } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { NGXLogger } from 'ngx-logger';
 
@@ -9,29 +11,18 @@ import { Sequence } from '@stechy1/diplomka-share';
 import { ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
 import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
 import { FilterDialogComponent } from '@diplomka-frontend/stim-lib-ui';
-import {
-  ListButtonsAddonService,
-  BaseListController,
-} from '@diplomka-frontend/stim-lib-ui';
-import {
-  SequencesFacade,
-  SequencesState,
-} from '@diplomka-frontend/stim-feature-sequences/domain';
-
-import { SequencesFilterDialogComponent } from './sequences-filter-dialog/sequences-filter-dialog.component';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ListButtonsAddonService, BaseListComponent } from '@diplomka-frontend/stim-lib-ui';
+import { SequencesFacade, SequencesState } from '@diplomka-frontend/stim-feature-sequences/domain';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
+
+import { SequencesFilterDialogComponent } from './sequences-filter-dialog/sequences-filter-dialog.component';
 
 @Component({
   templateUrl: './sequences.component.html',
   styleUrls: ['./sequences.component.sass'],
 })
-export class SequencesComponent extends BaseListController<
-  Sequence,
-  SequencesState
-> {
+export class SequencesComponent extends BaseListComponent<Sequence, SequencesState> {
   private static readonly INTRO_SEQUENCE: Sequence = {
     id: -1,
     experimentId: -1,
@@ -53,16 +44,7 @@ export class SequencesComponent extends BaseListController<
     location: Location,
     private readonly logger: NGXLogger
   ) {
-    super(
-      service,
-      filterService,
-      navigation,
-      connection,
-      buttonsAddonService,
-      router,
-      route,
-      location
-    );
+    super(service, filterService, navigation, connection, buttonsAddonService, router, route, location);
   }
 
   handleView(sequence: Sequence) {
@@ -71,6 +53,7 @@ export class SequencesComponent extends BaseListController<
   }
 
   handleDelete(sequence: Sequence) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
     this.modal.showComponent = ConfirmDialogComponent;
     this.modal.open({

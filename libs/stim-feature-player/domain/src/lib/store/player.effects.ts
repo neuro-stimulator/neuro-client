@@ -17,7 +17,6 @@ import {
   SocketMessageType,
 } from '@stechy1/diplomka-share';
 
-import { PlayerState } from '@diplomka-frontend/stim-feature-player/domain';
 import * as fromConnection from '@diplomka-frontend/stim-lib-connection';
 import * as fromStimulator from '@diplomka-frontend/stim-feature-stimulator/domain';
 import { StimulatorFacade } from '@diplomka-frontend/stim-feature-stimulator/domain';
@@ -32,7 +31,7 @@ export class PlayerEffects {
   constructor(
     private readonly actions$: Actions,
     private readonly _service: PlayerService,
-    private readonly store: Store<PlayerState>,
+    private readonly store: Store,
     private readonly experimentsFacade: ExperimentsFacade,
     private readonly stimulatorFacade: StimulatorFacade,
     private readonly router: Router
@@ -41,7 +40,7 @@ export class PlayerEffects {
   stateRequest$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PlayerActions.actionPlayerStateRequest),
-      switchMap((action) => this._service.getPlayerState().pipe(map((response: ResponseObject<PlayerConfiguration>) => PlayerActions.actionPlayerUpdateState(response.data))))
+      switchMap(() => this._service.getPlayerState().pipe(map((response: ResponseObject<PlayerConfiguration>) => PlayerActions.actionPlayerUpdateState(response.data))))
     )
   );
 
@@ -51,14 +50,14 @@ export class PlayerEffects {
       withLatestFrom(this.experimentsFacade.state),
       switchMap(([action, experimentState]) => {
         return this._service.prepareExperimentPlayer(experimentState.selectedExperiment.experiment.id, action.options).pipe(
-          map((response: ResponseObject<any>) => {
+          map((response: ResponseObject<unknown>) => {
             return PlayerActions.actionPrepareExperimentPlayerRequestDone({
               autoplay: action.options.autoplay,
               betweenExperimentInterval: action.options.betweenExperimentInterval,
               repeat: action.options.repeat,
             });
           }),
-          catchError((error: unknown) => {
+          catchError(() => {
             return of(PlayerActions.actionPrepareExperimentPlayerRequestFail());
           })
         );
@@ -143,7 +142,7 @@ export class PlayerEffects {
               stopConditions: response.data,
             });
           }),
-          catchError((error: unknown) => {
+          catchError(() => {
             return of(PlayerActions.actionPlayerAvailableStopConditionsFail());
           })
         )

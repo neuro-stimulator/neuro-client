@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
-import {
-  AuthFacade,
-  AuthState,
-} from '@diplomka-frontend/stim-feature-auth/domain';
-import { map, take, tap } from 'rxjs/operators';
+import { AuthFacade } from '@diplomka-frontend/stim-feature-auth/domain';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,10 +15,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('1234567890'),
   });
 
-  constructor(
-    private readonly facade: AuthFacade,
-    private readonly router: Router
-  ) {}
+  constructor(private readonly facade: AuthFacade, private readonly router: Router) {}
 
   ngOnInit(): void {
     // this.facade.state

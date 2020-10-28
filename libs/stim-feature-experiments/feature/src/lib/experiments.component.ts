@@ -9,34 +9,21 @@ import { Experiment, ExperimentType, Output } from '@stechy1/diplomka-share';
 import { ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
 import { FabListEntry } from '@diplomka-frontend/stim-lib-fab';
 import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
-import {
-  BaseListController,
-  FilterDialogComponent,
-  ListButtonsAddonService,
-} from '@diplomka-frontend/stim-lib-ui';
-import {
-  ExperimentsFacade,
-  ExperimentsState,
-} from '@diplomka-frontend/stim-feature-experiments/domain';
+import { BaseListComponent, FilterDialogComponent, ListButtonsAddonService } from '@diplomka-frontend/stim-lib-ui';
+import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
 
 import { ExperimentsFilterDialogComponent } from './experiments-filter-dialog/experiments-filter-dialog.component';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
-import {
-  AuthFacade,
-  AuthState,
-} from '@diplomka-frontend/stim-feature-auth/domain';
+import { AuthFacade, AuthState } from '@diplomka-frontend/stim-feature-auth/domain';
 
 @Component({
   templateUrl: './experiments.component.html',
   styleUrls: ['./experiments.component.sass'],
 })
-export class ExperimentsComponent extends BaseListController<
-  Experiment<Output>,
-  ExperimentsState
-> {
+export class ExperimentsComponent extends BaseListComponent<Experiment<Output>, ExperimentsState> {
   private static readonly INTRO_EXPERIMENT: Experiment<Output> = {
     id: -1,
     type: ExperimentType.NONE,
@@ -70,16 +57,7 @@ export class ExperimentsComponent extends BaseListController<
     private readonly auth: AuthFacade,
     private readonly logger: NGXLogger
   ) {
-    super(
-      service,
-      filterService,
-      navigation,
-      connection,
-      buttonsAddonService,
-      router,
-      route,
-      location
-    );
+    super(service, filterService, navigation, connection, buttonsAddonService, router, route, location);
   }
 
   handleEdit(experiment: Experiment<Output>) {
@@ -104,6 +82,7 @@ export class ExperimentsComponent extends BaseListController<
   }
 
   handleDelete(experiment: Experiment<Output>) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
     this.modal.showComponent = ConfirmDialogComponent;
     this.modal.open({
@@ -118,9 +97,7 @@ export class ExperimentsComponent extends BaseListController<
   handleNewExperiment(experimentType: ExperimentType) {
     const type: string = ExperimentType[experimentType].toLowerCase();
     this.logger.info(`Budu vytvářet nový experiment typu: ${type}.`);
-    this._router
-      .navigate([type, 'new'], { relativeTo: this._route.parent })
-      .catch((reason) => console.log(reason));
+    this._router.navigate([type, 'new'], { relativeTo: this._route.parent }).catch((reason) => console.log(reason));
   }
 
   handleSelect(experiment: Experiment<Output>) {
@@ -131,9 +108,7 @@ export class ExperimentsComponent extends BaseListController<
     return ExperimentsComponent.INTRO_EXPERIMENT;
   }
 
-  protected get filterDialogComponent(): Type<
-    FilterDialogComponent<Experiment<Output>>
-  > {
+  protected get filterDialogComponent(): Type<FilterDialogComponent<Experiment<Output>>> {
     return ExperimentsFilterDialogComponent;
   }
 
@@ -146,14 +121,10 @@ export class ExperimentsComponent extends BaseListController<
   }
 
   protected get selectionMode$(): Observable<boolean> {
-    return this.state.pipe(
-      map((state: ExperimentsState) => state.selectionMode)
-    );
+    return this.state.pipe(map((state: ExperimentsState) => state.selectionMode));
   }
 
   get isAuthenticated(): Observable<boolean> {
-    return this.auth.state.pipe(
-      map((state: AuthState) => state.isAuthenticated)
-    );
+    return this.auth.state.pipe(map((state: AuthState) => state.isAuthenticated));
   }
 }

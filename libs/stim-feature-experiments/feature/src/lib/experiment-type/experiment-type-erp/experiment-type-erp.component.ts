@@ -1,46 +1,23 @@
 import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {
-  AbstractControl,
-  FormArray,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 import { NGXLogger } from 'ngx-logger';
-import { Options as SliderOptions } from 'ng5-slider';
 
-import {
-  createEmptyExperimentERP,
-  Edge,
-  ErpOutput,
-  ExperimentERP,
-  Random,
-} from '@stechy1/diplomka-share';
+import { createEmptyExperimentERP, Edge, ErpOutput, ExperimentERP, Random } from '@stechy1/diplomka-share';
 
-import {
-  DropdownBtnComponent,
-  ShareValidators,
-} from '@diplomka-frontend/stim-lib-ui';
+import { DropdownBtnComponent, ShareValidators } from '@diplomka-frontend/stim-lib-ui';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import {
-  ExperimentsFacade,
-  ExperimentsState,
-} from '@diplomka-frontend/stim-feature-experiments/domain';
+import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 
-import {
-  dependencyValidatorPattern,
-  outputCountParams,
-} from '../../experiments.share';
+import { dependencyValidatorPattern } from '../../experiments.share';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
-import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
 import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fast-dialog.component';
 
@@ -48,9 +25,7 @@ import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fas
   templateUrl: './experiment-type-erp.component.html',
   styleUrls: ['./experiment-type-erp.component.sass'],
 })
-export class ExperimentTypeErpComponent
-  extends BaseExperimentTypeComponent<ExperimentERP, ErpOutput>
-  implements OnInit, OnDestroy {
+export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<ExperimentERP, ErpOutput> implements OnInit, OnDestroy {
   @ViewChild('modal', { static: true }) modal: ModalComponent;
 
   @ViewChild(DropdownBtnComponent) dropdown: DropdownBtnComponent;
@@ -65,26 +40,13 @@ export class ExperimentTypeErpComponent
     connection: AliveCheckerFacade,
     logger: NGXLogger
   ) {
-    super(
-      maxOutputCount,
-      service,
-      route,
-      navigation,
-      connection,
-      new ExperimentNameValidator(service),
-      logger
-    );
+    super(maxOutputCount, service, route, navigation, connection, new ExperimentNameValidator(service), logger);
   }
 
   ngOnInit() {
     super.ngOnInit();
     this._sequenceIdSubscription = this._facade.state
-      .pipe(
-        map(
-          (state: ExperimentsState) =>
-            (state.selectedExperiment.experiment as ExperimentERP)?.sequenceId
-        )
-      )
+      .pipe(map((state: ExperimentsState) => (state.selectedExperiment.experiment as ExperimentERP)?.sequenceId))
       .subscribe((sequenceId: number) => {
         this.form.patchValue({ sequenceId });
       });
@@ -98,25 +60,14 @@ export class ExperimentTypeErpComponent
   protected _createOutputFormControl(): { [p: string]: AbstractControl } {
     const superControls = super._createOutputFormControl();
     const myControls = {
-      pulseUp: new FormControl(null, [
-        Validators.required,
-        ShareValidators.exclusiveMin(0),
-      ]),
-      pulseDown: new FormControl(null, [
-        Validators.required,
-        ShareValidators.exclusiveMin(0),
-      ]),
-      distribution: new FormControl(null, [
-        Validators.required,
-        Validators.min(0),
-      ]),
+      pulseUp: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      pulseDown: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      distribution: new FormControl(null, [Validators.required, Validators.min(0)]),
       dependencies: new FormArray([
         new FormControl([]),
         new FormControl(null, [
           Validators.pattern(dependencyValidatorPattern(this._maxOutputCount)),
-          ExperimentTypeErpOutputDependencyValidator.createValidator(
-            this._maxOutputCount
-          ),
+          ExperimentTypeErpOutputDependencyValidator.createValidator(this._maxOutputCount),
         ]),
       ]),
     };
@@ -127,23 +78,10 @@ export class ExperimentTypeErpComponent
   protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
     const myControls = {
-      outputCount: new FormControl(null, [
-        Validators.required,
-        Validators.min(1),
-        Validators.max(this._maxOutputCount),
-      ]),
-      maxDistribution: new FormControl(null, [
-        Validators.required,
-        Validators.min(1),
-      ]),
-      out: new FormControl(null, [
-        Validators.required,
-        ShareValidators.exclusiveMin(0),
-      ]),
-      wait: new FormControl(null, [
-        Validators.required,
-        ShareValidators.exclusiveMin(0),
-      ]),
+      outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this._maxOutputCount)]),
+      maxDistribution: new FormControl(null, [Validators.required, Validators.min(1)]),
+      out: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      wait: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
       random: new FormControl(null, [Validators.required]),
       edge: new FormControl(null, [Validators.required]),
       usedOutputs: new FormGroup({
@@ -167,7 +105,7 @@ export class ExperimentTypeErpComponent
     this.modal.showComponent = SequenceFastDialogComponent;
     this.modal
       .openForResult()
-      .catch((reason) => {
+      .catch(() => {
         this.logger.warn('Nebudu vytvářet žádnou sekvenci.');
       })
       .then((result?: { name: string; size: number }) => {

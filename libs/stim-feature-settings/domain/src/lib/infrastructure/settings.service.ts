@@ -5,10 +5,7 @@ import { LocalStorageService } from 'angular-2-local-storage';
 import { Observable } from 'rxjs';
 
 import { ResponseObject } from '@stechy1/diplomka-share';
-import {
-  TOKEN_SEED_API_URL,
-  TOKEN_SETTINGS_API_URL,
-} from '@diplomka-frontend/stim-lib-common';
+import { TOKEN_SEED_API_URL, TOKEN_SETTINGS_API_URL } from '@diplomka-frontend/stim-lib-common';
 
 import { ServerSettings, Settings } from '../..';
 import { NGXLogger } from 'ngx-logger';
@@ -49,28 +46,22 @@ export class SettingsService {
   }
 
   public loadServerSettings(): Observable<ResponseObject<ServerSettings>> {
-    this.logger.info(
-      'Odesílám požadavek pro získání uživatelského nastavení na serveru...'
-    );
+    this.logger.info('Odesílám požadavek pro získání uživatelského nastavení na serveru...');
     return this._http.get<ResponseObject<ServerSettings>>(this.apiURL);
   }
 
-  public saveServerSettings(
-    settings: ServerSettings
-  ): Observable<ResponseObject<ServerSettings>> {
-    this.logger.info(
-      'Odesílám požadavek pro uložení uživatelského nastavení na serveru...'
-    );
-    return this._http.post<ResponseObject<any>>(this.apiURL, settings);
+  public saveServerSettings(settings: ServerSettings): Observable<ResponseObject<ServerSettings>> {
+    this.logger.info('Odesílám požadavek pro uložení uživatelského nastavení na serveru...');
+    return this._http.post<ResponseObject<ServerSettings>>(this.apiURL, settings);
   }
 
-  public seedDatabase(): Observable<ResponseObject<any>> {
+  public seedDatabase(): Observable<ResponseObject<{ statistics: Record<string, string> }>> {
     this.logger.info('Odesílám požadavek na inicializaci databáze...');
-    return this._http.post(this.seedApiURL, null);
+    return this._http.post<ResponseObject<{ statistics: Record<string, string> }>>(this.seedApiURL, null);
   }
 
-  public truncateDatabase(): Observable<ResponseObject<any>> {
+  public truncateDatabase(): Observable<ResponseObject<{ statistics: Record<string, string> }>> {
     this.logger.info('Odesílám požadavek na vymazání obsahu databáze...');
-    return this._http.delete(this.seedApiURL);
+    return this._http.delete<ResponseObject<{ statistics: Record<string, string> }>>(this.seedApiURL);
   }
 }

@@ -15,17 +15,15 @@ export interface BaseActions {
 }
 
 export abstract class BaseFacade<T extends BaseRecord, S> {
-  protected constructor(protected readonly store: Store<S>) {
-  }
+  protected constructor(protected readonly store: Store) {}
 
   public get state(): Observable<S> {
-    // @ts-ignore
     return this.store.select(this.featureSelector);
   }
 
   protected abstract get baseActions(): BaseActions;
 
-  protected abstract get featureSelector(): MemoizedSelector<object, S, DefaultProjectorFn<S>>;
+  protected abstract get featureSelector(): MemoizedSelector<Record<string, unknown>, S, DefaultProjectorFn<S>>;
 
   public allWithGhosts() {
     this.store.dispatch(this.baseActions.allWithGhosts.action());

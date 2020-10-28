@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { filter, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
 import { ResponseObject } from '@stechy1/diplomka-share';
-
-import { SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
 
 import { SettingsService } from '../infrastructure/settings.service';
 import { ServerSettings, Settings } from '../domain/settings';
@@ -17,14 +15,14 @@ import { settingsFeature } from './settings.reducer';
 
 @Injectable()
 export class SettingsEffects {
-  constructor(private readonly settings: SettingsService, private readonly actions$: Actions, private readonly store: Store<SettingsState>) {}
+  constructor(private readonly settings: SettingsService, private readonly actions$: Actions, private readonly store: Store) {}
 
   localSettings$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SettingsActions.actionLocalSettingsRequest),
       withLatestFrom(this.store.select(settingsFeature)),
       filter(([action, settings]) => !settings.localSettingsLoaded),
-      switchMap((action) => {
+      switchMap(() => {
         return of(this.settings.loadLocalSettings()).pipe(
           map((settings: Settings) => {
             if (settings) {
@@ -63,7 +61,7 @@ export class SettingsEffects {
                 serverSettings: response.data,
               });
             } else {
-              return SettingsActions.actionServerSettingsFail();
+              return SettingsActions.actionServerSettingsFail({ serverSettings: null });
             }
           })
         );
@@ -90,9 +88,9 @@ export class SettingsEffects {
   seedDatabase$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SettingsActions.actionServerSeedDatabaseRequest),
-      switchMap((action) => {
+      switchMap(() => {
         return this.settings.seedDatabase().pipe(
-          map((response: ResponseObject<any>) => {
+          map((response: ResponseObject<{ statistics: Record<string, string> }>) => {
             return SettingsActions.actionServerSeedDatabaseDone({
               statistics: response.data,
             });
@@ -105,9 +103,9 @@ export class SettingsEffects {
   truncateDatabase$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SettingsActions.actionServerTruncateDatabaseRequest),
-      switchMap((action) => {
+      switchMap(() => {
         return this.settings.truncateDatabase().pipe(
-          map((response: ResponseObject<any>) => {
+          map((response: ResponseObject<{ statistics: Record<string, string> }>) => {
             return SettingsActions.actionServerTruncateDatabaseDone({
               statistics: response.data,
             });

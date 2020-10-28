@@ -1,29 +1,15 @@
-import {
-  AfterContentChecked,
-  AfterViewChecked,
-  AfterViewInit,
-  Component,
-  ComponentFactoryResolver,
-  Input,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ComponentFactoryResolver, Input, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import {
-  PlayerFacade,
-  PlayerState,
-  StopConditionType,
-} from '@diplomka-frontend/stim-feature-player/domain';
+import { ExperimentStopConditionParams, ExperimentStopConditionType } from '@stechy1/diplomka-share';
+
+import { PlayerFacade, PlayerState, StopConditionType } from '@diplomka-frontend/stim-feature-player/domain';
+
 import { StopConditionDirective } from './stop-condition.directive';
 import { StopConditionComponentProvider } from './stop-condition-component.provider';
-import {
-  ExperimentStopConditionParams,
-  ExperimentStopConditionType,
-} from '@stechy1/diplomka-share';
 import { StopConditionChildComponent } from './stop-condition-child.component';
 
 @Component({
@@ -52,22 +38,14 @@ export class StopConditionsComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.facade.state
       .pipe(
-        map((state: PlayerState) => [
-          state.stopConditionType,
-          state.stopConditions,
-        ]),
+        map((state: PlayerState) => [state.stopConditionType, state.stopConditions]),
         filter((stopCondition) => !!stopCondition)
       )
-      .subscribe(
-        ([stopConditionType, stopConditions]: [
-          ExperimentStopConditionType,
-          ExperimentStopConditionParams
-        ]) => {
-          console.log('Změna stavu');
-          this._stopConditions = stopConditions;
-          this._loadStopCondition(stopConditionType, stopConditions);
-        }
-      );
+      .subscribe(([stopConditionType, stopConditions]: [ExperimentStopConditionType, ExperimentStopConditionParams]) => {
+        console.log('Změna stavu');
+        this._stopConditions = stopConditions;
+        this._loadStopCondition(stopConditionType, stopConditions);
+      });
     setTimeout(() => {
       this.stopConditionType.valueChanges.subscribe((value) => {
         console.log('Změna ve formuláři.');
@@ -76,21 +54,14 @@ export class StopConditionsComponent implements AfterViewInit {
     }, 700);
   }
 
-  private _loadStopCondition(
-    stopConditionType: ExperimentStopConditionType,
-    stopConditions: ExperimentStopConditionParams
-  ) {
-    const componentClass = this.stopConditionComponentProvider.mapStopConditionToComponent(
-      stopConditionType
-    );
+  private _loadStopCondition(stopConditionType: ExperimentStopConditionType, stopConditions: ExperimentStopConditionParams) {
+    const componentClass = this.stopConditionComponentProvider.mapStopConditionToComponent(stopConditionType);
     if (!componentClass || !this.stopConditionDirective) {
       return;
     }
     console.log(ExperimentStopConditionType[stopConditionType]);
 
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      componentClass
-    );
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
     const viewContainerRef = this.stopConditionDirective.viewContainerRef;
     viewContainerRef.clear();
 
@@ -99,12 +70,8 @@ export class StopConditionsComponent implements AfterViewInit {
     const stopConditionsForm = this._stopConditionViewInstance.form;
     this.form.removeControl('stopConditions');
     this.form.addControl('stopConditions', stopConditionsForm);
-    if (
-      !this._stopConditionViewInstance.areStopConditionsValid(stopConditions)
-    ) {
-      console.log(
-        'Nejsou validní lokální zastavovací podmínky. vytvářím nové prázdné.'
-      );
+    if (!this._stopConditionViewInstance.areStopConditionsValid(stopConditions)) {
+      console.log('Nejsou validní lokální zastavovací podmínky. vytvářím nové prázdné.');
       this._stopConditions = this._stopConditionViewInstance.createEmptyStopConditions();
       stopConditions = this._stopConditions;
     }

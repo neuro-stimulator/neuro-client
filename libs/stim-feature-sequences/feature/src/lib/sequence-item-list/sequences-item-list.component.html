@@ -18,7 +18,7 @@
             <!-- Značka typu experimentu (2 sloupce) -->
             <div class="col-2 col-md-1 vertical-center">
               <div [ngClass]="['experiment-icon', 'none']" (click)="handleExperimentIconClick(sequence)">
-                <input type="checkbox" [ngClass]="[selectionMode ? '' : 'd-none']" [checked]="selectedSequences[sequence.id]" (change)="select.emit(sequence)">
+                <input type="checkbox" [ngClass]="[selectionMode ? '' : 'd-none']" [checked]="selectedSequences[sequence.id]" (change)="selectSequence.emit(sequence)">
               </div>
             </div>
 

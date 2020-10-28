@@ -1,8 +1,8 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export class ShareValidators {
-
   private constructor() {
+    // empty body
   }
 
   public static exclusiveMin(min: number): ValidatorFn {

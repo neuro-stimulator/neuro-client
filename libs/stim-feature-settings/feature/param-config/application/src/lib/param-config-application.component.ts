@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, Input, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { NGXLogger } from 'ngx-logger';
@@ -9,26 +9,21 @@ import { TOKEN_SUPPORTED_LANGUAGES } from '@diplomka-frontend/stim-lib-common';
 @Component({
   selector: 'stim-feature-settings-param-config-application',
   templateUrl: './param-config-application.component.html',
-  styleUrls: ['./param-config-application.component.sass']
+  styleUrls: ['./param-config-application.component.sass'],
 })
-export class ParamConfigApplicationComponent implements OnInit {
-
-  @ViewChild('modal', {static: true}) modal: ModalComponent;
+export class ParamConfigApplicationComponent {
+  @ViewChild('modal', { static: true }) modal: ModalComponent;
 
   @Input() form: FormGroup;
 
   public static createForm(): FormGroup {
     return new FormGroup({
       language: new FormControl(null, [Validators.required]),
-      disableTutorial: new FormControl(null)
+      disableTutorial: new FormControl(null),
     });
   }
 
-  constructor(@Inject(TOKEN_SUPPORTED_LANGUAGES) public readonly languages: { value: string, name: string }[],
-              private readonly logger: NGXLogger) { }
-
-  ngOnInit() {
-  }
+  constructor(@Inject(TOKEN_SUPPORTED_LANGUAGES) public readonly languages: { value: string; name: string }[], private readonly logger: NGXLogger) {}
 
   get language() {
     return this.form.get('language');
@@ -39,6 +34,7 @@ export class ParamConfigApplicationComponent implements OnInit {
   }
 
   handleResetTutorial() {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
     this.modal.showComponent = ConfirmDialogComponent;
     this.modal.open({
@@ -46,7 +42,7 @@ export class ParamConfigApplicationComponent implements OnInit {
       confirm: () => {
         self.logger.info('Budu resetovat informace o zobrazených tutoriálech.');
         // self._intro.resetTutorials();
-      }
+      },
     });
   }
 }

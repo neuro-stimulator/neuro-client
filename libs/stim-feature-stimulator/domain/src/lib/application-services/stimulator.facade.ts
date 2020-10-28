@@ -11,7 +11,7 @@ import { StimulatorState } from '../store/stimulator.state';
 
 @Injectable()
 export class StimulatorFacade {
-  constructor(private readonly store: Store<StimulatorState>) {}
+  constructor(private readonly store: Store) {}
 
   public discover() {
     this.store.dispatch(StimulatorActions.actionStimulatorDiscoverRequest());

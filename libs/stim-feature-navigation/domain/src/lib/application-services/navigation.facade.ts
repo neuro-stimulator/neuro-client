@@ -9,15 +9,15 @@ import * as fromNavigation from '../store/navigation.reducer';
 
 @Injectable()
 export class NavigationFacade {
-  constructor(private readonly store: Store<NavigationState>) {}
+  constructor(private readonly store: Store) {}
 
-  set titleArgs(titleArgs: {}) {
+  set titleArgs(titleArgs: Record<string, unknown>) {
     this.store.dispatch(NavigationActions.actionTitleArgsChange({ titleArgs }));
   }
   set subtitle(subtitle: string) {
     this.store.dispatch(NavigationActions.actionSubtitleChange({ subtitle }));
   }
-  set subtitleArgs(subtitleArgs: {}) {
+  set subtitleArgs(subtitleArgs: Record<string, unknown>) {
     this.store.dispatch(NavigationActions.actionSubtitleArgsChange({ subtitleArgs }));
   }
   set icon(icon: string) {

@@ -1,97 +1,92 @@
-import { CommandClientToServer } from "@stechy1/diplomka-share";
+import { CommandClientToServer } from '@stechy1/diplomka-share';
 
 export interface ClientCommand<T> {
   isValid: (params: string[]) => [boolean, string?];
   getName: () => string;
   getValue: (params: string[]) => T;
   description: () => string;
-  getConsumer: () => "client" | "server";
+  getConsumer: () => 'client' | 'server';
 }
 
 class UnknownCommand implements ClientCommand<string> {
-  constructor(private readonly text: string) {
-  }
+  constructor(private readonly text: string) {}
 
   public description() {
-    return "";
+    return '';
   }
 
-  public getConsumer(): "client" | "server" {
-    return "server";
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
   }
 
   public getName(): string {
-    return "unknown";
+    return 'unknown';
   }
 
-  public isValid(params: string[]): [boolean, string?] {
+  public isValid(): [boolean, string?] {
     return [true];
   }
 
-  public getValue(params: string[]): string {
+  public getValue(): string {
     return this.text;
   }
 }
 
 class HelpCommand implements ClientCommand<void> {
   public description() {
-    return "Zobrazí seznam všech dostupných příkazů.";
+    return 'Zobrazí seznam všech dostupných příkazů.';
   }
 
-  public getConsumer(): "client" | "server" {
-    return "client";
+  public getConsumer(): 'client' | 'server' {
+    return 'client';
   }
 
   public getName(): string {
-    return "help";
+    return 'help';
   }
 
   public isValid(params: string[]): [boolean, string?] {
     if (params.length !== 0) {
-      return [
-        false,
-        `Byly zaznamenány neočekávané parametry: '${params.join(", ")}'`
-      ];
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
     }
 
     return [true];
   }
 
-  public getValue(params: string[]): void {
+  public getValue(): void {
     return null;
   }
 }
 
 class DisplayClearCommand implements ClientCommand<void> {
   public description() {
-    return "Vymaže obsah displaye";
+    return 'Vymaže obsah displaye';
   }
 
-  public getConsumer(): "client" | "server" {
-    return "server";
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
   }
 
   public getName(): string {
     return CommandClientToServer.COMMAND_DISPLAY_CLEAR;
   }
 
-  public isValid(params: string[]): [boolean, string?] {
+  public isValid(): [boolean, string?] {
     return [false];
   }
 
-  public getValue(params: string[]): null {
+  public getValue(): null {
     return null;
   }
 }
 
-class DisplayTextCommand
-  implements ClientCommand<{ x: number; y: number; text: string }> {
+class DisplayTextCommand implements ClientCommand<{ x: number; y: number; text: string }> {
   public description() {
     return `Nastaví text:  ${this.getName()} x: number, y: number, text: string`;
   }
 
-  public getConsumer(): "client" | "server" {
-    return "server";
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
   }
 
   public getName(): string {
@@ -100,20 +95,17 @@ class DisplayTextCommand
 
   public isValid(params: string[]): [boolean, string?] {
     if (params.length !== 3) {
-      return [
-        false,
-        `Nedostatečný počet parametrů: 'display show x:number y:number content:text'`
-      ];
+      return [false, 'Nedostatečný počet parametrů: <display show x:number y:number content:text>'];
     }
 
-    if (typeof +params[0] !== "number") {
-      return [false, "X-ová souřadnice musí být číslo!"];
+    if (typeof +params[0] !== 'number') {
+      return [false, 'X-ová souřadnice musí být číslo!'];
     }
-    if (typeof +params[1] !== "number") {
-      return [false, "Y-ová souřadnice musí být číslo!"];
+    if (typeof +params[1] !== 'number') {
+      return [false, 'Y-ová souřadnice musí být číslo!'];
     }
-    if (typeof params[2] !== "string") {
-      return [false, "Obsah musí být řetězec"];
+    if (typeof params[2] !== 'string') {
+      return [false, 'Obsah musí být řetězec'];
     }
 
     return [true];
@@ -126,11 +118,11 @@ class DisplayTextCommand
 
 class StimulatorStateCommand implements ClientCommand<void> {
   public description() {
-    return "Přečte ze stimulátoru aktuální stav.";
+    return 'Přečte ze stimulátoru aktuální stav.';
   }
 
-  public getConsumer(): "client" | "server" {
-    return "server";
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
   }
 
   public getName(): string {
@@ -139,16 +131,13 @@ class StimulatorStateCommand implements ClientCommand<void> {
 
   public isValid(params: string[]): [boolean, string?] {
     if (params.length !== 0) {
-      return [
-        false,
-        `Byly zaznamenány neočekávané parametry: '${params.join(", ")}'`
-      ];
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
     }
 
     return [true];
   }
 
-  public getValue(params: string[]): void {
+  public getValue(): void {
     return null;
   }
 }
@@ -158,8 +147,8 @@ class ExperimentUploadCommand implements ClientCommand<number> {
     return `Nahraje experiment do stimulátoru: ${this.getName()} id: number`;
   }
 
-  public getConsumer(): "client" | "server" {
-    return "server";
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
   }
 
   public getName(): string {
@@ -168,17 +157,11 @@ class ExperimentUploadCommand implements ClientCommand<number> {
 
   public isValid(params: string[]): [boolean, string?] {
     if (params.length === 0) {
-      return [
-        false,
-        `Nedostatečný počet parametrů: 'experiment-upload id:number'`
-      ];
+      return [false, 'Nedostatečný počet parametrů: <experiment-upload id:number>'];
     }
 
     if (params.length > 1) {
-      return [
-        false,
-        `Byly zaznamenány neočekávané parametry: '${params.join(", ")}'`
-      ];
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
     }
 
     return [true];
@@ -194,8 +177,8 @@ class ExperimentSetupCommand implements ClientCommand<number> {
     return `Inicializuje experiment ve stimulátoru: ${this.getName()} id: number`;
   }
 
-  public getConsumer(): "client" | "server" {
-    return "server";
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
   }
 
   public getName(): string {
@@ -204,17 +187,11 @@ class ExperimentSetupCommand implements ClientCommand<number> {
 
   public isValid(params: string[]): [boolean, string?] {
     if (params.length === 0) {
-      return [
-        false,
-        `Nedostatečný počet parametrů: 'experiment-upload id:number'`
-      ];
+      return [false, 'Nedostatečný počet parametrů: <experiment-upload id:number>'];
     }
 
     if (params.length > 1) {
-      return [
-        false,
-        `Byly zaznamenány neočekávané parametry: '${params.join(", ")}'`
-      ];
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
     }
 
     return [true];
@@ -230,8 +207,8 @@ class ExperimentRunCommand implements ClientCommand<void> {
     return `Spustí experiment: ${this.getName()}`;
   }
 
-  public getConsumer(): "client" | "server" {
-    return "server";
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
   }
 
   public getName(): string {
@@ -240,16 +217,13 @@ class ExperimentRunCommand implements ClientCommand<void> {
 
   public isValid(params: string[]): [boolean, string?] {
     if (params.length !== 0) {
-      return [
-        false,
-        `Byly zaznamenány neočekávané parametry: '${params.join(", ")}'`
-      ];
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
     }
 
     return [true];
   }
 
-  public getValue(params: string[]): number {
+  public getValue(): number {
     return null;
   }
 }
@@ -259,8 +233,8 @@ class ExperimentPauseCommand implements ClientCommand<void> {
     return `Pozastaví experiment: ${this.getName()}`;
   }
 
-  public getConsumer(): "client" | "server" {
-    return "server";
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
   }
 
   public getName(): string {
@@ -269,16 +243,13 @@ class ExperimentPauseCommand implements ClientCommand<void> {
 
   public isValid(params: string[]): [boolean, string?] {
     if (params.length !== 0) {
-      return [
-        false,
-        `Byly zaznamenány neočekávané parametry: '${params.join(", ")}'`
-      ];
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
     }
 
     return [true];
   }
 
-  public getValue(params: string[]): number {
+  public getValue(): number {
     return null;
   }
 }
@@ -288,8 +259,8 @@ class ExperimentFinishCommand implements ClientCommand<void> {
     return `Ukončí experiment: ${this.getName()}`;
   }
 
-  public getConsumer(): "client" | "server" {
-    return "server";
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
   }
 
   public getName(): string {
@@ -298,16 +269,13 @@ class ExperimentFinishCommand implements ClientCommand<void> {
 
   public isValid(params: string[]): [boolean, string?] {
     if (params.length !== 0) {
-      return [
-        false,
-        `Byly zaznamenány neočekávané parametry: '${params.join(", ")}'`
-      ];
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
     }
 
     return [true];
   }
 
-  public getValue(params: string[]): number {
+  public getValue(): number {
     return null;
   }
 }
@@ -317,8 +285,8 @@ class ExperimentClearCommand implements ClientCommand<void> {
     return `Vymaže experiment ze stimulátoru: ${this.getName()}`;
   }
 
-  public getConsumer(): "client" | "server" {
-    return "server";
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
   }
 
   public getName(): string {
@@ -327,28 +295,24 @@ class ExperimentClearCommand implements ClientCommand<void> {
 
   public isValid(params: string[]): [boolean, string?] {
     if (params.length !== 0) {
-      return [
-        false,
-        `Byly zaznamenány neočekávané parametry: '${params.join(", ")}'`
-      ];
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
     }
 
     return [true];
   }
 
-  public getValue(params: string[]): number {
+  public getValue(): number {
     return null;
   }
 }
 
-class SequencePartCommand
-  implements ClientCommand<{ offset: number; index: number }> {
+class SequencePartCommand implements ClientCommand<{ offset: number; index: number }> {
   public description() {
     return `Nahraje vybranou část sekvence do stimulátoru: ${this.getName()} offset: number, index: number`;
   }
 
-  public getConsumer(): "client" | "server" {
-    return "server";
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
   }
 
   public getName(): string {
@@ -357,17 +321,11 @@ class SequencePartCommand
 
   public isValid(params: string[]): [boolean, string?] {
     if (params.length === 0) {
-      return [
-        false,
-        `Nedostatečný počet parametrů: 'sequence part offset:number index:number'`
-      ];
+      return [false, 'Nedostatečný počet parametrů: <sequence part offset:number index:number>'];
     }
 
     if (params.length > 2) {
-      return [
-        false,
-        `Byly zaznamenány neočekávané parametry: '${params.join(", ")}'`
-      ];
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
     }
 
     return [true];
@@ -379,18 +337,14 @@ class SequencePartCommand
 }
 
 class MemoryCommand implements ClientCommand<number> {
-  private static readonly MEMORY_TYPE: string[] = [
-    "config",
-    "counters",
-    "accumulator"
-  ];
+  private static readonly MEMORY_TYPE: string[] = ['config', 'counters', 'accumulator'];
 
   public description() {
     return `Vypíše zadaný kus paměti ze stimulátoru v raw podobě do konzole: ${this.getName()} memory: [${MemoryCommand.MEMORY_TYPE.toString()}]`;
   }
 
-  public getConsumer(): "client" | "server" {
-    return "server";
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
   }
 
   public getName(): string {
@@ -399,24 +353,15 @@ class MemoryCommand implements ClientCommand<number> {
 
   public isValid(params: string[]): [boolean, string?] {
     if (params.length === 0) {
-      return [
-        false,
-        `Nedostatečný počet parametrů: 'debug [config, counters, accumulator].'`
-      ];
+      return [false, 'Nedostatečný počet parametrů: <debug [config, counters, accumulator].>'];
     }
     if (params.length > 1) {
-      return [
-        false,
-        `Byly zaznamenány neočekávané parametry: '${params.join(", ")}'.`
-      ];
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'.`];
     }
 
     const memoryType = params[0];
     if (MemoryCommand.MEMORY_TYPE.indexOf(memoryType) === -1) {
-      return [
-        false,
-        `Zadali jste nevalidní typ paměti. \nLze zadat pouze: [config, counters, accumulator].`
-      ];
+      return [false, 'Zadali jste nevalidní typ paměti. \nLze zadat pouze: [config, counters, accumulator].'];
     }
 
     return [true];
@@ -428,14 +373,13 @@ class MemoryCommand implements ClientCommand<number> {
 }
 
 // Backdoor do stimulátoru
-class OutputSetCommand
-  implements ClientCommand<{ index: number; brightness: number }> {
+class OutputSetCommand implements ClientCommand<{ index: number; brightness: number }> {
   public description() {
     return `Nastaví jeden konkrétní výstup na zadanou hodnotu: ${this.getName()} index: number, brightness: number`;
   }
 
-  public getConsumer(): "client" | "server" {
-    return "server";
+  public getConsumer(): 'client' | 'server' {
+    return 'server';
   }
 
   public getName(): string {
@@ -444,24 +388,18 @@ class OutputSetCommand
 
   public isValid(params: string[]): [boolean, string?] {
     if (params.length < 2) {
-      return [
-        false,
-        `Nedostatečný počet parametrů: 'output set index:number brightness:number'`
-      ];
+      return [false, 'Nedostatečný počet parametrů: <output set index:number brightness:number>'];
     }
 
     if (params.length > 2) {
-      return [
-        false,
-        `Byly zaznamenány neočekávané parametry: '${params.join(", ")}'`
-      ];
+      return [false, `Byly zaznamenány neočekávané parametry: '${params.join(', ')}'`];
     }
 
-    if (typeof +params[0] !== "number") {
-      return [false, "Index musí být číslo!"];
+    if (typeof +params[0] !== 'number') {
+      return [false, 'Index musí být číslo!'];
     }
-    if (typeof +params[1] !== "number") {
-      return [false, "Svítivost musí být!"];
+    if (typeof +params[1] !== 'number') {
+      return [false, 'Svítivost musí být!'];
     }
 
     return [true];
@@ -486,5 +424,5 @@ export const COMMANDS = [
   ExperimentClearCommand,
   SequencePartCommand,
   MemoryCommand,
-  OutputSetCommand
+  OutputSetCommand,
 ];

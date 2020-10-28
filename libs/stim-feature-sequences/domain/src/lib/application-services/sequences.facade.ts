@@ -12,7 +12,7 @@ import * as fromSequences from '../store/sequences.reducer';
 
 @Injectable()
 export class SequencesFacade extends BaseFacade<Sequence, SequencesState> {
-  constructor(store: Store<SequencesState>) {
+  constructor(store: Store) {
     super(store);
   }
 
@@ -51,7 +51,7 @@ export class SequencesFacade extends BaseFacade<Sequence, SequencesState> {
     };
   }
 
-  protected get featureSelector(): MemoizedSelector<object, SequencesState, DefaultProjectorFn<SequencesState>> {
+  protected get featureSelector(): MemoizedSelector<Record<string, unknown>, SequencesState, DefaultProjectorFn<SequencesState>> {
     return fromSequences.sequencesFeature;
   }
 

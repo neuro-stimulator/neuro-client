@@ -4,13 +4,13 @@ import { of, Subscription } from 'rxjs';
 
 import { DialogChildComponent } from '../dialog-child.component';
 import { ModalComponent } from '../modal.component';
+import { ConfirmDialogArgs } from './confirm-dialog.args';
 
 @Component({
   templateUrl: './confirm-dialog.component.html',
-  styleUrls: ['./confirm-dialog.component.sass']
+  styleUrls: ['./confirm-dialog.component.sass'],
 })
 export class ConfirmDialogComponent extends DialogChildComponent {
-
   message: string;
 
   private _confirmSubscription: Subscription;
@@ -35,18 +35,24 @@ export class ConfirmDialogComponent extends DialogChildComponent {
     this._showSubscription = modal.show.subscribe((args) => this._prepareForm(args[0]));
   }
 
-  unbind(modal: ModalComponent) {
+  unbind() {
     this._confirmSubscription.unsubscribe();
     this._cancelSubscription.unsubscribe();
     this._showSubscription.unsubscribe();
   }
 
-  private _prepareForm(args: any) {
+  private _prepareForm(args: ConfirmDialogArgs) {
     this.message = args.message;
-    this._handleConfirmDialog = args.confirm || (() => {
-    });
-    this._handleCancelDialog = args.cancel || (() => {
-    });
+    this._handleConfirmDialog =
+      args.confirm ||
+      (() => {
+        // empty body
+      });
+    this._handleCancelDialog =
+      args.cancel ||
+      (() => {
+        // empty body
+      });
   }
 
   private _handleConfirm() {

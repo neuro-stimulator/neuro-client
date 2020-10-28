@@ -15,24 +15,17 @@ export function authReducer(authState: AuthState, authAction: Action) {
       isAuthenticated: undefined,
       user: emptyUser,
     },
-    on(
-      AuthActions.actionLoginRequestDone,
-      AuthActions.actionRefreshTokenRequestDone,
-      (state: AuthState, action) => ({
-        ...state,
-        user: action.user,
-        isAuthenticated: true,
-      })
-    ),
-    on(
-      AuthActions.actionRefreshTokenRequestFail,
-      (state: AuthState, action) => ({
-        ...state,
-        isAuthenticated: false,
-        user: emptyUser,
-      })
-    ),
-    on(AuthActions.actionLogoutRequestDone, (state: AuthState, action) => ({
+    on(AuthActions.actionLoginRequestDone, AuthActions.actionRefreshTokenRequestDone, (state: AuthState, action) => ({
+      ...state,
+      user: action.user,
+      isAuthenticated: true,
+    })),
+    on(AuthActions.actionRefreshTokenRequestFail, (state: AuthState) => ({
+      ...state,
+      isAuthenticated: false,
+      user: emptyUser,
+    })),
+    on(AuthActions.actionLogoutRequestDone, (state: AuthState) => ({
       ...state,
       user: emptyUser,
       isAuthenticated: false,

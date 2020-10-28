@@ -16,20 +16,14 @@ import { MESSAGE_CODE_TRANSLATOR, SERVER_MESSAGE_CODE_PREFIX } from './message-c
 export class ResponseInterceptor implements HttpInterceptor {
   private readonly TOASTER_MAP: { [key: number]: (text: string) => void } = {};
 
-  constructor(
-    private readonly _toaster: ToastrService,
-    private readonly translator: TranslateService,
-    private readonly logger: NGXLogger
-  ) {
+  constructor(private readonly _toaster: ToastrService, private readonly translator: TranslateService, private readonly logger: NGXLogger) {
     this.TOASTER_MAP[0] = (text: string) => _toaster.success(text);
     this.TOASTER_MAP[1] = (text: string) => _toaster.info(text);
     this.TOASTER_MAP[2] = (text: string) => _toaster.warning(text);
     this.TOASTER_MAP[3] = (text: string) => _toaster.error(text);
   }
 
-  private static _transformMessageCodeToToasterType(
-    messageCode: string
-  ): number {
+  private static _transformMessageCodeToToasterType(messageCode: string): number {
     return Math.min(Math.floor(+messageCode.substr(-3) / 100), 3);
   }
 
@@ -38,10 +32,7 @@ export class ResponseInterceptor implements HttpInterceptor {
    * Pokud odpověď obsahuje vlastnost 'message' v těle,
    * zobrazí se zpráva na základě informací
    */
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(req).pipe(
       map((response) => {
         if (response instanceof HttpResponse) {
@@ -69,22 +60,17 @@ export class ResponseInterceptor implements HttpInterceptor {
   }
 
   private _handleResponseMessage(message: ResponseMessage) {
-    const toasterMapIndex = ResponseInterceptor._transformMessageCodeToToasterType(
-      `${message.code}`
-    );
+    const toasterMapIndex = ResponseInterceptor._transformMessageCodeToToasterType(`${message.code}`);
     this.translator
-        .get(
-          `${SERVER_MESSAGE_CODE_PREFIX}${MESSAGE_CODE_TRANSLATOR[message.code]}`,
-          message.params
-        )
-        .toPromise()
-        .then((value: string) => {
-          if (this.TOASTER_MAP[toasterMapIndex]) {
-            this.TOASTER_MAP[toasterMapIndex](value);
-          } else {
-            this.logger.error(value);
-            this.TOASTER_MAP[3]('Neznámá chyba!');
-          }
-        });
+      .get(`${SERVER_MESSAGE_CODE_PREFIX}${MESSAGE_CODE_TRANSLATOR[message.code]}`, message.params)
+      .toPromise()
+      .then((value: string) => {
+        if (this.TOASTER_MAP[toasterMapIndex]) {
+          this.TOASTER_MAP[toasterMapIndex](value);
+        } else {
+          this.logger.error(value);
+          this.TOASTER_MAP[3]('Neznámá chyba!');
+        }
+      });
   }
 }

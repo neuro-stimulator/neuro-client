@@ -1,12 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  AfterContentChecked,
-  AfterViewInit,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Observable, Subscription } from 'rxjs';
@@ -14,16 +7,9 @@ import { NGXLogger } from 'ngx-logger';
 
 import { Experiment, Output } from '@stechy1/diplomka-share';
 
-import {
-  ContentTogglerDirective,
-  ExperimentViewerComponent,
-} from '@diplomka-frontend/stim-lib-ui';
+import { ContentTogglerDirective, ExperimentViewerComponent } from '@diplomka-frontend/stim-lib-ui';
 import { ConnectionStatus } from '@diplomka-frontend/stim-lib-connection';
-import {
-  PlayerFacade,
-  PlayerState,
-  StopConditionType,
-} from '@diplomka-frontend/stim-feature-player/domain';
+import { PlayerFacade, PlayerState, StopConditionType } from '@diplomka-frontend/stim-feature-player/domain';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { StimulatorStateType } from '@diplomka-frontend/stim-feature-stimulator/domain';
 
@@ -47,9 +33,7 @@ export class PlayerComponent implements OnInit, AfterViewInit, OnDestroy {
 
   form = new FormGroup({
     repeat: new FormControl(1, [Validators.required, Validators.min(0)]),
-    betweenExperimentInterval: new FormControl({ value: 0, disabled: true }, [
-      Validators.min(0),
-    ]),
+    betweenExperimentInterval: new FormControl({ value: 0, disabled: true }, [Validators.min(0)]),
     autoplay: new FormControl({ value: false, disabled: true }),
     stopConditionType: new FormControl(0, [Validators.required]),
     stopConditions: new FormGroup({}),
@@ -69,120 +53,52 @@ export class PlayerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private _fillButtonStates() {
-    this.BUTTON_DISABLED_STATES[StimulatorStateType.UNKNOWN] = [
-      true,
-      true,
-      true,
-      true,
-      true,
-    ]; // upload, run, pause, finish, clear
-    this.BUTTON_DISABLED_STATES[StimulatorStateType.READY] = [
-      false,
-      true,
-      true,
-      true,
-      true,
-    ]; // upload, run, pause, finish, clear
-    this.BUTTON_DISABLED_STATES[StimulatorStateType.UPLOAD] = [
-      true,
-      true,
-      true,
-      true,
-      false,
-    ]; // upload, run, pause, finish, clear
-    this.BUTTON_DISABLED_STATES[StimulatorStateType.SETUP] = [
-      true,
-      false,
-      true,
-      true,
-      false,
-    ]; // upload, run, pause, finish, clear
-    this.BUTTON_DISABLED_STATES[StimulatorStateType.RUN] = [
-      true,
-      true,
-      false,
-      false,
-      true,
-    ]; // upload, run, pause, finish, clear
-    this.BUTTON_DISABLED_STATES[StimulatorStateType.PAUSE] = [
-      true,
-      false,
-      true,
-      true,
-      true,
-    ]; // upload, run, pause, finish, clear
-    this.BUTTON_DISABLED_STATES[StimulatorStateType.FINISH] = [
-      false,
-      true,
-      true,
-      true,
-      true,
-    ]; // upload, run, pause, finish, clear
-    this.BUTTON_DISABLED_STATES[StimulatorStateType.CLEAR] = [
-      false,
-      true,
-      true,
-      true,
-      true,
-    ]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.UNKNOWN] = [true, true, true, true, true]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.READY] = [false, true, true, true, true]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.UPLOAD] = [true, true, true, true, false]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.SETUP] = [true, false, true, true, false]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.RUN] = [true, true, false, false, true]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.PAUSE] = [true, false, true, true, true]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.FINISH] = [false, true, true, true, true]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.CLEAR] = [false, true, true, true, true]; // upload, run, pause, finish, clear
     Object.freeze(this.BUTTON_DISABLED_STATES);
   }
 
   ngOnInit() {
-    if (
-      this._route.snapshot.params['type'] === undefined ||
-      this._route.snapshot.params['id'] === undefined
-    ) {
+    if (this._route.snapshot.params['type'] === undefined || this._route.snapshot.params['id'] === undefined) {
       this._router.navigate(['/', 'experiments']);
     }
 
-    this._experimentSubscription = this.experiment.subscribe(
-      (experiment: Experiment<Output>) => {
-        this._navigation.titleArgs = { name: experiment.name };
-        this.player.requestAvailableStopConditions();
-      }
-    );
+    this._experimentSubscription = this.experiment.subscribe((experiment: Experiment<Output>) => {
+      this._navigation.titleArgs = { name: experiment.name };
+      this.player.requestAvailableStopConditions();
+    });
     this.player.loadExperiment(this._route.snapshot.params['id']);
-    this._stimulatorStateSubscription = this.player.stimulatorState$.subscribe(
-      (status: number) => {
-        this._stimulatorState = status;
-        if (
-          status === StimulatorStateType.READY ||
-          status === StimulatorStateType.CLEAR
-        ) {
-          this.logger.info('Aktivuji formulářové prvky.');
-          this.form.enable();
-          this._updateDisabledAutoplay(this.repeat.value, true);
-        } else {
-          this.logger.info('Deaktivuji formulářové prvky.');
-          this.form.disable();
-          this._updateDisabledAutoplay(this.repeat.value, true);
-        }
+    this._stimulatorStateSubscription = this.player.stimulatorState$.subscribe((status: number) => {
+      this._stimulatorState = status;
+      if (status === StimulatorStateType.READY || status === StimulatorStateType.CLEAR) {
+        this.logger.info('Aktivuji formulářové prvky.');
+        this.form.enable();
+        this._updateDisabledAutoplay(this.repeat.value, true);
+      } else {
+        this.logger.info('Deaktivuji formulářové prvky.');
+        this.form.disable();
+        this._updateDisabledAutoplay(this.repeat.value, true);
       }
-    );
-    this._playerStateSubscription = this.player.state.subscribe(
-      (state: PlayerState) => {
-        this.form.patchValue({
-          repeat: state.repeat,
-          betweenExperimentInterval: state.betweenExperimentInterval,
-          autoplay: state.autoplay,
-          stopConditionType: state.stopConditionType,
-        });
-      }
-    );
-    this._repeatValueSubscription = this.repeat.valueChanges.subscribe(
-      (repeat: number) => {
-        this._updateDisabledAutoplay(repeat > 0, this._allowControlReset());
-        this._updateDisabledStopConditions(this._allowControlReset());
-      }
-    );
-    this._autoplayValueSubscription = this.autoplay.valueChanges.subscribe(
-      (enabled: boolean) =>
-        this._updateBetweenExperimentInterval(
-          enabled,
-          this._allowControlReset()
-        )
-    );
+    });
+    this._playerStateSubscription = this.player.state.subscribe((state: PlayerState) => {
+      this.form.patchValue({
+        repeat: state.repeat,
+        betweenExperimentInterval: state.betweenExperimentInterval,
+        autoplay: state.autoplay,
+        stopConditionType: state.stopConditionType,
+      });
+    });
+    this._repeatValueSubscription = this.repeat.valueChanges.subscribe((repeat: number) => {
+      this._updateDisabledAutoplay(repeat > 0, this._allowControlReset());
+      this._updateDisabledStopConditions(this._allowControlReset());
+    });
+    this._autoplayValueSubscription = this.autoplay.valueChanges.subscribe((enabled: boolean) => this._updateBetweenExperimentInterval(enabled, this._allowControlReset()));
   }
 
   ngAfterViewInit(): void {
@@ -200,10 +116,7 @@ export class PlayerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private _allowControlReset(): boolean {
-    return (
-      this._stimulatorState === StimulatorStateType.READY ||
-      this._stimulatorState === StimulatorStateType.CLEAR
-    );
+    return this._stimulatorState === StimulatorStateType.READY || this._stimulatorState === StimulatorStateType.CLEAR;
   }
 
   private _updateDisabledAutoplay(enabled: boolean, reset: boolean) {

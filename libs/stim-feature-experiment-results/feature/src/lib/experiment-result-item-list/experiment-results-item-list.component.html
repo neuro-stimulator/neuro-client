@@ -18,7 +18,7 @@
             <div class="col-2 col-md-1 vertical-center">
               <div [ngClass]="['experiment-icon', ExperimentType[experimentResult.type].toLowerCase()]" (click)="handleExperimentResultIconClick(experimentResult)">
                 <span [ngClass]="['align-middle', selectionMode ? 'd-none' : '']">{{ExperimentType[experimentResult.type]}}</span>
-                <input type="checkbox" [ngClass]="[selectionMode ? '' : 'd-none']" [checked]="selectedExperimentResults[experimentResult.id]" (change)="select.emit(experimentResult)">
+                <input type="checkbox" [ngClass]="[selectionMode ? '' : 'd-none']" [checked]="selectedExperimentResults[experimentResult.id]" (change)="selectResult.emit(experimentResult)">
               </div>
             </div>
             <!-- Experiment result Name -->

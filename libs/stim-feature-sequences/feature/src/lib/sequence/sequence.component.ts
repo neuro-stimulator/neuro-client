@@ -1,38 +1,18 @@
-import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Observable, of, Subscription, TimeoutError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 
-import {
-  createEmptyExperimentERP,
-  createEmptySequence,
-  Experiment,
-  ExperimentType,
-  Sequence,
-} from '@stechy1/diplomka-share';
+import { createEmptySequence, ExperimentType, Sequence } from '@stechy1/diplomka-share';
 
 import { SequenceNameValidator } from '../sequence-name-validator';
-import {
-  SequencesFacade,
-  SequencesState,
-} from '@diplomka-frontend/stim-feature-sequences/domain';
-import {
-  ExperimentsFacade,
-  ExperimentsState,
-} from '@diplomka-frontend/stim-feature-experiments/domain';
+import { SequencesFacade, SequencesState } from '@diplomka-frontend/stim-feature-sequences/domain';
+import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
 import { map, take } from 'rxjs/operators';
-import {
-  AliveCheckerFacade,
-  ConnectionInformationState,
-} from '@diplomka-frontend/stim-lib-connection';
+import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
 
 @Component({
   selector: 'stim-feature-sequences-sequence',
@@ -44,10 +24,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
 
   form: FormGroup = new FormGroup({
     id: new FormControl(),
-    experimentId: new FormControl(null, [
-      Validators.required,
-      Validators.min(1),
-    ]),
+    experimentId: new FormControl(null, [Validators.required, Validators.min(1)]),
     name: new FormControl(null, {
       validators: [Validators.required],
       asyncValidators: [this._nameValidator.validate.bind(this._nameValidator)],
@@ -74,9 +51,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
   private _loadSequence(sequenceID: string) {
     if (sequenceID !== undefined) {
       if (isNaN(parseInt(sequenceID, 10))) {
-        this.toastr.error(
-          `ID sequence: '${sequenceID}' se nepodařilo naparsovat!`
-        );
+        this.toastr.error(`ID sequence: '${sequenceID}' se nepodařilo naparsovat!`);
         return;
       }
 
@@ -106,13 +81,9 @@ export class SequenceComponent implements OnInit, OnDestroy {
       .subscribe((sequence: Sequence) => {
         this._updateFormGroup(sequence);
       });
-    this._facade.state
-      .pipe(
-        map((state: SequencesState) => state.selectedSequence.sequence?.data)
-      )
-      .subscribe((data: number[]) => {
-        this.form.patchValue({ data });
-      });
+    this._facade.state.pipe(map((state: SequencesState) => state.selectedSequence.sequence?.data)).subscribe((data: number[]) => {
+      this.form.patchValue({ data });
+    });
 
     this._route.params.subscribe((params: Params) => {
       this._loadSequence(params['id']);
@@ -145,7 +116,9 @@ export class SequenceComponent implements OnInit, OnDestroy {
     }
   }
 
-  handleSequenceChanged(changed: boolean) {}
+  handleSequenceChanged(changed: boolean) {
+    // empty body
+  }
 
   get name(): AbstractControl {
     return this.form.get('name');

@@ -9,9 +9,9 @@ export const actionNavigationChange = createAction(
   }>()
 );
 
-export const actionTitleArgsChange = createAction('[Navigation] title args change', props<{ titleArgs: {} }>());
+export const actionTitleArgsChange = createAction('[Navigation] title args change', props<{ titleArgs: Record<string, unknown> }>());
 export const actionSubtitleChange = createAction('[Navigation] subtitle change', props<{ subtitle: string }>());
-export const actionSubtitleArgsChange = createAction('[Navigation] subtitle args change', props<{ subtitleArgs: {} }>());
+export const actionSubtitleArgsChange = createAction('[Navigation] subtitle args change', props<{ subtitleArgs: Record<string, unknown> }>());
 export const actionIconChange = createAction('[Navigation] icon change', props<{ icon: string }>());
 export const actionCustomNavColorChange = createAction('[Navigation] custom nav color change', props<{ customNavColor: string }>());
 

@@ -1,7 +1,7 @@
 import { Component, Type } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { NGXLogger } from 'ngx-logger';
@@ -11,11 +11,8 @@ import { ExperimentResult, ExperimentType } from '@stechy1/diplomka-share';
 import { ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
 import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
 import { FilterDialogComponent } from '@diplomka-frontend/stim-lib-ui';
-import {
-  ExperimentResultsFacade,
-  ExperimentResultsState,
-} from '@diplomka-frontend/stim-feature-experiment-results/domain';
-import { BaseListController } from '@diplomka-frontend/stim-lib-ui';
+import { ExperimentResultsFacade, ExperimentResultsState } from '@diplomka-frontend/stim-feature-experiment-results/domain';
+import { BaseListComponent } from '@diplomka-frontend/stim-lib-ui';
 import { ListButtonsAddonService } from '@diplomka-frontend/stim-lib-ui';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
@@ -26,10 +23,7 @@ import { ExperimentResultsFilterDialogComponent } from './experiment-results-fil
   templateUrl: './experiment-results.component.html',
   styleUrls: ['./experiment-results.component.sass'],
 })
-export class ExperimentResultsComponent extends BaseListController<
-  ExperimentResult,
-  ExperimentResultsState
-> {
+export class ExperimentResultsComponent extends BaseListComponent<ExperimentResult, ExperimentResultsState> {
   private static readonly INTRO_EXPERIMENT_RESULT: ExperimentResult = {
     id: -1,
     experimentID: -1,
@@ -51,16 +45,7 @@ export class ExperimentResultsComponent extends BaseListController<
     location: Location,
     private readonly logger: NGXLogger
   ) {
-    super(
-      service,
-      filterService,
-      navigation,
-      connection,
-      buttonsAddonService,
-      router,
-      route,
-      location
-    );
+    super(service, filterService, navigation, connection, buttonsAddonService, router, route, location);
   }
 
   handleView(experimentResult: ExperimentResult) {
@@ -70,14 +55,13 @@ export class ExperimentResultsComponent extends BaseListController<
   }
 
   handleDelete(experimentResult: ExperimentResult) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
     this.modal.showComponent = ConfirmDialogComponent;
     this.modal.open({
       message: 'EXPERIMENT_RESULTS.DIALOGS.DELETE.QUESTION',
       confirm: () => {
-        self.logger.info(
-          `Budu mazat výsledek experimentu s id: ${experimentResult.id}.`
-        );
+        self.logger.info(`Budu mazat výsledek experimentu s id: ${experimentResult.id}.`);
         return self._facade.delete(experimentResult.id);
       },
     });
@@ -91,9 +75,7 @@ export class ExperimentResultsComponent extends BaseListController<
     return ExperimentResultsComponent.INTRO_EXPERIMENT_RESULT;
   }
 
-  protected get filterDialogComponent(): Type<
-    FilterDialogComponent<ExperimentResult>
-  > {
+  protected get filterDialogComponent(): Type<FilterDialogComponent<ExperimentResult>> {
     return ExperimentResultsFilterDialogComponent;
   }
 
@@ -102,14 +84,10 @@ export class ExperimentResultsComponent extends BaseListController<
   }
 
   protected get records$(): Observable<ExperimentResult[]> {
-    return this.state.pipe(
-      map((state: ExperimentResultsState) => state.experimentResults)
-    );
+    return this.state.pipe(map((state: ExperimentResultsState) => state.experimentResults));
   }
 
   protected get selectionMode$(): Observable<boolean> {
-    return this.state.pipe(
-      map((state: ExperimentResultsState) => state.selectionMode)
-    );
+    return this.state.pipe(map((state: ExperimentResultsState) => state.selectionMode));
   }
 }

@@ -4,13 +4,13 @@ import { Subscription } from 'rxjs';
 
 import { ModalComponent } from '../modal.component';
 import { DialogChildComponent } from '../dialog-child.component';
+import { InformDialogArgs } from './inform-dialog.args';
 
 @Component({
   templateUrl: './inform-dialog.component.html',
-  styleUrls: ['./inform-dialog.component.sass']
+  styleUrls: ['./inform-dialog.component.sass'],
 })
 export class InformDialogComponent extends DialogChildComponent {
-
   message: string;
 
   private _showSubscription: Subscription;
@@ -27,12 +27,11 @@ export class InformDialogComponent extends DialogChildComponent {
     this._showSubscription = modal.show.subscribe((args) => this._prepareForm(args[0]));
   }
 
-  unbind(modal: ModalComponent) {
+  unbind() {
     this._showSubscription.unsubscribe();
   }
 
-  private _prepareForm(args: any) {
+  private _prepareForm(args: InformDialogArgs) {
     this.message = args.message;
   }
-
 }

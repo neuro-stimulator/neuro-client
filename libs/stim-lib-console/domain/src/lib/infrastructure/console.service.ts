@@ -1,23 +1,23 @@
-import { Inject, Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import { Observable } from "rxjs";
-import { TranslateService } from "@ngx-translate/core";
-import { LocalStorageService } from "angular-2-local-storage";
+import { Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { LocalStorageService } from 'angular-2-local-storage';
 
-import { ResponseObject } from "@stechy1/diplomka-share";
+import { ResponseObject } from '@stechy1/diplomka-share';
 
-import { TOKEN_CONSOLE_API_URL } from "@diplomka-frontend/stim-lib-common";
+import { TOKEN_CONSOLE_API_URL } from '@diplomka-frontend/stim-lib-common';
 
-import { ParseCommandResult } from "../domain/parse-command-result";
-import { ConsoleCommand } from "../domain/console-command";
-import { NGXLogger } from "ngx-logger";
+import { ParseCommandResult } from '../domain/parse-command-result';
+import { ConsoleCommand } from '../domain/console-command';
+import { NGXLogger } from 'ngx-logger';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class ConsoleService {
-  private static readonly STORAGE_KEY = "commands";
+  private static readonly STORAGE_KEY = 'commands';
 
   private readonly _commands: ConsoleCommand[] = [];
 
@@ -31,13 +31,9 @@ export class ConsoleService {
     this._loadHistory();
   }
 
-  // }
-  sendCommand(command: ParseCommandResult): Observable<ResponseObject<any>> {
-    this.logger.info("Odesílám požadavek na zpracování příkazu z konzole.");
-    return this._http.post(
-      `${this.accessPoint}/${command.commandName}`,
-      command.parameters
-    );
+  sendCommand(command: ParseCommandResult): Observable<ResponseObject<unknown>> {
+    this.logger.info('Odesílám požadavek na zpracování příkazu z konzole.');
+    return this._http.post(`${this.accessPoint}/${command.commandName}`, command.parameters);
   }
 
   public loadHistory(): ConsoleCommand[] {
@@ -104,7 +100,7 @@ export class ConsoleService {
     const data: ConsoleCommand = {
       date: new Date(),
       text: rawCommand,
-      fromUser
+      fromUser,
     };
 
     this._commands.push(data);
@@ -119,8 +115,7 @@ export class ConsoleService {
   }
 
   private _loadHistory() {
-    const commands =
-      this._storage.get<ConsoleCommand[]>(ConsoleService.STORAGE_KEY) || [];
+    const commands = this._storage.get<ConsoleCommand[]>(ConsoleService.STORAGE_KEY) || [];
     this._commands.push(...commands);
   }
 

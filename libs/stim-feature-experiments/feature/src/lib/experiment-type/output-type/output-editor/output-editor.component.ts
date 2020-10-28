@@ -1,16 +1,9 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import {
-  HorizontalAlignment,
-  Output,
-  VerticalAlignment,
-} from '@stechy1/diplomka-share';
+import { HorizontalAlignment, Output, VerticalAlignment } from '@stechy1/diplomka-share';
 
-import {
-  DialogChildComponent,
-  ModalComponent,
-} from '@diplomka-frontend/stim-lib-modal';
+import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { OutputEntry } from './output-entry';
 import { Subscription } from 'rxjs';
 
@@ -19,9 +12,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './output-editor.component.html',
   styleUrls: ['./output-editor.component.scss'],
 })
-export class OutputEditorComponent
-  extends DialogChildComponent
-  implements OnInit {
+export class OutputEditorComponent extends DialogChildComponent implements OnInit {
   @ViewChild('canvas', { static: true }) canvas: ElementRef;
 
   @Input() outputEntries: OutputEntry[] = [];
@@ -30,11 +21,7 @@ export class OutputEditorComponent
     y: number;
   } = { x: 640, y: 480 };
 
-  private readonly vh =
-    Math.max(
-      document.documentElement.clientHeight || 0,
-      window.innerHeight || 0
-    ) * 0.5;
+  private readonly vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) * 0.5;
 
   private _dragging = false;
   private _offsetX: number;
@@ -89,24 +76,14 @@ export class OutputEditorComponent
 
       graphics.strokeStyle = 'black';
       graphics.lineWidth = 1;
-      graphics.fillRect(
-        outputEntry.x - this._outputSize2,
-        outputEntry.y - this._outputSize2,
-        this._outputSize,
-        this._outputSize
-      );
+      graphics.fillRect(outputEntry.x - this._outputSize2, outputEntry.y - this._outputSize2, this._outputSize, this._outputSize);
       // Pokud je obrázek vybraný
       if (outputEntry.selected) {
         // Dodatečně nakreslím obdélník
         graphics.save();
         graphics.strokeStyle = 'green';
         graphics.lineWidth = 3;
-        graphics.strokeRect(
-          outputEntry.x - this._outputSize2 - 1,
-          outputEntry.y - this._outputSize2 - 1,
-          this._outputSize + 1,
-          this._outputSize + 1
-        );
+        graphics.strokeRect(outputEntry.x - this._outputSize2 - 1, outputEntry.y - this._outputSize2 - 1, this._outputSize + 1, this._outputSize + 1);
         graphics.restore();
       }
     }
@@ -119,16 +96,8 @@ export class OutputEditorComponent
       graphics.lineTo(width, this._startY);
       graphics.stroke();
       graphics.strokeStyle = 'black';
-      graphics.strokeText(
-        `${Math.round((this._startX / canvas.width) * this.realViewport.x)}`,
-        this._startX,
-        height - 1
-      );
-      graphics.strokeText(
-        `${Math.round((this._startY / canvas.height) * this.realViewport.y)}`,
-        1,
-        this._startY
-      );
+      graphics.strokeText(`${Math.round((this._startX / canvas.width) * this.realViewport.x)}`, this._startX, height - 1);
+      graphics.strokeText(`${Math.round((this._startY / canvas.height) * this.realViewport.y)}`, 1, this._startY);
     }
   }
 
@@ -138,13 +107,8 @@ export class OutputEditorComponent
     }
 
     const canvas = this.canvas.nativeElement as HTMLCanvasElement;
-    const outputEntry = this.outputEntries.filter(
-      (entry) => entry.id === this.selectedID
-    )[0];
-    outputEntry[identifier] = Math.round(
-      (value / this.realViewport[identifier]) *
-        (identifier === 'x' ? canvas.width : canvas.height)
-    );
+    const outputEntry = this.outputEntries.filter((entry) => entry.id === this.selectedID)[0];
+    outputEntry[identifier] = Math.round((value / this.realViewport[identifier]) * (identifier === 'x' ? canvas.width : canvas.height));
     if (!this._dragging) {
       this._coordinatesRefresh = true;
       this._drawOutputs();
@@ -157,22 +121,14 @@ export class OutputEditorComponent
       return;
     }
 
-    const outputEntry = this.outputEntries.filter(
-      (entry) => entry.id === this.selectedID
-    )[0];
+    const outputEntry = this.outputEntries.filter((entry) => entry.id === this.selectedID)[0];
     outputEntry.manualAlignment = value;
   }
 
   ngOnInit(): void {
-    this.controlPositionX.valueChanges.subscribe((valueX) =>
-      this._onValueChange(+valueX, 'x')
-    );
-    this.controlPositionY.valueChanges.subscribe((valueY) =>
-      this._onValueChange(+valueY, 'y')
-    );
-    this.manualAlignment.valueChanges.subscribe((value) =>
-      this._onManualAlignmentChange(value)
-    );
+    this.controlPositionX.valueChanges.subscribe((valueX) => this._onValueChange(+valueX, 'x'));
+    this.controlPositionY.valueChanges.subscribe((valueY) => this._onValueChange(+valueY, 'y'));
+    this.manualAlignment.valueChanges.subscribe((value) => this._onManualAlignmentChange(value));
   }
 
   bind(modal: ModalComponent) {
@@ -182,24 +138,24 @@ export class OutputEditorComponent
 
     // this._confirmSubscription = modal.confirm.subscribe(() => { this.filter.filterParameters = this.form.value; });
     // this._cancelSubscription = modal.cancel.subscribe(() => { this.filter.resetFilterParameters(); });
-    this._showSubscription = modal.show.subscribe(
-      (args: [{ outputs: Output[] }]) => {
-        this.outputEntries = args[0].outputs.map((output: Output) => {
-          return {
-            ...output,
-            selected: false,
-            dragging: false,
-          };
-        });
-        //   this.form.setValue(this.filter.filterParameters);
-        //   this._lastConfiguration = this.filter.filterParameters;
-      }
-    );
+    this._showSubscription = modal.show.subscribe((args: [{ outputs: Output[] }]) => {
+      this.outputEntries = args[0].outputs.map((output: Output) => {
+        return {
+          ...output,
+          selected: false,
+          dragging: false,
+        };
+      });
+      //   this.form.setValue(this.filter.filterParameters);
+      //   this._lastConfiguration = this.filter.filterParameters;
+    });
   }
 
-  unbind(param: ModalComponent) {}
+  unbind() {
+    // empty body
+  }
 
-  handleCanvasClick($event: MouseEvent) {
+  handleCanvasClick() {
     this._drawOutputs();
   }
 
@@ -222,12 +178,7 @@ export class OutputEditorComponent
 
     for (const outputEntry of this.outputEntries) {
       // základní obdélníkový bounding box
-      if (
-        mx > outputEntry.x - this._outputSize2 &&
-        mx < outputEntry.x + this._outputSize2 &&
-        my > outputEntry.y - this._outputSize2 &&
-        my < outputEntry.y + this._outputSize2
-      ) {
+      if (mx > outputEntry.x - this._outputSize2 && mx < outputEntry.x + this._outputSize2 && my > outputEntry.y - this._outputSize2 && my < outputEntry.y + this._outputSize2) {
         this.selectedID = outputEntry.id;
         this._manualAlignmentRefresh = true;
         this.manualAlignment.setValue(outputEntry.manualAlignment);
@@ -239,12 +190,8 @@ export class OutputEditorComponent
           outputEntry.dragging = true;
         }
 
-        this.controlPositionX.setValue(
-          Math.round((outputEntry.x / canvas.width) * this.realViewport.x)
-        );
-        this.controlPositionY.setValue(
-          Math.round((outputEntry.y / canvas.height) * this.realViewport.y)
-        );
+        this.controlPositionX.setValue(Math.round((outputEntry.x / canvas.width) * this.realViewport.x));
+        this.controlPositionY.setValue(Math.round((outputEntry.y / canvas.height) * this.realViewport.y));
         break;
       }
     }
@@ -273,12 +220,8 @@ export class OutputEditorComponent
           outputEntry.y += dy;
         }
       }
-      this.controlPositionX.setValue(
-        Math.round((this._startX / canvas.width) * this.realViewport.x)
-      );
-      this.controlPositionY.setValue(
-        Math.round((this._startY / canvas.height) * this.realViewport.y)
-      );
+      this.controlPositionX.setValue(Math.round((this._startX / canvas.width) * this.realViewport.x));
+      this.controlPositionY.setValue(Math.round((this._startY / canvas.height) * this.realViewport.y));
     }
 
     this._startX = mx;
@@ -297,22 +240,22 @@ export class OutputEditorComponent
     }
   }
 
-  handleCanvasPointerEnter($event: PointerEvent) {}
+  handleCanvasPointerEnter() {
+    // empty body
+  }
 
-  handleCanvasPointerLeave($event: PointerEvent) {}
+  handleCanvasPointerLeave() {
+    // empty body
+  }
 
   handleSetOutputHorizontalAlignment(alignment: HorizontalAlignment) {
-    const outputEntry = this.outputEntries.filter(
-      (entry) => entry.id === this.selectedID
-    )[0];
+    const outputEntry = this.outputEntries.filter((entry) => entry.id === this.selectedID)[0];
     outputEntry.horizontalAlignment = alignment;
     outputEntry.x = 0;
   }
 
   handleMoveOutputVerticalAlignmentUp() {
-    const outputEntry = this.outputEntries.filter(
-      (entry) => entry.id === this.selectedID
-    )[0];
+    const outputEntry = this.outputEntries.filter((entry) => entry.id === this.selectedID)[0];
     if (outputEntry.verticalAlignment === VerticalAlignment.TOP) {
       return;
     }
@@ -321,9 +264,7 @@ export class OutputEditorComponent
   }
 
   handleMoveOutputVerticalAlignmentDown() {
-    const outputEntry = this.outputEntries.filter(
-      (entry) => entry.id === this.selectedID
-    )[0];
+    const outputEntry = this.outputEntries.filter((entry) => entry.id === this.selectedID)[0];
     if (outputEntry.verticalAlignment === VerticalAlignment.BOTTOM) {
       return;
     }

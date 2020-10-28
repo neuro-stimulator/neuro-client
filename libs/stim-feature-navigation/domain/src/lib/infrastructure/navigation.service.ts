@@ -1,15 +1,9 @@
-import { Injectable, Type } from '@angular/core';
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  Router,
-  RouterEvent,
-} from '@angular/router';
-import { filter, map, mergeMap, tap } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { filter, map, mergeMap } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 
-import { NavigationState } from '../store/navigation.state';
 import * as NavigationActions from '../store/navigation.actions';
 import { ComponentStoreService } from './component-store.service';
 
@@ -39,12 +33,7 @@ export class NavigationService {
   // public readonly navigationChange$: Observable<any> = this._navigationChange.asObservable();
   // public readonly hasPageTools$: Observable<boolean> = this._hasPageTools.asObservable();
 
-  constructor(
-    private readonly _route: ActivatedRoute,
-    private readonly _router: Router,
-    private readonly _components: ComponentStoreService,
-    private readonly store: Store<NavigationState>
-  ) {
+  constructor(private readonly _route: ActivatedRoute, private readonly _router: Router, private readonly _components: ComponentStoreService, private readonly store: Store) {
     // this.title = '';
     // this.subtitle = '';
     // this.titleArgs = {};
@@ -74,10 +63,7 @@ export class NavigationService {
       )
       .subscribe((event) => {
         const title = event['title'];
-        const applyCustomNavColor =
-          event['applyCustomNavColor'] !== undefined
-            ? event['applyCustomNavColor']
-            : false;
+        const applyCustomNavColor = event['applyCustomNavColor'] !== undefined ? event['applyCustomNavColor'] : false;
         this._components.pageToolsComponent = event['pageToolsComponent'];
         const hasPageTools = this._components.pageToolsComponent !== undefined;
         this._components.addonComponent = event['buttonsAddon'];

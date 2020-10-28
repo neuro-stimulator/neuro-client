@@ -1,43 +1,28 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import {
-  createEmptyExperimentREA,
-  ExperimentREA,
-  ReaOnResponseFail,
-  ReaOutput,
-} from '@stechy1/diplomka-share';
+import { createEmptyExperimentREA, ExperimentREA, ReaOnResponseFail, ReaOutput } from '@stechy1/diplomka-share';
 
 import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
 import { ShareValidators } from '@diplomka-frontend/stim-lib-ui';
-
-import {
-  brightnessSliderOptions,
-  outputCountParams,
-} from '../../experiments.share';
-import { ExperimentNameValidator } from '../../experiment-name-validator';
-import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
-import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
+
+import { brightnessSliderOptions } from '../../experiments.share';
+import { ExperimentNameValidator } from '../../experiment-name-validator';
+import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
+import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 
 @Component({
   templateUrl: './experiment-type-rea.component.html',
   styleUrls: ['./experiment-type-rea.component.sass'],
 })
-export class ExperimentTypeReaComponent
-  extends BaseExperimentTypeComponent<ExperimentREA, ReaOutput>
-  implements OnInit {
+export class ExperimentTypeReaComponent extends BaseExperimentTypeComponent<ExperimentREA, ReaOutput> implements OnInit {
   constructor(
     @Inject(TOKEN_MAX_OUTPUT_COUNT) maxOutputCount: number,
     service: ExperimentsFacade,
@@ -46,15 +31,7 @@ export class ExperimentTypeReaComponent
     connection: AliveCheckerFacade,
     logger: NGXLogger
   ) {
-    super(
-      maxOutputCount,
-      service,
-      route,
-      navigation,
-      connection,
-      new ExperimentNameValidator(service),
-      logger
-    );
+    super(maxOutputCount, service, route, navigation, connection, new ExperimentNameValidator(service), logger);
   }
 
   ngOnInit() {
@@ -64,11 +41,7 @@ export class ExperimentTypeReaComponent
   protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
     const myControls = {
-      outputCount: new FormControl(null, [
-        Validators.required,
-        Validators.min(1),
-        Validators.max(this._maxOutputCount),
-      ]),
+      outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this._maxOutputCount)]),
       usedOutputs: new FormGroup(
         {
           led: new FormControl(null),
@@ -79,28 +52,12 @@ export class ExperimentTypeReaComponent
         },
         [Validators.required, ExperimentOutputTypeValidator.createValidator()]
       ),
-      cycleCount: new FormControl(null, [
-        Validators.required,
-        Validators.min(1),
-      ]),
-      waitTimeMin: new FormControl(null, [
-        Validators.required,
-        ShareValidators.exclusiveMin(0),
-      ]),
-      waitTimeMax: new FormControl(null, [
-        Validators.required,
-        ShareValidators.exclusiveMin(0),
-      ]),
-      missTime: new FormControl(null, [
-        Validators.required,
-        ShareValidators.exclusiveMin(0),
-      ]),
+      cycleCount: new FormControl(null, [Validators.required, Validators.min(1)]),
+      waitTimeMin: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      waitTimeMax: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      missTime: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
       onFail: new FormControl(null, [Validators.required]),
-      brightness: new FormControl(null, [
-        Validators.required,
-        Validators.min(0),
-        Validators.max(100),
-      ]),
+      brightness: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
     };
 
     return { ...superControls, ...myControls };

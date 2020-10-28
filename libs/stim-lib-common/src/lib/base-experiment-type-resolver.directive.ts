@@ -6,11 +6,10 @@ import { NGXLogger } from 'ngx-logger';
 import { ExperimentType } from '@stechy1/diplomka-share';
 
 @Directive()
-export abstract class BaseExperimentTypeResolverDirective<T>
-  implements OnInit, OnDestroy {
-  @Input() componentMap: { [experiment: string]: Type<any> };
+export abstract class BaseExperimentTypeResolverDirective<T> implements OnInit, OnDestroy {
+  @Input() componentMap: { [experiment: string]: Type<unknown> };
   @Input() type: Observable<ExperimentType>;
-  @Output() componentChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() componentChange: EventEmitter<unknown> = new EventEmitter<unknown>();
 
   private _typeSubscription: Subscription;
   private _instance: T;
@@ -19,8 +18,7 @@ export abstract class BaseExperimentTypeResolverDirective<T>
     private readonly componentFactoryResolver: ComponentFactoryResolver,
     private readonly _viewContainerRef: ViewContainerRef,
     private readonly logger: NGXLogger
-  ) {
-  }
+  ) {}
 
   get experimentComponent(): T {
     return this._instance;
@@ -41,18 +39,14 @@ export abstract class BaseExperimentTypeResolverDirective<T>
       return;
     }
 
-    this.logger.debug(
-      `Budu inicializovat komponentu pro experiment typu: ${ExperimentType[type]}.`
-    );
+    this.logger.debug(`Budu inicializovat komponentu pro experiment typu: ${ExperimentType[type]}.`);
     const component = this.componentMap[type];
-    const factory = this.componentFactoryResolver.resolveComponentFactory(
-      component
-    );
+    const factory = this.componentFactoryResolver.resolveComponentFactory(component);
 
     this._viewContainerRef.clear();
     const componentRef = this._viewContainerRef.createComponent(factory);
     this.logger.debug('Komponenta byla úspěšně inicializována.');
     this.componentChange.next(componentRef.instance);
-    this._instance = componentRef.instance;
+    this._instance = componentRef.instance as T;
   }
 }

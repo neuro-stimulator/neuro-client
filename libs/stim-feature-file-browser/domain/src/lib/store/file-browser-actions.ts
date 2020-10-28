@@ -9,4 +9,4 @@ export const actionUploadRequest = createAction('[FileBrowser] upload request', 
 export const actionDeleteRequest = createAction('[FileBrowser] delete request', props<{ folders: FileRecord[]; file: FileRecord }>());
 
 export const actionSelectFile = createAction('[FileBrowser] select file', props<{ file: FileRecord }>());
-export const actionToggleFile = createAction('FileBrowser] toggle file', props<{ file: FileRecord }>());
+export const actionToggleFile = createAction('[FileBrowser] toggle file', props<{ file: FileRecord }>());

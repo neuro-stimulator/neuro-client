@@ -13,7 +13,7 @@ import { FileBrowserState } from '../store/file-browser-state';
 export class FileBrowserFacade {
   private _folders: FileRecord[];
 
-  constructor(private readonly store: Store<FileBrowserState>) {
+  constructor(private readonly store: Store) {
     this.fileBrowserState.subscribe((state: FileBrowserState) => {
       this._folders = state.folderPath;
     });
@@ -47,9 +47,7 @@ export class FileBrowserFacade {
       }
     }
 
-    this.store.dispatch(
-      FileBrowserActions.actionGetContentRequest({ folders })
-    );
+    this.store.dispatch(FileBrowserActions.actionGetContentRequest({ folders }));
   }
 
   public createFolder(folderName: string) {

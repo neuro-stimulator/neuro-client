@@ -1,41 +1,27 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {
-  AbstractControl,
-  FormArray,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { NGXLogger } from 'ngx-logger';
-import { Options as SliderOptions } from 'ng5-slider/options';
 
-import {
-  createEmptyExperimentFVEP,
-  ExperimentFVEP,
-  FvepOutput,
-} from '@stechy1/diplomka-share';
+import { createEmptyExperimentFVEP, ExperimentFVEP, FvepOutput } from '@stechy1/diplomka-share';
 
+import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
 import { ShareValidators } from '@diplomka-frontend/stim-lib-ui';
 import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
+import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 
-import { outputCountParams } from '../../experiments.share';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
-import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
-import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
 
 @Component({
   selector: 'stim-feature-experiments-experiment-type-fvep',
   templateUrl: './experiment-type-fvep.component.html',
   styleUrls: ['./experiment-type-fvep.component.sass'],
 })
-export class ExperimentTypeFvepComponent
-  extends BaseExperimentTypeComponent<ExperimentFVEP, FvepOutput>
-  implements OnInit {
+export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<ExperimentFVEP, FvepOutput> implements OnInit {
   constructor(
     @Inject(TOKEN_MAX_OUTPUT_COUNT) maxOutputCount: number,
     service: ExperimentsFacade,
@@ -44,15 +30,7 @@ export class ExperimentTypeFvepComponent
     connection: AliveCheckerFacade,
     logger: NGXLogger
   ) {
-    super(
-      maxOutputCount,
-      service,
-      route,
-      navigation,
-      connection,
-      new ExperimentNameValidator(service),
-      logger
-    );
+    super(maxOutputCount, service, route, navigation, connection, new ExperimentNameValidator(service), logger);
   }
 
   ngOnInit() {
@@ -65,27 +43,11 @@ export class ExperimentTypeFvepComponent
       id: new FormControl(null, Validators.required),
       experimentId: new FormControl(null, Validators.required),
       orderId: new FormControl(null, Validators.required),
-      timeOn: new FormControl(null, [
-        Validators.required,
-        ShareValidators.exclusiveMin(0),
-      ]),
-      timeOff: new FormControl(null, [
-        Validators.required,
-        ShareValidators.exclusiveMin(0),
-      ]),
-      frequency: new FormControl(null, [
-        Validators.required,
-        ShareValidators.exclusiveMin(0),
-      ]),
-      dutyCycle: new FormControl(null, [
-        Validators.required,
-        ShareValidators.exclusiveMin(0),
-      ]),
-      brightness: new FormControl(null, [
-        Validators.required,
-        Validators.min(0),
-        Validators.max(100),
-      ]),
+      timeOn: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      timeOff: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      frequency: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      dutyCycle: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
+      brightness: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
       outputType: new FormGroup(
         {
           led: new FormControl(null),
@@ -104,11 +66,7 @@ export class ExperimentTypeFvepComponent
   protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
     const myControls = {
-      outputCount: new FormControl(null, [
-        Validators.required,
-        Validators.min(1),
-        Validators.max(this._maxOutputCount),
-      ]),
+      outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this._maxOutputCount)]),
       outputs: new FormArray([]),
     };
 
