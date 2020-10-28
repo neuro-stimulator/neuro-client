@@ -266,6 +266,10 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
 
   handleCanvasPointerLeave() {
     this._enableCoordinatesLines = false;
+    this._dragging = false;
+    for (const outputEntry of this.outputEntries) {
+      outputEntry.dragging = false;
+    }
     this._drawOutputs();
   }
 
