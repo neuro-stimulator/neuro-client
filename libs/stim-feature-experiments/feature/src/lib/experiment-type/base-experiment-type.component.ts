@@ -155,8 +155,8 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
       formOutput.patchValue({
         x: outputEntry.x,
         y: outputEntry.y,
-        manualAlignment: outputEntry.manualAlignment,
         horizontalAlignment: outputEntry.horizontalAlignment,
+        manualAlignment: outputEntry.manualAlignment,
         verticalAlignment: outputEntry.verticalAlignment,
       });
     }
