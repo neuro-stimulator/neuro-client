@@ -23,9 +23,7 @@ export class OutputTypeComponent implements OnInit {
 
   defaultTitle = 'Vyberte soubor...';
 
-  constructor(
-    @Inject(TOKEN_FILE_BROWSER_API_URL) private readonly filesBaseUrl
-  ) {}
+  constructor(@Inject(TOKEN_FILE_BROWSER_API_URL) private readonly filesBaseUrl) {}
 
   ngOnInit() {
     this.audioFile.valueChanges.subscribe((value) => {
@@ -73,6 +71,8 @@ export class OutputTypeComponent implements OnInit {
       .openForResult()
       .then((fileRecord: FileRecord) => {
         this.imageFile.setValue(fileRecord.path);
+        this.imageFile.parent.parent.get('width').setValue(fileRecord.width);
+        this.imageFile.parent.parent.get('height').setValue(fileRecord.height);
         this.imageUrl = this.buildFilePath(fileRecord.path);
       })
       .catch(() => {
