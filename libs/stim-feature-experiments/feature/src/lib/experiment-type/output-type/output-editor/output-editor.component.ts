@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
@@ -9,13 +9,14 @@ import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-li
 import { SettingsFacade, SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
 
 import { OutputEntry } from './output-entry';
+import { skip, take } from 'rxjs/operators';
 
 @Component({
   selector: 'diplomka-frontend-output-editor',
   templateUrl: './output-editor.component.html',
   styleUrls: ['./output-editor.component.scss'],
 })
-export class OutputEditorComponent extends DialogChildComponent implements OnInit {
+export class OutputEditorComponent extends DialogChildComponent implements OnInit, AfterContentInit {
   @ViewChild('canvas', { static: true }) canvas: ElementRef;
 
   @Input() outputEntries: OutputEntry[] = [];
@@ -133,21 +134,53 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     outputEntry.manualAlignment = value;
   }
 
+  private _fromVirtualCoordinates(outputEntries: OutputEntry[]) {
+    const canvas = this.canvas.nativeElement as HTMLCanvasElement;
+
+    for (const outputEntry of outputEntries) {
+      outputEntry.x = Math.round((outputEntry.x / canvas.width) * this.realViewport.x);
+      outputEntry.y = Math.round((outputEntry.y / canvas.height) * this.realViewport.y);
+    }
+  }
+
+  private _toVirtualCoordinates(outputEntries: OutputEntry[]) {
+    const canvas = this.canvas.nativeElement as HTMLCanvasElement;
+    canvas.width = canvas.parentElement.clientWidth;
+    canvas.height = this.vh * this._canvasHeightMultiplier;
+    const BB = canvas.getBoundingClientRect();
+    const width = canvas.width;
+    const height = canvas.height;
+    this._offsetX = BB.left;
+    this._offsetY = BB.top;
+    this._outputSize = Math.min(width, height) / 8;
+    this._outputSize2 = this._outputSize / 2;
+
+    for (const outputEntry of outputEntries) {
+      outputEntry.x = Math.round((outputEntry.x / this.realViewport.x) * width);
+      outputEntry.y = Math.round((outputEntry.y / this.realViewport.y) * height);
+    }
+  }
+
   private _handleConfirm() {
-    this._resultEmitter.next(this.outputEntries);
+    const outputEntries = [...this.outputEntries];
+    this._fromVirtualCoordinates(outputEntries);
+    this._resultEmitter.next(outputEntries);
   }
 
   ngOnInit(): void {
     this.controlPositionX.valueChanges.subscribe((valueX) => this._onValueChange(+valueX, 'x'));
     this.controlPositionY.valueChanges.subscribe((valueY) => this._onValueChange(+valueY, 'y'));
     this.manualAlignment.valueChanges.subscribe((value) => this._onManualAlignmentChange(value));
-    this.settings.state.subscribe((settings: SettingsState) => {
+    this.settings.state.pipe(skip(1), take(1)).subscribe((settings: SettingsState) => {
       this._canvasHeightMultiplier = settings.localSettings.experiments.outputEditor.canvasHeightMultiplier;
       this.realViewport.x = settings.serverSettings.assetPlayer?.width;
       this.realViewport.y = settings.serverSettings.assetPlayer?.height;
+      this._toVirtualCoordinates(this.outputEntries);
     });
+  }
+
+  ngAfterContentInit(): void {
     this.settings.loadServerSettings();
-    this.settings.invokeLocalSettings();
   }
 
   bind(modal: ModalComponent) {
@@ -274,9 +307,26 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
   }
 
   handleSetOutputHorizontalAlignment(alignment: HorizontalAlignment) {
+    const canvas = this.canvas.nativeElement as HTMLCanvasElement;
     const outputEntry = this.outputEntries.filter((entry) => entry.id === this.selectedID)[0];
+
     outputEntry.horizontalAlignment = alignment;
-    outputEntry.x = 0;
+
+    switch (alignment) {
+      case HorizontalAlignment.LEFT:
+        outputEntry.x = Math.round((outputEntry.width / 2 / this.realViewport.x) * canvas.width);
+        break;
+      case HorizontalAlignment.CENTER:
+        outputEntry.x = canvas.width / 2;
+        outputEntry.y = canvas.height / 2;
+        outputEntry.verticalAlignment = VerticalAlignment.CENTER;
+        break;
+      case HorizontalAlignment.RIGHT:
+        outputEntry.x = Math.round(((this.realViewport.x - outputEntry.width / 2) / this.realViewport.x) * canvas.width);
+        break;
+    }
+
+    this._drawOutputs();
   }
 
   handleMoveOutputVerticalAlignmentUp() {
@@ -286,6 +336,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     }
 
     outputEntry.verticalAlignment++;
+    this._computeVerticalAlignment(outputEntry);
   }
 
   handleMoveOutputVerticalAlignmentDown() {
@@ -294,5 +345,24 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
       return;
     }
     outputEntry.verticalAlignment--;
+    this._computeVerticalAlignment(outputEntry);
+  }
+
+  private _computeVerticalAlignment(outputEntry: OutputEntry) {
+    const canvas = this.canvas.nativeElement as HTMLCanvasElement;
+
+    switch (outputEntry.verticalAlignment) {
+      case VerticalAlignment.TOP:
+        outputEntry.y = Math.round((outputEntry.height / 2 / this.realViewport.y) * canvas.height);
+        break;
+      case VerticalAlignment.CENTER:
+        outputEntry.y = canvas.height / 2;
+        break;
+      case VerticalAlignment.BOTTOM:
+        outputEntry.y = Math.round(((this.realViewport.y - outputEntry.height / 2) / this.realViewport.y) * canvas.height);
+        break;
+    }
+
+    this._drawOutputs();
   }
 }

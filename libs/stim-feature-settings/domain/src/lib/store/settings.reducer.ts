@@ -32,7 +32,13 @@ const DEFAULT_STATE: SettingsState = {
     results: {},
   },
   localSettingsLoaded: false,
-  serverSettings: {},
+  serverSettings: {
+    assetPlayer: {
+      width: 640,
+      height: 480,
+      fullScreen: false,
+    },
+  },
   viewFragment: '',
 };
 
