@@ -176,6 +176,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
       this.realViewport.x = settings.serverSettings.assetPlayer?.width;
       this.realViewport.y = settings.serverSettings.assetPlayer?.height;
       this._toVirtualCoordinates(this.outputEntries);
+      this._drawOutputs();
     });
   }
 
