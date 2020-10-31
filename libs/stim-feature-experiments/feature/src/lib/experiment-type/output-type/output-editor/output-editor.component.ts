@@ -10,6 +10,7 @@ import { SettingsFacade, SettingsState } from '@diplomka-frontend/stim-feature-s
 
 import { OutputEntry } from './output-entry';
 import { skip, take } from 'rxjs/operators';
+import { OutputEditorActions, OutputEditorArgs } from './output-editor.args';
 
 @Component({
   selector: 'diplomka-frontend-output-editor',
@@ -43,12 +44,14 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
   private _showSubscription: Subscription;
   private _confirmSubscription: Subscription;
   private _enableCoordinatesLines: boolean;
+  private _actions: OutputEditorActions;
 
   public selectedID = -1;
 
   public readonly controlPositionX = new FormControl();
   public readonly controlPositionY = new FormControl();
   public readonly manualAlignment = new FormControl();
+  public readonly synchronizeWithAssetPlayer = new FormControl(false);
   public readonly HorizontalAlignment = HorizontalAlignment;
 
   constructor(private readonly settings: SettingsFacade) {
@@ -171,6 +174,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     this.controlPositionX.valueChanges.subscribe((valueX) => this._onValueChange(+valueX, 'x'));
     this.controlPositionY.valueChanges.subscribe((valueY) => this._onValueChange(+valueY, 'y'));
     this.manualAlignment.valueChanges.subscribe((value) => this._onManualAlignmentChange(value));
+    this.synchronizeWithAssetPlayer.valueChanges.subscribe((synchronize) => this._actions?.toggleSynchronize.next(synchronize));
     this.settings.state.pipe(skip(1), take(1)).subscribe((settings: SettingsState) => {
       this._canvasHeightMultiplier = settings.localSettings.experiments.outputEditor.canvasHeightMultiplier;
       this.realViewport.x = settings.serverSettings.assetPlayer?.width;
@@ -201,12 +205,14 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
           dragging: false,
         };
       });
+      this._actions = args[0].actions;
     });
   }
 
   unbind() {
     this._showSubscription.unsubscribe();
     this._confirmSubscription.unsubscribe();
+    this._actions?.toggleSynchronize.emit(false);
   }
 
   handleCanvasClick() {
@@ -272,6 +278,16 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
         if (outputEntry.dragging) {
           outputEntry.x += dx;
           outputEntry.y += dy;
+
+          if (this.synchronizeWithAssetPlayer.value) {
+            this._actions?.synchronizeEvent.emit({
+              id: outputEntry.id,
+              x: (this._startX / canvas.width) * this.realViewport.x,
+              y: (this._startY / canvas.height) * this.realViewport.y,
+            });
+          }
+
+          break;
         }
       }
       this.controlPositionX.setValue(Math.round((this._startX / canvas.width) * this.realViewport.x));

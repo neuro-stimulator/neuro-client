@@ -7,7 +7,7 @@ import { map, take } from 'rxjs/operators';
 import { NGXLogger } from 'ngx-logger';
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import { Experiment, ExperimentType, Output } from '@stechy1/diplomka-share';
+import { Experiment, ExperimentType, IpcSynchronizationMessage, Output } from '@stechy1/diplomka-share';
 
 import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
@@ -22,6 +22,7 @@ import { outputCountParams } from '../experiments.share';
 import { OutputEditorComponent } from './output-type/output-editor/output-editor.component';
 import { ExperimentOutputTypeValidator } from './output-type/experiment-output-type-validator';
 import { OutputEntry } from './output-type/output-editor/output-entry';
+import { OutputEditorActions, SynchronizeEvent } from './output-type/output-editor/output-editor.args';
 
 @Component({ template: '' })
 export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O extends Output> implements OnInit, OnDestroy, ComponentCanDeactivate {
@@ -29,6 +30,13 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
   public experimentLoaded$: Observable<E> = this._experimentLoaded.asObservable();
   public form: FormGroup;
   private _experimentsStateSubscription: Subscription;
+
+  private _outputEditorActions: OutputEditorActions = {
+    toggleSynchronize: new EventEmitter<boolean>(),
+    synchronizeEvent: new EventEmitter<SynchronizeEvent>(),
+  };
+  private _toggleSynchronizeSubscription: Subscription;
+  private _synchronizeEventSubscription: Subscription;
 
   protected constructor(
     @Inject(TOKEN_MAX_OUTPUT_COUNT) protected readonly _maxOutputCount: number,
@@ -78,6 +86,20 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
 
     this.form.patchValue(experiment);
     this.form.markAsUntouched();
+  }
+
+  private _subscribeOutputEditorActions() {
+    this._toggleSynchronizeSubscription = this._outputEditorActions.toggleSynchronize.subscribe((subscribe: boolean) => {
+      // TODO empty body
+    });
+    this._synchronizeEventSubscription = this._outputEditorActions.synchronizeEvent.subscribe((event: SynchronizeEvent) => {
+      this._connection.sendSocketData(new IpcSynchronizationMessage(event.id, event.x, event.y));
+    });
+  }
+
+  private _unsubscribeOutputEditorActions() {
+    this._toggleSynchronizeSubscription.unsubscribe();
+    this._synchronizeEventSubscription.unsubscribe();
   }
 
   /**
@@ -204,13 +226,12 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
    * Reakce na tlačítko pro zobrazení editoru výstupů
    */
   public handleShowOutputEditor() {
+    this._subscribeOutputEditorActions();
     this.modalComponent.showComponent = OutputEditorComponent;
     this.modalComponent
       .openForResult({
         outputs: this.form.value.outputs,
-      })
-      .catch(() => {
-        this.logger.warn('Nebudu aktualizovat výstupy.');
+        actions: this._outputEditorActions,
       })
       .then((outputEntries?: OutputEntry[]) => {
         if (outputEntries === undefined) {
@@ -218,6 +239,12 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
         }
 
         this._updateOutputsFromEditor(outputEntries);
+      })
+      .catch(() => {
+        this.logger.warn('Nebudu aktualizovat výstupy.');
+      })
+      .finally(() => {
+        this._unsubscribeOutputEditorActions();
       });
   }
 
