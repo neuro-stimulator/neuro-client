@@ -4,13 +4,11 @@ import { Store } from '@ngrx/store';
 import { Socket } from 'ngx-socket-io';
 import { NGXLogger } from 'ngx-logger';
 
-import { SocketMessage } from '@stechy1/diplomka-share';
+import { SocketMessage, SocketMessageType, SocketMessageSpecialization } from '@stechy1/diplomka-share';
 
 import { TOKEN_BASE_API_URL } from '@diplomka-frontend/stim-lib-common';
 
 import * as ConnectionActions from '../store/connection.actions';
-import { SocketMessageType } from '@stechy1/diplomka-share/lib/communication/client-server/socket-message-type';
-import { SocketMessageSpecialization } from '@stechy1/diplomka-share/lib/communication/client-server/socket-message-specialization';
 
 @Injectable({
   providedIn: 'root',
@@ -44,6 +42,11 @@ export class AliveCheckerService {
     this._socket.disconnect();
   }
 
+  public sendSocketData(data: SocketMessage) {
+    this.logger.debug(`Odesílám socket zprávu na server: '${JSON.stringify(data)}'.`);
+    this._socket.emit('command', data);
+  }
+
   /**
    * Funkce se zavolá ve chvíli, kdy je vytvořeno stále spojení se serverem.
    */
@@ -51,19 +54,12 @@ export class AliveCheckerService {
     this.logger.info('Spojení se serverem bylo úspěšně navázáno.');
     this.store.dispatch(ConnectionActions.actionServerConnected());
     setTimeout(() => {
-      this._socket.emit('command', {
+      this.sendSocketData({
         type: SocketMessageType.CLIENT_READY,
         specialization: SocketMessageSpecialization.CLIENT,
+        data: null,
       });
     }, 2000);
-    //   const status = `SHARE.ALIVE_CHECKER.${this._firstTime ? 'SERVER_CONNECTION_CREATED' : 'SERVER_CONNECTION_RESTORED'}`;
-    //   this.translator.get(status)
-    //       .toPromise()
-    //       .then((text: string) => {
-    //         this.toastr.success(text);
-    //       });
-    //   this._connected.next(ConnectionStatus.CONNECTED);
-    //   this._isConnected = true;
   }
 
   /**
@@ -74,37 +70,5 @@ export class AliveCheckerService {
   protected _socketDisconnected(reason) {
     this.logger.warn('Spojení se serverem bylo ukončeno!');
     this.store.dispatch(ConnectionActions.actionServerDisconnected({ reason }));
-    //   this._firstTime = false;
-    //   this.translator.get('SHARE.ALIVE_CHECKER.SERVER_CONNECTION_LOST')
-    //       .toPromise()
-    //       .then((text: string) => {
-    //         this.toastr.error(text);
-    //       });
-    //   this._connected.next(ConnectionStatus.DISCONNECTED);
-    //   this._isConnected = false;
-    //   if (reason === 'io server disconnect') {
-    //     // the disconnection was initiated by the server, you need to reconnect manually
-    //     this._socket.connect();
-    //   }
   }
-
-  // get connectionStatus(): Observable<ConnectionStatus> {
-  //   return this.connected$;
-  // }
-  //
-  // get isConnected(): boolean {
-  //   return this._isConnected;
-  // }
-  //
-  // get isDisconnected(): boolean {
-  //   return !this.isConnected;
-  // }
-  //
-  // get firstTime() {
-  //   return this._firstTime;
-  // }
-  //
-  // get disconnect(): Observable<any> {
-  //   return this.requestDisconnect$;
-  // }
 }

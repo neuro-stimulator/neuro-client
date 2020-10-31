@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import * as ConnectionActions from '../store/connection.actions';
 import { Observable } from 'rxjs';
+
+import { SocketMessage } from '@stechy1/diplomka-share';
+
+import * as ConnectionActions from '../store/connection.actions';
 import * as fromConnection from '../store/connection.reducers';
 import { ConnectionInformationState } from '../store/connection.state';
 
@@ -30,6 +33,10 @@ export class AliveCheckerFacade {
 
   public stopCommunication() {
     this.store.dispatch(ConnectionActions.actionServerEndCommunicating());
+  }
+
+  public sendSocketData(data: SocketMessage) {
+    this.store.dispatch(ConnectionActions.actionSendSocketData({ data }));
   }
 
   get state(): Observable<ConnectionInformationState> {

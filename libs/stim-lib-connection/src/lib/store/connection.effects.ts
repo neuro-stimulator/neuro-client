@@ -56,4 +56,13 @@ export class ConnectionEffects {
       })
     )
   );
+
+  sendMessage$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(ConnectionActions.actionSendSocketData),
+        tap((action) => this._service.sendSocketData(action.data))
+      ),
+    { dispatch: false }
+  );
 }

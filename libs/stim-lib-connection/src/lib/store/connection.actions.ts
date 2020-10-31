@@ -19,6 +19,7 @@ export const actionExternalConnected = createAction('[Connection] External conne
 export const actionExternalDisconnected = createAction('[Connection] External disconnected');
 
 export const actionSocketData = createAction('[Connection] Incomming socket data', props<{ data: SocketMessage }>());
+export const actionSendSocketData = createAction('[Connection] Sending socket data', props<{ data: SocketMessage }>());
 
 export const actionServerStartCommunicating = createAction('[Connection] Server started communication');
 export const actionServerEndCommunicating = createAction('[Connection] Server ended communication');
