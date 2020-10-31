@@ -327,6 +327,10 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
         break;
     }
 
+    this._coordinatesRefresh = true;
+    this.controlPositionX.setValue(Math.round((outputEntry.x / canvas.width) * this.realViewport.x));
+    this.controlPositionY.setValue(Math.round((outputEntry.y / canvas.height) * this.realViewport.y));
+    this._coordinatesRefresh = false;
     this._drawOutputs();
   }
 
@@ -363,6 +367,11 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
         outputEntry.y = Math.round(((this.realViewport.y - outputEntry.height / 2) / this.realViewport.y) * canvas.height);
         break;
     }
+
+    this._coordinatesRefresh = true;
+    this.controlPositionX.setValue(Math.round((outputEntry.x / canvas.width) * this.realViewport.x));
+    this.controlPositionY.setValue(Math.round((outputEntry.y / canvas.height) * this.realViewport.y));
+    this._coordinatesRefresh = false;
 
     this._drawOutputs();
   }
