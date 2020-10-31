@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -9,6 +9,7 @@ import { createEmptyExperimentCVEP, CvepOutput, ExperimentCVEP } from '@stechy1/
 
 import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
 import { ShareValidators } from '@diplomka-frontend/stim-lib-ui';
+import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
@@ -23,6 +24,8 @@ import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-
   styleUrls: ['./experiment-type-cvep.component.sass'],
 })
 export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<ExperimentCVEP, CvepOutput> implements OnInit {
+  @ViewChild('modal', { static: true }) modal: ModalComponent;
+
   bitShiftSliderOptions: SliderOptions = {
     floor: 0,
     ceil: 31,
@@ -51,7 +54,6 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
   protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
     const myControls = {
-      outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this._maxOutputCount)]),
       usedOutputs: new FormGroup(
         {
           led: new FormControl(null),
@@ -74,6 +76,10 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
 
   protected _createEmptyExperiment(): ExperimentCVEP {
     return createEmptyExperimentCVEP();
+  }
+
+  protected get modalComponent(): ModalComponent {
+    return this.modal;
   }
 
   get brightnessSliderOptions(): SliderOptions {

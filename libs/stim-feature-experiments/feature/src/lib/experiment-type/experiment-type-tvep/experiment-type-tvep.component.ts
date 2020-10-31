@@ -1,6 +1,6 @@
-import { AfterContentInit, Component, EventEmitter, Inject, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AbstractControl, FormArray, FormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, Validators } from '@angular/forms';
 
 import { NGXLogger } from 'ngx-logger';
 
@@ -8,6 +8,7 @@ import { createEmptyExperimentTVEP, ExperimentTVEP, TvepOutput } from '@stechy1/
 
 import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
 import { ShareValidators } from '@diplomka-frontend/stim-lib-ui';
+import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
@@ -20,6 +21,8 @@ import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
   styleUrls: ['./experiment-type-tvep.component.sass'],
 })
 export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<ExperimentTVEP, TvepOutput> implements OnInit, AfterContentInit, OnDestroy {
+  @ViewChild('modal', { static: true }) modal: ModalComponent;
+
   readonly sharePatternLengthEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
@@ -56,9 +59,7 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
   protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
     const myControls = {
-      outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this._maxOutputCount)]),
       sharePatternLength: new FormControl(null, [Validators.required]),
-      outputs: new FormArray([]),
     };
 
     return { ...superControls, ...myControls };
@@ -66,6 +67,10 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
 
   protected _createEmptyExperiment(): ExperimentTVEP {
     return createEmptyExperimentTVEP();
+  }
+
+  protected get modalComponent(): ModalComponent {
+    return this.modal;
   }
 
   get sharePatternLength() {

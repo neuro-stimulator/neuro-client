@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -9,6 +9,7 @@ import { createEmptyExperimentREA, ExperimentREA, ReaOnResponseFail, ReaOutput }
 
 import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
 import { ShareValidators } from '@diplomka-frontend/stim-lib-ui';
+import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
@@ -23,6 +24,8 @@ import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-
   styleUrls: ['./experiment-type-rea.component.sass'],
 })
 export class ExperimentTypeReaComponent extends BaseExperimentTypeComponent<ExperimentREA, ReaOutput> implements OnInit {
+  @ViewChild('modal', { static: true }) modal: ModalComponent;
+
   constructor(
     @Inject(TOKEN_MAX_OUTPUT_COUNT) maxOutputCount: number,
     service: ExperimentsFacade,
@@ -41,7 +44,6 @@ export class ExperimentTypeReaComponent extends BaseExperimentTypeComponent<Expe
   protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
     const myControls = {
-      outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this._maxOutputCount)]),
       usedOutputs: new FormGroup(
         {
           led: new FormControl(null),
@@ -65,6 +67,10 @@ export class ExperimentTypeReaComponent extends BaseExperimentTypeComponent<Expe
 
   protected _createEmptyExperiment(): ExperimentREA {
     return createEmptyExperimentREA();
+  }
+
+  protected get modalComponent(): ModalComponent {
+    return this.modal;
   }
 
   get onFails() {

@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { NGXLogger } from 'ngx-logger';
 
@@ -8,6 +8,7 @@ import { createEmptyExperimentFVEP, ExperimentFVEP, FvepOutput } from '@stechy1/
 
 import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
 import { ShareValidators } from '@diplomka-frontend/stim-lib-ui';
+import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
@@ -22,6 +23,8 @@ import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-
   styleUrls: ['./experiment-type-fvep.component.sass'],
 })
 export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<ExperimentFVEP, FvepOutput> implements OnInit {
+  @ViewChild('modal', { static: true }) modal: ModalComponent;
+
   constructor(
     @Inject(TOKEN_MAX_OUTPUT_COUNT) maxOutputCount: number,
     service: ExperimentsFacade,
@@ -65,15 +68,16 @@ export class ExperimentTypeFvepComponent extends BaseExperimentTypeComponent<Exp
 
   protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
-    const myControls = {
-      outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this._maxOutputCount)]),
-      outputs: new FormArray([]),
-    };
+    const myControls = {};
 
     return { ...superControls, ...myControls };
   }
 
   protected _createEmptyExperiment(): ExperimentFVEP {
     return createEmptyExperimentFVEP();
+  }
+
+  protected get modalComponent(): ModalComponent {
+    return this.modal;
   }
 }

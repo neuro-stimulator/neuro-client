@@ -9,9 +9,9 @@ import { NGXLogger } from 'ngx-logger';
 import { createEmptyExperimentERP, Edge, ErpOutput, ExperimentERP, Random } from '@stechy1/diplomka-share';
 
 import { DropdownBtnComponent, ShareValidators } from '@diplomka-frontend/stim-lib-ui';
+import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
-import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 
@@ -27,7 +27,6 @@ import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fas
 })
 export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<ExperimentERP, ErpOutput> implements OnInit, OnDestroy {
   @ViewChild('modal', { static: true }) modal: ModalComponent;
-
   @ViewChild(DropdownBtnComponent) dropdown: DropdownBtnComponent;
 
   private _sequenceIdSubscription: Subscription;
@@ -78,7 +77,6 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
   protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
     const myControls = {
-      outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this._maxOutputCount)]),
       maxDistribution: new FormControl(null, [Validators.required, Validators.min(1)]),
       out: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
       wait: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
@@ -89,7 +87,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
         audio: new FormControl(null),
         image: new FormControl(null),
       }),
-      outputs: new FormArray([]),
+
       sequenceId: new FormControl(null),
     };
 

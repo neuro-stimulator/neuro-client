@@ -3,7 +3,7 @@
     <form [formGroup]="form">
 
       <!-- Generická hlavička společná pro všechny experimenty -->
-      <stim-feature-experiments-experiment-type-header [form]="form"></stim-feature-experiments-experiment-type-header>
+      <stim-feature-experiments-experiment-type-header [form]="form" (showOutputEditor)="handleShowOutputEditor()"></stim-feature-experiments-experiment-type-header>
 
 
       <div class="row experiment-property">
@@ -39,3 +39,5 @@
   (fabClick)="handleSaveExperiment()"
   [disabled]="form.invalid || (connectionState | async).working ">
 </stim-lib-fab>
+
+<stim-lib-modal #modal></stim-lib-modal>
