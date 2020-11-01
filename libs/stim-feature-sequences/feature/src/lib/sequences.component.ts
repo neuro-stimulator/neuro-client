@@ -8,7 +8,7 @@ import { NGXLogger } from 'ngx-logger';
 
 import { Sequence } from '@stechy1/diplomka-share';
 
-import { ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
+import { ConfirmDialogArgs, ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
 import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
 import { FilterDialogComponent } from '@diplomka-frontend/stim-lib-ui';
 import { ListButtonsAddonService, BaseListComponent } from '@diplomka-frontend/stim-lib-ui';
@@ -56,7 +56,7 @@ export class SequencesComponent extends BaseListComponent<Sequence, SequencesSta
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
     this.modal.showComponent = ConfirmDialogComponent;
-    this.modal.open({
+    this.modal.open<ConfirmDialogArgs>({
       message: 'SEQUENCES.DIALOGS.DELETE.QUESTION',
       confirm: () => {
         self.logger.info(`Budu mazat sequenci s id: ${sequence.id}.`);

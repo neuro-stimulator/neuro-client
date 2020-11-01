@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { SequenceFastDialogResult } from './sequence-fast-dialog.args';
 
 @Component({
   templateUrl: './sequence-fast-dialog.component.html',
@@ -18,7 +19,7 @@ export class SequenceFastDialogComponent extends DialogChildComponent {
   private _confirmSubscription: Subscription;
 
   private readonly formInvalid: EventEmitter<boolean> = new EventEmitter<boolean>();
-  private readonly formResult: EventEmitter<any> = new EventEmitter<any>();
+  private readonly formResult: EventEmitter<SequenceFastDialogResult> = new EventEmitter<SequenceFastDialogResult>();
 
   private _formInvalidSubscription: Subscription;
 

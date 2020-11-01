@@ -197,8 +197,8 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     this._confirmSubscription = modal.confirm.subscribe(() => {
       this._handleConfirm();
     });
-    this._showSubscription = modal.show.subscribe((args: [{ outputs: Output[] }]) => {
-      this.outputEntries = args[0].outputs.map((output: Output) => {
+    this._showSubscription = modal.show.subscribe((args: OutputEditorArgs) => {
+      this.outputEntries = args.outputs.map((output: Output) => {
         return {
           ...output,
           selected: false,

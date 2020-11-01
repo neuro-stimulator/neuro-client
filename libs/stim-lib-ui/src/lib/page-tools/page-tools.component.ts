@@ -5,6 +5,7 @@ import { of, Subscription } from 'rxjs';
 import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 
 import { PageToolsChildComponent } from './page-tools-child-component';
+import { PageToolsArgs } from './page-tools.args';
 
 @Component({
   templateUrl: './page-tools.component.html',
@@ -40,7 +41,7 @@ export class PageToolsComponent extends DialogChildComponent implements OnInit {
     modal.confirmDisabled = of(false);
     this._confirmSubscription = modal.confirm.subscribe(() => this._handleConfirm());
     this._cancelSubscription = modal.cancel.subscribe(() => this._handleCancel());
-    this._showSubscription = modal.show.subscribe((args) => (this._viewComponent = args[0]));
+    this._showSubscription = modal.show.subscribe((args: PageToolsArgs) => (this._viewComponent = args.viewComponent));
   }
 
   unbind() {

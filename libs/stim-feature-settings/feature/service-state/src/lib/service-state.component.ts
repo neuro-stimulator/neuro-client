@@ -8,20 +8,17 @@ import { AliveCheckerFacade, ConnectionInformationState, ConnectionStatus } from
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { FileBrowserComponent } from '@diplomka-frontend/stim-feature-file-browser/feature';
 
-
 @Component({
   selector: 'stim-feature-settings-service-state',
   templateUrl: './service-state.component.html',
-  styleUrls: ['./service-state.component.sass']
+  styleUrls: ['./service-state.component.sass'],
 })
 export class ServiceStateComponent {
-
-  @ViewChild('modal', { static: true }) modal: ModalComponent
+  @ViewChild('modal', { static: true }) modal: ModalComponent;
 
   public ConnectionStatus = ConnectionStatus;
 
-  constructor(private readonly _service: StimulatorFacade,
-              private readonly _aliveChecker: AliveCheckerFacade) { }
+  constructor(private readonly _service: StimulatorFacade, private readonly _aliveChecker: AliveCheckerFacade) {}
 
   handleRequestServerConnect() {
     this._aliveChecker.requestConnect();
@@ -49,14 +46,15 @@ export class ServiceStateComponent {
 
   handleUpdateStimulatorFirmware() {
     this.modal.showComponent = FileBrowserComponent;
-    this.modal.openForResult()
-        .then((fileRecord: FileRecord) => {
-          this._service.updateFirmware(fileRecord.path);
-        })
-        .catch((e) => {
-          // Dialog was closed
-          console.log(e);
-        });
+    this.modal
+      .openForResult<void, FileRecord>()
+      .then((fileRecord: FileRecord) => {
+        this._service.updateFirmware(fileRecord.path);
+      })
+      .catch((e) => {
+        // Dialog was closed
+        console.log(e);
+      });
   }
 
   get connectionState(): Observable<ConnectionInformationState> {

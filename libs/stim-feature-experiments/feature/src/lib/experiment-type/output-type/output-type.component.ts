@@ -54,7 +54,7 @@ export class OutputTypeComponent implements OnInit {
   handleRequestAudioChange() {
     this.modal.showComponent = FileBrowserComponent;
     this.modal
-      .openForResult()
+      .openForResult<void, FileRecord>()
       .then((fileRecord: FileRecord) => {
         this.audioFile.setValue(fileRecord.path);
         this.audioUrl = this.buildFilePath(fileRecord.path);
@@ -68,7 +68,7 @@ export class OutputTypeComponent implements OnInit {
   handleRequestImageChange() {
     this.modal.showComponent = FileBrowserComponent;
     this.modal
-      .openForResult()
+      .openForResult<void, FileRecord>()
       .then((fileRecord: FileRecord) => {
         this.imageFile.setValue(fileRecord.path);
         this.imageFile.parent.parent.get('width').setValue(fileRecord.width);

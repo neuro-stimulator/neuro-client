@@ -6,7 +6,7 @@ import { NGXLogger } from 'ngx-logger';
 
 import { Experiment, ExperimentType, Output } from '@stechy1/diplomka-share';
 
-import { ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
+import { ConfirmDialogArgs, ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
 import { FabListEntry } from '@diplomka-frontend/stim-lib-fab';
 import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
 import { BaseListComponent, FilterDialogComponent, ListButtonsAddonService } from '@diplomka-frontend/stim-lib-ui';
@@ -85,7 +85,7 @@ export class ExperimentsComponent extends BaseListComponent<Experiment<Output>, 
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
     this.modal.showComponent = ConfirmDialogComponent;
-    this.modal.open({
+    this.modal.open<ConfirmDialogArgs>({
       message: 'EXPERIMENTS.DIALOGS.DELETE.QUESTION',
       confirm: () => {
         self.logger.info(`Budu mazat experiment s id: ${experiment.id}.`);

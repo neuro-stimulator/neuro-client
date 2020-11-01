@@ -24,7 +24,7 @@ export class InformDialogComponent extends DialogChildComponent {
     modal.confirmText = 'SHARE.DIALOGS.INFORMATION.CONFIRM';
     modal.cancelText = 'SHARE.DIALOGS.INFORMATION.CANCEL';
     modal.confirmClose = false;
-    this._showSubscription = modal.show.subscribe((args) => this._prepareForm(args[0]));
+    this._showSubscription = modal.show.subscribe((args) => this._prepareForm(args));
   }
 
   unbind() {

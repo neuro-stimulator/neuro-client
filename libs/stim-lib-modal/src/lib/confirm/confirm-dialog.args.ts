@@ -1,5 +1,5 @@
 export interface ConfirmDialogArgs {
-  cancel: () => void;
-  confirm: () => void;
+  cancel?: () => void;
+  confirm?: () => void;
   message: string;
 }

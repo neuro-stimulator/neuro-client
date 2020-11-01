@@ -32,7 +32,7 @@ export class ConfirmDialogComponent extends DialogChildComponent {
     modal.confirmDisabled = of(false);
     this._confirmSubscription = modal.confirm.subscribe(() => this._handleConfirm());
     this._cancelSubscription = modal.cancel.subscribe(() => this._handleNotConfirm());
-    this._showSubscription = modal.show.subscribe((args) => this._prepareForm(args[0]));
+    this._showSubscription = modal.show.subscribe((args) => this._prepareForm(args));
   }
 
   unbind() {

@@ -188,27 +188,32 @@ export class ModalComponent implements OnDestroy {
 
   /**
    * Otevře dialog bez čekání na výsledek
+   *
+   * @param params Vstupní parametry
    */
-  open(...args: any): void {
+  open<P>(params?: P): void {
     // Nastaví příznak na otevřeno
     this._isOpen = true;
     // Přidá třídu 'modal-open' do elementu 'body'
     document.body.classList.add('modal-open');
     // Informuji pozorovatele, že zobrazuji dialog
     this._loadDialogContent();
-    this._show.next(args);
+    this._show.next(params);
   }
 
   /**
    * Otevře dialog s čekáním na výsledek
+   *
+   * @param params Vstupní parametry
+   * @return R výstupní parametry
    */
-  openForResult(...args: any): Promise<any> {
+  openForResult<P, R>(params?: P): Promise<R> {
     // Odhlásím z odběru předchozí odběratele
     this._unsubscrie();
     // Vrátím novou promise
-    return new Promise<any>((resolve, reject) => {
+    return new Promise<R>((resolve, reject) => {
       // Otevřu dialog
-      this.open(...args);
+      this.open<P>(params);
       // Přihlásím se k odběru výsledku
       this._resultSubscription = this.result.subscribe((value) => {
         // Příjde-li výsledek, považuji to za úspěšné vyřešení dialogu
@@ -228,6 +233,10 @@ export class ModalComponent implements OnDestroy {
   close(): void {
     this._isOpen = false;
     document.body.classList.remove('modal-open');
+    if (this._viewInstance !== undefined) {
+      this._viewInstance.unbind(this);
+      this._viewInstance = undefined;
+    }
   }
 
   /**

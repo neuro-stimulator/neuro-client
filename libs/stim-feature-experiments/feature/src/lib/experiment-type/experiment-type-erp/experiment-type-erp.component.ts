@@ -20,6 +20,7 @@ import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
 import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fast-dialog.component';
+import { SequenceFastDialogResult } from './sequence-fast-dialog/sequence-fast-dialog.args';
 
 @Component({
   templateUrl: './experiment-type-erp.component.html',
@@ -102,11 +103,11 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     this.dropdown.showDropdown = false;
     this.modal.showComponent = SequenceFastDialogComponent;
     this.modal
-      .openForResult()
+      .openForResult<void, SequenceFastDialogResult>()
       .catch(() => {
         this.logger.warn('Nebudu vytvářet žádnou sekvenci.');
       })
-      .then((result?: { name: string; size: number }) => {
+      .then((result?: SequenceFastDialogResult) => {
         if (result === undefined) {
           return;
         }

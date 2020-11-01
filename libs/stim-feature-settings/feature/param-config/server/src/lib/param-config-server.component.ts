@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { ConfirmDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { ConfirmDialogArgs, ConfirmDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { SettingsFacade } from '@diplomka-frontend/stim-feature-settings/domain';
 
 @Component({
@@ -41,7 +41,7 @@ export class ParamConfigServerComponent {
 
   public handleSeedDatabase() {
     this.modal.showComponent = ConfirmDialogComponent;
-    this.modal.open({
+    this.modal.open<ConfirmDialogArgs>({
       message: 'SETTINGS.PARAM_CONFIG.SERVER.DANGER_ZONE.DIALOGS.SEED.QUESTION',
       confirm: () => {
         return this.facade.seedDatabase();
@@ -51,7 +51,7 @@ export class ParamConfigServerComponent {
 
   public handleTruncateDatabase() {
     this.modal.showComponent = ConfirmDialogComponent;
-    this.modal.open({
+    this.modal.open<ConfirmDialogArgs>({
       message: 'SETTINGS.PARAM_CONFIG.SERVER.DANGER_ZONE.DIALOGS.TRUNCATE.QUESTION',
       confirm: () => {
         return this.facade.truncateDatabase();

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { ConfirmDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { ConfirmDialogArgs, ConfirmDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { TOKEN_SUPPORTED_LANGUAGES } from '@diplomka-frontend/stim-lib-common';
 
 @Component({
@@ -37,7 +37,7 @@ export class ParamConfigApplicationComponent {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
     this.modal.showComponent = ConfirmDialogComponent;
-    this.modal.open({
+    this.modal.open<ConfirmDialogArgs>({
       message: 'SETTINGS.PARAM_CONFIG.APPLICATION.TUTORIAL.DIALOGS.DELETE.QUESTION',
       confirm: () => {
         self.logger.info('Budu resetovat informace o zobrazených tutoriálech.');
