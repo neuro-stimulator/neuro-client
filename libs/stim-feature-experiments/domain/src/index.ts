@@ -4,4 +4,4 @@ export { ExperimentsFacade } from './lib/application-services/experiments.facade
 
 export { ExperimentsState } from './lib/store/experiments.type';
 
-export { isNameValid } from './lib/store/experiments.reducer';
+export { isNameValid, synchronizeOutputsSelector } from './lib/store/experiments.reducer';

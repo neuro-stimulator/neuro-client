@@ -47,6 +47,9 @@
     "stim-lib-common": {
       "tags": []
     },
+    "stim-lib-asset-player": {
+      "tags": []
+    },
     "stim-feature-about": {
       "tags": []
     },

@@ -28,10 +28,8 @@
                  [attr.disabled]="selectedID === -1 ? '' : null">
           <i class="fas fa-hand-paper"></i>
         </label>
-        <label class="btn btn-secondary btn-sm active">
-          <input type="checkbox" autocomplete="off"
-                 [formControl]="synchronizeWithAssetPlayer">
-          <i class="fas fa-sync" [class.fa-spin]="synchronizeWithAssetPlayer.value"></i>
+        <label class="btn btn-secondary btn-sm active" (click)="handleToggleOutputsSynchronization()">
+          <i class="fas fa-sync" [class.fa-spin]="synchronizeOutputs | async"></i>
         </label>
       </div>
     </div>

@@ -7,10 +7,11 @@ import { IpcConnectionStateMessage, SocketMessage, SocketMessageSpecialization, 
 
 import { AliveCheckerService } from '../infrastructure/alive-checker.service';
 import * as ConnectionActions from './connection.actions';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class ConnectionEffects {
-  constructor(private readonly _service: AliveCheckerService, private readonly actions$: Actions) {}
+  constructor(private readonly _service: AliveCheckerService, private readonly _toastr: ToastrService, private readonly actions$: Actions) {}
 
   serverConnect$ = createEffect(
     () =>
@@ -55,6 +56,19 @@ export class ConnectionEffects {
         }
       })
     )
+  );
+
+  messageFromServer$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(ConnectionActions.actionSocketData),
+        map((action) => action.data as SocketMessage),
+        filter((message: SocketMessage) => message.notification !== undefined),
+        tap((message: SocketMessage) => {
+          this._toastr.info(`${message.notification.code}`);
+        })
+      ),
+    { dispatch: false }
   );
 
   sendMessage$ = createEffect(

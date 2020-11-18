@@ -22,7 +22,9 @@ import { outputCountParams } from '../experiments.share';
 import { OutputEditorComponent } from './output-type/output-editor/output-editor.component';
 import { ExperimentOutputTypeValidator } from './output-type/experiment-output-type-validator';
 import { OutputEntry } from './output-type/output-editor/output-entry';
-import { OutputEditorActions, SynchronizeEvent } from './output-type/output-editor/output-editor.args';
+import { OutputEditorActions, OutputEditorArgs, SynchronizeEvent } from './output-type/output-editor/output-editor.args';
+import { AssetPlayerFacade } from '@diplomka-frontend/stim-lib-asset-player';
+import { PlayerFacade } from '@diplomka-frontend/stim-feature-player/domain';
 
 @Component({ template: '' })
 export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O extends Output> implements OnInit, OnDestroy, ComponentCanDeactivate {
@@ -89,8 +91,8 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
   }
 
   private _subscribeOutputEditorActions() {
-    this._toggleSynchronizeSubscription = this._outputEditorActions.toggleSynchronize.subscribe((subscribe: boolean) => {
-      // TODO empty body
+    this._toggleSynchronizeSubscription = this._outputEditorActions.toggleSynchronize.subscribe((synchronize: boolean) => {
+      this._facade.setOutputSynchronization(synchronize);
     });
     this._synchronizeEventSubscription = this._outputEditorActions.synchronizeEvent.subscribe((event: SynchronizeEvent) => {
       this._connection.sendSocketData(new IpcSynchronizationMessage(event.id, event.x, event.y));
@@ -100,6 +102,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
   private _unsubscribeOutputEditorActions() {
     this._toggleSynchronizeSubscription.unsubscribe();
     this._synchronizeEventSubscription.unsubscribe();
+    this._facade.setOutputSynchronization(false);
   }
 
   /**
@@ -229,9 +232,10 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
     this._subscribeOutputEditorActions();
     this.modalComponent.showComponent = OutputEditorComponent;
     this.modalComponent
-      .openForResult({
+      .openForResult<OutputEditorArgs, OutputEntry[]>({
         outputs: this.form.value.outputs,
         actions: this._outputEditorActions,
+        synchronizeOutputs: this._facade.outputSynchronization,
       })
       .then((outputEntries?: OutputEntry[]) => {
         if (outputEntries === undefined) {

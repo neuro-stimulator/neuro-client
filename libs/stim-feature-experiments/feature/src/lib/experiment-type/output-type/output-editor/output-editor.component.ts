@@ -1,7 +1,7 @@
 import { AfterContentInit, Component, ElementRef, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { HorizontalAlignment, Output, VerticalAlignment } from '@stechy1/diplomka-share';
 
@@ -45,13 +45,15 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
   private _confirmSubscription: Subscription;
   private _enableCoordinatesLines: boolean;
   private _actions: OutputEditorActions;
+  private _synchronizeOutputs: boolean;
+  private _synchronizeOutputsSubscription: Subscription;
 
+  public synchronizeOutputs: Observable<boolean>;
   public selectedID = -1;
 
   public readonly controlPositionX = new FormControl();
   public readonly controlPositionY = new FormControl();
   public readonly manualAlignment = new FormControl();
-  public readonly synchronizeWithAssetPlayer = new FormControl(false);
   public readonly HorizontalAlignment = HorizontalAlignment;
 
   constructor(private readonly settings: SettingsFacade) {
@@ -174,7 +176,6 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     this.controlPositionX.valueChanges.subscribe((valueX) => this._onValueChange(+valueX, 'x'));
     this.controlPositionY.valueChanges.subscribe((valueY) => this._onValueChange(+valueY, 'y'));
     this.manualAlignment.valueChanges.subscribe((value) => this._onManualAlignmentChange(value));
-    this.synchronizeWithAssetPlayer.valueChanges.subscribe((synchronize) => this._actions?.toggleSynchronize.next(synchronize));
     this.settings.state.pipe(skip(1), take(1)).subscribe((settings: SettingsState) => {
       this._canvasHeightMultiplier = settings.localSettings.experiments.outputEditor.canvasHeightMultiplier;
       this.realViewport.x = settings.serverSettings.assetPlayer?.width;
@@ -186,6 +187,9 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
 
   ngAfterContentInit(): void {
     this.settings.loadServerSettings();
+    this._synchronizeOutputsSubscription = this.synchronizeOutputs.subscribe((synchronize: boolean) => {
+      this._synchronizeOutputs = synchronize;
+    });
   }
 
   bind(modal: ModalComponent) {
@@ -205,7 +209,8 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
           dragging: false,
         };
       });
-      this._actions = args[0].actions;
+      this._actions = args.actions;
+      this.synchronizeOutputs = args.synchronizeOutputs;
     });
   }
 
@@ -279,11 +284,11 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
           outputEntry.x += dx;
           outputEntry.y += dy;
 
-          if (this.synchronizeWithAssetPlayer.value) {
+          if (this._synchronizeOutputs) {
             this._actions?.synchronizeEvent.emit({
-              id: outputEntry.id,
-              x: (this._startX / canvas.width) * this.realViewport.x,
-              y: (this._startY / canvas.height) * this.realViewport.y,
+              id: outputEntry.id - 1,
+              x: Math.round((this._startX / canvas.width) * this.realViewport.x),
+              y: Math.round((this._startY / canvas.height) * this.realViewport.y),
             });
           }
 
@@ -346,6 +351,13 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     this._coordinatesRefresh = true;
     this.controlPositionX.setValue(Math.round((outputEntry.x / canvas.width) * this.realViewport.x));
     this.controlPositionY.setValue(Math.round((outputEntry.y / canvas.height) * this.realViewport.y));
+    if (this._synchronizeOutputs) {
+      this._actions?.synchronizeEvent.emit({
+        id: outputEntry.id - 1,
+        x: Math.round((outputEntry.x / canvas.width) * this.realViewport.x),
+        y: Math.round((outputEntry.y / canvas.height) * this.realViewport.y),
+      });
+    }
     this._coordinatesRefresh = false;
     this._drawOutputs();
   }
@@ -369,6 +381,10 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     this._computeVerticalAlignment(outputEntry);
   }
 
+  handleToggleOutputsSynchronization() {
+    this._actions.toggleSynchronize.next(!this._synchronizeOutputs);
+  }
+
   private _computeVerticalAlignment(outputEntry: OutputEntry) {
     const canvas = this.canvas.nativeElement as HTMLCanvasElement;
 
@@ -387,6 +403,13 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     this._coordinatesRefresh = true;
     this.controlPositionX.setValue(Math.round((outputEntry.x / canvas.width) * this.realViewport.x));
     this.controlPositionY.setValue(Math.round((outputEntry.y / canvas.height) * this.realViewport.y));
+    if (this._synchronizeOutputs) {
+      this._actions?.synchronizeEvent.emit({
+        id: outputEntry.id - 1,
+        x: Math.round((outputEntry.x / canvas.width) * this.realViewport.x),
+        y: Math.round((outputEntry.y / canvas.height) * this.realViewport.y),
+      });
+    }
     this._coordinatesRefresh = false;
 
     this._drawOutputs();

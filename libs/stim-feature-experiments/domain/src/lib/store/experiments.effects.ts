@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, delay, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { catchError, delay, filter, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { EMPTY, Observable, of } from 'rxjs';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
-import { Experiment, ExperimentType, Output, ResponseObject, Sequence } from '@stechy1/diplomka-share';
+import { Experiment, ExperimentType, Output, ResponseObject, Sequence, SocketMessage, SocketMessageSpecialization, SocketMessageType } from '@stechy1/diplomka-share';
+
+import * as fromConnection from '@diplomka-frontend/stim-lib-connection';
 
 import { ExperimentsService } from '../infrastructure/experiments.service';
 import * as ExperimentsActions from './experiments.actions';
@@ -225,6 +227,35 @@ export class ExperimentsEffects {
           })
         )
       )
+    )
+  );
+
+  setOutputSynchronization$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ExperimentsActions.actionExperimentsSetOutputSynchronizationRequest),
+      withLatestFrom(this.store.select(experimentsFeature)),
+      filter(([action, experiments]) => action.synchronize !== experiments.synchronizeOutputs),
+      mergeMap(([action, experiments]) =>
+        this.experiments.setOutputSynchronization(action.synchronize, experiments.selectedExperiment.experiment.id).pipe(
+          map(() => {
+            return ExperimentsActions.actionExperimentsSetOutputSynchronizationRequestDone({ synchronize: action.synchronize });
+          }),
+          catchError(() => {
+            return of(ExperimentsActions.actionExperimentsSetOutputSynchronizationRequestFail());
+          })
+        )
+      )
+    )
+  );
+
+  outputSynchronizationStateChanged$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromConnection.actionSocketData),
+      map((action) => action.data),
+      filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.EXPERIMENTS),
+      filter((message: SocketMessage) => message.type === SocketMessageType.EXPERIMENT_TOGGLE_SYNCHRONIZATION),
+      map((message: SocketMessage) => message.data as { synchronize: boolean }),
+      map((data: { synchronize: boolean }) => ExperimentsActions.actionExperimentsSetOutputSynchronizationRequestDone(data))
     )
   );
 }

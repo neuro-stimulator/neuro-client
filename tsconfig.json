@@ -25,6 +25,9 @@
       "@diplomka-frontend/stim-lib-common": [
         "libs/stim-lib-common/src/index.ts"
       ],
+      "@diplomka-frontend/stim-lib-asset-player": [
+        "libs/stim-lib-asset-player/src/index.ts"
+      ],
       "@diplomka-frontend/stim-lib-ui": ["libs/stim-lib-ui/src/index.ts"],
       "@diplomka-frontend/stim-feature-file-browser": [
         "libs/stim-feature-file-browser/src/index.ts"

@@ -25,6 +25,7 @@ export function experimentsReducer(experimentsState: ExperimentsState, experimen
       hasGroups: false,
       selectedExperiments: {},
       selectionMode: false,
+      synchronizeOutputs: false,
     },
     on(ExperimentsActions.actionExperimentsAllRequest, (state: ExperimentsState) => ({
       ...state,
@@ -208,12 +209,17 @@ export function experimentsReducer(experimentsState: ExperimentsState, experimen
         selectedExperiments: [],
         selectionMode: false,
       };
-    })
+    }),
+
+    on(ExperimentsActions.actionExperimentsSetOutputSynchronizationRequestDone, (state, action) => ({
+      ...state,
+      synchronizeOutputs: action.synchronize,
+    }))
   )(experimentsState, experimentsAction);
 }
 
 export const experimentsFeature = createFeatureSelector<ExperimentsState>(experimentsReducerKey);
 
 export const experimentsSelector = createSelector(experimentsFeature, (state: ExperimentsState) => state.experiments);
-
 export const isNameValid = createSelector(experimentsFeature, (state: ExperimentsState) => state.selectedExperiment.nameExists);
+export const synchronizeOutputsSelector = createSelector(experimentsFeature, (state: ExperimentsState) => state.synchronizeOutputs);

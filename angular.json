@@ -292,6 +292,35 @@
         }
       }
     },
+    "stim-lib-asset-player": {
+      "projectType": "library",
+      "root": "libs/stim-lib-asset-player",
+      "sourceRoot": "libs/stim-lib-asset-player/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-asset-player/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-lib-asset-player/**/*.ts",
+              "libs/stim-lib-asset-player/**/*.component.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "stim-lib-ui": {
       "projectType": "library",
       "root": "libs/stim-lib-ui",

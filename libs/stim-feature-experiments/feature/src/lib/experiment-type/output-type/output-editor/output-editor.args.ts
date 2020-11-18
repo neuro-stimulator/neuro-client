@@ -1,10 +1,12 @@
 import { EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { Output } from '@stechy1/diplomka-share';
 
 export interface OutputEditorArgs {
   outputs: Output[];
   actions: OutputEditorActions;
+  synchronizeOutputs: Observable<boolean>;
 }
 
 export interface OutputEditorActions {

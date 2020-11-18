@@ -55,3 +55,7 @@ export const actionExperimentsToggleSelected = createAction('[Experiments] toggl
 
 export const actionExperimentsSelectAll = createAction('[Experiments] select all experiments');
 export const actionExperimentsSelectNone = createAction('[Experiments] deselect all experiments');
+
+export const actionExperimentsSetOutputSynchronizationRequest = createAction('[Experiments] Set output synchronization request', props<{ synchronize: boolean }>());
+export const actionExperimentsSetOutputSynchronizationRequestDone = createAction('[Experiments] Set output synchronization request done', props<{ synchronize: boolean }>());
+export const actionExperimentsSetOutputSynchronizationRequestFail = createAction('[Experiments] Set output synchronization request fail');

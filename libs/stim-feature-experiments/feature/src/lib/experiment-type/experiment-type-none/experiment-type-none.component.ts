@@ -4,11 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 
-import {
-  createEmptyExperiment,
-  Experiment,
-  Output,
-} from '@stechy1/diplomka-share';
+import { createEmptyExperiment, Experiment, Output } from '@stechy1/diplomka-share';
 
 import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
@@ -22,9 +18,7 @@ import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
   templateUrl: './experiment-type-none.component.html',
   styleUrls: ['./experiment-type-none.component.sass'],
 })
-export class ExperimentTypeNoneComponent
-  extends BaseExperimentTypeComponent<Experiment<Output>, Output>
-  implements OnInit {
+export class ExperimentTypeNoneComponent extends BaseExperimentTypeComponent<Experiment<Output>, Output> implements OnInit {
   constructor(
     @Inject(TOKEN_MAX_OUTPUT_COUNT) maxOutputCount: number,
     service: ExperimentsFacade,
@@ -35,15 +29,7 @@ export class ExperimentTypeNoneComponent
     connection: AliveCheckerFacade,
     logger: NGXLogger
   ) {
-    super(
-      maxOutputCount,
-      service,
-      route,
-      navigation,
-      connection,
-      new ExperimentNameValidator(service),
-      logger
-    );
+    super(maxOutputCount, service, route, navigation, connection, new ExperimentNameValidator(service), logger);
   }
 
   ngOnInit() {

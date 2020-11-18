@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { DefaultProjectorFn, MemoizedSelector, Store } from '@ngrx/store';
 
@@ -72,7 +73,15 @@ export class ExperimentsFacade extends BaseFacade<Experiment<Output>, Experiment
     return fromExperiments.experimentsFeature;
   }
 
+  get outputSynchronization(): Observable<boolean> {
+    return this.store.select(fromExperiments.synchronizeOutputsSelector);
+  }
+
   generateSequenceFromNameAndSize(name: string, size: number) {
     this.store.dispatch(ExperimentsActions.actionExperimentsGenerateSequenceFromNameAndSizeRequest({ name, size }));
+  }
+
+  public setOutputSynchronization(synchronize: boolean) {
+    this.store.dispatch(ExperimentsActions.actionExperimentsSetOutputSynchronizationRequest({ synchronize }));
   }
 }

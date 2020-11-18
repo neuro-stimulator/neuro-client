@@ -1,0 +1,23 @@
+{
+  "extends": ["../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["./tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "rules": {}
+    },
+    {
+      "files": ["*.component.html"],
+      "parserOptions": {
+        "project": "./tsconfig.json",
+        "createDefaultProgram": true
+      },
+      "rules": {},
+      "plugins": ["@angular-eslint/template"]
+    }
+  ]
+}

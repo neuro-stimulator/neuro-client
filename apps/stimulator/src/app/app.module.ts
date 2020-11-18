@@ -19,6 +19,7 @@ import { StimLibUiModule } from '@diplomka-frontend/stim-lib-ui';
 import { StimLibStoreModule } from '@diplomka-frontend/stim-lib-store';
 import { StimFeatureNavigationFeatureModule } from '@diplomka-frontend/stim-feature-navigation/feature';
 import { StimLibConnectionModule } from '@diplomka-frontend/stim-lib-connection';
+import { StimLibAssetPlayerModule } from '@diplomka-frontend/stim-lib-asset-player';
 import { StimFeatureSettingsDomainModule } from '@diplomka-frontend/stim-feature-settings/domain';
 import { AuthFacade, AuthState, StimFeatureAuthDomainModule } from '@diplomka-frontend/stim-feature-auth/domain';
 
@@ -66,11 +67,11 @@ export function autologinFactory(facade: AuthFacade) {
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
-      headerName: 'x-xsrf-token'
+      headerName: 'x-xsrf-token',
     }),
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production
+      enabled: environment.production,
     }),
 
     // Third party modules
@@ -78,62 +79,62 @@ export function autologinFactory(facade: AuthFacade) {
       loader: {
         provide: TranslateLoader,
         useFactory: createTranslateLoader,
-        deps: [HttpClient]
-      }
+        deps: [HttpClient],
+      },
     }),
     ToastrModule.forRoot(),
     LoggerModule.forRoot({
       level: NgxLoggerLevel.TRACE,
-      enableSourceMaps: !environment.production
+      enableSourceMaps: !environment.production,
     }),
     LocalStorageModule.forRoot({
       prefix: 'stim-control',
-      storageType: 'localStorage'
+      storageType: 'localStorage',
     }),
     StimLibStoreModule,
     StimLibConnectionModule.forRoot(),
     StimLibUiModule,
+    StimLibAssetPlayerModule,
     StimFeatureSettingsDomainModule,
     StimFeatureNavigationFeatureModule,
     StimFeatureAuthDomainModule,
 
     // Root routing module
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     ...TOKEN_PROVIDERS,
     {
       provide: DEFAULT_TIMEOUT,
-      useValue: 3000
+      useValue: 3000,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ClientIdInterceptorService,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestTimeoutInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ResponseInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: APP_INITIALIZER,
       useFactory: autologinFactory,
       deps: [AuthFacade],
-      multi: true
+      multi: true,
     },
     {
       provide: INTRO_STEPS,
       useFactory: createIntroStepsLoader,
-      deps: [HttpClient]
-    }
+      deps: [HttpClient],
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
