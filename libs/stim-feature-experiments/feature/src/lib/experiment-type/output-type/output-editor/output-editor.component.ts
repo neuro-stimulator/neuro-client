@@ -48,6 +48,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
   private _synchronizeOutputs: boolean;
   private _synchronizeOutputsSubscription: Subscription;
 
+  public connected: Observable<boolean>;
   public synchronizeOutputs: Observable<boolean>;
   public selectedID = -1;
 
@@ -211,6 +212,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
       });
       this._actions = args.actions;
       this.synchronizeOutputs = args.synchronizeOutputs;
+      this.connected = args.connected;
     });
   }
 

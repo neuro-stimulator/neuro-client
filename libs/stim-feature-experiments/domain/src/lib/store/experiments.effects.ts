@@ -12,7 +12,8 @@ import * as fromConnection from '@diplomka-frontend/stim-lib-connection';
 
 import { ExperimentsService } from '../infrastructure/experiments.service';
 import * as ExperimentsActions from './experiments.actions';
-import { experimentsFeature, experimentsSelector } from './experiments.reducer';
+import * as fromExperiments from './experiments.reducer';
+import { ConnectionStatus } from '@diplomka-frontend/stim-lib-connection';
 
 @Injectable()
 export class ExperimentsEffects {
@@ -38,7 +39,7 @@ export class ExperimentsEffects {
   allWithGhosts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsAllWithGhostRequest),
-      withLatestFrom(this.store.select(experimentsSelector)),
+      withLatestFrom(this.store.select(fromExperiments.experimentsSelector)),
       switchMap(([action, experiments]) => {
         let result: Observable<ResponseObject<Experiment<Output>[]>>;
         if (experiments.length !== 0) {
@@ -133,7 +134,7 @@ export class ExperimentsEffects {
   delete$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsDeleteRequest),
-      withLatestFrom(this.store.select(experimentsFeature)),
+      withLatestFrom(this.store.select(fromExperiments.experimentsFeature)),
       mergeMap(([action, experiments]) => {
         let result: Observable<ResponseObject<Experiment<Output>>>;
         if (action.experimentID) {
@@ -165,7 +166,7 @@ export class ExperimentsEffects {
   deleteDone$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsDeleteRequestDone),
-      withLatestFrom(this.store.select(experimentsFeature)),
+      withLatestFrom(this.store.select(fromExperiments.experimentsFeature)),
       map(([_, experiments]) => {
         let action;
         if (experiments.selectionMode) {
@@ -182,7 +183,7 @@ export class ExperimentsEffects {
   nameExists$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsNameExistsRequest),
-      withLatestFrom(this.store.select(experimentsFeature)),
+      withLatestFrom(this.store.select(fromExperiments.experimentsFeature)),
       switchMap(([action, experiments]) =>
         this.experiments.nameExists(action.name, experiments.selectedExperiment.experiment.id).pipe(
           map((response: ResponseObject<{ exists: boolean }>) => {
@@ -219,7 +220,7 @@ export class ExperimentsEffects {
   sequenceFromExperiment$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsGenerateSequenceFromNameAndSizeRequest),
-      withLatestFrom(this.store.select(experimentsFeature)),
+      withLatestFrom(this.store.select(fromExperiments.experimentsFeature)),
       switchMap(([action, experiments]) =>
         this.experiments.sequenceFromExperiment(experiments.selectedExperiment.experiment.id, action.name, action.size).pipe(
           map((response: ResponseObject<Sequence>) => {
@@ -233,8 +234,8 @@ export class ExperimentsEffects {
   setOutputSynchronization$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsSetOutputSynchronizationRequest),
-      withLatestFrom(this.store.select(experimentsFeature)),
-      filter(([action, experiments]) => action.synchronize !== experiments.synchronizeOutputs),
+      withLatestFrom(this.store.select(fromExperiments.experimentsFeature), this.store.select(fromConnection.connectionFeature)),
+      filter(([action, experiments, connection]) => action.synchronize !== experiments.synchronizeOutputs && connection.external === ConnectionStatus.CONNECTED),
       mergeMap(([action, experiments]) =>
         this.experiments.setOutputSynchronization(action.synchronize, experiments.selectedExperiment.experiment.id).pipe(
           map(() => {

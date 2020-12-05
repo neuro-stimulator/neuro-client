@@ -6,6 +6,7 @@ import { Output } from '@stechy1/diplomka-share';
 export interface OutputEditorArgs {
   outputs: Output[];
   actions: OutputEditorActions;
+  connected: Observable<boolean>;
   synchronizeOutputs: Observable<boolean>;
 }
 

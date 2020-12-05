@@ -1,41 +1,40 @@
 <div class="row flex-row flex-nowrap">
   <!-- Editor toolbar -->
-  <div class="col btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="btn-group mr-2" role="group" aria-label="First group">
-      <button type="button" class="btn btn-sm btn-secondary" [disabled]="manualAlignment.value" (click)="handleMoveOutputVerticalAlignmentUp()">
+  <div class="col btn-toolbar" role="toolbar">
+    <div class="btn-group mr-2" role="group">
+      <button type="button" class="btn btn-sm btn-secondary" [disabled]="selectedID === -1 || manualAlignment.value || !(connected | async)" (click)="handleMoveOutputVerticalAlignmentUp()">
         <i class="fas fa-angle-double-up"></i>
       </button>
-      <button type="button" class="btn btn-sm btn-secondary" [disabled]="manualAlignment.value" (click)="handleSetOutputHorizontalAlignment(HorizontalAlignment.LEFT)">
+      <button type="button" class="btn btn-sm btn-secondary" [disabled]="selectedID === -1 || manualAlignment.value || !(connected | async)" (click)="handleSetOutputHorizontalAlignment(HorizontalAlignment.LEFT)">
         <i class="fas fa-align-left"></i>
       </button>
-      <button type="button" class="btn btn-sm btn-secondary" [disabled]="manualAlignment.value" (click)="handleSetOutputHorizontalAlignment(HorizontalAlignment.CENTER)">
+      <button type="button" class="btn btn-sm btn-secondary" [disabled]="selectedID === -1 || manualAlignment.value || !(connected | async)" (click)="handleSetOutputHorizontalAlignment(HorizontalAlignment.CENTER)">
         <i class="fas fa-align-center"></i>
       </button>
-      <button type="button" class="btn btn-sm btn-secondary" [disabled]="manualAlignment.value" (click)="handleSetOutputHorizontalAlignment(HorizontalAlignment.RIGHT)">
+      <button type="button" class="btn btn-sm btn-secondary" [disabled]="selectedID === -1 || manualAlignment.value || !(connected | async)" (click)="handleSetOutputHorizontalAlignment(HorizontalAlignment.RIGHT)">
         <i class="fas fa-align-right"></i>
       </button>
-      <button type="button" class="btn btn-sm btn-secondary" [disabled]="manualAlignment.value" (click)="handleMoveOutputVerticalAlignmentDown()">
+      <button type="button" class="btn btn-sm btn-secondary" [disabled]="selectedID === -1 || manualAlignment.value || !(connected | async)" (click)="handleMoveOutputVerticalAlignmentDown()">
         <i class="fas fa-angle-double-down"></i>
       </button>
     </div>
   </div>
-  <div class="col btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="btn-group mr-2" role="group" aria-label="Second group">
+  <div class="col btn-toolbar justify-content-center" role="toolbar">
+    <div class="btn-group mr-2" role="group">
       <div class="btn-group-toggle" >
-        <label class="btn btn-secondary btn-sm active">
+        <label class="btn btn-secondary btn-sm" [attr.disabled]="selectedID === -1 || !(connected | async) ? '' : null">
           <input type="checkbox" autocomplete="off"
-                 [formControl]="manualAlignment"
-                 [attr.disabled]="selectedID === -1 ? '' : null">
+                 [formControl]="manualAlignment" [attr.disabled]="selectedID === -1 || !(connected | async) ? '' : null">
           <i class="fas fa-hand-paper"></i>
         </label>
-        <label class="btn btn-secondary btn-sm active" (click)="handleToggleOutputsSynchronization()">
+        <label class="btn btn-secondary btn-sm"  (click)="handleToggleOutputsSynchronization()" [attr.disabled]="!(connected | async) ? '' : null">
           <i class="fas fa-sync" [class.fa-spin]="synchronizeOutputs | async"></i>
         </label>
       </div>
     </div>
   </div>
-  <div class="col-6 btn-toolbar justify-content-end" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="btn-group btn-group-sm" role="group" aria-label="Third group">
+  <div class="col-5 btn-toolbar justify-content-end" role="toolbar">
+    <div class="btn-group btn-group-sm" role="group">
       <div class="input-group input-group-sm">
         <div class="input-group-prepend">
           <div class="input-group-text" id="x-position">x</div>

@@ -5,8 +5,8 @@ import { DefaultProjectorFn, MemoizedSelector, Store } from '@ngrx/store';
 
 import { Experiment, Output } from '@stechy1/diplomka-share';
 
-import { BaseFacade } from '@diplomka-frontend/stim-lib-common';
-import { BaseActions } from '@diplomka-frontend/stim-lib-common';
+import { BaseActions, BaseFacade } from '@diplomka-frontend/stim-lib-common';
+import * as fromConnection from '@diplomka-frontend/stim-lib-connection';
 
 import * as ExperimentsActions from '../store/experiments.actions';
 import * as fromExperiments from '../store/experiments.reducer';
@@ -75,6 +75,10 @@ export class ExperimentsFacade extends BaseFacade<Experiment<Output>, Experiment
 
   get outputSynchronization(): Observable<boolean> {
     return this.store.select(fromExperiments.synchronizeOutputsSelector);
+  }
+
+  get ipcConnected(): Observable<boolean> {
+    return this.store.select(fromConnection.ipcConnectedSelector);
   }
 
   generateSequenceFromNameAndSize(name: string, size: number) {

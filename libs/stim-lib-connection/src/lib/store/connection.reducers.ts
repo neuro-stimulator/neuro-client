@@ -1,4 +1,4 @@
-import { Action, createFeatureSelector, createReducer, on } from '@ngrx/store';
+import { Action, createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
 
 import { ConnectionStatus } from '../domain/connection-status';
 import * as ConnectionActions from './connection.actions';
@@ -59,3 +59,5 @@ export function connectionStateReducer(connectionState: ConnectionInformationSta
 }
 
 export const connectionFeature = createFeatureSelector<ConnectionInformationState>(connectionStateKey);
+
+export const ipcConnectedSelector = createSelector(connectionFeature, (state: ConnectionInformationState) => state.external === ConnectionStatus.CONNECTED);

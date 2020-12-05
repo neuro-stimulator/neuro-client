@@ -236,6 +236,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
         outputs: this.form.value.outputs,
         actions: this._outputEditorActions,
         synchronizeOutputs: this._facade.outputSynchronization,
+        connected: this._facade.ipcConnected,
       })
       .then((outputEntries?: OutputEntry[]) => {
         if (outputEntries === undefined) {

@@ -256,11 +256,12 @@ export class StimulatorEffects {
           default:
             action = StimulatorActions.actionStimulatorNoop();
         }
-        return action.pipe(
-          catchError(() => {
-            return of(StimulatorActions.actionStimulatorNoop());
-          })
-        );
+        // return action.pipe(
+        //   catchError(() => {
+        //     return of(StimulatorActions.actionStimulatorNoop());
+        //   })
+        // );
+        return action;
       })
     )
   );
