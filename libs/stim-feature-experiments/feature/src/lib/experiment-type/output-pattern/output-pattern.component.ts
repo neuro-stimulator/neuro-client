@@ -34,7 +34,7 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
   private _initCheckboxes() {
     this.checkboxes.splice(0);
     for (let i = 0; i < this._patternSize; i++) {
-      const value = (this.value >> (i + 1)) & 1;
+      const value = (this.value >> i) & 1;
       this.checkboxes.push(value);
     }
   }
@@ -57,7 +57,7 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
     graphics.beginPath();
     graphics.moveTo(x, y);
     for (let i = 0; i < this._patternSize; i++) {
-      const value = (this.value >> (i + 1)) & 1;
+      const value = (this.value >> i) & 1;
       if (value === 1) {
         x += patternWidth / 2;
         graphics.lineTo(x, y);
@@ -106,7 +106,7 @@ export class OutputPatternComponent extends ValueAccessorBase<number> implements
 
     const checked = (event.target as HTMLInputElement).checked;
     const x = checked ? 1 : 0;
-    this.value ^= (-x ^ this.value) & (1 << (this._patternSize - index));
+    this.value ^= (-x ^ this.value) & (1 << (this._patternSize - index - 1));
     this._drawPattern();
   }
 
