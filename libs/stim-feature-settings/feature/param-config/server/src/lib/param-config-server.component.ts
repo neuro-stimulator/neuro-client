@@ -1,8 +1,13 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { Observable, zip } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { ConfirmDialogArgs, ConfirmDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 import { SettingsFacade } from '@diplomka-frontend/stim-feature-settings/domain';
+import { AssetPlayerFacade } from '@diplomka-frontend/stim-lib-asset-player';
+import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
 
 @Component({
   selector: 'stim-feature-settings-param-config-server',
@@ -37,7 +42,7 @@ export class ParamConfigServerComponent {
     });
   }
 
-  constructor(private readonly facade: SettingsFacade) {}
+  constructor(private readonly facade: SettingsFacade, private readonly assetPlayerFacade: AssetPlayerFacade, private readonly aliveFacade: AliveCheckerFacade) {}
 
   public handleSeedDatabase() {
     this.modal.showComponent = ConfirmDialogComponent;
@@ -59,7 +64,25 @@ export class ParamConfigServerComponent {
     });
   }
 
+  public handleSpawnAssetPlayer() {
+    this.assetPlayerFacade.spawn();
+  }
+
+  public handleKillAssetPlayer() {
+    this.assetPlayerFacade.kill();
+  }
+
   get stimulatorResponseTimeout() {
     return this.form.get('stimulatorResponseTimeout');
+  }
+
+  get spawnAssetPlayerDisabled(): Observable<boolean> {
+    return zip(this.assetPlayerFacade.disconnected, this.assetPlayerFacade.ipcClosed, this.aliveFacade.serverConnected).pipe(
+      map(([disconnected, closed, serverConnected]: [boolean, boolean, boolean]) => !serverConnected || !disconnected || closed)
+    );
+  }
+
+  get killAssetPlayerDisabled(): Observable<boolean> {
+    return this.assetPlayerFacade.connected.pipe(map((value) => !value));
   }
 }

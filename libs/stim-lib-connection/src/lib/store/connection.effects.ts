@@ -3,7 +3,14 @@ import { filter, map, tap } from 'rxjs/operators';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { IpcConnectionStateMessage, SocketMessage, SocketMessageSpecialization, SocketMessageType, StimulatorConnectionStateMessage } from '@stechy1/diplomka-share';
+import {
+  ConnectionStatus,
+  IpcConnectionStateMessage,
+  SocketMessage,
+  SocketMessageSpecialization,
+  SocketMessageType,
+  StimulatorConnectionStateMessage,
+} from '@stechy1/diplomka-share';
 
 import { AliveCheckerService } from '../infrastructure/alive-checker.service';
 import * as ConnectionActions from './connection.actions';
@@ -47,11 +54,19 @@ export class ConnectionEffects {
         switch (message.type) {
           case SocketMessageType.STIMULATOR_CONNECTION_STATE: {
             const stimulatorConnectionMessage = message as StimulatorConnectionStateMessage;
-            return stimulatorConnectionMessage.data.connected ? ConnectionActions.actionStimulatorConnected() : ConnectionActions.actionStimulatorDisconnected();
+            const actions = {};
+            actions[ConnectionStatus.DISCONNECTED] = ConnectionActions.actionStimulatorDisconnected;
+            actions[ConnectionStatus.CONNECTED] = ConnectionActions.actionStimulatorConnected;
+            return actions[stimulatorConnectionMessage.data.status]();
           }
           case SocketMessageType.IPC_CONNECTION_STATE: {
             const ipcConnectionMessage = message as IpcConnectionStateMessage;
-            return ipcConnectionMessage.data.connected ? ConnectionActions.actionExternalConnected() : ConnectionActions.actionExternalDisconnected();
+            const actions = {};
+            actions[ConnectionStatus.CLOSED] = ConnectionActions.actionIpcClosed;
+            actions[ConnectionStatus.OPEN] = ConnectionActions.actionIpcOpened;
+            actions[ConnectionStatus.DISCONNECTED] = ConnectionActions.actionAssetPlayerDisconnected;
+            actions[ConnectionStatus.CONNECTED] = ConnectionActions.actionAssetPlayerConnected;
+            return actions[ipcConnectionMessage.data.status]();
           }
         }
       })

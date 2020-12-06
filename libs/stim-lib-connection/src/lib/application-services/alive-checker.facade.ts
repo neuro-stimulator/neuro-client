@@ -42,4 +42,8 @@ export class AliveCheckerFacade {
   get state(): Observable<ConnectionInformationState> {
     return this.store.select(fromConnection.connectionFeature);
   }
+
+  get serverConnected(): Observable<boolean> {
+    return this.store.select(fromConnection.serverConnectedSelector);
+  }
 }

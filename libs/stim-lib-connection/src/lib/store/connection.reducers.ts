@@ -1,6 +1,7 @@
 import { Action, createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
 
-import { ConnectionStatus } from '../domain/connection-status';
+import { ConnectionStatus } from '@stechy1/diplomka-share';
+
 import * as ConnectionActions from './connection.actions';
 import { ConnectionInformationState } from './connection.state';
 
@@ -12,7 +13,7 @@ export function connectionStateReducer(connectionState: ConnectionInformationSta
       server: ConnectionStatus.CONNECTING,
       serverConnectionFirstTime: true,
       stimulator: ConnectionStatus.CONNECTED,
-      external: ConnectionStatus.DISCONNECTED,
+      assetPlayer: ConnectionStatus.DISCONNECTED,
       working: false,
     },
     on(ConnectionActions.actionServerConnecting, (state: ConnectionInformationState) => ({
@@ -38,13 +39,18 @@ export function connectionStateReducer(connectionState: ConnectionInformationSta
       stimulator: ConnectionStatus.DISCONNECTED,
     })),
 
-    on(ConnectionActions.actionExternalConnected, (state: ConnectionInformationState) => ({
+    on(ConnectionActions.actionIpcClosed, (state: ConnectionInformationState) => ({
       ...state,
-      external: ConnectionStatus.CONNECTED,
+      assetPlayer: ConnectionStatus.CLOSED,
     })),
-    on(ConnectionActions.actionExternalDisconnected, (state: ConnectionInformationState) => ({
+
+    on(ConnectionActions.actionAssetPlayerConnected, (state: ConnectionInformationState) => ({
       ...state,
-      external: ConnectionStatus.DISCONNECTED,
+      assetPlayer: ConnectionStatus.CONNECTED,
+    })),
+    on(ConnectionActions.actionAssetPlayerDisconnected, ConnectionActions.actionIpcOpened, (state: ConnectionInformationState) => ({
+      ...state,
+      assetPlayer: ConnectionStatus.DISCONNECTED,
     })),
 
     on(ConnectionActions.actionServerStartCommunicating, (state: ConnectionInformationState) => ({
@@ -60,4 +66,8 @@ export function connectionStateReducer(connectionState: ConnectionInformationSta
 
 export const connectionFeature = createFeatureSelector<ConnectionInformationState>(connectionStateKey);
 
-export const ipcConnectedSelector = createSelector(connectionFeature, (state: ConnectionInformationState) => state.external === ConnectionStatus.CONNECTED);
+export const serverConnectedSelector = createSelector(connectionFeature, (state: ConnectionInformationState) => state.server === ConnectionStatus.CONNECTED);
+
+export const ipcClosedSelector = createSelector(connectionFeature, (state: ConnectionInformationState) => state.assetPlayer === ConnectionStatus.CLOSED);
+export const ipcConnectedSelector = createSelector(connectionFeature, (state: ConnectionInformationState) => state.assetPlayer === ConnectionStatus.CONNECTED);
+export const ipcDisconnectedSelector = createSelector(connectionFeature, (state: ConnectionInformationState) => state.assetPlayer === ConnectionStatus.DISCONNECTED);

@@ -5,10 +5,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
-import { Experiment, Output } from '@stechy1/diplomka-share';
+import { Experiment, Output, ConnectionStatus } from '@stechy1/diplomka-share';
 
 import { ContentTogglerDirective, ExperimentViewerComponent } from '@diplomka-frontend/stim-lib-ui';
-import { ConnectionStatus } from '@diplomka-frontend/stim-lib-connection';
 import { PlayerFacade, PlayerState, StopConditionType } from '@diplomka-frontend/stim-feature-player/domain';
 import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
 import { StimulatorStateType } from '@diplomka-frontend/stim-feature-stimulator/domain';

@@ -6,7 +6,7 @@ import { catchError, map, mergeMap } from 'rxjs/operators';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
-import { ResponseObject } from '@stechy1/diplomka-share';
+import { ConnectionStatus, ResponseObject } from '@stechy1/diplomka-share';
 
 import { AssetPlayerService } from '../infrastructure/asset-player.service';
 import * as AssetPlayerActions from './asset-player.actions';
@@ -47,12 +47,44 @@ export class AssetPlayerEffects {
     )
   );
 
+  spawn$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AssetPlayerActions.actionAssetPlayerSpawnRequest),
+      mergeMap(() =>
+        this.service.spawn().pipe(
+          map(() => {
+            return AssetPlayerActions.actionAssetPlayerSpawnRequestDone();
+          }),
+          catchError(() => {
+            return of(AssetPlayerActions.actionAssetPlayerSpawnRequestFail());
+          })
+        )
+      )
+    )
+  );
+
+  kill$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AssetPlayerActions.actionAssetPlayerKillRequest),
+      mergeMap(() =>
+        this.service.kill().pipe(
+          map(() => {
+            return AssetPlayerActions.actionAssetPlayerKillRequestDone();
+          }),
+          catchError(() => {
+            return of(AssetPlayerActions.actionAssetPlayerKillRequestFail());
+          })
+        )
+      )
+    )
+  );
+
   status$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AssetPlayerActions.actionAssetPlayerStatusRequest),
       mergeMap(() =>
         this.service.status().pipe(
-          map((response: ResponseObject<{ connected: boolean }>) => {
+          map((response: ResponseObject<{ status: ConnectionStatus }>) => {
             return AssetPlayerActions.actionAssetPlayerStatusRequestDone(response.data);
           }),
           catchError(() => {

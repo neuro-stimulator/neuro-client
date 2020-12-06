@@ -15,8 +15,11 @@ export const actionStimulatorDisconnectRequest = createAction('[Stimulator] disc
 export const actionStimulatorDisconnected = createAction('[Connection] Stimulator disconnected');
 export const actionStimulatorConnectionStatusRequest = createAction('[Stimulator] connection status request');
 
-export const actionExternalConnected = createAction('[Connection] External connected');
-export const actionExternalDisconnected = createAction('[Connection] External disconnected');
+export const actionIpcOpened = createAction('[Connection] IPC opened');
+export const actionIpcClosed = createAction('[Connection] IPC closed');
+
+export const actionAssetPlayerConnected = createAction('[Connection] AssetPlayer connected');
+export const actionAssetPlayerDisconnected = createAction('[Connection] AssetPlayer disconnected');
 
 export const actionSocketData = createAction('[Connection] Incomming socket data', props<{ data: SocketMessage }>());
 export const actionSendSocketData = createAction('[Connection] Sending socket data', props<{ data: SocketMessage }>());

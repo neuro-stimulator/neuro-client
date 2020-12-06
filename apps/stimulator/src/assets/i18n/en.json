@@ -153,6 +153,11 @@
       "INVERT": "Invert",
       "RANDOM": "Random"
     },
+    "OUTPUT_EDITOR": {
+      "TITLE": "Output editor",
+      "CONFIRM": "Save",
+      "CANCEL": "Cancel"
+    },
     "STEPS": {
       "EXPERIMENT_LIST": "List of all available experiments.",
       "EXPERIMENT_ROW": "Record of one experiment.",
@@ -481,6 +486,7 @@
     "CODE_ERROR_EXPERIMENT_WAS_NOT_DELETED":  "Experiment {{id}} was unable to delete.",
     "CODE_ERROR_EXPERIMENT_NOT_VALID":  "Experiment {{id}} is not valid!.",
     "CODE_ERROR_EXPERIMENT_ALREADY_EXISTS":  "Experiment {{id}} already exists!.",
+    "CODE_ERROR_EXPERIMENT_OUTPUT_SYNCHRONIZATION_DISABLED": "Output synchronizadion disabled.",
     "CODE_ERROR_EXPERIMENT_RESULT_NOT_FOUND": "Experiment result {{id}} was not found.",
     "CODE_SUCCESS_EXPERIMENT_RESULT_CREATED":  "Experiment result {{id}} was successfully created.",
     "CODE_ERROR_EXPERIMENT_RESULT_WAS_NOT_CREATED":  "Experiment result {{id}} was unable to create!",
@@ -556,10 +562,15 @@
     "CODE_ERROR_STIMULATOR_NO_UPLOADED_EXPERIMENT": "Stimulator do not have uploaded any experiment!",
     "CODE_ERROR_STIMULATOR_PLAYER_NOT_INITIALIZED": "Experiment player is not initialized!",
     "CODE_ERROR_STIMULATOR_ACTION_NOT_POSSIBLE": "Action could not be performed in this state!",
-    "CODE_ERROR_IPC_ALREADY_CONNECTED": "Other IPC already connected!",
+    "CODE_ERROR_IPC_ALREADY_OPEN": "IPC port already open!",
     "CODE_ERROR_IPC_NOT_OPEN": "IPC is not open!",
+    "CODE_ERROR_IPC_PLAYER_ALREADY_RUNNING": "Multimedia player already running!",
+    "CODE_ERROR_IPC_PLAYER_NOT_RUNNING":"Multimedia player not running!",
+    "CODE_ERROR_IPC_PYTHON_PATH_NOT_DEFINED": "Python path not defined!",
+    "CODE_ERROR_IPC_MAIN_PATH_NOT_DEFINED":"Path to main.py not defined!",
+    "CODE_ERROR_IPC_SYNC_EXPERIMENT_ID_MISSING": "Experiment ID is not defined!",
     "CODE_ERROR_AUTH_UNAUTHORIZED": "Unauthorized access!",
-    "CODE_SUCCESS_AUTH_LOGIN": "Login successfull.!",
+    "CODE_SUCCESS_AUTH_LOGIN": "Login successfull.",
     "CODE_ERROR_AUTH_LOGIN_FAILED": "Login failed!",
     "CODE_SUCCESS_AUTH_TOKEN_REFRESH": "Refresh token updated!",
     "CODE_ERROR_AUTH_TOKEN_REFRESH_FAILED": "Refresh token was unable to update!",

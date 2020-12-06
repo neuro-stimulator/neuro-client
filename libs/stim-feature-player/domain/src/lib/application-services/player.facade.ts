@@ -3,10 +3,10 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
-import { createEmptyExperiment, Experiment, Output } from '@stechy1/diplomka-share';
+import { ConnectionStatus, createEmptyExperiment, Experiment, Output } from '@stechy1/diplomka-share';
 
 import { StimulatorFacade, StimulatorState, StimulatorStateType } from '@diplomka-frontend/stim-feature-stimulator/domain';
-import { AliveCheckerFacade, ConnectionInformationState, ConnectionStatus } from '@diplomka-frontend/stim-lib-connection';
+import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
 import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
 
 import { PlayerState, StopConditionType } from '../store/player.state';

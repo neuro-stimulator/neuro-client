@@ -6,14 +6,23 @@ import { EMPTY, Observable, of } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
-import { Experiment, ExperimentType, Output, ResponseObject, Sequence, SocketMessage, SocketMessageSpecialization, SocketMessageType } from '@stechy1/diplomka-share';
+import {
+  ConnectionStatus,
+  Experiment,
+  ExperimentType,
+  Output,
+  ResponseObject,
+  Sequence,
+  SocketMessage,
+  SocketMessageSpecialization,
+  SocketMessageType,
+} from '@stechy1/diplomka-share';
 
 import * as fromConnection from '@diplomka-frontend/stim-lib-connection';
 
 import { ExperimentsService } from '../infrastructure/experiments.service';
 import * as ExperimentsActions from './experiments.actions';
 import * as fromExperiments from './experiments.reducer';
-import { ConnectionStatus } from '@diplomka-frontend/stim-lib-connection';
 
 @Injectable()
 export class ExperimentsEffects {
@@ -235,7 +244,7 @@ export class ExperimentsEffects {
     this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsSetOutputSynchronizationRequest),
       withLatestFrom(this.store.select(fromExperiments.experimentsFeature), this.store.select(fromConnection.connectionFeature)),
-      filter(([action, experiments, connection]) => action.synchronize !== experiments.synchronizeOutputs && connection.external === ConnectionStatus.CONNECTED),
+      filter(([action, experiments, connection]) => action.synchronize !== experiments.synchronizeOutputs && connection.assetPlayer === ConnectionStatus.CONNECTED),
       mergeMap(([action, experiments]) =>
         this.experiments.setOutputSynchronization(action.synchronize, experiments.selectedExperiment.experiment.id).pipe(
           map(() => {

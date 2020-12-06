@@ -22,8 +22,8 @@
     <i class="fas fa-bullhorn" [title]="'SETTINGS.SERVICE_STATE.AUDIO_IMAGE_PLAYER' | translate"></i>/<i class="fas fa-camera-retro" title="Přehrávač zvuků a obrázků"></i> {{ 'SETTINGS.SERVICE_STATE.AUDIO_IMAGE_PLAYER' | translate }}
   </div>
   <div class="col-6 text-right">
-    <span *ngIf="(connectionState | async).external === ConnectionStatus.DISCONNECTED"><i class="fas fa-times text-danger"></i> {{ 'SETTINGS.SERVICE_STATE.DISCONNECTED' | translate }}</span>
-    <span *ngIf="(connectionState | async).external === ConnectionStatus.CONNECTED"><i class="fas fa-check text-success"></i> {{ 'SETTINGS.SERVICE_STATE.CONNECTED' | translate }}</span>
+    <span *ngIf="(connectionState | async).assetPlayer !== ConnectionStatus.CONNECTED"><i class="fas fa-times text-danger"></i> {{ 'SETTINGS.SERVICE_STATE.DISCONNECTED' | translate }}</span>
+    <span *ngIf="(connectionState | async).assetPlayer === ConnectionStatus.CONNECTED"><i class="fas fa-check text-success"></i> {{ 'SETTINGS.SERVICE_STATE.CONNECTED' | translate }}</span>
   </div>
 </div>
 

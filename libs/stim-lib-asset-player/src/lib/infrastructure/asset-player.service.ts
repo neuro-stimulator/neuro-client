@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { ResponseObject } from '@stechy1/diplomka-share';
+import { ConnectionStatus, ResponseObject } from '@stechy1/diplomka-share';
 
 import { TOKEN_ASSET_PLAYER_API_URL } from '@diplomka-frontend/stim-lib-common';
 
@@ -24,8 +24,18 @@ export class AssetPlayerService {
     return this._http.patch<ResponseObject<void>>(`${this.apiURL}/close`, null);
   }
 
-  public status(): Observable<ResponseObject<{ connected: boolean }>> {
+  public spawn(): Observable<ResponseObject<void>> {
+    this.logger.info('Odesílám požadavek na spuštění přehrávače multimédií.');
+    return this._http.patch<ResponseObject<void>>(`${this.apiURL}/spawn`, null);
+  }
+
+  public kill(): Observable<ResponseObject<void>> {
+    this.logger.info('Odesílám požadavek na vypnutí přehrávače multimédií.');
+    return this._http.patch<ResponseObject<void>>(`${this.apiURL}/kill`, null);
+  }
+
+  public status(): Observable<ResponseObject<{ status: ConnectionStatus }>> {
     this.logger.info('Odesílám požadavek na získání stavu spojení s přehrávačem multimédií.');
-    return this._http.get<ResponseObject<{ connected: boolean }>>(`${this.apiURL}/status`);
+    return this._http.get<ResponseObject<{ status: ConnectionStatus }>>(`${this.apiURL}/status`);
   }
 }
