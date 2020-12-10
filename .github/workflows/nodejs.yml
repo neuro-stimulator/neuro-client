@@ -14,11 +14,11 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 12.8
+    - uses: actions/checkout@main
+    - name: Use Node.js 12.18.3
       uses: actions/setup-node@v1
       with:
-        node-version: 12.8
+        node-version: 12.18.3
     - name: Install dependencies
       run: npm install
 #    - name: Lint
