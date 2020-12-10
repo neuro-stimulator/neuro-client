@@ -87,6 +87,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
     }
 
     this.form.patchValue(experiment);
+    this.form.patchValue({ tags: [...experiment.tags] }, { emitEvent: false });
     this.form.markAsUntouched();
   }
 

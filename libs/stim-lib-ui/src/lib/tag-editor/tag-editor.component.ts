@@ -18,14 +18,11 @@ export class TagEditorComponent implements OnInit {
     this.tags.setValidators([]);
   }
 
-  handleAddTag(event: Event) {
-    event.preventDefault();
-    event.stopPropagation();
+  handleAddTag(srcElement: HTMLInputElement) {
     if (!this.newTagValid) {
       return;
     }
     const tags: string[] = this.tags.value;
-    const srcElement = event.target as HTMLInputElement;
     tags.push(srcElement.value);
     srcElement.value = '';
     srcElement.focus();

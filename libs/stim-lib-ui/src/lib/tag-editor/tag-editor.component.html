@@ -1,8 +1,14 @@
 <div class="form-group" [formGroup]="form">
   <label for="tag-input">{{ 'SHARE.TAGS.TITLE' | translate }}</label>
   <div class="tags">
-    <span class="badge badge-pill tag-badge" *ngFor="let tag of tags.value" [title]="'SHARE.TAGS.DELETE' | translate">{{tag}} <i class="fas fa-trash" (click)="handleRemove(tag)"></i></span>
-    <input type="text" class="form-control form-control-sm" [placeholder]="'SHARE.TAGS.NEW' | translate" id="tag-input" (change)="handleAddTag($event)" (keyup)="handleTagValueChange($event)" [class.is-valid]="newTagValid && tags.touched" [class.is-invalid]="!newTagValid">
+    <div class="input-group">
+      <span class="badge badge-pill tag-badge" *ngFor="let tag of tags.value" [title]="'SHARE.TAGS.DELETE' | translate">{{tag}} <i class="fas fa-trash" (click)="handleRemove(tag)"></i></span>
+      <input type="text" class="form-control form-control-sm" [placeholder]="'SHARE.TAGS.NEW' | translate" id="tag-input" (keyup)="handleTagValueChange($event)" [class.is-valid]="newTagValid && tags.touched" [class.is-invalid]="!newTagValid" #input>
+      <div class="input-group-append">
+        <button class="btn btn-sm btn-outline-primary" [disabled]="!input.value || !newTagValid" (click)="handleAddTag(input)">+</button>
+      </div>
+    </div>
+
     <small *ngIf="!newTagValid" class="form-text text-muted">{{ 'SHARE.TAGS.TAG_ALREADY_EXISTS' | translate}}</small>
   </div>
 </div>
