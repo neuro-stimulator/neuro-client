@@ -105,7 +105,7 @@
     "istanbul-lib-coverage": "^3.0.0",
     "jest": "25.5.4",
     "jest-preset-angular": "8.3.1",
-    "npm-check-updates": "^8.0.1",
+    "npm-check-updates": "^10.2.5",
     "prettier": "2.1.2",
     "prettier-eslint": "^11.0.0",
     "ts-jest": "25.5.1",
