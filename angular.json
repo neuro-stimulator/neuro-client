@@ -55,7 +55,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -91,7 +90,10 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -122,7 +124,8 @@
           "options": {
             "lintFilePatterns": [
               "apps/stimulator/**/*.ts",
-              "apps/stimulator/**/*.component.html"
+              "apps/stimulator/**/*.component.html",
+              "apps/stimulator/src/**/*.html"
             ]
           }
         },
@@ -131,7 +134,10 @@
           "options": {
             "jestConfig": "apps/stimulator/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/apps/stimulator"
+          ]
         }
       }
     },
@@ -187,7 +193,8 @@
           "options": {
             "lintFilePatterns": [
               "libs/stim-lib-modal/**/*.ts",
-              "libs/stim-lib-modal/**/*.component.html"
+              "libs/stim-lib-modal/**/*.component.html",
+              "libs/stim-lib-modal/src/**/*.html"
             ]
           }
         },
@@ -196,7 +203,10 @@
           "options": {
             "jestConfig": "libs/stim-lib-modal/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-lib-modal"
+          ]
         }
       },
       "schematics": {
@@ -216,14 +226,18 @@
           "options": {
             "jestConfig": "libs/stim-lib-fab/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-lib-fab"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-lib-fab/**/*.ts",
-              "libs/stim-lib-fab/**/*.component.html"
+              "libs/stim-lib-fab/**/*.component.html",
+              "libs/stim-lib-fab/src/**/*.html"
             ]
           }
         }
@@ -245,14 +259,18 @@
           "options": {
             "jestConfig": "libs/stim-lib-list-utils/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-lib-list-utils"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-lib-list-utils/**/*.ts",
-              "libs/stim-lib-list-utils/**/*.component.html"
+              "libs/stim-lib-list-utils/**/*.component.html",
+              "libs/stim-lib-list-utils/src/**/*.html"
             ]
           }
         }
@@ -274,14 +292,18 @@
           "options": {
             "jestConfig": "libs/stim-lib-common/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-lib-common"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-lib-common/**/*.ts",
-              "libs/stim-lib-common/**/*.component.html"
+              "libs/stim-lib-common/**/*.component.html",
+              "libs/stim-lib-common/src/**/*.html"
             ]
           }
         }
@@ -303,14 +325,18 @@
           "options": {
             "jestConfig": "libs/stim-lib-asset-player/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-lib-asset-player"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-lib-asset-player/**/*.ts",
-              "libs/stim-lib-asset-player/**/*.component.html"
+              "libs/stim-lib-asset-player/**/*.component.html",
+              "libs/stim-lib-asset-player/src/**/*.html"
             ]
           }
         }
@@ -332,14 +358,18 @@
           "options": {
             "jestConfig": "libs/stim-lib-ui/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-lib-ui"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-lib-ui/**/*.ts",
-              "libs/stim-lib-ui/**/*.component.html"
+              "libs/stim-lib-ui/**/*.component.html",
+              "libs/stim-lib-ui/src/**/*.html"
             ]
           }
         }
@@ -361,14 +391,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-about/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-about"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-about/**/*.ts",
-              "libs/stim-feature-about/**/*.component.html"
+              "libs/stim-feature-about/**/*.component.html",
+              "libs/stim-feature-about/src/**/*.html"
             ]
           }
         }
@@ -390,14 +424,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-settings/feature/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-settings/feature"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-settings/feature/**/*.ts",
-              "libs/stim-feature-settings/feature/**/*.component.html"
+              "libs/stim-feature-settings/feature/**/*.component.html",
+              "libs/stim-feature-settings/feature/src/**/*.html"
             ]
           }
         }
@@ -419,14 +457,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-settings/domain/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-settings/domain"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-settings/domain/**/*.ts",
-              "libs/stim-feature-settings/domain/**/*.component.html"
+              "libs/stim-feature-settings/domain/**/*.component.html",
+              "libs/stim-feature-settings/domain/src/**/*.html"
             ]
           }
         }
@@ -448,14 +490,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-stimulator/domain/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-stimulator/domain"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-stimulator/domain/**/*.ts",
-              "libs/stim-feature-stimulator/domain/**/*.component.html"
+              "libs/stim-feature-stimulator/domain/**/*.component.html",
+              "libs/stim-feature-stimulator/domain/src/**/*.html"
             ]
           }
         }
@@ -477,14 +523,18 @@
           "options": {
             "jestConfig": "libs/stim-lib-store/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-lib-store"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-lib-store/**/*.ts",
-              "libs/stim-lib-store/**/*.component.html"
+              "libs/stim-lib-store/**/*.component.html",
+              "libs/stim-lib-store/src/**/*.html"
             ]
           }
         }
@@ -506,14 +556,18 @@
           "options": {
             "jestConfig": "libs/stim-lib-connection/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-lib-connection"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-lib-connection/**/*.ts",
-              "libs/stim-lib-connection/**/*.component.html"
+              "libs/stim-lib-connection/**/*.component.html",
+              "libs/stim-lib-connection/src/**/*.html"
             ]
           }
         }
@@ -535,14 +589,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-file-browser/domain/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-file-browser/domain"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-file-browser/domain/**/*.ts",
-              "libs/stim-feature-file-browser/domain/**/*.component.html"
+              "libs/stim-feature-file-browser/domain/**/*.component.html",
+              "libs/stim-feature-file-browser/domain/src/**/*.html"
             ]
           }
         }
@@ -564,14 +622,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-file-browser/feature/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-file-browser/feature"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-file-browser/feature/**/*.ts",
-              "libs/stim-feature-file-browser/feature/**/*.component.html"
+              "libs/stim-feature-file-browser/feature/**/*.component.html",
+              "libs/stim-feature-file-browser/feature/src/**/*.html"
             ]
           }
         }
@@ -593,14 +655,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-navigation/feature/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-navigation/feature"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-navigation/feature/**/*.ts",
-              "libs/stim-feature-navigation/feature/**/*.component.html"
+              "libs/stim-feature-navigation/feature/**/*.component.html",
+              "libs/stim-feature-navigation/feature/src/**/*.html"
             ]
           }
         }
@@ -622,14 +688,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-navigation/domain/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-navigation/domain"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-navigation/domain/**/*.ts",
-              "libs/stim-feature-navigation/domain/**/*.component.html"
+              "libs/stim-feature-navigation/domain/**/*.component.html",
+              "libs/stim-feature-navigation/domain/src/**/*.html"
             ]
           }
         }
@@ -651,14 +721,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-help/feature/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-help/feature"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-help/feature/**/*.ts",
-              "libs/stim-feature-help/feature/**/*.component.html"
+              "libs/stim-feature-help/feature/**/*.component.html",
+              "libs/stim-feature-help/feature/src/**/*.html"
             ]
           }
         }
@@ -680,14 +754,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-player/feature/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-player/feature"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-player/feature/**/*.ts",
-              "libs/stim-feature-player/feature/**/*.component.html"
+              "libs/stim-feature-player/feature/**/*.component.html",
+              "libs/stim-feature-player/feature/src/**/*.html"
             ]
           }
         }
@@ -709,14 +787,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-player/domain/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-player/domain"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-player/domain/**/*.ts",
-              "libs/stim-feature-player/domain/**/*.component.html"
+              "libs/stim-feature-player/domain/**/*.component.html",
+              "libs/stim-feature-player/domain/src/**/*.html"
             ]
           }
         }
@@ -738,14 +820,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-experiments/feature/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-experiments/feature"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-experiments/feature/**/*.ts",
-              "libs/stim-feature-experiments/feature/**/*.component.html"
+              "libs/stim-feature-experiments/feature/**/*.component.html",
+              "libs/stim-feature-experiments/feature/src/**/*.html"
             ]
           }
         }
@@ -767,14 +853,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-experiments/domain/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-experiments/domain"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-experiments/domain/**/*.ts",
-              "libs/stim-feature-experiments/domain/**/*.component.html"
+              "libs/stim-feature-experiments/domain/**/*.component.html",
+              "libs/stim-feature-experiments/domain/src/**/*.html"
             ]
           }
         }
@@ -796,14 +886,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-experiment-results/feature/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-experiment-results/feature"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-experiment-results/feature/**/*.ts",
-              "libs/stim-feature-experiment-results/feature/**/*.component.html"
+              "libs/stim-feature-experiment-results/feature/**/*.component.html",
+              "libs/stim-feature-experiment-results/feature/src/**/*.html"
             ]
           }
         }
@@ -825,14 +919,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-experiment-results/domain/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-experiment-results/domain"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-experiment-results/domain/**/*.ts",
-              "libs/stim-feature-experiment-results/domain/**/*.component.html"
+              "libs/stim-feature-experiment-results/domain/**/*.component.html",
+              "libs/stim-feature-experiment-results/domain/src/**/*.html"
             ]
           }
         }
@@ -854,14 +952,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-sequences/feature/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-sequences/feature"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-sequences/feature/**/*.ts",
-              "libs/stim-feature-sequences/feature/**/*.component.html"
+              "libs/stim-feature-sequences/feature/**/*.component.html",
+              "libs/stim-feature-sequences/feature/src/**/*.html"
             ]
           }
         }
@@ -883,14 +985,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-sequences/domain/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-sequences/domain"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-sequences/domain/**/*.ts",
-              "libs/stim-feature-sequences/domain/**/*.component.html"
+              "libs/stim-feature-sequences/domain/**/*.component.html",
+              "libs/stim-feature-sequences/domain/src/**/*.html"
             ]
           }
         }
@@ -912,14 +1018,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-settings/popup/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-settings/popup"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-settings/popup/**/*.ts",
-              "libs/stim-feature-settings/popup/**/*.component.html"
+              "libs/stim-feature-settings/popup/**/*.component.html",
+              "libs/stim-feature-settings/popup/src/**/*.html"
             ]
           }
         }
@@ -941,14 +1051,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-settings/feature/param-config/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-settings/feature/param-config"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-settings/feature/param-config/**/*.ts",
-              "libs/stim-feature-settings/feature/param-config/**/*.component.html"
+              "libs/stim-feature-settings/feature/param-config/**/*.component.html",
+              "libs/stim-feature-settings/feature/param-config/src/**/*.html"
             ]
           }
         }
@@ -970,14 +1084,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-settings/feature/service-state/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-settings/feature/service-state"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-settings/feature/service-state/**/*.ts",
-              "libs/stim-feature-settings/feature/service-state/**/*.component.html"
+              "libs/stim-feature-settings/feature/service-state/**/*.component.html",
+              "libs/stim-feature-settings/feature/service-state/src/**/*.html"
             ]
           }
         }
@@ -999,14 +1117,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-settings/feature/param-config/application/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-settings/feature/param-config/application"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-settings/feature/param-config/application/**/*.ts",
-              "libs/stim-feature-settings/feature/param-config/application/**/*.component.html"
+              "libs/stim-feature-settings/feature/param-config/application/**/*.component.html",
+              "libs/stim-feature-settings/feature/param-config/application/src/**/*.html"
             ]
           }
         }
@@ -1028,14 +1150,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-settings/feature/param-config/experiments/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-settings/feature/param-config/experiments"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-settings/feature/param-config/experiments/**/*.ts",
-              "libs/stim-feature-settings/feature/param-config/experiments/**/*.component.html"
+              "libs/stim-feature-settings/feature/param-config/experiments/**/*.component.html",
+              "libs/stim-feature-settings/feature/param-config/experiments/src/**/*.html"
             ]
           }
         }
@@ -1057,14 +1183,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-settings/feature/param-config/server/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-settings/feature/param-config/server"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-settings/feature/param-config/server/**/*.ts",
-              "libs/stim-feature-settings/feature/param-config/server/**/*.component.html"
+              "libs/stim-feature-settings/feature/param-config/server/**/*.component.html",
+              "libs/stim-feature-settings/feature/param-config/server/src/**/*.html"
             ]
           }
         }
@@ -1086,14 +1216,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-users/domain/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-users/domain"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-users/domain/**/*.ts",
-              "libs/stim-feature-users/domain/**/*.component.html"
+              "libs/stim-feature-users/domain/**/*.component.html",
+              "libs/stim-feature-users/domain/src/**/*.html"
             ]
           }
         }
@@ -1115,14 +1249,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-users/feature/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-users/feature"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-users/feature/**/*.ts",
-              "libs/stim-feature-users/feature/**/*.component.html"
+              "libs/stim-feature-users/feature/**/*.component.html",
+              "libs/stim-feature-users/feature/src/**/*.html"
             ]
           }
         }
@@ -1144,14 +1282,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-auth/feature/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-auth/feature"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-auth/feature/**/*.ts",
-              "libs/stim-feature-auth/feature/**/*.component.html"
+              "libs/stim-feature-auth/feature/**/*.component.html",
+              "libs/stim-feature-auth/feature/src/**/*.html"
             ]
           }
         }
@@ -1173,14 +1315,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-auth/domain/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-auth/domain"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-auth/domain/**/*.ts",
-              "libs/stim-feature-auth/domain/**/*.component.html"
+              "libs/stim-feature-auth/domain/**/*.component.html",
+              "libs/stim-feature-auth/domain/src/**/*.html"
             ]
           }
         }
@@ -1202,14 +1348,18 @@
           "options": {
             "jestConfig": "libs/stim-feature-stimulator/feature/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-feature-stimulator/feature"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-feature-stimulator/feature/**/*.ts",
-              "libs/stim-feature-stimulator/feature/**/*.component.html"
+              "libs/stim-feature-stimulator/feature/**/*.component.html",
+              "libs/stim-feature-stimulator/feature/src/**/*.html"
             ]
           }
         }
@@ -1231,14 +1381,18 @@
           "options": {
             "jestConfig": "libs/stim-lib-console/feature/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-lib-console/feature"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-lib-console/feature/**/*.ts",
-              "libs/stim-lib-console/feature/**/*.component.html"
+              "libs/stim-lib-console/feature/**/*.component.html",
+              "libs/stim-lib-console/feature/src/**/*.html"
             ]
           }
         }
@@ -1260,14 +1414,18 @@
           "options": {
             "jestConfig": "libs/stim-lib-console/domain/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/stim-lib-console/domain"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/stim-lib-console/domain/**/*.ts",
-              "libs/stim-lib-console/domain/**/*.component.html"
+              "libs/stim-lib-console/domain/**/*.component.html",
+              "libs/stim-lib-console/domain/src/**/*.html"
             ]
           }
         }

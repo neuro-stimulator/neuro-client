@@ -1,53 +1,46 @@
 {
   "root": true,
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module",
-    "project": "./tsconfig.*?.json"
-  },
   "ignorePatterns": ["**/*"],
-  "plugins": [
-    "@typescript-eslint",
-    "@nrwl/nx",
-    "@angular-eslint/eslint-plugin",
-    "@angular-eslint/eslint-plugin-template"
-  ],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@angular-eslint/recommended",
-    "plugin:ngrx/recommended",
-    "prettier",
-    "prettier/@typescript-eslint",
-    "plugin:rxjs/recommended"
-
-  ],
-  "rules": {
-    "@typescript-eslint/explicit-member-accessibility": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-parameter-properties": "off",
-    "@nrwl/nx/enforce-module-boundaries": [
-      "error",
-      {
-        "enforceBuildableLibDependency": true,
-        "allow": [],
-        "depConstraints": [
-          { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
-        ]
-      }
-    ],
-    "ngrx/on-function-explicit-return-type": "off",
-    "ngrx/no-multiple-actions-in-effects": "off",
-    "quotes": ["error", "single"]
-  },
+  "plugins": ["@nrwl/nx"],
   "overrides": [
     {
-      "files": ["*.component.ts"],
-      // ... applies a special processor to extract the template
-      "extends": ["plugin:@angular-eslint/template/process-inline-templates"]
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "extends": ["plugin:@angular-eslint/recommended", "plugin:ngrx/recommended", "plugin:rxjs/recommended"],
+      "parserOptions": {
+        "project": "./tsconfig.*?.json"
+      },
+      "plugins": ["@angular-eslint/eslint-plugin", "@angular-eslint/eslint-plugin-template"],
+      "rules": {
+        "@nrwl/nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ],
+        "ngrx/on-function-explicit-return-type": "off",
+        "ngrx/no-multiple-actions-in-effects": "off",
+        "quotes": ["error", "single"]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nrwl/nx/typescript"],
+      "parserOptions": {
+        "project": "./tsconfig.*?.json"
+      },
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nrwl/nx/javascript"],
+      "rules": {}
     }
   ]
 }

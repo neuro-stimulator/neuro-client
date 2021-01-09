@@ -1,8 +1,8 @@
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { StimFeatureSettingsDomainModule } from './stim-feature-settings-domain.module';
 
 describe('StimFeatureSettingsDomainModule', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [StimFeatureSettingsDomainModule],
     }).compileComponents();

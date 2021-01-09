@@ -1,8 +1,8 @@
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { StimLibConnectionModule } from './stim-lib-connection.module';
 
 describe('StimLibConnectionModule', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [StimLibConnectionModule],
     }).compileComponents();

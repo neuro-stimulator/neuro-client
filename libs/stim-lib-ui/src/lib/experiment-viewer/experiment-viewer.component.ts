@@ -25,7 +25,7 @@ export class ExperimentViewerComponent implements AfterContentInit {
   // Index do pole offsetů
   eventOffsetIndex = 0;
   @ViewChild('experimentCanvas', { static: true }) canvas: ElementRef;
-  @Input() maxOutputCount;
+  @Input() maxOutputCount = 8;
   @Input() outputCount = this.maxOutputCount;
   @Input() lineHeight = 30;
   @Input() peakHeight = 20;

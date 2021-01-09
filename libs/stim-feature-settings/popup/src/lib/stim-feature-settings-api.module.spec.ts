@@ -1,8 +1,8 @@
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { StimFeatureSettingsPopupModule } from './stim-feature-settings-popup.module';
 
 describe('StimFeatureSettingsApiModule', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [StimFeatureSettingsPopupModule],
     }).compileComponents();

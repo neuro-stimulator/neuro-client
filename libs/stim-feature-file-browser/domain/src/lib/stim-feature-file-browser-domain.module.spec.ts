@@ -1,8 +1,8 @@
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { StimFeatureFileBrowserDomainModule } from './stim-feature-file-browser-domain.module';
 
 describe('StimFeatureFileBrowserDomainModule', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [StimFeatureFileBrowserDomainModule],
     }).compileComponents();
