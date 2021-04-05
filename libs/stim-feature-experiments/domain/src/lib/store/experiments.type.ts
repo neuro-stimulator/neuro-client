@@ -7,7 +7,7 @@ export interface ExperimentsState extends AppState {
   experiments: Experiment<Output>[];
   selectedExperiments: SelectedEntities;
   selectionMode: boolean;
-  ghosts: [];
+  ghosts: unknown[];
   selectedExperiment: {
     experiment: Experiment<Output>;
     originalExperiment: Experiment<Output>;

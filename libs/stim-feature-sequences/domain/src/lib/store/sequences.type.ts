@@ -11,7 +11,7 @@ export interface SequencesState extends AppState {
   sequences: Sequence[];
   selectedSequences: SelectedEntities;
   selectionMode: boolean;
-  ghosts: [];
+  ghosts: unknown[];
   selectedSequence: {
     sequence: Sequence;
     originalSequence: Sequence;

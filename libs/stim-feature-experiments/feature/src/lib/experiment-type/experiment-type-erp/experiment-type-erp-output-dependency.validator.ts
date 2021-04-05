@@ -15,7 +15,7 @@ export class ExperimentTypeErpOutputDependencyValidator {
 
       const root = control.root as FormGroup;
 
-      const usedOutputs = root.get('outputCount').value as number;
+      const usedOutputs = root.get('outputCount')?.value as number;
       const valueRaw = control.value as string;
       if (valueRaw === null) {
         return null;
