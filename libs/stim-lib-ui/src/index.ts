@@ -15,3 +15,5 @@ export { ValueAccessorBase } from './lib/value-accessor-base';
 export { ShareValidators } from './lib/share-validators';
 export { DateTimePipe } from './lib/date-time.pipe';
 export { DiodeComponent } from './lib/diode/diode.component';
+
+export { PageToolsArgs } from './lib/page-tools/page-tools.args';

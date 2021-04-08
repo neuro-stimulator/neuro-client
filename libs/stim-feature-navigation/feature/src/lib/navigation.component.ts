@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
 
-import { PageToolsComponent } from '@diplomka-frontend/stim-lib-ui';
+import { PageToolsComponent, PageToolsArgs } from '@diplomka-frontend/stim-lib-ui';
 import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
 import { NavigationFacade, ComponentStoreService, NavigationState } from '@diplomka-frontend/stim-feature-navigation/domain';
 
@@ -67,7 +67,7 @@ export class NavigationComponent implements OnInit {
 
   handleTogglePageTools() {
     this.modal.showComponent = PageToolsComponent;
-    this.modal.open(this._components.pageToolsComponent);
+    this.modal.open<PageToolsArgs>({ viewComponent: this._components.pageToolsComponent });
   }
 
   handleToggleSidebar() {

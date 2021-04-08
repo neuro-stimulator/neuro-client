@@ -12,7 +12,7 @@ import { PageToolsArgs } from './page-tools.args';
   styleUrls: ['./page-tools.component.sass'],
 })
 export class PageToolsComponent extends DialogChildComponent implements OnInit {
-  private _viewComponent: Type<any>;
+  private _viewComponent: Type<PageToolsChildComponent>;
   private _pageToolsChildComponent: PageToolsChildComponent;
   private _modal: ModalComponent;
 
@@ -25,7 +25,6 @@ export class PageToolsComponent extends DialogChildComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._preparePageToolsChildComponent(this._viewComponent);
     this._pageToolsChildComponent.init();
 
     setTimeout(() => {
@@ -41,7 +40,10 @@ export class PageToolsComponent extends DialogChildComponent implements OnInit {
     modal.confirmDisabled = of(false);
     this._confirmSubscription = modal.confirm.subscribe(() => this._handleConfirm());
     this._cancelSubscription = modal.cancel.subscribe(() => this._handleCancel());
-    this._showSubscription = modal.show.subscribe((args: PageToolsArgs) => (this._viewComponent = args.viewComponent));
+    this._showSubscription = modal.show.subscribe((args: PageToolsArgs) => {
+      this._viewComponent = args.viewComponent;
+      this._preparePageToolsChildComponent(this._viewComponent);
+    });
   }
 
   unbind() {
