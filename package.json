@@ -103,7 +103,7 @@
     "eslint-plugin-rxjs": "^1.0.2",
     "istanbul-api": "2.1.7",
     "istanbul-lib-coverage": "^3.0.0",
-    "jest": "25.5.4",
+    "jest": "26.6.3",
     "jest-preset-angular": "8.3.2",
     "npm-check-updates": "^8.0.1",
     "prettier": "2.2.1",
