@@ -565,6 +565,7 @@
     "CODE_ERROR_STIMULATOR_NO_UPLOADED_EXPERIMENT": "Ve stimulátoru se nenachází žádný experiment!",
     "CODE_ERROR_STIMULATOR_PLAYER_NOT_INITIALIZED": "Přehrávač experimentů nebyl inicializován!",
     "CODE_ERROR_STIMULATOR_ACTION_NOT_POSSIBLE": "Požadovanou akci není možné v aktuálním stavu provést!",
+    "CODE_ERROR_STIMULATOR_ALREADY_IN_REQUESTED_STATE": "Stimulátor je již ve stavu: {{state}}!",
     "CODE_ERROR_IPC_ALREADY_OPEN": "IPC port je již otevřený!",
     "CODE_ERROR_IPC_NOT_OPEN": "IPC se nepodařilo otevřít!",
     "CODE_ERROR_IPC_PLAYER_ALREADY_RUNNING": "Přehrávač multimédií je již spuštěný!",

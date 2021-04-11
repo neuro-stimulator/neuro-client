@@ -562,6 +562,7 @@
     "CODE_ERROR_STIMULATOR_NO_UPLOADED_EXPERIMENT": "Stimulator do not have uploaded any experiment!",
     "CODE_ERROR_STIMULATOR_PLAYER_NOT_INITIALIZED": "Experiment player is not initialized!",
     "CODE_ERROR_STIMULATOR_ACTION_NOT_POSSIBLE": "Action could not be performed in this state!",
+    "CODE_ERROR_STIMULATOR_ALREADY_IN_REQUESTED_STATE": "Stimulator is already in state: {{state}}!",
     "CODE_ERROR_IPC_ALREADY_OPEN": "IPC port already open!",
     "CODE_ERROR_IPC_NOT_OPEN": "IPC is not open!",
     "CODE_ERROR_IPC_PLAYER_ALREADY_RUNNING": "Multimedia player already running!",

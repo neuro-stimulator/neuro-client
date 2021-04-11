@@ -12,7 +12,7 @@ import {
   SocketMessageSpecialization,
   SocketMessageType,
   StimulatorDataStateMessage,
-  StimulatorStateEvent,
+  StimulatorStateEvent
 } from '@stechy1/diplomka-share';
 import * as ConnectionActions from '@diplomka-frontend/stim-lib-connection';
 import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
@@ -215,9 +215,14 @@ export class StimulatorEffects {
     this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorClearRequest),
       withLatestFrom(this.store.select(stimulatorFeature)),
-      switchMap(([action, state]: [any, StimulatorState]) => {
+      switchMap(([action, state]: [never, StimulatorState]) => {
         let result: Observable<void | ResponseObject<unknown>>;
-        if (state.stimulatorState <= StimulatorStateType.SETUP || state.stimulatorState >= StimulatorStateType.FINISH) {
+        if (state.stimulatorState <= StimulatorStateType.SETUP
+          || (state.stimulatorState >= StimulatorStateType.FINISH
+            && (state.previousStimulatorState >= StimulatorStateType.FINISH
+              || state.previousStimulatorState <= StimulatorStateType.SETUP )
+          )
+        ) {
           result = this._service.experimentClear();
         } else {
           result = EMPTY;
