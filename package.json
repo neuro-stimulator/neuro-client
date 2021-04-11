@@ -57,7 +57,7 @@
     "@nrwl/angular": "11.6.1",
     "@stechy1/diplomka-share": "^1.0.48",
     "angular-2-local-storage": "^3.0.2",
-    "bootstrap": "^4.5.2",
+    "bootstrap": "^4.6.0",
     "chart.js": "^2.9.3",
     "chartjs-plugin-datalabels": "^0.7.0",
     "core-js": "^3.6.5",
