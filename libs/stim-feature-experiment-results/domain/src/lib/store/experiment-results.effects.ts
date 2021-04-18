@@ -152,7 +152,7 @@ export class ExperimentResultssEffects {
       map(([_, experimentResults]) => {
         let action;
         if (experimentResults.selectionMode) {
-          action = ExperimentResultsActions.actionExperimentResultsDeleteRequest({ experimentResultID: _.experimentResult.id });
+          action = ExperimentResultsActions.actionExperimentResultsDeleteRequest({});
         } else {
           action = ExperimentResultsActions.actionExperimentResultsNoAction();
         }
