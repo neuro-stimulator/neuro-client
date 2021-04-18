@@ -29,6 +29,8 @@ import { ExperimentTypeTvepComponent } from './experiment-type/experiment-type-t
 import { ExperimentTypeTvepOutputComponent } from './experiment-type/experiment-type-tvep/experiment-type-tvep-output/experiment-type-tvep-output.component';
 import { ExperimentTypeTvepOutputCountPipe } from './experiment-type/experiment-type-tvep/experiment-type-tvep-output/experiment-type-tvep-output-count.pipe';
 import { ExperimentTypeReaComponent } from './experiment-type/experiment-type-rea/experiment-type-rea.component';
+import { ExperimentTypeReaOutputComponent } from './experiment-type/experiment-type-rea/experiment-type-rea-output/experiment-type-rea-output.component';
+import { ExperimentTypeReaOutputCountPipe } from './experiment-type/experiment-type-rea/experiment-type-rea-output/experiment-type-rea-output-count.pipe';
 import { ExperimentTypeHeaderComponent } from './experiment-type/experiment-type-header/experiment-type-header.component';
 import { OutputPatternComponent } from './experiment-type/output-pattern/output-pattern.component';
 import { OutputTypeComponent } from './experiment-type/output-type/output-type.component';
@@ -61,6 +63,8 @@ import { OutputEditorComponent } from './experiment-type/output-type/output-edit
     ExperimentTypeFvepComponent,
     ExperimentTypeTvepComponent,
     ExperimentTypeReaComponent,
+    ExperimentTypeReaOutputComponent,
+    ExperimentTypeReaOutputCountPipe,
     ExperimentTypeHeaderComponent,
     ExperimentTypeErpOutputComponent,
     ExperimentTypeErpOutputCountPipe,
