@@ -14,21 +14,23 @@ import { ExperimentsComponent } from './experiments.component';
 import { ExperimentsItemListComponent } from './experiment-item-list/experiments-item-list.component';
 import { ExperimentsGhostItemListComponent } from './experiment-ghost-item-list/experiments-ghost-item-list.component';
 import { ExperimentTypeComponent } from './experiment-type/experiment-type.component';
-import { ExperimentTypeErpComponent } from './experiment-type/experiment-type-erp/experiment-type-erp.component';
 import { ExperimentTypeNoneComponent } from './experiment-type/experiment-type-none/experiment-type-none.component';
-import { ExperimentTypeCvepComponent } from './experiment-type/experiment-type-cvep/experiment-type-cvep.component';
-import { ExperimentTypeFvepComponent } from './experiment-type/experiment-type-fvep/experiment-type-fvep.component';
-import { ExperimentTypeTvepComponent } from './experiment-type/experiment-type-tvep/experiment-type-tvep.component';
-import { ExperimentTypeReaComponent } from './experiment-type/experiment-type-rea/experiment-type-rea.component';
-import { ExperimentTypeHeaderComponent } from './experiment-type/experiment-type-header/experiment-type-header.component';
+import { ExperimentTypeErpComponent } from './experiment-type/experiment-type-erp/experiment-type-erp.component';
 import { ExperimentTypeErpOutputComponent } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output.component';
 import { ExperimentTypeErpOutputCountPipe } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output-count.pipe';
 import { ExperimentTypeErpOutputDependencyPipe } from './experiment-type/experiment-type-erp/experiment-type-erp-output/experiment-type-erp-output-dependency.pipe';
-import { ExperimentTypeTvepOutputComponent } from './experiment-type/experiment-type-tvep/experiment-type-tvep-output/experiment-type-tvep-output.component';
-import { ExperimentTypeTvepOutputCountPipe } from './experiment-type/experiment-type-tvep/experiment-type-tvep-output/experiment-type-tvep-output-count.pipe';
-import { OutputPatternComponent } from './experiment-type/output-pattern/output-pattern.component';
+import { ExperimentTypeCvepComponent } from './experiment-type/experiment-type-cvep/experiment-type-cvep.component';
+import { ExperimentTypeCvepOutputComponent } from './experiment-type/experiment-type-cvep/experiment-type-cvep-output/experiment-type-cvep-output.component';
+import { ExperimentTypeCvepOutputCountPipe } from './experiment-type/experiment-type-cvep/experiment-type-cvep-output/experiment-type-cvep-output-count.pipe';
+import { ExperimentTypeFvepComponent } from './experiment-type/experiment-type-fvep/experiment-type-fvep.component';
 import { ExperimentTypeFvepOutputComponent } from './experiment-type/experiment-type-fvep/experiment-type-fvep-output/experiment-type-fvep-output.component';
 import { ExperimentTypeFvepOutputCountPipe } from './experiment-type/experiment-type-fvep/experiment-type-fvep-output/experiment-type-tvep-output-count.pipe';
+import { ExperimentTypeTvepComponent } from './experiment-type/experiment-type-tvep/experiment-type-tvep.component';
+import { ExperimentTypeTvepOutputComponent } from './experiment-type/experiment-type-tvep/experiment-type-tvep-output/experiment-type-tvep-output.component';
+import { ExperimentTypeTvepOutputCountPipe } from './experiment-type/experiment-type-tvep/experiment-type-tvep-output/experiment-type-tvep-output-count.pipe';
+import { ExperimentTypeReaComponent } from './experiment-type/experiment-type-rea/experiment-type-rea.component';
+import { ExperimentTypeHeaderComponent } from './experiment-type/experiment-type-header/experiment-type-header.component';
+import { OutputPatternComponent } from './experiment-type/output-pattern/output-pattern.component';
 import { OutputTypeComponent } from './experiment-type/output-type/output-type.component';
 import { ExperimentsFilterDialogComponent } from './experiments-filter-dialog/experiments-filter-dialog.component';
 import { SequenceFastDialogComponent } from './experiment-type/experiment-type-erp/sequence-fast-dialog/sequence-fast-dialog.component';
@@ -54,6 +56,8 @@ import { OutputEditorComponent } from './experiment-type/output-type/output-edit
     ExperimentTypeErpComponent,
     ExperimentTypeNoneComponent,
     ExperimentTypeCvepComponent,
+    ExperimentTypeCvepOutputComponent,
+    ExperimentTypeCvepOutputCountPipe,
     ExperimentTypeFvepComponent,
     ExperimentTypeTvepComponent,
     ExperimentTypeReaComponent,

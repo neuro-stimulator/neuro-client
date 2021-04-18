@@ -1,0 +1,16 @@
+<div [formGroup]="form">
+  <div formArrayName="outputs">
+    <div *ngFor="let output of outputs | experimentTypeCvepOutputCount:count; let i=index">
+      <div class="row experiment-property" [attr.data-content]="(i+1) + '.'" [formGroupName]="i">
+
+        <div class="col-md-12">
+          <h5>{{ 'EXPERIMENTS.EXPERIMENT.OUTPUT_PARAMETERS' | translate }}</h5>
+        </div>
+
+        <div class="col-12">
+          <stim-feature-experiments-output-type [form]="outputType(i)"></stim-feature-experiments-output-type>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
