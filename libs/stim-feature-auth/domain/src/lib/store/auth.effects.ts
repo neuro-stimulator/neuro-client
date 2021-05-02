@@ -12,7 +12,8 @@ import * as AuthActions from './auth.actions';
 
 @Injectable()
 export class AuthEffects {
-  constructor(private readonly actions$: Actions, private readonly service: AuthService, private readonly router: Router) {}
+  constructor(private readonly actions$: Actions, private readonly service: AuthService, private readonly router: Router) {
+  }
 
   register$ = createEffect(() =>
     this.actions$.pipe(
@@ -44,7 +45,7 @@ export class AuthEffects {
         return this.service.login(action.user).pipe(
           map((response: ResponseObject<User>) =>
             AuthActions.actionLoginRequestDone({
-              user: response.data,
+              user: response.data
             })
           ),
           catchError(() => {
@@ -74,7 +75,7 @@ export class AuthEffects {
         return this.service.refreshToken().pipe(
           map((response: ResponseObject<User>) =>
             AuthActions.actionRefreshTokenRequestDone({
-              user: response.data,
+              user: response.data
             })
           ),
           catchError(() => {
@@ -96,6 +97,15 @@ export class AuthEffects {
     { dispatch: false }
   );
 
+  refreshFail$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.actionRefreshTokenRequestFail),
+      tap(() => {
+        this.service.isLogged = false;
+      })
+    ), { dispatch: false }
+  );
+
   logout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.actionLogoutRequest),
@@ -112,14 +122,13 @@ export class AuthEffects {
   );
 
   logoutDone$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(AuthActions.actionLogoutRequestDone, AuthActions.actionLoginRequestFail),
-        tap(() => {
-          this.service.isLogged = false;
-        }),
-        tap(() => this.router.navigate(['auth']))
-      ),
+    () => this.actions$.pipe(
+      ofType(AuthActions.actionLogoutRequestDone, AuthActions.actionLoginRequestFail, AuthActions.actionLogoutRequestFail),
+      tap(() => {
+        this.service.isLogged = false;
+      }),
+      tap(() => this.router.navigate(['auth']))
+    ),
     { dispatch: false }
   );
 }

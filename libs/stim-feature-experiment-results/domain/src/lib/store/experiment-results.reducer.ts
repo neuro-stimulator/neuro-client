@@ -4,6 +4,7 @@ import { createEmptyExperiment, createEmptyExperimentResult, ExperimentResult } 
 
 import { ExperimentResultsState } from './experiment-results.type';
 import * as ExperimentResultsActions from './experiment-results.actions';
+import * as fromAuth from '@diplomka-frontend/stim-feature-auth/domain';
 
 export const experimentResultsReducerKey = 'experimentResults';
 
@@ -179,7 +180,18 @@ export function experimentResultsReducer(experimentResultsState: ExperimentResul
         selectedExperimentResults: [],
         selectionMode: false,
       };
-    })
+    }),
+    on(fromAuth.actionLogoutRequestDone, (state, action) => ({
+      ...state,
+      experimentResults: [],
+      selectedExperimentResult: {
+        experimentResult: emptyExperimentResult,
+        originalExperimentResult: emptyExperimentResult,
+        data: [],
+        nameExists: false,
+        isNew: true,
+      }
+    }))
   )(experimentResultsState, experimentResultsAction);
 }
 

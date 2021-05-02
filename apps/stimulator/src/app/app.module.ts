@@ -34,6 +34,7 @@ import { INTRO_STEPS } from './share/intro.service';
 // Interceptory (modifikátory http komunikace)
 import { DEFAULT_TIMEOUT, RequestTimeoutInterceptor } from './share/interceptors/request-timeout-interceptor.service';
 import { ResponseInterceptor } from './share/interceptors/response-interceptor.service';
+import { SessionInterceptorService } from './share/interceptors/session-interceptor.service';
 import { ClientIdInterceptorService } from './share/interceptors/client-id-interceptor.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TOKEN_PROVIDERS } from './token-providers';
@@ -121,6 +122,11 @@ export function autologinFactory(facade: AuthFacade) {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ResponseInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SessionInterceptorService,
       multi: true,
     },
     {

@@ -4,6 +4,7 @@ import { createEmptyExperiment, createEmptySequence, Experiment, Output, Sequenc
 
 import { SequencesState } from './sequences.type';
 import * as SequencesActions from './sequences.actions';
+import * as fromAuth from '@diplomka-frontend/stim-feature-auth/domain';
 
 export const sequencesReducerKey = 'sequences';
 
@@ -243,7 +244,19 @@ export function sequencesReducer(sequencesState: SequencesState, sequencesAction
         selectedSequences: [],
         selectionMode: false,
       };
-    })
+    }),
+    on(fromAuth.actionLogoutRequestDone, (state, action) => ({
+      ...state,
+      sequences: [],
+      selectedSequence: {
+        sequence: emptySequence,
+        originalSequence: emptySequence,
+        nameExists: false,
+        isNew: true,
+        experiments: [],
+        experiment: emptyExperiment,
+      },
+    }))
   )(sequencesState, sequencesAction);
 }
 

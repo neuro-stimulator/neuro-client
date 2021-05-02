@@ -4,6 +4,7 @@ import { createEmptyExperiment, Experiment, Output } from '@stechy1/diplomka-sha
 
 import { ExperimentsState } from './experiments.type';
 import * as ExperimentsActions from './experiments.actions';
+import * as fromAuth from '@diplomka-frontend/stim-feature-auth/domain';
 
 export const experimentsReducerKey = 'experiments';
 
@@ -214,6 +215,17 @@ export function experimentsReducer(experimentsState: ExperimentsState, experimen
     on(ExperimentsActions.actionExperimentsSetOutputSynchronizationRequestDone, (state, action) => ({
       ...state,
       synchronizeOutputs: action.synchronize,
+    })),
+    on(fromAuth.actionLogoutRequestDone, (state, action) => ({
+      ...state,
+      experiments: [],
+      selectedExperiment: {
+        experiment: emptyExperiment,
+        originalExperiment: emptyExperiment,
+        nameExists: false,
+        isNew: true,
+        sequences: [],
+      }
     }))
   )(experimentsState, experimentsAction);
 }
