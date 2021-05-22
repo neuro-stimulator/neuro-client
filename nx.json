@@ -29,11 +29,7 @@
     },
     "stim-lib-ui": {
       "tags": [],
-      "implicitDependencies": [
-        "stim-lib-modal",
-        "stim-lib-fab",
-        "stim-lib-list-utils"
-      ]
+      "implicitDependencies": ["stim-lib-modal", "stim-lib-fab", "stim-lib-list-utils"]
     },
     "stim-lib-modal": {
       "tags": []
