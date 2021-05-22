@@ -54,7 +54,7 @@ export function autologinFactory(facade: AuthFacade) {
     return new Promise((resolve) => {
       facade.state.subscribe((state: AuthState) => {
         if (state.isAuthenticated !== undefined) {
-          resolve();
+          resolve(undefined);
         }
       });
     });

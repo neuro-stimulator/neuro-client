@@ -20,7 +20,6 @@
             "main": "apps/stimulator/src/main.ts",
             "polyfills": "apps/stimulator/src/polyfills.ts",
             "tsConfig": "apps/stimulator/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "apps/stimulator/src/favicon.ico",
               "apps/stimulator/src/assets",
@@ -42,7 +41,13 @@
             },
             "scripts": [
               "node_modules/intro.js/intro.js"
-            ]
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
