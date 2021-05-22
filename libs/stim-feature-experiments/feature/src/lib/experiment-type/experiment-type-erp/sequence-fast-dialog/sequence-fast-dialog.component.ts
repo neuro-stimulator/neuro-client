@@ -27,12 +27,12 @@ export class SequenceFastDialogComponent extends DialogChildComponent {
     super();
 
     this._formInvalidSubscription = this.form.valueChanges.subscribe(() => {
-      this.formInvalid.next(this.form.invalid);
+      this.formInvalid.emit(this.form.invalid);
     });
   }
 
   private _handleConfirm() {
-    this.formResult.next(this.form.value);
+    this.formResult.emit(this.form.value);
   }
 
   bind(modal: ModalComponent) {

@@ -198,7 +198,7 @@ export class ModalComponent implements OnDestroy {
     document.body.classList.add('modal-open');
     // Informuji pozorovatele, že zobrazuji dialog
     this._loadDialogContent();
-    this._show.next(params);
+    this._show.emit(params);
   }
 
   /**

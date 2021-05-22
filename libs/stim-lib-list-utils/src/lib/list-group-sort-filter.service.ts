@@ -86,7 +86,7 @@ export class ListGroupSortFilterService<T> {
     this._lastListFilterParameters =
       this._storage.get<ListFilterParameters>(this._localStorageKey) ||
       this.defaultFilterParameters;
-    this._filterParametersChange.next(this._lastListFilterParameters);
+    this._filterParametersChange.emit(this._lastListFilterParameters);
   }
 
   private get _localStorageKey(): string {

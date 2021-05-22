@@ -20,11 +20,11 @@ export class ExperimentResultsItemListComponent {
   ExperimentType = ExperimentType;
 
   handleView(experimentResult: ExperimentResult) {
-    this.view.next(experimentResult);
+    this.view.emit(experimentResult);
   }
 
   handleDelete(experimentResult: ExperimentResult) {
-    this.delete.next(experimentResult);
+    this.delete.emit(experimentResult);
   }
 
   handleExperimentResultIconClick(experimentResult: ExperimentResult) {

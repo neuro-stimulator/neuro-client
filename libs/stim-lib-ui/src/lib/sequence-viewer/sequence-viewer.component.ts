@@ -69,11 +69,11 @@ export class SequenceViewerComponent {
     this._analyse = this._analyseSequence(this.flowData);
     this._showSequenceAnalyse(this._analyse);
     this.dataHasChanged = true;
-    this.dataChanged.next(true);
+    this.dataChanged.emit(true);
   }
 
   handleUpdate() {
-    this.update.next([...this.flowData]);
+    this.update.emit([...this.flowData]);
   }
 
   handleCancelUpdate() {

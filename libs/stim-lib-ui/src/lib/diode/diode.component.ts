@@ -17,6 +17,6 @@ export class DiodeComponent {
 
   handleClick() {
     this.enabled = !this.enabled;
-    this.clicked.next({ id: this.id, enabled: this.enabled });
+    this.clicked.emit({ id: this.id, enabled: this.enabled });
   }
 }

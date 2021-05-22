@@ -79,7 +79,7 @@ export class FileBrowserComponent extends DialogChildComponent implements OnInit
   }
 
   private handleInsertFile() {
-    this._selectedFileResult.next(this._selectedFile);
+    this._selectedFileResult.emit(this._selectedFile);
   }
 
   buildImagePath(path: string) {

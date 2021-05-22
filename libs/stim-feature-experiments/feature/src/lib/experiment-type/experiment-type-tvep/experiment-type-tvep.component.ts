@@ -41,7 +41,7 @@ export class ExperimentTypeTvepComponent extends BaseExperimentTypeComponent<Exp
   }
 
   ngAfterContentInit(): void {
-    this.sharePatternLength.valueChanges.subscribe((sharePatternLength: boolean) => this.sharePatternLengthEmitter.next(sharePatternLength));
+    this.sharePatternLength.valueChanges.subscribe((sharePatternLength: boolean) => this.sharePatternLengthEmitter.emit(sharePatternLength));
   }
 
   protected _createOutputFormControl(): { [p: string]: AbstractControl } {

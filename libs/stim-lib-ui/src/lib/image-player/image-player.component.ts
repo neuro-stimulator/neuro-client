@@ -26,6 +26,6 @@ export class ImagePlayerComponent {
   }
 
   handleShowFileBrowser() {
-    this.requestFileChange.next();
+    this.requestFileChange.emit(undefined);
   }
 }

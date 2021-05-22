@@ -41,7 +41,7 @@ export class ListButtonsAddonComponent implements OnInit, OnDestroy {
   }
 
   handleShowFilter() {
-    this._service.filterRequest.next();
+    this._service.filterRequest.emit(undefined);
   }
 
   handleSearchInputChange(event: Event) {
@@ -50,22 +50,22 @@ export class ListButtonsAddonComponent implements OnInit, OnDestroy {
   }
 
   handleExport() {
-    this._service.exportRequest.next();
+    this._service.exportRequest.emit(undefined);
   }
 
   handleDeleteSelected() {
-    this._service.deleteSelectedRequest.next();
+    this._service.deleteSelectedRequest.emit(undefined);
   }
 
   handleSelectAll() {
-    this._service.selectAllRequest.next();
+    this._service.selectAllRequest.emit(undefined);
   }
 
   handleSelectNone() {
-    this._service.selectNoneRequest.next();
+    this._service.selectNoneRequest.emit(undefined);
   }
 
   private _notifySearchValue(value: string) {
-    this._service.searchValue.next(value);
+    this._service.searchValue.emit(value);
   }
 }

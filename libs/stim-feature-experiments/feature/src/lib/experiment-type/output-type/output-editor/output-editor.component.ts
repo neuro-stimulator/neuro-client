@@ -170,7 +170,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
   private _handleConfirm() {
     const outputEntries = [...this.outputEntries];
     this._fromVirtualCoordinates(outputEntries);
-    this._resultEmitter.next(outputEntries);
+    this._resultEmitter.emit(outputEntries);
   }
 
   ngOnInit(): void {
@@ -384,7 +384,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
   }
 
   handleToggleOutputsSynchronization() {
-    this._actions.toggleSynchronize.next(!this._synchronizeOutputs);
+    this._actions.toggleSynchronize.emit(!this._synchronizeOutputs);
   }
 
   private _computeVerticalAlignment(outputEntry: OutputEntry) {

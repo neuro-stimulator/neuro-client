@@ -39,7 +39,7 @@ export class FabComponent implements OnInit {
     if (id === -1) {
       // A nemám v seznamu žádné další pomocné FABy
       if (this.fabButtons.length === 0) {
-        this.fabClick.next(id);
+        this.fabClick.emit(id);
         return;
       }
 
@@ -49,7 +49,7 @@ export class FabComponent implements OnInit {
     }
 
     // Kliknul jsem na pomocný FAB
-    this.fabClick.next(id);
+    this.fabClick.emit(id);
 
     // Schovám veškerá tlačítka
     this.hideItems();

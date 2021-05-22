@@ -67,7 +67,7 @@ export class AudioPlayerComponent implements OnInit {
   }
 
   handleShowFileBrowser() {
-    this.requestFileChange.next();
+    this.requestFileChange.emit(undefined);
     //   this.modal.showComponent = FileBrowserComponent;
     //   // this.modal.open();
     //   this.modal.openForResult()

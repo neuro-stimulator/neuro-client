@@ -46,7 +46,7 @@ export abstract class BaseExperimentTypeResolverDirective<T> implements OnInit, 
     this._viewContainerRef.clear();
     const componentRef = this._viewContainerRef.createComponent(factory);
     this.logger.debug('Komponenta byla úspěšně inicializována.');
-    this.componentChange.next(componentRef.instance);
+    this.componentChange.emit(componentRef.instance);
     this._instance = componentRef.instance as T;
   }
 }

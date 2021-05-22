@@ -198,7 +198,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
         this._updateFormGroup(experiment as E);
         this._navigation.customNavColor = ExperimentType[experiment.type].toLowerCase();
         setTimeout(() => {
-          this._experimentLoaded.next(experiment as E);
+          this._experimentLoaded.emit(experiment as E);
         }, 100);
       });
 

@@ -20,11 +20,11 @@ export class SequencesItemListComponent {
   ExperimentType = ExperimentType;
 
   handleView(experimentResult: Sequence) {
-    this.view.next(experimentResult);
+    this.view.emit(experimentResult);
   }
 
   handleDelete(experimentResult: Sequence) {
-    this.delete.next(experimentResult);
+    this.delete.emit(experimentResult);
   }
 
   handleExperimentIconClick(sequence: Sequence) {
