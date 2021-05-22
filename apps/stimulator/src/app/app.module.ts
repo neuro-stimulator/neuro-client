@@ -116,17 +116,17 @@ export function autologinFactory(facade: AuthFacade) {
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: RequestTimeoutInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
       useClass: ResponseInterceptor,
       multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: SessionInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestTimeoutInterceptor,
       multi: true,
     },
     {

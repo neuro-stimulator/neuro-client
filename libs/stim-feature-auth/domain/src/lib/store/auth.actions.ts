@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { User } from '@stechy1/diplomka-share';
+import { HttpRequest } from '@angular/common/http';
 
 export const actionRegisterRequest = createAction('[Auth] register request', props<{ user: User }>());
 export const actionRegisterRequestDone = createAction('[Auth] register request done', props<{ user: User }>());
@@ -17,3 +18,11 @@ export const actionRefreshTokenRequestFail = createAction('[Auth] refresh token 
 export const actionLogoutRequest = createAction('[Auth] logout request');
 export const actionLogoutRequestDone = createAction('[Auth] logout request done');
 export const actionLogoutRequestFail = createAction('[Auth] logout request fail');
+
+export const actionSaveRequest = createAction('[Auth] save request', props<{ req: HttpRequest<unknown> }>());
+export const actionSaveRequestDone = createAction('[Auth] save request done', props<{ req: string }>());
+
+export const actionCallRequest = createAction('[Auth] call request', props<{ req: string }>());
+export const actionCallRequestDone = createAction('[Auth] call request done');
+
+export const actionNoAction = createAction('[Auth] no action');

@@ -15,7 +15,13 @@ export function authReducer(authState: AuthState, authAction: Action) {
       isAuthenticated: undefined,
       user: emptyUser,
     },
-    on(AuthActions.actionLoginRequestDone, AuthActions.actionRefreshTokenRequestDone, (state: AuthState, action) => ({
+    on(AuthActions.actionLoginRequestDone, (state: AuthState, action) => ({
+      ...state,
+      user: action.user,
+      isAuthenticated: true,
+      serializedRequest: undefined
+    })),
+    on(AuthActions.actionRefreshTokenRequestDone, (state: AuthState, action) => ({
       ...state,
       user: action.user,
       isAuthenticated: true,
@@ -24,11 +30,21 @@ export function authReducer(authState: AuthState, authAction: Action) {
       ...state,
       isAuthenticated: false,
       user: emptyUser,
+      serializedRequest: undefined
     })),
     on(AuthActions.actionLogoutRequestDone, (state: AuthState) => ({
       ...state,
       user: emptyUser,
       isAuthenticated: false,
+      serializedRequest: undefined
+    })),
+    on(AuthActions.actionSaveRequestDone, (state: AuthState, action) => ({
+      ...state,
+      serializedRequest: action.req
+    })),
+    on(AuthActions.actionCallRequestDone, (state: AuthState) => ({
+      ...state,
+      serializedRequest: undefined
     }))
   )(authState, authAction);
 }

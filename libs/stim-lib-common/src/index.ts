@@ -10,3 +10,4 @@ export { BaseRecord } from './lib/base-record';
 export * from './lib/tokens';
 
 export * from './lib/base-experiment-type-resolver.directive';
+export * from './lib/request-utils';

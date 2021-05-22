@@ -1,13 +1,13 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { throwError } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 import { LocalStorageService } from 'angular-2-local-storage';
 
 import { ResponseObject, User } from '@stechy1/diplomka-share';
 
 import { TOKEN_AUTH_API_URL, TOKEN_USERS_API_URL } from '@diplomka-frontend/stim-lib-common';
-import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

@@ -1,18 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { HttpRequest, HttpResponse} from '@angular/common/http';
 
 import { of } from 'rxjs';
-import { catchError, concatMap, map, mergeMap, tap } from 'rxjs/operators';
+import { catchError, concatMap, map, mergeMap, tap, withLatestFrom } from 'rxjs/operators';
 
 import { ResponseObject, User } from '@stechy1/diplomka-share';
 
+import { serializeRequest } from '@diplomka-frontend/stim-lib-common';
+
 import { AuthService } from '../infrastructure/auth.service';
+import { DelayRequestStorage } from '../infrastructure/delay-request-storage.service';
 import * as AuthActions from './auth.actions';
+import * as fromAuth from './auth.reducer';
 
 @Injectable()
 export class AuthEffects {
-  constructor(private readonly actions$: Actions, private readonly service: AuthService, private readonly router: Router) {
+  constructor(private readonly actions$: Actions,
+              private readonly service: AuthService,
+              private readonly delayRequestStorage: DelayRequestStorage,
+              private readonly store: Store,
+              private readonly router: Router) {
   }
 
   register$ = createEffect(() =>
@@ -90,11 +100,16 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.actionRefreshTokenRequestDone),
-        tap(() => {
+        withLatestFrom(this.store.select(fromAuth.authFeature)),
+        map(([user, auth]) => {
           this.service.isLogged = true;
+          if (auth.serializedRequest) {
+            return AuthActions.actionCallRequest({ req: auth.serializedRequest });
+          }
+
+          return AuthActions.actionNoAction();
         })
-      ),
-    { dispatch: false }
+      )
   );
 
   refreshFail$ = createEffect(() =>
@@ -130,5 +145,30 @@ export class AuthEffects {
       tap(() => this.router.navigate(['auth']))
     ),
     { dispatch: false }
+  );
+
+  actionSaveRequest$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(AuthActions.actionSaveRequest),
+      map((data: { req: HttpRequest<unknown> }) => {
+        return AuthActions.actionSaveRequestDone({ req: serializeRequest(data.req) });
+      })
+    ));
+
+  actionCallRequest$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.actionCallRequest),
+    concatMap((data: { req: string }) => {
+      return this.delayRequestStorage.callRequest(data.req).pipe(
+        map((res: HttpResponse<unknown>) => {
+          if (res.status) {
+            this.delayRequestStorage.notifyDelayResponse(res);
+            return AuthActions.actionCallRequestDone();
+          } else {
+            return AuthActions.actionNoAction();
+          }
+        })
+      );
+    })
+    )
   );
 }

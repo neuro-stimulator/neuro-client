@@ -1,9 +1,7 @@
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
-
-import { MessageCodes, ResponseMessage } from '@stechy1/diplomka-share';
 
 import { AuthFacade } from '@diplomka-frontend/stim-feature-auth/domain';
 
@@ -14,22 +12,32 @@ export class SessionInterceptorService implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    // Zajímají mě pouze GET request typy
+    if (req.method !== 'GET') {
+      return next.handle(req)
+    }
+
+    const httpRequest = req.clone();
+
     return next.handle(req).pipe(
-      tap((response) => {
-        if (response instanceof HttpResponse) {
-          if (response.body !== null) {
-            if (response.body.message) {
-              this._handleResponseMessage(response.body.message);
-            }
-          }
+      switchMap((response: HttpResponse<unknown>) => {
+        const sessionState = response.headers ? response.headers.get('x-session-state') : undefined;
+        if (sessionState === 'invalid') {
+          const delayedResponse = this.authFacade.saveRequest(httpRequest);
+          this.authFacade.refreshToken();
+          return delayedResponse;
         }
+        return of(response);
+      }),
+      catchError((response: HttpResponse<unknown>) => {
+        const sessionState = response.headers ? response.headers.get('x-session-state') : undefined;
+        if (sessionState === 'invalid') {
+          const delayedResponse = this.authFacade.saveRequest(httpRequest);
+          this.authFacade.refreshToken();
+          return delayedResponse;
+        }
+       throw response;
       })
     );
-  }
-
-  private _handleResponseMessage(message: ResponseMessage) {
-    if (message.code === MessageCodes.CODE_ERROR_AUTH_UNAUTHORIZED) {
-      this.authFacade.logout();
-    }
   }
 }
