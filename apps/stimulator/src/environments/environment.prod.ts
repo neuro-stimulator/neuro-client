@@ -1,4 +1,5 @@
 import { SERVER_HTTP_PORT } from '@stechy1/diplomka-share';
+import { VERSION } from './version';
 // import { Settings } from '../../../../libs/stim-lib-common/src/lib/settings/settings';
 
 // const DEFAULT_SETTINGS: Settings = {
@@ -30,11 +31,8 @@ export const environment = {
   production: true,
   testing: false,
   url: {
-    server: '',
+    server: VERSION.apiUrl,
     socket: '',
-  },
-  port: {
-    server: SERVER_HTTP_PORT,
   },
   maxOutputCount: 8,
   patternSize: 32,

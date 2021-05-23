@@ -33,9 +33,6 @@ export const environment = {
     server: '10.0.1.25',
     socket: '10.0.1.25',
   },
-  port: {
-    server: SERVER_HTTP_PORT,
-  },
   maxOutputCount: 8,
   patternSize: 32,
   // settings: DEFAULT_SETTINGS,

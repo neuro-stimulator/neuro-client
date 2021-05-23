@@ -34,11 +34,8 @@ export const environment = {
   production: false,
   testing: false,
   url: {
-    server: 'http://localhost',
-    socket: 'http://localhost'
-  },
-  port: {
-    server: SERVER_HTTP_PORT
+    server: 'localhost:3005',
+    socket: ''
   },
   maxOutputCount: 8,
   patternSize: 32,

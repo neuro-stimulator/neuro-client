@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 import { SERVER_HTTP_PORT } from '@stechy1/diplomka-share';
+import { VERSION } from './version';
 
 // const DEFAULT_SETTINGS: Settings = {
 //   application: {
@@ -33,11 +34,8 @@ export const environment = {
   production: false,
   testing: false,
   url: {
-    server: 'http://localhost',
-    socket: 'http://localhost'
-  },
-  port: {
-    server: SERVER_HTTP_PORT
+    server: VERSION.apiUrl,
+    socket: ''
   },
   maxOutputCount: 8,
   patternSize: 32,

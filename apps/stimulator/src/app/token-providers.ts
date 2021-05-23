@@ -36,55 +36,55 @@ export const TOKEN_PROVIDERS: Provider[] = [
   },
   {
     provide: TOKEN_BASE_API_URL,
-    useValue: '/',
+    useValue: environment.url.server + '/',
   },
   {
     provide: TOKEN_EXPERIMENTS_API_URL,
-    useValue: '/api/experiments',
+    useValue: environment.url.server + '/api/experiments',
   },
   {
     provide: TOKEN_EXPERIMENT_RESULTS_API_URL,
-    useValue: '/api/experiment-results',
+    useValue: environment.url.server + '/api/experiment-results',
   },
   {
     provide: TOKEN_SEQUENCES_API_URL,
-    useValue: '/api/sequences',
+    useValue: environment.url.server + '/api/sequences',
   },
   {
     provide: TOKEN_SETTINGS_API_URL,
-    useValue: '/api/settings',
+    useValue: environment.url.server + '/api/settings',
   },
   {
     provide: TOKEN_SEED_API_URL,
-    useValue: '/api/seed',
+    useValue: environment.url.server + '/api/seed',
   },
   {
     provide: TOKEN_STIMULATOR_API_URL,
-    useValue: '/api',
+    useValue: environment.url.server + '/api',
   },
   {
     provide: TOKEN_FILE_BROWSER_API_URL,
-    useValue: '/api/file-browser',
+    useValue: environment.url.server + '/api/file-browser',
   },
   {
     provide: TOKEN_CONSOLE_API_URL,
-    useValue: '/api/console',
+    useValue: environment.url.server + '/api/console',
   },
 
   {
     provide: TOKEN_AUTH_API_URL,
-    useValue: '/api/auth',
+    useValue: environment.url.server + '/api/auth',
   },
   {
     provide: TOKEN_USERS_API_URL,
-    useValue: '/api/users',
+    useValue: environment.url.server + '/api/users',
   },
   {
     provide: TOKEN_PLAYER_API_URL,
-    useValue: '/api/player',
+    useValue: environment.url.server + '/api/player',
   },
   {
     provide: TOKEN_ASSET_PLAYER_API_URL,
-    useValue: '/api/ipc',
+    useValue: environment.url.server + '/api/ipc',
   },
 ];
