@@ -7,8 +7,8 @@
   "scripts": {
     "ng": "ng",
     "nx": "nx",
-    "start:dev": "nx serve -c=dev --host 0.0.0.0 --proxy-config proxy.config.json",
-    "start:qa": "ng serve -c=qa --host 0.0.0.0 --proxy-config proxy.config.json",
+    "start:dev": "nx serve -c=dev --host 0.0.0.0 --proxy-config proxy.conf.json",
+    "start:qa": "ng serve -c=qa --host 0.0.0.0 --proxy-config proxy.conf.json",
     "start:prod": "node server.js",
     "build": "ng build",
     "test": "nx test --codeCoverage",
