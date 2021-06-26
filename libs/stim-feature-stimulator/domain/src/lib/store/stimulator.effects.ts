@@ -6,6 +6,7 @@ import { catchError, filter, map, mergeMap, switchMap, withLatestFrom } from 'rx
 import { EMPTY, Observable, of } from 'rxjs';
 
 import {
+  ConnectionStatus,
   MessageCodes,
   ResponseObject,
   SocketMessage,
@@ -28,7 +29,7 @@ export class StimulatorEffects {
   constructor(private readonly _service: StimulatorService, private readonly _facade: ExperimentsFacade, private readonly actions$: Actions, private readonly store: Store) {}
 
   discover$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(StimulatorActions.actionStimulatorDiscoverRequest),
       switchMap(() => {
         return this._service.discover().pipe(
@@ -38,10 +39,10 @@ export class StimulatorEffects {
           })
         );
       })
-    )
+    ) }
   );
   open$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ConnectionActions.actionStimulatorConnectRequest),
       switchMap((action) => {
         return this._service.open(action.path).pipe(
@@ -57,10 +58,10 @@ export class StimulatorEffects {
           })
         );
       })
-    )
+    ) }
   );
   close$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ConnectionActions.actionStimulatorDisconnectRequest),
       switchMap(() => {
         return this._service.close().pipe(
@@ -69,23 +70,23 @@ export class StimulatorEffects {
           })
         );
       })
-    )
+    ) }
   );
   connectionStatus$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ConnectionActions.actionStimulatorConnectionStatusRequest),
       switchMap(() => {
         return this._service.connectionStatus().pipe(
-          map((response: ResponseObject<{ connected: boolean }>) => {
-            return response.data.connected ? ConnectionActions.actionStimulatorConnected() : ConnectionActions.actionStimulatorDisconnected();
+          map((response: ResponseObject<{ status: ConnectionStatus }>) => {
+            return response.data.status === ConnectionStatus.CONNECTED ? ConnectionActions.actionStimulatorConnected() : ConnectionActions.actionStimulatorDisconnected();
           })
         );
       })
-    )
+    ) }
   );
 
   updateFirmware$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(StimulatorActions.actionStimulatorFirmwareUpdateRequest),
       mergeMap((action) =>
         this._service.updateFirmware(action.path).pipe(
@@ -94,22 +95,22 @@ export class StimulatorEffects {
           })
         )
       )
-    )
+    ) }
   );
 
   reboot$ = createEffect(
     () =>
-      this.actions$.pipe(
+      { return this.actions$.pipe(
         ofType(StimulatorActions.actionCommandRebootRequest),
         switchMap(() => {
           return this._service.reboot();
         })
-      ),
+      ) },
     { dispatch: false }
   );
 
   state$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorStateRequest),
       switchMap(() => {
         return this._service.stimulatorState().pipe(
@@ -123,11 +124,11 @@ export class StimulatorEffects {
           })
         );
       })
-    )
+    ) }
   );
 
   upload$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorUploadRequest),
       withLatestFrom(this._facade.state),
       switchMap(([action, experimentState]) =>
@@ -140,11 +141,11 @@ export class StimulatorEffects {
           })
         )
       )
-    )
+    ) }
   );
 
   setup$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorSetupRequest),
       withLatestFrom(this._facade.state),
       switchMap(([action, experimentState]) =>
@@ -157,11 +158,11 @@ export class StimulatorEffects {
           })
         )
       )
-    )
+    ) }
   );
 
   run$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorRunRequest),
       withLatestFrom(this._facade.state),
       switchMap(([action, experimentState]) =>
@@ -174,11 +175,11 @@ export class StimulatorEffects {
           })
         )
       )
-    )
+    ) }
   );
 
   pause$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorPauseRequest),
       withLatestFrom(this._facade.state),
       switchMap(([action, experimentState]) =>
@@ -191,11 +192,11 @@ export class StimulatorEffects {
           })
         )
       )
-    )
+    ) }
   );
 
   finish$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorFinishRequest),
       withLatestFrom(this._facade.state),
       switchMap(([action, experimentState]) =>
@@ -208,11 +209,11 @@ export class StimulatorEffects {
           })
         )
       )
-    )
+    ) }
   );
 
   clear$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(StimulatorActions.actionCommandStimulatorClearRequest),
       withLatestFrom(this.store.select(stimulatorFeature)),
       switchMap(([action, state]: [never, StimulatorState]) => {
@@ -240,11 +241,11 @@ export class StimulatorEffects {
           })
         );
       })
-    )
+    ) }
   );
 
   stimulatorState$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ConnectionActions.actionSocketData),
       map((action) => action.data as SocketMessage),
       filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.STIMULATOR),
@@ -268,17 +269,17 @@ export class StimulatorEffects {
         // );
         return action;
       })
-    )
+    ) }
   );
 
   setOutput$ = createEffect(
     () =>
-      this.actions$.pipe(
+      { return this.actions$.pipe(
         ofType(StimulatorActions.actionCommandStimulatorSetOutput),
         mergeMap((action) => {
           return this._service.setOutput(action.index, action.enabled);
         })
-      ),
+      ) },
     { dispatch: false }
   );
 }

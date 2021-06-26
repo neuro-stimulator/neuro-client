@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { ResponseObject, StimulatorStateEvent } from '@stechy1/diplomka-share';
+import { ConnectionStatus, ResponseObject, StimulatorStateEvent } from '@stechy1/diplomka-share';
+
 import { TOKEN_STIMULATOR_API_URL } from '@diplomka-frontend/stim-lib-common';
 
 @Injectable({
@@ -48,7 +49,7 @@ export class StimulatorService {
    */
   public connectionStatus() {
     this.logger.info('Odesílám požadavek na získání informace o připojení sériového portu.');
-    return this._http.get<ResponseObject<{ connected: boolean }>>(`${this.serialURL}/status`);
+    return this._http.get<ResponseObject<{ status: ConnectionStatus }>>(`${this.serialURL}/status`);
   }
 
   /**
