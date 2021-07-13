@@ -19,100 +19,64 @@
     }
   },
   "projects": {
-    "stimulator": {
-      "tags": [],
-      "implicitDependencies": ["stim-lib-ui"]
-    },
-    "stimulator-e2e": {
-      "tags": [],
-      "implicitDependencies": ["stimulator"]
-    },
-    "stim-lib-ui": {
-      "tags": [],
-      "implicitDependencies": ["stim-lib-modal", "stim-lib-fab", "stim-lib-list-utils"]
-    },
-    "stim-lib-modal": {
-      "tags": []
-    },
-    "stim-lib-fab": {
-      "tags": []
-    },
-    "stim-lib-list-utils": {
-      "tags": []
-    },
-    "stim-lib-common": {
-      "tags": []
-    },
-    "stim-lib-asset-player": {
-      "tags": []
-    },
     "stim-feature-about": {
       "tags": []
     },
-    "stim-feature-settings-feature": {
-      "tags": [],
-      "implicitDependencies": ["stim-feature-settings-domain"]
-    },
-    "stim-feature-settings-domain": {
+    "stim-feature-auth-domain": {
       "tags": []
     },
-    "stim-feature-settings-popup": {
+    "stim-feature-auth-feature": {
       "tags": []
     },
-    "stim-feature-stimulator-domain": {
+    "stim-feature-experiment-results-domain": {
       "tags": []
     },
-    "stim-lib-store": {
+    "stim-feature-experiment-results-feature": {
       "tags": []
     },
-    "stim-lib-connection": {
+    "stim-feature-experiments-domain": {
+      "tags": []
+    },
+    "stim-feature-experiments-feature": {
+      "tags": []
+    },
+    "stim-feature-file-browser-domain": {
       "tags": []
     },
     "stim-feature-file-browser-feature": {
       "tags": [],
       "implicitDependencies": ["stim-feature-file-browser-domain"]
     },
-    "stim-feature-file-browser-domain": {
-      "tags": []
-    },
-    "stim-feature-navigation-feature": {
+    "stim-feature-help-feature": {
       "tags": []
     },
     "stim-feature-navigation-domain": {
       "tags": []
     },
-    "stim-feature-help-feature": {
+    "stim-feature-navigation-feature": {
+      "tags": []
+    },
+    "stim-feature-player-domain": {
       "tags": []
     },
     "stim-feature-player-feature": {
       "tags": [],
       "implicitDependencies": ["stim-feature-player-domain"]
     },
-    "stim-feature-player-domain": {
-      "tags": []
-    },
-    "stim-feature-experiments-feature": {
-      "tags": []
-    },
-    "stim-feature-experiments-domain": {
-      "tags": []
-    },
-    "stim-feature-experiment-results-feature": {
-      "tags": []
-    },
-    "stim-feature-experiment-results-domain": {
+    "stim-feature-sequences-domain": {
       "tags": []
     },
     "stim-feature-sequences-feature": {
       "tags": []
     },
-    "stim-feature-sequences-domain": {
+    "stim-feature-settings-domain": {
       "tags": []
+    },
+    "stim-feature-settings-feature": {
+      "tags": [],
+      "implicitDependencies": ["stim-feature-settings-domain"]
     },
     "stim-feature-settings-feature-param-config": {
-      "tags": []
-    },
-    "stim-feature-settings-feature-service-state": {
       "tags": []
     },
     "stim-feature-settings-feature-param-config-application": {
@@ -124,29 +88,73 @@
     "stim-feature-settings-feature-param-config-server": {
       "tags": []
     },
-    "stim-feature-users-feature": {
+    "stim-feature-settings-feature-service-state": {
       "tags": []
     },
-    "stim-feature-users-domain": {
+    "stim-feature-settings-popup": {
       "tags": []
     },
-    "stim-feature-auth-feature": {
-      "tags": []
-    },
-    "stim-feature-auth-domain": {
+    "stim-feature-stimulator-domain": {
       "tags": []
     },
     "stim-feature-stimulator-feature": {
       "tags": []
     },
-    "stim-lib-console-feature": {
+    "stim-feature-users-domain": {
+      "tags": []
+    },
+    "stim-feature-users-feature": {
+      "tags": []
+    },
+    "stim-lib-asset-player": {
+      "tags": []
+    },
+    "stim-lib-common": {
+      "tags": []
+    },
+    "stim-lib-connection": {
       "tags": []
     },
     "stim-lib-console-domain": {
       "tags": []
+    },
+    "stim-lib-console-feature": {
+      "tags": []
+    },
+    "stim-lib-fab": {
+      "tags": []
+    },
+    "stim-lib-list-utils": {
+      "tags": []
+    },
+    "stim-lib-modal": {
+      "tags": []
+    },
+    "stim-lib-store": {
+      "tags": []
+    },
+    "stim-lib-ui": {
+      "tags": [],
+      "implicitDependencies": ["stim-lib-modal", "stim-lib-fab", "stim-lib-list-utils"]
+    },
+    "stimulator": {
+      "tags": [],
+      "implicitDependencies": ["stim-lib-ui"]
+    },
+    "stimulator-e2e": {
+      "tags": [],
+      "implicitDependencies": ["stimulator"]
     }
   },
   "affected": {
     "defaultBase": "master"
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }

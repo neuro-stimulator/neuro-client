@@ -1,6 +1,1116 @@
 {
   "version": 1,
   "projects": {
+    "stim-feature-about": {
+      "projectType": "library",
+      "root": "libs/stim-feature-about",
+      "sourceRoot": "libs/stim-feature-about/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-about/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-about"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-feature-about/**/*.ts", "libs/stim-feature-about/**/*.component.html", "libs/stim-feature-about/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-auth-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-auth/domain",
+      "sourceRoot": "libs/stim-feature-auth/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-auth/domain/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-auth/domain"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-feature-auth/domain/**/*.ts", "libs/stim-feature-auth/domain/**/*.component.html", "libs/stim-feature-auth/domain/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-auth-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-auth/feature",
+      "sourceRoot": "libs/stim-feature-auth/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-auth/feature/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-auth/feature"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-feature-auth/feature/**/*.ts", "libs/stim-feature-auth/feature/**/*.component.html", "libs/stim-feature-auth/feature/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-experiment-results-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-experiment-results/domain",
+      "sourceRoot": "libs/stim-feature-experiment-results/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-experiment-results/domain/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-experiment-results/domain"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-experiment-results/domain/**/*.ts",
+              "libs/stim-feature-experiment-results/domain/**/*.component.html",
+              "libs/stim-feature-experiment-results/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-experiment-results-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-experiment-results/feature",
+      "sourceRoot": "libs/stim-feature-experiment-results/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-experiment-results/feature/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-experiment-results/feature"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-experiment-results/feature/**/*.ts",
+              "libs/stim-feature-experiment-results/feature/**/*.component.html",
+              "libs/stim-feature-experiment-results/feature/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-experiments-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-experiments/domain",
+      "sourceRoot": "libs/stim-feature-experiments/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-experiments/domain/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-experiments/domain"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-experiments/domain/**/*.ts",
+              "libs/stim-feature-experiments/domain/**/*.component.html",
+              "libs/stim-feature-experiments/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-experiments-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-experiments/feature",
+      "sourceRoot": "libs/stim-feature-experiments/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-experiments/feature/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-experiments/feature"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-experiments/feature/**/*.ts",
+              "libs/stim-feature-experiments/feature/**/*.component.html",
+              "libs/stim-feature-experiments/feature/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-file-browser-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-file-browser/domain",
+      "sourceRoot": "libs/stim-feature-file-browser/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-file-browser/domain/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-file-browser/domain"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-file-browser/domain/**/*.ts",
+              "libs/stim-feature-file-browser/domain/**/*.component.html",
+              "libs/stim-feature-file-browser/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-file-browser-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-file-browser/feature",
+      "sourceRoot": "libs/stim-feature-file-browser/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-file-browser/feature/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-file-browser/feature"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-file-browser/feature/**/*.ts",
+              "libs/stim-feature-file-browser/feature/**/*.component.html",
+              "libs/stim-feature-file-browser/feature/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-help-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-help/feature",
+      "sourceRoot": "libs/stim-feature-help/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-help/feature/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-help/feature"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-feature-help/feature/**/*.ts", "libs/stim-feature-help/feature/**/*.component.html", "libs/stim-feature-help/feature/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-navigation-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-navigation/domain",
+      "sourceRoot": "libs/stim-feature-navigation/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-navigation/domain/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-navigation/domain"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-navigation/domain/**/*.ts",
+              "libs/stim-feature-navigation/domain/**/*.component.html",
+              "libs/stim-feature-navigation/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-navigation-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-navigation/feature",
+      "sourceRoot": "libs/stim-feature-navigation/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-navigation/feature/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-navigation/feature"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-navigation/feature/**/*.ts",
+              "libs/stim-feature-navigation/feature/**/*.component.html",
+              "libs/stim-feature-navigation/feature/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-player-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-player/domain",
+      "sourceRoot": "libs/stim-feature-player/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-player/domain/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-player/domain"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-feature-player/domain/**/*.ts", "libs/stim-feature-player/domain/**/*.component.html", "libs/stim-feature-player/domain/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-player-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-player/feature",
+      "sourceRoot": "libs/stim-feature-player/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-player/feature/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-player/feature"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-player/feature/**/*.ts",
+              "libs/stim-feature-player/feature/**/*.component.html",
+              "libs/stim-feature-player/feature/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-sequences-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-sequences/domain",
+      "sourceRoot": "libs/stim-feature-sequences/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-sequences/domain/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-sequences/domain"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-sequences/domain/**/*.ts",
+              "libs/stim-feature-sequences/domain/**/*.component.html",
+              "libs/stim-feature-sequences/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-sequences-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-sequences/feature",
+      "sourceRoot": "libs/stim-feature-sequences/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-sequences/feature/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-sequences/feature"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-sequences/feature/**/*.ts",
+              "libs/stim-feature-sequences/feature/**/*.component.html",
+              "libs/stim-feature-sequences/feature/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/domain",
+      "sourceRoot": "libs/stim-feature-settings/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/domain/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-settings/domain"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-settings/domain/**/*.ts",
+              "libs/stim-feature-settings/domain/**/*.component.html",
+              "libs/stim-feature-settings/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/feature",
+      "sourceRoot": "libs/stim-feature-settings/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/feature/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-settings/feature"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-settings/feature/**/*.ts",
+              "libs/stim-feature-settings/feature/**/*.component.html",
+              "libs/stim-feature-settings/feature/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-feature-param-config": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/feature/param-config",
+      "sourceRoot": "libs/stim-feature-settings/feature/param-config/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/feature/param-config/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-settings/feature/param-config"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-settings/feature/param-config/**/*.ts",
+              "libs/stim-feature-settings/feature/param-config/**/*.component.html",
+              "libs/stim-feature-settings/feature/param-config/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-feature-param-config-application": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/feature/param-config/application",
+      "sourceRoot": "libs/stim-feature-settings/feature/param-config/application/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/feature/param-config/application/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-settings/feature/param-config/application"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-settings/feature/param-config/application/**/*.ts",
+              "libs/stim-feature-settings/feature/param-config/application/**/*.component.html",
+              "libs/stim-feature-settings/feature/param-config/application/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-feature-param-config-experiments": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/feature/param-config/experiments",
+      "sourceRoot": "libs/stim-feature-settings/feature/param-config/experiments/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/feature/param-config/experiments/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-settings/feature/param-config/experiments"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-settings/feature/param-config/experiments/**/*.ts",
+              "libs/stim-feature-settings/feature/param-config/experiments/**/*.component.html",
+              "libs/stim-feature-settings/feature/param-config/experiments/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-feature-param-config-server": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/feature/param-config/server",
+      "sourceRoot": "libs/stim-feature-settings/feature/param-config/server/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/feature/param-config/server/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-settings/feature/param-config/server"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-settings/feature/param-config/server/**/*.ts",
+              "libs/stim-feature-settings/feature/param-config/server/**/*.component.html",
+              "libs/stim-feature-settings/feature/param-config/server/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-feature-service-state": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/feature/service-state",
+      "sourceRoot": "libs/stim-feature-settings/feature/service-state/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/feature/service-state/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-settings/feature/service-state"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-settings/feature/service-state/**/*.ts",
+              "libs/stim-feature-settings/feature/service-state/**/*.component.html",
+              "libs/stim-feature-settings/feature/service-state/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-settings-popup": {
+      "projectType": "library",
+      "root": "libs/stim-feature-settings/popup",
+      "sourceRoot": "libs/stim-feature-settings/popup/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-settings/popup/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-settings/popup"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-settings/popup/**/*.ts",
+              "libs/stim-feature-settings/popup/**/*.component.html",
+              "libs/stim-feature-settings/popup/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-stimulator-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-stimulator/domain",
+      "sourceRoot": "libs/stim-feature-stimulator/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-stimulator/domain/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-stimulator/domain"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-stimulator/domain/**/*.ts",
+              "libs/stim-feature-stimulator/domain/**/*.component.html",
+              "libs/stim-feature-stimulator/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-stimulator-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-stimulator/feature",
+      "sourceRoot": "libs/stim-feature-stimulator/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-stimulator/feature/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-stimulator/feature"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stim-feature-stimulator/feature/**/*.ts",
+              "libs/stim-feature-stimulator/feature/**/*.component.html",
+              "libs/stim-feature-stimulator/feature/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-users-domain": {
+      "projectType": "library",
+      "root": "libs/stim-feature-users/domain",
+      "sourceRoot": "libs/stim-feature-users/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-users/domain/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-users/domain"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-feature-users/domain/**/*.ts", "libs/stim-feature-users/domain/**/*.component.html", "libs/stim-feature-users/domain/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-feature-users-feature": {
+      "projectType": "library",
+      "root": "libs/stim-feature-users/feature",
+      "sourceRoot": "libs/stim-feature-users/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-feature-users/feature/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-feature-users/feature"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-feature-users/feature/**/*.ts", "libs/stim-feature-users/feature/**/*.component.html", "libs/stim-feature-users/feature/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-asset-player": {
+      "projectType": "library",
+      "root": "libs/stim-lib-asset-player",
+      "sourceRoot": "libs/stim-lib-asset-player/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-asset-player/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-lib-asset-player"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-lib-asset-player/**/*.ts", "libs/stim-lib-asset-player/**/*.component.html", "libs/stim-lib-asset-player/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-common": {
+      "projectType": "library",
+      "root": "libs/stim-lib-common",
+      "sourceRoot": "libs/stim-lib-common/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-common/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-lib-common"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-lib-common/**/*.ts", "libs/stim-lib-common/**/*.component.html", "libs/stim-lib-common/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-connection": {
+      "projectType": "library",
+      "root": "libs/stim-lib-connection",
+      "sourceRoot": "libs/stim-lib-connection/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-connection/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-lib-connection"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-lib-connection/**/*.ts", "libs/stim-lib-connection/**/*.component.html", "libs/stim-lib-connection/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-console-domain": {
+      "projectType": "library",
+      "root": "libs/stim-lib-console/domain",
+      "sourceRoot": "libs/stim-lib-console/domain/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-console/domain/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-lib-console/domain"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-lib-console/domain/**/*.ts", "libs/stim-lib-console/domain/**/*.component.html", "libs/stim-lib-console/domain/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-console-feature": {
+      "projectType": "library",
+      "root": "libs/stim-lib-console/feature",
+      "sourceRoot": "libs/stim-lib-console/feature/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-console/feature/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-lib-console/feature"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-lib-console/feature/**/*.ts", "libs/stim-lib-console/feature/**/*.component.html", "libs/stim-lib-console/feature/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-fab": {
+      "projectType": "library",
+      "root": "libs/stim-lib-fab",
+      "sourceRoot": "libs/stim-lib-fab/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-fab/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-lib-fab"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-lib-fab/**/*.ts", "libs/stim-lib-fab/**/*.component.html", "libs/stim-lib-fab/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-list-utils": {
+      "projectType": "library",
+      "root": "libs/stim-lib-list-utils",
+      "sourceRoot": "libs/stim-lib-list-utils/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-list-utils/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-lib-list-utils"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-lib-list-utils/**/*.ts", "libs/stim-lib-list-utils/**/*.component.html", "libs/stim-lib-list-utils/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-modal": {
+      "projectType": "library",
+      "root": "libs/stim-lib-modal",
+      "sourceRoot": "libs/stim-lib-modal/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-lib-modal/**/*.ts", "libs/stim-lib-modal/**/*.component.html", "libs/stim-lib-modal/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-modal/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-lib-modal"]
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-store": {
+      "projectType": "library",
+      "root": "libs/stim-lib-store",
+      "sourceRoot": "libs/stim-lib-store/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-store/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-lib-store"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-lib-store/**/*.ts", "libs/stim-lib-store/**/*.component.html", "libs/stim-lib-store/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stim-lib-ui": {
+      "projectType": "library",
+      "root": "libs/stim-lib-ui",
+      "sourceRoot": "libs/stim-lib-ui/src",
+      "prefix": "diplomka-frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stim-lib-ui/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/stim-lib-ui"]
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stim-lib-ui/**/*.ts", "libs/stim-lib-ui/**/*.component.html", "libs/stim-lib-ui/src/**/*.html"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "stimulator": {
       "projectType": "application",
       "schematics": {
@@ -20,11 +1130,7 @@
             "main": "apps/stimulator/src/main.ts",
             "polyfills": "apps/stimulator/src/polyfills.ts",
             "tsConfig": "apps/stimulator/tsconfig.app.json",
-            "assets": [
-              "apps/stimulator/src/favicon.ico",
-              "apps/stimulator/src/assets",
-              "apps/stimulator/src/manifest.webmanifest"
-            ],
+            "assets": ["apps/stimulator/src/favicon.ico", "apps/stimulator/src/assets", "apps/stimulator/src/manifest.webmanifest"],
             "styles": [
               "apps/stimulator/src/sass/styles.sass",
               "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
@@ -34,14 +1140,9 @@
               "node_modules/intro.js/introjs.css"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules/bootstrap/scss",
-                "apps/stimulator/src/sass"
-              ]
+              "includePaths": ["node_modules/bootstrap/scss", "apps/stimulator/src/sass"]
             },
-            "scripts": [
-              "node_modules/intro.js/intro.js"
-            ],
+            "scripts": ["node_modules/intro.js/intro.js"],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
@@ -96,9 +1197,7 @@
               ]
             }
           },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -127,11 +1226,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/stimulator/**/*.ts",
-              "apps/stimulator/**/*.component.html",
-              "apps/stimulator/src/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/stimulator/**/*.ts", "apps/stimulator/**/*.component.html", "apps/stimulator/src/**/*.html"]
           }
         },
         "test": {
@@ -140,9 +1235,7 @@
             "jestConfig": "apps/stimulator/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/apps/stimulator"
-          ]
+          "outputs": ["coverage/apps/stimulator"]
         }
       }
     },
@@ -170,1274 +1263,14 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/stimulator-e2e/**/*.ts",
-              "apps/stimulator-e2e/**/*.component.html"
-            ]
+            "lintFilePatterns": ["apps/stimulator-e2e/**/*.ts", "apps/stimulator-e2e/**/*.component.html"]
           }
         },
         "eslint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "apps/stimulator-e2e/**/*.ts",
-              "apps/stimulator-e2e/**/*.component.html"
-            ]
+            "lintFilePatterns": ["apps/stimulator-e2e/**/*.ts", "apps/stimulator-e2e/**/*.component.html"]
           }
-        }
-      }
-    },
-    "stim-lib-modal": {
-      "projectType": "library",
-      "root": "libs/stim-lib-modal",
-      "sourceRoot": "libs/stim-lib-modal/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-lib-modal/**/*.ts",
-              "libs/stim-lib-modal/**/*.component.html",
-              "libs/stim-lib-modal/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-lib-modal/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-lib-modal"
-          ]
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-lib-fab": {
-      "projectType": "library",
-      "root": "libs/stim-lib-fab",
-      "sourceRoot": "libs/stim-lib-fab/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-lib-fab/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-lib-fab"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-lib-fab/**/*.ts",
-              "libs/stim-lib-fab/**/*.component.html",
-              "libs/stim-lib-fab/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-lib-list-utils": {
-      "projectType": "library",
-      "root": "libs/stim-lib-list-utils",
-      "sourceRoot": "libs/stim-lib-list-utils/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-lib-list-utils/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-lib-list-utils"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-lib-list-utils/**/*.ts",
-              "libs/stim-lib-list-utils/**/*.component.html",
-              "libs/stim-lib-list-utils/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-lib-common": {
-      "projectType": "library",
-      "root": "libs/stim-lib-common",
-      "sourceRoot": "libs/stim-lib-common/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-lib-common/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-lib-common"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-lib-common/**/*.ts",
-              "libs/stim-lib-common/**/*.component.html",
-              "libs/stim-lib-common/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-lib-asset-player": {
-      "projectType": "library",
-      "root": "libs/stim-lib-asset-player",
-      "sourceRoot": "libs/stim-lib-asset-player/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-lib-asset-player/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-lib-asset-player"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-lib-asset-player/**/*.ts",
-              "libs/stim-lib-asset-player/**/*.component.html",
-              "libs/stim-lib-asset-player/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-lib-ui": {
-      "projectType": "library",
-      "root": "libs/stim-lib-ui",
-      "sourceRoot": "libs/stim-lib-ui/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-lib-ui/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-lib-ui"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-lib-ui/**/*.ts",
-              "libs/stim-lib-ui/**/*.component.html",
-              "libs/stim-lib-ui/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-about": {
-      "projectType": "library",
-      "root": "libs/stim-feature-about",
-      "sourceRoot": "libs/stim-feature-about/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-about/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-about"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-about/**/*.ts",
-              "libs/stim-feature-about/**/*.component.html",
-              "libs/stim-feature-about/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-settings-feature": {
-      "projectType": "library",
-      "root": "libs/stim-feature-settings/feature",
-      "sourceRoot": "libs/stim-feature-settings/feature/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-settings/feature/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-settings/feature"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-settings/feature/**/*.ts",
-              "libs/stim-feature-settings/feature/**/*.component.html",
-              "libs/stim-feature-settings/feature/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-settings-domain": {
-      "projectType": "library",
-      "root": "libs/stim-feature-settings/domain",
-      "sourceRoot": "libs/stim-feature-settings/domain/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-settings/domain/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-settings/domain"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-settings/domain/**/*.ts",
-              "libs/stim-feature-settings/domain/**/*.component.html",
-              "libs/stim-feature-settings/domain/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-stimulator-domain": {
-      "projectType": "library",
-      "root": "libs/stim-feature-stimulator/domain",
-      "sourceRoot": "libs/stim-feature-stimulator/domain/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-stimulator/domain/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-stimulator/domain"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-stimulator/domain/**/*.ts",
-              "libs/stim-feature-stimulator/domain/**/*.component.html",
-              "libs/stim-feature-stimulator/domain/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-lib-store": {
-      "projectType": "library",
-      "root": "libs/stim-lib-store",
-      "sourceRoot": "libs/stim-lib-store/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-lib-store/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-lib-store"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-lib-store/**/*.ts",
-              "libs/stim-lib-store/**/*.component.html",
-              "libs/stim-lib-store/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-lib-connection": {
-      "projectType": "library",
-      "root": "libs/stim-lib-connection",
-      "sourceRoot": "libs/stim-lib-connection/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-lib-connection/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-lib-connection"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-lib-connection/**/*.ts",
-              "libs/stim-lib-connection/**/*.component.html",
-              "libs/stim-lib-connection/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-file-browser-domain": {
-      "projectType": "library",
-      "root": "libs/stim-feature-file-browser/domain",
-      "sourceRoot": "libs/stim-feature-file-browser/domain/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-file-browser/domain/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-file-browser/domain"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-file-browser/domain/**/*.ts",
-              "libs/stim-feature-file-browser/domain/**/*.component.html",
-              "libs/stim-feature-file-browser/domain/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-file-browser-feature": {
-      "projectType": "library",
-      "root": "libs/stim-feature-file-browser/feature",
-      "sourceRoot": "libs/stim-feature-file-browser/feature/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-file-browser/feature/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-file-browser/feature"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-file-browser/feature/**/*.ts",
-              "libs/stim-feature-file-browser/feature/**/*.component.html",
-              "libs/stim-feature-file-browser/feature/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-navigation-feature": {
-      "projectType": "library",
-      "root": "libs/stim-feature-navigation/feature",
-      "sourceRoot": "libs/stim-feature-navigation/feature/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-navigation/feature/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-navigation/feature"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-navigation/feature/**/*.ts",
-              "libs/stim-feature-navigation/feature/**/*.component.html",
-              "libs/stim-feature-navigation/feature/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-navigation-domain": {
-      "projectType": "library",
-      "root": "libs/stim-feature-navigation/domain",
-      "sourceRoot": "libs/stim-feature-navigation/domain/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-navigation/domain/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-navigation/domain"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-navigation/domain/**/*.ts",
-              "libs/stim-feature-navigation/domain/**/*.component.html",
-              "libs/stim-feature-navigation/domain/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-help-feature": {
-      "projectType": "library",
-      "root": "libs/stim-feature-help/feature",
-      "sourceRoot": "libs/stim-feature-help/feature/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-help/feature/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-help/feature"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-help/feature/**/*.ts",
-              "libs/stim-feature-help/feature/**/*.component.html",
-              "libs/stim-feature-help/feature/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-player-feature": {
-      "projectType": "library",
-      "root": "libs/stim-feature-player/feature",
-      "sourceRoot": "libs/stim-feature-player/feature/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-player/feature/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-player/feature"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-player/feature/**/*.ts",
-              "libs/stim-feature-player/feature/**/*.component.html",
-              "libs/stim-feature-player/feature/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-player-domain": {
-      "projectType": "library",
-      "root": "libs/stim-feature-player/domain",
-      "sourceRoot": "libs/stim-feature-player/domain/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-player/domain/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-player/domain"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-player/domain/**/*.ts",
-              "libs/stim-feature-player/domain/**/*.component.html",
-              "libs/stim-feature-player/domain/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-experiments-feature": {
-      "projectType": "library",
-      "root": "libs/stim-feature-experiments/feature",
-      "sourceRoot": "libs/stim-feature-experiments/feature/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-experiments/feature/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-experiments/feature"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-experiments/feature/**/*.ts",
-              "libs/stim-feature-experiments/feature/**/*.component.html",
-              "libs/stim-feature-experiments/feature/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-experiments-domain": {
-      "projectType": "library",
-      "root": "libs/stim-feature-experiments/domain",
-      "sourceRoot": "libs/stim-feature-experiments/domain/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-experiments/domain/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-experiments/domain"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-experiments/domain/**/*.ts",
-              "libs/stim-feature-experiments/domain/**/*.component.html",
-              "libs/stim-feature-experiments/domain/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-experiment-results-feature": {
-      "projectType": "library",
-      "root": "libs/stim-feature-experiment-results/feature",
-      "sourceRoot": "libs/stim-feature-experiment-results/feature/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-experiment-results/feature/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-experiment-results/feature"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-experiment-results/feature/**/*.ts",
-              "libs/stim-feature-experiment-results/feature/**/*.component.html",
-              "libs/stim-feature-experiment-results/feature/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-experiment-results-domain": {
-      "projectType": "library",
-      "root": "libs/stim-feature-experiment-results/domain",
-      "sourceRoot": "libs/stim-feature-experiment-results/domain/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-experiment-results/domain/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-experiment-results/domain"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-experiment-results/domain/**/*.ts",
-              "libs/stim-feature-experiment-results/domain/**/*.component.html",
-              "libs/stim-feature-experiment-results/domain/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-sequences-feature": {
-      "projectType": "library",
-      "root": "libs/stim-feature-sequences/feature",
-      "sourceRoot": "libs/stim-feature-sequences/feature/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-sequences/feature/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-sequences/feature"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-sequences/feature/**/*.ts",
-              "libs/stim-feature-sequences/feature/**/*.component.html",
-              "libs/stim-feature-sequences/feature/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-sequences-domain": {
-      "projectType": "library",
-      "root": "libs/stim-feature-sequences/domain",
-      "sourceRoot": "libs/stim-feature-sequences/domain/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-sequences/domain/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-sequences/domain"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-sequences/domain/**/*.ts",
-              "libs/stim-feature-sequences/domain/**/*.component.html",
-              "libs/stim-feature-sequences/domain/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-settings-popup": {
-      "projectType": "library",
-      "root": "libs/stim-feature-settings/popup",
-      "sourceRoot": "libs/stim-feature-settings/popup/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-settings/popup/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-settings/popup"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-settings/popup/**/*.ts",
-              "libs/stim-feature-settings/popup/**/*.component.html",
-              "libs/stim-feature-settings/popup/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-settings-feature-param-config": {
-      "projectType": "library",
-      "root": "libs/stim-feature-settings/feature/param-config",
-      "sourceRoot": "libs/stim-feature-settings/feature/param-config/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-settings/feature/param-config/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-settings/feature/param-config"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-settings/feature/param-config/**/*.ts",
-              "libs/stim-feature-settings/feature/param-config/**/*.component.html",
-              "libs/stim-feature-settings/feature/param-config/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-settings-feature-service-state": {
-      "projectType": "library",
-      "root": "libs/stim-feature-settings/feature/service-state",
-      "sourceRoot": "libs/stim-feature-settings/feature/service-state/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-settings/feature/service-state/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-settings/feature/service-state"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-settings/feature/service-state/**/*.ts",
-              "libs/stim-feature-settings/feature/service-state/**/*.component.html",
-              "libs/stim-feature-settings/feature/service-state/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-settings-feature-param-config-application": {
-      "projectType": "library",
-      "root": "libs/stim-feature-settings/feature/param-config/application",
-      "sourceRoot": "libs/stim-feature-settings/feature/param-config/application/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-settings/feature/param-config/application/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-settings/feature/param-config/application"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-settings/feature/param-config/application/**/*.ts",
-              "libs/stim-feature-settings/feature/param-config/application/**/*.component.html",
-              "libs/stim-feature-settings/feature/param-config/application/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-settings-feature-param-config-experiments": {
-      "projectType": "library",
-      "root": "libs/stim-feature-settings/feature/param-config/experiments",
-      "sourceRoot": "libs/stim-feature-settings/feature/param-config/experiments/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-settings/feature/param-config/experiments/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-settings/feature/param-config/experiments"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-settings/feature/param-config/experiments/**/*.ts",
-              "libs/stim-feature-settings/feature/param-config/experiments/**/*.component.html",
-              "libs/stim-feature-settings/feature/param-config/experiments/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-settings-feature-param-config-server": {
-      "projectType": "library",
-      "root": "libs/stim-feature-settings/feature/param-config/server",
-      "sourceRoot": "libs/stim-feature-settings/feature/param-config/server/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-settings/feature/param-config/server/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-settings/feature/param-config/server"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-settings/feature/param-config/server/**/*.ts",
-              "libs/stim-feature-settings/feature/param-config/server/**/*.component.html",
-              "libs/stim-feature-settings/feature/param-config/server/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-users-domain": {
-      "projectType": "library",
-      "root": "libs/stim-feature-users/domain",
-      "sourceRoot": "libs/stim-feature-users/domain/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-users/domain/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-users/domain"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-users/domain/**/*.ts",
-              "libs/stim-feature-users/domain/**/*.component.html",
-              "libs/stim-feature-users/domain/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-users-feature": {
-      "projectType": "library",
-      "root": "libs/stim-feature-users/feature",
-      "sourceRoot": "libs/stim-feature-users/feature/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-users/feature/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-users/feature"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-users/feature/**/*.ts",
-              "libs/stim-feature-users/feature/**/*.component.html",
-              "libs/stim-feature-users/feature/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-auth-feature": {
-      "projectType": "library",
-      "root": "libs/stim-feature-auth/feature",
-      "sourceRoot": "libs/stim-feature-auth/feature/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-auth/feature/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-auth/feature"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-auth/feature/**/*.ts",
-              "libs/stim-feature-auth/feature/**/*.component.html",
-              "libs/stim-feature-auth/feature/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-auth-domain": {
-      "projectType": "library",
-      "root": "libs/stim-feature-auth/domain",
-      "sourceRoot": "libs/stim-feature-auth/domain/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-auth/domain/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-auth/domain"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-auth/domain/**/*.ts",
-              "libs/stim-feature-auth/domain/**/*.component.html",
-              "libs/stim-feature-auth/domain/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-feature-stimulator-feature": {
-      "projectType": "library",
-      "root": "libs/stim-feature-stimulator/feature",
-      "sourceRoot": "libs/stim-feature-stimulator/feature/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-feature-stimulator/feature/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-feature-stimulator/feature"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-feature-stimulator/feature/**/*.ts",
-              "libs/stim-feature-stimulator/feature/**/*.component.html",
-              "libs/stim-feature-stimulator/feature/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-lib-console-feature": {
-      "projectType": "library",
-      "root": "libs/stim-lib-console/feature",
-      "sourceRoot": "libs/stim-lib-console/feature/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-lib-console/feature/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-lib-console/feature"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-lib-console/feature/**/*.ts",
-              "libs/stim-lib-console/feature/**/*.component.html",
-              "libs/stim-lib-console/feature/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stim-lib-console-domain": {
-      "projectType": "library",
-      "root": "libs/stim-lib-console/domain",
-      "sourceRoot": "libs/stim-lib-console/domain/src",
-      "prefix": "diplomka-frontend",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stim-lib-console/domain/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/stim-lib-console/domain"
-          ]
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/stim-lib-console/domain/**/*.ts",
-              "libs/stim-lib-console/domain/**/*.component.html",
-              "libs/stim-lib-console/domain/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
         }
       }
     }
