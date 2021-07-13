@@ -30,7 +30,7 @@ Cypress.Commands.add('isNotInViewport', element => {
     return;
   }
   elm.then($el => {
-    const bottom = Cypress.$(cy.state('window')).height()
+    const bottom = Cypress.$(cy.window()).height()
     const rect = $el[0].getBoundingClientRect()
 
     expect(rect.top).to.be.greaterThan(bottom)
@@ -42,7 +42,7 @@ Cypress.Commands.add('isNotInViewport', element => {
 
 Cypress.Commands.add('isInViewport', element => {
   cy.get(element).then($el => {
-    const bottom = Cypress.$(cy.state('window')).height()
+    const bottom = Cypress.$(cy.window()).height()
     const rect = $el[0].getBoundingClientRect()
 
     expect(rect.top).not.to.be.greaterThan(bottom)
