@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 import { SERVER_HTTP_PORT } from '@stechy1/diplomka-share';
+import { VERSION } from './version';
 // import { Settings } from '../../../../libs/stim-lib-common/src/lib/settings/settings';
 
 // const DEFAULT_SETTINGS: Settings = {
@@ -34,7 +35,7 @@ export const environment = {
   production: false,
   testing: false,
   url: {
-    server: 'localhost:3005',
+    server: VERSION.apiUrl,
     socket: ''
   },
   maxOutputCount: 8,
