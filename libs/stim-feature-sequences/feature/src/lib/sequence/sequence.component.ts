@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 
@@ -19,7 +19,7 @@ import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-fronte
   templateUrl: './sequence.component.html',
   styleUrls: ['./sequence.component.sass'],
 })
-export class SequenceComponent implements OnInit, OnDestroy {
+export class SequenceComponent implements OnInit {
   private readonly _nameValidator = new SequenceNameValidator(this._facade);
 
   form: FormGroup = new FormGroup({
@@ -48,7 +48,7 @@ export class SequenceComponent implements OnInit, OnDestroy {
     private readonly logger: NGXLogger
   ) {}
 
-  private _loadSequence(sequenceID: string) {
+  private _loadSequence(sequenceID: string, sourceExperimentId?: string, defaultSequenceSize?: string) {
     if (sequenceID !== undefined) {
       if (isNaN(parseInt(sequenceID, 10))) {
         this.toastr.error(`ID sequence: '${sequenceID}' se nepodařilo naparsovat!`);
@@ -57,7 +57,10 @@ export class SequenceComponent implements OnInit, OnDestroy {
 
       this._facade.one(+sequenceID);
     } else {
-      this._facade.empty(createEmptySequence());
+      const sequence = createEmptySequence();
+      sequence.experimentId = +sourceExperimentId;
+      sequence.size = +defaultSequenceSize || 0;
+      this._facade.empty(sequence);
     }
 
     this._facade.experimentsAsSequenceSource();
@@ -85,16 +88,9 @@ export class SequenceComponent implements OnInit, OnDestroy {
       this.form.patchValue({ data });
     });
 
-    this._route.params.subscribe((params: Params) => {
-      this._loadSequence(params['id']);
+    combineLatest([this._route.params, this._route.queryParams]).subscribe(([params, queryParams]: [Params, Params]) => {
+      this._loadSequence(params['id'], queryParams['sourceExperimentId'], queryParams['defaultSequenceSize']);
     });
-  }
-
-  ngOnDestroy(): void {
-    // if (this._connectedSubscription) {
-    //   this._connectedSubscription.unsubscribe();
-    // }
-    // this._workingSubscription.unsubscribe();
   }
 
   handleGenerateSequence() {

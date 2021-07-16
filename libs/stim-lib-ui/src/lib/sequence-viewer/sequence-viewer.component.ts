@@ -113,7 +113,7 @@ export class SequenceViewerComponent {
 
     for (const key of Object.keys(analyse)) {
       const data = analyse[key];
-      this.pieChartLabels.push(`${key} (${data['percent'] * 100}%)`);
+      this.pieChartLabels.push(`${+key+1}. (${data['percent'] * 100}%)`);
       this.pieChartData.push(data['value']);
     }
   }

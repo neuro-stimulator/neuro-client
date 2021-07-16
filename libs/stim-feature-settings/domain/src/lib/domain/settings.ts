@@ -14,7 +14,10 @@ export interface Settings {
     creationDateFormat: DateTimeFormat;
     outputEditor: {
       canvasHeightMultiplier: number;
-    };
+    },
+    experiment: {
+      defaultSequenceSize: number;
+    }
   };
   player: Record<string, unknown>;
   results: Record<string, unknown>;

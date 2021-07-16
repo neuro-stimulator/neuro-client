@@ -1,6 +1,7 @@
-import { BaseRecord } from '@diplomka-frontend/stim-lib-common';
 import { ActionCreator, DefaultProjectorFn, MemoizedSelector, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
+import { BaseRecord } from './base-record';
 
 export interface BaseActions {
   allWithGhosts: { action: ActionCreator<any, any> };

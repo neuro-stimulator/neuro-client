@@ -27,6 +27,9 @@ const DEFAULT_STATE: SettingsState = {
       outputEditor: {
         canvasHeightMultiplier: 0.5,
       },
+      experiment: {
+        defaultSequenceSize: 10
+      }
     },
     player: {},
     results: {},

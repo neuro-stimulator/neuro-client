@@ -4,7 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import { SequenceFastDialogResult } from './sequence-fast-dialog.args';
+
+import { SequenceFastDialogParams, SequenceFastDialogResult } from './sequence-fast-dialog.args';
 
 @Component({
   templateUrl: './sequence-fast-dialog.component.html',
@@ -16,6 +17,7 @@ export class SequenceFastDialogComponent extends DialogChildComponent {
     size: new FormControl(null, [Validators.required, Validators.min(1)]),
   });
 
+  private _showSubscription: Subscription;
   private _confirmSubscription: Subscription;
 
   private readonly formInvalid: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -42,10 +44,14 @@ export class SequenceFastDialogComponent extends DialogChildComponent {
     modal.confirmClose = false;
     modal.confirmDisabled = this.formInvalid;
     modal.result = this.formResult;
+    this._showSubscription = modal.show.subscribe((args: SequenceFastDialogParams) => {
+      this.size.setValue(args.defaultSequenceSize);
+    });
     this._confirmSubscription = modal.confirm.subscribe(() => this._handleConfirm());
   }
 
   unbind() {
+    this._showSubscription.unsubscribe();
     this._confirmSubscription.unsubscribe();
     this._formInvalidSubscription.unsubscribe();
   }

@@ -1,6 +1,6 @@
 <section class="row">
   <div class="col-12">
-    <h2 id="experiment-results-not-found" *ngIf="(state | async).ghosts.length === 0 && !hasGroups">{{ 'EXPERIMENT_RESULTS.NOT_FOUND' | translate}}</h2>
+    <h2 id="experiment-results-not-found" *ngIf="(state | async).ghosts.length === 0 && !hasGroups">{{ 'EXPERIMENT_RESULTS.NOT_FOUND' | translate }}</h2>
     <stim-feature-experiment-results-ghost-item-list [ghosts]="(state | async).ghosts" *ngIf="(state | async).ghosts.length !== 0"></stim-feature-experiment-results-ghost-item-list>
     <stim-feature-experiment-results-item-list [experimentResultGroups]="groups"
                                                [selectedExperimentResults]="(state | async).selectedExperimentResults"

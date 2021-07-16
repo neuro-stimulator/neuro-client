@@ -2,11 +2,20 @@ import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { createEmptyExperimentERP, Edge, ErpOutput, ExperimentERP, Random } from '@stechy1/diplomka-share';
+import {
+  createEmptyExperimentERP,
+  Edge,
+  ErpOutput,
+  ExperimentERP,
+  ExperimentSupportSequences,
+  OutputDependency,
+  OutputForSequence,
+  Random
+} from '@stechy1/diplomka-share';
 
 import { DropdownBtnComponent, ShareValidators } from '@diplomka-frontend/stim-lib-ui';
 import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
@@ -20,7 +29,7 @@ import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
 import { ExperimentTypeErpOutputDependencyValidator } from './experiment-type-erp-output-dependency.validator';
 import { SequenceFastDialogComponent } from './sequence-fast-dialog/sequence-fast-dialog.component';
-import { SequenceFastDialogResult } from './sequence-fast-dialog/sequence-fast-dialog.args';
+import { SequenceFastDialogParams, SequenceFastDialogResult } from './sequence-fast-dialog/sequence-fast-dialog.args';
 
 @Component({
   templateUrl: './experiment-type-erp.component.html',
@@ -70,6 +79,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
           ExperimentTypeErpOutputDependencyValidator.createValidator(this._maxOutputCount),
         ]),
       ]),
+      defaultSequenceSize: new FormControl(null, [Validators.min(1)])
     };
 
     return { ...superControls, ...myControls };
@@ -88,7 +98,7 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
         audio: new FormControl(null),
         image: new FormControl(null),
       }),
-
+      defaultSequenceSize: new FormControl(null, [Validators.min(1)]),
       sequenceId: new FormControl(null),
     };
 
@@ -103,7 +113,9 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
     this.dropdown.showDropdown = false;
     this.modal.showComponent = SequenceFastDialogComponent;
     this.modal
-      .openForResult<void, SequenceFastDialogResult>()
+      .openForResult<SequenceFastDialogParams, SequenceFastDialogResult>({
+        defaultSequenceSize: this.defaultSequenceSize.value
+      })
       .catch(() => {
         this.logger.warn('Nebudu vytvářet žádnou sekvenci.');
       })
@@ -169,5 +181,21 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
 
   get sequenceId() {
     return this.form.get('sequenceId');
+  }
+
+  get defaultSequenceSize() {
+    return this.form.get('defaultSequenceSize');
+  }
+
+  get sequenceQueryParams(): Observable<Record<string, unknown>> {
+    return this._facade.state.pipe(
+      map(state => state.selectedExperiment.experiment as ExperimentSupportSequences<OutputForSequence<OutputDependency>, OutputDependency>),
+      map((experiment: ExperimentSupportSequences<OutputForSequence<OutputDependency>, OutputDependency>) => {
+        return {
+          sourceExperimentId: experiment?.id || -1,
+          defaultSequenceSize: experiment?.defaultSequenceSize || 10
+        }
+      })
+    )
   }
 }

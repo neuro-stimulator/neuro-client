@@ -13,7 +13,7 @@
           <div class="row">
             <div class="col-12 col-sm-4">
               <div class="form-group">
-                <label for="sequence-name">{{ 'SEQUENCES.SEQUENCE.NAME' | translate}}</label>
+                <label for="sequence-name">{{ 'SEQUENCES.SEQUENCE.NAME' | translate }}</label>
                 <input type="text" id="sequence-name" class="form-control form-control-sm" [class.is-valid]="name.valid" [class.is-invalid]="name.invalid" formControlName="name">
                 <small *ngIf="name.touched && name.errors?.required" class="form-text text-muted">Název sekvence je vyžadován.</small>
               </div>
@@ -21,7 +21,7 @@
 
             <div class="col-12 col-sm-4">
               <div class="form-group">
-                <label for="sequence-source-experiment">{{ 'SEQUENCES.SEQUENCE.SOURCE_EXPERIMENT' | translate}}</label>
+                <label for="sequence-source-experiment">{{ 'SEQUENCES.SEQUENCE.SOURCE_EXPERIMENT' | translate }}</label>
                 <select id="sequence-source-experiment" class="selectpicker form-control form-control-sm" formControlName="experimentId">
                   <option value="-1" disabled>{{ 'SEQUENCES.SEQUENCE.SELECT_SOURCE_EXPERIMENT' | translate }}</option>
                   <option *ngFor="let experiment of (sequencesState | async).selectedSequence.experiments"
@@ -34,7 +34,7 @@
 
             <div class="col-12 col-sm-4">
               <div class="form-group">
-                <label for="sequence-size">{{ 'SEQUENCES.SEQUENCE.SIZE' | translate}}</label>
+                <label for="sequence-size">{{ 'SEQUENCES.SEQUENCE.SIZE' | translate }}</label>
                 <input type="number" id="sequence-size" class="form-control form-control-sm" [class.is-valid]="size.valid" [class.is-invalid]="size.invalid" formControlName="size">
                 <small *ngIf="size.touched && size.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
                 <small *ngIf="size.touched && size.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: size.errors?.min.min} }}</small>
@@ -52,9 +52,9 @@
 
       <div class="row">
         <div class="col">
-          <button id="generate-sequence" class="btn btn-primary" (click)="handleGenerateSequence()" [disabled]="experimentId.invalid || size.invalid"><i class="fas fa-plus"></i> {{'SEQUENCES.SEQUENCE.BUTTON_BAR.GENERATE' | translate}}</button>
-          <button id="show-original-sequence" class="btn btn-secondary ml-2" (click)="handleShowOriginalSequence()" [disabled]="isNew"><i class="fas fa-recycle"></i> {{'SEQUENCES.SEQUENCE.BUTTON_BAR.SHOW_ORIGINAL' | translate}}</button>
-            <a id="go-to-experiment-link" class="btn btn-info ml-2" [routerLink]="['/', 'experiments', 'erp', experimentId.value]" [class.disabled]="experimentId.invalid">{{'SEQUENCES.SEQUENCE.BUTTON_BAR.GO_TO_EXPERIMENT' | translate}}</a>
+          <button id="generate-sequence" class="btn btn-primary" (click)="handleGenerateSequence()" [disabled]="experimentId.invalid || size.invalid"><i class="fas fa-plus"></i> {{'SEQUENCES.SEQUENCE.BUTTON_BAR.GENERATE' | translate }}</button>
+          <button id="show-original-sequence" class="btn btn-secondary ml-2" (click)="handleShowOriginalSequence()" [disabled]="isNew"><i class="fas fa-recycle"></i> {{'SEQUENCES.SEQUENCE.BUTTON_BAR.SHOW_ORIGINAL' | translate }}</button>
+            <a id="go-to-experiment-link" class="btn btn-info ml-2" [routerLink]="['/', 'experiments', 'erp', experimentId.value]" [class.disabled]="experimentId.invalid">{{'SEQUENCES.SEQUENCE.BUTTON_BAR.GO_TO_EXPERIMENT' | translate }}</a>
         </div>
       </div>
 

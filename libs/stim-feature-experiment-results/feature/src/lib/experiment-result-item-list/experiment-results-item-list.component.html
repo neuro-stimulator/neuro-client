@@ -24,7 +24,7 @@
             <!-- Experiment result Name -->
             <div class="col-8 col-md-9">
               <div>
-                <a [routerLink]="['/', 'results', experimentResult.id]" class="experiment-result-name"><strong>{{experimentResult.name || 'EXPERIMENT_RESULTS.EXPERIMENT_RESULT.UNNAMED' | translate}}</strong></a>
+                <a [routerLink]="['/', 'results', experimentResult.id]" class="experiment-result-name"><strong>{{experimentResult.name || 'EXPERIMENT_RESULTS.EXPERIMENT_RESULT.UNNAMED' | translate }}</strong></a>
               </div>
               <div><small class="text-truncate experiment-result-creation-date">{{experimentResult.date | date:'HH:mm, dd.MM.yyyy'}}</small></div>
             </div>

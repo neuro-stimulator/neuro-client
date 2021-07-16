@@ -5,11 +5,11 @@
         <input class="form-control py-2 border-right-0 border"
                [class.hidden]="hideFinderBox"
                type="search"
-               placeholder="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FIND_EXPERIMENT' | translate}}"
+               placeholder="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FIND_EXPERIMENT' | translate }}"
                (keyup)="handleSearchInputChange($event)" (change)="handleSearchInputChange($event)" [defaultValue]="initialSearchValue">
         <span class="input-group-append">
           <button id="button-addon-experiments-finder" class="btn btn-outline-secondary" type="button" (click)="hideFinderBox = !hideFinderBox"
-                  title="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FIND_EXPERIMENT' | translate}}">
+                  title="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FIND_EXPERIMENT' | translate }}">
             <i class="fa fa-search"></i>
           </button>
         </span>
@@ -17,7 +17,7 @@
     </li>
     <li class="experiment-filter">
       <button id="button-addon-experiments-filter" class="btn"
-              title="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FILTER_EXPERIMENT' | translate}}"
+              title="{{ 'SHARE.EXPERIMENTS_BUTTONS_ADDON.PLACEHOLDER_FILTER_EXPERIMENT' | translate }}"
               (click)="handleShowFilter()"><i class="fas fa-filter"></i></button>
     </li>
   </ng-container>

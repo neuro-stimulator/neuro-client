@@ -16,32 +16,32 @@
       <button class="btn btn-primary upload"
               (click)="handleUploadExperiment()"
               [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][0] || form.invalid">
-        <i class="fas fa-upload"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.UPLOAD' | translate}}
+        <i class="fas fa-upload"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.UPLOAD' | translate }}
       </button>
       <button class="btn btn-success run"
               (click)="handleRunExperiment()"
               [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][1] || !(state | async).initialized || ((state | async).autoplay && (state | async).isBreakTime)">
-        <i class="fas fa-play"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PLAY' | translate}}
+        <i class="fas fa-play"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PLAY' | translate }}
       </button>
       <button class="btn btn-success pause"
               (click)="handlePauseExperiment()"
               [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][2] || !(state | async).initialized">
-        <i class="fas fa-pause"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PAUSE' | translate}}
+        <i class="fas fa-pause"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.PAUSE' | translate }}
       </button>
       <button class="btn btn-warning finish"
               (click)="handleFinishExperiment()"
               [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][3] || !(state | async).initialized">
-        <i class="fas fa-stop"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.FINISH' | translate}}
+        <i class="fas fa-stop"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.FINISH' | translate }}
       </button>
       <button class="btn btn-warning force-finish"
               (click)="handleForceFinishExperiment()"
               [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][3] || !(state | async).initialized">
-        <i class="fas fa-stop"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.FORCE_FINISH' | translate}}
+        <i class="fas fa-stop"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.FORCE_FINISH' | translate }}
       </button>
       <button class="btn btn-danger clear"
               (click)="handleClearExperiment()"
               [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][4]">
-        <i class="fas fa-eraser"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.CLEAR' | translate}}
+        <i class="fas fa-eraser"></i> {{ 'EXPERIMENT_PLAYER.BUTTON_BAR.CLEAR' | translate }}
       </button>
     </div>
   </div>

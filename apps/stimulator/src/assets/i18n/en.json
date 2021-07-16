@@ -90,7 +90,8 @@
             },
             "EXPLORE": "Explore"
           }
-        }
+        },
+        "DEFAULT_SEQUENCE_SIZE": "Default sequence size"
       },
       "CVEP": {
         "TITLE_PARAMS": "C-VEP parameters",
@@ -479,7 +480,7 @@
     "CODE_SUCCESS": "Action was succesfuly done.",
     "CODE_ERROR_EXPERIMENT_NOT_FOUND": "Experiment {{id}} was not found!",
     "CODE_SUCCESS_EXPERIMENT_CREATED":  "Experiment {{id}} was successfully created.",
-    "CODE_ERROR_EXPERIMENT_WAS_NOT_CREATED":  "Experiment {{id}} was unable to create!",
+    "CODE_ERROR_EXPERIMENT_WAS_NOT_CREATED":  "Experiment was unable to create!",
     "CODE_SUCCESS_EXPERIMENT_UPDATED": "Experiment {{id}} was successfully updated.",
     "CODE_ERROR_EXPERIMENT_WAS_NOT_UPDATED": "Experiment {{id}} was unable to update.",
     "CODE_SUCCESS_EXPERIMENT_DELETED":  "Experiment {{id}} was successfully deleted!",

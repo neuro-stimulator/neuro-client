@@ -92,7 +92,8 @@
             },
             "EXPLORE": "Prohlížet"
           }
-        }
+        },
+        "DEFAULT_SEQUENCE_SIZE": "Výchozí délka sekvence"
       },
       "CVEP": {
         "TITLE_PARAMS": "C-VEP parametry",
@@ -482,13 +483,13 @@
     "CODE_SUCCESS": "Akce proběhla v pořádku.",
     "CODE_ERROR_EXPERIMENT_NOT_FOUND": "Experiment {{id}} nebyl nalezen!",
     "CODE_SUCCESS_EXPERIMENT_CREATED":  "Experiment {{id}} byl úspěšně vytvořen.",
-    "CODE_ERROR_EXPERIMENT_WAS_NOT_CREATED": "Experiment {{id}} se nepodařilo vytvořit!.",
+    "CODE_ERROR_EXPERIMENT_WAS_NOT_CREATED": "Experiment se nepodařilo vytvořit!",
     "CODE_SUCCESS_EXPERIMENT_UPDATED": "Experiment {{id}} byl úspěšně aktualizován.",
-    "CODE_ERROR_EXPERIMENT_WAS_NOT_UPDATED": "Experiment {{id}} se nepodařilo aktualizovat!.",
+    "CODE_ERROR_EXPERIMENT_WAS_NOT_UPDATED": "Experiment {{id}} se nepodařilo aktualizovat!",
     "CODE_SUCCESS_EXPERIMENT_DELETED":  "Experiment {{id}} byl úspěšně smazán.",
-    "CODE_ERROR_EXPERIMENT_WAS_NOT_DELETED":  "Experiment {{id}} se nepodařilo smazat!.",
-    "CODE_ERROR_EXPERIMENT_NOT_VALID":  "Experiment {{id}} není validní!.",
-    "CODE_ERROR_EXPERIMENT_ALREADY_EXISTS":  "Experiment {{id}} již existuje!.",
+    "CODE_ERROR_EXPERIMENT_WAS_NOT_DELETED":  "Experiment {{id}} se nepodařilo smazat!",
+    "CODE_ERROR_EXPERIMENT_NOT_VALID":  "Experiment {{id}} není validní!",
+    "CODE_ERROR_EXPERIMENT_ALREADY_EXISTS":  "Experiment {{id}} již existuje!",
     "CODE_ERROR_EXPERIMENT_OUTPUT_SYNCHRONIZATION_DISABLED": "Synchronizace výstupů byla ukončena.",
     "CODE_ERROR_EXPERIMENT_RESULT_NOT_FOUND": "Výsledek experimentu {{id}} nebyl nalezen.",
     "CODE_SUCCESS_EXPERIMENT_RESULT_CREATED":  "Výsledek experimentu {{id}} byl úspěšně vytvořen.",

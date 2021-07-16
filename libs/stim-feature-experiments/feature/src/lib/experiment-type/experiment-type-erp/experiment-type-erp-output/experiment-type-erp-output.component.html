@@ -56,7 +56,7 @@
 
         <div class="col-12 erp-dependencies" formArrayName="dependencies">
           <div class="form-group">
-            <label [for]="'dependency_' + i">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DEPENDENCIES.TITLE' | translate}}</label>
+            <label [for]="'dependency_' + i">{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DEPENDENCIES.TITLE' | translate }}</label>
             <div>
             <span class="badge badge-info"
                   *ngFor="let dependency of dependencies(i).value"
@@ -64,7 +64,7 @@
               <i class="fas fa-trash" (click)="handleRemoveDependency(i, dependency)"></i></span>
             <input type="text" [id]="'dependency_' + i"
                    class="erp-dependency form-control form-control-sm"
-                   placeholder="{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DEPENDENCIES.FORMAT' | translate}}" #input
+                   placeholder="{{ 'EXPERIMENTS.EXPERIMENT.ERP.OUTPUT.DEPENDENCIES.FORMAT' | translate }}" #input
                    [formControlName]="'1'"
                    (keyup)="handleDependencyKeyUp($event, i, input.value)"
                    [class.is-invalid]="dependencyValue(i).invalid">

@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col-10" >
-      <h2>{{ 'SETTINGS.PARAM_CONFIG.APPLICATION.TITLE' | translate}}</h2>
+      <h2>{{ 'SETTINGS.PARAM_CONFIG.APPLICATION.TITLE' | translate }}</h2>
     </div>
     <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="settings" [icon]="icon"><i class="fas fa-minus" #icon></i></div>
   </div>
@@ -13,12 +13,12 @@
       <div class="form-group">
         <div class="form-row">
           <div class="col-6 vertical-center justify-content-start">
-            <label for="settings-application-language">{{ 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.TITLE' | translate}}</label>
+            <label for="settings-application-language">{{ 'SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.TITLE' | translate }}</label>
           </div>
           <div class="col-6 vertical-center">
             <select id="settings-application-language" class="selectpicker form-control form-control-sm" formControlName="language">
               <option *ngFor="let lang of languages" [value]="lang.value">
-                <span><i class="fas fa-flag"></i> {{lang.name | translate}}</span>
+                <span><i class="fas fa-flag"></i> {{lang.name | translate }}</span>
               </option>
             </select>
           </div>
@@ -31,7 +31,7 @@
       <div class="form-group">
         <div class="form-row">
           <div class="col-6 vertical-center justify-content-start">
-            <label for="settings-application-disable-tutorial">{{ 'SETTINGS.PARAM_CONFIG.APPLICATION.TUTORIAL.DISABLE' | translate}}</label>
+            <label for="settings-application-disable-tutorial">{{ 'SETTINGS.PARAM_CONFIG.APPLICATION.TUTORIAL.DISABLE' | translate }}</label>
           </div>
           <div class="col-6 vertical-center">
             <input class="form-check-input" type="checkbox" id="settings-application-disable-tutorial"
