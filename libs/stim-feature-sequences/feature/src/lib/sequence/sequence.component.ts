@@ -74,6 +74,7 @@ export class SequenceComponent implements OnInit {
   protected _updateFormGroup(sequence: Sequence) {
     this.logger.debug('Aktualizuji hodnoty ve formuláři.');
     this.form.patchValue(sequence);
+    this.form.patchValue({ tags: [...sequence.tags] }, { emitEvent: false });
     this.form.markAsUntouched();
   }
 

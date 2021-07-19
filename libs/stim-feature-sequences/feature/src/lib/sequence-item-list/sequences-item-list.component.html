@@ -27,10 +27,19 @@
               <div class="row">
                 <div class="col-12">
                   <a [routerLink]="['/', 'sequences', sequence.id]" class="sequence-name"><strong>{{sequence.name}}</strong></a>
+<!--                  <span *ngIf="(settings | async).localSettings.sequences.showCreationDate" class="sequence-creation-date"> - <small>{{sequence.created | dateTime:(settings | async).localSettings.sequences.creationDateFormat}}</small></span>-->
+                  <span class="sequence-creation-date"> - <small>{{sequence.created | date:'HH:mm, dd.MM.yyyy'}}</small></span>
                   <span class="sequence-size float-right" title="Délka sekvence"><i class="fas fa-hashtag"></i> {{sequence.size}}</span>
                 </div>
               </div>
-              <div><small class="text-truncate sequence-creation-date">{{sequence.created | date:'HH:mm, dd.MM.yyyy'}}</small></div>
+<!--              <div><small class="text-truncate sequence-creation-date">{{sequence.created | date:'HH:mm, dd.MM.yyyy'}}</small></div>-->
+
+              <!-- Tagy sekvence -->
+              <div class="row experiment-tags" ><!--*ngIf="(settings | async).localSettings.experiments.showTags"-->
+                <div class="col-12">
+                  <span class="badge" *ngFor="let tag of sequence.tags">{{tag}}</span>
+                </div>
+              </div>
             </div>
             <!-- Toolbar s akčními tlačítky (3 sloupce) -->
             <div class="col-3 sequence-toolbar">
