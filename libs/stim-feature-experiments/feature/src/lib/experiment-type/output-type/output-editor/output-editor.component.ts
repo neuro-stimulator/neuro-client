@@ -15,7 +15,7 @@ import { OutputEditorActions, OutputEditorArgs } from './output-editor.args';
 @Component({
   selector: 'diplomka-frontend-output-editor',
   templateUrl: './output-editor.component.html',
-  styleUrls: ['./output-editor.component.scss'],
+  styleUrls: ['./output-editor.component.scss']
 })
 export class OutputEditorComponent extends DialogChildComponent implements OnInit, AfterContentInit {
   @ViewChild('canvas', { static: true }) canvas: ElementRef;
@@ -38,6 +38,8 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
   private _outputSize2: number;
   private _startX: number;
   private _startY: number;
+  private _startDX: number;
+  private _startDY: number;
 
   private _coordinatesRefresh: boolean;
   private _manualAlignmentRefresh: boolean;
@@ -83,15 +85,26 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     graphics.strokeRect(0, 0, canvas.width, canvas.height);
 
     // iteruj přes všechny entry
-    for (const outputEntry of this.outputEntries) {
+    for (let i = 0; i < this.outputEntries.length; i++) {
+      const outputEntry = this.outputEntries[i];
       // Vyfiltruji pouze obrázky
       if (!outputEntry.outputType.image) {
         continue;
       }
 
+      // vykreslení obdélníku jednoho výstupu
       graphics.strokeStyle = 'black';
       graphics.lineWidth = 1;
       graphics.fillRect(outputEntry.x - this._outputSize2, outputEntry.y - this._outputSize2, this._outputSize, this._outputSize);
+
+      // vykreslení čísla výstupu
+      graphics.save();
+      graphics.strokeStyle = 'white';
+      graphics.textAlign = 'center';
+      graphics.textBaseline = 'middle';
+      graphics.font = '30px arial';
+      graphics.strokeText(`${i + 1}`, outputEntry.x, outputEntry.y);
+      graphics.restore();
       // Pokud je obrázek vybraný
       if (outputEntry.selected) {
         // Dodatečně nakreslím obdélník
@@ -207,7 +220,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
         return {
           ...output,
           selected: false,
-          dragging: false,
+          dragging: false
         };
       });
       this._actions = args.actions;
@@ -243,9 +256,11 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
       this.manualAlignment.setValue(null);
     }
 
+    let selectedEntry;
     for (const outputEntry of this.outputEntries) {
       // základní obdélníkový bounding box
-      if (mx > outputEntry.x - this._outputSize2 && mx < outputEntry.x + this._outputSize2 && my > outputEntry.y - this._outputSize2 && my < outputEntry.y + this._outputSize2) {
+      if (mx > outputEntry.x - this._outputSize2 && mx < outputEntry.x + this._outputSize2
+        && my > outputEntry.y - this._outputSize2 && my < outputEntry.y + this._outputSize2) {
         this.selectedID = outputEntry.id;
         this._manualAlignmentRefresh = true;
         this.manualAlignment.setValue(outputEntry.manualAlignment);
@@ -259,12 +274,15 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
 
         this.controlPositionX.setValue(Math.round((outputEntry.x / canvas.width) * this.realViewport.x));
         this.controlPositionY.setValue(Math.round((outputEntry.y / canvas.height) * this.realViewport.y));
+        selectedEntry = outputEntry;
         break;
       }
     }
 
-    this._startX = mx;
+    this._startX = mx
     this._startY = my;
+    this._startDX = this._startX - selectedEntry?.x;
+    this._startDY = this._startY - selectedEntry?.y;
 
     this._drawOutputs();
   }
@@ -277,6 +295,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
     const mx = $event.clientX - this._offsetX;
     const my = $event.clientY - this._offsetY;
 
+    let selectedEntry;
     if (this._dragging) {
       const dx = mx - this._startX;
       const dy = my - this._startY;
@@ -289,20 +308,23 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
           if (this._synchronizeOutputs) {
             this._actions?.synchronizeEvent.emit({
               id: outputEntry.id - 1,
-              x: Math.round((this._startX / canvas.width) * this.realViewport.x),
-              y: Math.round((this._startY / canvas.height) * this.realViewport.y),
+              x: Math.round(((this._startX - this._startDX) / canvas.width) * this.realViewport.x),
+              y: Math.round(((this._startY - this._startDY) / canvas.height) * this.realViewport.y)
             });
           }
 
+          selectedEntry = outputEntry;
           break;
         }
       }
-      this.controlPositionX.setValue(Math.round((this._startX / canvas.width) * this.realViewport.x));
-      this.controlPositionY.setValue(Math.round((this._startY / canvas.height) * this.realViewport.y));
+      this.controlPositionX.setValue(Math.round(((this._startX - this._startDX) / canvas.width) * this.realViewport.x));
+      this.controlPositionY.setValue(Math.round(((this._startY - this._startDY) / canvas.height) * this.realViewport.y));
     }
 
     this._startX = mx;
     this._startY = my;
+    this._startDX = this._startX - selectedEntry?.x;
+    this._startDY = this._startY - selectedEntry?.y;
 
     this._drawOutputs();
   }
@@ -357,7 +379,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
       this._actions?.synchronizeEvent.emit({
         id: outputEntry.id - 1,
         x: Math.round((outputEntry.x / canvas.width) * this.realViewport.x),
-        y: Math.round((outputEntry.y / canvas.height) * this.realViewport.y),
+        y: Math.round((outputEntry.y / canvas.height) * this.realViewport.y)
       });
     }
     this._coordinatesRefresh = false;
@@ -409,7 +431,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
       this._actions?.synchronizeEvent.emit({
         id: outputEntry.id - 1,
         x: Math.round((outputEntry.x / canvas.width) * this.realViewport.x),
-        y: Math.round((outputEntry.y / canvas.height) * this.realViewport.y),
+        y: Math.round((outputEntry.y / canvas.height) * this.realViewport.y)
       });
     }
     this._coordinatesRefresh = false;
