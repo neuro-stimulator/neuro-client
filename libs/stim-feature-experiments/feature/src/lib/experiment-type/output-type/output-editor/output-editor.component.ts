@@ -30,6 +30,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
 
   private readonly vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
   private readonly _resultEmitter: EventEmitter<OutputEntry[]> = new EventEmitter<OutputEntry[]>();
+  private readonly _touchDisplay: boolean;
 
   private _dragging = false;
   private _offsetX: number;
@@ -61,6 +62,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
 
   constructor(private readonly settings: SettingsFacade) {
     super();
+    this._touchDisplay = ( 'ontouchstart' in window ) || ( navigator.maxTouchPoints > 0 ) || ( navigator.msMaxTouchPoints > 0 )
   }
 
   private _drawOutputs() {
@@ -116,7 +118,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
       }
     }
 
-    if (!window.TouchEvent && this._enableCoordinatesLines) {
+    if (!this._touchDisplay && this._enableCoordinatesLines) {
       graphics.strokeStyle = 'red';
       graphics.moveTo(this._startX, 0);
       graphics.lineTo(this._startX, height);
