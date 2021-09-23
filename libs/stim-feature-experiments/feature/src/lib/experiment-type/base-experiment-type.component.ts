@@ -137,6 +137,7 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
       supportSequences: new FormControl(null, [Validators.required]),
       outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this._maxOutputCount)]),
       outputs: new FormArray([]),
+      userGroups: new FormControl()
     };
   }
 

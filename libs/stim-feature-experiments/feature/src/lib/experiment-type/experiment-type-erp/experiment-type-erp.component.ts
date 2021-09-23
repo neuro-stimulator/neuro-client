@@ -79,7 +79,6 @@ export class ExperimentTypeErpComponent extends BaseExperimentTypeComponent<Expe
           ExperimentTypeErpOutputDependencyValidator.createValidator(this._maxOutputCount),
         ]),
       ]),
-      defaultSequenceSize: new FormControl(null, [Validators.min(1)])
     };
 
     return { ...superControls, ...myControls };
