@@ -1,5 +1,8 @@
+const { getJestProjects } = require('@nrwl/jest');
+
 module.exports = {
   projects: [
+    ...getJestProjects(),
     '<rootDir>/apps/stimulator',
     '<rootDir>/libs/stim-lib-modal',
     '<rootDir>/libs/stim-lib-fab',
