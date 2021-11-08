@@ -5,7 +5,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-about",
       "sourceRoot": "libs/stim-feature-about/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -32,7 +32,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-auth/domain",
       "sourceRoot": "libs/stim-feature-auth/domain/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -59,7 +59,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-auth/feature",
       "sourceRoot": "libs/stim-feature-auth/feature/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -86,7 +86,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-experiment-results/domain",
       "sourceRoot": "libs/stim-feature-experiment-results/domain/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -117,7 +117,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-experiment-results/feature",
       "sourceRoot": "libs/stim-feature-experiment-results/feature/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -148,7 +148,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-experiments/domain",
       "sourceRoot": "libs/stim-feature-experiments/domain/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -179,7 +179,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-experiments/feature",
       "sourceRoot": "libs/stim-feature-experiments/feature/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -210,7 +210,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-file-browser/domain",
       "sourceRoot": "libs/stim-feature-file-browser/domain/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -241,7 +241,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-file-browser/feature",
       "sourceRoot": "libs/stim-feature-file-browser/feature/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -272,7 +272,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-help/feature",
       "sourceRoot": "libs/stim-feature-help/feature/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -299,7 +299,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-navigation/domain",
       "sourceRoot": "libs/stim-feature-navigation/domain/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -330,7 +330,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-navigation/feature",
       "sourceRoot": "libs/stim-feature-navigation/feature/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -361,7 +361,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-player/domain",
       "sourceRoot": "libs/stim-feature-player/domain/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -388,7 +388,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-player/feature",
       "sourceRoot": "libs/stim-feature-player/feature/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -419,7 +419,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-sequences/domain",
       "sourceRoot": "libs/stim-feature-sequences/domain/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -450,7 +450,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-sequences/feature",
       "sourceRoot": "libs/stim-feature-sequences/feature/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -481,7 +481,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-settings/domain",
       "sourceRoot": "libs/stim-feature-settings/domain/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -512,7 +512,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-settings/feature",
       "sourceRoot": "libs/stim-feature-settings/feature/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -543,7 +543,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-settings/feature/param-config",
       "sourceRoot": "libs/stim-feature-settings/feature/param-config/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -574,7 +574,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-settings/feature/param-config/application",
       "sourceRoot": "libs/stim-feature-settings/feature/param-config/application/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -605,7 +605,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-settings/feature/param-config/experiments",
       "sourceRoot": "libs/stim-feature-settings/feature/param-config/experiments/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -636,7 +636,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-settings/feature/param-config/server",
       "sourceRoot": "libs/stim-feature-settings/feature/param-config/server/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -667,7 +667,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-settings/feature/service-state",
       "sourceRoot": "libs/stim-feature-settings/feature/service-state/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -698,7 +698,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-settings/popup",
       "sourceRoot": "libs/stim-feature-settings/popup/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -729,7 +729,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-stimulator/domain",
       "sourceRoot": "libs/stim-feature-stimulator/domain/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -760,7 +760,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-stimulator/feature",
       "sourceRoot": "libs/stim-feature-stimulator/feature/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -791,7 +791,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-users/domain",
       "sourceRoot": "libs/stim-feature-users/domain/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -818,7 +818,7 @@
       "projectType": "library",
       "root": "libs/stim-feature-users/feature",
       "sourceRoot": "libs/stim-feature-users/feature/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -845,7 +845,7 @@
       "projectType": "library",
       "root": "libs/stim-lib-asset-player",
       "sourceRoot": "libs/stim-lib-asset-player/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -872,7 +872,7 @@
       "projectType": "library",
       "root": "libs/stim-lib-common",
       "sourceRoot": "libs/stim-lib-common/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -899,7 +899,7 @@
       "projectType": "library",
       "root": "libs/stim-lib-connection",
       "sourceRoot": "libs/stim-lib-connection/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -926,7 +926,7 @@
       "projectType": "library",
       "root": "libs/stim-lib-console/domain",
       "sourceRoot": "libs/stim-lib-console/domain/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -953,7 +953,7 @@
       "projectType": "library",
       "root": "libs/stim-lib-console/feature",
       "sourceRoot": "libs/stim-lib-console/feature/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -980,7 +980,7 @@
       "projectType": "library",
       "root": "libs/stim-lib-fab",
       "sourceRoot": "libs/stim-lib-fab/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -1007,7 +1007,7 @@
       "projectType": "library",
       "root": "libs/stim-lib-list-utils",
       "sourceRoot": "libs/stim-lib-list-utils/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -1034,7 +1034,7 @@
       "projectType": "library",
       "root": "libs/stim-lib-modal",
       "sourceRoot": "libs/stim-lib-modal/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
@@ -1061,7 +1061,7 @@
       "projectType": "library",
       "root": "libs/stim-lib-store",
       "sourceRoot": "libs/stim-lib-store/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -1088,7 +1088,7 @@
       "projectType": "library",
       "root": "libs/stim-lib-ui",
       "sourceRoot": "libs/stim-lib-ui/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -1120,7 +1120,7 @@
       },
       "root": "apps/stimulator",
       "sourceRoot": "apps/stimulator/src",
-      "prefix": "diplomka-frontend",
+      "prefix": "neuro-client",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

@@ -1,4 +1,4 @@
-import { AppState } from '@diplomka-frontend/stim-lib-store';
+import { AppState } from '@neuro-client/stim-lib-store';
 
 import { ConsoleCommand } from '../domain/console-command';
 

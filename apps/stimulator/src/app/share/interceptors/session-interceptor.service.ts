@@ -3,7 +3,7 @@ import { catchError, switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 
-import { AuthFacade } from '@diplomka-frontend/stim-feature-auth/domain';
+import { AuthFacade } from '@neuro-client/stim-feature-auth/domain';
 
 @Injectable()
 export class SessionInterceptorService implements HttpInterceptor {

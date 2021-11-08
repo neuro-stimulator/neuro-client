@@ -8,13 +8,13 @@ import { NGXLogger } from 'ngx-logger';
 
 import { Sequence } from '@stechy1/diplomka-share';
 
-import { ConfirmDialogArgs, ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
-import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
-import { FilterDialogComponent } from '@diplomka-frontend/stim-lib-ui';
-import { ListButtonsAddonService, BaseListComponent } from '@diplomka-frontend/stim-lib-ui';
-import { SequencesFacade, SequencesState } from '@diplomka-frontend/stim-feature-sequences/domain';
-import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
-import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
+import { ConfirmDialogArgs, ConfirmDialogComponent } from '@neuro-client/stim-lib-modal';
+import { ListGroupSortFilterService } from '@neuro-client/stim-lib-list-utils';
+import { FilterDialogComponent } from '@neuro-client/stim-lib-ui';
+import { ListButtonsAddonService, BaseListComponent } from '@neuro-client/stim-lib-ui';
+import { SequencesFacade, SequencesState } from '@neuro-client/stim-feature-sequences/domain';
+import { NavigationFacade } from '@neuro-client/stim-feature-navigation/domain';
+import { AliveCheckerFacade } from '@neuro-client/stim-lib-connection';
 
 import { SequencesFilterDialogComponent } from './sequences-filter-dialog/sequences-filter-dialog.component';
 

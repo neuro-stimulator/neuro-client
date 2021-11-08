@@ -8,14 +8,14 @@ import { NGXLogger } from 'ngx-logger';
 
 import { ExperimentResult, ExperimentType } from '@stechy1/diplomka-share';
 
-import { ConfirmDialogArgs, ConfirmDialogComponent } from '@diplomka-frontend/stim-lib-modal';
-import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
-import { FilterDialogComponent } from '@diplomka-frontend/stim-lib-ui';
-import { ExperimentResultsFacade, ExperimentResultsState } from '@diplomka-frontend/stim-feature-experiment-results/domain';
-import { BaseListComponent } from '@diplomka-frontend/stim-lib-ui';
-import { ListButtonsAddonService } from '@diplomka-frontend/stim-lib-ui';
-import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
-import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
+import { ConfirmDialogArgs, ConfirmDialogComponent } from '@neuro-client/stim-lib-modal';
+import { ListGroupSortFilterService } from '@neuro-client/stim-lib-list-utils';
+import { FilterDialogComponent } from '@neuro-client/stim-lib-ui';
+import { ExperimentResultsFacade, ExperimentResultsState } from '@neuro-client/stim-feature-experiment-results/domain';
+import { BaseListComponent } from '@neuro-client/stim-lib-ui';
+import { ListButtonsAddonService } from '@neuro-client/stim-lib-ui';
+import { NavigationFacade } from '@neuro-client/stim-feature-navigation/domain';
+import { AliveCheckerFacade } from '@neuro-client/stim-lib-connection';
 
 import { ExperimentResultsFilterDialogComponent } from './experiment-results-filter-dialog/experiment-results-filter-dialog.component';
 

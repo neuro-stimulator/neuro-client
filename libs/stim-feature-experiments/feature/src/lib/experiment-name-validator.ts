@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import {
   ExperimentsFacade,
   ExperimentsState,
-} from '@diplomka-frontend/stim-feature-experiments/domain';
+} from '@neuro-client/stim-feature-experiments/domain';
 
 export class ExperimentNameValidator implements AsyncValidator {
   constructor(private readonly _facade: ExperimentsFacade) {}

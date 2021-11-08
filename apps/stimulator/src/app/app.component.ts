@@ -5,9 +5,9 @@ import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 
-import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
-import { ConsoleFacade, SettingsFacade, SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
-import { AuthFacade } from '@diplomka-frontend/stim-feature-auth/domain';
+import { NavigationFacade } from '@neuro-client/stim-feature-navigation/domain';
+import { ConsoleFacade, SettingsFacade, SettingsState } from '@neuro-client/stim-feature-settings/domain';
+import { AuthFacade } from '@neuro-client/stim-feature-auth/domain';
 
 import { environment } from '../environments/environment';
 import { ConsoleLoggerMonitorService } from './console-logger-monitor.service';

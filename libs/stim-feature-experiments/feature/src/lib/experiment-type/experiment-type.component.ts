@@ -5,8 +5,8 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 import { ExperimentType, experimentTypeFromRaw } from '@stechy1/diplomka-share';
 
-import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
-import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
+import { ExperimentsFacade } from '@neuro-client/stim-feature-experiments/domain';
+import { AliveCheckerFacade, ConnectionInformationState } from '@neuro-client/stim-lib-connection';
 
 import { ExperimentTypeResolverDirective } from '../experiment-type-resolver.directive';
 import { ComponentCanDeactivate } from '../experiments.deactivate';

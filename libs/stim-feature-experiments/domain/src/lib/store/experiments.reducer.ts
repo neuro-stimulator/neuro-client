@@ -4,7 +4,7 @@ import { createEmptyExperiment, Experiment, Output } from '@stechy1/diplomka-sha
 
 import { ExperimentsState } from './experiments.type';
 import * as ExperimentsActions from './experiments.actions';
-import * as fromAuth from '@diplomka-frontend/stim-feature-auth/domain';
+import * as fromAuth from '@neuro-client/stim-feature-auth/domain';
 
 export const experimentsReducerKey = 'experiments';
 

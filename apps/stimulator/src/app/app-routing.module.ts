@@ -7,7 +7,7 @@ const routes: Routes = [
     path: 'auth',
     pathMatch: 'prefix',
     loadChildren: () =>
-      import('@diplomka-frontend/stim-feature-auth/feature').then(
+      import('@neuro-client/stim-feature-auth/feature').then(
         (mod) => mod.StimFeatureAuthFeatureModule
       )
   },
@@ -15,7 +15,7 @@ const routes: Routes = [
     path: 'profile',
     pathMatch: 'prefix',
     loadChildren: () =>
-      import('@diplomka-frontend/stim-feature-users/feature').then(
+      import('@neuro-client/stim-feature-users/feature').then(
         (mod) => mod.StimFeatureUsersFeatureModule
       )
   },
@@ -23,7 +23,7 @@ const routes: Routes = [
     path: 'player',
     pathMatch: 'prefix',
     loadChildren: () =>
-      import('@diplomka-frontend/stim-feature-player/feature').then(
+      import('@neuro-client/stim-feature-player/feature').then(
         (mod) => mod.StimFeaturePlayerFeatureModule
       )
   },
@@ -31,7 +31,7 @@ const routes: Routes = [
     path: 'settings',
     pathMatch: 'prefix',
     loadChildren: () =>
-      import('@diplomka-frontend/stim-feature-settings/feature').then(
+      import('@neuro-client/stim-feature-settings/feature').then(
         (mod) => mod.StimFeatureSettingsFeatureModule
       )
   },
@@ -39,7 +39,7 @@ const routes: Routes = [
     path: 'help',
     pathMatch: 'prefix',
     loadChildren: () =>
-      import('@diplomka-frontend/stim-feature-help/feature').then(
+      import('@neuro-client/stim-feature-help/feature').then(
         (mod) => mod.StimFeatureHelpFeatureModule
       )
   },
@@ -47,7 +47,7 @@ const routes: Routes = [
     path: 'about',
     pathMatch: 'prefix',
     loadChildren: () =>
-      import('@diplomka-frontend/stim-feature-about').then(
+      import('@neuro-client/stim-feature-about').then(
         (mod) => mod.StimFeatureAboutModule
       )
   },
@@ -55,14 +55,14 @@ const routes: Routes = [
     path: 'stimulator',
     pathMatch: 'prefix',
     loadChildren: () =>
-      import('@diplomka-frontend/stim-feature-stimulator/feature').then(
+      import('@neuro-client/stim-feature-stimulator/feature').then(
         (mod) => mod.StimFeatureStimulatorFeatureModule
       )
   },
   {
     path: 'experiments',
     loadChildren: () =>
-      import('@diplomka-frontend/stim-feature-experiments/feature').then(
+      import('@neuro-client/stim-feature-experiments/feature').then(
         (mod) => mod.StimFeatureExperimentsFeatureModule
       )
   },
@@ -70,7 +70,7 @@ const routes: Routes = [
     path: 'results',
     pathMatch: 'prefix',
     loadChildren: () =>
-      import('@diplomka-frontend/stim-feature-experiment-results/feature').then(
+      import('@neuro-client/stim-feature-experiment-results/feature').then(
         (mod) => mod.StimFeatureExperimentResultsFeatureModule
       )
   },
@@ -78,7 +78,7 @@ const routes: Routes = [
     path: 'sequences',
     pathMatch: 'prefix',
     loadChildren: () =>
-      import('@diplomka-frontend/stim-feature-sequences/feature').then(
+      import('@neuro-client/stim-feature-sequences/feature').then(
         (mod) => mod.StimFeatureSequencesFeatureModule
       )
   },

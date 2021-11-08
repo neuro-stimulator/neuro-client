@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { ConsoleFacade, ConsoleState } from '@diplomka-frontend/stim-lib-console/domain';
+import { ConsoleFacade, ConsoleState } from '@neuro-client/stim-lib-console/domain';
 
 @Component({
   selector: 'stim-lib-console',

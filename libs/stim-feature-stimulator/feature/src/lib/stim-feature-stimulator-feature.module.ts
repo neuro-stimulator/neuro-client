@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
-import { StimLibUiModule } from '@diplomka-frontend/stim-lib-ui';
-import { StimLibCommonModule } from '@diplomka-frontend/stim-lib-common';
+import { StimLibUiModule } from '@neuro-client/stim-lib-ui';
+import { StimLibCommonModule } from '@neuro-client/stim-lib-common';
 
 import { StimulatorComponent } from './stimulator.component';
 import { CalibrationComponent } from './calibration/calibration.component';

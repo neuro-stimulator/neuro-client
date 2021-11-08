@@ -1,6 +1,6 @@
 import { ExperimentResult, ExperimentType} from '@stechy1/diplomka-share';
 
-import { GroupByFilterEntity, GroupFilter, SortByFilterEntity, SortFilter } from '@diplomka-frontend/stim-lib-list-utils';
+import { GroupByFilterEntity, GroupFilter, SortByFilterEntity, SortFilter } from '@neuro-client/stim-lib-list-utils';
 
 export const GROUP_BY_FILTERS: GroupFilter<ExperimentResult>[] = [
   new GroupByFilterEntity('SHARE.DIALOGS.FILTER.GROUP_BY.TYPE', 'TYPE', 'fa-stethoscope',

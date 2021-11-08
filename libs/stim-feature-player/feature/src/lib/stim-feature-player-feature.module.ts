@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { StimLibUiModule } from '@diplomka-frontend/stim-lib-ui';
-import { StimFeaturePlayerDomainModule } from '@diplomka-frontend/stim-feature-player/domain';
-import { StimFeatureSettingsFeatureServiceStateModule } from '@diplomka-frontend/stim-feature-settings/feature/service-state';
-import { StimFeatureExperimentsDomainModule } from '@diplomka-frontend/stim-feature-experiments/domain';
+import { StimLibUiModule } from '@neuro-client/stim-lib-ui';
+import { StimFeaturePlayerDomainModule } from '@neuro-client/stim-feature-player/domain';
+import { StimFeatureSettingsFeatureServiceStateModule } from '@neuro-client/stim-feature-settings/feature/service-state';
+import { StimFeatureExperimentsDomainModule } from '@neuro-client/stim-feature-experiments/domain';
 
 import { PlayerComponent } from './player.component';
 import { PlayerPageToolsComponent } from './player-page-tools/player-page-tools.component';

@@ -7,7 +7,7 @@ import { LocalStorageService } from 'angular-2-local-storage';
 
 import { ResponseObject, User } from '@stechy1/diplomka-share';
 
-import { TOKEN_AUTH_API_URL, TOKEN_USERS_API_URL } from '@diplomka-frontend/stim-lib-common';
+import { TOKEN_AUTH_API_URL, TOKEN_USERS_API_URL } from '@neuro-client/stim-lib-common';
 
 @Injectable({
   providedIn: 'root',

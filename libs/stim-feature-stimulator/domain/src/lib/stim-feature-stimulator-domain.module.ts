@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { StimLibCommonModule } from '@diplomka-frontend/stim-lib-common';
-import { StimFeatureExperimentsDomainModule } from '@diplomka-frontend/stim-feature-experiments/domain';
+import { StimLibCommonModule } from '@neuro-client/stim-lib-common';
+import { StimFeatureExperimentsDomainModule } from '@neuro-client/stim-feature-experiments/domain';
 
 import * as fromStimulator from './store/stimulator.reducer';
 import { StimulatorEffects } from './store/stimulator.effects';

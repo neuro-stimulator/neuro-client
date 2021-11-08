@@ -6,7 +6,7 @@ import { filter, map } from 'rxjs/operators';
 
 import { ExperimentStopConditionParams, ExperimentStopConditionType } from '@stechy1/diplomka-share';
 
-import { PlayerFacade, PlayerState, StopConditionType } from '@diplomka-frontend/stim-feature-player/domain';
+import { PlayerFacade, PlayerState, StopConditionType } from '@neuro-client/stim-feature-player/domain';
 
 import { StopConditionDirective } from './stop-condition.directive';
 import { StopConditionComponentProvider } from './stop-condition-component.provider';

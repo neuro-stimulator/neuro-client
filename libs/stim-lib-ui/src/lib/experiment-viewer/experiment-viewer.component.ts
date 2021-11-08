@@ -2,7 +2,7 @@ import { AfterContentInit, Component, ElementRef, HostListener, Input, ViewChild
 import { Options as SliderOptions } from 'ng5-slider/options';
 
 import { IOEvent } from '@stechy1/diplomka-share';
-import { Round } from '@diplomka-frontend/stim-lib-common';
+import { Round } from '@neuro-client/stim-lib-common';
 
 @Component({
   selector: 'stim-lib-ui-experiment-viewer',

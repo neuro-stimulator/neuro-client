@@ -3,8 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { NGXLogger } from 'ngx-logger';
 
-import { ConfirmDialogArgs, ConfirmDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import { TOKEN_SUPPORTED_LANGUAGES } from '@diplomka-frontend/stim-lib-common';
+import { ConfirmDialogArgs, ConfirmDialogComponent, ModalComponent } from '@neuro-client/stim-lib-modal';
+import { TOKEN_SUPPORTED_LANGUAGES } from '@neuro-client/stim-lib-common';
 
 @Component({
   selector: 'stim-feature-settings-param-config-application',

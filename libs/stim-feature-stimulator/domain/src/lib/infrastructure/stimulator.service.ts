@@ -5,7 +5,7 @@ import { NGXLogger } from 'ngx-logger';
 
 import { ConnectionStatus, ResponseObject, StimulatorStateEvent } from '@stechy1/diplomka-share';
 
-import { TOKEN_STIMULATOR_API_URL } from '@diplomka-frontend/stim-lib-common';
+import { TOKEN_STIMULATOR_API_URL } from '@neuro-client/stim-lib-common';
 
 @Injectable({
   providedIn: 'root',

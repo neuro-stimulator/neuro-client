@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ListButtonsAddonComponent } from '@diplomka-frontend/stim-lib-ui';
+import { ListButtonsAddonComponent } from '@neuro-client/stim-lib-ui';
 
 import { ExperimentsComponent } from './experiments.component';
 import { ExperimentTypeComponent } from './experiment-type/experiment-type.component';

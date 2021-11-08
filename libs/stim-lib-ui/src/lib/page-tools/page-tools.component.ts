@@ -2,7 +2,7 @@ import { Component, ComponentFactoryResolver, OnInit, Type, ViewContainerRef } f
 
 import { of, Subscription } from 'rxjs';
 
-import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { DialogChildComponent, ModalComponent } from '@neuro-client/stim-lib-modal';
 
 import { PageToolsChildComponent } from './page-tools-child-component';
 import { PageToolsArgs } from './page-tools.args';

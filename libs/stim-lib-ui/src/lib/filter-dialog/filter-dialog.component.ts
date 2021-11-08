@@ -3,8 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
 
-import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import { GroupFilter, ListFilterParameters, ListGroupSortFilterService, OrderFilter, SortFilter } from '@diplomka-frontend/stim-lib-list-utils';
+import { DialogChildComponent, ModalComponent } from '@neuro-client/stim-lib-modal';
+import { GroupFilter, ListFilterParameters, ListGroupSortFilterService, OrderFilter, SortFilter } from '@neuro-client/stim-lib-list-utils';
 
 /**
  * Generický filtrovací dialog založení na službě z knihovny pro seskupování, třídění a řazení.

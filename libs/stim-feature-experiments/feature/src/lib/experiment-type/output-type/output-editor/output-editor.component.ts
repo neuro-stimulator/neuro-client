@@ -5,15 +5,15 @@ import { Observable, Subscription } from 'rxjs';
 
 import { HorizontalAlignment, Output, VerticalAlignment } from '@stechy1/diplomka-share';
 
-import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import { SettingsFacade, SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
+import { DialogChildComponent, ModalComponent } from '@neuro-client/stim-lib-modal';
+import { SettingsFacade, SettingsState } from '@neuro-client/stim-feature-settings/domain';
 
 import { OutputEntry } from './output-entry';
 import { skip, take } from 'rxjs/operators';
 import { OutputEditorActions, OutputEditorArgs } from './output-editor.args';
 
 @Component({
-  selector: 'diplomka-frontend-output-editor',
+  selector: 'neuro-client-output-editor',
   templateUrl: './output-editor.component.html',
   styleUrls: ['./output-editor.component.scss']
 })

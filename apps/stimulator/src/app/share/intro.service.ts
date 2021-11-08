@@ -8,7 +8,7 @@ import { NGXLogger } from 'ngx-logger';
 import { TranslateService } from '@ngx-translate/core';
 
 import { environment } from '../../environments/environment';
-import { SettingsFacade } from '@diplomka-frontend/stim-feature-settings/domain';
+import { SettingsFacade } from '@neuro-client/stim-feature-settings/domain';
 
 export const INTRO_STEPS = new InjectionToken<number>('defaultIntroSteps');
 

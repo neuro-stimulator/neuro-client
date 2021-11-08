@@ -15,8 +15,8 @@ import {
   StimulatorDataStateMessage,
   StimulatorStateEvent
 } from '@stechy1/diplomka-share';
-import * as ConnectionActions from '@diplomka-frontend/stim-lib-connection';
-import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
+import * as ConnectionActions from '@neuro-client/stim-lib-connection';
+import { ExperimentsFacade } from '@neuro-client/stim-feature-experiments/domain';
 
 import { StimulatorService } from '../infrastructure/stimulator.service';
 import { StimulatorStateType } from '../domain/stimulator-state';

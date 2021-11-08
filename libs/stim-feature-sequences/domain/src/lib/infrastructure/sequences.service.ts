@@ -15,7 +15,7 @@ import {
 import {
   BaseService,
   TOKEN_SEQUENCES_API_URL,
-} from '@diplomka-frontend/stim-lib-common';
+} from '@neuro-client/stim-lib-common';
 
 @Injectable({
   providedIn: 'root',

@@ -4,7 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 
 import { Experiment, ExperimentType, ReaOutput, TvepOutput } from '@stechy1/diplomka-share';
 
-import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
+import { TOKEN_MAX_OUTPUT_COUNT } from '@neuro-client/stim-lib-common';
 
 @Component({
   selector: 'stim-feature-experiments-experiment-type-rea-output',

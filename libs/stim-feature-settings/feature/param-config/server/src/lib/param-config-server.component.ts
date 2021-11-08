@@ -4,10 +4,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, zip } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ConfirmDialogArgs, ConfirmDialogComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import { SettingsFacade } from '@diplomka-frontend/stim-feature-settings/domain';
-import { AssetPlayerFacade } from '@diplomka-frontend/stim-lib-asset-player';
-import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
+import { ConfirmDialogArgs, ConfirmDialogComponent, ModalComponent } from '@neuro-client/stim-lib-modal';
+import { SettingsFacade } from '@neuro-client/stim-feature-settings/domain';
+import { AssetPlayerFacade } from '@neuro-client/stim-lib-asset-player';
+import { AliveCheckerFacade } from '@neuro-client/stim-lib-connection';
 
 @Component({
   selector: 'stim-feature-settings-param-config-server',

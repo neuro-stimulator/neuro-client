@@ -1,11 +1,11 @@
 import { map, take, tap } from 'rxjs/operators';
 
-import { PageToolsChildComponent } from '@diplomka-frontend/stim-lib-ui';
+import { PageToolsChildComponent } from '@neuro-client/stim-lib-ui';
 import {
   Settings,
   SettingsFacade,
   SettingsState,
-} from '@diplomka-frontend/stim-feature-settings/domain';
+} from '@neuro-client/stim-feature-settings/domain';
 
 export abstract class SettingsPopupComponent extends PageToolsChildComponent {
   private _settingsCopy: Settings;

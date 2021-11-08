@@ -1,5 +1,5 @@
 import { NgxLoggerLevel, NGXLoggerMonitor, NGXLogInterface } from 'ngx-logger';
-import { ConsoleFacade } from '@diplomka-frontend/stim-feature-settings/domain';
+import { ConsoleFacade } from '@neuro-client/stim-feature-settings/domain';
 
 export class ConsoleLoggerMonitorService implements NGXLoggerMonitor {
   constructor(private readonly console: ConsoleFacade) {

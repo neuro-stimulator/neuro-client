@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "diplomka-frontend",
+            "prefix": "neuro-client",
             "style": "camelCase"
           }
         ],
@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "diplomka-frontend",
+            "prefix": "neuro-client",
             "style": "kebab-case"
           }
         ]

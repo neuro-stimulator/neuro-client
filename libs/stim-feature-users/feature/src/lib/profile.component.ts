@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 
-import { AuthFacade, AuthState } from '@diplomka-frontend/stim-feature-auth/domain';
+import { AuthFacade, AuthState } from '@neuro-client/stim-feature-auth/domain';
 
 @Component({
   selector: 'stim-feature-users',

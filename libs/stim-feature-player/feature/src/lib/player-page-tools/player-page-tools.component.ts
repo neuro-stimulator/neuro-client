@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { PageToolsChildComponent } from '@diplomka-frontend/stim-lib-ui';
+import { PageToolsChildComponent } from '@neuro-client/stim-lib-ui';
 
 @Component({
   templateUrl: './player-page-tools.component.html',

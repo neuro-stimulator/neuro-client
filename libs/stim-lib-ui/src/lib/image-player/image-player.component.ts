@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
-import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { ModalComponent } from '@neuro-client/stim-lib-modal';
 
 @Component({
   selector: 'stim-lib-ui-image-player',

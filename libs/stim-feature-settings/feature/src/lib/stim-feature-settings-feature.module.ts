@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { StimFeatureSettingsDomainModule } from '@diplomka-frontend/stim-feature-settings/domain';
-import { StimFeatureSettingsFeatureServiceStateModule } from '@diplomka-frontend/stim-feature-settings/feature/service-state';
-import { StimFeatureStimulatorDomainModule } from '@diplomka-frontend/stim-feature-stimulator/domain';
-import { StimLibConnectionModule } from '@diplomka-frontend/stim-lib-connection';
-import { StimFeatureSettingsFeatureParamConfigModule } from '@diplomka-frontend/stim-feature-settings/feature/param-config';
-import { StimLibConsoleFeatureModule } from '@diplomka-frontend/stim-lib-console/feature';
+import { StimFeatureSettingsDomainModule } from '@neuro-client/stim-feature-settings/domain';
+import { StimFeatureSettingsFeatureServiceStateModule } from '@neuro-client/stim-feature-settings/feature/service-state';
+import { StimFeatureStimulatorDomainModule } from '@neuro-client/stim-feature-stimulator/domain';
+import { StimLibConnectionModule } from '@neuro-client/stim-lib-connection';
+import { StimFeatureSettingsFeatureParamConfigModule } from '@neuro-client/stim-feature-settings/feature/param-config';
+import { StimLibConsoleFeatureModule } from '@neuro-client/stim-lib-console/feature';
 
 import { SettingsRoutingModule } from './settings-routing.module';
 import { SettingsComponent } from './settings.component';

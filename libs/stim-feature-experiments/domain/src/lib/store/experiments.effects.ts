@@ -18,7 +18,7 @@ import {
   SocketMessageType,
 } from '@stechy1/diplomka-share';
 
-import * as fromConnection from '@diplomka-frontend/stim-lib-connection';
+import * as fromConnection from '@neuro-client/stim-lib-connection';
 
 import { ExperimentsService } from '../infrastructure/experiments.service';
 import * as ExperimentsActions from './experiments.actions';
@@ -29,7 +29,7 @@ export class ExperimentsEffects {
   constructor(private readonly actions$: Actions, private readonly experiments: ExperimentsService, private readonly store: Store, private readonly router: Router) {}
 
   all$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsAllRequest),
       switchMap(() =>
         this.experiments.all().pipe(
@@ -43,10 +43,10 @@ export class ExperimentsEffects {
           })
         )
       )
-    )
+    ) }
   );
   allWithGhosts$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsAllWithGhostRequest),
       withLatestFrom(this.store.select(fromExperiments.experimentsSelector)),
       switchMap(([action, experiments]) => {
@@ -67,11 +67,11 @@ export class ExperimentsEffects {
           })
         );
       })
-    )
+    ) }
   );
 
   one$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsOneRequest),
       switchMap((action) =>
         this.experiments.one(action.experimentID).pipe(
@@ -93,20 +93,20 @@ export class ExperimentsEffects {
           })
         )
       )
-    )
+    ) }
   );
 
   oneFail$ = createEffect(
     () =>
-      this.actions$.pipe(
+      { return this.actions$.pipe(
         ofType(ExperimentsActions.actionExperimentsOneRequestFail),
         tap(() => this.router.navigate(['/experiments']))
-      ),
+      ) },
     { dispatch: false }
   );
 
   insert$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsInsertRequest),
       switchMap((action) =>
         this.experiments.insert(action.experiment).pipe(
@@ -121,10 +121,10 @@ export class ExperimentsEffects {
           })
         )
       )
-    )
+    ) }
   );
   update$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsUpdateRequest),
       mergeMap((action) =>
         this.experiments.update(action.experiment).pipe(
@@ -138,7 +138,7 @@ export class ExperimentsEffects {
           })
         )
       )
-    )
+    ) }
   );
   delete$ = createEffect(() => {
     return this.actions$.pipe(
@@ -173,7 +173,7 @@ export class ExperimentsEffects {
     );
   });
   deleteDone$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsDeleteRequestDone),
       withLatestFrom(this.store.select(fromExperiments.experimentsFeature)),
       map(([_, experiments]) => {
@@ -186,11 +186,11 @@ export class ExperimentsEffects {
         return action;
       }),
       delay(250)
-    )
+    ) }
   );
 
   nameExists$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsNameExistsRequest),
       withLatestFrom(this.store.select(fromExperiments.experimentsFeature)),
       switchMap(([action, experiments]) =>
@@ -205,11 +205,11 @@ export class ExperimentsEffects {
           })
         )
       )
-    )
+    ) }
   );
 
   sequencesForExperiment$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentsActions.actionSequencesForExperimentRequest),
       switchMap((action) =>
         this.experiments.sequencesForExperiment(action.experiment).pipe(
@@ -223,11 +223,11 @@ export class ExperimentsEffects {
           })
         )
       )
-    )
+    ) }
   );
 
   sequenceFromExperiment$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsGenerateSequenceFromNameAndSizeRequest),
       withLatestFrom(this.store.select(fromExperiments.experimentsFeature)),
       switchMap(([action, experiments]) =>
@@ -237,11 +237,11 @@ export class ExperimentsEffects {
           })
         )
       )
-    )
+    ) }
   );
 
   setOutputSynchronization$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentsActions.actionExperimentsSetOutputSynchronizationRequest),
       withLatestFrom(this.store.select(fromExperiments.experimentsFeature), this.store.select(fromConnection.connectionFeature)),
       filter(([action, experiments, connection]) => action.synchronize !== experiments.synchronizeOutputs && connection.assetPlayer === ConnectionStatus.CONNECTED),
@@ -255,17 +255,17 @@ export class ExperimentsEffects {
           })
         )
       )
-    )
+    ) }
   );
 
   outputSynchronizationStateChanged$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(fromConnection.actionSocketData),
       map((action) => action.data),
       filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.EXPERIMENTS),
       filter((message: SocketMessage) => message.type === SocketMessageType.EXPERIMENT_TOGGLE_SYNCHRONIZATION),
       map((message: SocketMessage) => message.data as { synchronize: boolean }),
       map((data: { synchronize: boolean }) => ExperimentsActions.actionExperimentsSetOutputSynchronizationRequestDone(data))
-    )
+    ) }
   );
 }

@@ -5,7 +5,7 @@ import { LocalStorageService } from 'angular-2-local-storage';
 import { Observable } from 'rxjs';
 
 import { ResponseObject } from '@stechy1/diplomka-share';
-import { TOKEN_SEED_API_URL, TOKEN_SETTINGS_API_URL } from '@diplomka-frontend/stim-lib-common';
+import { TOKEN_SEED_API_URL, TOKEN_SETTINGS_API_URL } from '@neuro-client/stim-lib-common';
 
 import { ServerSettings, Settings } from '../..';
 import { NGXLogger } from 'ngx-logger';

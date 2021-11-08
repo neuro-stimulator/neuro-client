@@ -3,7 +3,7 @@ import { FormArray, FormGroup } from '@angular/forms';
 
 import { Options as SliderOptions } from 'ng5-slider/options';
 
-import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
+import { TOKEN_MAX_OUTPUT_COUNT } from '@neuro-client/stim-lib-common';
 
 import { brightnessSliderOptions } from '../../../experiments.share';
 

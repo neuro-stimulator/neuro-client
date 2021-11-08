@@ -2,7 +2,7 @@ import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { AuthFacade, AuthState } from '@diplomka-frontend/stim-feature-auth/domain';
+import { AuthFacade, AuthState } from '@neuro-client/stim-feature-auth/domain';
 import { map, take } from 'rxjs/operators';
 
 @Injectable()

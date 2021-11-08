@@ -1,5 +1,5 @@
 {
-  "npmScope": "diplomka-frontend",
+  "npmScope": "neuro-client",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {

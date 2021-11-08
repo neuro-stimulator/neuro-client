@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 
-import * as ConnectionActions from '@diplomka-frontend/stim-lib-connection';
+import * as ConnectionActions from '@neuro-client/stim-lib-connection';
 
 import * as StimulatorActions from '../store/stimulator.actions';
 import * as fromStimulator from '../store/stimulator.reducer';

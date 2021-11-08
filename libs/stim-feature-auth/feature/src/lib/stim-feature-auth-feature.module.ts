@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { StimLibCommonModule } from '@diplomka-frontend/stim-lib-common';
-import { StimFeatureAuthDomainModule } from '@diplomka-frontend/stim-feature-auth/domain';
+import { StimLibCommonModule } from '@neuro-client/stim-lib-common';
+import { StimFeatureAuthDomainModule } from '@neuro-client/stim-feature-auth/domain';
 
 import { StimFeatureAuthFeatureRoutingModule } from './stim-feature-auth-feature-routing.module';
 import { AuthComponent } from './auth.component';

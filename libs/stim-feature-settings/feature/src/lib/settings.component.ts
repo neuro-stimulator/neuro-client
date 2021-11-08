@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observable, Subscription } from 'rxjs';
 
-import { SettingsFacade, SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
+import { SettingsFacade, SettingsState } from '@neuro-client/stim-feature-settings/domain';
 
 @Component({
   templateUrl: './settings.component.html',

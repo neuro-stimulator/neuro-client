@@ -1,10 +1,10 @@
 import { ExperimentResult, IOEvent } from '@stechy1/diplomka-share';
 
-import { AppState } from '@diplomka-frontend/stim-lib-store';
+import { AppState } from '@neuro-client/stim-lib-store';
 import {
   EntityGroup,
   SelectedEntities,
-} from '@diplomka-frontend/stim-lib-list-utils';
+} from '@neuro-client/stim-lib-list-utils';
 
 export interface ExperimentResultsState extends AppState {
   experimentResults: ExperimentResult[];

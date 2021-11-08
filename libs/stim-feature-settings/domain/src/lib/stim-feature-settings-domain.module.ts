@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { StimLibCommonModule } from '@diplomka-frontend/stim-lib-common';
+import { StimLibCommonModule } from '@neuro-client/stim-lib-common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -9,7 +9,7 @@ import { SettingsEffects } from './store/settings.effects';
 import { SettingsFacade } from './application-services/settings.facade';
 import { LocalSettingsResolver } from './application-services/local-settings.resolver';
 import { ServerSettingsResolver } from './application-services/server-settings.resolver';
-import { StimFeatureStimulatorDomainModule } from '@diplomka-frontend/stim-feature-stimulator/domain';
+import { StimFeatureStimulatorDomainModule } from '@neuro-client/stim-feature-stimulator/domain';
 
 @NgModule({
   imports: [

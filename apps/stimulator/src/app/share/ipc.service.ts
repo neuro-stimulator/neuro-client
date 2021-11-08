@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ResponseObject } from '@stechy1/diplomka-share';
 
 import { environment, makeURL } from '../../environments/environment';
-import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
+import { AliveCheckerFacade } from '@neuro-client/stim-lib-connection';
 import { NGXLogger } from 'ngx-logger';
 
 @Injectable({

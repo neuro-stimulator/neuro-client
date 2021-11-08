@@ -9,7 +9,7 @@ import { catchError, concatMap, map, mergeMap, tap, withLatestFrom } from 'rxjs/
 
 import { ResponseObject, User } from '@stechy1/diplomka-share';
 
-import { serializeRequest } from '@diplomka-frontend/stim-lib-common';
+import { serializeRequest } from '@neuro-client/stim-lib-common';
 
 import { AuthService } from '../infrastructure/auth.service';
 import { DelayRequestStorage } from '../infrastructure/delay-request-storage.service';
@@ -26,7 +26,7 @@ export class AuthEffects {
   }
 
   register$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(AuthActions.actionRegisterRequest),
       concatMap((action) => {
         return this.service.register(action.user).pipe(
@@ -36,20 +36,20 @@ export class AuthEffects {
           })
         );
       })
-    )
+    ) }
   );
 
   registerDone$ = createEffect(
     () =>
-      this.actions$.pipe(
+      { return this.actions$.pipe(
         ofType(AuthActions.actionRegisterRequestDone),
         tap(() => this.router.navigate(['/', 'auth', 'login']))
-      ),
+      ) },
     { dispatch: false }
   );
 
   login$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(AuthActions.actionLoginRequest),
       concatMap((action) => {
         return this.service.login(action.user).pipe(
@@ -63,23 +63,23 @@ export class AuthEffects {
           })
         );
       })
-    )
+    ) }
   );
 
   loginDone$ = createEffect(
     () =>
-      this.actions$.pipe(
+      { return this.actions$.pipe(
         ofType(AuthActions.actionLoginRequestDone),
         tap(() => {
           this.service.isLogged = true;
         }),
         tap(() => this.router.navigate(['/', 'profile']))
-      ),
+      ) },
     { dispatch: false }
   );
 
   refreshToken$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(AuthActions.actionRefreshTokenRequest),
       mergeMap(() => {
         return this.service.refreshToken().pipe(
@@ -93,12 +93,12 @@ export class AuthEffects {
           })
         );
       })
-    )
+    ) }
   );
 
   refreshDone$ = createEffect(
     () =>
-      this.actions$.pipe(
+      { return this.actions$.pipe(
         ofType(AuthActions.actionRefreshTokenRequestDone),
         withLatestFrom(this.store.select(fromAuth.authFeature)),
         map(([user, auth]) => {
@@ -109,20 +109,20 @@ export class AuthEffects {
 
           return AuthActions.actionNoAction();
         })
-      )
+      ) }
   );
 
   refreshFail$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(AuthActions.actionRefreshTokenRequestFail),
       tap(() => {
         this.service.isLogged = false;
       })
-    ), { dispatch: false }
+    ) }, { dispatch: false }
   );
 
   logout$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(AuthActions.actionLogoutRequest),
       concatMap(() => {
         return this.service.logout().pipe(
@@ -133,29 +133,29 @@ export class AuthEffects {
           })
         );
       })
-    )
+    ) }
   );
 
   logoutDone$ = createEffect(
-    () => this.actions$.pipe(
+    () => { return this.actions$.pipe(
       ofType(AuthActions.actionLogoutRequestDone, AuthActions.actionLoginRequestFail, AuthActions.actionLogoutRequestFail),
       tap(() => {
         this.service.isLogged = false;
       }),
       tap(() => this.router.navigate(['auth']))
-    ),
+    ) },
     { dispatch: false }
   );
 
   actionSaveRequest$ = createEffect(
-    () => this.actions$.pipe(
+    () => { return this.actions$.pipe(
       ofType(AuthActions.actionSaveRequest),
       map((data: { req: HttpRequest<unknown> }) => {
         return AuthActions.actionSaveRequestDone({ req: serializeRequest(data.req) });
       })
-    ));
+    ) });
 
-  actionCallRequest$ = createEffect(() => this.actions$.pipe(
+  actionCallRequest$ = createEffect(() => { return this.actions$.pipe(
     ofType(AuthActions.actionCallRequest),
     concatMap((data: { req: string }) => {
       return this.delayRequestStorage.callRequest(data.req).pipe(
@@ -169,6 +169,6 @@ export class AuthEffects {
         })
       );
     })
-    )
+    ) }
   );
 }

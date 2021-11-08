@@ -9,12 +9,12 @@ import { Options as SliderOptions } from 'ng5-slider/options';
 
 import { Experiment, ExperimentType, IpcSynchronizationMessage, Output } from '@stechy1/diplomka-share';
 
-import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
-import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
-import { ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
-import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
-import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
+import { ExperimentsFacade, ExperimentsState } from '@neuro-client/stim-feature-experiments/domain';
+import { NavigationFacade } from '@neuro-client/stim-feature-navigation/domain';
+import { ConnectionInformationState } from '@neuro-client/stim-lib-connection';
+import { AliveCheckerFacade } from '@neuro-client/stim-lib-connection';
+import { ModalComponent } from '@neuro-client/stim-lib-modal';
+import { TOKEN_MAX_OUTPUT_COUNT } from '@neuro-client/stim-lib-common';
 
 import { ExperimentNameValidator } from '../experiment-name-validator';
 import { ComponentCanDeactivate } from '../experiments.deactivate';
@@ -23,8 +23,8 @@ import { OutputEditorComponent } from './output-type/output-editor/output-editor
 import { ExperimentOutputTypeValidator } from './output-type/experiment-output-type-validator';
 import { OutputEntry } from './output-type/output-editor/output-entry';
 import { OutputEditorActions, OutputEditorArgs, SynchronizeEvent } from './output-type/output-editor/output-editor.args';
-import { AssetPlayerFacade } from '@diplomka-frontend/stim-lib-asset-player';
-import { PlayerFacade } from '@diplomka-frontend/stim-feature-player/domain';
+import { AssetPlayerFacade } from '@neuro-client/stim-lib-asset-player';
+import { PlayerFacade } from '@neuro-client/stim-feature-player/domain';
 
 @Component({ template: '' })
 export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O extends Output> implements OnInit, OnDestroy, ComponentCanDeactivate {

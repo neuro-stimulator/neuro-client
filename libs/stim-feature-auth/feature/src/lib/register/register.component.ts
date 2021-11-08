@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { AuthFacade } from '@diplomka-frontend/stim-feature-auth/domain';
+import { AuthFacade } from '@neuro-client/stim-feature-auth/domain';
 
 import { RegisterValidators } from './register.validators';
 

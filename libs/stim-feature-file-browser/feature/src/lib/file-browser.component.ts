@@ -5,9 +5,9 @@ import { map } from 'rxjs/operators';
 
 import { FileRecord } from '@stechy1/diplomka-share';
 
-import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import { FileBrowserFacade, FileBrowserState } from '@diplomka-frontend/stim-feature-file-browser/domain';
-import { TOKEN_FILE_BROWSER_API_URL } from '@diplomka-frontend/stim-lib-common';
+import { DialogChildComponent, ModalComponent } from '@neuro-client/stim-lib-modal';
+import { FileBrowserFacade, FileBrowserState } from '@neuro-client/stim-feature-file-browser/domain';
+import { TOKEN_FILE_BROWSER_API_URL } from '@neuro-client/stim-lib-common';
 
 @Component({
   templateUrl: './file-browser.component.html',

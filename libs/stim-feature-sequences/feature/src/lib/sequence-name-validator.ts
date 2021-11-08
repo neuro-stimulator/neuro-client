@@ -8,7 +8,7 @@ import {
 import {
   SequencesFacade,
   SequencesState,
-} from '@diplomka-frontend/stim-feature-sequences/domain';
+} from '@neuro-client/stim-feature-sequences/domain';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 

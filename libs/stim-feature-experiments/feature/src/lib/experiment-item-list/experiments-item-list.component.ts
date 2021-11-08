@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 
 import { Experiment, ExperimentType, Output as ExpOutput } from '@stechy1/diplomka-share';
 
-import { EntityGroup, SelectedEntities } from '@diplomka-frontend/stim-lib-list-utils';
-import { SettingsFacade, SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
+import { EntityGroup, SelectedEntities } from '@neuro-client/stim-lib-list-utils';
+import { SettingsFacade, SettingsState } from '@neuro-client/stim-feature-settings/domain';
 
 @Component({
   selector: 'stim-feature-experiments-item-list',

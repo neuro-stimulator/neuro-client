@@ -17,10 +17,10 @@ import {
   SocketMessageType,
 } from '@stechy1/diplomka-share';
 
-import * as fromConnection from '@diplomka-frontend/stim-lib-connection';
-import * as fromStimulator from '@diplomka-frontend/stim-feature-stimulator/domain';
-import { StimulatorFacade } from '@diplomka-frontend/stim-feature-stimulator/domain';
-import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
+import * as fromConnection from '@neuro-client/stim-lib-connection';
+import * as fromStimulator from '@neuro-client/stim-feature-stimulator/domain';
+import { StimulatorFacade } from '@neuro-client/stim-feature-stimulator/domain';
+import { ExperimentsFacade, ExperimentsState } from '@neuro-client/stim-feature-experiments/domain';
 
 import * as PlayerActions from './player.actions';
 import { PlayerService } from '../infrastructure/player.service';
@@ -38,14 +38,14 @@ export class PlayerEffects {
   ) {}
 
   stateRequest$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(PlayerActions.actionPlayerStateRequest),
       switchMap(() => this._service.getPlayerState().pipe(map((response: ResponseObject<PlayerConfiguration>) => PlayerActions.actionPlayerUpdateState(response.data))))
-    )
+    ) }
   );
 
   prepareExperimentPlayer$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(PlayerActions.actionPrepareExperimentPlayerRequest),
       withLatestFrom(this.experimentsFacade.state),
       switchMap(([action, experimentState]) => {
@@ -62,63 +62,63 @@ export class PlayerEffects {
           })
         );
       })
-    )
+    ) }
   );
 
   prepareExperimentPlayerDone$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(PlayerActions.actionPrepareExperimentPlayerRequestDone),
       map(() => fromStimulator.actionCommandStimulatorUploadRequest())
-    )
+    ) }
   );
 
   stimulatorIOData$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(fromConnection.actionSocketData),
       map((action) => action.data),
       filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.EXPERIMENT_PLAYER),
       filter((message: SocketMessage) => message.type === SocketMessageType.EXPERIMENT_PLAYER_DATA_IO),
       map((message: SocketMessage) => message.data as IOEvent),
       map((ioEvent: IOEvent) => PlayerActions.actionPlayerIOEvent({ ioEvent }))
-    )
+    ) }
   );
 
   playerState$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(fromConnection.actionSocketData),
       map((action) => action.data),
       filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.EXPERIMENT_PLAYER),
       filter((message: SocketMessage) => message.type === SocketMessageType.EXPERIMENT_PLAYER_STATE),
       map((message: SocketMessage) => message.data),
       map((playerData: PlayerConfiguration) => PlayerActions.actionPlayerUpdateState(playerData))
-    )
+    ) }
   );
 
   createNewExperimentRound$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(fromConnection.actionSocketData),
       map((action) => action.data),
       filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.EXPERIMENT_PLAYER),
       filter((message: SocketMessage) => message.type === 99),
       map(() => PlayerActions.actionPlayerCreateNewExperimentRound())
-    )
+    ) }
   );
 
   experimentFinished$ = createEffect(
     () =>
-      this.actions$.pipe(
+      { return this.actions$.pipe(
         ofType(fromConnection.actionSocketData),
         map((action) => action.data),
         filter((message: SocketMessage) => message.specialization === SocketMessageSpecialization.EXPERIMENT_RESULTS),
         filter((message: SocketMessage) => message.type === SocketMessageType.EXPERIMENT_RESULT_CREATED),
         map((message: SocketMessage) => (message as ExperimentResultCreatedMessage).data.experimentResultID),
         switchMap((experimentResultID: number) => this.router.navigate(['/', 'results', experimentResultID]))
-      ),
+      ) },
     { dispatch: false }
   );
 
   clearExperiment$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(PlayerActions.actionPlayerClearExperiment),
       withLatestFrom(this.store.select(playerFeature)),
       map(([action, state]) => {
@@ -128,11 +128,11 @@ export class PlayerEffects {
           return PlayerActions.actionPlayerNoAction();
         }
       })
-    )
+    ) }
   );
 
   availableStopConditions$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(PlayerActions.actionPlayerAvailableStopConditionsRequest),
       withLatestFrom(this.experimentsFacade.state),
       switchMap(([action, experimentsState]: [any, ExperimentsState]) =>
@@ -147,6 +147,6 @@ export class PlayerEffects {
           })
         )
       )
-    )
+    ) }
   );
 }

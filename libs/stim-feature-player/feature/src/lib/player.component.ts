@@ -7,10 +7,10 @@ import { NGXLogger } from 'ngx-logger';
 
 import { Experiment, Output, ConnectionStatus } from '@stechy1/diplomka-share';
 
-import { ContentTogglerDirective, ExperimentViewerComponent } from '@diplomka-frontend/stim-lib-ui';
-import { PlayerFacade, PlayerState, StopConditionType } from '@diplomka-frontend/stim-feature-player/domain';
-import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
-import { StimulatorStateType } from '@diplomka-frontend/stim-feature-stimulator/domain';
+import { ContentTogglerDirective, ExperimentViewerComponent } from '@neuro-client/stim-lib-ui';
+import { PlayerFacade, PlayerState, StopConditionType } from '@neuro-client/stim-feature-player/domain';
+import { NavigationFacade } from '@neuro-client/stim-feature-navigation/domain';
+import { StimulatorStateType } from '@neuro-client/stim-feature-stimulator/domain';
 
 @Component({
   templateUrl: './player.component.html',

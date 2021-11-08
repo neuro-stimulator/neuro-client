@@ -3,10 +3,10 @@ import { Observable } from 'rxjs';
 
 import { FileRecord, ConnectionStatus } from '@stechy1/diplomka-share';
 
-import { StimulatorFacade, StimulatorState } from '@diplomka-frontend/stim-feature-stimulator/domain';
-import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
-import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import { FileBrowserComponent } from '@diplomka-frontend/stim-feature-file-browser/feature';
+import { StimulatorFacade, StimulatorState } from '@neuro-client/stim-feature-stimulator/domain';
+import { AliveCheckerFacade, ConnectionInformationState } from '@neuro-client/stim-lib-connection';
+import { ModalComponent } from '@neuro-client/stim-lib-modal';
+import { FileBrowserComponent } from '@neuro-client/stim-feature-file-browser/feature';
 
 @Component({
   selector: 'stim-feature-settings-service-state',

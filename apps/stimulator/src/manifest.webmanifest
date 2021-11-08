@@ -1,6 +1,6 @@
 {
-  "name": "diplomka-frontend",
-  "short_name": "diplomka-frontend",
+  "name": "neuro-client",
+  "short_name": "neuro-client",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

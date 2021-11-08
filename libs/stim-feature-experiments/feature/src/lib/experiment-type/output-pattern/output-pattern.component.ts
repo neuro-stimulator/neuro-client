@@ -2,8 +2,8 @@ import { Component, ElementRef, HostListener, Inject, Input, OnInit, ViewChild }
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { isObservable, Observable } from 'rxjs';
-import { ValueAccessorBase } from '@diplomka-frontend/stim-lib-ui';
-import { TOKEN_PATTERN_SIZE } from '@diplomka-frontend/stim-lib-common';
+import { ValueAccessorBase } from '@neuro-client/stim-lib-ui';
+import { TOKEN_PATTERN_SIZE } from '@neuro-client/stim-lib-common';
 
 @Component({
   selector: 'stim-feature-experiments-output-pattern',

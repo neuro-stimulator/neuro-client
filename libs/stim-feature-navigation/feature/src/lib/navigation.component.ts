@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
-import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { ModalComponent } from '@neuro-client/stim-lib-modal';
 
-import { PageToolsComponent, PageToolsArgs } from '@diplomka-frontend/stim-lib-ui';
-import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
-import { NavigationFacade, ComponentStoreService, NavigationState } from '@diplomka-frontend/stim-feature-navigation/domain';
+import { PageToolsComponent, PageToolsArgs } from '@neuro-client/stim-lib-ui';
+import { AliveCheckerFacade, ConnectionInformationState } from '@neuro-client/stim-lib-connection';
+import { NavigationFacade, ComponentStoreService, NavigationState } from '@neuro-client/stim-feature-navigation/domain';
 
 import { NavigationButtonsAddonDirective } from './navigation-buttons-addon.directive';
 

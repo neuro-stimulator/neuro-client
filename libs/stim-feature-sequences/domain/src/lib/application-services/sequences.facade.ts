@@ -4,7 +4,7 @@ import { DefaultProjectorFn, MemoizedSelector, Store } from '@ngrx/store';
 
 import { Sequence } from '@stechy1/diplomka-share';
 
-import { BaseActions, BaseFacade } from '@diplomka-frontend/stim-lib-common';
+import { BaseActions, BaseFacade } from '@neuro-client/stim-lib-common';
 
 import { SequencesState } from '../store/sequences.type';
 import * as SequencesActions from '../store/sequences.actions';

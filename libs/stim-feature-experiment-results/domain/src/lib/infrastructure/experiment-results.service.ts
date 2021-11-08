@@ -12,7 +12,7 @@ import {
 import {
   BaseService,
   TOKEN_EXPERIMENT_RESULTS_API_URL,
-} from '@diplomka-frontend/stim-lib-common';
+} from '@neuro-client/stim-lib-common';
 import { Observable } from 'rxjs';
 
 @Injectable({

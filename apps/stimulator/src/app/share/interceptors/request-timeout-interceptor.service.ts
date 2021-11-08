@@ -6,7 +6,7 @@ import { catchError, tap, timeout } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { NGXLogger } from 'ngx-logger';
 import { TranslateService } from '@ngx-translate/core';
-import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
+import { AliveCheckerFacade } from '@neuro-client/stim-lib-connection';
 
 export const DEFAULT_TIMEOUT = new InjectionToken<number>('defaultTimeout');
 

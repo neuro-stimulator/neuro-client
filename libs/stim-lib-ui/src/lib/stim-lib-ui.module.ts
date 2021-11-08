@@ -5,10 +5,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Ng5SliderModule } from 'ng5-slider';
 import { ChartsModule } from 'ng2-charts';
 
-import { StimLibModalModule } from '@diplomka-frontend/stim-lib-modal';
-import { StimLibCommonModule } from '@diplomka-frontend/stim-lib-common';
-import { StimLibFabModule } from '@diplomka-frontend/stim-lib-fab';
-import { StimLibListUtilsModule } from '@diplomka-frontend/stim-lib-list-utils';
+import { StimLibModalModule } from '@neuro-client/stim-lib-modal';
+import { StimLibCommonModule } from '@neuro-client/stim-lib-common';
+import { StimLibFabModule } from '@neuro-client/stim-lib-fab';
+import { StimLibListUtilsModule } from '@neuro-client/stim-lib-list-utils';
 
 import { TagEditorComponent } from './tag-editor/tag-editor.component';
 import { DropdownBtnComponent } from './dropdown-btn/dropdown-btn.component';

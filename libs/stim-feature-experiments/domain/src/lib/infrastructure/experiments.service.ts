@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 
 import { Experiment, Output, ResponseObject, Sequence } from '@stechy1/diplomka-share';
-import { BaseService, TOKEN_EXPERIMENTS_API_URL } from '@diplomka-frontend/stim-lib-common';
+import { BaseService, TOKEN_EXPERIMENTS_API_URL } from '@neuro-client/stim-lib-common';
 import { Observable } from 'rxjs';
 
 @Injectable({

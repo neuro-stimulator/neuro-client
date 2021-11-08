@@ -15,13 +15,13 @@ import { LocalStorageModule } from 'angular-2-local-storage';
 import { AppRoutingModule } from './app-routing.module';
 
 // Application modules
-import { StimLibUiModule } from '@diplomka-frontend/stim-lib-ui';
-import { StimLibStoreModule } from '@diplomka-frontend/stim-lib-store';
-import { StimFeatureNavigationFeatureModule } from '@diplomka-frontend/stim-feature-navigation/feature';
-import { StimLibConnectionModule } from '@diplomka-frontend/stim-lib-connection';
-import { StimLibAssetPlayerModule } from '@diplomka-frontend/stim-lib-asset-player';
-import { StimFeatureSettingsDomainModule } from '@diplomka-frontend/stim-feature-settings/domain';
-import { AuthFacade, AuthState, StimFeatureAuthDomainModule } from '@diplomka-frontend/stim-feature-auth/domain';
+import { StimLibUiModule } from '@neuro-client/stim-lib-ui';
+import { StimLibStoreModule } from '@neuro-client/stim-lib-store';
+import { StimFeatureNavigationFeatureModule } from '@neuro-client/stim-feature-navigation/feature';
+import { StimLibConnectionModule } from '@neuro-client/stim-lib-connection';
+import { StimLibAssetPlayerModule } from '@neuro-client/stim-lib-asset-player';
+import { StimFeatureSettingsDomainModule } from '@neuro-client/stim-feature-settings/domain';
+import { AuthFacade, AuthState, StimFeatureAuthDomainModule } from '@neuro-client/stim-feature-auth/domain';
 
 // Application components
 import { AppComponent } from './app.component';

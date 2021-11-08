@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 import {
   Settings,
   SettingsFacade,
-} from '@diplomka-frontend/stim-feature-settings/domain';
-import { ParamConfigExperimentsComponent } from '@diplomka-frontend/stim-feature-settings/feature/param-config/experiments';
-import { SettingsPopupComponent } from '@diplomka-frontend/stim-feature-settings/popup';
+} from '@neuro-client/stim-feature-settings/domain';
+import { ParamConfigExperimentsComponent } from '@neuro-client/stim-feature-settings/feature/param-config/experiments';
+import { SettingsPopupComponent } from '@neuro-client/stim-feature-settings/popup';
 
 @Component({
   templateUrl: './experiments-page-tools.component.html',

@@ -6,7 +6,7 @@ import { NGXLogger } from 'ngx-logger';
 
 import { SocketMessage, SocketMessageType, SocketMessageSpecialization } from '@stechy1/diplomka-share';
 
-import { TOKEN_BASE_API_URL } from '@diplomka-frontend/stim-lib-common';
+import { TOKEN_BASE_API_URL } from '@neuro-client/stim-lib-common';
 
 import * as ConnectionActions from '../store/connection.actions';
 

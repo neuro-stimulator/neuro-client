@@ -1,4 +1,4 @@
-import { AppState } from '@diplomka-frontend/stim-lib-store';
+import { AppState } from '@neuro-client/stim-lib-store';
 
 export interface NavigationState extends AppState {
   title: string;

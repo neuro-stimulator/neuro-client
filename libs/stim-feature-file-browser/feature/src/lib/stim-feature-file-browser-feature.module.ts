@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
-import { StimLibUiModule } from '@diplomka-frontend/stim-lib-ui';
-import { StimFeatureFileBrowserDomainModule } from '@diplomka-frontend/stim-feature-file-browser/domain';
+import { StimLibUiModule } from '@neuro-client/stim-lib-ui';
+import { StimFeatureFileBrowserDomainModule } from '@neuro-client/stim-feature-file-browser/domain';
 
 import { FileBrowserComponent } from './file-browser.component';
 

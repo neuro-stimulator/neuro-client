@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { StimulatorFacade } from '@diplomka-frontend/stim-feature-stimulator/domain';
+import { StimulatorFacade } from '@neuro-client/stim-feature-stimulator/domain';
 
 @Component({
   templateUrl: './calibration.component.html',

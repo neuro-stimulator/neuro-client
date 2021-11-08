@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { StimLibUiModule } from '@diplomka-frontend/stim-lib-ui';
-import { StimLibConsoleDomainModule } from '@diplomka-frontend/stim-lib-console/domain';
+import { StimLibUiModule } from '@neuro-client/stim-lib-ui';
+import { StimLibConsoleDomainModule } from '@neuro-client/stim-lib-console/domain';
 
 import { ConsoleComponent } from './console.component';
 

@@ -3,9 +3,9 @@ import { FormGroup } from '@angular/forms';
 
 import { FileRecord } from '@stechy1/diplomka-share';
 
-import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import { FileBrowserComponent } from '@diplomka-frontend/stim-feature-file-browser/feature';
-import { TOKEN_FILE_BROWSER_API_URL } from '@diplomka-frontend/stim-lib-common';
+import { ModalComponent } from '@neuro-client/stim-lib-modal';
+import { FileBrowserComponent } from '@neuro-client/stim-feature-file-browser/feature';
+import { TOKEN_FILE_BROWSER_API_URL } from '@neuro-client/stim-lib-common';
 
 @Component({
   selector: 'stim-feature-experiments-output-type',

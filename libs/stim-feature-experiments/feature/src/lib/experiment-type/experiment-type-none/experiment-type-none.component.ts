@@ -6,13 +6,13 @@ import { NGXLogger } from 'ngx-logger';
 
 import { createEmptyExperiment, Experiment, Output } from '@stechy1/diplomka-share';
 
-import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
-import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
+import { ExperimentsFacade } from '@neuro-client/stim-feature-experiments/domain';
+import { NavigationFacade } from '@neuro-client/stim-feature-navigation/domain';
 
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
-import { AliveCheckerFacade } from '@diplomka-frontend/stim-lib-connection';
-import { TOKEN_MAX_OUTPUT_COUNT } from '@diplomka-frontend/stim-lib-common';
+import { AliveCheckerFacade } from '@neuro-client/stim-lib-connection';
+import { TOKEN_MAX_OUTPUT_COUNT } from '@neuro-client/stim-lib-common';
 
 @Component({
   templateUrl: './experiment-type-none.component.html',

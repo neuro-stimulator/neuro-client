@@ -5,10 +5,10 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { Experiment, Output } from '@stechy1/diplomka-share';
 
-import { StimLibUiModule } from '@diplomka-frontend/stim-lib-ui';
-import { StimLibListUtilsModule } from '@diplomka-frontend/stim-lib-list-utils';
-import { StimFeatureExperimentsDomainModule } from '@diplomka-frontend/stim-feature-experiments/domain';
-import { StimFeatureSettingsFeatureParamConfigExperimentsModule } from '@diplomka-frontend/stim-feature-settings/feature/param-config/experiments';
+import { StimLibUiModule } from '@neuro-client/stim-lib-ui';
+import { StimLibListUtilsModule } from '@neuro-client/stim-lib-list-utils';
+import { StimFeatureExperimentsDomainModule } from '@neuro-client/stim-feature-experiments/domain';
+import { StimFeatureSettingsFeatureParamConfigExperimentsModule } from '@neuro-client/stim-feature-settings/feature/param-config/experiments';
 
 import { ExperimentsComponent } from './experiments.component';
 import { ExperimentsItemListComponent } from './experiment-item-list/experiments-item-list.component';
@@ -45,8 +45,8 @@ import {
 import { ExperimentsActivate } from './experiments.activate';
 import { ExperimentsDeactivate } from './experiments.deactivate';
 import { ExperimentTypeResolverDirective } from './experiment-type-resolver.directive';
-import { StimFeatureSequencesDomainModule } from '@diplomka-frontend/stim-feature-sequences/domain';
-import { StimFeatureFileBrowserFeatureModule } from '@diplomka-frontend/stim-feature-file-browser/feature';
+import { StimFeatureSequencesDomainModule } from '@neuro-client/stim-feature-sequences/domain';
+import { StimFeatureFileBrowserFeatureModule } from '@neuro-client/stim-feature-file-browser/feature';
 import { OutputEditorComponent } from './experiment-type/output-type/output-editor/output-editor.component';
 
 @NgModule({

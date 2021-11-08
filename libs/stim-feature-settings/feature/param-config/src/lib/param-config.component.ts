@@ -5,12 +5,12 @@ import { Observable } from 'rxjs';
 
 import { ToastrService } from 'ngx-toastr';
 
-import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import { SettingsFacade, SettingsState } from '@diplomka-frontend/stim-feature-settings/domain';
-import { ParamConfigExperimentsComponent } from '@diplomka-frontend/stim-feature-settings/feature/param-config/experiments';
-import { ParamConfigServerComponent } from '@diplomka-frontend/stim-feature-settings/feature/param-config/server';
-import { ParamConfigApplicationComponent } from '@diplomka-frontend/stim-feature-settings/feature/param-config/application';
-import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
+import { ModalComponent } from '@neuro-client/stim-lib-modal';
+import { SettingsFacade, SettingsState } from '@neuro-client/stim-feature-settings/domain';
+import { ParamConfigExperimentsComponent } from '@neuro-client/stim-feature-settings/feature/param-config/experiments';
+import { ParamConfigServerComponent } from '@neuro-client/stim-feature-settings/feature/param-config/server';
+import { ParamConfigApplicationComponent } from '@neuro-client/stim-feature-settings/feature/param-config/application';
+import { AliveCheckerFacade, ConnectionInformationState } from '@neuro-client/stim-lib-connection';
 
 @Component({
   selector: 'stim-feature-settings-param-config',

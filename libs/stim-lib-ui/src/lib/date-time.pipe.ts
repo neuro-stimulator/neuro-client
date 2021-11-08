@@ -1,7 +1,7 @@
 import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
-import { DateTimeFormat } from '@diplomka-frontend/stim-lib-common';
+import { DateTimeFormat } from '@neuro-client/stim-lib-common';
 
 @Pipe({
   name: 'dateTime'

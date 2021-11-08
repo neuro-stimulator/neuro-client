@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
-import { AuthFacade } from '@diplomka-frontend/stim-feature-auth/domain';
+import { AuthFacade } from '@neuro-client/stim-feature-auth/domain';
 import { Router } from '@angular/router';
 
 @Component({

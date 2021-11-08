@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 
 import { ExperimentResult, IOEvent, ResponseObject } from '@stechy1/diplomka-share';
 
-import { SelectedEntities } from '@diplomka-frontend/stim-lib-list-utils';
+import { SelectedEntities } from '@neuro-client/stim-lib-list-utils';
 
 import { ExperimentResultsService } from '../infrastructure/experiment-results.service';
 import * as ExperimentResultsActions from './experiment-results.actions';
@@ -20,7 +20,7 @@ export class ExperimentResultssEffects {
   constructor(private readonly actions$: Actions, private readonly experimentResults: ExperimentResultsService, private readonly store: Store, private readonly router: Router) {}
 
   all$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsAllRequest),
       switchMap(() =>
         this.experimentResults.all().pipe(
@@ -34,10 +34,10 @@ export class ExperimentResultssEffects {
           })
         )
       )
-    )
+    ) }
   );
   allWithGhosts$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsAllWithGhostRequest),
       withLatestFrom(this.store.select(experimentResultsSelector)),
       switchMap(([action, experimentResults]) => {
@@ -58,11 +58,11 @@ export class ExperimentResultssEffects {
           })
         );
       })
-    )
+    ) }
   );
 
   one$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsOneRequest),
       switchMap((action) =>
         this.experimentResults.one(action.experimentResultID).pipe(
@@ -76,7 +76,7 @@ export class ExperimentResultssEffects {
           })
         )
       )
-    )
+    ) }
   );
 
   resultData$ = createEffect(() => {
@@ -98,7 +98,7 @@ export class ExperimentResultssEffects {
   });
 
   update$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsUpdateRequest),
       mergeMap((action) =>
         this.experimentResults.update(action.experimentResult).pipe(
@@ -110,7 +110,7 @@ export class ExperimentResultssEffects {
           })
         )
       )
-    )
+    ) }
   );
 
   delete$ = createEffect(() => {
@@ -146,7 +146,7 @@ export class ExperimentResultssEffects {
     );
   });
   deleteDone$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsDeleteRequestDone),
       withLatestFrom(this.store.select(experimentResultsFeature)),
       map(([_, experimentResults]) => {
@@ -159,11 +159,11 @@ export class ExperimentResultssEffects {
         return action;
       }),
       delay(250)
-    )
+    ) }
   );
 
   nameExists$ = createEffect(() =>
-    this.actions$.pipe(
+    { return this.actions$.pipe(
       ofType(ExperimentResultsActions.actionExperimentResultsNameExistsRequest),
       switchMap((action) =>
         this.experimentResults.nameExists(action.name, action.experimentResultID).pipe(
@@ -175,6 +175,6 @@ export class ExperimentResultssEffects {
           })
         )
       )
-    )
+    ) }
   );
 }

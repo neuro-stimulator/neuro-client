@@ -1,6 +1,6 @@
 import { ComponentFactoryResolver, Directive, ViewContainerRef } from '@angular/core';
 
-import { BaseExperimentTypeResolverDirective } from '@diplomka-frontend/stim-lib-common';
+import { BaseExperimentTypeResolverDirective } from '@neuro-client/stim-lib-common';
 
 import { BaseExperimentTypeComponent } from './experiment-type/base-experiment-type.component';
 import { NGXLogger } from 'ngx-logger';

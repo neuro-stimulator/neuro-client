@@ -2,7 +2,7 @@ import { Action, createFeatureSelector, createReducer, createSelector, on } from
 
 import { createEmptyExperiment, createEmptySequence, Experiment, Output, Sequence } from '@stechy1/diplomka-share';
 
-import * as fromAuth from '@diplomka-frontend/stim-feature-auth/domain';
+import * as fromAuth from '@neuro-client/stim-feature-auth/domain';
 
 import { SequencesState } from './sequences.type';
 import * as SequencesActions from './sequences.actions';

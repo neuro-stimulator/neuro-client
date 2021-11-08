@@ -1,7 +1,7 @@
 import { Experiment, Output, Sequence } from '@stechy1/diplomka-share';
 
-import { AppState } from '@diplomka-frontend/stim-lib-store';
-import { EntityGroup, SelectedEntities } from '@diplomka-frontend/stim-lib-list-utils';
+import { AppState } from '@neuro-client/stim-lib-store';
+import { EntityGroup, SelectedEntities } from '@neuro-client/stim-lib-list-utils';
 
 export interface ExperimentsState extends AppState {
   experiments: Experiment<Output>[];

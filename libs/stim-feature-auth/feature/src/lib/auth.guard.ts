@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AuthFacade, AuthState } from '@diplomka-frontend/stim-feature-auth/domain';
+import { AuthFacade, AuthState } from '@neuro-client/stim-feature-auth/domain';
 
 @Injectable()
 export class AuthGuard implements CanActivate {

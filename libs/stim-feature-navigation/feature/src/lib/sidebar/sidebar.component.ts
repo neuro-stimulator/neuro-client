@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
-import { AuthFacade, AuthState } from '@diplomka-frontend/stim-feature-auth/domain';
+import { NavigationFacade } from '@neuro-client/stim-feature-navigation/domain';
+import { AuthFacade, AuthState } from '@neuro-client/stim-feature-auth/domain';
 
 @Component({
   selector: 'stim-feature-navigation-sidebar',

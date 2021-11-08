@@ -3,14 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable, Subscription } from 'rxjs';
 
-import { EntityGroup, ListFilterParameters, ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
-import { ModalComponent } from '@diplomka-frontend/stim-lib-modal';
-import { FilterDialogComponent } from '@diplomka-frontend/stim-lib-ui';
+import { EntityGroup, ListFilterParameters, ListGroupSortFilterService } from '@neuro-client/stim-lib-list-utils';
+import { ModalComponent } from '@neuro-client/stim-lib-modal';
+import { FilterDialogComponent } from '@neuro-client/stim-lib-ui';
 
 import { ListButtonsAddonService } from './list-buttons-addon/list-buttons-addon.service';
-import { BaseFacade } from '@diplomka-frontend/stim-lib-common';
-import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
-import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
+import { BaseFacade } from '@neuro-client/stim-lib-common';
+import { NavigationFacade } from '@neuro-client/stim-feature-navigation/domain';
+import { AliveCheckerFacade, ConnectionInformationState } from '@neuro-client/stim-lib-connection';
 
 @Component({ template: '' })
 export abstract class BaseListComponent<T, S> implements OnInit, OnDestroy {

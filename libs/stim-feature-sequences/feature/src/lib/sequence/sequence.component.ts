@@ -9,10 +9,10 @@ import { NGXLogger } from 'ngx-logger';
 import { createEmptySequence, ExperimentType, Sequence } from '@stechy1/diplomka-share';
 
 import { SequenceNameValidator } from '../sequence-name-validator';
-import { SequencesFacade, SequencesState } from '@diplomka-frontend/stim-feature-sequences/domain';
-import { ExperimentsFacade } from '@diplomka-frontend/stim-feature-experiments/domain';
+import { SequencesFacade, SequencesState } from '@neuro-client/stim-feature-sequences/domain';
+import { ExperimentsFacade } from '@neuro-client/stim-feature-experiments/domain';
 import { map, take } from 'rxjs/operators';
-import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
+import { AliveCheckerFacade, ConnectionInformationState } from '@neuro-client/stim-lib-connection';
 
 @Component({
   selector: 'stim-feature-sequences-sequence',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
-import { AuthFacade } from '@diplomka-frontend/stim-feature-auth/domain';
+import { AuthFacade } from '@neuro-client/stim-feature-auth/domain';
 
 @Component({
   template: '',

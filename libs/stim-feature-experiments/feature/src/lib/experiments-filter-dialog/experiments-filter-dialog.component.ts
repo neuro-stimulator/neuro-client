@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 import { Experiment, Output } from '@stechy1/diplomka-share';
 
-import { ListGroupSortFilterService } from '@diplomka-frontend/stim-lib-list-utils';
-import { FilterDialogComponent } from '@diplomka-frontend/stim-lib-ui';
+import { ListGroupSortFilterService } from '@neuro-client/stim-lib-list-utils';
+import { FilterDialogComponent } from '@neuro-client/stim-lib-ui';
 
 @Component({
   templateUrl:

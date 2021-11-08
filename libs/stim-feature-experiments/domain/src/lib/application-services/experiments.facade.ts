@@ -5,8 +5,8 @@ import { DefaultProjectorFn, MemoizedSelector, Store } from '@ngrx/store';
 
 import { Experiment, Output } from '@stechy1/diplomka-share';
 
-import { BaseActions, BaseFacade } from '@diplomka-frontend/stim-lib-common';
-import * as fromConnection from '@diplomka-frontend/stim-lib-connection';
+import { BaseActions, BaseFacade } from '@neuro-client/stim-lib-common';
+import * as fromConnection from '@neuro-client/stim-lib-connection';
 
 import * as ExperimentsActions from '../store/experiments.actions';
 import * as fromExperiments from '../store/experiments.reducer';

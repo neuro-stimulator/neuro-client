@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
 
-import { DialogChildComponent, ModalComponent } from '@diplomka-frontend/stim-lib-modal';
+import { DialogChildComponent, ModalComponent } from '@neuro-client/stim-lib-modal';
 
 import { SequenceFastDialogParams, SequenceFastDialogResult } from './sequence-fast-dialog.args';
 

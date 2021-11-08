@@ -9,8 +9,8 @@ import { ToastrService } from 'ngx-toastr';
 import {
   ExperimentResultsFacade,
   ExperimentResultsState,
-} from '@diplomka-frontend/stim-feature-experiment-results/domain';
-import { NavigationFacade } from '@diplomka-frontend/stim-feature-navigation/domain';
+} from '@neuro-client/stim-feature-experiment-results/domain';
+import { NavigationFacade } from '@neuro-client/stim-feature-navigation/domain';
 import {
   createEmptyExperiment,
   createEmptyExperimentResult,
@@ -21,11 +21,11 @@ import { map } from 'rxjs/operators';
 import {
   AliveCheckerFacade,
   ConnectionInformationState,
-} from '@diplomka-frontend/stim-lib-connection';
+} from '@neuro-client/stim-lib-connection';
 import {
   TOKEN_EXPERIMENT_RESULTS_API_URL,
   TOKEN_MAX_OUTPUT_COUNT,
-} from '@diplomka-frontend/stim-lib-common';
+} from '@neuro-client/stim-lib-common';
 
 @Component({
   selector: 'stim-feature-experiment-results-experiment-result',

@@ -17,7 +17,7 @@ import {
   TOKEN_STIMULATOR_API_URL,
   TOKEN_SUPPORTED_LANGUAGES,
   TOKEN_USERS_API_URL,
-} from '@diplomka-frontend/stim-lib-common';
+} from '@neuro-client/stim-lib-common';
 
 import { environment } from '../environments/environment';
 

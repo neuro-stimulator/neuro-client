@@ -7,7 +7,7 @@ import { LocalStorageService } from 'angular-2-local-storage';
 
 import { ResponseObject } from '@stechy1/diplomka-share';
 
-import { TOKEN_CONSOLE_API_URL } from '@diplomka-frontend/stim-lib-common';
+import { TOKEN_CONSOLE_API_URL } from '@neuro-client/stim-lib-common';
 
 import { ParseCommandResult } from '../domain/parse-command-result';
 import { ConsoleCommand } from '../domain/console-command';

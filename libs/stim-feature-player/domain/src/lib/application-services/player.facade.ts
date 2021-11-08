@@ -5,9 +5,9 @@ import { Store } from '@ngrx/store';
 
 import { ConnectionStatus, createEmptyExperiment, Experiment, Output } from '@stechy1/diplomka-share';
 
-import { StimulatorFacade, StimulatorState, StimulatorStateType } from '@diplomka-frontend/stim-feature-stimulator/domain';
-import { AliveCheckerFacade, ConnectionInformationState } from '@diplomka-frontend/stim-lib-connection';
-import { ExperimentsFacade, ExperimentsState } from '@diplomka-frontend/stim-feature-experiments/domain';
+import { StimulatorFacade, StimulatorState, StimulatorStateType } from '@neuro-client/stim-feature-stimulator/domain';
+import { AliveCheckerFacade, ConnectionInformationState } from '@neuro-client/stim-lib-connection';
+import { ExperimentsFacade, ExperimentsState } from '@neuro-client/stim-feature-experiments/domain';
 
 import { PlayerState, StopConditionType } from '../store/player.state';
 import * as fromPlayer from '../store/player.reducer';

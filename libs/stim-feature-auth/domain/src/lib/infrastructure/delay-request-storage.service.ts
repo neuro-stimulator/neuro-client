@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { deserializeRequest } from '@diplomka-frontend/stim-lib-common';
+import { deserializeRequest } from '@neuro-client/stim-lib-common';
 
 import { DelayResponse } from '../domain/delay-response';
 

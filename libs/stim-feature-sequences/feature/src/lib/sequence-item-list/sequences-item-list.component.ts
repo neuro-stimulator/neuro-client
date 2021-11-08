@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Sequence, ExperimentType } from '@stechy1/diplomka-share';
 
-import { EntityGroup, SelectedEntities } from '@diplomka-frontend/stim-lib-list-utils';
+import { EntityGroup, SelectedEntities } from '@neuro-client/stim-lib-list-utils';
 
 @Component({
   selector: 'stim-feature-sequences-item-list',

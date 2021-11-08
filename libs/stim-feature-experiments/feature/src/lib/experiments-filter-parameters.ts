@@ -1,6 +1,6 @@
 import { Experiment, ExperimentType, Output, outputTypeToRaw } from '@stechy1/diplomka-share';
 
-import { GroupByFilterEntity, GroupFilter, SortByFilterEntity, SortFilter } from '@diplomka-frontend/stim-lib-list-utils';
+import { GroupByFilterEntity, GroupFilter, SortByFilterEntity, SortFilter } from '@neuro-client/stim-lib-list-utils';
 
 export const GROUP_BY_FILTERS: GroupFilter<Experiment<Output>>[] = [
   new GroupByFilterEntity(
