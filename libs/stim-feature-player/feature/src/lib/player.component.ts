@@ -78,11 +78,11 @@ export class PlayerComponent implements OnInit, AfterViewInit, OnDestroy {
       if (status === StimulatorStateType.READY || status === StimulatorStateType.CLEAR) {
         this.logger.info('Aktivuji formulářové prvky.');
         this.form.enable();
-        this._updateDisabledAutoplay(this.repeat.value, true);
+        this._updateDisabledAutoplay(this.repeat.value > 0 && status === StimulatorStateType.READY, status === StimulatorStateType.CLEAR);
       } else {
         this.logger.info('Deaktivuji formulářové prvky.');
         this.form.disable();
-        this._updateDisabledAutoplay(this.repeat.value, true);
+        this._updateDisabledAutoplay(this.repeat.value > 0 && status === StimulatorStateType.READY, status === StimulatorStateType.CLEAR);
       }
     });
     this._playerStateSubscription = this.player.state.subscribe((state: PlayerState) => {
