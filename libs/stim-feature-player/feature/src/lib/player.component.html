@@ -111,7 +111,7 @@
 
   <div class="row" *ngIf="BUTTON_DISABLED_STATES[(stimulatorStatus | async)][0]">
     <div class="col-10">
-      <h2>{{ 'EXPERIMENT_PLAYER.EXPERIMENT_MEASUREMENT' | translate:{ experimentRound: (state | async).ioData.length, totalMeasurement: ((state | async).repeat) || 1 } }}</h2>
+      <h2>{{ 'EXPERIMENT_PLAYER.EXPERIMENT_MEASUREMENT' | translate:{ experimentRound: (state | async).ioData.length, totalMeasurement: ((state | async).repeat + 1) || 1 } }}</h2>
     </div>
     <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="experimentViewer"
          [icon]="experimentViewerIcon"><i class="fas fa-minus" #experimentViewerIcon></i></div>
