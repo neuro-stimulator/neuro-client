@@ -2,12 +2,12 @@
 
 Klientská část diplomové práce na téma: **Návrh hardwarového stimulátoru pro neuroinformatické experimenty**
 
-![](https://github.com/stechy1/diplomka-frontend/workflows/build/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/stechy1/diplomka-frontend/badge.svg?branch=master)](https://coveralls.io/github/stechy1/diplomka-frontend?branch=master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8e32be8838534ae08de36a79e2da835a)](https://www.codacy.com/manual/stechy12/diplomka-frontend)
-![](https://img.shields.io/github/languages/code-size/stechy1/diplomka-frontend)
-![](https://img.shields.io/github/package-json/v/stechy1/diplomka-frontend)
-![](https://img.shields.io/librariesio/github/stechy1/diplomka-frontend)
+![](https://github.com/neuro-stimulator/neuro-client/workflows/build/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/neuro-stimulator/neuro-client/badge.svg?branch=master)](https://coveralls.io/github/neuro-stimulator/neuro-client?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8e32be8838534ae08de36a79e2da835a)](https://www.codacy.com/manual/neuro-stimulator2/neuro-client)
+![](https://img.shields.io/github/languages/code-size/neuro-stimulator/neuro-client)
+![](https://img.shields.io/github/package-json/v/neuro-stimulator/neuro-client)
+![](https://img.shields.io/librariesio/github/neuro-stimulator/neuro-client)
 
 ![Výsledná aplikace](images/01_angular_experiments_list.png)
 
