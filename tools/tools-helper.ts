@@ -40,8 +40,8 @@ export function readLibFiles(
   relativeDir
 ): { [name: string]: string[] } {
   libraries = libraries
-    .filter((name) => name.startsWith('@diplomka-backend'))
-    .map((name) => name.replace('@diplomka-backend/', ''));
+    .filter((name) => name.startsWith('@neuro-server'))
+    .map((name) => name.replace('@neuro-server/', ''));
   const out = {};
 
   for (const libraryName of libraries) {
