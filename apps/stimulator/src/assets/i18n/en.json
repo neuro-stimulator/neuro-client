@@ -581,6 +581,7 @@
     "CODE_ERROR_AUTH_TOKEN_REFRESH_FAILED": "Refresh token was unable to update!",
     "CODE_ERROR_AUTH_TOKEN_EXPIRED": "Session timeout!",
     "CODE_ERROR_AUTH_TOKEN_NOT_FOUND": "Session record was not found!",
+    "CODE_ERROR_AUTH_PERMISSION_DENIED": "Permission denied!",
     "CODE_ERROR_PLAYER_EXPERIMENT_RESULT_IS_NOT_INITIALIZED": "Experiment player was unable to initialize experiment result!",
     "CODE_ERROR_PLAYER_ANOTHER_EXPERIMENT_RESULT_IS_INITIALIZED": "Other experiment resulst is already initialized!",
     "CODE_ERROR_PLAYER_UNSUPPORTED_STOP_CONDITION": "Stop condition is unsupported by experiment player!",
