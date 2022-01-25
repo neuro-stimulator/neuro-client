@@ -1,0 +1,1885 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  SequencesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/stim-feature-sequences/feature/src/lib/sequences.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+                <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+    </p>
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./sequences.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./sequences.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Static</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#INTRO_SEQUENCE" >INTRO_SEQUENCE</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_deleteSelectedRequestSubscription" >_deleteSelectedRequestSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_exportRequestSubscription" >_exportRequestSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_filterEntitiesSubscription" >_filterEntitiesSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_filterParametersChangeSubscription" >_filterParametersChangeSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_filterRequestSubscription" >_filterRequestSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_selectAllRequestSubscription" >_selectAllRequestSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_selectionModeSubscription" >_selectionModeSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_selectNoneRequestSubscription" >_selectNoneRequestSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_serviceRecordsSubscription" >_serviceRecordsSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#modal" >modal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#handleCreateSequence" >handleCreateSequence</a>
+                            </li>
+                            <li>
+                                <a href="#handleDelete" >handleDelete</a>
+                            </li>
+                            <li>
+                                <a href="#handleSelect" >handleSelect</a>
+                            </li>
+                            <li>
+                                <a href="#handleView" >handleView</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_deleteSelected" >_deleteSelected</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_exportEntities" >_exportEntities</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_handleFilterParametersChange" >_handleFilterParametersChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_handleSearchBy" >_handleSearchBy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_selectAll" >_selectAll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_selectNone" >_selectNone</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_showFilterDialog" >_showFilterDialog</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#introRecord" >introRecord</a>
+                                </li>
+                                <li>
+                                    <a href="#filterDialogComponent" >filterDialogComponent</a>
+                                </li>
+                                <li>
+                                    <a href="#introStepsComponentName" >introStepsComponentName</a>
+                                </li>
+                                <li>
+                                    <a href="#records$" >records$</a>
+                                </li>
+                                <li>
+                                    <a href="#selectionMode$" >selectionMode$</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(service: <a href="../injectables/SequencesFacade.html" target="_self">SequencesFacade</a>, filterService: <a href="../injectables/ListGroupSortFilterService.html" target="_self">ListGroupSortFilterService&lt;Sequence&gt;</a>, navigation: <a href="../injectables/NavigationFacade.html" target="_self">NavigationFacade</a>, connection: <a href="../injectables/AliveCheckerFacade.html" target="_self">AliveCheckerFacade</a>, buttonsAddonService: <a href="../injectables/ListButtonsAddonService.html" target="_self">ListButtonsAddonService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, location: <a href="https://angular.io/api/common/Location" target="_blank">Location</a>, logger: NGXLogger)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequences.component.ts:34</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>service</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SequencesFacade.html" target="_self" >SequencesFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>filterService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ListGroupSortFilterService.html" target="_self" >ListGroupSortFilterService&lt;Sequence&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>navigation</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NavigationFacade.html" target="_self" >NavigationFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>connection</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AliveCheckerFacade.html" target="_self" >AliveCheckerFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>buttonsAddonService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ListButtonsAddonService.html" target="_self" >ListButtonsAddonService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>location</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/Location" target="_blank" >Location</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>logger</td>
+                                                  
+                                                        <td>
+                                                                    <code>NGXLogger</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleCreateSequence"></a>
+                    <span class="name">
+                        <span ><b>handleCreateSequence</b></span>
+                        <a href="#handleCreateSequence"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleCreateSequence()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequences.component.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleDelete"></a>
+                    <span class="name">
+                        <span ><b>handleDelete</b></span>
+                        <a href="#handleDelete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleDelete(sequence: Sequence)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequences.component.ts:55</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sequence</td>
+                                    <td>
+                                            <code>Sequence</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleSelect"></a>
+                    <span class="name">
+                        <span ><b>handleSelect</b></span>
+                        <a href="#handleSelect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleSelect(sequence: Sequence)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequences.component.ts:72</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sequence</td>
+                                    <td>
+                                            <code>Sequence</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleView"></a>
+                    <span class="name">
+                        <span ><b>handleView</b></span>
+                        <a href="#handleView"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleView(sequence: Sequence)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequences.component.ts:50</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sequence</td>
+                                    <td>
+                                            <code>Sequence</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_deleteSelected"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_deleteSelected</b></span>
+                        <a href="#_deleteSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_deleteSelected()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:151</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_exportEntities"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_exportEntities</b></span>
+                        <a href="#_exportEntities"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_exportEntities()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:147</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_handleFilterParametersChange"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_handleFilterParametersChange</b></span>
+                        <a href="#_handleFilterParametersChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_handleFilterParametersChange(params: <a href="../interfaces/ListFilterParameters.html" target="_self">ListFilterParameters</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:122</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>params</td>
+                                    <td>
+                                                <code><a href="../interfaces/ListFilterParameters.html" target="_self" >ListFilterParameters</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_handleSearchBy"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_handleSearchBy</b></span>
+                        <a href="#_handleSearchBy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_handleSearchBy(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:130</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_selectAll"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_selectAll</b></span>
+                        <a href="#_selectAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_selectAll()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:155</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_selectNone"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_selectNone</b></span>
+                        <a href="#_selectNone"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_selectNone()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:159</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_showFilterDialog"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_showFilterDialog</b></span>
+                        <a href="#_showFilterDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_showFilterDialog()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:142</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:97</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:67</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="INTRO_SEQUENCE"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Static</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>INTRO_SEQUENCE</b></span>
+                        <a href="#INTRO_SEQUENCE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Sequence</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    id: -1,
+    experimentId: -1,
+    name: &#x27;Test&#x27;,
+    size: 50,
+    created: new Date().getTime(),
+    data: [],
+    tags: [&#x27;tag1&#x27;, &#x27;tag2&#x27;],
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequences.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_deleteSelectedRequestSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_deleteSelectedRequestSubscription</b></span>
+                        <a href="#_deleteSelectedRequestSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:28</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_exportRequestSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_exportRequestSubscription</b></span>
+                        <a href="#_exportRequestSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:25</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_filterEntitiesSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_filterEntitiesSubscription</b></span>
+                        <a href="#_filterEntitiesSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:23</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_filterParametersChangeSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_filterParametersChangeSubscription</b></span>
+                        <a href="#_filterParametersChangeSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:21</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_filterRequestSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_filterRequestSubscription</b></span>
+                        <a href="#_filterRequestSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:19</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_selectAllRequestSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_selectAllRequestSubscription</b></span>
+                        <a href="#_selectAllRequestSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:26</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_selectionModeSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_selectionModeSubscription</b></span>
+                        <a href="#_selectionModeSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:24</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_selectNoneRequestSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_selectNoneRequestSubscription</b></span>
+                        <a href="#_selectNoneRequestSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:27</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_serviceRecordsSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_serviceRecordsSubscription</b></span>
+                        <a href="#_serviceRecordsSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:22</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modal"></a>
+                    <span class="name">
+                        <span ><b>modal</b></span>
+                        <a href="#modal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/ModalComponent.html" target="_self" >ModalComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;modal&#x27;, {static: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/BaseListComponent.html" target="_self" >BaseListComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/BaseListComponent.html#source" target="_self" >BaseListComponent:17</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="introRecord"></a>
+                        <span class="name"><b>introRecord</b><a href="#introRecord"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>introRecord()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequences.component.ts:76</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filterDialogComponent"></a>
+                        <span class="name"><b>filterDialogComponent</b><a href="#filterDialogComponent"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>filterDialogComponent()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequences.component.ts:80</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="introStepsComponentName"></a>
+                        <span class="name"><b>introStepsComponentName</b><a href="#introStepsComponentName"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>introStepsComponentName()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequences.component.ts:84</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="records$"></a>
+                        <span class="name"><b>records$</b><a href="#records$"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>records$()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequences.component.ts:88</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectionMode$"></a>
+                        <span class="name"><b>selectionMode$</b><a href="#selectionMode$"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>selectionMode$()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequences.component.ts:92</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Type } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { Location } from &#x27;@angular/common&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { map } from &#x27;rxjs/operators&#x27;;
+
+import { NGXLogger } from &#x27;ngx-logger&#x27;;
+
+import { Sequence } from &#x27;@stechy1/diplomka-share&#x27;;
+
+import { ConfirmDialogArgs, ConfirmDialogComponent } from &#x27;@neuro-client/stim-lib-modal&#x27;;
+import { ListGroupSortFilterService } from &#x27;@neuro-client/stim-lib-list-utils&#x27;;
+import { FilterDialogComponent } from &#x27;@neuro-client/stim-lib-ui&#x27;;
+import { ListButtonsAddonService, BaseListComponent } from &#x27;@neuro-client/stim-lib-ui&#x27;;
+import { SequencesFacade, SequencesState } from &#x27;@neuro-client/stim-feature-sequences/domain&#x27;;
+import { NavigationFacade } from &#x27;@neuro-client/stim-feature-navigation/domain&#x27;;
+import { AliveCheckerFacade } from &#x27;@neuro-client/stim-lib-connection&#x27;;
+
+import { SequencesFilterDialogComponent } from &#x27;./sequences-filter-dialog/sequences-filter-dialog.component&#x27;;
+
+@Component({
+  templateUrl: &#x27;./sequences.component.html&#x27;,
+  styleUrls: [&#x27;./sequences.component.sass&#x27;],
+})
+export class SequencesComponent extends BaseListComponent&lt;Sequence, SequencesState&gt; {
+  private static readonly INTRO_SEQUENCE: Sequence &#x3D; {
+    id: -1,
+    experimentId: -1,
+    name: &#x27;Test&#x27;,
+    size: 50,
+    created: new Date().getTime(),
+    data: [],
+    tags: [&#x27;tag1&#x27;, &#x27;tag2&#x27;],
+  };
+
+  constructor(
+    service: SequencesFacade,
+    filterService: ListGroupSortFilterService&lt;Sequence&gt;,
+    navigation: NavigationFacade,
+    connection: AliveCheckerFacade,
+    buttonsAddonService: ListButtonsAddonService,
+    router: Router,
+    route: ActivatedRoute,
+    location: Location,
+    private readonly logger: NGXLogger
+  ) {
+    super(service, filterService, navigation, connection, buttonsAddonService, router, route, location);
+  }
+
+  handleView(sequence: Sequence) {
+    this.logger.info(&#x60;Budu zobrazovat sekvenci s id: ${sequence.id}&#x60;);
+    this._router.navigate([sequence.id], { relativeTo: this._route.parent });
+  }
+
+  handleDelete(sequence: Sequence) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const self &#x3D; this;
+    this.modal.showComponent &#x3D; ConfirmDialogComponent;
+    this.modal.open&lt;ConfirmDialogArgs&gt;({
+      message: &#x27;SEQUENCES.DIALOGS.DELETE.QUESTION&#x27;,
+      confirm: () &#x3D;&gt; {
+        self.logger.info(&#x60;Budu mazat sequenci s id: ${sequence.id}.&#x60;);
+        return self._facade.delete(sequence.id);
+      },
+    });
+  }
+
+  handleCreateSequence() {
+    this._router.navigate([&#x27;new&#x27;], { relativeTo: this._route.parent });
+  }
+
+  handleSelect(sequence: Sequence) {
+    this._facade.selectEntity(sequence);
+  }
+
+  protected get introRecord(): Sequence {
+    return SequencesComponent.INTRO_SEQUENCE;
+  }
+
+  protected get filterDialogComponent(): Type&lt;FilterDialogComponent&lt;Sequence&gt;&gt; {
+    return SequencesFilterDialogComponent;
+  }
+
+  protected get introStepsComponentName(): string {
+    return &#x27;sequences-steps&#x27;;
+  }
+
+  protected get records$(): Observable&lt;Sequence[]&gt; {
+    return this.state.pipe(map((state: SequencesState) &#x3D;&gt; state.sequences));
+  }
+
+  protected get selectionMode$(): Observable&lt;boolean&gt; {
+    return this.state.pipe(map((state: SequencesState) &#x3D;&gt; state.selectionMode));
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;row&quot;&gt;
+  &lt;div class&#x3D;&quot;col-12&quot;&gt;
+    &lt;h2 id&#x3D;&quot;sequences-not-found&quot; *ngIf&#x3D;&quot;(state | async).ghosts.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; !hasGroups&quot;&gt;{{ &#x27;SEQUENCES.NOT_FOUND&#x27; | translate }}&lt;/h2&gt;
+    &lt;stim-feature-sequences-ghost-item-list [ghosts]&#x3D;&quot;(state | async).ghosts&quot; *ngIf&#x3D;&quot;(state | async).ghosts.length !&#x3D;&#x3D; 0&quot;&gt;&lt;/stim-feature-sequences-ghost-item-list&gt;
+    &lt;stim-feature-sequences-item-list [sequenceGroups]&#x3D;&quot;groups&quot;
+                                      [selectedSequences]&#x3D;&quot;(state | async).selectedSequences&quot;
+                                      [selectionMode]&#x3D;&quot;(state | async).selectionMode&quot;
+                                      (view)&#x3D;&quot;handleView($event)&quot;
+                                      (delete)&#x3D;&quot;handleDelete($event)&quot;
+                                      (selectSequence)&#x3D;&quot;handleSelect($event)&quot;
+                                     *ngIf&#x3D;&quot;(state | async).ghosts.length &#x3D;&#x3D;&#x3D; 0&quot;&gt;
+    &lt;/stim-feature-sequences-item-list&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;stim-lib-fab icon&#x3D;&quot;fa-plus-circle&quot; (fabClick)&#x3D;&quot;handleCreateSequence()&quot; class&#x3D;&quot;sequence-new&quot;&gt;&lt;/stim-lib-fab&gt;
+
+&lt;stim-lib-modal #modal&gt;&lt;/stim-lib-modal&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./sequences.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section class="row">  <div class="col-12">    <h2 id="sequences-not-found" *ngIf="(state | async).ghosts.length === 0 && !hasGroups">{{ \'SEQUENCES.NOT_FOUND\' | translate }}</h2>    <stim-feature-sequences-ghost-item-list [ghosts]="(state | async).ghosts" *ngIf="(state | async).ghosts.length !== 0"></stim-feature-sequences-ghost-item-list>    <stim-feature-sequences-item-list [sequenceGroups]="groups"                                      [selectedSequences]="(state | async).selectedSequences"                                      [selectionMode]="(state | async).selectionMode"                                      (view)="handleView($event)"                                      (delete)="handleDelete($event)"                                      (selectSequence)="handleSelect($event)"                                     *ngIf="(state | async).ghosts.length === 0">    </stim-feature-sequences-item-list>  </div></section><stim-lib-fab icon="fa-plus-circle" (fabClick)="handleCreateSequence()" class="sequence-new"></stim-lib-fab><stim-lib-modal #modal></stim-lib-modal></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': ''},{'name': 'AppComponent', 'selector': 'stim-app'},{'name': 'AudioPlayerComponent', 'selector': 'stim-lib-ui-audio-player'},{'name': 'AuthComponent', 'selector': 'stim-feature-auth'},{'name': 'BaseExperimentTypeComponent', 'selector': ''},{'name': 'BaseListComponent', 'selector': ''},{'name': 'CalibrationComponent', 'selector': ''},{'name': 'ConfirmDialogComponent', 'selector': ''},{'name': 'ConsoleComponent', 'selector': 'stim-lib-console'},{'name': 'CountingCycleComponent', 'selector': 'stim-feature-player-stop-condition-counting-cycle'},{'name': 'CountingExperimentComponent', 'selector': 'stim-feature-player-stop-condition-counting-experiment'},{'name': 'DiodeComponent', 'selector': 'stim-lib-ui-diode'},{'name': 'DropdownBtnComponent', 'selector': 'stim-lib-ui-dropdown-btn'},{'name': 'ExperimentResultComponent', 'selector': 'stim-feature-experiment-results-experiment-result'},{'name': 'ExperimentResultsComponent', 'selector': ''},{'name': 'ExperimentResultsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentResultsGhostItemListComponent', 'selector': 'stim-feature-experiment-results-ghost-item-list'},{'name': 'ExperimentResultsItemListComponent', 'selector': 'stim-feature-experiment-results-item-list'},{'name': 'ExperimentsComponent', 'selector': ''},{'name': 'ExperimentsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentsGhostItemListComponent', 'selector': 'stim-feature-experiments-ghost-item-list'},{'name': 'ExperimentsItemListComponent', 'selector': 'stim-feature-experiments-item-list'},{'name': 'ExperimentsPageToolsComponent', 'selector': ''},{'name': 'ExperimentTypeComponent', 'selector': 'stim-feature-experiments-experiment-type'},{'name': 'ExperimentTypeCvepComponent', 'selector': ''},{'name': 'ExperimentTypeCvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-cvep-output'},{'name': 'ExperimentTypeErpComponent', 'selector': ''},{'name': 'ExperimentTypeErpOutputComponent', 'selector': 'stim-feature-experiments-type-erp-output'},{'name': 'ExperimentTypeFvepComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep'},{'name': 'ExperimentTypeFvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep-output'},{'name': 'ExperimentTypeHeaderComponent', 'selector': 'stim-feature-experiments-experiment-type-header'},{'name': 'ExperimentTypeNoneComponent', 'selector': ''},{'name': 'ExperimentTypeReaComponent', 'selector': ''},{'name': 'ExperimentTypeReaOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-rea-output'},{'name': 'ExperimentTypeTvepComponent', 'selector': ''},{'name': 'ExperimentTypeTvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-tvep-output'},{'name': 'ExperimentViewerComponent', 'selector': 'stim-lib-ui-experiment-viewer'},{'name': 'FabComponent', 'selector': 'stim-lib-fab'},{'name': 'FileBrowserComponent', 'selector': ''},{'name': 'HelpComponent', 'selector': ''},{'name': 'ImagePlayerComponent', 'selector': 'stim-lib-ui-image-player'},{'name': 'InformDialogComponent', 'selector': ''},{'name': 'ListButtonsAddonComponent', 'selector': ''},{'name': 'LoginComponent', 'selector': 'stim-feature-auth'},{'name': 'LogoutComponent', 'selector': ''},{'name': 'ModalComponent', 'selector': 'stim-lib-modal'},{'name': 'NavigationComponent', 'selector': 'stim-feature-navigation'},{'name': 'NoConditionComponent', 'selector': 'stim-feature-player-stop-condition-no-condition'},{'name': 'OutputEditorComponent', 'selector': 'neuro-client-output-editor'},{'name': 'OutputPatternComponent', 'selector': 'stim-feature-experiments-output-pattern'},{'name': 'OutputTypeComponent', 'selector': 'stim-feature-experiments-output-type'},{'name': 'PageNotFoundComponent', 'selector': ''},{'name': 'PageToolsComponent', 'selector': ''},{'name': 'ParamConfigApplicationComponent', 'selector': 'stim-feature-settings-param-config-application'},{'name': 'ParamConfigComponent', 'selector': 'stim-feature-settings-param-config'},{'name': 'ParamConfigExperimentsComponent', 'selector': 'stim-feature-settings-param-config-experiments'},{'name': 'ParamConfigServerComponent', 'selector': 'stim-feature-settings-param-config-server'},{'name': 'PlayerComponent', 'selector': ''},{'name': 'PlayerPageToolsComponent', 'selector': ''},{'name': 'ProfileComponent', 'selector': 'stim-feature-users'},{'name': 'RegisterComponent', 'selector': 'stim-feature-auth'},{'name': 'SequenceComponent', 'selector': 'stim-feature-sequences-sequence'},{'name': 'SequenceFastDialogComponent', 'selector': ''},{'name': 'SequencesComponent', 'selector': ''},{'name': 'SequencesFilterDialogComponent', 'selector': ''},{'name': 'SequencesGhostItemListComponent', 'selector': 'stim-feature-sequences-ghost-item-list'},{'name': 'SequencesItemListComponent', 'selector': 'stim-feature-sequences-item-list'},{'name': 'SequenceViewerComponent', 'selector': 'stim-lib-ui-sequence-viewer'},{'name': 'ServiceStateComponent', 'selector': 'stim-feature-settings-service-state'},{'name': 'SettingsComponent', 'selector': ''},{'name': 'SidebarComponent', 'selector': 'stim-feature-navigation-sidebar'},{'name': 'StimulatorComponent', 'selector': ''},{'name': 'StopConditionsComponent', 'selector': 'stim-feature-player-stop-conditions'},{'name': 'TagEditorComponent', 'selector': 'stim-lib-ui-tag-editor'}];
+    var DIRECTIVES = [{'name': 'BaseExperimentTypeResolverDirective', 'selector': ''},{'name': 'ContentTogglerDirective', 'selector': '[stimLibUiContentToggler]'},{'name': 'DialogChildsDirective', 'selector': '[stimLibModalDialogChilds]'},{'name': 'ExperimentTypeResolverDirective', 'selector': '[stimFeatureExperimentsTypeResolver]'},{'name': 'FilterDialogComponent', 'selector': ''},{'name': 'NavigationButtonsAddonDirective', 'selector': '[stimFeatureNavigationButtonsAddon]'},{'name': 'PlayerExperimentTypeResolverDirective', 'selector': '[stimFeaturePlayerExperimentTypeResolver]'},{'name': 'StopConditionDirective', 'selector': '[stimFeatureStopCondition]'}];
+    var ACTUAL_COMPONENT = {'name': 'SequencesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SequencesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

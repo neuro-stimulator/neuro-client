@@ -1,0 +1,1423 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  SequenceComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>stim-feature-sequences-sequence</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./sequence.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./sequence.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_nameValidator" >_nameValidator</a>
+                            </li>
+                            <li>
+                                <a href="#ExperimentType" >ExperimentType</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_loadSequence" >_loadSequence</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#_updateFormGroup" >_updateFormGroup</a>
+                            </li>
+                            <li>
+                                <a href="#handleGenerateSequence" >handleGenerateSequence</a>
+                            </li>
+                            <li>
+                                <a href="#handleSaveSequence" >handleSaveSequence</a>
+                            </li>
+                            <li>
+                                <a href="#handleSequenceChanged" >handleSequenceChanged</a>
+                            </li>
+                            <li>
+                                <a href="#handleSequenceUpdate" >handleSequenceUpdate</a>
+                            </li>
+                            <li>
+                                <a href="#handleShowOriginalSequence" >handleShowOriginalSequence</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#name" >name</a>
+                                </li>
+                                <li>
+                                    <a href="#size" >size</a>
+                                </li>
+                                <li>
+                                    <a href="#experimentId" >experimentId</a>
+                                </li>
+                                <li>
+                                    <a href="#data" >data</a>
+                                </li>
+                                <li>
+                                    <a href="#isNew" >isNew</a>
+                                </li>
+                                <li>
+                                    <a href="#sequencesState" >sequencesState</a>
+                                </li>
+                                <li>
+                                    <a href="#connectionState" >connectionState</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_facade: <a href="../injectables/SequencesFacade.html" target="_self">SequencesFacade</a>, _experimentService: <a href="../injectables/ExperimentsFacade.html" target="_self">ExperimentsFacade</a>, toastr: ToastrService, _router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, _route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, _connection: <a href="../injectables/AliveCheckerFacade.html" target="_self">AliveCheckerFacade</a>, logger: NGXLogger)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_facade</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SequencesFacade.html" target="_self" >SequencesFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_experimentService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ExperimentsFacade.html" target="_self" >ExperimentsFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastr</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_connection</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AliveCheckerFacade.html" target="_self" >AliveCheckerFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>logger</td>
+                                                  
+                                                        <td>
+                                                                    <code>NGXLogger</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_loadSequence"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_loadSequence</b></span>
+                        <a href="#_loadSequence"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_loadSequence(sequenceID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, sourceExperimentId?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, defaultSequenceSize?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:51</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sequenceID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>sourceExperimentId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>defaultSequenceSize</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_updateFormGroup"></a>
+                    <span class="name">
+                        <span class="modifier">Protected</span>
+                        <span ><b>_updateFormGroup</b></span>
+                        <a href="#_updateFormGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_updateFormGroup(sequence: Sequence)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:74</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Pomocná privátní metoda pro aktualizaci formuláře</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sequence</td>
+                                    <td>
+                                            <code>Sequence</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Sequence, která dodá data do formuláře</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleGenerateSequence"></a>
+                    <span class="name">
+                        <span ><b>handleGenerateSequence</b></span>
+                        <a href="#handleGenerateSequence"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleGenerateSequence()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:97</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleSaveSequence"></a>
+                    <span class="name">
+                        <span ><b>handleSaveSequence</b></span>
+                        <a href="#handleSaveSequence"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleSaveSequence()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleSequenceChanged"></a>
+                    <span class="name">
+                        <span ><b>handleSequenceChanged</b></span>
+                        <a href="#handleSequenceChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleSequenceChanged(changed: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="116"
+                            class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:116</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changed</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleSequenceUpdate"></a>
+                    <span class="name">
+                        <span ><b>handleSequenceUpdate</b></span>
+                        <a href="#handleSequenceUpdate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleSequenceUpdate(data: number[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="109"
+                            class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:109</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                            <code>number[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleShowOriginalSequence"></a>
+                    <span class="name">
+                        <span ><b>handleShowOriginalSequence</b></span>
+                        <a href="#handleShowOriginalSequence"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleShowOriginalSequence()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:105</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_nameValidator"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_nameValidator</b></span>
+                        <a href="#_nameValidator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new SequenceNameValidator(this._facade)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ExperimentType"></a>
+                    <span class="name">
+                        <span ><b>ExperimentType</b></span>
+                        <a href="#ExperimentType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ExperimentType</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormGroup({
+    id: new FormControl(),
+    experimentId: new FormControl(null, [Validators.required, Validators.min(1)]),
+    name: new FormControl(null, {
+      validators: [Validators.required],
+      asyncValidators: [this._nameValidator.validate.bind(this._nameValidator)],
+      updateOn: &#x27;blur&#x27;,
+    }),
+    size: new FormControl(null, [Validators.required, Validators.min(1)]),
+    data: new FormControl(null, [Validators.required]),
+    created: new FormControl(),
+    tags: new FormControl([]),
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="name"></a>
+                        <span class="name"><b>name</b><a href="#name"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>name()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:120</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="size"></a>
+                        <span class="name"><b>size</b><a href="#size"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>size()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:124</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="experimentId"></a>
+                        <span class="name"><b>experimentId</b><a href="#experimentId"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>experimentId()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:128</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="data"></a>
+                        <span class="name"><b>data</b><a href="#data"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>data()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:132</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isNew"></a>
+                        <span class="name"><b>isNew</b><a href="#isNew"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>isNew()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:136</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sequencesState"></a>
+                        <span class="name"><b>sequencesState</b><a href="#sequencesState"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>sequencesState()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:140</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="connectionState"></a>
+                        <span class="name"><b>connectionState</b><a href="#connectionState"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>connectionState()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">libs/stim-feature-sequences/feature/src/lib/sequence/sequence.component.ts:144</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, Params, Router } from &#x27;@angular/router&#x27;;
+import { AbstractControl, FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+
+import { combineLatest, Observable } from &#x27;rxjs&#x27;;
+import { ToastrService } from &#x27;ngx-toastr&#x27;;
+import { NGXLogger } from &#x27;ngx-logger&#x27;;
+
+import { createEmptySequence, ExperimentType, Sequence } from &#x27;@stechy1/diplomka-share&#x27;;
+
+import { SequenceNameValidator } from &#x27;../sequence-name-validator&#x27;;
+import { SequencesFacade, SequencesState } from &#x27;@neuro-client/stim-feature-sequences/domain&#x27;;
+import { ExperimentsFacade } from &#x27;@neuro-client/stim-feature-experiments/domain&#x27;;
+import { map, take } from &#x27;rxjs/operators&#x27;;
+import { AliveCheckerFacade, ConnectionInformationState } from &#x27;@neuro-client/stim-lib-connection&#x27;;
+
+@Component({
+  selector: &#x27;stim-feature-sequences-sequence&#x27;,
+  templateUrl: &#x27;./sequence.component.html&#x27;,
+  styleUrls: [&#x27;./sequence.component.sass&#x27;],
+})
+export class SequenceComponent implements OnInit {
+  private readonly _nameValidator &#x3D; new SequenceNameValidator(this._facade);
+
+  form: FormGroup &#x3D; new FormGroup({
+    id: new FormControl(),
+    experimentId: new FormControl(null, [Validators.required, Validators.min(1)]),
+    name: new FormControl(null, {
+      validators: [Validators.required],
+      asyncValidators: [this._nameValidator.validate.bind(this._nameValidator)],
+      updateOn: &#x27;blur&#x27;,
+    }),
+    size: new FormControl(null, [Validators.required, Validators.min(1)]),
+    data: new FormControl(null, [Validators.required]),
+    created: new FormControl(),
+    tags: new FormControl([]),
+  });
+
+  ExperimentType: ExperimentType;
+
+  constructor(
+    private readonly _facade: SequencesFacade,
+    private readonly _experimentService: ExperimentsFacade,
+    private readonly toastr: ToastrService,
+    private readonly _router: Router,
+    private readonly _route: ActivatedRoute,
+    private readonly _connection: AliveCheckerFacade,
+    private readonly logger: NGXLogger
+  ) {}
+
+  private _loadSequence(sequenceID: string, sourceExperimentId?: string, defaultSequenceSize?: string) {
+    if (sequenceID !&#x3D;&#x3D; undefined) {
+      if (isNaN(parseInt(sequenceID, 10))) {
+        this.toastr.error(&#x60;ID sequence: &#x27;${sequenceID}&#x27; se nepodařilo naparsovat!&#x60;);
+        return;
+      }
+
+      this._facade.one(+sequenceID);
+    } else {
+      const sequence &#x3D; createEmptySequence();
+      sequence.experimentId &#x3D; +sourceExperimentId;
+      sequence.size &#x3D; +defaultSequenceSize || 0;
+      this._facade.empty(sequence);
+    }
+
+    this._facade.experimentsAsSequenceSource();
+  }
+
+  /**
+   * Pomocná privátní metoda pro aktualizaci formuláře
+   *
+   * @param sequence Sequence, která dodá data do formuláře
+   */
+  protected _updateFormGroup(sequence: Sequence) {
+    this.logger.debug(&#x27;Aktualizuji hodnoty ve formuláři.&#x27;);
+    this.form.patchValue(sequence);
+    this.form.patchValue({ tags: [...sequence.tags] }, { emitEvent: false });
+    this.form.markAsUntouched();
+  }
+
+  ngOnInit() {
+    this._facade.state
+      .pipe(take(2))
+      .pipe(map((state: SequencesState) &#x3D;&gt; state.selectedSequence.sequence))
+      .subscribe((sequence: Sequence) &#x3D;&gt; {
+        this._updateFormGroup(sequence);
+      });
+    this._facade.state.pipe(map((state: SequencesState) &#x3D;&gt; state.selectedSequence.sequence?.data)).subscribe((data: number[]) &#x3D;&gt; {
+      this.form.patchValue({ data });
+    });
+
+    combineLatest([this._route.params, this._route.queryParams]).subscribe(([params, queryParams]: [Params, Params]) &#x3D;&gt; {
+      this._loadSequence(params[&#x27;id&#x27;], queryParams[&#x27;sourceExperimentId&#x27;], queryParams[&#x27;defaultSequenceSize&#x27;]);
+    });
+  }
+
+  handleGenerateSequence() {
+    this._facade.generateSequence(this.form.value);
+  }
+
+  handleSaveSequence() {
+    this._facade.save(this.form.value);
+  }
+
+  handleShowOriginalSequence() {
+    this._facade.originalSequenceAsActual();
+  }
+
+  handleSequenceUpdate(data: number[]) {
+    this.form.patchValue({ data });
+    if (this.form.valid) {
+      this.handleSaveSequence();
+    }
+  }
+
+  handleSequenceChanged(changed: boolean) {
+    // empty body
+  }
+
+  get name(): AbstractControl {
+    return this.form.get(&#x27;name&#x27;);
+  }
+
+  get size(): AbstractControl {
+    return this.form.get(&#x27;size&#x27;);
+  }
+
+  get experimentId(): AbstractControl {
+    return this.form.get(&#x27;experimentId&#x27;);
+  }
+
+  get data(): AbstractControl {
+    return this.form.get(&#x27;data&#x27;);
+  }
+
+  get isNew(): boolean {
+    return !this.form.get(&#x27;id&#x27;).value;
+  }
+
+  get sequencesState(): Observable&lt;SequencesState&gt; {
+    return this._facade.state;
+  }
+
+  get connectionState(): Observable&lt;ConnectionInformationState&gt; {
+    return this._connection.state;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;row&quot;&gt;
+  &lt;div class&#x3D;&quot;col&quot;&gt;
+
+    &lt;form [formGroup]&#x3D;&quot;form&quot;&gt;
+
+      &lt;div class&#x3D;&quot;row experiment-property&quot; [formGroup]&#x3D;&quot;form&quot;&gt;
+        &lt;div class&#x3D;&quot;col-10&quot;&gt;
+          &lt;h4&gt;{{ &#x27;SEQUENCES.BASE_INFORMATIONS&#x27; | translate }}&lt;/h4&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;col-2 text-right&quot; stimLibUiContentToggler [toggledContent]&#x3D;&quot;basicInformations&quot; [icon]&#x3D;&quot;icon&quot;&gt;&lt;i class&#x3D;&quot;fas fa-minus&quot; #icon&gt;&lt;/i&gt;&lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;col-12&quot; #basicInformations&gt;
+          &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col-12 col-sm-4&quot;&gt;
+              &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                &lt;label for&#x3D;&quot;sequence-name&quot;&gt;{{ &#x27;SEQUENCES.SEQUENCE.NAME&#x27; | translate }}&lt;/label&gt;
+                &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;sequence-name&quot; class&#x3D;&quot;form-control form-control-sm&quot; [class.is-valid]&#x3D;&quot;name.valid&quot; [class.is-invalid]&#x3D;&quot;name.invalid&quot; formControlName&#x3D;&quot;name&quot;&gt;
+                &lt;small *ngIf&#x3D;&quot;name.touched &amp;&amp; name.errors?.required&quot; class&#x3D;&quot;form-text text-muted&quot;&gt;Název sekvence je vyžadován.&lt;/small&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class&#x3D;&quot;col-12 col-sm-4&quot;&gt;
+              &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                &lt;label for&#x3D;&quot;sequence-source-experiment&quot;&gt;{{ &#x27;SEQUENCES.SEQUENCE.SOURCE_EXPERIMENT&#x27; | translate }}&lt;/label&gt;
+                &lt;select id&#x3D;&quot;sequence-source-experiment&quot; class&#x3D;&quot;selectpicker form-control form-control-sm&quot; formControlName&#x3D;&quot;experimentId&quot;&gt;
+                  &lt;option value&#x3D;&quot;-1&quot; disabled&gt;{{ &#x27;SEQUENCES.SEQUENCE.SELECT_SOURCE_EXPERIMENT&#x27; | translate }}&lt;/option&gt;
+                  &lt;option *ngFor&#x3D;&quot;let experiment of (sequencesState | async).selectedSequence.experiments&quot;
+                          [value]&#x3D;&quot;experiment.id&quot; [attr.data-experiment-name]&#x3D;&quot;experiment.name&quot;&gt;
+                    {{experiment.name}}
+                  &lt;/option&gt;
+                &lt;/select&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class&#x3D;&quot;col-12 col-sm-4&quot;&gt;
+              &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                &lt;label for&#x3D;&quot;sequence-size&quot;&gt;{{ &#x27;SEQUENCES.SEQUENCE.SIZE&#x27; | translate }}&lt;/label&gt;
+                &lt;input type&#x3D;&quot;number&quot; id&#x3D;&quot;sequence-size&quot; class&#x3D;&quot;form-control form-control-sm&quot; [class.is-valid]&#x3D;&quot;size.valid&quot; [class.is-invalid]&#x3D;&quot;size.invalid&quot; formControlName&#x3D;&quot;size&quot;&gt;
+                &lt;small *ngIf&#x3D;&quot;size.touched &amp;&amp; size.errors?.required&quot; class&#x3D;&quot;form-text text-muted&quot;&gt;{{ &#x27;APP.VALIDATION.REQUIRED&#x27; | translate }}&lt;/small&gt;
+                &lt;small *ngIf&#x3D;&quot;size.touched &amp;&amp; size.errors?.min&quot; class&#x3D;&quot;form-text text-muted&quot;&gt;{{ &#x27;APP.VALIDATION.MIN&#x27; | translate:{min: size.errors?.min.min} }}&lt;/small&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col-12&quot;&gt;
+              &lt;stim-lib-ui-tag-editor [form]&#x3D;&quot;form&quot;&gt;&lt;/stim-lib-ui-tag-editor&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;col&quot;&gt;
+          &lt;button id&#x3D;&quot;generate-sequence&quot; class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;handleGenerateSequence()&quot; [disabled]&#x3D;&quot;experimentId.invalid || size.invalid&quot;&gt;&lt;i class&#x3D;&quot;fas fa-plus&quot;&gt;&lt;/i&gt; {{&#x27;SEQUENCES.SEQUENCE.BUTTON_BAR.GENERATE&#x27; | translate }}&lt;/button&gt;
+          &lt;button id&#x3D;&quot;show-original-sequence&quot; class&#x3D;&quot;btn btn-secondary ml-2&quot; (click)&#x3D;&quot;handleShowOriginalSequence()&quot; [disabled]&#x3D;&quot;isNew&quot;&gt;&lt;i class&#x3D;&quot;fas fa-recycle&quot;&gt;&lt;/i&gt; {{&#x27;SEQUENCES.SEQUENCE.BUTTON_BAR.SHOW_ORIGINAL&#x27; | translate }}&lt;/button&gt;
+            &lt;a id&#x3D;&quot;go-to-experiment-link&quot; class&#x3D;&quot;btn btn-info ml-2&quot; [routerLink]&#x3D;&quot;[&#x27;/&#x27;, &#x27;experiments&#x27;, &#x27;erp&#x27;, experimentId.value]&quot; [class.disabled]&#x3D;&quot;experimentId.invalid&quot;&gt;{{&#x27;SEQUENCES.SEQUENCE.BUTTON_BAR.GO_TO_EXPERIMENT&#x27; | translate }}&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;stim-lib-ui-sequence-viewer [inputData]&#x3D;&quot;(sequencesState | async).selectedSequence.sequence.data&quot; [outputCount]&#x3D;&quot;(sequencesState | async).selectedSequence.experiment.outputCount&quot; [editable]&#x3D;&quot;true&quot; (dataChanged)&#x3D;&quot;handleSequenceChanged($event)&quot; (update)&#x3D;&quot;handleSequenceUpdate($event)&quot;&gt;&lt;/stim-lib-ui-sequence-viewer&gt;
+
+
+&lt;stim-lib-fab
+  [icon]&#x3D;&quot;(connectionState | async).working ? &#x27;fa-save fa-spin&#x27; : &#x27;fa-save&#x27;&quot;
+  (fabClick)&#x3D;&quot;handleSaveSequence()&quot;
+  [disabled]&#x3D;&quot;form.invalid || (connectionState | async).working &quot;&gt;
+&lt;/stim-lib-fab&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./sequence.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="row">  <div class="col">    <form [formGroup]="form">      <div class="row experiment-property" [formGroup]="form">        <div class="col-10">          <h4>{{ \'SEQUENCES.BASE_INFORMATIONS\' | translate }}</h4>        </div>        <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="basicInformations" [icon]="icon"><i class="fas fa-minus" #icon></i></div>        <div class="col-12" #basicInformations>          <div class="row">            <div class="col-12 col-sm-4">              <div class="form-group">                <label for="sequence-name">{{ \'SEQUENCES.SEQUENCE.NAME\' | translate }}</label>                <input type="text" id="sequence-name" class="form-control form-control-sm" [class.is-valid]="name.valid" [class.is-invalid]="name.invalid" formControlName="name">                <small *ngIf="name.touched && name.errors?.required" class="form-text text-muted">Název sekvence je vyžadován.</small>              </div>            </div>            <div class="col-12 col-sm-4">              <div class="form-group">                <label for="sequence-source-experiment">{{ \'SEQUENCES.SEQUENCE.SOURCE_EXPERIMENT\' | translate }}</label>                <select id="sequence-source-experiment" class="selectpicker form-control form-control-sm" formControlName="experimentId">                  <option value="-1" disabled>{{ \'SEQUENCES.SEQUENCE.SELECT_SOURCE_EXPERIMENT\' | translate }}</option>                  <option *ngFor="let experiment of (sequencesState | async).selectedSequence.experiments"                          [value]="experiment.id" [attr.data-experiment-name]="experiment.name">                    {{experiment.name}}                  </option>                </select>              </div>            </div>            <div class="col-12 col-sm-4">              <div class="form-group">                <label for="sequence-size">{{ \'SEQUENCES.SEQUENCE.SIZE\' | translate }}</label>                <input type="number" id="sequence-size" class="form-control form-control-sm" [class.is-valid]="size.valid" [class.is-invalid]="size.invalid" formControlName="size">                <small *ngIf="size.touched && size.errors?.required" class="form-text text-muted">{{ \'APP.VALIDATION.REQUIRED\' | translate }}</small>                <small *ngIf="size.touched && size.errors?.min" class="form-text text-muted">{{ \'APP.VALIDATION.MIN\' | translate:{min: size.errors?.min.min} }}</small>              </div>            </div>          </div>          <div class="row">            <div class="col-12">              <stim-lib-ui-tag-editor [form]="form"></stim-lib-ui-tag-editor>            </div>          </div>        </div>      </div>    </form>      <div class="row">        <div class="col">          <button id="generate-sequence" class="btn btn-primary" (click)="handleGenerateSequence()" [disabled]="experimentId.invalid || size.invalid"><i class="fas fa-plus"></i> {{\'SEQUENCES.SEQUENCE.BUTTON_BAR.GENERATE\' | translate }}</button>          <button id="show-original-sequence" class="btn btn-secondary ml-2" (click)="handleShowOriginalSequence()" [disabled]="isNew"><i class="fas fa-recycle"></i> {{\'SEQUENCES.SEQUENCE.BUTTON_BAR.SHOW_ORIGINAL\' | translate }}</button>            <a id="go-to-experiment-link" class="btn btn-info ml-2" [routerLink]="[\'/\', \'experiments\', \'erp\', experimentId.value]" [class.disabled]="experimentId.invalid">{{\'SEQUENCES.SEQUENCE.BUTTON_BAR.GO_TO_EXPERIMENT\' | translate }}</a>        </div>      </div>  </div></div><stim-lib-ui-sequence-viewer [inputData]="(sequencesState | async).selectedSequence.sequence.data" [outputCount]="(sequencesState | async).selectedSequence.experiment.outputCount" [editable]="true" (dataChanged)="handleSequenceChanged($event)" (update)="handleSequenceUpdate($event)"></stim-lib-ui-sequence-viewer><stim-lib-fab  [icon]="(connectionState | async).working ? \'fa-save fa-spin\' : \'fa-save\'"  (fabClick)="handleSaveSequence()"  [disabled]="form.invalid || (connectionState | async).working "></stim-lib-fab></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': ''},{'name': 'AppComponent', 'selector': 'stim-app'},{'name': 'AudioPlayerComponent', 'selector': 'stim-lib-ui-audio-player'},{'name': 'AuthComponent', 'selector': 'stim-feature-auth'},{'name': 'BaseExperimentTypeComponent', 'selector': ''},{'name': 'BaseListComponent', 'selector': ''},{'name': 'CalibrationComponent', 'selector': ''},{'name': 'ConfirmDialogComponent', 'selector': ''},{'name': 'ConsoleComponent', 'selector': 'stim-lib-console'},{'name': 'CountingCycleComponent', 'selector': 'stim-feature-player-stop-condition-counting-cycle'},{'name': 'CountingExperimentComponent', 'selector': 'stim-feature-player-stop-condition-counting-experiment'},{'name': 'DiodeComponent', 'selector': 'stim-lib-ui-diode'},{'name': 'DropdownBtnComponent', 'selector': 'stim-lib-ui-dropdown-btn'},{'name': 'ExperimentResultComponent', 'selector': 'stim-feature-experiment-results-experiment-result'},{'name': 'ExperimentResultsComponent', 'selector': ''},{'name': 'ExperimentResultsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentResultsGhostItemListComponent', 'selector': 'stim-feature-experiment-results-ghost-item-list'},{'name': 'ExperimentResultsItemListComponent', 'selector': 'stim-feature-experiment-results-item-list'},{'name': 'ExperimentsComponent', 'selector': ''},{'name': 'ExperimentsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentsGhostItemListComponent', 'selector': 'stim-feature-experiments-ghost-item-list'},{'name': 'ExperimentsItemListComponent', 'selector': 'stim-feature-experiments-item-list'},{'name': 'ExperimentsPageToolsComponent', 'selector': ''},{'name': 'ExperimentTypeComponent', 'selector': 'stim-feature-experiments-experiment-type'},{'name': 'ExperimentTypeCvepComponent', 'selector': ''},{'name': 'ExperimentTypeCvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-cvep-output'},{'name': 'ExperimentTypeErpComponent', 'selector': ''},{'name': 'ExperimentTypeErpOutputComponent', 'selector': 'stim-feature-experiments-type-erp-output'},{'name': 'ExperimentTypeFvepComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep'},{'name': 'ExperimentTypeFvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep-output'},{'name': 'ExperimentTypeHeaderComponent', 'selector': 'stim-feature-experiments-experiment-type-header'},{'name': 'ExperimentTypeNoneComponent', 'selector': ''},{'name': 'ExperimentTypeReaComponent', 'selector': ''},{'name': 'ExperimentTypeReaOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-rea-output'},{'name': 'ExperimentTypeTvepComponent', 'selector': ''},{'name': 'ExperimentTypeTvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-tvep-output'},{'name': 'ExperimentViewerComponent', 'selector': 'stim-lib-ui-experiment-viewer'},{'name': 'FabComponent', 'selector': 'stim-lib-fab'},{'name': 'FileBrowserComponent', 'selector': ''},{'name': 'HelpComponent', 'selector': ''},{'name': 'ImagePlayerComponent', 'selector': 'stim-lib-ui-image-player'},{'name': 'InformDialogComponent', 'selector': ''},{'name': 'ListButtonsAddonComponent', 'selector': ''},{'name': 'LoginComponent', 'selector': 'stim-feature-auth'},{'name': 'LogoutComponent', 'selector': ''},{'name': 'ModalComponent', 'selector': 'stim-lib-modal'},{'name': 'NavigationComponent', 'selector': 'stim-feature-navigation'},{'name': 'NoConditionComponent', 'selector': 'stim-feature-player-stop-condition-no-condition'},{'name': 'OutputEditorComponent', 'selector': 'neuro-client-output-editor'},{'name': 'OutputPatternComponent', 'selector': 'stim-feature-experiments-output-pattern'},{'name': 'OutputTypeComponent', 'selector': 'stim-feature-experiments-output-type'},{'name': 'PageNotFoundComponent', 'selector': ''},{'name': 'PageToolsComponent', 'selector': ''},{'name': 'ParamConfigApplicationComponent', 'selector': 'stim-feature-settings-param-config-application'},{'name': 'ParamConfigComponent', 'selector': 'stim-feature-settings-param-config'},{'name': 'ParamConfigExperimentsComponent', 'selector': 'stim-feature-settings-param-config-experiments'},{'name': 'ParamConfigServerComponent', 'selector': 'stim-feature-settings-param-config-server'},{'name': 'PlayerComponent', 'selector': ''},{'name': 'PlayerPageToolsComponent', 'selector': ''},{'name': 'ProfileComponent', 'selector': 'stim-feature-users'},{'name': 'RegisterComponent', 'selector': 'stim-feature-auth'},{'name': 'SequenceComponent', 'selector': 'stim-feature-sequences-sequence'},{'name': 'SequenceFastDialogComponent', 'selector': ''},{'name': 'SequencesComponent', 'selector': ''},{'name': 'SequencesFilterDialogComponent', 'selector': ''},{'name': 'SequencesGhostItemListComponent', 'selector': 'stim-feature-sequences-ghost-item-list'},{'name': 'SequencesItemListComponent', 'selector': 'stim-feature-sequences-item-list'},{'name': 'SequenceViewerComponent', 'selector': 'stim-lib-ui-sequence-viewer'},{'name': 'ServiceStateComponent', 'selector': 'stim-feature-settings-service-state'},{'name': 'SettingsComponent', 'selector': ''},{'name': 'SidebarComponent', 'selector': 'stim-feature-navigation-sidebar'},{'name': 'StimulatorComponent', 'selector': ''},{'name': 'StopConditionsComponent', 'selector': 'stim-feature-player-stop-conditions'},{'name': 'TagEditorComponent', 'selector': 'stim-lib-ui-tag-editor'}];
+    var DIRECTIVES = [{'name': 'BaseExperimentTypeResolverDirective', 'selector': ''},{'name': 'ContentTogglerDirective', 'selector': '[stimLibUiContentToggler]'},{'name': 'DialogChildsDirective', 'selector': '[stimLibModalDialogChilds]'},{'name': 'ExperimentTypeResolverDirective', 'selector': '[stimFeatureExperimentsTypeResolver]'},{'name': 'FilterDialogComponent', 'selector': ''},{'name': 'NavigationButtonsAddonDirective', 'selector': '[stimFeatureNavigationButtonsAddon]'},{'name': 'PlayerExperimentTypeResolverDirective', 'selector': '[stimFeaturePlayerExperimentTypeResolver]'},{'name': 'StopConditionDirective', 'selector': '[stimFeatureStopCondition]'}];
+    var ACTUAL_COMPONENT = {'name': 'SequenceComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SequenceComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,1733 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  BaseExperimentTypeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                    <code><a href="../interfaces/ComponentCanDeactivate.html" target="_self" >ComponentCanDeactivate</a></code>
+    </p>
+
+
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_experimentLoaded" >_experimentLoaded</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_experimentsStateSubscription" >_experimentsStateSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_outputEditorActions" >_outputEditorActions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_synchronizeEventSubscription" >_synchronizeEventSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_toggleSynchronizeSubscription" >_toggleSynchronizeSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#experimentLoaded$" >experimentLoaded$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#form" >form</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Abstract</span>
+                                <a href="#_createEmptyExperiment" >_createEmptyExperiment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#_createFormControls" >_createFormControls</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#_createOutputFormControl" >_createOutputFormControl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_loadExperiment" >_loadExperiment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_subscribeOutputEditorActions" >_subscribeOutputEditorActions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_unsubscribeOutputEditorActions" >_unsubscribeOutputEditorActions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_updateFormGroup" >_updateFormGroup</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_updateOutputsFromEditor" >_updateOutputsFromEditor</a>
+                            </li>
+                            <li>
+                                <a href="#canDeactivate" >canDeactivate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#handleSaveExperiment" >handleSaveExperiment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#handleShowOutputEditor" >handleShowOutputEditor</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#modalComponent" >modalComponent</a>
+                                </li>
+                                <li>
+                                    <a href="#experimentsState" >experimentsState</a>
+                                </li>
+                                <li>
+                                    <a href="#connectionState" >connectionState</a>
+                                </li>
+                                <li>
+                                    <a href="#outputCountParams" >outputCountParams</a>
+                                </li>
+                                <li>
+                                    <a href="#outputCount" >outputCount</a>
+                                </li>
+                                <li>
+                                    <a href="#outputs" >outputs</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                                <span class="modifier">Protected</span>
+                        <code>constructor(_maxOutputCount: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, _facade: <a href="../injectables/ExperimentsFacade.html" target="_self">ExperimentsFacade</a>, _route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, _navigation: <a href="../injectables/NavigationFacade.html" target="_self">NavigationFacade</a>, _connection: <a href="../injectables/AliveCheckerFacade.html" target="_self">AliveCheckerFacade</a>, _nameValidator: <a href="../classes/ExperimentNameValidator.html" target="_self">ExperimentNameValidator</a>, logger: NGXLogger)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:41</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_maxOutputCount</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_facade</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ExperimentsFacade.html" target="_self" >ExperimentsFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_navigation</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NavigationFacade.html" target="_self" >NavigationFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_connection</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AliveCheckerFacade.html" target="_self" >AliveCheckerFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_nameValidator</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/ExperimentNameValidator.html" target="_self" >ExperimentNameValidator</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>logger</td>
+                                                  
+                                                        <td>
+                                                                    <code>NGXLogger</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_createEmptyExperiment"></a>
+                    <span class="name">
+                        <span class="modifier">Protected</span>
+                        <span class="modifier">Abstract</span>
+                        <span ><b>_createEmptyExperiment</b></span>
+                        <a href="#_createEmptyExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_createEmptyExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:112</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Pomocná abstraktní metoda pro vytvoření prázdné instance experimentu</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>E</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_createFormControls"></a>
+                    <span class="name">
+                        <span class="modifier">Protected</span>
+                        <span ><b>_createFormControls</b></span>
+                        <a href="#_createFormControls"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_createFormControls()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:124</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Pomocná abstraktní metoda pro vytvoření formulářové skupiny komponent</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>literal type</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_createOutputFormControl"></a>
+                    <span class="name">
+                        <span class="modifier">Protected</span>
+                        <span ><b>_createOutputFormControl</b></span>
+                        <a href="#_createOutputFormControl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_createOutputFormControl()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="144"
+                            class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:144</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>literal type</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_loadExperiment"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_loadExperiment</b></span>
+                        <a href="#_loadExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_loadExperiment(experimentId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:60</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Obslužná metoda načtení experimentu podle ID</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>experimentId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>ID experimentu</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_subscribeOutputEditorActions"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_subscribeOutputEditorActions</b></span>
+                        <a href="#_subscribeOutputEditorActions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_subscribeOutputEditorActions()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_unsubscribeOutputEditorActions"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_unsubscribeOutputEditorActions</b></span>
+                        <a href="#_unsubscribeOutputEditorActions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_unsubscribeOutputEditorActions()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_updateFormGroup"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_updateFormGroup</b></span>
+                        <a href="#_updateFormGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_updateFormGroup(experiment: E)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:78</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Pomocná privátní metoda pro aktualizaci formuláře</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>experiment</td>
+                                    <td>
+                                            <code>E</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Experiment, který dodá data do formuláře</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_updateOutputsFromEditor"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_updateOutputsFromEditor</b></span>
+                        <a href="#_updateOutputsFromEditor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_updateOutputsFromEditor(outputEntries: <a href="../interfaces/OutputEntry.html" target="_self">OutputEntry[]</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="178"
+                            class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:178</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Projde odpovídající počet výstupů a aktualizuje hodnoty z editoru výstupů</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>outputEntries</td>
+                                    <td>
+                                                <code><a href="../interfaces/OutputEntry.html" target="_self" >OutputEntry[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Kolekce nastavených výstupů</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="canDeactivate"></a>
+                    <span class="name">
+                        <span ><b>canDeactivate</b></span>
+                        <a href="#canDeactivate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>canDeactivate()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="216"
+                            class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:216</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable | boolean</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleSaveExperiment"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>handleSaveExperiment</b></span>
+                        <a href="#handleSaveExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleSaveExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="226"
+                            class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:226</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Reakce na tlačítko pro uložení dat experimentu</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleShowOutputEditor"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>handleShowOutputEditor</b></span>
+                        <a href="#handleShowOutputEditor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleShowOutputEditor()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="233"
+                            class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:233</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Reakce na tlačítko pro zobrazení editoru výstupů</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:211</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="194"
+                            class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:194</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_experimentLoaded"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_experimentLoaded</b></span>
+                        <a href="#_experimentLoaded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter&lt;E&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new EventEmitter&lt;E&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_experimentsStateSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_experimentsStateSubscription</b></span>
+                        <a href="#_experimentsStateSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_outputEditorActions"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_outputEditorActions</b></span>
+                        <a href="#_outputEditorActions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/OutputEditorActions.html" target="_self" >OutputEditorActions</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    toggleSynchronize: new EventEmitter&lt;boolean&gt;(),
+    synchronizeEvent: new EventEmitter&lt;SynchronizeEvent&gt;(),
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_synchronizeEventSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_synchronizeEventSubscription</b></span>
+                        <a href="#_synchronizeEventSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_toggleSynchronizeSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_toggleSynchronizeSubscription</b></span>
+                        <a href="#_toggleSynchronizeSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="experimentLoaded$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>experimentLoaded$</b></span>
+                        <a href="#experimentLoaded$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;E&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._experimentLoaded.asObservable()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modalComponent"></a>
+                        <span class="name"><b>modalComponent</b><a href="#modalComponent"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>modalComponent()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:117</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Pomocný getter na instanci modální komponenty</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="../components/ModalComponent.html" target="_self" >ModalComponent</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="experimentsState"></a>
+                        <span class="name"><b>experimentsState</b><a href="#experimentsState"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>experimentsState()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="258" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:258</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="connectionState"></a>
+                        <span class="name"><b>connectionState</b><a href="#connectionState"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>connectionState()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="262" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:262</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="outputCountParams"></a>
+                        <span class="name"><b>outputCountParams</b><a href="#outputCountParams"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>outputCountParams()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:266</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="outputCount"></a>
+                        <span class="name"><b>outputCount</b><a href="#outputCount"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>outputCount()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:270</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="outputs"></a>
+                        <span class="name"><b>outputs</b><a href="#outputs"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>outputs()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="274" class="link-to-prism">libs/stim-feature-experiments/feature/src/lib/experiment-type/base-experiment-type.component.ts:274</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { EventEmitter, OnDestroy, OnInit, Component, Inject } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, Params } from &#x27;@angular/router&#x27;;
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { Observable, Subscription } from &#x27;rxjs&#x27;;
+import { map, take } from &#x27;rxjs/operators&#x27;;
+
+import { NGXLogger } from &#x27;ngx-logger&#x27;;
+import { Options as SliderOptions } from &#x27;ng5-slider/options&#x27;;
+
+import { Experiment, ExperimentType, IpcSynchronizationMessage, Output } from &#x27;@stechy1/diplomka-share&#x27;;
+
+import { ExperimentsFacade, ExperimentsState } from &#x27;@neuro-client/stim-feature-experiments/domain&#x27;;
+import { NavigationFacade } from &#x27;@neuro-client/stim-feature-navigation/domain&#x27;;
+import { ConnectionInformationState } from &#x27;@neuro-client/stim-lib-connection&#x27;;
+import { AliveCheckerFacade } from &#x27;@neuro-client/stim-lib-connection&#x27;;
+import { ModalComponent } from &#x27;@neuro-client/stim-lib-modal&#x27;;
+import { TOKEN_MAX_OUTPUT_COUNT } from &#x27;@neuro-client/stim-lib-common&#x27;;
+
+import { ExperimentNameValidator } from &#x27;../experiment-name-validator&#x27;;
+import { ComponentCanDeactivate } from &#x27;../experiments.deactivate&#x27;;
+import { outputCountParams } from &#x27;../experiments.share&#x27;;
+import { OutputEditorComponent } from &#x27;./output-type/output-editor/output-editor.component&#x27;;
+import { ExperimentOutputTypeValidator } from &#x27;./output-type/experiment-output-type-validator&#x27;;
+import { OutputEntry } from &#x27;./output-type/output-editor/output-entry&#x27;;
+import { OutputEditorActions, OutputEditorArgs, SynchronizeEvent } from &#x27;./output-type/output-editor/output-editor.args&#x27;;
+import { AssetPlayerFacade } from &#x27;@neuro-client/stim-lib-asset-player&#x27;;
+import { PlayerFacade } from &#x27;@neuro-client/stim-feature-player/domain&#x27;;
+
+@Component({ template: &#x27;&#x27; })
+export abstract class BaseExperimentTypeComponent&lt;E extends Experiment&lt;O&gt;, O extends Output&gt; implements OnInit, OnDestroy, ComponentCanDeactivate {
+  private _experimentLoaded: EventEmitter&lt;E&gt; &#x3D; new EventEmitter&lt;E&gt;();
+  public experimentLoaded$: Observable&lt;E&gt; &#x3D; this._experimentLoaded.asObservable();
+  public form: FormGroup;
+  private _experimentsStateSubscription: Subscription;
+
+  private _outputEditorActions: OutputEditorActions &#x3D; {
+    toggleSynchronize: new EventEmitter&lt;boolean&gt;(),
+    synchronizeEvent: new EventEmitter&lt;SynchronizeEvent&gt;(),
+  };
+  private _toggleSynchronizeSubscription: Subscription;
+  private _synchronizeEventSubscription: Subscription;
+
+  protected constructor(
+    @Inject(TOKEN_MAX_OUTPUT_COUNT) protected readonly _maxOutputCount: number,
+    protected readonly _facade: ExperimentsFacade,
+    protected readonly _route: ActivatedRoute,
+    protected readonly _navigation: NavigationFacade,
+    private readonly _connection: AliveCheckerFacade,
+    private readonly _nameValidator: ExperimentNameValidator,
+    protected readonly logger: NGXLogger
+  ) {
+    this.form &#x3D; new FormGroup(this._createFormControls());
+  }
+
+  /**
+   * Obslužná metoda načtení experimentu podle ID
+   *
+   * @param experimentId ID experimentu
+   */
+  private _loadExperiment(experimentId: string) {
+    if (experimentId !&#x3D;&#x3D; undefined) {
+      if (isNaN(parseInt(experimentId, 10))) {
+        this.logger.error(&#x60;ID experimentu: &#x27;${experimentId}&#x27; se nepodařilo naparsovat!&#x60;);
+        return;
+      }
+
+      this._facade.one(+experimentId);
+    } else {
+      this._facade.empty(this._createEmptyExperiment());
+    }
+  }
+
+  /**
+   * Pomocná privátní metoda pro aktualizaci formuláře
+   *
+   * @param experiment Experiment, který dodá data do formuláře
+   */
+  private _updateFormGroup(experiment: E) {
+    this.logger.debug(&#x27;Aktualizuji hodnoty ve formuláři.&#x27;);
+
+    if (experiment.outputs?.length &gt; 0) {
+      for (let i &#x3D; 0; i &lt; this._maxOutputCount; i++) {
+        (this.form.get(&#x27;outputs&#x27;) as FormArray).push(new FormGroup(this._createOutputFormControl()));
+      }
+    } else {
+      (this.form.get(&#x27;outputs&#x27;) as FormArray).clear();
+    }
+
+    this.form.patchValue(experiment);
+    this.form.patchValue({ tags: [...experiment.tags] }, { emitEvent: false });
+    this.form.markAsUntouched();
+  }
+
+  private _subscribeOutputEditorActions() {
+    this._toggleSynchronizeSubscription &#x3D; this._outputEditorActions.toggleSynchronize.subscribe((synchronize: boolean) &#x3D;&gt; {
+      this._facade.setOutputSynchronization(synchronize);
+    });
+    this._synchronizeEventSubscription &#x3D; this._outputEditorActions.synchronizeEvent.subscribe((event: SynchronizeEvent) &#x3D;&gt; {
+      this._connection.sendSocketData(new IpcSynchronizationMessage(event.id, event.x, event.y));
+    });
+  }
+
+  private _unsubscribeOutputEditorActions() {
+    this._toggleSynchronizeSubscription.unsubscribe();
+    this._synchronizeEventSubscription.unsubscribe();
+    this._facade.setOutputSynchronization(false);
+  }
+
+  /**
+   * Pomocná abstraktní metoda pro vytvoření prázdné instance experimentu
+   */
+  protected abstract _createEmptyExperiment(): E;
+
+  /**
+   * Pomocný getter na instanci modální komponenty
+   */
+  protected get modalComponent(): ModalComponent {
+    return null;
+  }
+
+  /**
+   * Pomocná abstraktní metoda pro vytvoření formulářové skupiny komponent
+   */
+  protected _createFormControls(): { [p: string]: AbstractControl } {
+    this.logger.debug(&#x27;Vytvářím kontrolky pro formulář.&#x27;);
+    return {
+      id: new FormControl(null),
+      name: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [this._nameValidator.validate.bind(this._nameValidator)],
+        updateOn: &#x27;blur&#x27;,
+      }),
+      description: new FormControl(),
+      type: new FormControl(null, [Validators.required]),
+      created: new FormControl(null),
+      tags: new FormControl([]),
+      supportSequences: new FormControl(null, [Validators.required]),
+      outputCount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this._maxOutputCount)]),
+      outputs: new FormArray([]),
+      userGroups: new FormControl()
+    };
+  }
+
+  protected _createOutputFormControl(): { [p: string]: AbstractControl } {
+    this.logger.debug(&#x27;Vytvářím kontrolky výstupů pro formulář.&#x27;);
+    return {
+      id: new FormControl(null, Validators.required),
+      experimentId: new FormControl(null, Validators.required),
+      orderId: new FormControl(null, [Validators.required, Validators.min(0)]),
+      brightness: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
+      outputType: new FormGroup(
+        {
+          led: new FormControl(null),
+          audio: new FormControl(null),
+          audioFile: new FormControl(null),
+          image: new FormControl(null),
+          imageFile: new FormControl(null),
+        },
+        {
+          validators: [Validators.required, ExperimentOutputTypeValidator.createValidator()],
+        }
+      ),
+      x: new FormControl(),
+      y: new FormControl(),
+      width: new FormControl(),
+      height: new FormControl(),
+      manualAlignment: new FormControl(),
+      horizontalAlignment: new FormControl(),
+      verticalAlignment: new FormControl(),
+    };
+  }
+
+  /**
+   * Projde odpovídající počet výstupů a aktualizuje hodnoty z editoru výstupů
+   *
+   * @param outputEntries Kolekce nastavených výstupů
+   */
+  private _updateOutputsFromEditor(outputEntries: OutputEntry[]): void {
+    const formOutputs &#x3D; this.outputs.controls;
+    for (let i &#x3D; 0; i &lt; this.outputCount.value; i++) {
+      const formOutput: FormControl &#x3D; formOutputs[i] as FormControl;
+      const outputEntry &#x3D; outputEntries[i];
+
+      formOutput.patchValue({
+        x: outputEntry.x,
+        y: outputEntry.y,
+        horizontalAlignment: outputEntry.horizontalAlignment,
+        manualAlignment: outputEntry.manualAlignment,
+        verticalAlignment: outputEntry.verticalAlignment,
+      });
+    }
+  }
+
+  ngOnInit(): void {
+    this._experimentsStateSubscription &#x3D; this._facade.state
+      .pipe(take(2))
+      .pipe(map((state: ExperimentsState) &#x3D;&gt; state.selectedExperiment.experiment))
+      .subscribe((experiment: Experiment&lt;O&gt;) &#x3D;&gt; {
+        this._updateFormGroup(experiment as E);
+        this._navigation.customNavColor &#x3D; ExperimentType[experiment.type].toLowerCase();
+        setTimeout(() &#x3D;&gt; {
+          this._experimentLoaded.emit(experiment as E);
+        }, 100);
+      });
+
+    this._route.params.subscribe((params: Params) &#x3D;&gt; {
+      this._loadExperiment(params[&#x27;id&#x27;]);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this._experimentsStateSubscription.unsubscribe();
+    this._facade.empty(this._createEmptyExperiment());
+  }
+
+  canDeactivate(): Observable&lt;boolean&gt; | boolean {
+    // Dočasné zakázání tétu funkcionality, dokud nenajdu
+    // fungující řešení
+    return true;
+    // return (!(this.form.dirty &amp;&amp; this.form.touched));
+  }
+
+  /**
+   * Reakce na tlačítko pro uložení dat experimentu
+   */
+  public handleSaveExperiment() {
+    this._facade.save(this.form.value);
+  }
+
+  /**
+   * Reakce na tlačítko pro zobrazení editoru výstupů
+   */
+  public handleShowOutputEditor() {
+    this._subscribeOutputEditorActions();
+    this.modalComponent.showComponent &#x3D; OutputEditorComponent;
+    this.modalComponent
+      .openForResult&lt;OutputEditorArgs, OutputEntry[]&gt;({
+        outputs: this.form.value.outputs,
+        actions: this._outputEditorActions,
+        synchronizeOutputs: this._facade.outputSynchronization,
+        connected: this._facade.ipcConnected,
+      })
+      .then((outputEntries?: OutputEntry[]) &#x3D;&gt; {
+        if (outputEntries &#x3D;&#x3D;&#x3D; undefined) {
+          return;
+        }
+
+        this._updateOutputsFromEditor(outputEntries);
+      })
+      .catch(() &#x3D;&gt; {
+        this.logger.warn(&#x27;Nebudu aktualizovat výstupy.&#x27;);
+      })
+      .finally(() &#x3D;&gt; {
+        this._unsubscribeOutputEditorActions();
+      });
+  }
+
+  get experimentsState(): Observable&lt;ExperimentsState&gt; {
+    return this._facade.state;
+  }
+
+  get connectionState(): Observable&lt;ConnectionInformationState&gt; {
+    return this._connection.state;
+  }
+
+  get outputCountParams(): SliderOptions {
+    return outputCountParams(this._maxOutputCount);
+  }
+
+  get outputCount() {
+    return this.form.get(&#x27;outputCount&#x27;);
+  }
+
+  get outputs(): FormArray {
+    return this.form.get(&#x27;outputs&#x27;) as FormArray;
+  }
+}
+</code></pre>
+    </div>
+
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': ''},{'name': 'AppComponent', 'selector': 'stim-app'},{'name': 'AudioPlayerComponent', 'selector': 'stim-lib-ui-audio-player'},{'name': 'AuthComponent', 'selector': 'stim-feature-auth'},{'name': 'BaseExperimentTypeComponent', 'selector': ''},{'name': 'BaseListComponent', 'selector': ''},{'name': 'CalibrationComponent', 'selector': ''},{'name': 'ConfirmDialogComponent', 'selector': ''},{'name': 'ConsoleComponent', 'selector': 'stim-lib-console'},{'name': 'CountingCycleComponent', 'selector': 'stim-feature-player-stop-condition-counting-cycle'},{'name': 'CountingExperimentComponent', 'selector': 'stim-feature-player-stop-condition-counting-experiment'},{'name': 'DiodeComponent', 'selector': 'stim-lib-ui-diode'},{'name': 'DropdownBtnComponent', 'selector': 'stim-lib-ui-dropdown-btn'},{'name': 'ExperimentResultComponent', 'selector': 'stim-feature-experiment-results-experiment-result'},{'name': 'ExperimentResultsComponent', 'selector': ''},{'name': 'ExperimentResultsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentResultsGhostItemListComponent', 'selector': 'stim-feature-experiment-results-ghost-item-list'},{'name': 'ExperimentResultsItemListComponent', 'selector': 'stim-feature-experiment-results-item-list'},{'name': 'ExperimentsComponent', 'selector': ''},{'name': 'ExperimentsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentsGhostItemListComponent', 'selector': 'stim-feature-experiments-ghost-item-list'},{'name': 'ExperimentsItemListComponent', 'selector': 'stim-feature-experiments-item-list'},{'name': 'ExperimentsPageToolsComponent', 'selector': ''},{'name': 'ExperimentTypeComponent', 'selector': 'stim-feature-experiments-experiment-type'},{'name': 'ExperimentTypeCvepComponent', 'selector': ''},{'name': 'ExperimentTypeCvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-cvep-output'},{'name': 'ExperimentTypeErpComponent', 'selector': ''},{'name': 'ExperimentTypeErpOutputComponent', 'selector': 'stim-feature-experiments-type-erp-output'},{'name': 'ExperimentTypeFvepComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep'},{'name': 'ExperimentTypeFvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep-output'},{'name': 'ExperimentTypeHeaderComponent', 'selector': 'stim-feature-experiments-experiment-type-header'},{'name': 'ExperimentTypeNoneComponent', 'selector': ''},{'name': 'ExperimentTypeReaComponent', 'selector': ''},{'name': 'ExperimentTypeReaOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-rea-output'},{'name': 'ExperimentTypeTvepComponent', 'selector': ''},{'name': 'ExperimentTypeTvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-tvep-output'},{'name': 'ExperimentViewerComponent', 'selector': 'stim-lib-ui-experiment-viewer'},{'name': 'FabComponent', 'selector': 'stim-lib-fab'},{'name': 'FileBrowserComponent', 'selector': ''},{'name': 'HelpComponent', 'selector': ''},{'name': 'ImagePlayerComponent', 'selector': 'stim-lib-ui-image-player'},{'name': 'InformDialogComponent', 'selector': ''},{'name': 'ListButtonsAddonComponent', 'selector': ''},{'name': 'LoginComponent', 'selector': 'stim-feature-auth'},{'name': 'LogoutComponent', 'selector': ''},{'name': 'ModalComponent', 'selector': 'stim-lib-modal'},{'name': 'NavigationComponent', 'selector': 'stim-feature-navigation'},{'name': 'NoConditionComponent', 'selector': 'stim-feature-player-stop-condition-no-condition'},{'name': 'OutputEditorComponent', 'selector': 'neuro-client-output-editor'},{'name': 'OutputPatternComponent', 'selector': 'stim-feature-experiments-output-pattern'},{'name': 'OutputTypeComponent', 'selector': 'stim-feature-experiments-output-type'},{'name': 'PageNotFoundComponent', 'selector': ''},{'name': 'PageToolsComponent', 'selector': ''},{'name': 'ParamConfigApplicationComponent', 'selector': 'stim-feature-settings-param-config-application'},{'name': 'ParamConfigComponent', 'selector': 'stim-feature-settings-param-config'},{'name': 'ParamConfigExperimentsComponent', 'selector': 'stim-feature-settings-param-config-experiments'},{'name': 'ParamConfigServerComponent', 'selector': 'stim-feature-settings-param-config-server'},{'name': 'PlayerComponent', 'selector': ''},{'name': 'PlayerPageToolsComponent', 'selector': ''},{'name': 'ProfileComponent', 'selector': 'stim-feature-users'},{'name': 'RegisterComponent', 'selector': 'stim-feature-auth'},{'name': 'SequenceComponent', 'selector': 'stim-feature-sequences-sequence'},{'name': 'SequenceFastDialogComponent', 'selector': ''},{'name': 'SequencesComponent', 'selector': ''},{'name': 'SequencesFilterDialogComponent', 'selector': ''},{'name': 'SequencesGhostItemListComponent', 'selector': 'stim-feature-sequences-ghost-item-list'},{'name': 'SequencesItemListComponent', 'selector': 'stim-feature-sequences-item-list'},{'name': 'SequenceViewerComponent', 'selector': 'stim-lib-ui-sequence-viewer'},{'name': 'ServiceStateComponent', 'selector': 'stim-feature-settings-service-state'},{'name': 'SettingsComponent', 'selector': ''},{'name': 'SidebarComponent', 'selector': 'stim-feature-navigation-sidebar'},{'name': 'StimulatorComponent', 'selector': ''},{'name': 'StopConditionsComponent', 'selector': 'stim-feature-player-stop-conditions'},{'name': 'TagEditorComponent', 'selector': 'stim-lib-ui-tag-editor'}];
+    var DIRECTIVES = [{'name': 'BaseExperimentTypeResolverDirective', 'selector': ''},{'name': 'ContentTogglerDirective', 'selector': '[stimLibUiContentToggler]'},{'name': 'DialogChildsDirective', 'selector': '[stimLibModalDialogChilds]'},{'name': 'ExperimentTypeResolverDirective', 'selector': '[stimFeatureExperimentsTypeResolver]'},{'name': 'FilterDialogComponent', 'selector': ''},{'name': 'NavigationButtonsAddonDirective', 'selector': '[stimFeatureNavigationButtonsAddon]'},{'name': 'PlayerExperimentTypeResolverDirective', 'selector': '[stimFeaturePlayerExperimentTypeResolver]'},{'name': 'StopConditionDirective', 'selector': '[stimFeatureStopCondition]'}];
+    var ACTUAL_COMPONENT = {'name': 'BaseExperimentTypeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'BaseExperimentTypeComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

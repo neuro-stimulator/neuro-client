@@ -1,0 +1,947 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  ServiceStateComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/stim-feature-settings/feature/service-state/src/lib/service-state.component.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>stim-feature-settings-service-state</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./service-state.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./service-state.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ConnectionStatus" >ConnectionStatus</a>
+                            </li>
+                            <li>
+                                <a href="#modal" >modal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#handleClearDiscovered" >handleClearDiscovered</a>
+                            </li>
+                            <li>
+                                <a href="#handleDiscover" >handleDiscover</a>
+                            </li>
+                            <li>
+                                <a href="#handleOpen" >handleOpen</a>
+                            </li>
+                            <li>
+                                <a href="#handleRequestServerConnect" >handleRequestServerConnect</a>
+                            </li>
+                            <li>
+                                <a href="#handleRequestServerDisconnect" >handleRequestServerDisconnect</a>
+                            </li>
+                            <li>
+                                <a href="#handleStop" >handleStop</a>
+                            </li>
+                            <li>
+                                <a href="#handleUpdateStimulatorFirmware" >handleUpdateStimulatorFirmware</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#connectionState" >connectionState</a>
+                                </li>
+                                <li>
+                                    <a href="#stimulatorState" >stimulatorState</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_service: <a href="../injectables/StimulatorFacade.html" target="_self">StimulatorFacade</a>, _aliveChecker: <a href="../injectables/AliveCheckerFacade.html" target="_self">AliveCheckerFacade</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">libs/stim-feature-settings/feature/service-state/src/lib/service-state.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_service</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StimulatorFacade.html" target="_self" >StimulatorFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_aliveChecker</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AliveCheckerFacade.html" target="_self" >AliveCheckerFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleClearDiscovered"></a>
+                    <span class="name">
+                        <span ><b>handleClearDiscovered</b></span>
+                        <a href="#handleClearDiscovered"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleClearDiscovered()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">libs/stim-feature-settings/feature/service-state/src/lib/service-state.component.ts:35</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleDiscover"></a>
+                    <span class="name">
+                        <span ><b>handleDiscover</b></span>
+                        <a href="#handleDiscover"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleDiscover()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">libs/stim-feature-settings/feature/service-state/src/lib/service-state.component.ts:31</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleOpen"></a>
+                    <span class="name">
+                        <span ><b>handleOpen</b></span>
+                        <a href="#handleOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleOpen(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">libs/stim-feature-settings/feature/service-state/src/lib/service-state.component.ts:39</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>path</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleRequestServerConnect"></a>
+                    <span class="name">
+                        <span ><b>handleRequestServerConnect</b></span>
+                        <a href="#handleRequestServerConnect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleRequestServerConnect()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">libs/stim-feature-settings/feature/service-state/src/lib/service-state.component.ts:23</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleRequestServerDisconnect"></a>
+                    <span class="name">
+                        <span ><b>handleRequestServerDisconnect</b></span>
+                        <a href="#handleRequestServerDisconnect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleRequestServerDisconnect()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">libs/stim-feature-settings/feature/service-state/src/lib/service-state.component.ts:27</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleStop"></a>
+                    <span class="name">
+                        <span ><b>handleStop</b></span>
+                        <a href="#handleStop"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleStop()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">libs/stim-feature-settings/feature/service-state/src/lib/service-state.component.ts:43</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleUpdateStimulatorFirmware"></a>
+                    <span class="name">
+                        <span ><b>handleUpdateStimulatorFirmware</b></span>
+                        <a href="#handleUpdateStimulatorFirmware"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleUpdateStimulatorFirmware()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">libs/stim-feature-settings/feature/service-state/src/lib/service-state.component.ts:47</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ConnectionStatus"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ConnectionStatus</b></span>
+                        <a href="#ConnectionStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ConnectionStatus</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">libs/stim-feature-settings/feature/service-state/src/lib/service-state.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modal"></a>
+                    <span class="name">
+                        <span ><b>modal</b></span>
+                        <a href="#modal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/ModalComponent.html" target="_self" >ModalComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;modal&#x27;, {static: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">libs/stim-feature-settings/feature/service-state/src/lib/service-state.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="connectionState"></a>
+                        <span class="name"><b>connectionState</b><a href="#connectionState"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>connectionState()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">libs/stim-feature-settings/feature/service-state/src/lib/service-state.component.ts:60</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="stimulatorState"></a>
+                        <span class="name"><b>stimulatorState</b><a href="#stimulatorState"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>stimulatorState()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">libs/stim-feature-settings/feature/service-state/src/lib/service-state.component.ts:64</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ViewChild } from &#x27;@angular/core&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+
+import { FileRecord, ConnectionStatus } from &#x27;@stechy1/diplomka-share&#x27;;
+
+import { StimulatorFacade, StimulatorState } from &#x27;@neuro-client/stim-feature-stimulator/domain&#x27;;
+import { AliveCheckerFacade, ConnectionInformationState } from &#x27;@neuro-client/stim-lib-connection&#x27;;
+import { ModalComponent } from &#x27;@neuro-client/stim-lib-modal&#x27;;
+import { FileBrowserComponent } from &#x27;@neuro-client/stim-feature-file-browser/feature&#x27;;
+
+@Component({
+  selector: &#x27;stim-feature-settings-service-state&#x27;,
+  templateUrl: &#x27;./service-state.component.html&#x27;,
+  styleUrls: [&#x27;./service-state.component.sass&#x27;],
+})
+export class ServiceStateComponent {
+  @ViewChild(&#x27;modal&#x27;, { static: true }) modal: ModalComponent;
+
+  public ConnectionStatus &#x3D; ConnectionStatus;
+
+  constructor(private readonly _service: StimulatorFacade, private readonly _aliveChecker: AliveCheckerFacade) {}
+
+  handleRequestServerConnect() {
+    this._aliveChecker.requestConnect();
+  }
+
+  handleRequestServerDisconnect() {
+    this._aliveChecker.requestDisconnect();
+  }
+
+  handleDiscover() {
+    this._service.discover();
+  }
+
+  handleClearDiscovered() {
+    this._service.clearDiscovered();
+  }
+
+  handleOpen(path: string) {
+    this._service.connect(path);
+  }
+
+  handleStop() {
+    this._service.disconnect();
+  }
+
+  handleUpdateStimulatorFirmware() {
+    this.modal.showComponent &#x3D; FileBrowserComponent;
+    this.modal
+      .openForResult&lt;void, FileRecord&gt;()
+      .then((fileRecord: FileRecord) &#x3D;&gt; {
+        this._service.updateFirmware(fileRecord.path);
+      })
+      .catch((e) &#x3D;&gt; {
+        // Dialog was closed
+        console.log(e);
+      });
+  }
+
+  get connectionState(): Observable&lt;ConnectionInformationState&gt; {
+    return this._aliveChecker.state;
+  }
+
+  get stimulatorState(): Observable&lt;StimulatorState&gt; {
+    return this._service.stimulatorState;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;h3&gt;Service status&lt;/h3&gt;
+&lt;div class&#x3D;&quot;row service-status server bg-light&quot;&gt;
+  &lt;div class&#x3D;&quot;col-6&quot;&gt;
+    &lt;i class&#x3D;&quot;fas fa-server&quot; [title]&#x3D;&quot;&#x27;SETTINGS.SERVICE_STATE.WEB_SERVER.TITLE&#x27; | translate&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.WEB_SERVER.TITLE&#x27; | translate }}
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;col-6 text-right&quot;&gt;
+    &lt;span *ngIf&#x3D;&quot;(connectionState | async).server &#x3D;&#x3D;&#x3D; ConnectionStatus.DISCONNECTED&quot;&gt;&lt;i class&#x3D;&quot;fas fa-times text-danger&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.DISCONNECTED&#x27; | translate }}&lt;/span&gt;
+    &lt;span *ngIf&#x3D;&quot;(connectionState | async).server &#x3D;&#x3D;&#x3D; ConnectionStatus.CONNECTED&quot;&gt;&lt;i class&#x3D;&quot;fas fa-check text-success&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.CONNECTED&#x27; | translate }}&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;row service-status serial bg-light&quot;&gt;
+  &lt;div class&#x3D;&quot;col-6&quot;&gt;
+    &lt;i class&#x3D;&quot;fas fa-microchip&quot; [title]&#x3D;&quot;&#x27;SETTINGS.SERVICE_STATE.STIMULATOR.TITLE&#x27; | translate&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.STIMULATOR.TITLE&#x27; | translate }}
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;col-6 text-right&quot;&gt;
+    &lt;span *ngIf&#x3D;&quot;(connectionState | async).stimulator &#x3D;&#x3D;&#x3D; ConnectionStatus.DISCONNECTED&quot;&gt;&lt;i class&#x3D;&quot;fas fa-times text-danger&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.DISCONNECTED&#x27; | translate }}&lt;/span&gt;
+    &lt;span *ngIf&#x3D;&quot;(connectionState | async).stimulator &#x3D;&#x3D;&#x3D; ConnectionStatus.CONNECTED&quot;&gt;&lt;i class&#x3D;&quot;fas fa-check text-success&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.CONNECTED&#x27; | translate }}&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;row service-status serial bg-light&quot;&gt;
+  &lt;div class&#x3D;&quot;col-6&quot;&gt;
+    &lt;i class&#x3D;&quot;fas fa-bullhorn&quot; [title]&#x3D;&quot;&#x27;SETTINGS.SERVICE_STATE.AUDIO_IMAGE_PLAYER&#x27; | translate&quot;&gt;&lt;/i&gt;/&lt;i class&#x3D;&quot;fas fa-camera-retro&quot; title&#x3D;&quot;Přehrávač zvuků a obrázků&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.AUDIO_IMAGE_PLAYER&#x27; | translate }}
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;col-6 text-right&quot;&gt;
+    &lt;span *ngIf&#x3D;&quot;(connectionState | async).assetPlayer !&#x3D;&#x3D; ConnectionStatus.CONNECTED&quot;&gt;&lt;i class&#x3D;&quot;fas fa-times text-danger&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.DISCONNECTED&#x27; | translate }}&lt;/span&gt;
+    &lt;span *ngIf&#x3D;&quot;(connectionState | async).assetPlayer &#x3D;&#x3D;&#x3D; ConnectionStatus.CONNECTED&quot;&gt;&lt;i class&#x3D;&quot;fas fa-check text-success&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.CONNECTED&#x27; | translate }}&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+
+&lt;h3&gt;{{ &#x27;SETTINGS.SERVICE_STATE.WEB_SERVER.TITLE&#x27; | translate }}&lt;/h3&gt;
+&lt;div class&#x3D;&quot;row&quot;&gt;
+  &lt;div class&#x3D;&quot;col-12&quot;&gt;
+    &lt;button class&#x3D;&quot;btn btn-sm btn-success&quot; *ngIf&#x3D;&quot;(connectionState | async).server &#x3D;&#x3D;&#x3D; ConnectionStatus.DISCONNECTED&quot; (click)&#x3D;&quot;handleRequestServerConnect()&quot;&gt;&lt;i class&#x3D;&quot;fas fa-sign-in-alt&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.WEB_SERVER.BUTTON_BAR.CONNECT&#x27; | translate }}&lt;/button&gt;
+    &lt;button class&#x3D;&quot;btn btn-sm btn-danger&quot; *ngIf&#x3D;&quot;(connectionState | async).server &#x3D;&#x3D;&#x3D; ConnectionStatus.CONNECTED&quot; (click)&#x3D;&quot;handleRequestServerDisconnect()&quot;&gt;&lt;i class&#x3D;&quot;fas fa-sign-in-alt&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.WEB_SERVER.BUTTON_BAR.DISCONNECT&#x27; | translate }}&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+
+&lt;h3&gt;{{ &#x27;SETTINGS.SERVICE_STATE.STIMULATOR.TITLE&#x27; | translate }}&lt;/h3&gt;
+&lt;div class&#x3D;&quot;row mb-2&quot;&gt;
+  &lt;div class&#x3D;&quot;col-12 col-sm-6&quot;&gt;
+    &lt;button class&#x3D;&quot;btn btn-sm btn-primary&quot; (click)&#x3D;&quot;handleDiscover()&quot; [disabled]&#x3D;&quot;(connectionState | async).stimulator &#x3D;&#x3D;&#x3D; ConnectionStatus.CONNECTED&quot;&gt;&lt;i class&#x3D;&quot;fas fa-search&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.EXPLORE&#x27; | translate }}&lt;/button&gt;
+    &lt;button class&#x3D;&quot;btn btn-sm btn-danger&quot; (click)&#x3D;&quot;handleStop()&quot; *ngIf&#x3D;&quot;(connectionState | async).stimulator &#x3D;&#x3D;&#x3D; ConnectionStatus.CONNECTED&quot;&gt;&lt;i class&#x3D;&quot;fas fa-sign-in-alt&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.DISCONNECT&#x27; | translate }}&lt;/button&gt;
+    &lt;a class&#x3D;&quot;btn btn-sm btn-secondary&quot; routerLink&#x3D;&quot;/stimulator/calibration&quot; *ngIf&#x3D;&quot;(connectionState | async).stimulator &#x3D;&#x3D;&#x3D; ConnectionStatus.CONNECTED&quot;&gt;Kalibrovat&lt;/a&gt;
+    &lt;button class&#x3D;&quot;btn btn-sm btn-warning d-sm-none&quot; [disabled]&#x3D;&quot;(stimulatorState | async).devices.length &#x3D;&#x3D; 0&quot;&gt;&lt;i class&#x3D;&quot;fas fa-trash&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.CLEAR_LIST&#x27; | translate }}&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;d-none d-sm-block col-sm-6 text-right&quot;&gt;
+    &lt;button class&#x3D;&quot;btn btn-sm btn-warning&quot; (click)&#x3D;&quot;handleClearDiscovered()&quot; [disabled]&#x3D;&quot;(stimulatorState | async).devices.length &#x3D;&#x3D; 0&quot;&gt;&lt;i class&#x3D;&quot;fas fa-trash&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.CLEAR_LIST&#x27; | translate }}&lt;/button&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;row bg-light pb-2&quot; *ngFor&#x3D;&quot;let device of (stimulatorState | async).devices&quot;&gt;
+  &lt;div class&#x3D;&quot;col-6&quot;&gt;{{device.path}}&lt;/div&gt;
+  &lt;div class&#x3D;&quot;col-6 text-right&quot;&gt;
+    &lt;button class&#x3D;&quot;btn btn-sm btn-success&quot; [disabled]&#x3D;&quot;(connectionState | async).stimulator &#x3D;&#x3D;&#x3D; ConnectionStatus.CONNECTED&quot; (click)&#x3D;&quot;handleOpen(device.path)&quot;&gt;&lt;i class&#x3D;&quot;fas fa-sign-in-alt&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.CONNECT&#x27; | translate }}&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;row&quot;&gt;
+  &lt;div class&#x3D;&quot;col-12 col-sm-6 offset-sm-3&quot;&gt;
+    &lt;button class&#x3D;&quot;btn btn-warning&quot; (click)&#x3D;&quot;handleUpdateStimulatorFirmware()&quot; [disabled]&#x3D;&quot;(connectionState | async).stimulator &#x3D;&#x3D;&#x3D; ConnectionStatus.DISCONNECTED&quot;&gt;&lt;i class&#x3D;&quot;fas fa-meteor&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.UPDATE_FIRMWARE&#x27; | translate }}&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!--&lt;form [formGroup]&#x3D;&quot;firmwareForm&quot;&gt;--&gt;
+&lt;!--  &lt;div class&#x3D;&quot;row&quot;&gt;--&gt;
+&lt;!--    &lt;div class&#x3D;&quot;col&quot;&gt;--&gt;
+&lt;!--      &lt;div class&#x3D;&quot;custom-file&quot;&gt;--&gt;
+&lt;!--        &lt;input type&#x3D;&quot;file&quot; class&#x3D;&quot;custom-file-input&quot; id&#x3D;&quot;customFile&quot; (change)&#x3D;&quot;handleFileSelect($event)&quot;&gt;--&gt;
+&lt;!--        &lt;label class&#x3D;&quot;custom-file-label&quot; for&#x3D;&quot;customFile&quot;&gt;{{firmwareFilePath || &#x27;SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.SELECT_FIRMWARE_FILE&#x27; | translate }}&lt;/label&gt;--&gt;
+&lt;!--      &lt;/div&gt;--&gt;
+&lt;!--    &lt;/div&gt;--&gt;
+&lt;!--    &lt;div class&#x3D;&quot;col-12 col-sm-4 text-right&quot;&gt;--&gt;
+&lt;!--      &lt;button class&#x3D;&quot;btn btn-warning&quot; (click)&#x3D;&quot;handleUpdateStimulatorFirmware()&quot; [disabled]&#x3D;&quot;firmwareForm.invalid&quot;&gt;&lt;i class&#x3D;&quot;fas fa-meteor&quot;&gt;&lt;/i&gt; {{ &#x27;SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.UPDATE_FIRMWARE&#x27; | translate }}&lt;/button&gt;--&gt;
+&lt;!--    &lt;/div&gt;--&gt;
+&lt;!--  &lt;/div&gt;--&gt;
+&lt;!--&lt;/form&gt;--&gt;
+&lt;stim-lib-modal #modal&gt;&lt;/stim-lib-modal&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./service-state.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><h3>Service status</h3><div class="row service-status server bg-light">  <div class="col-6">    <i class="fas fa-server" [title]="\'SETTINGS.SERVICE_STATE.WEB_SERVER.TITLE\' | translate"></i> {{ \'SETTINGS.SERVICE_STATE.WEB_SERVER.TITLE\' | translate }}  </div>  <div class="col-6 text-right">    <span *ngIf="(connectionState | async).server === ConnectionStatus.DISCONNECTED"><i class="fas fa-times text-danger"></i> {{ \'SETTINGS.SERVICE_STATE.DISCONNECTED\' | translate }}</span>    <span *ngIf="(connectionState | async).server === ConnectionStatus.CONNECTED"><i class="fas fa-check text-success"></i> {{ \'SETTINGS.SERVICE_STATE.CONNECTED\' | translate }}</span>  </div></div><div class="row service-status serial bg-light">  <div class="col-6">    <i class="fas fa-microchip" [title]="\'SETTINGS.SERVICE_STATE.STIMULATOR.TITLE\' | translate"></i> {{ \'SETTINGS.SERVICE_STATE.STIMULATOR.TITLE\' | translate }}  </div>  <div class="col-6 text-right">    <span *ngIf="(connectionState | async).stimulator === ConnectionStatus.DISCONNECTED"><i class="fas fa-times text-danger"></i> {{ \'SETTINGS.SERVICE_STATE.DISCONNECTED\' | translate }}</span>    <span *ngIf="(connectionState | async).stimulator === ConnectionStatus.CONNECTED"><i class="fas fa-check text-success"></i> {{ \'SETTINGS.SERVICE_STATE.CONNECTED\' | translate }}</span>  </div></div><div class="row service-status serial bg-light">  <div class="col-6">    <i class="fas fa-bullhorn" [title]="\'SETTINGS.SERVICE_STATE.AUDIO_IMAGE_PLAYER\' | translate"></i>/<i class="fas fa-camera-retro" title="Přehrávač zvuků a obrázků"></i> {{ \'SETTINGS.SERVICE_STATE.AUDIO_IMAGE_PLAYER\' | translate }}  </div>  <div class="col-6 text-right">    <span *ngIf="(connectionState | async).assetPlayer !== ConnectionStatus.CONNECTED"><i class="fas fa-times text-danger"></i> {{ \'SETTINGS.SERVICE_STATE.DISCONNECTED\' | translate }}</span>    <span *ngIf="(connectionState | async).assetPlayer === ConnectionStatus.CONNECTED"><i class="fas fa-check text-success"></i> {{ \'SETTINGS.SERVICE_STATE.CONNECTED\' | translate }}</span>  </div></div><hr><h3>{{ \'SETTINGS.SERVICE_STATE.WEB_SERVER.TITLE\' | translate }}</h3><div class="row">  <div class="col-12">    <button class="btn btn-sm btn-success" *ngIf="(connectionState | async).server === ConnectionStatus.DISCONNECTED" (click)="handleRequestServerConnect()"><i class="fas fa-sign-in-alt"></i> {{ \'SETTINGS.SERVICE_STATE.WEB_SERVER.BUTTON_BAR.CONNECT\' | translate }}</button>    <button class="btn btn-sm btn-danger" *ngIf="(connectionState | async).server === ConnectionStatus.CONNECTED" (click)="handleRequestServerDisconnect()"><i class="fas fa-sign-in-alt"></i> {{ \'SETTINGS.SERVICE_STATE.WEB_SERVER.BUTTON_BAR.DISCONNECT\' | translate }}</button>  </div></div><hr><h3>{{ \'SETTINGS.SERVICE_STATE.STIMULATOR.TITLE\' | translate }}</h3><div class="row mb-2">  <div class="col-12 col-sm-6">    <button class="btn btn-sm btn-primary" (click)="handleDiscover()" [disabled]="(connectionState | async).stimulator === ConnectionStatus.CONNECTED"><i class="fas fa-search"></i> {{ \'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.EXPLORE\' | translate }}</button>    <button class="btn btn-sm btn-danger" (click)="handleStop()" *ngIf="(connectionState | async).stimulator === ConnectionStatus.CONNECTED"><i class="fas fa-sign-in-alt"></i> {{ \'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.DISCONNECT\' | translate }}</button>    <a class="btn btn-sm btn-secondary" routerLink="/stimulator/calibration" *ngIf="(connectionState | async).stimulator === ConnectionStatus.CONNECTED">Kalibrovat</a>    <button class="btn btn-sm btn-warning d-sm-none" [disabled]="(stimulatorState | async).devices.length == 0"><i class="fas fa-trash"></i> {{ \'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.CLEAR_LIST\' | translate }}</button>  </div>  <div class="d-none d-sm-block col-sm-6 text-right">    <button class="btn btn-sm btn-warning" (click)="handleClearDiscovered()" [disabled]="(stimulatorState | async).devices.length == 0"><i class="fas fa-trash"></i> {{ \'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.CLEAR_LIST\' | translate }}</button>  </div></div><div class="row bg-light pb-2" *ngFor="let device of (stimulatorState | async).devices">  <div class="col-6">{{device.path}}</div>  <div class="col-6 text-right">    <button class="btn btn-sm btn-success" [disabled]="(connectionState | async).stimulator === ConnectionStatus.CONNECTED" (click)="handleOpen(device.path)"><i class="fas fa-sign-in-alt"></i> {{ \'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.CONNECT\' | translate }}</button>  </div></div><div class="row">  <div class="col-12 col-sm-6 offset-sm-3">    <button class="btn btn-warning" (click)="handleUpdateStimulatorFirmware()" [disabled]="(connectionState | async).stimulator === ConnectionStatus.DISCONNECTED"><i class="fas fa-meteor"></i> {{ \'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.UPDATE_FIRMWARE\' | translate }}</button>  </div></div><!--<form [formGroup]="firmwareForm">--><!--  <div class="row">--><!--    <div class="col">--><!--      <div class="custom-file">--><!--        <input type="file" class="custom-file-input" id="customFile" (change)="handleFileSelect($event)">--><!--        <label class="custom-file-label" for="customFile">{{firmwareFilePath || \'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.SELECT_FIRMWARE_FILE\' | translate }}</label>--><!--      </div>--><!--    </div>--><!--    <div class="col-12 col-sm-4 text-right">--><!--      <button class="btn btn-warning" (click)="handleUpdateStimulatorFirmware()" [disabled]="firmwareForm.invalid"><i class="fas fa-meteor"></i> {{ \'SETTINGS.SERVICE_STATE.STIMULATOR.BUTTON_BAR.UPDATE_FIRMWARE\' | translate }}</button>--><!--    </div>--><!--  </div>--><!--</form>--><stim-lib-modal #modal></stim-lib-modal></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': ''},{'name': 'AppComponent', 'selector': 'stim-app'},{'name': 'AudioPlayerComponent', 'selector': 'stim-lib-ui-audio-player'},{'name': 'AuthComponent', 'selector': 'stim-feature-auth'},{'name': 'BaseExperimentTypeComponent', 'selector': ''},{'name': 'BaseListComponent', 'selector': ''},{'name': 'CalibrationComponent', 'selector': ''},{'name': 'ConfirmDialogComponent', 'selector': ''},{'name': 'ConsoleComponent', 'selector': 'stim-lib-console'},{'name': 'CountingCycleComponent', 'selector': 'stim-feature-player-stop-condition-counting-cycle'},{'name': 'CountingExperimentComponent', 'selector': 'stim-feature-player-stop-condition-counting-experiment'},{'name': 'DiodeComponent', 'selector': 'stim-lib-ui-diode'},{'name': 'DropdownBtnComponent', 'selector': 'stim-lib-ui-dropdown-btn'},{'name': 'ExperimentResultComponent', 'selector': 'stim-feature-experiment-results-experiment-result'},{'name': 'ExperimentResultsComponent', 'selector': ''},{'name': 'ExperimentResultsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentResultsGhostItemListComponent', 'selector': 'stim-feature-experiment-results-ghost-item-list'},{'name': 'ExperimentResultsItemListComponent', 'selector': 'stim-feature-experiment-results-item-list'},{'name': 'ExperimentsComponent', 'selector': ''},{'name': 'ExperimentsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentsGhostItemListComponent', 'selector': 'stim-feature-experiments-ghost-item-list'},{'name': 'ExperimentsItemListComponent', 'selector': 'stim-feature-experiments-item-list'},{'name': 'ExperimentsPageToolsComponent', 'selector': ''},{'name': 'ExperimentTypeComponent', 'selector': 'stim-feature-experiments-experiment-type'},{'name': 'ExperimentTypeCvepComponent', 'selector': ''},{'name': 'ExperimentTypeCvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-cvep-output'},{'name': 'ExperimentTypeErpComponent', 'selector': ''},{'name': 'ExperimentTypeErpOutputComponent', 'selector': 'stim-feature-experiments-type-erp-output'},{'name': 'ExperimentTypeFvepComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep'},{'name': 'ExperimentTypeFvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep-output'},{'name': 'ExperimentTypeHeaderComponent', 'selector': 'stim-feature-experiments-experiment-type-header'},{'name': 'ExperimentTypeNoneComponent', 'selector': ''},{'name': 'ExperimentTypeReaComponent', 'selector': ''},{'name': 'ExperimentTypeReaOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-rea-output'},{'name': 'ExperimentTypeTvepComponent', 'selector': ''},{'name': 'ExperimentTypeTvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-tvep-output'},{'name': 'ExperimentViewerComponent', 'selector': 'stim-lib-ui-experiment-viewer'},{'name': 'FabComponent', 'selector': 'stim-lib-fab'},{'name': 'FileBrowserComponent', 'selector': ''},{'name': 'HelpComponent', 'selector': ''},{'name': 'ImagePlayerComponent', 'selector': 'stim-lib-ui-image-player'},{'name': 'InformDialogComponent', 'selector': ''},{'name': 'ListButtonsAddonComponent', 'selector': ''},{'name': 'LoginComponent', 'selector': 'stim-feature-auth'},{'name': 'LogoutComponent', 'selector': ''},{'name': 'ModalComponent', 'selector': 'stim-lib-modal'},{'name': 'NavigationComponent', 'selector': 'stim-feature-navigation'},{'name': 'NoConditionComponent', 'selector': 'stim-feature-player-stop-condition-no-condition'},{'name': 'OutputEditorComponent', 'selector': 'neuro-client-output-editor'},{'name': 'OutputPatternComponent', 'selector': 'stim-feature-experiments-output-pattern'},{'name': 'OutputTypeComponent', 'selector': 'stim-feature-experiments-output-type'},{'name': 'PageNotFoundComponent', 'selector': ''},{'name': 'PageToolsComponent', 'selector': ''},{'name': 'ParamConfigApplicationComponent', 'selector': 'stim-feature-settings-param-config-application'},{'name': 'ParamConfigComponent', 'selector': 'stim-feature-settings-param-config'},{'name': 'ParamConfigExperimentsComponent', 'selector': 'stim-feature-settings-param-config-experiments'},{'name': 'ParamConfigServerComponent', 'selector': 'stim-feature-settings-param-config-server'},{'name': 'PlayerComponent', 'selector': ''},{'name': 'PlayerPageToolsComponent', 'selector': ''},{'name': 'ProfileComponent', 'selector': 'stim-feature-users'},{'name': 'RegisterComponent', 'selector': 'stim-feature-auth'},{'name': 'SequenceComponent', 'selector': 'stim-feature-sequences-sequence'},{'name': 'SequenceFastDialogComponent', 'selector': ''},{'name': 'SequencesComponent', 'selector': ''},{'name': 'SequencesFilterDialogComponent', 'selector': ''},{'name': 'SequencesGhostItemListComponent', 'selector': 'stim-feature-sequences-ghost-item-list'},{'name': 'SequencesItemListComponent', 'selector': 'stim-feature-sequences-item-list'},{'name': 'SequenceViewerComponent', 'selector': 'stim-lib-ui-sequence-viewer'},{'name': 'ServiceStateComponent', 'selector': 'stim-feature-settings-service-state'},{'name': 'SettingsComponent', 'selector': ''},{'name': 'SidebarComponent', 'selector': 'stim-feature-navigation-sidebar'},{'name': 'StimulatorComponent', 'selector': ''},{'name': 'StopConditionsComponent', 'selector': 'stim-feature-player-stop-conditions'},{'name': 'TagEditorComponent', 'selector': 'stim-lib-ui-tag-editor'}];
+    var DIRECTIVES = [{'name': 'BaseExperimentTypeResolverDirective', 'selector': ''},{'name': 'ContentTogglerDirective', 'selector': '[stimLibUiContentToggler]'},{'name': 'DialogChildsDirective', 'selector': '[stimLibModalDialogChilds]'},{'name': 'ExperimentTypeResolverDirective', 'selector': '[stimFeatureExperimentsTypeResolver]'},{'name': 'FilterDialogComponent', 'selector': ''},{'name': 'NavigationButtonsAddonDirective', 'selector': '[stimFeatureNavigationButtonsAddon]'},{'name': 'PlayerExperimentTypeResolverDirective', 'selector': '[stimFeaturePlayerExperimentTypeResolver]'},{'name': 'StopConditionDirective', 'selector': '[stimFeatureStopCondition]'}];
+    var ACTUAL_COMPONENT = {'name': 'ServiceStateComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ServiceStateComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

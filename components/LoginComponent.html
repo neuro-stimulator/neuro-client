@@ -1,0 +1,705 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  LoginComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/stim-feature-auth/feature/src/lib/login/login.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>stim-feature-auth</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./login.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./login.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#handleLogin" >handleLogin</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(facade: <a href="../injectables/AuthFacade.html" target="_self">AuthFacade</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">libs/stim-feature-auth/feature/src/lib/login/login.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>facade</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthFacade.html" target="_self" >AuthFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleLogin"></a>
+                    <span class="name">
+                        <span ><b>handleLogin</b></span>
+                        <a href="#handleLogin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleLogin()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">libs/stim-feature-auth/feature/src/lib/login/login.component.ts:33</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">libs/stim-feature-auth/feature/src/lib/login/login.component.ts:20</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormGroup({
+    email: new FormControl(&#x27;aaa@bbb.cz&#x27;),
+    password: new FormControl(&#x27;1234567890&#x27;),
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">libs/stim-feature-auth/feature/src/lib/login/login.component.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormControl, FormGroup } from &#x27;@angular/forms&#x27;;
+
+import { AuthFacade } from &#x27;@neuro-client/stim-feature-auth/domain&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+
+@Component({
+  selector: &#x27;stim-feature-auth&#x27;,
+  templateUrl: &#x27;./login.component.html&#x27;,
+  styleUrls: [&#x27;./login.component.sass&#x27;],
+})
+export class LoginComponent implements OnInit {
+  form &#x3D; new FormGroup({
+    email: new FormControl(&#x27;aaa@bbb.cz&#x27;),
+    password: new FormControl(&#x27;1234567890&#x27;),
+  });
+
+  constructor(private readonly facade: AuthFacade, private readonly router: Router) {}
+
+  ngOnInit(): void {
+    // this.facade.state
+    //   .pipe(
+    //     map((state: AuthState) &#x3D;&gt; state.isAuthenticated),
+    //     take(2)
+    //   )
+    //   .subscribe((authenticated) &#x3D;&gt; {
+    //     if (authenticated) {
+    //       this.router.navigate([&#x27;experiments&#x27;]);
+    //     }
+    //   });
+  }
+
+  handleLogin() {
+    this.facade.login(this.form.value);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;row text-center login-dialog&quot;&gt;
+  &lt;div class&#x3D;&quot;col-md-4 text-center left-side&quot;&gt;
+    &lt;img class&#x3D;&quot;login-logo&quot; src&#x3D;&quot;assets/icon.png&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;col-md-8 col-xs-12 col-sm-12 login-form-container&quot;&gt;
+    &lt;div class&#x3D;&quot;container-fluid&quot;&gt;
+      &lt;div class&#x3D;&quot;row login-form-title-container&quot;&gt;
+        &lt;h2 class&#x3D;&quot;login-form-title&quot;&gt;{{ &#x27;AUTH.LOGIN.TITLE&#x27; | translate }}&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;form [formGroup]&#x3D;&quot;form&quot; class&#x3D;&quot;login-form&quot;&gt;
+          &lt;div class&#x3D;&quot;form-group&quot;&gt;
+            &lt;div class&#x3D;&quot;input-group input-group-sm&quot;&gt;
+              &lt;input type&#x3D;&quot;email&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;email&quot; formControlName&#x3D;&quot;email&quot; placeholder&#x3D;&quot;{{ &#x27;AUTH.EMAIL&#x27; | translate }}&quot;&gt;
+              &lt;div class&#x3D;&quot;input-group-append&quot;&gt;
+                &lt;span class&#x3D;&quot;input-group-text&quot;&gt;@&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-group&quot;&gt;
+            &lt;div class&#x3D;&quot;input-group input-group-sm&quot;&gt;
+              &lt;input type&#x3D;&quot;password&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;password&quot; formControlName&#x3D;&quot;password&quot; placeholder&#x3D;&quot;{{ &#x27;AUTH.PASSWORD&#x27; | translate }}&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-group&quot;&gt;
+            &lt;button class&#x3D;&quot;btn btn-primary login-btn&quot; (click)&#x3D;&quot;handleLogin()&quot;&gt;{{ &#x27;AUTH.LOGIN.SUBMIT&#x27; | translate }}&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;p&gt;{{&#x27;AUTH.LOGIN.DONT_HAVE_ACCOUNT&#x27; | translate }} &lt;a [routerLink]&#x3D;&quot;&#x27;/auth/register&#x27;&quot;&gt;{{ &#x27;AUTH.LOGIN.REGISTER_HERE&#x27; | translate }}&lt;/a&gt;&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./login.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">//noinspection CssUnknownTarget
+@import &quot;_style-variables.sass&quot;
+
+.login-dialog
+  width: 50%
+  border-radius: 20px
+  box-shadow: 0 5px 5px rgba(0, 0, 0, .4)
+  margin: 5em auto
+  display: flex
+
+  .left-side
+    background-color: $primary
+    border-top-left-radius: 20px
+    border-bottom-left-radius: 0
+    display: none
+    flex-direction: column
+    justify-content: center
+    color: #fff
+
+    .login-logo
+      display: block
+      max-width: 64px
+      height: auto
+      margin: 0 auto
+      padding: 8px
+
+  .login-form-container
+    background-color: #fff
+    border-top-right-radius: 0
+    border-top-left-radius: 20px
+    border-bottom-right-radius: 20px
+    border-top: 1px solid #ccc
+    border-right: 1px solid #ccc
+
+    .login-form-title-container
+      border-bottom: solid 1px $secondary
+      margin-bottom: 8px
+
+      .login-form-title
+        margin: 0 auto
+        color: $primary
+
+    .login-form
+      padding: 0 2em
+      margin: 0 auto
+
+      .login-btn
+        width: 100%
+        &amp;:hover, &amp;:focus
+          background-color: $secondary
+          color: #fff
+
+@include media-breakpoint-up(sm)
+  .login-dialog
+    .left-side
+      display: flex
+    .login-form-container
+      border-top-left-radius: 0
+
+@include media-breakpoint-up(md)
+  .login-dialog
+    .left-side
+      border-bottom-left-radius: 20px
+
+      .login-logo
+        max-width: 100%
+
+    .login-form-container
+      border-top-right-radius: 20px
+//.main-content
+//  width: 50%
+//  border-radius: 20px
+//  box-shadow: 0 5px 5px rgba(0, 0, 0, .4)
+//  margin: 5em auto
+//  display: flex
+//
+//.login-logo
+//  display: block
+//  max-width: 128px
+//  height: auto
+//  margin: 0 auto
+//  padding: 8px
+//
+//.company__info
+//  background-color: $primary
+//  border-top-left-radius: 20px
+//  border-bottom-left-radius: 20px
+//  display: flex
+//  flex-direction: column
+//  justify-content: center
+//  color: #fff
+//
+//
+//@media screen and (min-width: 642px) and (max-width: 800px)
+//  .main-content
+//    width: 70%
+//
+//@media screen and (min-width: 640px)
+//  .login-logo
+//    max-width: 100%
+//
+//.row &gt; h2
+//  color: $primary
+//
+//.login_form
+//  background-color: #fff
+//  border-top-right-radius: 20px
+//  border-bottom-right-radius: 20px
+//  border-top: 1px solid #ccc
+//  border-right: 1px solid #ccc
+//
+//@media screen and (max-width: 640px)
+//  .main-content
+//    width: 90%
+//  .company__info
+//    display: none
+//  .login_form
+//    border-bottom-left-radius: 20px
+//
+//@media screen and (max-width: 768px)
+//  .login_form
+//    border-top-right-radius: 0
+//  .company__info
+//    border-bottom-left-radius: 0
+//
+//
+//form
+//  padding: 0 2em
+//
+//.form__input
+//  width: 100%
+//  border: 0px solid transparent
+//  border-radius: 0
+//  border-bottom: 1px solid #aaa
+//  padding: 1em .5em .5em
+//  padding-left: 2em
+//  outline: none
+//  margin: 1.5em auto
+//  transition: all .5s ease
+//
+//.form__input:focus
+//  border-bottom-color: $primary
+//  box-shadow: 0 0 5px rgba(0, 80, 80, .4)
+//  border-radius: 4px
+//
+//.btn
+//  transition: all .5s ease
+//  width: 70%
+//  border-radius: 30px
+//  color: $primary
+//  font-weight: 600
+//  background-color: #fff
+//  border: 1px solid $primary
+//  margin-top: 1.5em
+//  margin-bottom: 1em
+//
+//.btn:hover, .btn:focus
+//  background-color: $primary
+//  color: #fff
+//
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="row text-center login-dialog">  <div class="col-md-4 text-center left-side">    <img class="login-logo" src="assets/icon.png">  </div>  <div class="col-md-8 col-xs-12 col-sm-12 login-form-container">    <div class="container-fluid">      <div class="row login-form-title-container">        <h2 class="login-form-title">{{ \'AUTH.LOGIN.TITLE\' | translate }}</h2>      </div>      <div class="row">        <form [formGroup]="form" class="login-form">          <div class="form-group">            <div class="input-group input-group-sm">              <input type="email" class="form-control" id="email" formControlName="email" placeholder="{{ \'AUTH.EMAIL\' | translate }}">              <div class="input-group-append">                <span class="input-group-text">@</span>              </div>            </div>          </div>          <div class="form-group">            <div class="input-group input-group-sm">              <input type="password" class="form-control" id="password" formControlName="password" placeholder="{{ \'AUTH.PASSWORD\' | translate }}">            </div>          </div>          <div class="form-group">            <button class="btn btn-primary login-btn" (click)="handleLogin()">{{ \'AUTH.LOGIN.SUBMIT\' | translate }}</button>          </div>        </form>      </div>      <div class="row">        <p>{{\'AUTH.LOGIN.DONT_HAVE_ACCOUNT\' | translate }} <a [routerLink]="\'/auth/register\'">{{ \'AUTH.LOGIN.REGISTER_HERE\' | translate }}</a></p>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': ''},{'name': 'AppComponent', 'selector': 'stim-app'},{'name': 'AudioPlayerComponent', 'selector': 'stim-lib-ui-audio-player'},{'name': 'AuthComponent', 'selector': 'stim-feature-auth'},{'name': 'BaseExperimentTypeComponent', 'selector': ''},{'name': 'BaseListComponent', 'selector': ''},{'name': 'CalibrationComponent', 'selector': ''},{'name': 'ConfirmDialogComponent', 'selector': ''},{'name': 'ConsoleComponent', 'selector': 'stim-lib-console'},{'name': 'CountingCycleComponent', 'selector': 'stim-feature-player-stop-condition-counting-cycle'},{'name': 'CountingExperimentComponent', 'selector': 'stim-feature-player-stop-condition-counting-experiment'},{'name': 'DiodeComponent', 'selector': 'stim-lib-ui-diode'},{'name': 'DropdownBtnComponent', 'selector': 'stim-lib-ui-dropdown-btn'},{'name': 'ExperimentResultComponent', 'selector': 'stim-feature-experiment-results-experiment-result'},{'name': 'ExperimentResultsComponent', 'selector': ''},{'name': 'ExperimentResultsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentResultsGhostItemListComponent', 'selector': 'stim-feature-experiment-results-ghost-item-list'},{'name': 'ExperimentResultsItemListComponent', 'selector': 'stim-feature-experiment-results-item-list'},{'name': 'ExperimentsComponent', 'selector': ''},{'name': 'ExperimentsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentsGhostItemListComponent', 'selector': 'stim-feature-experiments-ghost-item-list'},{'name': 'ExperimentsItemListComponent', 'selector': 'stim-feature-experiments-item-list'},{'name': 'ExperimentsPageToolsComponent', 'selector': ''},{'name': 'ExperimentTypeComponent', 'selector': 'stim-feature-experiments-experiment-type'},{'name': 'ExperimentTypeCvepComponent', 'selector': ''},{'name': 'ExperimentTypeCvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-cvep-output'},{'name': 'ExperimentTypeErpComponent', 'selector': ''},{'name': 'ExperimentTypeErpOutputComponent', 'selector': 'stim-feature-experiments-type-erp-output'},{'name': 'ExperimentTypeFvepComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep'},{'name': 'ExperimentTypeFvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep-output'},{'name': 'ExperimentTypeHeaderComponent', 'selector': 'stim-feature-experiments-experiment-type-header'},{'name': 'ExperimentTypeNoneComponent', 'selector': ''},{'name': 'ExperimentTypeReaComponent', 'selector': ''},{'name': 'ExperimentTypeReaOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-rea-output'},{'name': 'ExperimentTypeTvepComponent', 'selector': ''},{'name': 'ExperimentTypeTvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-tvep-output'},{'name': 'ExperimentViewerComponent', 'selector': 'stim-lib-ui-experiment-viewer'},{'name': 'FabComponent', 'selector': 'stim-lib-fab'},{'name': 'FileBrowserComponent', 'selector': ''},{'name': 'HelpComponent', 'selector': ''},{'name': 'ImagePlayerComponent', 'selector': 'stim-lib-ui-image-player'},{'name': 'InformDialogComponent', 'selector': ''},{'name': 'ListButtonsAddonComponent', 'selector': ''},{'name': 'LoginComponent', 'selector': 'stim-feature-auth'},{'name': 'LogoutComponent', 'selector': ''},{'name': 'ModalComponent', 'selector': 'stim-lib-modal'},{'name': 'NavigationComponent', 'selector': 'stim-feature-navigation'},{'name': 'NoConditionComponent', 'selector': 'stim-feature-player-stop-condition-no-condition'},{'name': 'OutputEditorComponent', 'selector': 'neuro-client-output-editor'},{'name': 'OutputPatternComponent', 'selector': 'stim-feature-experiments-output-pattern'},{'name': 'OutputTypeComponent', 'selector': 'stim-feature-experiments-output-type'},{'name': 'PageNotFoundComponent', 'selector': ''},{'name': 'PageToolsComponent', 'selector': ''},{'name': 'ParamConfigApplicationComponent', 'selector': 'stim-feature-settings-param-config-application'},{'name': 'ParamConfigComponent', 'selector': 'stim-feature-settings-param-config'},{'name': 'ParamConfigExperimentsComponent', 'selector': 'stim-feature-settings-param-config-experiments'},{'name': 'ParamConfigServerComponent', 'selector': 'stim-feature-settings-param-config-server'},{'name': 'PlayerComponent', 'selector': ''},{'name': 'PlayerPageToolsComponent', 'selector': ''},{'name': 'ProfileComponent', 'selector': 'stim-feature-users'},{'name': 'RegisterComponent', 'selector': 'stim-feature-auth'},{'name': 'SequenceComponent', 'selector': 'stim-feature-sequences-sequence'},{'name': 'SequenceFastDialogComponent', 'selector': ''},{'name': 'SequencesComponent', 'selector': ''},{'name': 'SequencesFilterDialogComponent', 'selector': ''},{'name': 'SequencesGhostItemListComponent', 'selector': 'stim-feature-sequences-ghost-item-list'},{'name': 'SequencesItemListComponent', 'selector': 'stim-feature-sequences-item-list'},{'name': 'SequenceViewerComponent', 'selector': 'stim-lib-ui-sequence-viewer'},{'name': 'ServiceStateComponent', 'selector': 'stim-feature-settings-service-state'},{'name': 'SettingsComponent', 'selector': ''},{'name': 'SidebarComponent', 'selector': 'stim-feature-navigation-sidebar'},{'name': 'StimulatorComponent', 'selector': ''},{'name': 'StopConditionsComponent', 'selector': 'stim-feature-player-stop-conditions'},{'name': 'TagEditorComponent', 'selector': 'stim-lib-ui-tag-editor'}];
+    var DIRECTIVES = [{'name': 'BaseExperimentTypeResolverDirective', 'selector': ''},{'name': 'ContentTogglerDirective', 'selector': '[stimLibUiContentToggler]'},{'name': 'DialogChildsDirective', 'selector': '[stimLibModalDialogChilds]'},{'name': 'ExperimentTypeResolverDirective', 'selector': '[stimFeatureExperimentsTypeResolver]'},{'name': 'FilterDialogComponent', 'selector': ''},{'name': 'NavigationButtonsAddonDirective', 'selector': '[stimFeatureNavigationButtonsAddon]'},{'name': 'PlayerExperimentTypeResolverDirective', 'selector': '[stimFeaturePlayerExperimentTypeResolver]'},{'name': 'StopConditionDirective', 'selector': '[stimFeatureStopCondition]'}];
+    var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'LoginComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

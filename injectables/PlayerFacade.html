@@ -1,0 +1,1106 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >PlayerFacade</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_lastStimulatorState" >_lastStimulatorState</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#playingExperiment$" >playingExperiment$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#stimulatorConnectionStatus$" >stimulatorConnectionStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#stimulatorState$" >stimulatorState$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#clearExperiment" >clearExperiment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#destroyExperiment" >destroyExperiment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#finishExperiment" >finishExperiment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#handleForceFinishExperiment" >handleForceFinishExperiment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#loadExperiment" >loadExperiment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#pauseExperiment" >pauseExperiment</a>
+                            </li>
+                            <li>
+                                <a href="#requestAvailableStopConditions" >requestAvailableStopConditions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#requestPlayerState" >requestPlayerState</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#runExperiment" >runExperiment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#uploadExperiment" >uploadExperiment</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#state" >state</a>
+                                </li>
+                                <li>
+                                    <a href="#supportStopConditions" >supportStopConditions</a>
+                                </li>
+                                <li>
+                                    <a href="#availableStopConditions" >availableStopConditions</a>
+                                </li>
+                                <li>
+                                    <a href="#lastStimulatorState" >lastStimulatorState</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(store: Store, experiments: <a href="../injectables/ExperimentsFacade.html" target="_self">ExperimentsFacade</a>, stimulator: <a href="../injectables/StimulatorFacade.html" target="_self">StimulatorFacade</a>, connections: <a href="../injectables/AliveCheckerFacade.html" target="_self">AliveCheckerFacade</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:22</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>experiments</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ExperimentsFacade.html" target="_self" >ExperimentsFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>stimulator</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StimulatorFacade.html" target="_self" >StimulatorFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>connections</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AliveCheckerFacade.html" target="_self" >AliveCheckerFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearExperiment"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>clearExperiment</b></span>
+                        <a href="#clearExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>clearExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroyExperiment"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>destroyExperiment</b></span>
+                        <a href="#destroyExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>destroyExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:70</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="finishExperiment"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>finishExperiment</b></span>
+                        <a href="#finishExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>finishExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:55</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleForceFinishExperiment"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>handleForceFinishExperiment</b></span>
+                        <a href="#handleForceFinishExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleForceFinishExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadExperiment"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>loadExperiment</b></span>
+                        <a href="#loadExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadExperiment(experimentID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:38</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>experimentID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pauseExperiment"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>pauseExperiment</b></span>
+                        <a href="#pauseExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>pauseExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:52</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="requestAvailableStopConditions"></a>
+                    <span class="name">
+                        <span ><b>requestAvailableStopConditions</b></span>
+                        <a href="#requestAvailableStopConditions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>requestAvailableStopConditions()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:90</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="requestPlayerState"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>requestPlayerState</b></span>
+                        <a href="#requestPlayerState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>requestPlayerState()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="runExperiment"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>runExperiment</b></span>
+                        <a href="#runExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>runExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:49</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uploadExperiment"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>uploadExperiment</b></span>
+                        <a href="#uploadExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>uploadExperiment(options)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:46</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>options</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_lastStimulatorState"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_lastStimulatorState</b></span>
+                        <a href="#_lastStimulatorState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="playingExperiment$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>playingExperiment$</b></span>
+                        <a href="#playingExperiment$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;Experiment&lt;Output&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stimulatorConnectionStatus$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>stimulatorConnectionStatus$</b></span>
+                        <a href="#stimulatorConnectionStatus$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;ConnectionStatus&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stimulatorState$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>stimulatorState$</b></span>
+                        <a href="#stimulatorState$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;number&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="state"></a>
+                        <span class="name"><b>state</b><a href="#state"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>state()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:74</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="supportStopConditions"></a>
+                        <span class="name"><b>supportStopConditions</b><a href="#supportStopConditions"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>supportStopConditions()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:78</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="availableStopConditions"></a>
+                        <span class="name"><b>availableStopConditions</b><a href="#availableStopConditions"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>availableStopConditions()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:82</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="lastStimulatorState"></a>
+                        <span class="name"><b>lastStimulatorState</b><a href="#lastStimulatorState"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>lastStimulatorState()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">libs/stim-feature-player/domain/src/lib/application-services/player.facade.ts:86</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { map, tap } from &#x27;rxjs/operators&#x27;;
+import { Store } from &#x27;@ngrx/store&#x27;;
+
+import { ConnectionStatus, createEmptyExperiment, Experiment, Output } from &#x27;@stechy1/diplomka-share&#x27;;
+
+import { StimulatorFacade, StimulatorState, StimulatorStateType } from &#x27;@neuro-client/stim-feature-stimulator/domain&#x27;;
+import { AliveCheckerFacade, ConnectionInformationState } from &#x27;@neuro-client/stim-lib-connection&#x27;;
+import { ExperimentsFacade, ExperimentsState } from &#x27;@neuro-client/stim-feature-experiments/domain&#x27;;
+
+import { PlayerState, StopConditionType } from &#x27;../store/player.state&#x27;;
+import * as fromPlayer from &#x27;../store/player.reducer&#x27;;
+import * as PlayerActions from &#x27;../store/player.actions&#x27;;
+
+@Injectable()
+export class PlayerFacade {
+  public readonly stimulatorConnectionStatus$: Observable&lt;ConnectionStatus&gt;;
+  public readonly stimulatorState$: Observable&lt;number&gt;;
+  public readonly playingExperiment$: Observable&lt;Experiment&lt;Output&gt;&gt;;
+
+  private _lastStimulatorState: number;
+
+  constructor(
+    private readonly store: Store,
+    private readonly experiments: ExperimentsFacade,
+    private readonly stimulator: StimulatorFacade,
+    private readonly connections: AliveCheckerFacade
+  ) {
+    this.stimulatorConnectionStatus$ &#x3D; connections.state.pipe(map((connectionInformation: ConnectionInformationState) &#x3D;&gt; connectionInformation.stimulator));
+    this.stimulatorState$ &#x3D; this.stimulator.stimulatorState.pipe(
+      map((stimulatorState: StimulatorState) &#x3D;&gt; stimulatorState.stimulatorState),
+      tap((state: number) &#x3D;&gt; (this._lastStimulatorState &#x3D; state))
+    );
+    this.playingExperiment$ &#x3D; experiments.state.pipe(map((experimentsState: ExperimentsState) &#x3D;&gt; experimentsState.selectedExperiment.experiment));
+  }
+
+  public loadExperiment(experimentID: number) {
+    this.experiments.one(experimentID);
+  }
+
+  public requestPlayerState() {
+    this.store.dispatch(PlayerActions.actionPlayerStateRequest());
+  }
+
+  public uploadExperiment(options) {
+    this.store.dispatch(PlayerActions.actionPrepareExperimentPlayerRequest({ options }));
+  }
+  public runExperiment() {
+    this.stimulator.experimentRun();
+  }
+  public pauseExperiment() {
+    this.stimulator.experimentPause();
+  }
+  public finishExperiment() {
+    this.stimulator.experimentFinish();
+  }
+  public handleForceFinishExperiment() {
+    this.stimulator.handleForceFinishExperiment();
+  }
+  public clearExperiment() {
+    this.store.dispatch(PlayerActions.actionPlayerClearExperiment());
+    // Odeslat příkaz na vyčištění experimentu ze stimulátoru budu odesílat pouze,
+    // pokud je stimulátor ve správném stavu
+    // if (this._lastStimulatorState &#x3D;&#x3D;&#x3D; StimulatorStateType.FINISH) {
+    // this.stimulator.experimentClear();
+    // }
+  }
+
+  public destroyExperiment() {
+    this.experiments.empty(createEmptyExperiment());
+  }
+
+  get state(): Observable&lt;PlayerState&gt; {
+    return this.store.select(fromPlayer.playerFeature);
+  }
+
+  get supportStopConditions(): Observable&lt;boolean&gt; {
+    return this.store.select(fromPlayer.supportStopconditionsSelector);
+  }
+
+  get availableStopConditions(): Observable&lt;StopConditionType[]&gt; {
+    return this.store.select(fromPlayer.availableStopConditions);
+  }
+
+  get lastStimulatorState(): StimulatorStateType {
+    return this._lastStimulatorState;
+  }
+
+  requestAvailableStopConditions() {
+    this.store.dispatch(PlayerActions.actionPlayerAvailableStopConditionsRequest());
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'PlayerFacade.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

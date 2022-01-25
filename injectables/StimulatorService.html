@@ -1,0 +1,1335 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >StimulatorService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#serialURL" >serialURL</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#stimulatorURL" >stimulatorURL</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#close" >close</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#connectionStatus" >connectionStatus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#discover" >discover</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#experimentClear" >experimentClear</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#experimentFinish" >experimentFinish</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#experimentPause" >experimentPause</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#experimentRun" >experimentRun</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#experimentSetup" >experimentSetup</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#experimentUpload" >experimentUpload</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#open" >open</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#reboot" >reboot</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#setOutput" >setOutput</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#stimulatorState" >stimulatorState</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#updateFirmware" >updateFirmware</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(baseURL, _http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, logger: NGXLogger)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:15</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>baseURL</td>
+                                                  
+                                                        <td>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>logger</td>
+                                                  
+                                                        <td>
+                                                                    <code>NGXLogger</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="close"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>close</b></span>
+                        <a href="#close"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>close()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Uzavře seriový port a tím i ukončí komunikaci</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="connectionStatus"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>connectionStatus</b></span>
+                        <a href="#connectionStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>connectionStatus()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:50</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Vyšle požadavek pro získání informaci o připojení seriového portu</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="discover"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>discover</b></span>
+                        <a href="#discover"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>discover()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Vyšle požadavek pro získání všech dostupných seriových portů</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="experimentClear"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>experimentClear</b></span>
+                        <a href="#experimentClear"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>experimentClear()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:93</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="experimentFinish"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>experimentFinish</b></span>
+                        <a href="#experimentFinish"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>experimentFinish(experimentID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, force: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>experimentID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>force</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="experimentPause"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>experimentPause</b></span>
+                        <a href="#experimentPause"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>experimentPause(experimentID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:77</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>experimentID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="experimentRun"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>experimentRun</b></span>
+                        <a href="#experimentRun"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>experimentRun(experimentID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:73</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>experimentID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="experimentSetup"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>experimentSetup</b></span>
+                        <a href="#experimentSetup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>experimentSetup(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:89</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="experimentUpload"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>experimentUpload</b></span>
+                        <a href="#experimentUpload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>experimentUpload(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="open"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>open</b></span>
+                        <a href="#open"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>open(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:32</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Otevře komunikační port na zadané cestě</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>path</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Cesta, na které leží komunikační port</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reboot"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>reboot</b></span>
+                        <a href="#reboot"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>reboot()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:65</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setOutput"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>setOutput</b></span>
+                        <a href="#setOutput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setOutput(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, enabled: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:98</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>enabled</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stimulatorState"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>stimulatorState</b></span>
+                        <a href="#stimulatorState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>stimulatorState()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateFirmware"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>updateFirmware</b></span>
+                        <a href="#updateFirmware"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateFirmware(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:60</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Metoda slouží pro aktualizaci firmware STM</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>path</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Relativní cesta k firmware stimulátoru</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="serialURL"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>serialURL</b></span>
+                        <a href="#serialURL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;${this.baseURL}/serial&#x60;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stimulatorURL"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>stimulatorURL</b></span>
+                        <a href="#stimulatorURL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x60;${this.baseURL}/stimulator&#x60;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/infrastructure/stimulator.service.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable } from &#x27;@angular/core&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+
+import { NGXLogger } from &#x27;ngx-logger&#x27;;
+
+import { ConnectionStatus, ResponseObject, StimulatorStateEvent } from &#x27;@stechy1/diplomka-share&#x27;;
+
+import { TOKEN_STIMULATOR_API_URL } from &#x27;@neuro-client/stim-lib-common&#x27;;
+
+@Injectable({
+  providedIn: &#x27;root&#x27;,
+})
+export class StimulatorService {
+  private readonly stimulatorURL &#x3D; &#x60;${this.baseURL}/stimulator&#x60;;
+  private readonly serialURL &#x3D; &#x60;${this.baseURL}/serial&#x60;;
+
+  constructor(@Inject(TOKEN_STIMULATOR_API_URL) private readonly baseURL, private readonly _http: HttpClient, private readonly logger: NGXLogger) {}
+
+  /**
+   * Vyšle požadavek pro získání všech dostupných seriových portů
+   */
+  public discover() {
+    this.logger.info(&#x27;Odesílám požadavek na získání všech dostupných sériových portů.&#x27;);
+    return this._http.get&lt;{ data: [{ path: string }] }&gt;(&#x60;${this.serialURL}/discover&#x60;);
+  }
+
+  /**
+   * Otevře komunikační port na zadané cestě
+   *
+   * @param path Cesta, na které leží komunikační port
+   */
+  public open(path: string) {
+    this.logger.info(&#x27;Odesílám požadavek na otevření sériového portu.&#x27;);
+    return this._http.post&lt;ResponseObject&lt;void&gt;&gt;(&#x60;${this.serialURL}/open&#x60;, {
+      path,
+    });
+  }
+
+  /**
+   * Uzavře seriový port a tím i ukončí komunikaci
+   */
+  public close() {
+    this.logger.info(&#x27;Odesílám požadavek na uzavření sériového portu.&#x27;);
+    return this._http.patch(&#x60;${this.serialURL}/stop&#x60;, null);
+  }
+
+  /**
+   * Vyšle požadavek pro získání informaci o připojení seriového portu
+   */
+  public connectionStatus() {
+    this.logger.info(&#x27;Odesílám požadavek na získání informace o připojení sériového portu.&#x27;);
+    return this._http.get&lt;ResponseObject&lt;{ status: ConnectionStatus }&gt;&gt;(&#x60;${this.serialURL}/status&#x60;);
+  }
+
+  /**
+   * Metoda slouží pro aktualizaci firmware STM
+   *
+   * @param path Relativní cesta k firmware stimulátoru
+   */
+  public updateFirmware(path: string) {
+    this.logger.info(&#x27;Odesílám požadavek na aktualizaci firmware stimulátoru.&#x27;);
+    return this._http.patch(&#x60;${this.stimulatorURL}/update-firmware&#x60;, { path });
+  }
+
+  public reboot() {
+    this.logger.info(&#x27;Odesílám požadavek na reboot stimulátoru.&#x27;);
+    return this._http.patch(&#x60;${this.stimulatorURL}/reboot&#x60;, null);
+  }
+  public stimulatorState() {
+    this.logger.info(&#x27;Odesílám požadavek na získání stavu stimulátoru.&#x27;);
+    return this._http.get&lt;ResponseObject&lt;StimulatorStateEvent | undefined&gt;&gt;(&#x60;${this.stimulatorURL}/state/?asyncStimulatorRequest&#x3D;true&#x60;);
+  }
+  public experimentRun(experimentID: number) {
+    this.logger.info(&#x27;Odesílám požadavek na spuštění experimentu.&#x27;);
+    return this._http.patch(&#x60;${this.stimulatorURL}/experiment/run/${experimentID}/?asyncStimulatorRequest&#x3D;true&#x60;, null);
+  }
+  public experimentPause(experimentID: number) {
+    this.logger.info(&#x27;Odesílám požadavek na pozastavení experimentu.&#x27;);
+    return this._http.patch(&#x60;${this.stimulatorURL}/experiment/pause/${experimentID}/?asyncStimulatorRequest&#x3D;true&#x60;, null);
+  }
+  public experimentFinish(experimentID: number, force: boolean) {
+    this.logger.info(&#x27;Odesílám požadavek na ukončení experimentu.&#x27;);
+    return this._http.patch(&#x60;${this.stimulatorURL}/experiment/finish/${experimentID}/?asyncStimulatorRequest&#x3D;true&amp;force&#x3D;${force}&#x60;, null);
+  }
+  public experimentUpload(id: number) {
+    this.logger.info(&#x27;Odesílám požadavek na nahrání experimentu.&#x27;);
+    return this._http.patch&lt;{ message? }&gt;(&#x60;${this.stimulatorURL}/experiment/upload/${id}/?asyncStimulatorRequest&#x3D;true&#x60;, null);
+  }
+  public experimentSetup(id: number) {
+    this.logger.info(&#x27;Odesílám požadavek na inicializaici experimentu ve stimulátoru.&#x27;);
+    return this._http.patch&lt;{ message? }&gt;(&#x60;${this.stimulatorURL}/experiment/setup/${id}/?asyncStimulatorRequest&#x3D;true&#x60;, null);
+  }
+  public experimentClear() {
+    this.logger.info(&#x27;Odesílám požadavek na vymazání experimentu ze stimulátoru.&#x27;);
+    return this._http.patch(&#x60;${this.stimulatorURL}/experiment/clear?asyncStimulatorRequest&#x3D;true&#x60;, null);
+  }
+
+  public setOutput(index: number, enabled: boolean) {
+    this.logger.info(&#x27;Odesílám požadavek na nastavení jednoho výstupu.&#x27;);
+    return this._http.patch(&#x60;${this.stimulatorURL}/set-output?asyncStimulatorRequest&#x3D;true&#x60;, { index, enabled });
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'StimulatorService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

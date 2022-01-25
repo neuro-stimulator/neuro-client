@@ -1,0 +1,1059 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >SequencesEffects</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#all$" >all$</a>
+                            </li>
+                            <li>
+                                <a href="#allWithGhosts$" >allWithGhosts$</a>
+                            </li>
+                            <li>
+                                <a href="#delete$" >delete$</a>
+                            </li>
+                            <li>
+                                <a href="#deleteDone$" >deleteDone$</a>
+                            </li>
+                            <li>
+                                <a href="#experimentsAsSequenceProviders$" >experimentsAsSequenceProviders$</a>
+                            </li>
+                            <li>
+                                <a href="#insert$" >insert$</a>
+                            </li>
+                            <li>
+                                <a href="#nameExists$" >nameExists$</a>
+                            </li>
+                            <li>
+                                <a href="#one$" >one$</a>
+                            </li>
+                            <li>
+                                <a href="#saveSelectedExperiment$" >saveSelectedExperiment$</a>
+                            </li>
+                            <li>
+                                <a href="#sequenceFromNameAndSize$" >sequenceFromNameAndSize$</a>
+                            </li>
+                            <li>
+                                <a href="#sequenceGenerate$" >sequenceGenerate$</a>
+                            </li>
+                            <li>
+                                <a href="#update$" >update$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(actions$: Actions, sequences: <a href="../injectables/SequencesService.html" target="_self">SequencesService</a>, store: Store, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts:17</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>actions$</td>
+                                                  
+                                                        <td>
+                                                                    <code>Actions</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sequences</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SequencesService.html" target="_self" >SequencesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="all$"></a>
+                    <span class="name">
+                        <span ><b>all$</b></span>
+                        <a href="#all$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesAllRequest),
+      switchMap(() &#x3D;&gt;
+        this.sequences.all().pipe(
+          map((response: ResponseObject&lt;Sequence[]&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesAllRequestDone({
+              sequences: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesAllRequestFail());
+          })
+        )
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allWithGhosts$"></a>
+                    <span class="name">
+                        <span ><b>allWithGhosts$</b></span>
+                        <a href="#allWithGhosts$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesAllWithGhostRequest),
+      withLatestFrom(this.store.select(sequencesSelector)),
+      switchMap(([action, sequences]) &#x3D;&gt; {
+        let result: Observable&lt;ResponseObject&lt;Sequence[]&gt;&gt;;
+        if (sequences.length !&#x3D;&#x3D; 0) {
+          result &#x3D; of({ data: sequences });
+        } else {
+          result &#x3D; this.sequences.all();
+        }
+        return result.pipe(
+          map((response: ResponseObject&lt;Sequence[]&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesAllRequestDone({
+              sequences: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesAllRequestFail());
+          })
+        );
+      })
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete$"></a>
+                    <span class="name">
+                        <span ><b>delete$</b></span>
+                        <a href="#delete$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt; {
+    return this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesDeleteRequest),
+      withLatestFrom(this.store.select(sequencesFeature)),
+      mergeMap(([action, sequences]) &#x3D;&gt; {
+        let result: Observable&lt;ResponseObject&lt;Sequence&gt;&gt;;
+        if (action.sequenceID) {
+          result &#x3D; this.sequences.delete(action.sequenceID);
+        } else {
+          if (!sequences.selectionMode) {
+            return EMPTY;
+          }
+
+          const selectedSequences: { [index: number]: boolean } &#x3D; sequences.selectedSequences;
+          const filteredSelectedSequences &#x3D; Object.entries&lt;boolean&gt;(selectedSequences).filter(([index, selected]) &#x3D;&gt; selected);
+          const [selectedIndex, selected] &#x3D; filteredSelectedSequences.values().next().value;
+
+          result &#x3D; this.sequences.delete(+selectedIndex);
+        }
+        return result.pipe(
+          map((response: ResponseObject&lt;Sequence&gt;) &#x3D;&gt;
+            SequencesActions.actionSequencesDeleteRequestDone({
+              sequence: response.data,
+            })
+          ),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesDeleteRequestFail());
+          })
+        );
+      })
+    );
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts:115</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteDone$"></a>
+                    <span class="name">
+                        <span ><b>deleteDone$</b></span>
+                        <a href="#deleteDone$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesDeleteRequestDone),
+      withLatestFrom(this.store.select(sequencesFeature)),
+      map(([_, sequences]) &#x3D;&gt; {
+        let action;
+        if (sequences.selectionMode) {
+          action &#x3D; SequencesActions.actionSequencesDeleteRequest({ sequenceID: _.sequence.id });
+        } else {
+          action &#x3D; SequencesActions.actionSequencesNoAction();
+        }
+        return action;
+      }),
+      delay(250)
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts:147</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="experimentsAsSequenceProviders$"></a>
+                    <span class="name">
+                        <span ><b>experimentsAsSequenceProviders$</b></span>
+                        <a href="#experimentsAsSequenceProviders$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesExperimentsAsSequenceSourceRequest),
+      switchMap((action) &#x3D;&gt;
+        this.sequences.experimentsAsSequenceSource().pipe(
+          map((response: ResponseObject&lt;Experiment&lt;Output&gt;[]&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestDone({ experiments: response.data });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestFail());
+          })
+        )
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts:222</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="insert$"></a>
+                    <span class="name">
+                        <span ><b>insert$</b></span>
+                        <a href="#insert$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesInsertRequest),
+      switchMap((action) &#x3D;&gt;
+        this.sequences.insert(action.sequence).pipe(
+          map((response: ResponseObject&lt;Sequence&gt;) &#x3D;&gt; {
+            this.router.navigate([&#x27;/sequences&#x27;, response.data.id]);
+            return SequencesActions.actionSequencesInsertRequestDone({
+              sequence: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesInsertRequestFail());
+          })
+        )
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nameExists$"></a>
+                    <span class="name">
+                        <span ><b>nameExists$</b></span>
+                        <a href="#nameExists$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesNameExistsRequest),
+      withLatestFrom(this.store.select(sequencesFeature)),
+      switchMap(([action, sequences]) &#x3D;&gt;
+        this.sequences.nameExists(action.name, sequences.selectedSequence.sequence.id).pipe(
+          map((response: ResponseObject&lt;{ exists: boolean }&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesNameExistsRequestDone({
+              exists: response.data.exists,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesNameExistsRequestFail());
+          })
+        )
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts:164</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="one$"></a>
+                    <span class="name">
+                        <span ><b>one$</b></span>
+                        <a href="#one$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesOneRequest),
+      switchMap((action) &#x3D;&gt;
+        this.sequences.one(action.sequenceID).pipe(
+          map((response: ResponseObject&lt;Sequence&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesOneRequestDone({
+              sequence: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesOneRequestFail());
+          })
+        )
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveSelectedExperiment$"></a>
+                    <span class="name">
+                        <span ><b>saveSelectedExperiment$</b></span>
+                        <a href="#saveSelectedExperiment$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(
+        SequencesActions.actionSequencesUpdateRequest,
+        SequencesActions.actionSequencesGenerateRequest,
+        SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestDone
+      ),
+      map(() &#x3D;&gt; {
+        return SequencesActions.actionSequencesUpdateSelectedExperiment();
+      })
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="238" class="link-to-prism">libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts:238</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sequenceFromNameAndSize$"></a>
+                    <span class="name">
+                        <span ><b>sequenceFromNameAndSize$</b></span>
+                        <a href="#sequenceFromNameAndSize$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesInsertRequestFast),
+      switchMap((action) &#x3D;&gt;
+        this.sequences.fromNameAndSize(action.experimentID, action.name, action.size).pipe(
+          map((response: ResponseObject&lt;Sequence&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesInsertRequestDone({
+              sequence: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesInsertRequestFail());
+          })
+        )
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts:204</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sequenceGenerate$"></a>
+                    <span class="name">
+                        <span ><b>sequenceGenerate$</b></span>
+                        <a href="#sequenceGenerate$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesGenerateRequest),
+      withLatestFrom(this.store.select(sequencesFeature)),
+      switchMap(([action, sequences]: [any, SequencesState]) &#x3D;&gt;
+        this.sequences.generaceSequence(sequences.selectedSequence.sequence.experimentId, sequences.selectedSequence.sequence.size).pipe(
+          map((response: ResponseObject&lt;number[]&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesGenerateDone({
+              sequenceData: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesGenerateFail());
+          })
+        )
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts:185</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update$"></a>
+                    <span class="name">
+                        <span ><b>update$</b></span>
+                        <a href="#update$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesUpdateRequest),
+      mergeMap((action) &#x3D;&gt;
+        this.sequences.update(action.sequence).pipe(
+          map((response: ResponseObject&lt;Sequence&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesUpdateRequestDone({
+              sequence: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesUpdateRequestFail());
+          })
+        )
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">libs/stim-feature-sequences/domain/src/lib/store/sequences.effects.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { catchError, delay, map, mergeMap, switchMap, withLatestFrom } from &#x27;rxjs/operators&#x27;;
+import { EMPTY, Observable, of } from &#x27;rxjs&#x27;;
+
+import { Actions, createEffect, ofType } from &#x27;@ngrx/effects&#x27;;
+import { Store } from &#x27;@ngrx/store&#x27;;
+
+import { Sequence, ResponseObject, Experiment, Output } from &#x27;@stechy1/diplomka-share&#x27;;
+
+import { SequencesService } from &#x27;../infrastructure/sequences.service&#x27;;
+import * as SequencesActions from &#x27;./sequences.actions&#x27;;
+import { SequencesState } from &#x27;./sequences.type&#x27;;
+import { sequencesFeature, sequencesSelector } from &#x27;./sequences.reducer&#x27;;
+
+@Injectable()
+export class SequencesEffects {
+  constructor(private readonly actions$: Actions, private readonly sequences: SequencesService, private readonly store: Store, private readonly router: Router) {}
+
+  all$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesAllRequest),
+      switchMap(() &#x3D;&gt;
+        this.sequences.all().pipe(
+          map((response: ResponseObject&lt;Sequence[]&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesAllRequestDone({
+              sequences: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesAllRequestFail());
+          })
+        )
+      )
+    )
+  );
+  allWithGhosts$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesAllWithGhostRequest),
+      withLatestFrom(this.store.select(sequencesSelector)),
+      switchMap(([action, sequences]) &#x3D;&gt; {
+        let result: Observable&lt;ResponseObject&lt;Sequence[]&gt;&gt;;
+        if (sequences.length !&#x3D;&#x3D; 0) {
+          result &#x3D; of({ data: sequences });
+        } else {
+          result &#x3D; this.sequences.all();
+        }
+        return result.pipe(
+          map((response: ResponseObject&lt;Sequence[]&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesAllRequestDone({
+              sequences: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesAllRequestFail());
+          })
+        );
+      })
+    )
+  );
+
+  one$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesOneRequest),
+      switchMap((action) &#x3D;&gt;
+        this.sequences.one(action.sequenceID).pipe(
+          map((response: ResponseObject&lt;Sequence&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesOneRequestDone({
+              sequence: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesOneRequestFail());
+          })
+        )
+      )
+    )
+  );
+
+  insert$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesInsertRequest),
+      switchMap((action) &#x3D;&gt;
+        this.sequences.insert(action.sequence).pipe(
+          map((response: ResponseObject&lt;Sequence&gt;) &#x3D;&gt; {
+            this.router.navigate([&#x27;/sequences&#x27;, response.data.id]);
+            return SequencesActions.actionSequencesInsertRequestDone({
+              sequence: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesInsertRequestFail());
+          })
+        )
+      )
+    )
+  );
+  update$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesUpdateRequest),
+      mergeMap((action) &#x3D;&gt;
+        this.sequences.update(action.sequence).pipe(
+          map((response: ResponseObject&lt;Sequence&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesUpdateRequestDone({
+              sequence: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesUpdateRequestFail());
+          })
+        )
+      )
+    )
+  );
+  delete$ &#x3D; createEffect(() &#x3D;&gt; {
+    return this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesDeleteRequest),
+      withLatestFrom(this.store.select(sequencesFeature)),
+      mergeMap(([action, sequences]) &#x3D;&gt; {
+        let result: Observable&lt;ResponseObject&lt;Sequence&gt;&gt;;
+        if (action.sequenceID) {
+          result &#x3D; this.sequences.delete(action.sequenceID);
+        } else {
+          if (!sequences.selectionMode) {
+            return EMPTY;
+          }
+
+          const selectedSequences: { [index: number]: boolean } &#x3D; sequences.selectedSequences;
+          const filteredSelectedSequences &#x3D; Object.entries&lt;boolean&gt;(selectedSequences).filter(([index, selected]) &#x3D;&gt; selected);
+          const [selectedIndex, selected] &#x3D; filteredSelectedSequences.values().next().value;
+
+          result &#x3D; this.sequences.delete(+selectedIndex);
+        }
+        return result.pipe(
+          map((response: ResponseObject&lt;Sequence&gt;) &#x3D;&gt;
+            SequencesActions.actionSequencesDeleteRequestDone({
+              sequence: response.data,
+            })
+          ),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesDeleteRequestFail());
+          })
+        );
+      })
+    );
+  });
+  deleteDone$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesDeleteRequestDone),
+      withLatestFrom(this.store.select(sequencesFeature)),
+      map(([_, sequences]) &#x3D;&gt; {
+        let action;
+        if (sequences.selectionMode) {
+          action &#x3D; SequencesActions.actionSequencesDeleteRequest({ sequenceID: _.sequence.id });
+        } else {
+          action &#x3D; SequencesActions.actionSequencesNoAction();
+        }
+        return action;
+      }),
+      delay(250)
+    )
+  );
+
+  nameExists$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesNameExistsRequest),
+      withLatestFrom(this.store.select(sequencesFeature)),
+      switchMap(([action, sequences]) &#x3D;&gt;
+        this.sequences.nameExists(action.name, sequences.selectedSequence.sequence.id).pipe(
+          map((response: ResponseObject&lt;{ exists: boolean }&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesNameExistsRequestDone({
+              exists: response.data.exists,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesNameExistsRequestFail());
+          })
+        )
+      )
+    )
+  );
+
+  // Sequence specific actions
+
+  sequenceGenerate$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesGenerateRequest),
+      withLatestFrom(this.store.select(sequencesFeature)),
+      switchMap(([action, sequences]: [any, SequencesState]) &#x3D;&gt;
+        this.sequences.generaceSequence(sequences.selectedSequence.sequence.experimentId, sequences.selectedSequence.sequence.size).pipe(
+          map((response: ResponseObject&lt;number[]&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesGenerateDone({
+              sequenceData: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesGenerateFail());
+          })
+        )
+      )
+    )
+  );
+
+  sequenceFromNameAndSize$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesInsertRequestFast),
+      switchMap((action) &#x3D;&gt;
+        this.sequences.fromNameAndSize(action.experimentID, action.name, action.size).pipe(
+          map((response: ResponseObject&lt;Sequence&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesInsertRequestDone({
+              sequence: response.data,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesInsertRequestFail());
+          })
+        )
+      )
+    )
+  );
+
+  experimentsAsSequenceProviders$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(SequencesActions.actionSequencesExperimentsAsSequenceSourceRequest),
+      switchMap((action) &#x3D;&gt;
+        this.sequences.experimentsAsSequenceSource().pipe(
+          map((response: ResponseObject&lt;Experiment&lt;Output&gt;[]&gt;) &#x3D;&gt; {
+            return SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestDone({ experiments: response.data });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestFail());
+          })
+        )
+      )
+    )
+  );
+
+  saveSelectedExperiment$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(
+        SequencesActions.actionSequencesUpdateRequest,
+        SequencesActions.actionSequencesGenerateRequest,
+        SequencesActions.actionSequencesExperimentsAsSequenceSourceRequestDone
+      ),
+      map(() &#x3D;&gt; {
+        return SequencesActions.actionSequencesUpdateSelectedExperiment();
+      })
+    )
+  );
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'SequencesEffects.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

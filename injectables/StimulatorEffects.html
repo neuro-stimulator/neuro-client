@@ -1,0 +1,1197 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >StimulatorEffects</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clear$" >clear$</a>
+                            </li>
+                            <li>
+                                <a href="#close$" >close$</a>
+                            </li>
+                            <li>
+                                <a href="#connectionStatus$" >connectionStatus$</a>
+                            </li>
+                            <li>
+                                <a href="#discover$" >discover$</a>
+                            </li>
+                            <li>
+                                <a href="#finish$" >finish$</a>
+                            </li>
+                            <li>
+                                <a href="#open$" >open$</a>
+                            </li>
+                            <li>
+                                <a href="#pause$" >pause$</a>
+                            </li>
+                            <li>
+                                <a href="#reboot$" >reboot$</a>
+                            </li>
+                            <li>
+                                <a href="#run$" >run$</a>
+                            </li>
+                            <li>
+                                <a href="#setOutput$" >setOutput$</a>
+                            </li>
+                            <li>
+                                <a href="#setup$" >setup$</a>
+                            </li>
+                            <li>
+                                <a href="#state$" >state$</a>
+                            </li>
+                            <li>
+                                <a href="#stimulatorState$" >stimulatorState$</a>
+                            </li>
+                            <li>
+                                <a href="#updateFirmware$" >updateFirmware$</a>
+                            </li>
+                            <li>
+                                <a href="#upload$" >upload$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_service: <a href="../injectables/StimulatorService.html" target="_self">StimulatorService</a>, _facade: <a href="../injectables/ExperimentsFacade.html" target="_self">ExperimentsFacade</a>, actions$: Actions, store: Store)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_service</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StimulatorService.html" target="_self" >StimulatorService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_facade</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ExperimentsFacade.html" target="_self" >ExperimentsFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>actions$</td>
+                                                  
+                                                        <td>
+                                                                    <code>Actions</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clear$"></a>
+                    <span class="name">
+                        <span ><b>clear$</b></span>
+                        <a href="#clear$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorClearRequest),
+      withLatestFrom(this.store.select(stimulatorFeature)),
+      switchMap(([action, state]: [never, StimulatorState]) &#x3D;&gt; {
+        let result: Observable&lt;void | ResponseObject&lt;unknown&gt;&gt;;
+        if (state.stimulatorState &lt;&#x3D; StimulatorStateType.SETUP
+          || (state.stimulatorState &gt;&#x3D; StimulatorStateType.FINISH
+            &amp;&amp; (state.previousStimulatorState &gt;&#x3D; StimulatorStateType.FINISH
+              || state.previousStimulatorState &lt;&#x3D; StimulatorStateType.SETUP )
+          )
+        ) {
+          result &#x3D; this._service.experimentClear();
+        } else {
+          result &#x3D; EMPTY;
+        }
+
+        return result.pipe(
+          map((response: ResponseObject&lt;unknown&gt;) &#x3D;&gt; {
+            if (response &#x3D;&#x3D;&#x3D; undefined) {
+              return StimulatorActions.actionStimulatorNoop();
+            }
+            return StimulatorActions.actionCommandStimulatorClearRequestDone();
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(StimulatorActions.actionCommandStimulatorClearRequestFail());
+          })
+        );
+      })
+    ) }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:215</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="close$"></a>
+                    <span class="name">
+                        <span ><b>close$</b></span>
+                        <a href="#close$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(ConnectionActions.actionStimulatorDisconnectRequest),
+      switchMap(() &#x3D;&gt; {
+        return this._service.close().pipe(
+          map(() &#x3D;&gt; {
+            return ConnectionActions.actionStimulatorDisconnected();
+          })
+        );
+      })
+    ) }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="connectionStatus$"></a>
+                    <span class="name">
+                        <span ><b>connectionStatus$</b></span>
+                        <a href="#connectionStatus$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(ConnectionActions.actionStimulatorConnectionStatusRequest),
+      switchMap(() &#x3D;&gt; {
+        return this._service.connectionStatus().pipe(
+          map((response: ResponseObject&lt;{ status: ConnectionStatus }&gt;) &#x3D;&gt; {
+            return response.data.status &#x3D;&#x3D;&#x3D; ConnectionStatus.CONNECTED ? ConnectionActions.actionStimulatorConnected() : ConnectionActions.actionStimulatorDisconnected();
+          })
+        );
+      })
+    ) }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="discover$"></a>
+                    <span class="name">
+                        <span ><b>discover$</b></span>
+                        <a href="#discover$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionStimulatorDiscoverRequest),
+      switchMap(() &#x3D;&gt; {
+        return this._service.discover().pipe(
+          map((response: { data: [{ path: string }] }) &#x3D;&gt; {
+            // TODO error handling
+            return StimulatorActions.actionStimulatorDiscoverDone(response);
+          })
+        );
+      })
+    ) }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="finish$"></a>
+                    <span class="name">
+                        <span ><b>finish$</b></span>
+                        <a href="#finish$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorFinishRequest),
+      withLatestFrom(this._facade.state),
+      switchMap(([action, experimentState]) &#x3D;&gt;
+        this._service.experimentFinish(experimentState.selectedExperiment.experiment.id, action.force).pipe(
+          map(() &#x3D;&gt; {
+            return StimulatorActions.actionCommandStimulatorFinishRequestDone();
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(StimulatorActions.actionCommandStimulatorFinishRequestFail());
+          })
+        )
+      )
+    ) }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="198" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:198</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="open$"></a>
+                    <span class="name">
+                        <span ><b>open$</b></span>
+                        <a href="#open$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(ConnectionActions.actionStimulatorConnectRequest),
+      switchMap((action) &#x3D;&gt; {
+        return this._service.open(action.path).pipe(
+          map((response: ResponseObject&lt;void&gt;) &#x3D;&gt; {
+            switch (response.message.code) {
+              case MessageCodes.CODE_SUCCESS_LOW_LEVEL_PORT_OPPENED:
+                return ConnectionActions.actionStimulatorConnected();
+              case MessageCodes.CODE_ERROR_LOW_LEVEL_PORT_NOT_OPPENED:
+                return ConnectionActions.actionStimulatorConnected();
+              default:
+                return ConnectionActions.actionStimulatorConnected();
+            }
+          })
+        );
+      })
+    ) }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pause$"></a>
+                    <span class="name">
+                        <span ><b>pause$</b></span>
+                        <a href="#pause$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorPauseRequest),
+      withLatestFrom(this._facade.state),
+      switchMap(([action, experimentState]) &#x3D;&gt;
+        this._service.experimentPause(experimentState.selectedExperiment.experiment.id).pipe(
+          map(() &#x3D;&gt; {
+            return StimulatorActions.actionCommandStimulatorPauseRequestDone();
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(StimulatorActions.actionCommandStimulatorPauseRequestFail());
+          })
+        )
+      )
+    ) }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:181</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reboot$"></a>
+                    <span class="name">
+                        <span ><b>reboot$</b></span>
+                        <a href="#reboot$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(
+    () &#x3D;&gt;
+      { return this.actions$.pipe(
+        ofType(StimulatorActions.actionCommandRebootRequest),
+        switchMap(() &#x3D;&gt; {
+          return this._service.reboot();
+        })
+      ) },
+    { dispatch: false }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:101</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="run$"></a>
+                    <span class="name">
+                        <span ><b>run$</b></span>
+                        <a href="#run$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorRunRequest),
+      withLatestFrom(this._facade.state),
+      switchMap(([action, experimentState]) &#x3D;&gt;
+        this._service.experimentRun(experimentState.selectedExperiment.experiment.id).pipe(
+          map(() &#x3D;&gt; {
+            return StimulatorActions.actionCommandStimulatorRunRequestDone();
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(StimulatorActions.actionCommandStimulatorRunRequestFail());
+          })
+        )
+      )
+    ) }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:164</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setOutput$"></a>
+                    <span class="name">
+                        <span ><b>setOutput$</b></span>
+                        <a href="#setOutput$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(
+    () &#x3D;&gt;
+      { return this.actions$.pipe(
+        ofType(StimulatorActions.actionCommandStimulatorSetOutput),
+        mergeMap((action) &#x3D;&gt; {
+          return this._service.setOutput(action.index, action.enabled);
+        })
+      ) },
+    { dispatch: false }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="275" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:275</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setup$"></a>
+                    <span class="name">
+                        <span ><b>setup$</b></span>
+                        <a href="#setup$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorSetupRequest),
+      withLatestFrom(this._facade.state),
+      switchMap(([action, experimentState]) &#x3D;&gt;
+        this._service.experimentSetup(experimentState.selectedExperiment.experiment.id).pipe(
+          map(() &#x3D;&gt; {
+            return StimulatorActions.actionCommandStimulatorSetupRequestDone();
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(StimulatorActions.actionCommandStimulatorSetupRequestFail());
+          })
+        )
+      )
+    ) }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:147</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="state$"></a>
+                    <span class="name">
+                        <span ><b>state$</b></span>
+                        <a href="#state$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorStateRequest),
+      switchMap(() &#x3D;&gt; {
+        return this._service.stimulatorState().pipe(
+          map((response: ResponseObject&lt;StimulatorStateEvent | undefined&gt;) &#x3D;&gt; {
+            return StimulatorActions.actionCommandStimulatorStateRequestDone({
+              state: response ? response.data.state : StimulatorStateType.READY,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(StimulatorActions.actionCommandStimulatorStateRequestFail());
+          })
+        );
+      })
+    ) }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:112</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stimulatorState$"></a>
+                    <span class="name">
+                        <span ><b>stimulatorState$</b></span>
+                        <a href="#stimulatorState$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(ConnectionActions.actionSocketData),
+      map((action) &#x3D;&gt; action.data as SocketMessage),
+      filter((message: SocketMessage) &#x3D;&gt; message.specialization &#x3D;&#x3D;&#x3D; SocketMessageSpecialization.STIMULATOR),
+      map((message: SocketMessage) &#x3D;&gt; {
+        let action;
+        switch (message.type) {
+          case SocketMessageType.STIMULATOR_DATA_STATE: {
+            const stimulatorDataStateMessage &#x3D; message as StimulatorDataStateMessage;
+            action &#x3D; StimulatorActions.actionCommandStimulatorStateRequestDone({
+              state: stimulatorDataStateMessage.data.state,
+            });
+            break;
+          }
+          default:
+            action &#x3D; StimulatorActions.actionStimulatorNoop();
+        }
+        // return action.pipe(
+        //   catchError(() &#x3D;&gt; {
+        //     return of(StimulatorActions.actionStimulatorNoop());
+        //   })
+        // );
+        return action;
+      })
+    ) }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="247" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:247</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateFirmware$"></a>
+                    <span class="name">
+                        <span ><b>updateFirmware$</b></span>
+                        <a href="#updateFirmware$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionStimulatorFirmwareUpdateRequest),
+      mergeMap((action) &#x3D;&gt;
+        this._service.updateFirmware(action.path).pipe(
+          map(() &#x3D;&gt; {
+            return StimulatorActions.actionStimulatorFirmwareUpdateDone();
+          })
+        )
+      )
+    ) }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="upload$"></a>
+                    <span class="name">
+                        <span ><b>upload$</b></span>
+                        <a href="#upload$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorUploadRequest),
+      withLatestFrom(this._facade.state),
+      switchMap(([action, experimentState]) &#x3D;&gt;
+        this._service.experimentUpload(experimentState.selectedExperiment.experiment.id).pipe(
+          mergeMap(() &#x3D;&gt; {
+            return [StimulatorActions.actionCommandStimulatorUploadRequestDone(), StimulatorActions.actionCommandStimulatorSetupRequest()];
+          }),
+          catchError(() &#x3D;&gt; {
+            return [StimulatorActions.actionCommandStimulatorSetupRequestFail()];
+          })
+        )
+      )
+    ) }
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">libs/stim-feature-stimulator/domain/src/lib/store/stimulator.effects.ts:130</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+
+import { Actions, createEffect, ofType } from &#x27;@ngrx/effects&#x27;;
+import { Store } from &#x27;@ngrx/store&#x27;;
+import { catchError, filter, map, mergeMap, switchMap, withLatestFrom } from &#x27;rxjs/operators&#x27;;
+import { EMPTY, Observable, of } from &#x27;rxjs&#x27;;
+
+import {
+  ConnectionStatus,
+  MessageCodes,
+  ResponseObject,
+  SocketMessage,
+  SocketMessageSpecialization,
+  SocketMessageType,
+  StimulatorDataStateMessage,
+  StimulatorStateEvent
+} from &#x27;@stechy1/diplomka-share&#x27;;
+import * as ConnectionActions from &#x27;@neuro-client/stim-lib-connection&#x27;;
+import { ExperimentsFacade } from &#x27;@neuro-client/stim-feature-experiments/domain&#x27;;
+
+import { StimulatorService } from &#x27;../infrastructure/stimulator.service&#x27;;
+import { StimulatorStateType } from &#x27;../domain/stimulator-state&#x27;;
+import * as StimulatorActions from &#x27;./stimulator.actions&#x27;;
+import { StimulatorState } from &#x27;./stimulator.state&#x27;;
+import { stimulatorFeature } from &#x27;./stimulator.reducer&#x27;;
+
+@Injectable()
+export class StimulatorEffects {
+  constructor(private readonly _service: StimulatorService, private readonly _facade: ExperimentsFacade, private readonly actions$: Actions, private readonly store: Store) {}
+
+  discover$ &#x3D; createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionStimulatorDiscoverRequest),
+      switchMap(() &#x3D;&gt; {
+        return this._service.discover().pipe(
+          map((response: { data: [{ path: string }] }) &#x3D;&gt; {
+            // TODO error handling
+            return StimulatorActions.actionStimulatorDiscoverDone(response);
+          })
+        );
+      })
+    ) }
+  );
+  open$ &#x3D; createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(ConnectionActions.actionStimulatorConnectRequest),
+      switchMap((action) &#x3D;&gt; {
+        return this._service.open(action.path).pipe(
+          map((response: ResponseObject&lt;void&gt;) &#x3D;&gt; {
+            switch (response.message.code) {
+              case MessageCodes.CODE_SUCCESS_LOW_LEVEL_PORT_OPPENED:
+                return ConnectionActions.actionStimulatorConnected();
+              case MessageCodes.CODE_ERROR_LOW_LEVEL_PORT_NOT_OPPENED:
+                return ConnectionActions.actionStimulatorConnected();
+              default:
+                return ConnectionActions.actionStimulatorConnected();
+            }
+          })
+        );
+      })
+    ) }
+  );
+  close$ &#x3D; createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(ConnectionActions.actionStimulatorDisconnectRequest),
+      switchMap(() &#x3D;&gt; {
+        return this._service.close().pipe(
+          map(() &#x3D;&gt; {
+            return ConnectionActions.actionStimulatorDisconnected();
+          })
+        );
+      })
+    ) }
+  );
+  connectionStatus$ &#x3D; createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(ConnectionActions.actionStimulatorConnectionStatusRequest),
+      switchMap(() &#x3D;&gt; {
+        return this._service.connectionStatus().pipe(
+          map((response: ResponseObject&lt;{ status: ConnectionStatus }&gt;) &#x3D;&gt; {
+            return response.data.status &#x3D;&#x3D;&#x3D; ConnectionStatus.CONNECTED ? ConnectionActions.actionStimulatorConnected() : ConnectionActions.actionStimulatorDisconnected();
+          })
+        );
+      })
+    ) }
+  );
+
+  updateFirmware$ &#x3D; createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionStimulatorFirmwareUpdateRequest),
+      mergeMap((action) &#x3D;&gt;
+        this._service.updateFirmware(action.path).pipe(
+          map(() &#x3D;&gt; {
+            return StimulatorActions.actionStimulatorFirmwareUpdateDone();
+          })
+        )
+      )
+    ) }
+  );
+
+  reboot$ &#x3D; createEffect(
+    () &#x3D;&gt;
+      { return this.actions$.pipe(
+        ofType(StimulatorActions.actionCommandRebootRequest),
+        switchMap(() &#x3D;&gt; {
+          return this._service.reboot();
+        })
+      ) },
+    { dispatch: false }
+  );
+
+  state$ &#x3D; createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorStateRequest),
+      switchMap(() &#x3D;&gt; {
+        return this._service.stimulatorState().pipe(
+          map((response: ResponseObject&lt;StimulatorStateEvent | undefined&gt;) &#x3D;&gt; {
+            return StimulatorActions.actionCommandStimulatorStateRequestDone({
+              state: response ? response.data.state : StimulatorStateType.READY,
+            });
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(StimulatorActions.actionCommandStimulatorStateRequestFail());
+          })
+        );
+      })
+    ) }
+  );
+
+  upload$ &#x3D; createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorUploadRequest),
+      withLatestFrom(this._facade.state),
+      switchMap(([action, experimentState]) &#x3D;&gt;
+        this._service.experimentUpload(experimentState.selectedExperiment.experiment.id).pipe(
+          mergeMap(() &#x3D;&gt; {
+            return [StimulatorActions.actionCommandStimulatorUploadRequestDone(), StimulatorActions.actionCommandStimulatorSetupRequest()];
+          }),
+          catchError(() &#x3D;&gt; {
+            return [StimulatorActions.actionCommandStimulatorSetupRequestFail()];
+          })
+        )
+      )
+    ) }
+  );
+
+  setup$ &#x3D; createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorSetupRequest),
+      withLatestFrom(this._facade.state),
+      switchMap(([action, experimentState]) &#x3D;&gt;
+        this._service.experimentSetup(experimentState.selectedExperiment.experiment.id).pipe(
+          map(() &#x3D;&gt; {
+            return StimulatorActions.actionCommandStimulatorSetupRequestDone();
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(StimulatorActions.actionCommandStimulatorSetupRequestFail());
+          })
+        )
+      )
+    ) }
+  );
+
+  run$ &#x3D; createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorRunRequest),
+      withLatestFrom(this._facade.state),
+      switchMap(([action, experimentState]) &#x3D;&gt;
+        this._service.experimentRun(experimentState.selectedExperiment.experiment.id).pipe(
+          map(() &#x3D;&gt; {
+            return StimulatorActions.actionCommandStimulatorRunRequestDone();
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(StimulatorActions.actionCommandStimulatorRunRequestFail());
+          })
+        )
+      )
+    ) }
+  );
+
+  pause$ &#x3D; createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorPauseRequest),
+      withLatestFrom(this._facade.state),
+      switchMap(([action, experimentState]) &#x3D;&gt;
+        this._service.experimentPause(experimentState.selectedExperiment.experiment.id).pipe(
+          map(() &#x3D;&gt; {
+            return StimulatorActions.actionCommandStimulatorPauseRequestDone();
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(StimulatorActions.actionCommandStimulatorPauseRequestFail());
+          })
+        )
+      )
+    ) }
+  );
+
+  finish$ &#x3D; createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorFinishRequest),
+      withLatestFrom(this._facade.state),
+      switchMap(([action, experimentState]) &#x3D;&gt;
+        this._service.experimentFinish(experimentState.selectedExperiment.experiment.id, action.force).pipe(
+          map(() &#x3D;&gt; {
+            return StimulatorActions.actionCommandStimulatorFinishRequestDone();
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(StimulatorActions.actionCommandStimulatorFinishRequestFail());
+          })
+        )
+      )
+    ) }
+  );
+
+  clear$ &#x3D; createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(StimulatorActions.actionCommandStimulatorClearRequest),
+      withLatestFrom(this.store.select(stimulatorFeature)),
+      switchMap(([action, state]: [never, StimulatorState]) &#x3D;&gt; {
+        let result: Observable&lt;void | ResponseObject&lt;unknown&gt;&gt;;
+        if (state.stimulatorState &lt;&#x3D; StimulatorStateType.SETUP
+          || (state.stimulatorState &gt;&#x3D; StimulatorStateType.FINISH
+            &amp;&amp; (state.previousStimulatorState &gt;&#x3D; StimulatorStateType.FINISH
+              || state.previousStimulatorState &lt;&#x3D; StimulatorStateType.SETUP )
+          )
+        ) {
+          result &#x3D; this._service.experimentClear();
+        } else {
+          result &#x3D; EMPTY;
+        }
+
+        return result.pipe(
+          map((response: ResponseObject&lt;unknown&gt;) &#x3D;&gt; {
+            if (response &#x3D;&#x3D;&#x3D; undefined) {
+              return StimulatorActions.actionStimulatorNoop();
+            }
+            return StimulatorActions.actionCommandStimulatorClearRequestDone();
+          }),
+          catchError(() &#x3D;&gt; {
+            return of(StimulatorActions.actionCommandStimulatorClearRequestFail());
+          })
+        );
+      })
+    ) }
+  );
+
+  stimulatorState$ &#x3D; createEffect(() &#x3D;&gt;
+    { return this.actions$.pipe(
+      ofType(ConnectionActions.actionSocketData),
+      map((action) &#x3D;&gt; action.data as SocketMessage),
+      filter((message: SocketMessage) &#x3D;&gt; message.specialization &#x3D;&#x3D;&#x3D; SocketMessageSpecialization.STIMULATOR),
+      map((message: SocketMessage) &#x3D;&gt; {
+        let action;
+        switch (message.type) {
+          case SocketMessageType.STIMULATOR_DATA_STATE: {
+            const stimulatorDataStateMessage &#x3D; message as StimulatorDataStateMessage;
+            action &#x3D; StimulatorActions.actionCommandStimulatorStateRequestDone({
+              state: stimulatorDataStateMessage.data.state,
+            });
+            break;
+          }
+          default:
+            action &#x3D; StimulatorActions.actionStimulatorNoop();
+        }
+        // return action.pipe(
+        //   catchError(() &#x3D;&gt; {
+        //     return of(StimulatorActions.actionStimulatorNoop());
+        //   })
+        // );
+        return action;
+      })
+    ) }
+  );
+
+  setOutput$ &#x3D; createEffect(
+    () &#x3D;&gt;
+      { return this.actions$.pipe(
+        ofType(StimulatorActions.actionCommandStimulatorSetOutput),
+        mergeMap((action) &#x3D;&gt; {
+          return this._service.setOutput(action.index, action.enabled);
+        })
+      ) },
+    { dispatch: false }
+  );
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'StimulatorEffects.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,822 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  ExperimentResultsFilterDialogComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/stim-feature-experiment-results/feature/src/lib/experiment-results-filter-dialog/experiment-results-filter-dialog.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+                <code><a href="../directives/FilterDialogComponent.html" target="_self" >FilterDialogComponent</a></code>
+    </p>
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>../../../../../../apps/stimulator/src/app/share/filter-dialog/filter-dialog.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>../../../../../../apps/stimulator/src/app/share/filter-dialog/filter-dialog.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_cancelSubscription" >_cancelSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_confirmSubscription" >_confirmSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_formValueChangesSubscription" >_formValueChangesSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_lastConfiguration" >_lastConfiguration</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_showSubscription" >_showSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#bind" >bind</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#unbind" >unbind</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(filter: <a href="../injectables/ListGroupSortFilterService.html" target="_self">ListGroupSortFilterService&lt;ExperimentResult&gt;</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">libs/stim-feature-experiment-results/feature/src/lib/experiment-results-filter-dialog/experiment-results-filter-dialog.component.ts:12</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>filter</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ListGroupSortFilterService.html" target="_self" >ListGroupSortFilterService&lt;ExperimentResult&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bind"></a>
+                    <span class="name">
+                        <span ><b>bind</b></span>
+                        <a href="#bind"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>bind(modal: <a href="../components/ModalComponent.html" target="_self">ModalComponent</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../directives/FilterDialogComponent.html" target="_self" >FilterDialogComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../directives/FilterDialogComponent.html#source" target="_self" >FilterDialogComponent:65</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>modal</td>
+                                    <td>
+                                                <code><a href="../components/ModalComponent.html" target="_self" >ModalComponent</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../directives/FilterDialogComponent.html" target="_self" >FilterDialogComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../directives/FilterDialogComponent.html#source" target="_self" >FilterDialogComponent:54</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="unbind"></a>
+                    <span class="name">
+                        <span ><b>unbind</b></span>
+                        <a href="#unbind"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>unbind()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../directives/FilterDialogComponent.html" target="_self" >FilterDialogComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../directives/FilterDialogComponent.html#source" target="_self" >FilterDialogComponent:81</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_cancelSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_cancelSubscription</b></span>
+                        <a href="#_cancelSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../directives/FilterDialogComponent.html" target="_self" >FilterDialogComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/FilterDialogComponent.html#source" target="_self" >FilterDialogComponent:21</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_confirmSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_confirmSubscription</b></span>
+                        <a href="#_confirmSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../directives/FilterDialogComponent.html" target="_self" >FilterDialogComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/FilterDialogComponent.html#source" target="_self" >FilterDialogComponent:20</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_formValueChangesSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_formValueChangesSubscription</b></span>
+                        <a href="#_formValueChangesSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../directives/FilterDialogComponent.html" target="_self" >FilterDialogComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/FilterDialogComponent.html#source" target="_self" >FilterDialogComponent:23</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_lastConfiguration"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_lastConfiguration</b></span>
+                        <a href="#_lastConfiguration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ListFilterParameters.html" target="_self" >ListFilterParameters</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../directives/FilterDialogComponent.html" target="_self" >FilterDialogComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/FilterDialogComponent.html#source" target="_self" >FilterDialogComponent:24</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_showSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_showSubscription</b></span>
+                        <a href="#_showSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../directives/FilterDialogComponent.html" target="_self" >FilterDialogComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/FilterDialogComponent.html#source" target="_self" >FilterDialogComponent:22</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormGroup({
+    groupBy: new FormControl(null),
+    sortBy: new FormControl(null),
+    orderBy: new FormControl(null),
+  })</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../directives/FilterDialogComponent.html" target="_self" >FilterDialogComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/FilterDialogComponent.html#source" target="_self" >FilterDialogComponent:14</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component} from &#x27;@angular/core&#x27;;
+
+import { ExperimentResult } from &#x27;@stechy1/diplomka-share&#x27;;
+
+import { ListGroupSortFilterService} from &#x27;@neuro-client/stim-lib-list-utils&#x27;;
+import { FilterDialogComponent } from &#x27;@neuro-client/stim-lib-ui&#x27;;
+
+@Component({
+  templateUrl: &#x27;../../../../../../apps/stimulator/src/app/share/filter-dialog/filter-dialog.component.html&#x27;,
+  styleUrls: [&#x27;../../../../../../apps/stimulator/src/app/share/filter-dialog/filter-dialog.component.sass&#x27;]
+})
+export class ExperimentResultsFilterDialogComponent extends FilterDialogComponent&lt;ExperimentResult&gt; {
+
+  constructor(filter: ListGroupSortFilterService&lt;ExperimentResult&gt;) {
+    super(filter);
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;form [formGroup]&#x3D;&quot;form&quot;&gt;
+  &lt;div class&#x3D;&quot;row&quot;&gt;
+    &lt;div class&#x3D;&quot;col-12 col-lg filter-row&quot; *ngIf&#x3D;&quot;groupByFilters.length !&#x3D;&#x3D; 0&quot;&gt;
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;col-6 col-sm-7 col-lg-12&quot;&gt;
+          &lt;h2&gt;&lt;i class&#x3D;&quot;fas fa-object-group&quot;&gt;&lt;/i&gt; {{ &#x27;SHARE.DIALOGS.FILTER.GROUP_BY.TITLE&#x27; | translate }}&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;col-6 col-sm-5 col-lg-12&quot;&gt;
+          &lt;div class&#x3D;&quot;form-check&quot; *ngFor&#x3D;&quot;let group of groupByFilters&quot;&gt;
+            &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;radio&quot; name&#x3D;&quot;groupBy&quot; formControlName&#x3D;&quot;groupBy&quot;
+                   [id]&#x3D;&quot;&#x27;group-by-&#x27; + group.value&quot; [value]&#x3D;&quot;group.value&quot;&gt;
+            &lt;label class&#x3D;&quot;form-check-label&quot; [for]&#x3D;&quot;&#x27;group-by-&#x27; + group.value&quot;&gt;&lt;i
+              [ngClass]&#x3D;&quot;[&#x27;fas&#x27;, group.icon]&quot;&gt;&lt;/i&gt; {{group.name | translate }}&lt;/label&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;col-12 col-lg filter-row&quot; *ngIf&#x3D;&quot;sortByFilters.length !&#x3D;&#x3D; 0&quot;&gt;
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;col-6 col-sm-7 col-lg-12&quot;&gt;
+          &lt;h2&gt;&lt;i class&#x3D;&quot;fas fa-filter&quot;&gt;&lt;/i&gt; {{ &#x27;SHARE.DIALOGS.FILTER.SORT_BY.TITLE&#x27; | translate }}&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;col-6 col-sm-5 col-lg-12&quot;&gt;
+          &lt;div class&#x3D;&quot;form-check&quot; *ngFor&#x3D;&quot;let sort of sortByFilters&quot;&gt;
+            &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;radio&quot; name&#x3D;&quot;sortBy&quot; formControlName&#x3D;&quot;sortBy&quot;
+                   [id]&#x3D;&quot;&#x27;sort-by-&#x27; + sort.value&quot; [value]&#x3D;&quot;sort.value&quot;&gt;
+            &lt;label class&#x3D;&quot;form-check-label&quot; [for]&#x3D;&quot;&#x27;sort-by-&#x27; + sort.value&quot;&gt;
+              &lt;i [ngClass]&#x3D;&quot;[&#x27;fas&#x27;, sort.icon[orderBy.value]]&quot;&gt;&lt;/i&gt; {{sort.name | translate }}
+            &lt;/label&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;col-12 col-lg filter-row&quot; *ngIf&#x3D;&quot;orderByFilters.length !&#x3D;&#x3D; 0&quot;&gt;
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;col-6 col-sm-7 col-lg-12&quot;&gt;
+          &lt;h2&gt;&lt;i class&#x3D;&quot;fas fa-sort&quot;&gt;&lt;/i&gt; {{ &#x27;SHARE.DIALOGS.FILTER.ORDER_BY.TITLE&#x27; | translate }}&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;col-6 col-sm-5 col-lg-12&quot;&gt;
+          &lt;div class&#x3D;&quot;form-check&quot; *ngFor&#x3D;&quot;let order of orderByFilters&quot;&gt;
+            &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;radio&quot; name&#x3D;&quot;orderBy&quot; formControlName&#x3D;&quot;orderBy&quot;
+                   [id]&#x3D;&quot;&#x27;order-by-&#x27; + order.value&quot; [value]&#x3D;&quot;order.value&quot;&gt;
+            &lt;label class&#x3D;&quot;form-check-label&quot; [for]&#x3D;&quot;&#x27;order-by-&#x27; + order.value&quot;&gt;&lt;i
+              [ngClass]&#x3D;&quot;[&#x27;fas&#x27;, order.icon]&quot;&gt;&lt;/i&gt; {{order.name | translate }}&lt;/label&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>../../../../../../apps/stimulator/src/app/share/filter-dialog/filter-dialog.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.filter-row
+  margin-bottom: 8px
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><form [formGroup]="form">  <div class="row">    <div class="col-12 col-lg filter-row" *ngIf="groupByFilters.length !== 0">      <div class="row">        <div class="col-6 col-sm-7 col-lg-12">          <h2><i class="fas fa-object-group"></i> {{ \'SHARE.DIALOGS.FILTER.GROUP_BY.TITLE\' | translate }}</h2>        </div>        <div class="col-6 col-sm-5 col-lg-12">          <div class="form-check" *ngFor="let group of groupByFilters">            <input class="form-check-input" type="radio" name="groupBy" formControlName="groupBy"                   [id]="\'group-by-\' + group.value" [value]="group.value">            <label class="form-check-label" [for]="\'group-by-\' + group.value"><i              [ngClass]="[\'fas\', group.icon]"></i> {{group.name | translate }}</label>          </div>        </div>      </div>    </div>    <div class="col-12 col-lg filter-row" *ngIf="sortByFilters.length !== 0">      <div class="row">        <div class="col-6 col-sm-7 col-lg-12">          <h2><i class="fas fa-filter"></i> {{ \'SHARE.DIALOGS.FILTER.SORT_BY.TITLE\' | translate }}</h2>        </div>        <div class="col-6 col-sm-5 col-lg-12">          <div class="form-check" *ngFor="let sort of sortByFilters">            <input class="form-check-input" type="radio" name="sortBy" formControlName="sortBy"                   [id]="\'sort-by-\' + sort.value" [value]="sort.value">            <label class="form-check-label" [for]="\'sort-by-\' + sort.value">              <i [ngClass]="[\'fas\', sort.icon[orderBy.value]]"></i> {{sort.name | translate }}            </label>          </div>        </div>      </div>    </div>    <div class="col-12 col-lg filter-row" *ngIf="orderByFilters.length !== 0">      <div class="row">        <div class="col-6 col-sm-7 col-lg-12">          <h2><i class="fas fa-sort"></i> {{ \'SHARE.DIALOGS.FILTER.ORDER_BY.TITLE\' | translate }}</h2>        </div>        <div class="col-6 col-sm-5 col-lg-12">          <div class="form-check" *ngFor="let order of orderByFilters">            <input class="form-check-input" type="radio" name="orderBy" formControlName="orderBy"                   [id]="\'order-by-\' + order.value" [value]="order.value">            <label class="form-check-label" [for]="\'order-by-\' + order.value"><i              [ngClass]="[\'fas\', order.icon]"></i> {{order.name | translate }}</label>          </div>        </div>      </div>    </div>  </div></form></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': ''},{'name': 'AppComponent', 'selector': 'stim-app'},{'name': 'AudioPlayerComponent', 'selector': 'stim-lib-ui-audio-player'},{'name': 'AuthComponent', 'selector': 'stim-feature-auth'},{'name': 'BaseExperimentTypeComponent', 'selector': ''},{'name': 'BaseListComponent', 'selector': ''},{'name': 'CalibrationComponent', 'selector': ''},{'name': 'ConfirmDialogComponent', 'selector': ''},{'name': 'ConsoleComponent', 'selector': 'stim-lib-console'},{'name': 'CountingCycleComponent', 'selector': 'stim-feature-player-stop-condition-counting-cycle'},{'name': 'CountingExperimentComponent', 'selector': 'stim-feature-player-stop-condition-counting-experiment'},{'name': 'DiodeComponent', 'selector': 'stim-lib-ui-diode'},{'name': 'DropdownBtnComponent', 'selector': 'stim-lib-ui-dropdown-btn'},{'name': 'ExperimentResultComponent', 'selector': 'stim-feature-experiment-results-experiment-result'},{'name': 'ExperimentResultsComponent', 'selector': ''},{'name': 'ExperimentResultsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentResultsGhostItemListComponent', 'selector': 'stim-feature-experiment-results-ghost-item-list'},{'name': 'ExperimentResultsItemListComponent', 'selector': 'stim-feature-experiment-results-item-list'},{'name': 'ExperimentsComponent', 'selector': ''},{'name': 'ExperimentsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentsGhostItemListComponent', 'selector': 'stim-feature-experiments-ghost-item-list'},{'name': 'ExperimentsItemListComponent', 'selector': 'stim-feature-experiments-item-list'},{'name': 'ExperimentsPageToolsComponent', 'selector': ''},{'name': 'ExperimentTypeComponent', 'selector': 'stim-feature-experiments-experiment-type'},{'name': 'ExperimentTypeCvepComponent', 'selector': ''},{'name': 'ExperimentTypeCvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-cvep-output'},{'name': 'ExperimentTypeErpComponent', 'selector': ''},{'name': 'ExperimentTypeErpOutputComponent', 'selector': 'stim-feature-experiments-type-erp-output'},{'name': 'ExperimentTypeFvepComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep'},{'name': 'ExperimentTypeFvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep-output'},{'name': 'ExperimentTypeHeaderComponent', 'selector': 'stim-feature-experiments-experiment-type-header'},{'name': 'ExperimentTypeNoneComponent', 'selector': ''},{'name': 'ExperimentTypeReaComponent', 'selector': ''},{'name': 'ExperimentTypeReaOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-rea-output'},{'name': 'ExperimentTypeTvepComponent', 'selector': ''},{'name': 'ExperimentTypeTvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-tvep-output'},{'name': 'ExperimentViewerComponent', 'selector': 'stim-lib-ui-experiment-viewer'},{'name': 'FabComponent', 'selector': 'stim-lib-fab'},{'name': 'FileBrowserComponent', 'selector': ''},{'name': 'HelpComponent', 'selector': ''},{'name': 'ImagePlayerComponent', 'selector': 'stim-lib-ui-image-player'},{'name': 'InformDialogComponent', 'selector': ''},{'name': 'ListButtonsAddonComponent', 'selector': ''},{'name': 'LoginComponent', 'selector': 'stim-feature-auth'},{'name': 'LogoutComponent', 'selector': ''},{'name': 'ModalComponent', 'selector': 'stim-lib-modal'},{'name': 'NavigationComponent', 'selector': 'stim-feature-navigation'},{'name': 'NoConditionComponent', 'selector': 'stim-feature-player-stop-condition-no-condition'},{'name': 'OutputEditorComponent', 'selector': 'neuro-client-output-editor'},{'name': 'OutputPatternComponent', 'selector': 'stim-feature-experiments-output-pattern'},{'name': 'OutputTypeComponent', 'selector': 'stim-feature-experiments-output-type'},{'name': 'PageNotFoundComponent', 'selector': ''},{'name': 'PageToolsComponent', 'selector': ''},{'name': 'ParamConfigApplicationComponent', 'selector': 'stim-feature-settings-param-config-application'},{'name': 'ParamConfigComponent', 'selector': 'stim-feature-settings-param-config'},{'name': 'ParamConfigExperimentsComponent', 'selector': 'stim-feature-settings-param-config-experiments'},{'name': 'ParamConfigServerComponent', 'selector': 'stim-feature-settings-param-config-server'},{'name': 'PlayerComponent', 'selector': ''},{'name': 'PlayerPageToolsComponent', 'selector': ''},{'name': 'ProfileComponent', 'selector': 'stim-feature-users'},{'name': 'RegisterComponent', 'selector': 'stim-feature-auth'},{'name': 'SequenceComponent', 'selector': 'stim-feature-sequences-sequence'},{'name': 'SequenceFastDialogComponent', 'selector': ''},{'name': 'SequencesComponent', 'selector': ''},{'name': 'SequencesFilterDialogComponent', 'selector': ''},{'name': 'SequencesGhostItemListComponent', 'selector': 'stim-feature-sequences-ghost-item-list'},{'name': 'SequencesItemListComponent', 'selector': 'stim-feature-sequences-item-list'},{'name': 'SequenceViewerComponent', 'selector': 'stim-lib-ui-sequence-viewer'},{'name': 'ServiceStateComponent', 'selector': 'stim-feature-settings-service-state'},{'name': 'SettingsComponent', 'selector': ''},{'name': 'SidebarComponent', 'selector': 'stim-feature-navigation-sidebar'},{'name': 'StimulatorComponent', 'selector': ''},{'name': 'StopConditionsComponent', 'selector': 'stim-feature-player-stop-conditions'},{'name': 'TagEditorComponent', 'selector': 'stim-lib-ui-tag-editor'}];
+    var DIRECTIVES = [{'name': 'BaseExperimentTypeResolverDirective', 'selector': ''},{'name': 'ContentTogglerDirective', 'selector': '[stimLibUiContentToggler]'},{'name': 'DialogChildsDirective', 'selector': '[stimLibModalDialogChilds]'},{'name': 'ExperimentTypeResolverDirective', 'selector': '[stimFeatureExperimentsTypeResolver]'},{'name': 'FilterDialogComponent', 'selector': ''},{'name': 'NavigationButtonsAddonDirective', 'selector': '[stimFeatureNavigationButtonsAddon]'},{'name': 'PlayerExperimentTypeResolverDirective', 'selector': '[stimFeaturePlayerExperimentTypeResolver]'},{'name': 'StopConditionDirective', 'selector': '[stimFeatureStopCondition]'}];
+    var ACTUAL_COMPONENT = {'name': 'ExperimentResultsFilterDialogComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExperimentResultsFilterDialogComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

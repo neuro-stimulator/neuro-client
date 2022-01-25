@@ -1,0 +1,2671 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  ModalComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/stim-lib-modal/src/lib/modal.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Komponenta reprezentující modální dialog
+Dialog disponuje dvěma tlačítky: <b>zrušit</b>, <b>potvrdit</b>.</p>
+<p>Pracuje ve dvou módech:</p>
+<ul>
+<li>read-only - pouze pro zobrazení informace</li>
+<li>s čekáním na výsledek - předpokládá se nějaká interakce v dialogu s výsledkem</li>
+</ul>
+<p>V read-only režimu je vhodné dialog použít takto:
+ <pre>
+   <stim-lib-modal id="informationModalDialog" title="Informace"
+     (confirm)="handleConfirmInformationDialog()"
+     (cancel)="handleCnacelConfirmationDialog()">
+     <stim-import-dialog></stim-import-dialog>
+   </stim-lib-modal>
+ </pre></p>
+<p> Pro čekání na výsledek je potřeba spárovat proměnnou &#39;result&#39;:
+ <pre>
+   <stim-lib-modal id="modalContainer" title="Import dotazů"
+     [result]="importDialog.entries"
+     (confirm)="importDialog.doImport()">
+     <stim-import-dialog #importDialog></stim-import-dialog>
+   </stim-lib-modal>
+ </pre></p>
+<p>V druhém případě se výsledek musí získat právě z komponenty uvnitř dialogu,
+proto se nabinduje metoda &#39;confirm&#39;, která informuje komponentu v dialogu,
+že má poskytnout výsledek do &#39;spárované&#39; proměnné.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>stim-lib-modal</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./modal.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./modal.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_cancel" >_cancel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_cancelDisabled" >_cancelDisabled</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_cancelSubscription" >_cancelSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_cancelText" >_cancelText</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_confirm" >_confirm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_confirmClose" >_confirmClose</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_confirmDisabled" >_confirmDisabled</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_confirmText" >_confirmText</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_id" >_id</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_isOpen" >_isOpen</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_result" >_result</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_resultSubscription" >_resultSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_show" >_show</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_showComponent" >_showComponent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_title" >_title</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_viewInstance" >_viewInstance</a>
+                            </li>
+                            <li>
+                                <a href="#childDirective" >childDirective</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_loadDialogContent" >_loadDialogContent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_unsubscrie" >_unsubscrie</a>
+                            </li>
+                            <li>
+                                <a href="#close" >close</a>
+                            </li>
+                            <li>
+                                <a href="#handleCancel" >handleCancel</a>
+                            </li>
+                            <li>
+                                <a href="#handleConfirm" >handleConfirm</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#onEscapePress" >onEscapePress</a>
+                            </li>
+                            <li>
+                                <a href="#open" >open</a>
+                            </li>
+                            <li>
+                                <a href="#openForResult" >openForResult</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cancelDisabled" >cancelDisabled</a>
+                            </li>
+                            <li>
+                                <a href="#cancelText" >cancelText</a>
+                            </li>
+                            <li>
+                                <a href="#confirmText" >confirmText</a>
+                            </li>
+                            <li>
+                                <a href="#title" >title</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#window:keyup.esc" >window:keyup.esc</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#id" >id</a>
+                                </li>
+                                <li>
+                                    <a href="#title" >title</a>
+                                </li>
+                                <li>
+                                    <a href="#confirmText" >confirmText</a>
+                                </li>
+                                <li>
+                                    <a href="#cancelText" >cancelText</a>
+                                </li>
+                                <li>
+                                    <a href="#result" >result</a>
+                                </li>
+                                <li>
+                                    <a href="#cancelDisabled" >cancelDisabled</a>
+                                </li>
+                                <li>
+                                    <a href="#confirmDisabled" >confirmDisabled</a>
+                                </li>
+                                <li>
+                                    <a href="#showComponent" >showComponent</a>
+                                </li>
+                                <li>
+                                    <a href="#confirmClose" >confirmClose</a>
+                                </li>
+                                <li>
+                                    <a href="#show" >show</a>
+                                </li>
+                                <li>
+                                    <a href="#cancel" >cancel</a>
+                                </li>
+                                <li>
+                                    <a href="#confirm" >confirm</a>
+                                </li>
+                                <li>
+                                    <a href="#isOpen" >isOpen</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(componentFactoryResolver: <a href="https://angular.io/api/core/ComponentFactoryResolver" target="_blank">ComponentFactoryResolver</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:53</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>componentFactoryResolver</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ComponentFactoryResolver" target="_blank" >ComponentFactoryResolver</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cancelDisabled"></a>
+                        <b>cancelDisabled</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:119</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cancelText"></a>
+                        <b>cancelText</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:97</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="confirmText"></a>
+                        <b>confirmText</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:86</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="title"></a>
+                        <b>title</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:75</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="window:keyup.esc"></a>
+                    <span class="name">
+                        <span ><b>window:keyup.esc</b></span>
+                        <a href="#window:keyup.esc"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>window:keyup.esc()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="263"
+                            class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:263</a></div>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_loadDialogContent"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_loadDialogContent</b></span>
+                        <a href="#_loadDialogContent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_loadDialogContent()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="270"
+                            class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:270</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Načte samotnou komponentu, která se v dialogu zobrazí</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_unsubscrie"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_unsubscrie</b></span>
+                        <a href="#_unsubscrie"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_unsubscrie()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="293"
+                            class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:293</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Odhlásí z odběru subscription result a cancel události</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="close"></a>
+                    <span class="name">
+                        <span ><b>close</b></span>
+                        <a href="#close"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>close()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="233"
+                            class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:233</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Zavře dialog</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleCancel"></a>
+                    <span class="name">
+                        <span ><b>handleCancel</b></span>
+                        <a href="#handleCancel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleCancel()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="245"
+                            class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:245</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Reakce na tlačítko cancel</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleConfirm"></a>
+                    <span class="name">
+                        <span ><b>handleConfirm</b></span>
+                        <a href="#handleConfirm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleConfirm()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="255"
+                            class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:255</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Reakce na tlačítko pro potvrzení</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="184"
+                            class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:184</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onEscapePress"></a>
+                    <span class="name">
+                        <span ><b>onEscapePress</b></span>
+                        <a href="#onEscapePress"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onEscapePress()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;window:keyup.esc&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="263"
+                            class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:263</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="open"></a>
+                    <span class="name">
+                        <span ><b>open</b></span>
+                        <a href="#open"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>open(params?: P)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="194"
+                            class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:194</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>P</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Otevře dialog bez čekání na výsledek</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>params</td>
+                                    <td>
+                                            <code>P</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>Vstupní parametry</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openForResult"></a>
+                    <span class="name">
+                        <span ><b>openForResult</b></span>
+                        <a href="#openForResult"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openForResult(params?: P)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="210"
+                            class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:210</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>P</li>
+                        <li>R</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Otevře dialog s čekáním na výsledek</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>params</td>
+                                    <td>
+                                            <code>P</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>Vstupní parametry</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;R&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>R výstupní parametry</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_cancel"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_cancel</b></span>
+                        <a href="#_cancel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new EventEmitter&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:164</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_cancelDisabled"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_cancelDisabled</b></span>
+                        <a href="#_cancelDisabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_cancelSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_cancelSubscription</b></span>
+                        <a href="#_cancelSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_cancelText"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_cancelText</b></span>
+                        <a href="#_cancelText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Zrušit&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:91</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_confirm"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_confirm</b></span>
+                        <a href="#_confirm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new EventEmitter&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:171</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_confirmClose"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_confirmClose</b></span>
+                        <a href="#_confirmClose"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:146</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_confirmDisabled"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_confirmDisabled</b></span>
+                        <a href="#_confirmDisabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:124</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_confirmText"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_confirmText</b></span>
+                        <a href="#_confirmText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Použít&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_id"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_id</b></span>
+                        <a href="#_id"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_isOpen"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_isOpen</b></span>
+                        <a href="#_isOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:178</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_result"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_result</b></span>
+                        <a href="#_result"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:102</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_resultSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_resultSubscription</b></span>
+                        <a href="#_resultSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_show"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_show</b></span>
+                        <a href="#_show"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new EventEmitter&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_showComponent"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_showComponent</b></span>
+                        <a href="#_showComponent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/DialogChildComponent.html" target="_self" >Type&lt;DialogChildComponent&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:135</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_title"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_title</b></span>
+                        <a href="#_title"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_viewInstance"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_viewInstance</b></span>
+                        <a href="#_viewInstance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/DialogChildComponent.html" target="_self" >DialogChildComponent</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="childDirective"></a>
+                    <span class="name">
+                        <span ><b>childDirective</b></span>
+                        <a href="#childDirective"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../directives/DialogChildsDirective.html" target="_self" >DialogChildsDirective</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(DialogChildsDirective, {static: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="id"></a>
+                        <span class="name"><b>id</b><a href="#id"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>id()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:60</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>id(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:64</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>id</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="title"></a>
+                        <span class="name"><b>title</b><a href="#title"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>title()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:71</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>title(title: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:75</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>title</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="confirmText"></a>
+                        <span class="name"><b>confirmText</b><a href="#confirmText"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>confirmText()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:82</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>confirmText(confirmText: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:86</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>confirmText</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cancelText"></a>
+                        <span class="name"><b>cancelText</b><a href="#cancelText"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>cancelText()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:93</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>cancelText(cancelText: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:97</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>cancelText</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="result"></a>
+                        <span class="name"><b>result</b><a href="#result"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>result()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:104</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>result(result: Observable<any>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:108</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>result</td>
+                                                    
+                                                            <td>
+                                                                        <code>Observable&lt;any&gt;</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cancelDisabled"></a>
+                        <span class="name"><b>cancelDisabled</b><a href="#cancelDisabled"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>cancelDisabled()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:115</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>cancelDisabled(cancelDisabled: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:119</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>cancelDisabled</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="confirmDisabled"></a>
+                        <span class="name"><b>confirmDisabled</b><a href="#confirmDisabled"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>confirmDisabled()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:126</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>confirmDisabled(confirmDisabled: Observable<boolean>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:130</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>confirmDisabled</td>
+                                                    
+                                                            <td>
+                                                                        <code>Observable&lt;boolean&gt;</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showComponent"></a>
+                        <span class="name"><b>showComponent</b><a href="#showComponent"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>showComponent()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:137</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>showComponent(showComponent: <a href="../classes/DialogChildComponent.html" target="_self">Type&lt;DialogChildComponent&gt;</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:141</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>showComponent</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="../classes/DialogChildComponent.html" target="_self" >Type&lt;DialogChildComponent&gt;</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="confirmClose"></a>
+                        <span class="name"><b>confirmClose</b><a href="#confirmClose"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>confirmClose()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:148</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>confirmClose(confirmClose: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:152</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>confirmClose</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="show"></a>
+                        <span class="name"><b>show</b><a href="#show"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>show()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:159</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cancel"></a>
+                        <span class="name"><b>cancel</b><a href="#cancel"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>cancel()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:166</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="confirm"></a>
+                        <span class="name"><b>confirm</b><a href="#confirm"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>confirm()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:173</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isOpen"></a>
+                        <span class="name"><b>isOpen</b><a href="#isOpen"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>isOpen()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">libs/stim-lib-modal/src/lib/modal.component.ts:180</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ComponentFactoryResolver, EventEmitter, HostListener, Input, OnDestroy, Type, ViewChild } from &#x27;@angular/core&#x27;;
+import { animation } from &#x27;./modal.animation&#x27;;
+
+import { Observable, Subscription } from &#x27;rxjs&#x27;;
+
+import { DialogChildsDirective } from &#x27;./dialog-childs.directive&#x27;;
+import { DialogChildComponent } from &#x27;./dialog-child.component&#x27;;
+
+/**
+ * Komponenta reprezentující modální dialog
+ * Dialog disponuje dvěma tlačítky: &lt;b&gt;zrušit&lt;/b&gt;, &lt;b&gt;potvrdit&lt;/b&gt;.
+ *
+ * Pracuje ve dvou módech:
+ *  - read-only - pouze pro zobrazení informace
+ *  - s čekáním na výsledek - předpokládá se nějaká interakce v dialogu s výsledkem
+ *
+ * V read-only režimu je vhodné dialog použít takto:
+ *  &lt;pre&gt;
+ *    &lt;stim-lib-modal id&#x3D;&quot;informationModalDialog&quot; title&#x3D;&quot;Informace&quot;
+ *      (confirm)&#x3D;&quot;handleConfirmInformationDialog()&quot;
+ *      (cancel)&#x3D;&quot;handleCnacelConfirmationDialog()&quot;&gt;
+ *      &lt;stim-import-dialog&gt;&lt;/stim-import-dialog&gt;
+ *    &lt;/stim-lib-modal&gt;
+ *  &lt;/pre&gt;
+ *
+ *  Pro čekání na výsledek je potřeba spárovat proměnnou &#x27;result&#x27;:
+ *  &lt;pre&gt;
+ *    &lt;stim-lib-modal id&#x3D;&quot;modalContainer&quot; title&#x3D;&quot;Import dotazů&quot;
+ *      [result]&#x3D;&quot;importDialog.entries&quot;
+ *      (confirm)&#x3D;&quot;importDialog.doImport()&quot;&gt;
+ *      &lt;stim-import-dialog #importDialog&gt;&lt;/stim-import-dialog&gt;
+ *    &lt;/stim-lib-modal&gt;
+ *  &lt;/pre&gt;
+ *
+ * V druhém případě se výsledek musí získat právě z komponenty uvnitř dialogu,
+ * proto se nabinduje metoda &#x27;confirm&#x27;, která informuje komponentu v dialogu,
+ * že má poskytnout výsledek do &#x27;spárované&#x27; proměnné.
+ */
+@Component({
+  selector: &#x27;stim-lib-modal&#x27;,
+  templateUrl: &#x27;./modal.component.html&#x27;,
+  styleUrls: [&#x27;./modal.component.sass&#x27;],
+  animations: [animation],
+})
+export class ModalComponent implements OnDestroy {
+  // Obsah dialogu
+  @ViewChild(DialogChildsDirective, { static: true }) childDirective: DialogChildsDirective;
+  // Pomocná reference na odběr výsledku
+  private _resultSubscription: Subscription;
+  // Pomocná reference na odběr akce zrušení dialogu
+  private _cancelSubscription: Subscription;
+  // Instance zobrazované komponenty
+  private _viewInstance: DialogChildComponent;
+
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+
+  // ID dialogu
+  private _id: string;
+
+  get id(): string {
+    return this._id;
+  }
+
+  set id(id: string) {
+    this._id &#x3D; id;
+  }
+
+  // Titulek dialogu
+  private _title: string;
+
+  get title(): string {
+    return this._title;
+  }
+
+  @Input() set title(title: string) {
+    this._title &#x3D; title;
+  }
+
+  // Text v potvrzovacím tlačítku
+  private _confirmText &#x3D; &#x27;Použít&#x27;;
+
+  get confirmText(): string {
+    return this._confirmText;
+  }
+
+  @Input() set confirmText(confirmText: string) {
+    this._confirmText &#x3D; confirmText;
+  }
+
+  // Text v cancel tlačítku
+  private _cancelText &#x3D; &#x27;Zrušit&#x27;;
+
+  get cancelText(): string {
+    return this._cancelText;
+  }
+
+  @Input() set cancelText(cancelText: string) {
+    this._cancelText &#x3D; cancelText;
+  }
+
+  // Pozorovatelný výsledek, který se použije v metodě openForResult
+  private _result: Observable&lt;any&gt;;
+
+  get result(): Observable&lt;any&gt; {
+    return this._result;
+  }
+
+  set result(result: Observable&lt;any&gt;) {
+    this._result &#x3D; result;
+  }
+
+  // Ovládání přístupnosti cancel tlačítka
+  private _cancelDisabled: boolean;
+
+  get cancelDisabled(): boolean {
+    return this._cancelDisabled;
+  }
+
+  @Input() set cancelDisabled(cancelDisabled: boolean) {
+    this._cancelDisabled &#x3D; cancelDisabled;
+  }
+
+  // Ovládání přístupnosti potvrzovacího tlačítka
+  private _confirmDisabled: Observable&lt;boolean&gt;;
+
+  get confirmDisabled(): Observable&lt;boolean&gt; {
+    return this._confirmDisabled;
+  }
+
+  set confirmDisabled(confirmDisabled: Observable&lt;boolean&gt;) {
+    this._confirmDisabled &#x3D; confirmDisabled;
+  }
+
+  // Komponenta, která se zobrazí v dialogu
+  private _showComponent: Type&lt;DialogChildComponent&gt;;
+
+  get showComponent(): Type&lt;DialogChildComponent&gt; {
+    return this._showComponent;
+  }
+
+  set showComponent(showComponent: Type&lt;DialogChildComponent&gt;) {
+    this._showComponent &#x3D; showComponent;
+  }
+
+  // Pokud se nastaví na true, musí se &quot;někdo jiný&quot; postarat o zavření dialogu
+  private _confirmClose: boolean;
+
+  get confirmClose(): boolean {
+    return this._confirmClose;
+  }
+
+  set confirmClose(confirmClose: boolean) {
+    this._confirmClose &#x3D; confirmClose;
+  }
+
+  // Zavolá se při zobrazení dialogu
+  private _show &#x3D; new EventEmitter&lt;any&gt;();
+
+  get show(): Observable&lt;any&gt; {
+    return this._show;
+  }
+
+  // Zrušení akce v dialogu
+  private _cancel &#x3D; new EventEmitter&lt;void&gt;();
+
+  get cancel(): Observable&lt;any&gt; {
+    return this._cancel;
+  }
+
+  // Potvrzení akce v dialogu
+  private _confirm &#x3D; new EventEmitter&lt;void&gt;();
+
+  get confirm(): Observable&lt;any&gt; {
+    return this._confirm;
+  }
+
+  // Příznak, který říká, zda-li je dialog otevřený
+  private _isOpen &#x3D; false;
+
+  get isOpen(): boolean {
+    return this._isOpen;
+  }
+
+  ngOnDestroy(): void {
+    // Teď ho odeberu z DOMu
+    this._unsubscrie();
+  }
+
+  /**
+   * Otevře dialog bez čekání na výsledek
+   *
+   * @param params Vstupní parametry
+   */
+  open&lt;P&gt;(params?: P): void {
+    // Nastaví příznak na otevřeno
+    this._isOpen &#x3D; true;
+    // Přidá třídu &#x27;modal-open&#x27; do elementu &#x27;body&#x27;
+    document.body.classList.add(&#x27;modal-open&#x27;);
+    // Informuji pozorovatele, že zobrazuji dialog
+    this._loadDialogContent();
+    this._show.emit(params);
+  }
+
+  /**
+   * Otevře dialog s čekáním na výsledek
+   *
+   * @param params Vstupní parametry
+   * @return R výstupní parametry
+   */
+  openForResult&lt;P, R&gt;(params?: P): Promise&lt;R&gt; {
+    // Odhlásím z odběru předchozí odběratele
+    this._unsubscrie();
+    // Vrátím novou promise
+    return new Promise&lt;R&gt;((resolve, reject) &#x3D;&gt; {
+      // Otevřu dialog
+      this.open&lt;P&gt;(params);
+      // Přihlásím se k odběru výsledku
+      this._resultSubscription &#x3D; this.result.subscribe((value) &#x3D;&gt; {
+        // Příjde-li výsledek, považuji to za úspěšné vyřešení dialogu
+        resolve(value);
+      });
+      // Přihlásím se k odběru zrušení dialogu
+      this._cancelSubscription &#x3D; this.cancel.subscribe(() &#x3D;&gt; {
+        // Příjde-li zrušení, považuji to za zrušení celého dialogu
+        reject(null);
+      });
+    });
+  }
+
+  /**
+   * Zavře dialog
+   */
+  close(): void {
+    this._isOpen &#x3D; false;
+    document.body.classList.remove(&#x27;modal-open&#x27;);
+    if (this._viewInstance !&#x3D;&#x3D; undefined) {
+      this._viewInstance.unbind(this);
+      this._viewInstance &#x3D; undefined;
+    }
+  }
+
+  /**
+   * Reakce na tlačítko cancel
+   */
+  handleCancel() {
+    this._cancel.emit();
+    if (!this.confirmClose) {
+      this.close();
+    }
+  }
+
+  /**
+   * Reakce na tlačítko pro potvrzení
+   */
+  handleConfirm() {
+    this._confirm.emit();
+    if (!this.confirmClose) {
+      this._isOpen &#x3D; false;
+      document.body.classList.remove(&#x27;modal-open&#x27;);
+    }
+  }
+
+  @HostListener(&#x27;window:keyup.esc&#x27;) onEscapePress() {
+    this.handleCancel();
+  }
+
+  /**
+   * Načte samotnou komponentu, která se v dialogu zobrazí
+   */
+  private _loadDialogContent() {
+    // Nejdříve se ukončí životní cyklus staré komponenty
+    if (this._viewInstance !&#x3D;&#x3D; undefined) {
+      this._viewInstance.unbind(this);
+    }
+    // Podle zadané komponenty získám její továrnu
+    const componentFactory &#x3D; this.componentFactoryResolver.resolveComponentFactory(this.showComponent);
+    // Uložím si referenci na viewContainer
+    const viewContainerRef &#x3D; this.childDirective.viewContainerRef;
+    // Vymažu obsah ve viewContaineru
+    viewContainerRef.clear();
+
+    // Vytvořím novou komponentu ve viewContaineru za pomoci továrny
+    const component &#x3D; viewContainerRef.createComponent(componentFactory);
+    // Získám instanci této komponenty
+    this._viewInstance &#x3D; component.instance as DialogChildComponent;
+    // Nechám komponentu inicializovat
+    this._viewInstance.bind(this);
+  }
+
+  /**
+   * Odhlásí z odběru subscription result a cancel události
+   */
+  private _unsubscrie() {
+    if (this._resultSubscription) {
+      this._resultSubscription.unsubscribe();
+      this._resultSubscription &#x3D; null;
+    }
+    if (this._cancelSubscription) {
+      this._cancelSubscription.unsubscribe();
+      this._cancelSubscription &#x3D; null;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div title&#x3D;&quot;&quot; class&#x3D;&quot;modal-background&quot; [style.display]&#x3D;&quot;isOpen ? &#x27;block&#x27; : &#x27;none&#x27;&quot;
+     (click)&#x3D;&quot;handleCancel()&quot;&gt;&lt;/div&gt;
+&lt;div class&#x3D;&quot;modal&quot; tabindex&#x3D;&quot;-1&quot; role&#x3D;&quot;dialog&quot; [style.display]&#x3D;&quot;isOpen ? &#x27;block&#x27; : &#x27;none&#x27;&quot;&gt;
+  &lt;div class&#x3D;&quot;modal-dialog fade show&quot; role&#x3D;&quot;document&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-content&quot;&gt;
+      &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+        &lt;h5 class&#x3D;&quot;modal-title&quot;&gt;{{title | translate }}&lt;/h5&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;close&quot; data-dismiss&#x3D;&quot;modal&quot; aria-label&#x3D;&quot;Close&quot; (click)&#x3D;&quot;handleCancel()&quot;&gt;
+          &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+        &lt;ng-container stimLibModalDialogChilds&gt;&lt;/ng-container&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; id&#x3D;&quot;modal-button-confirm&quot; class&#x3D;&quot;btn btn-primary&quot; [disabled]&#x3D;&quot;confirmDisabled | async&quot; *ngIf&#x3D;&quot;confirmText&quot; (click)&#x3D;&quot;handleConfirm()&quot;&gt;{{confirmText | translate }}&lt;/button&gt;
+        &lt;button type&#x3D;&quot;button&quot; id&#x3D;&quot;modal-button-cancel&quot; class&#x3D;&quot;btn btn-secondary&quot; data-dismiss&#x3D;&quot;modal&quot; [disabled]&#x3D;&quot;cancelDisabled&quot; (click)&#x3D;&quot;handleCancel()&quot; *ngIf&#x3D;&quot;cancelText&quot;&gt;{{cancelText | translate }}&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./modal.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">//noinspection CssUnknownTarget
+@import &quot;~bootstrap/scss/functions&quot;
+@import &quot;~bootstrap/scss/_mixins.scss&quot;
+@import &quot;~bootstrap/scss/_variables.scss&quot;
+
+.modal
+  position: fixed
+  top: 0
+  //z-index: 1032
+  display: none
+  min-height: 25vw
+  overflow: hidden
+  outline: 0
+
+.modal-body
+  max-height: 70vh
+  overflow: auto
+
+.modal-background
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vmax
+  //z-index: 1031
+  background: rgba(0,0,0,0.4)
+
+
+@include media-breakpoint-up(lg)
+  .modal-dialog
+    max-width: 50%
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div title="" class="modal-background" [style.display]="isOpen ? \'block\' : \'none\'"     (click)="handleCancel()"></div><div class="modal" tabindex="-1" role="dialog" [style.display]="isOpen ? \'block\' : \'none\'">  <div class="modal-dialog fade show" role="document">    <div class="modal-content">      <div class="modal-header">        <h5 class="modal-title">{{title | translate }}</h5>        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="handleCancel()">          <span aria-hidden="true">&times;</span>        </button>      </div>      <div class="modal-body">        <ng-container stimLibModalDialogChilds></ng-container>      </div>      <div class="modal-footer">        <button type="button" id="modal-button-confirm" class="btn btn-primary" [disabled]="confirmDisabled | async" *ngIf="confirmText" (click)="handleConfirm()">{{confirmText | translate }}</button>        <button type="button" id="modal-button-cancel" class="btn btn-secondary" data-dismiss="modal" [disabled]="cancelDisabled" (click)="handleCancel()" *ngIf="cancelText">{{cancelText | translate }}</button>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': ''},{'name': 'AppComponent', 'selector': 'stim-app'},{'name': 'AudioPlayerComponent', 'selector': 'stim-lib-ui-audio-player'},{'name': 'AuthComponent', 'selector': 'stim-feature-auth'},{'name': 'BaseExperimentTypeComponent', 'selector': ''},{'name': 'BaseListComponent', 'selector': ''},{'name': 'CalibrationComponent', 'selector': ''},{'name': 'ConfirmDialogComponent', 'selector': ''},{'name': 'ConsoleComponent', 'selector': 'stim-lib-console'},{'name': 'CountingCycleComponent', 'selector': 'stim-feature-player-stop-condition-counting-cycle'},{'name': 'CountingExperimentComponent', 'selector': 'stim-feature-player-stop-condition-counting-experiment'},{'name': 'DiodeComponent', 'selector': 'stim-lib-ui-diode'},{'name': 'DropdownBtnComponent', 'selector': 'stim-lib-ui-dropdown-btn'},{'name': 'ExperimentResultComponent', 'selector': 'stim-feature-experiment-results-experiment-result'},{'name': 'ExperimentResultsComponent', 'selector': ''},{'name': 'ExperimentResultsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentResultsGhostItemListComponent', 'selector': 'stim-feature-experiment-results-ghost-item-list'},{'name': 'ExperimentResultsItemListComponent', 'selector': 'stim-feature-experiment-results-item-list'},{'name': 'ExperimentsComponent', 'selector': ''},{'name': 'ExperimentsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentsGhostItemListComponent', 'selector': 'stim-feature-experiments-ghost-item-list'},{'name': 'ExperimentsItemListComponent', 'selector': 'stim-feature-experiments-item-list'},{'name': 'ExperimentsPageToolsComponent', 'selector': ''},{'name': 'ExperimentTypeComponent', 'selector': 'stim-feature-experiments-experiment-type'},{'name': 'ExperimentTypeCvepComponent', 'selector': ''},{'name': 'ExperimentTypeCvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-cvep-output'},{'name': 'ExperimentTypeErpComponent', 'selector': ''},{'name': 'ExperimentTypeErpOutputComponent', 'selector': 'stim-feature-experiments-type-erp-output'},{'name': 'ExperimentTypeFvepComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep'},{'name': 'ExperimentTypeFvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep-output'},{'name': 'ExperimentTypeHeaderComponent', 'selector': 'stim-feature-experiments-experiment-type-header'},{'name': 'ExperimentTypeNoneComponent', 'selector': ''},{'name': 'ExperimentTypeReaComponent', 'selector': ''},{'name': 'ExperimentTypeReaOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-rea-output'},{'name': 'ExperimentTypeTvepComponent', 'selector': ''},{'name': 'ExperimentTypeTvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-tvep-output'},{'name': 'ExperimentViewerComponent', 'selector': 'stim-lib-ui-experiment-viewer'},{'name': 'FabComponent', 'selector': 'stim-lib-fab'},{'name': 'FileBrowserComponent', 'selector': ''},{'name': 'HelpComponent', 'selector': ''},{'name': 'ImagePlayerComponent', 'selector': 'stim-lib-ui-image-player'},{'name': 'InformDialogComponent', 'selector': ''},{'name': 'ListButtonsAddonComponent', 'selector': ''},{'name': 'LoginComponent', 'selector': 'stim-feature-auth'},{'name': 'LogoutComponent', 'selector': ''},{'name': 'ModalComponent', 'selector': 'stim-lib-modal'},{'name': 'NavigationComponent', 'selector': 'stim-feature-navigation'},{'name': 'NoConditionComponent', 'selector': 'stim-feature-player-stop-condition-no-condition'},{'name': 'OutputEditorComponent', 'selector': 'neuro-client-output-editor'},{'name': 'OutputPatternComponent', 'selector': 'stim-feature-experiments-output-pattern'},{'name': 'OutputTypeComponent', 'selector': 'stim-feature-experiments-output-type'},{'name': 'PageNotFoundComponent', 'selector': ''},{'name': 'PageToolsComponent', 'selector': ''},{'name': 'ParamConfigApplicationComponent', 'selector': 'stim-feature-settings-param-config-application'},{'name': 'ParamConfigComponent', 'selector': 'stim-feature-settings-param-config'},{'name': 'ParamConfigExperimentsComponent', 'selector': 'stim-feature-settings-param-config-experiments'},{'name': 'ParamConfigServerComponent', 'selector': 'stim-feature-settings-param-config-server'},{'name': 'PlayerComponent', 'selector': ''},{'name': 'PlayerPageToolsComponent', 'selector': ''},{'name': 'ProfileComponent', 'selector': 'stim-feature-users'},{'name': 'RegisterComponent', 'selector': 'stim-feature-auth'},{'name': 'SequenceComponent', 'selector': 'stim-feature-sequences-sequence'},{'name': 'SequenceFastDialogComponent', 'selector': ''},{'name': 'SequencesComponent', 'selector': ''},{'name': 'SequencesFilterDialogComponent', 'selector': ''},{'name': 'SequencesGhostItemListComponent', 'selector': 'stim-feature-sequences-ghost-item-list'},{'name': 'SequencesItemListComponent', 'selector': 'stim-feature-sequences-item-list'},{'name': 'SequenceViewerComponent', 'selector': 'stim-lib-ui-sequence-viewer'},{'name': 'ServiceStateComponent', 'selector': 'stim-feature-settings-service-state'},{'name': 'SettingsComponent', 'selector': ''},{'name': 'SidebarComponent', 'selector': 'stim-feature-navigation-sidebar'},{'name': 'StimulatorComponent', 'selector': ''},{'name': 'StopConditionsComponent', 'selector': 'stim-feature-player-stop-conditions'},{'name': 'TagEditorComponent', 'selector': 'stim-lib-ui-tag-editor'}];
+    var DIRECTIVES = [{'name': 'BaseExperimentTypeResolverDirective', 'selector': ''},{'name': 'ContentTogglerDirective', 'selector': '[stimLibUiContentToggler]'},{'name': 'DialogChildsDirective', 'selector': '[stimLibModalDialogChilds]'},{'name': 'ExperimentTypeResolverDirective', 'selector': '[stimFeatureExperimentsTypeResolver]'},{'name': 'FilterDialogComponent', 'selector': ''},{'name': 'NavigationButtonsAddonDirective', 'selector': '[stimFeatureNavigationButtonsAddon]'},{'name': 'PlayerExperimentTypeResolverDirective', 'selector': '[stimFeaturePlayerExperimentTypeResolver]'},{'name': 'StopConditionDirective', 'selector': '[stimFeatureStopCondition]'}];
+    var ACTUAL_COMPONENT = {'name': 'ModalComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ModalComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

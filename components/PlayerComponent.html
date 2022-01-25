@@ -1,0 +1,2088 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  PlayerComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/stim-feature-player/feature/src/lib/player.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./player.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./player.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_autoplayValueSubscription" >_autoplayValueSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_experimentSubscription" >_experimentSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_playerStateSubscription" >_playerStateSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_repeatValueSubscription" >_repeatValueSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_stimulatorState" >_stimulatorState</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_stimulatorStateSubscription" >_stimulatorStateSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#BUTTON_DISABLED_STATES" >BUTTON_DISABLED_STATES</a>
+                            </li>
+                            <li>
+                                <a href="#ConnectionStatus" >ConnectionStatus</a>
+                            </li>
+                            <li>
+                                <a href="#experimentViewer" >experimentViewer</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#paramsUiContentToggler" >paramsUiContentToggler</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_allowControlReset" >_allowControlReset</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_fillButtonStates" >_fillButtonStates</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_updateBetweenExperimentInterval" >_updateBetweenExperimentInterval</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_updateDisabledAutoplay" >_updateDisabledAutoplay</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_updateDisabledStopConditions" >_updateDisabledStopConditions</a>
+                            </li>
+                            <li>
+                                <a href="#handleClearExperiment" >handleClearExperiment</a>
+                            </li>
+                            <li>
+                                <a href="#handleFinishExperiment" >handleFinishExperiment</a>
+                            </li>
+                            <li>
+                                <a href="#handleForceFinishExperiment" >handleForceFinishExperiment</a>
+                            </li>
+                            <li>
+                                <a href="#handlePauseExperiment" >handlePauseExperiment</a>
+                            </li>
+                            <li>
+                                <a href="#handleRunExperiment" >handleRunExperiment</a>
+                            </li>
+                            <li>
+                                <a href="#handleUploadExperiment" >handleUploadExperiment</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#stimulatorConnectionStatus" >stimulatorConnectionStatus</a>
+                                </li>
+                                <li>
+                                    <a href="#stimulatorStatus" >stimulatorStatus</a>
+                                </li>
+                                <li>
+                                    <a href="#supportStopConditions" >supportStopConditions</a>
+                                </li>
+                                <li>
+                                    <a href="#availableStopConditions" >availableStopConditions</a>
+                                </li>
+                                <li>
+                                    <a href="#experiment" >experiment</a>
+                                </li>
+                                <li>
+                                    <a href="#state" >state</a>
+                                </li>
+                                <li>
+                                    <a href="#repeat" >repeat</a>
+                                </li>
+                                <li>
+                                    <a href="#betweenExperimentInterval" >betweenExperimentInterval</a>
+                                </li>
+                                <li>
+                                    <a href="#autoplay" >autoplay</a>
+                                </li>
+                                <li>
+                                    <a href="#stopConditionType" >stopConditionType</a>
+                                </li>
+                                <li>
+                                    <a href="#stopConditions" >stopConditions</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(player: <a href="../injectables/PlayerFacade.html" target="_self">PlayerFacade</a>, _router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, _route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, _navigation: <a href="../injectables/NavigationFacade.html" target="_self">NavigationFacade</a>, logger: NGXLogger)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:42</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>player</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PlayerFacade.html" target="_self" >PlayerFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_navigation</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NavigationFacade.html" target="_self" >NavigationFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>logger</td>
+                                                  
+                                                        <td>
+                                                                    <code>NGXLogger</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_allowControlReset"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_allowControlReset</b></span>
+                        <a href="#_allowControlReset"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_allowControlReset()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:117</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_fillButtonStates"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_fillButtonStates</b></span>
+                        <a href="#_fillButtonStates"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_fillButtonStates()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:54</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_updateBetweenExperimentInterval"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_updateBetweenExperimentInterval</b></span>
+                        <a href="#_updateBetweenExperimentInterval"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_updateBetweenExperimentInterval(enabled: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, reset: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="132"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:132</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>enabled</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>reset</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_updateDisabledAutoplay"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_updateDisabledAutoplay</b></span>
+                        <a href="#_updateDisabledAutoplay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_updateDisabledAutoplay(enabled: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, reset: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:121</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>enabled</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>reset</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_updateDisabledStopConditions"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_updateDisabledStopConditions</b></span>
+                        <a href="#_updateDisabledStopConditions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_updateDisabledStopConditions(reset: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="143"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:143</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>reset</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleClearExperiment"></a>
+                    <span class="name">
+                        <span ><b>handleClearExperiment</b></span>
+                        <a href="#handleClearExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleClearExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:171</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleFinishExperiment"></a>
+                    <span class="name">
+                        <span ><b>handleFinishExperiment</b></span>
+                        <a href="#handleFinishExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleFinishExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="163"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:163</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleForceFinishExperiment"></a>
+                    <span class="name">
+                        <span ><b>handleForceFinishExperiment</b></span>
+                        <a href="#handleForceFinishExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleForceFinishExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="167"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:167</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handlePauseExperiment"></a>
+                    <span class="name">
+                        <span ><b>handlePauseExperiment</b></span>
+                        <a href="#handlePauseExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handlePauseExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="159"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:159</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleRunExperiment"></a>
+                    <span class="name">
+                        <span ><b>handleRunExperiment</b></span>
+                        <a href="#handleRunExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleRunExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="155"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:155</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleUploadExperiment"></a>
+                    <span class="name">
+                        <span ><b>handleUploadExperiment</b></span>
+                        <a href="#handleUploadExperiment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleUploadExperiment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:150</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:107</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:66</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_autoplayValueSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_autoplayValueSubscription</b></span>
+                        <a href="#_autoplayValueSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_experimentSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_experimentSubscription</b></span>
+                        <a href="#_experimentSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_playerStateSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_playerStateSubscription</b></span>
+                        <a href="#_playerStateSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_repeatValueSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_repeatValueSubscription</b></span>
+                        <a href="#_repeatValueSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_stimulatorState"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_stimulatorState</b></span>
+                        <a href="#_stimulatorState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_stimulatorStateSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_stimulatorStateSubscription</b></span>
+                        <a href="#_stimulatorStateSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="BUTTON_DISABLED_STATES"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>BUTTON_DISABLED_STATES</b></span>
+                        <a href="#BUTTON_DISABLED_STATES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ConnectionStatus"></a>
+                    <span class="name">
+                        <span ><b>ConnectionStatus</b></span>
+                        <a href="#ConnectionStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ConnectionStatus</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="experimentViewer"></a>
+                    <span class="name">
+                        <span ><b>experimentViewer</b></span>
+                        <a href="#experimentViewer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/ExperimentViewerComponent.html" target="_self" >ExperimentViewerComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(ExperimentViewerComponent)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormGroup({
+    repeat: new FormControl(1, [Validators.required, Validators.min(0)]),
+    betweenExperimentInterval: new FormControl({ value: 0, disabled: true }, [Validators.min(0)]),
+    autoplay: new FormControl({ value: false, disabled: true }),
+    stopConditionType: new FormControl(0, [Validators.required]),
+    stopConditions: new FormGroup({}),
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paramsUiContentToggler"></a>
+                    <span class="name">
+                        <span ><b>paramsUiContentToggler</b></span>
+                        <a href="#paramsUiContentToggler"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../directives/ContentTogglerDirective.html" target="_self" >ContentTogglerDirective</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;paramsUiContentToggler&#x27;, {read: ContentTogglerDirective})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="stimulatorConnectionStatus"></a>
+                        <span class="name"><b>stimulatorConnectionStatus</b><a href="#stimulatorConnectionStatus"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>stimulatorConnectionStatus()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:176</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="stimulatorStatus"></a>
+                        <span class="name"><b>stimulatorStatus</b><a href="#stimulatorStatus"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>stimulatorStatus()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:180</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="supportStopConditions"></a>
+                        <span class="name"><b>supportStopConditions</b><a href="#supportStopConditions"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>supportStopConditions()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:184</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="availableStopConditions"></a>
+                        <span class="name"><b>availableStopConditions</b><a href="#availableStopConditions"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>availableStopConditions()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:188</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="experiment"></a>
+                        <span class="name"><b>experiment</b><a href="#experiment"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>experiment()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:192</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="state"></a>
+                        <span class="name"><b>state</b><a href="#state"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>state()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:196</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="repeat"></a>
+                        <span class="name"><b>repeat</b><a href="#repeat"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>repeat()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="200" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:200</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="betweenExperimentInterval"></a>
+                        <span class="name"><b>betweenExperimentInterval</b><a href="#betweenExperimentInterval"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>betweenExperimentInterval()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:204</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="autoplay"></a>
+                        <span class="name"><b>autoplay</b><a href="#autoplay"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>autoplay()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="208" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:208</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="stopConditionType"></a>
+                        <span class="name"><b>stopConditionType</b><a href="#stopConditionType"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>stopConditionType()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="212" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:212</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="stopConditions"></a>
+                        <span class="name"><b>stopConditions</b><a href="#stopConditions"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>stopConditions()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">libs/stim-feature-player/feature/src/lib/player.component.ts:215</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+
+import { Observable, Subscription } from &#x27;rxjs&#x27;;
+import { NGXLogger } from &#x27;ngx-logger&#x27;;
+
+import { Experiment, Output, ConnectionStatus } from &#x27;@stechy1/diplomka-share&#x27;;
+
+import { ContentTogglerDirective, ExperimentViewerComponent } from &#x27;@neuro-client/stim-lib-ui&#x27;;
+import { PlayerFacade, PlayerState, StopConditionType } from &#x27;@neuro-client/stim-feature-player/domain&#x27;;
+import { NavigationFacade } from &#x27;@neuro-client/stim-feature-navigation/domain&#x27;;
+import { StimulatorStateType } from &#x27;@neuro-client/stim-feature-stimulator/domain&#x27;;
+
+@Component({
+  templateUrl: &#x27;./player.component.html&#x27;,
+  styleUrls: [&#x27;./player.component.sass&#x27;],
+})
+export class PlayerComponent implements OnInit, AfterViewInit, OnDestroy {
+  private _experimentSubscription: Subscription;
+  private _stimulatorStateSubscription: Subscription;
+  private _playerStateSubscription: Subscription;
+  private _repeatValueSubscription: Subscription;
+  private _autoplayValueSubscription: Subscription;
+
+  public readonly BUTTON_DISABLED_STATES &#x3D; {};
+
+  @ViewChild(ExperimentViewerComponent)
+  experimentViewer: ExperimentViewerComponent;
+  @ViewChild(&#x27;paramsUiContentToggler&#x27;, { read: ContentTogglerDirective })
+  paramsUiContentToggler: ContentTogglerDirective;
+
+  form &#x3D; new FormGroup({
+    repeat: new FormControl(1, [Validators.required, Validators.min(0)]),
+    betweenExperimentInterval: new FormControl({ value: 0, disabled: true }, [Validators.min(0)]),
+    autoplay: new FormControl({ value: false, disabled: true }),
+    stopConditionType: new FormControl(0, [Validators.required]),
+    stopConditions: new FormGroup({}),
+  });
+
+  ConnectionStatus &#x3D; ConnectionStatus;
+  private _stimulatorState: number;
+
+  constructor(
+    private readonly player: PlayerFacade,
+    private readonly _router: Router,
+    private readonly _route: ActivatedRoute,
+    private readonly _navigation: NavigationFacade,
+    private readonly logger: NGXLogger
+  ) {
+    this._fillButtonStates();
+  }
+
+  private _fillButtonStates() {
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.UNKNOWN] &#x3D; [true, true, true, true, true]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.READY] &#x3D; [false, true, true, true, true]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.UPLOAD] &#x3D; [true, true, true, true, false]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.SETUP] &#x3D; [true, false, true, true, false]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.RUN] &#x3D; [true, true, false, false, true]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.PAUSE] &#x3D; [true, false, true, true, true]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.FINISH] &#x3D; [false, true, true, true, true]; // upload, run, pause, finish, clear
+    this.BUTTON_DISABLED_STATES[StimulatorStateType.CLEAR] &#x3D; [false, true, true, true, true]; // upload, run, pause, finish, clear
+    Object.freeze(this.BUTTON_DISABLED_STATES);
+  }
+
+  ngOnInit() {
+    if (this._route.snapshot.params[&#x27;type&#x27;] &#x3D;&#x3D;&#x3D; undefined || this._route.snapshot.params[&#x27;id&#x27;] &#x3D;&#x3D;&#x3D; undefined) {
+      this._router.navigate([&#x27;/&#x27;, &#x27;experiments&#x27;]);
+    }
+
+    this._experimentSubscription &#x3D; this.experiment.subscribe((experiment: Experiment&lt;Output&gt;) &#x3D;&gt; {
+      this._navigation.titleArgs &#x3D; { name: experiment.name };
+      this.player.requestAvailableStopConditions();
+    });
+    this.player.loadExperiment(this._route.snapshot.params[&#x27;id&#x27;]);
+    this._stimulatorStateSubscription &#x3D; this.player.stimulatorState$.subscribe((status: number) &#x3D;&gt; {
+      this._stimulatorState &#x3D; status;
+      if (status &#x3D;&#x3D;&#x3D; StimulatorStateType.READY || status &#x3D;&#x3D;&#x3D; StimulatorStateType.CLEAR) {
+        this.logger.info(&#x27;Aktivuji formulářové prvky.&#x27;);
+        this.form.enable();
+        this._updateDisabledAutoplay(this.repeat.value &gt; 0 &amp;&amp; status &#x3D;&#x3D;&#x3D; StimulatorStateType.READY, status &#x3D;&#x3D;&#x3D; StimulatorStateType.CLEAR);
+      } else {
+        this.logger.info(&#x27;Deaktivuji formulářové prvky.&#x27;);
+        this.form.disable();
+        this._updateDisabledAutoplay(this.repeat.value &gt; 0 &amp;&amp; status &#x3D;&#x3D;&#x3D; StimulatorStateType.READY, status &#x3D;&#x3D;&#x3D; StimulatorStateType.CLEAR);
+      }
+    });
+    this._playerStateSubscription &#x3D; this.player.state.subscribe((state: PlayerState) &#x3D;&gt; {
+      this.form.patchValue({
+        repeat: state.repeat,
+        betweenExperimentInterval: state.betweenExperimentInterval,
+        autoplay: state.autoplay,
+        stopConditionType: state.stopConditionType,
+      });
+    });
+    this._repeatValueSubscription &#x3D; this.repeat.valueChanges.subscribe((repeat: number) &#x3D;&gt; {
+      this._updateDisabledAutoplay(repeat &gt; 0, this._allowControlReset());
+      this._updateDisabledStopConditions(this._allowControlReset());
+    });
+    this._autoplayValueSubscription &#x3D; this.autoplay.valueChanges.subscribe((enabled: boolean) &#x3D;&gt; this._updateBetweenExperimentInterval(enabled, this._allowControlReset()));
+  }
+
+  ngAfterViewInit(): void {
+    this.player.requestPlayerState();
+  }
+
+  ngOnDestroy(): void {
+    this._experimentSubscription.unsubscribe();
+    this.player.clearExperiment();
+    this.player.destroyExperiment();
+    this._stimulatorStateSubscription.unsubscribe();
+    this._playerStateSubscription.unsubscribe();
+    this._repeatValueSubscription.unsubscribe();
+    this._autoplayValueSubscription.unsubscribe();
+  }
+
+  private _allowControlReset(): boolean {
+    return this._stimulatorState &#x3D;&#x3D;&#x3D; StimulatorStateType.READY || this._stimulatorState &#x3D;&#x3D;&#x3D; StimulatorStateType.CLEAR;
+  }
+
+  private _updateDisabledAutoplay(enabled: boolean, reset: boolean) {
+    if (enabled) {
+      this.autoplay.enable();
+    } else {
+      this.autoplay.disable();
+      if (reset) {
+        this.autoplay.reset(false);
+      }
+    }
+  }
+
+  private _updateBetweenExperimentInterval(enabled: boolean, reset: boolean) {
+    if (enabled) {
+      this.betweenExperimentInterval.enable();
+    } else {
+      if (reset) {
+        this.betweenExperimentInterval.reset(0);
+      }
+      this.betweenExperimentInterval.disable();
+    }
+  }
+
+  private _updateDisabledStopConditions(reset: boolean) {
+    if (reset) {
+      this.stopConditionType.reset(0);
+      this.stopConditions.reset({});
+    }
+  }
+
+  handleUploadExperiment() {
+    this.player.uploadExperiment(this.form.value);
+    this.paramsUiContentToggler.visible &#x3D; false;
+  }
+
+  handleRunExperiment() {
+    this.player.runExperiment();
+  }
+
+  handlePauseExperiment() {
+    this.player.pauseExperiment();
+  }
+
+  handleFinishExperiment() {
+    this.player.finishExperiment();
+  }
+
+  handleForceFinishExperiment() {
+    this.player.handleForceFinishExperiment();
+  }
+
+  handleClearExperiment() {
+    this.player.clearExperiment();
+    this.paramsUiContentToggler.visible &#x3D; true;
+  }
+
+  get stimulatorConnectionStatus(): Observable&lt;ConnectionStatus&gt; {
+    return this.player.stimulatorConnectionStatus$;
+  }
+
+  get stimulatorStatus(): Observable&lt;number&gt; {
+    return this.player.stimulatorState$;
+  }
+
+  get supportStopConditions(): Observable&lt;boolean&gt; {
+    return this.player.supportStopConditions;
+  }
+
+  get availableStopConditions(): Observable&lt;StopConditionType[]&gt; {
+    return this.player.availableStopConditions;
+  }
+
+  get experiment(): Observable&lt;Experiment&lt;Output&gt;&gt; {
+    return this.player.playingExperiment$;
+  }
+
+  get state(): Observable&lt;PlayerState&gt; {
+    return this.player.state;
+  }
+
+  get repeat(): FormControl {
+    return this.form.get(&#x27;repeat&#x27;) as FormControl;
+  }
+
+  get betweenExperimentInterval(): FormControl {
+    return this.form.get(&#x27;betweenExperimentInterval&#x27;) as FormControl;
+  }
+
+  get autoplay(): FormControl {
+    return this.form.get(&#x27;autoplay&#x27;) as FormControl;
+  }
+
+  get stopConditionType(): FormControl {
+    return this.form.get(&#x27;stopConditionType&#x27;) as FormControl;
+  }
+  get stopConditions(): FormGroup {
+    return this.form.get(&#x27;stopConditions&#x27;) as FormGroup;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;row&quot;&gt;
+  &lt;div class&#x3D;&quot;col-12&quot;&gt;
+    &lt;h1&gt;{{ &#x27;EXPERIMENT_PLAYER.CONTROL_PANEL&#x27; | translate }}&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;row&quot; *ngIf&#x3D;&quot;(stimulatorConnectionStatus | async) !&#x3D;&#x3D; ConnectionStatus.CONNECTED&quot;&gt;
+  &lt;div class&#x3D;&quot;col-12&quot;&gt;
+    &lt;p&gt;{{ &#x27;EXPERIMENT_PLAYER.STIMULATOR_NOT_CONNECTED&#x27; | translate }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ng-container *ngIf&#x3D;&quot;(stimulatorConnectionStatus | async) &#x3D;&#x3D;&#x3D; ConnectionStatus.CONNECTED&quot;&gt;
+  &lt;div class&#x3D;&quot;row&quot;&gt;
+    &lt;div class&#x3D;&quot;col-12 control-panel-toolbar&quot;&gt;
+      &lt;button class&#x3D;&quot;btn btn-primary upload&quot;
+              (click)&#x3D;&quot;handleUploadExperiment()&quot;
+              [disabled]&#x3D;&quot;(stimulatorConnectionStatus | async) !&#x3D;&#x3D; ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][0] || form.invalid&quot;&gt;
+        &lt;i class&#x3D;&quot;fas fa-upload&quot;&gt;&lt;/i&gt; {{ &#x27;EXPERIMENT_PLAYER.BUTTON_BAR.UPLOAD&#x27; | translate }}
+      &lt;/button&gt;
+      &lt;button class&#x3D;&quot;btn btn-success run&quot;
+              (click)&#x3D;&quot;handleRunExperiment()&quot;
+              [disabled]&#x3D;&quot;(stimulatorConnectionStatus | async) !&#x3D;&#x3D; ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][1] || !(state | async).initialized || ((state | async).autoplay &amp;&amp; (state | async).isBreakTime)&quot;&gt;
+        &lt;i class&#x3D;&quot;fas fa-play&quot;&gt;&lt;/i&gt; {{ &#x27;EXPERIMENT_PLAYER.BUTTON_BAR.PLAY&#x27; | translate }}
+      &lt;/button&gt;
+      &lt;button class&#x3D;&quot;btn btn-success pause&quot;
+              (click)&#x3D;&quot;handlePauseExperiment()&quot;
+              [disabled]&#x3D;&quot;(stimulatorConnectionStatus | async) !&#x3D;&#x3D; ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][2] || !(state | async).initialized&quot;&gt;
+        &lt;i class&#x3D;&quot;fas fa-pause&quot;&gt;&lt;/i&gt; {{ &#x27;EXPERIMENT_PLAYER.BUTTON_BAR.PAUSE&#x27; | translate }}
+      &lt;/button&gt;
+      &lt;button class&#x3D;&quot;btn btn-warning finish&quot;
+              (click)&#x3D;&quot;handleFinishExperiment()&quot;
+              [disabled]&#x3D;&quot;(stimulatorConnectionStatus | async) !&#x3D;&#x3D; ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][3] || !(state | async).initialized&quot;&gt;
+        &lt;i class&#x3D;&quot;fas fa-stop&quot;&gt;&lt;/i&gt; {{ &#x27;EXPERIMENT_PLAYER.BUTTON_BAR.FINISH&#x27; | translate }}
+      &lt;/button&gt;
+      &lt;button class&#x3D;&quot;btn btn-warning force-finish&quot;
+              (click)&#x3D;&quot;handleForceFinishExperiment()&quot;
+              [disabled]&#x3D;&quot;(stimulatorConnectionStatus | async) !&#x3D;&#x3D; ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][3] || !(state | async).initialized&quot;&gt;
+        &lt;i class&#x3D;&quot;fas fa-stop&quot;&gt;&lt;/i&gt; {{ &#x27;EXPERIMENT_PLAYER.BUTTON_BAR.FORCE_FINISH&#x27; | translate }}
+      &lt;/button&gt;
+      &lt;button class&#x3D;&quot;btn btn-danger clear&quot;
+              (click)&#x3D;&quot;handleClearExperiment()&quot;
+              [disabled]&#x3D;&quot;(stimulatorConnectionStatus | async) !&#x3D;&#x3D; ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][4]&quot;&gt;
+        &lt;i class&#x3D;&quot;fas fa-eraser&quot;&gt;&lt;/i&gt; {{ &#x27;EXPERIMENT_PLAYER.BUTTON_BAR.CLEAR&#x27; | translate }}
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;row&quot;&gt;
+    &lt;div class&#x3D;&quot;col-10&quot;&gt;
+      &lt;h2&gt;{{ &#x27;EXPERIMENT_PLAYER.PARAMS.TITLE&#x27; | translate }}&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-2 text-right&quot; stimLibUiContentToggler #paramsUiContentToggler [toggledContent]&#x3D;&quot;playerParams&quot;
+         [icon]&#x3D;&quot;playerParamsIcon&quot;&gt;&lt;i class&#x3D;&quot;fas fa-minus&quot; #playerParamsIcon&gt;&lt;/i&gt;&lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;col-12&quot; #playerParams&gt;
+      &lt;form [formGroup]&#x3D;&quot;form&quot;&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col-12&quot;&gt;
+            &lt;div class&#x3D;&quot;form-group&quot;&gt;
+              &lt;label
+                for&#x3D;&quot;experiment-repeat&quot;&gt;{{ &#x27;EXPERIMENT_PLAYER.PARAMS.EXPERIMENT_REPEAT&#x27; | translate }}&lt;/label&gt;
+              &lt;div class&#x3D;&quot;input-group input-group-sm&quot;&gt;
+                &lt;input type&#x3D;&quot;number&quot; id&#x3D;&quot;experiment-repeat&quot; class&#x3D;&quot;form-control&quot;
+                       formControlName&#x3D;&quot;repeat&quot;
+                       [class.is-valid]&#x3D;&quot;repeat.valid&quot; [class.is-invalid]&#x3D;&quot;repeat.invalid&quot;&gt;
+                &lt;div class&#x3D;&quot;input-group-append&quot;&gt;
+                  &lt;span class&#x3D;&quot;input-group-text&quot;&gt;&amp;times;&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;small *ngIf&#x3D;&quot;repeat.touched &amp;&amp; repeat.errors?.required&quot;
+                     class&#x3D;&quot;form-text text-muted&quot;&gt;{{ &#x27;APP.VALIDATION.REQUIRED&#x27; | translate }}&lt;/small&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col-12 col-md-6 vertical-center&quot;&gt;
+            &lt;div class&#x3D;&quot;checkbox&quot;&gt;
+              &lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; formControlName&#x3D;&quot;autoplay&quot;&gt; Automatické přehrávání&lt;/label&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-12 col-md-6&quot;&gt;
+            &lt;div class&#x3D;&quot;form-group&quot;&gt;
+              &lt;label
+                for&#x3D;&quot;between-experiment-interval&quot;&gt;{{ &#x27;EXPERIMENT_PLAYER.PARAMS.BETWEEN_EXPERIMENT_INTERVAL&#x27; | translate }}&lt;/label&gt;
+              &lt;div class&#x3D;&quot;input-group input-group-sm&quot;&gt;
+                &lt;input type&#x3D;&quot;number&quot; id&#x3D;&quot;between-experiment-interval&quot; class&#x3D;&quot;form-control&quot;
+                       formControlName&#x3D;&quot;betweenExperimentInterval&quot; step&#x3D;&quot;1&quot;
+                       [class.is-valid]&#x3D;&quot;betweenExperimentInterval.valid&quot;
+                       [class.is-invalid]&#x3D;&quot;betweenExperimentInterval.invalid&quot;&gt;
+                &lt;div class&#x3D;&quot;input-group-append&quot;&gt;
+                  &lt;span class&#x3D;&quot;input-group-text&quot;&gt;ms&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;small
+                *ngIf&#x3D;&quot;betweenExperimentInterval.touched &amp;&amp; betweenExperimentInterval.errors?.min&quot;
+                class&#x3D;&quot;form-text text-muted&quot;&gt;{{ &#x27;APP.VALIDATION.MIN&#x27; | translate:{ min: betweenExperimentInterval.errors?.min.min } }}&lt;/small&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col-12&quot;&gt;
+            &lt;stim-feature-player-stop-conditions [form]&#x3D;&quot;form&quot; [supportStopConditions]&#x3D;&quot;supportStopConditions&quot; [availableStopConditions]&#x3D;&quot;availableStopConditions&quot;&gt;&lt;/stim-feature-player-stop-conditions&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;row&quot; *ngIf&#x3D;&quot;BUTTON_DISABLED_STATES[(stimulatorStatus | async)][0]&quot;&gt;
+    &lt;div class&#x3D;&quot;col-10&quot;&gt;
+      &lt;h2&gt;{{ &#x27;EXPERIMENT_PLAYER.EXPERIMENT_MEASUREMENT&#x27; | translate:{ experimentRound: (state | async).ioData.length, totalMeasurement: ((state | async).repeat + 1) || 1 } }}&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-2 text-right&quot; stimLibUiContentToggler [toggledContent]&#x3D;&quot;experimentViewer&quot;
+         [icon]&#x3D;&quot;experimentViewerIcon&quot;&gt;&lt;i class&#x3D;&quot;fas fa-minus&quot; #experimentViewerIcon&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-12&quot; #experimentViewer&gt;
+      {{ (state | async).ioData | json }}
+      &lt;!--      &lt;div style&#x3D;&quot;width: 100%;&quot;&gt;--&gt;
+      &lt;!--        &lt;stim-lib-ui-experiment-viewer *ngIf&#x3D;&quot;(experiment | async).outputCount&quot;--&gt;
+      &lt;!--                                       [events]&#x3D;&quot;(state | async).ioData&quot;--&gt;
+      &lt;!--                                       [outputCount]&#x3D;&quot;(experiment | async).outputCount&quot;&gt;&lt;/stim-lib-ui-experiment-viewer&gt;--&gt;
+      &lt;!--      &lt;/div&gt;--&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/ng-container&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./player.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="row">  <div class="col-12">    <h1>{{ \'EXPERIMENT_PLAYER.CONTROL_PANEL\' | translate }}</h1>  </div></div><div class="row" *ngIf="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED">  <div class="col-12">    <p>{{ \'EXPERIMENT_PLAYER.STIMULATOR_NOT_CONNECTED\' | translate }}</p>  </div></div><ng-container *ngIf="(stimulatorConnectionStatus | async) === ConnectionStatus.CONNECTED">  <div class="row">    <div class="col-12 control-panel-toolbar">      <button class="btn btn-primary upload"              (click)="handleUploadExperiment()"              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][0] || form.invalid">        <i class="fas fa-upload"></i> {{ \'EXPERIMENT_PLAYER.BUTTON_BAR.UPLOAD\' | translate }}      </button>      <button class="btn btn-success run"              (click)="handleRunExperiment()"              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][1] || !(state | async).initialized || ((state | async).autoplay && (state | async).isBreakTime)">        <i class="fas fa-play"></i> {{ \'EXPERIMENT_PLAYER.BUTTON_BAR.PLAY\' | translate }}      </button>      <button class="btn btn-success pause"              (click)="handlePauseExperiment()"              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][2] || !(state | async).initialized">        <i class="fas fa-pause"></i> {{ \'EXPERIMENT_PLAYER.BUTTON_BAR.PAUSE\' | translate }}      </button>      <button class="btn btn-warning finish"              (click)="handleFinishExperiment()"              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][3] || !(state | async).initialized">        <i class="fas fa-stop"></i> {{ \'EXPERIMENT_PLAYER.BUTTON_BAR.FINISH\' | translate }}      </button>      <button class="btn btn-warning force-finish"              (click)="handleForceFinishExperiment()"              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][3] || !(state | async).initialized">        <i class="fas fa-stop"></i> {{ \'EXPERIMENT_PLAYER.BUTTON_BAR.FORCE_FINISH\' | translate }}      </button>      <button class="btn btn-danger clear"              (click)="handleClearExperiment()"              [disabled]="(stimulatorConnectionStatus | async) !== ConnectionStatus.CONNECTED || BUTTON_DISABLED_STATES[(stimulatorStatus | async)][4]">        <i class="fas fa-eraser"></i> {{ \'EXPERIMENT_PLAYER.BUTTON_BAR.CLEAR\' | translate }}      </button>    </div>  </div>  <div class="row">    <div class="col-10">      <h2>{{ \'EXPERIMENT_PLAYER.PARAMS.TITLE\' | translate }}</h2>    </div>    <div class="col-2 text-right" stimLibUiContentToggler #paramsUiContentToggler [toggledContent]="playerParams"         [icon]="playerParamsIcon"><i class="fas fa-minus" #playerParamsIcon></i></div>    <div class="col-12" #playerParams>      <form [formGroup]="form">        <div class="row">          <div class="col-12">            <div class="form-group">              <label                for="experiment-repeat">{{ \'EXPERIMENT_PLAYER.PARAMS.EXPERIMENT_REPEAT\' | translate }}</label>              <div class="input-group input-group-sm">                <input type="number" id="experiment-repeat" class="form-control"                       formControlName="repeat"                       [class.is-valid]="repeat.valid" [class.is-invalid]="repeat.invalid">                <div class="input-group-append">                  <span class="input-group-text">&times;</span>                </div>              </div>              <small *ngIf="repeat.touched && repeat.errors?.required"                     class="form-text text-muted">{{ \'APP.VALIDATION.REQUIRED\' | translate }}</small>            </div>          </div>        </div>        <div class="row">          <div class="col-12 col-md-6 vertical-center">            <div class="checkbox">              <label><input type="checkbox" formControlName="autoplay"> Automatické přehrávání</label>            </div>          </div>          <div class="col-12 col-md-6">            <div class="form-group">              <label                for="between-experiment-interval">{{ \'EXPERIMENT_PLAYER.PARAMS.BETWEEN_EXPERIMENT_INTERVAL\' | translate }}</label>              <div class="input-group input-group-sm">                <input type="number" id="between-experiment-interval" class="form-control"                       formControlName="betweenExperimentInterval" step="1"                       [class.is-valid]="betweenExperimentInterval.valid"                       [class.is-invalid]="betweenExperimentInterval.invalid">                <div class="input-group-append">                  <span class="input-group-text">ms</span>                </div>              </div>              <small                *ngIf="betweenExperimentInterval.touched && betweenExperimentInterval.errors?.min"                class="form-text text-muted">{{ \'APP.VALIDATION.MIN\' | translate:{ min: betweenExperimentInterval.errors?.min.min } }}</small>            </div>          </div>        </div>        <div class="row">          <div class="col-12">            <stim-feature-player-stop-conditions [form]="form" [supportStopConditions]="supportStopConditions" [availableStopConditions]="availableStopConditions"></stim-feature-player-stop-conditions>          </div>        </div>      </form>    </div>  </div>  <div class="row" *ngIf="BUTTON_DISABLED_STATES[(stimulatorStatus | async)][0]">    <div class="col-10">      <h2>{{ \'EXPERIMENT_PLAYER.EXPERIMENT_MEASUREMENT\' | translate:{ experimentRound: (state | async).ioData.length, totalMeasurement: ((state | async).repeat + 1) || 1 } }}</h2>    </div>    <div class="col-2 text-right" stimLibUiContentToggler [toggledContent]="experimentViewer"         [icon]="experimentViewerIcon"><i class="fas fa-minus" #experimentViewerIcon></i></div>    <div class="col-12" #experimentViewer>      {{ (state | async).ioData | json }}      <!--      <div style="width: 100%;">-->      <!--        <stim-lib-ui-experiment-viewer *ngIf="(experiment | async).outputCount"-->      <!--                                       [events]="(state | async).ioData"-->      <!--                                       [outputCount]="(experiment | async).outputCount"></stim-lib-ui-experiment-viewer>-->      <!--      </div>-->    </div>  </div></ng-container></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': ''},{'name': 'AppComponent', 'selector': 'stim-app'},{'name': 'AudioPlayerComponent', 'selector': 'stim-lib-ui-audio-player'},{'name': 'AuthComponent', 'selector': 'stim-feature-auth'},{'name': 'BaseExperimentTypeComponent', 'selector': ''},{'name': 'BaseListComponent', 'selector': ''},{'name': 'CalibrationComponent', 'selector': ''},{'name': 'ConfirmDialogComponent', 'selector': ''},{'name': 'ConsoleComponent', 'selector': 'stim-lib-console'},{'name': 'CountingCycleComponent', 'selector': 'stim-feature-player-stop-condition-counting-cycle'},{'name': 'CountingExperimentComponent', 'selector': 'stim-feature-player-stop-condition-counting-experiment'},{'name': 'DiodeComponent', 'selector': 'stim-lib-ui-diode'},{'name': 'DropdownBtnComponent', 'selector': 'stim-lib-ui-dropdown-btn'},{'name': 'ExperimentResultComponent', 'selector': 'stim-feature-experiment-results-experiment-result'},{'name': 'ExperimentResultsComponent', 'selector': ''},{'name': 'ExperimentResultsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentResultsGhostItemListComponent', 'selector': 'stim-feature-experiment-results-ghost-item-list'},{'name': 'ExperimentResultsItemListComponent', 'selector': 'stim-feature-experiment-results-item-list'},{'name': 'ExperimentsComponent', 'selector': ''},{'name': 'ExperimentsFilterDialogComponent', 'selector': ''},{'name': 'ExperimentsGhostItemListComponent', 'selector': 'stim-feature-experiments-ghost-item-list'},{'name': 'ExperimentsItemListComponent', 'selector': 'stim-feature-experiments-item-list'},{'name': 'ExperimentsPageToolsComponent', 'selector': ''},{'name': 'ExperimentTypeComponent', 'selector': 'stim-feature-experiments-experiment-type'},{'name': 'ExperimentTypeCvepComponent', 'selector': ''},{'name': 'ExperimentTypeCvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-cvep-output'},{'name': 'ExperimentTypeErpComponent', 'selector': ''},{'name': 'ExperimentTypeErpOutputComponent', 'selector': 'stim-feature-experiments-type-erp-output'},{'name': 'ExperimentTypeFvepComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep'},{'name': 'ExperimentTypeFvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-fvep-output'},{'name': 'ExperimentTypeHeaderComponent', 'selector': 'stim-feature-experiments-experiment-type-header'},{'name': 'ExperimentTypeNoneComponent', 'selector': ''},{'name': 'ExperimentTypeReaComponent', 'selector': ''},{'name': 'ExperimentTypeReaOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-rea-output'},{'name': 'ExperimentTypeTvepComponent', 'selector': ''},{'name': 'ExperimentTypeTvepOutputComponent', 'selector': 'stim-feature-experiments-experiment-type-tvep-output'},{'name': 'ExperimentViewerComponent', 'selector': 'stim-lib-ui-experiment-viewer'},{'name': 'FabComponent', 'selector': 'stim-lib-fab'},{'name': 'FileBrowserComponent', 'selector': ''},{'name': 'HelpComponent', 'selector': ''},{'name': 'ImagePlayerComponent', 'selector': 'stim-lib-ui-image-player'},{'name': 'InformDialogComponent', 'selector': ''},{'name': 'ListButtonsAddonComponent', 'selector': ''},{'name': 'LoginComponent', 'selector': 'stim-feature-auth'},{'name': 'LogoutComponent', 'selector': ''},{'name': 'ModalComponent', 'selector': 'stim-lib-modal'},{'name': 'NavigationComponent', 'selector': 'stim-feature-navigation'},{'name': 'NoConditionComponent', 'selector': 'stim-feature-player-stop-condition-no-condition'},{'name': 'OutputEditorComponent', 'selector': 'neuro-client-output-editor'},{'name': 'OutputPatternComponent', 'selector': 'stim-feature-experiments-output-pattern'},{'name': 'OutputTypeComponent', 'selector': 'stim-feature-experiments-output-type'},{'name': 'PageNotFoundComponent', 'selector': ''},{'name': 'PageToolsComponent', 'selector': ''},{'name': 'ParamConfigApplicationComponent', 'selector': 'stim-feature-settings-param-config-application'},{'name': 'ParamConfigComponent', 'selector': 'stim-feature-settings-param-config'},{'name': 'ParamConfigExperimentsComponent', 'selector': 'stim-feature-settings-param-config-experiments'},{'name': 'ParamConfigServerComponent', 'selector': 'stim-feature-settings-param-config-server'},{'name': 'PlayerComponent', 'selector': ''},{'name': 'PlayerPageToolsComponent', 'selector': ''},{'name': 'ProfileComponent', 'selector': 'stim-feature-users'},{'name': 'RegisterComponent', 'selector': 'stim-feature-auth'},{'name': 'SequenceComponent', 'selector': 'stim-feature-sequences-sequence'},{'name': 'SequenceFastDialogComponent', 'selector': ''},{'name': 'SequencesComponent', 'selector': ''},{'name': 'SequencesFilterDialogComponent', 'selector': ''},{'name': 'SequencesGhostItemListComponent', 'selector': 'stim-feature-sequences-ghost-item-list'},{'name': 'SequencesItemListComponent', 'selector': 'stim-feature-sequences-item-list'},{'name': 'SequenceViewerComponent', 'selector': 'stim-lib-ui-sequence-viewer'},{'name': 'ServiceStateComponent', 'selector': 'stim-feature-settings-service-state'},{'name': 'SettingsComponent', 'selector': ''},{'name': 'SidebarComponent', 'selector': 'stim-feature-navigation-sidebar'},{'name': 'StimulatorComponent', 'selector': ''},{'name': 'StopConditionsComponent', 'selector': 'stim-feature-player-stop-conditions'},{'name': 'TagEditorComponent', 'selector': 'stim-lib-ui-tag-editor'}];
+    var DIRECTIVES = [{'name': 'BaseExperimentTypeResolverDirective', 'selector': ''},{'name': 'ContentTogglerDirective', 'selector': '[stimLibUiContentToggler]'},{'name': 'DialogChildsDirective', 'selector': '[stimLibModalDialogChilds]'},{'name': 'ExperimentTypeResolverDirective', 'selector': '[stimFeatureExperimentsTypeResolver]'},{'name': 'FilterDialogComponent', 'selector': ''},{'name': 'NavigationButtonsAddonDirective', 'selector': '[stimFeatureNavigationButtonsAddon]'},{'name': 'PlayerExperimentTypeResolverDirective', 'selector': '[stimFeaturePlayerExperimentTypeResolver]'},{'name': 'StopConditionDirective', 'selector': '[stimFeatureStopCondition]'}];
+    var ACTUAL_COMPONENT = {'name': 'PlayerComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PlayerComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

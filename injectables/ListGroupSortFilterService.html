@@ -1,0 +1,1675 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >ListGroupSortFilterService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_filteredExperiments" >_filteredExperiments</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_filterParametersChange" >_filterParametersChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_fuseExperiments" >_fuseExperiments</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_fusejs" >_fusejs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_groupExperiments" >_groupExperiments</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_lastListFilterParameters" >_lastListFilterParameters</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_lastSearch" >_lastSearch</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#filterParametersChange$" >filterParametersChange$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#FUSEJS_SETTINGS" >FUSEJS_SETTINGS</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Static</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#STORAGE_KEY_FILTER_PARAMETERS" >STORAGE_KEY_FILTER_PARAMETERS</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_loadListFilterParameters" >_loadListFilterParameters</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#filterBy" >filterBy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#groupBy" >groupBy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#resetFilterParameters" >resetFilterParameters</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sort" >sort</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#subscribeEntities" >subscribeEntities</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#_localStorageKey" >_localStorageKey</a>
+                                </li>
+                                <li>
+                                    <a href="#filterParameters" >filterParameters</a>
+                                </li>
+                                <li>
+                                    <a href="#searchValue" >searchValue</a>
+                                </li>
+                                <li>
+                                    <a href="#records" >records</a>
+                                </li>
+                                <li>
+                                    <a href="#defaultFilterParameters" >defaultFilterParameters</a>
+                                </li>
+                                <li>
+                                    <a href="#groupByFilters" >groupByFilters</a>
+                                </li>
+                                <li>
+                                    <a href="#sortByFilters" >sortByFilters</a>
+                                </li>
+                                <li>
+                                    <a href="#orderByFilters" >orderByFilters</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_groupFilterProvider: <a href="../classes/GroupByFilterProvider.html" target="_self">GroupByFilterProvider&lt;T&gt;</a>, _sortFilterProvider: <a href="../classes/SortByFilterProvider.html" target="_self">SortByFilterProvider&lt;T&gt;</a>, _orderFilterProvider: <a href="../classes/OrderByFilterProvider.html" target="_self">OrderByFilterProvider&lt;T&gt;</a>, _storageSuffix: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, fuseKeys: string[], logger: NGXLogger, _storage: LocalStorageService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:60</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_groupFilterProvider</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/GroupByFilterProvider.html" target="_self" >GroupByFilterProvider&lt;T&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_sortFilterProvider</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/SortByFilterProvider.html" target="_self" >SortByFilterProvider&lt;T&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_orderFilterProvider</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/OrderByFilterProvider.html" target="_self" >OrderByFilterProvider&lt;T&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_storageSuffix</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fuseKeys</td>
+                                                  
+                                                        <td>
+                                                                    <code>string[]</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>logger</td>
+                                                  
+                                                        <td>
+                                                                    <code>NGXLogger</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_storage</td>
+                                                  
+                                                        <td>
+                                                                    <code>LocalStorageService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_loadListFilterParameters"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_loadListFilterParameters</b></span>
+                        <a href="#_loadListFilterParameters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_loadListFilterParameters()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Načte filtrační parametry z local-storage.
+Pokud se v local-storage nic nenachází, použije se výchozí nastavení</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterBy"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>filterBy</b></span>
+                        <a href="#filterBy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>filterBy(searchedValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Vyfiltruje experimenty podle zadané hodnoty</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>searchedValue</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Fulltextová hodnota</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="groupBy"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>groupBy</b></span>
+                        <a href="#groupBy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>groupBy(filterParameters?: <a href="../interfaces/ListFilterParameters.html" target="_self">ListFilterParameters</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:135</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Seskupovací funkce, která se postará o vytvoření skupin experimentů na základě filtračních parametrů</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filterParameters</td>
+                                    <td>
+                                                <code><a href="../interfaces/ListFilterParameters.html" target="_self" >ListFilterParameters</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>Filtrační parametry</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetFilterParameters"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>resetFilterParameters</b></span>
+                        <a href="#resetFilterParameters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>resetFilterParameters()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="252"
+                            class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:252</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sort"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>sort</b></span>
+                        <a href="#sort"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>sort(filterParameters?: <a href="../interfaces/ListFilterParameters.html" target="_self">ListFilterParameters</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="222"
+                            class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:222</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Funkce seřadí všechny skupiny experimentů</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filterParameters</td>
+                                    <td>
+                                                <code><a href="../interfaces/ListFilterParameters.html" target="_self" >ListFilterParameters</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>Filtrační parametry</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subscribeEntities"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>subscribeEntities</b></span>
+                        <a href="#subscribeEntities"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>subscribeEntities(entities: Observable<T[]>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="256"
+                            class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:256</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>entities</td>
+                                    <td>
+                                            <code>Observable&lt;T[]&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Subscription</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_filteredExperiments"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_filteredExperiments</b></span>
+                        <a href="#_filteredExperiments"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>T[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_filterParametersChange"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_filterParametersChange</b></span>
+                        <a href="#_filterParametersChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ListFilterParameters.html" target="_self" >EventEmitter&lt;ListFilterParameters&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new EventEmitter&lt;ListFilterParameters&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_fuseExperiments"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_fuseExperiments</b></span>
+                        <a href="#_fuseExperiments"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>T[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_fusejs"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_fusejs</b></span>
+                        <a href="#_fusejs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Fuse&lt;T&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_groupExperiments"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_groupExperiments</b></span>
+                        <a href="#_groupExperiments"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#EntityGroup" target="_self" >EntityGroup&lt;T&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_lastListFilterParameters"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_lastListFilterParameters</b></span>
+                        <a href="#_lastListFilterParameters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ListFilterParameters.html" target="_self" >ListFilterParameters</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_lastSearch"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_lastSearch</b></span>
+                        <a href="#_lastSearch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterParametersChange$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>filterParametersChange$</b></span>
+                        <a href="#filterParametersChange$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ListFilterParameters.html" target="_self" >Observable&lt;ListFilterParameters&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._filterParametersChange.asObservable()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FUSEJS_SETTINGS"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>FUSEJS_SETTINGS</b></span>
+                        <a href="#FUSEJS_SETTINGS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Fuse.IFuseOptions&lt;T&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    includeScore: true,
+    includeMatches: true,
+    // threshold: 0.4,
+    // location: 0,
+    // distance: 100,
+    // minMatchCharLength: 1,
+    keys: [&#x27;name&#x27;],
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="STORAGE_KEY_FILTER_PARAMETERS"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Static</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>STORAGE_KEY_FILTER_PARAMETERS</b></span>
+                        <a href="#STORAGE_KEY_FILTER_PARAMETERS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;filter-parameters&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_localStorageKey"></a>
+                        <span class="name"><b>_localStorageKey</b><a href="#_localStorageKey"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>_localStorageKey()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:92</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filterParameters"></a>
+                        <span class="name"><b>filterParameters</b><a href="#filterParameters"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>filterParameters()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="267" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:267</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>filterParameters(filterParameters: <a href="../interfaces/ListFilterParameters.html" target="_self">ListFilterParameters</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="271" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:271</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>filterParameters</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="../interfaces/ListFilterParameters.html" target="_self" >ListFilterParameters</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="searchValue"></a>
+                        <span class="name"><b>searchValue</b><a href="#searchValue"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>searchValue()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="277" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:277</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="records"></a>
+                        <span class="name"><b>records</b><a href="#records"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>records()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="281" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:281</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="defaultFilterParameters"></a>
+                        <span class="name"><b>defaultFilterParameters</b><a href="#defaultFilterParameters"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>defaultFilterParameters()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="288" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:288</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Výchozí parametry filtrování, které se použijí při prvním spuštění aplikace</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="../interfaces/ListFilterParameters.html" target="_self" >ListFilterParameters</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="groupByFilters"></a>
+                        <span class="name"><b>groupByFilters</b><a href="#groupByFilters"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>groupByFilters()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="296" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:296</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sortByFilters"></a>
+                        <span class="name"><b>sortByFilters</b><a href="#sortByFilters"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>sortByFilters()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="300" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:300</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="orderByFilters"></a>
+                        <span class="name"><b>orderByFilters</b><a href="#orderByFilters"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>orderByFilters()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="304" class="link-to-prism">libs/stim-lib-list-utils/src/lib/list-group-sort-filter.service.ts:304</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { EventEmitter, Inject, Injectable } from &#x27;@angular/core&#x27;;
+
+import { Observable, Subscription } from &#x27;rxjs&#x27;;
+import { NGXLogger } from &#x27;ngx-logger&#x27;;
+import { LocalStorageService } from &#x27;angular-2-local-storage&#x27;;
+import Fuse from &#x27;fuse.js&#x27;;
+
+import {
+  EntityGroup,
+  GroupFilter,
+  ListFilterParameters,
+  OrderFilter,
+  SortFilter,
+} from &#x27;./list-filter&#x27;;
+import { OrderByFilterProvider } from &#x27;./impl/order-by-filter.provider&#x27;;
+import { GroupByFilterProvider } from &#x27;./impl/group-by-filter.provider&#x27;;
+import { SortByFilterProvider } from &#x27;./impl/sort-by-filter.provider&#x27;;
+import {
+  LIST_UTILS_MODULE_FUSE_KEYS,
+  LIST_UTILS_MODULE_GROUP_BY_TOKEN,
+  LIST_UTILS_MODULE_ORDER_BY_TOKEN,
+  LIST_UTILS_MODULE_SORT_BY_TOKEN,
+  LIST_UTILS_MODULE_STORAGE_PREFIX,
+} from &#x27;./injection-tokens&#x27;;
+
+@Injectable()
+export class ListGroupSortFilterService&lt;T&gt; {
+  // Klíč pod kterým se ukládá nastavení filtrů v local-storage aplikace
+  private static readonly STORAGE_KEY_FILTER_PARAMETERS &#x3D; &#x27;filter-parameters&#x27;;
+  // Konfigurace knihovny pro vyhledávání textů v objektech
+  private readonly FUSEJS_SETTINGS: Fuse.IFuseOptions&lt;T&gt; &#x3D; {
+    includeScore: true,
+    includeMatches: true,
+    // threshold: 0.4,
+    // location: 0,
+    // distance: 100,
+    // minMatchCharLength: 1,
+    keys: [&#x27;name&#x27;],
+  };
+
+  // Fusejs instance pro fulltextové vyhledávání
+  private readonly _fusejs: Fuse&lt;T&gt;;
+  // Kolekce experimentů pro FuseJS
+  private _fuseExperiments: T[] &#x3D; [];
+  // Kolekce vyfiltrovaných experimentů
+  private _filteredExperiments: T[] &#x3D; [];
+  // Výsledná kolekce, která obsahuje výsledky experimentů po filtraci
+  private _groupExperiments: EntityGroup&lt;T&gt; &#x3D; [];
+  // Poslední slovo, podle kterého se vyhledávalo
+  private _lastSearch &#x3D; &#x27;&#x27;;
+  // Poslední použité filtrační parametry
+  private _lastListFilterParameters: ListFilterParameters;
+  // Emitter změn nastavení filtračních parametrů
+  private _filterParametersChange: EventEmitter&lt;
+    ListFilterParameters
+  &gt; &#x3D; new EventEmitter&lt;ListFilterParameters&gt;();
+  // Pozorovatelný objekt změn nastavení filtračních parametrů
+  public readonly filterParametersChange$: Observable&lt;
+    ListFilterParameters
+  &gt; &#x3D; this._filterParametersChange.asObservable();
+
+  constructor(
+    @Inject(LIST_UTILS_MODULE_GROUP_BY_TOKEN)
+    private readonly _groupFilterProvider: GroupByFilterProvider&lt;T&gt;,
+    @Inject(LIST_UTILS_MODULE_SORT_BY_TOKEN)
+    private readonly _sortFilterProvider: SortByFilterProvider&lt;T&gt;,
+    @Inject(LIST_UTILS_MODULE_ORDER_BY_TOKEN)
+    private readonly _orderFilterProvider: OrderByFilterProvider&lt;T&gt;,
+    @Inject(LIST_UTILS_MODULE_STORAGE_PREFIX)
+    private readonly _storageSuffix: string,
+    @Inject(LIST_UTILS_MODULE_FUSE_KEYS) readonly fuseKeys: string[],
+    private readonly logger: NGXLogger,
+    private readonly _storage: LocalStorageService
+  ) {
+    // Vytvořím novou instanci
+    this._fusejs &#x3D; new Fuse(this._fuseExperiments, this.FUSEJS_SETTINGS);
+    // Načtu filtační parametry z local-storage
+    this._loadListFilterParameters();
+  }
+
+  /**
+   * Načte filtrační parametry z local-storage.
+   * Pokud se v local-storage nic nenachází, použije se výchozí nastavení
+   */
+  private _loadListFilterParameters() {
+    this._lastListFilterParameters &#x3D;
+      this._storage.get&lt;ListFilterParameters&gt;(this._localStorageKey) ||
+      this.defaultFilterParameters;
+    this._filterParametersChange.emit(this._lastListFilterParameters);
+  }
+
+  private get _localStorageKey(): string {
+    return &#x60;${ListGroupSortFilterService.STORAGE_KEY_FILTER_PARAMETERS}-${this._storageSuffix}&#x60;;
+  }
+
+  /**
+   * Vyfiltruje experimenty podle zadané hodnoty
+   *
+   * @param searchedValue Fulltextová hodnota
+   */
+  public filterBy(searchedValue: string) {
+    this.logger.debug(&#x60;Filtruji data podle: &#x27;${searchedValue}&#x27;.&#x60;);
+    // Uložím poslední hledané slovo
+    this._lastSearch &#x3D; searchedValue;
+    // Pokud je to slovo prázdné
+    if (searchedValue &#x3D;&#x3D;&#x3D; &#x27;&#x27;) {
+      // Ve vyhledávání je prázdná hodnota, nebudu nic filtrovat a zobrazím všechny záznamy
+      this._filteredExperiments.splice(0);
+      this._filteredExperiments.push(...this._fuseExperiments);
+      // Nechám experimenty seskupit
+      this.groupBy();
+      return;
+    }
+    // Hodnota není prázdná, jdu najít všechny odpovídající dotazy
+    const fuseResult &#x3D; this._fusejs.search(searchedValue) as Fuse.FuseResult&lt;
+      T
+    &gt;[];
+    // Vymažu všechny záznamy v pracovní kolekci
+    this._filteredExperiments.splice(0);
+    // Přidám všechny nalezené záznamy do pracovní kolekce
+    for (const result of fuseResult) {
+      // Toto je optimální score, které indikuje shodu s hledaným podřetězcem
+      if (result.score &lt; 0.4) {
+        this._filteredExperiments.push(result.item);
+      }
+    }
+    this.groupBy();
+  }
+
+  /**
+   * Seskupovací funkce, která se postará o vytvoření skupin experimentů na základě filtračních parametrů
+   *
+   * @param filterParameters Filtrační parametry
+   */
+  public groupBy(filterParameters?: ListFilterParameters): void {
+    // Pokud nejsou parametry uvedeny, vezmu poslední použité
+    filterParameters &#x3D; filterParameters || this._lastListFilterParameters;
+    this.logger.debug(&#x60;Seskupuji data podle: &#x27;${filterParameters.groupBy}&#x27;.&#x60;);
+    // Vyprázdním pole s výsledky seskupení
+    this._groupExperiments.splice(0);
+    // Pokud nechci seskupovat podle ničeho
+    if (filterParameters.groupBy &#x3D;&#x3D;&#x3D; &#x27;none&#x27;) {
+      // Založím jednu virtuální skupinu, do které vložím všechny vyfiltrované experimenty
+      this._groupExperiments.push({
+        group: &#x27;&#x27;,
+        entities: [...this._filteredExperiments],
+      });
+      // A nechám je seřadit
+      this.sort();
+      // Víc už dělat nebudu
+      return;
+    }
+
+    // Získám instanci třídy pro seskupování
+    // const groupConfiguration: GroupByPosibilities &#x3D; GroupByPosibilities[filterParameters.groupBy];
+    const groupFilter: GroupFilter&lt;T&gt; &#x3D; this._groupFilterProvider.filterByName(
+      filterParameters.groupBy
+    );
+    // Ověřím, že filtr existuje
+    if (!groupFilter) {
+      this.logger.warn(&#x27;Nebyl rozpoznán seskupovací filtr!&#x27;);
+      this.logger.debug(&#x60;GroupBy: &#x27;${filterParameters.groupBy}&#x27;&#x60;);
+      // Pokud filtr neexistuje, tak seskupování přeskočím a přejdu rovnou na řazení
+      this.sort();
+      // Víc dělat nebudu
+      return;
+    }
+    // Přemapuji pole s vyfiltrovanými experimenty na jednotlivé skupiny
+    let groupsWithDuplications: any &#x3D; this._filteredExperiments.map(
+      groupFilter.mapFunction
+    );
+    // Může se stát, že jednotlivé skupiny budou obsahovat ještě podskupiny
+    // [ [&#x27;aaa&#x27;, &#x27;bbb&#x27;], [&#x27;aaa&#x27;, [&#x27;ccc&#x27;] ] ]
+    // Proto musím použít funkci &#x27;flatMap&#x27; která mi výše uvedenou strukturu převede na jednoduché pole
+    // [ &#x27;aaa&#x27;, &#x27;bbb&#x27;, &#x27;aaa&#x27;, &#x27;ccc&#x27; ]
+    groupsWithDuplications &#x3D; groupsWithDuplications.flatMap((x, _) &#x3D;&gt; x);
+    // Nakonec se zbavím duplicitních skupin a tím získám pole všech unikátních skupin, podle kterých budu experimenty shlukovat
+    const groups: any[] &#x3D; groupsWithDuplications.filter(
+      (value, index, array) &#x3D;&gt; array.indexOf(value) &#x3D;&#x3D;&#x3D; index
+    );
+
+    // Pokud se stane, že žádné skupiny nejsou
+    if (groups.length &#x3D;&#x3D;&#x3D; 0) {
+      // Tak opět založím virtuální skupinu, do které vložím všechny vyfiltrované experimenty
+      this._groupExperiments.push({
+        group: &#x27;&#x27;,
+        entities: [...this._filteredExperiments],
+      });
+      // Nechám je seřadit
+      this.sort();
+      // A víc už dělat nebudu
+      return;
+    }
+
+    // Nyní jsem v situaci, kdy mám nějaké skupiny k dispozici
+    // Proto projdu každou skupinu
+    for (const group of groups) {
+      // Vyfiltruji všechny experimenty podle zadané skupiny
+      const experiments &#x3D; this._filteredExperiments.filter((experiment: T) &#x3D;&gt;
+        groupFilter.groupFunction(experiment, group)
+      );
+      // A vložím novou skupinu do výsledné kolekce
+      this._groupExperiments.push({
+        group: groupFilter.nameTransformFunction(group),
+        entities: experiments,
+      });
+    }
+    // Nakonec přidám ještě takovou skupinu, která nevyhovuje žádným kritériím
+    this._groupExperiments.push({
+      group: &#x27;Bez skupiny&#x27;,
+      entities: this._filteredExperiments.filter(groupFilter.noGroupMatcher),
+    });
+    // Nyní můžu přejít k řazení skupin
+    this.sort();
+  }
+
+  /**
+   * Funkce seřadí všechny skupiny experimentů
+   *
+   * @param filterParameters Filtrační parametry
+   */
+  public sort(filterParameters?: ListFilterParameters) {
+    // Pokud nejsou parametry uvedeny, vezmu poslední použité
+    filterParameters &#x3D; filterParameters || this._lastListFilterParameters;
+    this.logger.debug(
+      &#x60;Řadím data podle: &#x27;${filterParameters.sortBy}&#x27; &#x27;${filterParameters.orderBy}&#x27;.&#x60;
+    );
+    // Získám instanci třídy pro řažení
+    const sortFilter: SortFilter&lt;T&gt; &#x3D; this._sortFilterProvider.filterByName(
+      filterParameters.sortBy
+    );
+    const orderFilter: OrderFilter&lt;T&gt; &#x3D; this._orderFilterProvider.filterByName(
+      filterParameters.orderBy
+    );
+    if (!sortFilter) {
+      this.logger.warn(&#x27;Nebyl vybrán žádný třídící filtr!&#x27;);
+      this.logger.debug(&#x60;SortBy: &#x27;${filterParameters.sortBy}&#x27;&#x60;);
+    }
+    if (!orderFilter) {
+      this.logger.warn(&#x27;Nebyl vybrán, nebo řadící filtr!&#x27;);
+      this.logger.debug(&#x60;OrderBy: &#x27;${filterParameters.orderBy}&#x27;&#x60;);
+    }
+    // Projdu všechny skupiny experimentů
+    for (const group of this._groupExperiments) {
+      // A aplikuji na ně řadící funkci
+      sortFilter?.sort(group.entities);
+      // Nakonec, pokud je potřeba, invertuji pořadí prvků
+      orderFilter?.order(group.entities);
+    }
+  }
+
+  public resetFilterParameters() {
+    this.groupBy();
+  }
+
+  public subscribeEntities(entities: Observable&lt;T[]&gt;): Subscription {
+    // Přihlásím se k odběru změn v kolekci s experimenty z hlavní service
+    return entities.subscribe((value: T[]) &#x3D;&gt; {
+      // Provedu mělkou kopii pole
+      this._fuseExperiments.splice(0);
+      this._fuseExperiments.push(...value);
+      // Zavolám přepočítání úplně celého filtračního procesu
+      this.filterBy(this._lastSearch);
+    });
+  }
+
+  get filterParameters(): ListFilterParameters {
+    return this._lastListFilterParameters;
+  }
+
+  set filterParameters(filterParameters: ListFilterParameters) {
+    this._lastListFilterParameters &#x3D; filterParameters;
+    this._storage.set(this._localStorageKey, filterParameters);
+    this._filterParametersChange.emit(filterParameters);
+  }
+
+  get searchValue(): string {
+    return this._lastSearch;
+  }
+
+  get records(): EntityGroup&lt;T&gt; {
+    return this._groupExperiments;
+  }
+
+  /**
+   * Výchozí parametry filtrování, které se použijí při prvním spuštění aplikace
+   */
+  get defaultFilterParameters(): ListFilterParameters {
+    return {
+      groupBy: this._groupFilterProvider?.defaultFilterEntityValue,
+      orderBy: this._orderFilterProvider?.defaultFilterEntityValue,
+      sortBy: this._sortFilterProvider?.defaultFilterEntityValue,
+    };
+  }
+
+  get groupByFilters(): GroupFilter&lt;T&gt;[] {
+    return this._groupFilterProvider.values;
+  }
+
+  get sortByFilters(): SortFilter&lt;T&gt;[] {
+    return this._sortFilterProvider.values;
+  }
+
+  get orderByFilters(): OrderFilter&lt;T&gt;[] {
+    return this._orderFilterProvider.values;
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ListGroupSortFilterService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

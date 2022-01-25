@@ -1,0 +1,890 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li >ExperimentUploadCommand</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/stim-lib-console/domain/src/lib/domain/commands.ts</code>
+        </p>
+
+
+
+
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                            <code><a href="../interfaces/ClientCommand.html" target="_self" >ClientCommand</a></code>
+            </p>
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#description" >description</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getConsumer" >getConsumer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getName" >getName</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getValue" >getValue</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#isValid" >isValid</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="description"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>description</b></span>
+                        <a href="#description"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>description()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="146"
+                            class="link-to-prism">libs/stim-lib-console/domain/src/lib/domain/commands.ts:146</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getConsumer"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getConsumer</b></span>
+                        <a href="#getConsumer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getConsumer()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">libs/stim-lib-console/domain/src/lib/domain/commands.ts:150</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>&quot;client&quot; | &quot;server&quot;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getName"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getName</b></span>
+                        <a href="#getName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getName()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="154"
+                            class="link-to-prism">libs/stim-lib-console/domain/src/lib/domain/commands.ts:154</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getValue"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getValue</b></span>
+                        <a href="#getValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getValue(params: string[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="170"
+                            class="link-to-prism">libs/stim-lib-console/domain/src/lib/domain/commands.ts:170</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>params</td>
+                                    <td>
+                                            <code>string[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isValid"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>isValid</b></span>
+                        <a href="#isValid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>isValid(params: string[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="158"
+                            class="link-to-prism">libs/stim-lib-console/domain/src/lib/domain/commands.ts:158</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>params</td>
+                                    <td>
+                                            <code>string[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommandClientToServer } from &#x27;@stechy1/diplomka-share&#x27;;
+
+export interface ClientCommand&lt;T&gt; {
+  isValid: (params: string[]) &#x3D;&gt; [boolean, string?];
+  getName: () &#x3D;&gt; string;
+  getValue: (params: string[]) &#x3D;&gt; T;
+  description: () &#x3D;&gt; string;
+  getConsumer: () &#x3D;&gt; &#x27;client&#x27; | &#x27;server&#x27;;
+}
+
+class UnknownCommand implements ClientCommand&lt;string&gt; {
+  constructor(private readonly text: string) {}
+
+  public description() {
+    return &#x27;&#x27;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;server&#x27;;
+  }
+
+  public getName(): string {
+    return &#x27;unknown&#x27;;
+  }
+
+  public isValid(): [boolean, string?] {
+    return [true];
+  }
+
+  public getValue(): string {
+    return this.text;
+  }
+}
+
+class HelpCommand implements ClientCommand&lt;void&gt; {
+  public description() {
+    return &#x27;Zobrazí seznam všech dostupných příkazů.&#x27;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;client&#x27;;
+  }
+
+  public getName(): string {
+    return &#x27;help&#x27;;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length !&#x3D;&#x3D; 0) {
+      return [false, &#x60;Byly zaznamenány neočekávané parametry: &#x27;${params.join(&#x27;, &#x27;)}&#x27;&#x60;];
+    }
+
+    return [true];
+  }
+
+  public getValue(): void {
+    return null;
+  }
+}
+
+class DisplayClearCommand implements ClientCommand&lt;void&gt; {
+  public description() {
+    return &#x27;Vymaže obsah displaye&#x27;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;server&#x27;;
+  }
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_DISPLAY_CLEAR;
+  }
+
+  public isValid(): [boolean, string?] {
+    return [false];
+  }
+
+  public getValue(): null {
+    return null;
+  }
+}
+
+class DisplayTextCommand implements ClientCommand&lt;{ x: number; y: number; text: string }&gt; {
+  public description() {
+    return &#x60;Nastaví text:  ${this.getName()} x: number, y: number, text: string&#x60;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;server&#x27;;
+  }
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_DISPLAY_TEXT;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length !&#x3D;&#x3D; 3) {
+      return [false, &#x27;Nedostatečný počet parametrů: &lt;display show x:number y:number content:text&gt;&#x27;];
+    }
+
+    if (typeof +params[0] !&#x3D;&#x3D; &#x27;number&#x27;) {
+      return [false, &#x27;X-ová souřadnice musí být číslo!&#x27;];
+    }
+    if (typeof +params[1] !&#x3D;&#x3D; &#x27;number&#x27;) {
+      return [false, &#x27;Y-ová souřadnice musí být číslo!&#x27;];
+    }
+    if (typeof params[2] !&#x3D;&#x3D; &#x27;string&#x27;) {
+      return [false, &#x27;Obsah musí být řetězec&#x27;];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): { x: number; y: number; text: string } {
+    return { x: +params[0], y: +params[1], text: params[2] };
+  }
+}
+
+class StimulatorStateCommand implements ClientCommand&lt;void&gt; {
+  public description() {
+    return &#x27;Přečte ze stimulátoru aktuální stav.&#x27;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;server&#x27;;
+  }
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_STIMULATOR_STATE;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length !&#x3D;&#x3D; 0) {
+      return [false, &#x60;Byly zaznamenány neočekávané parametry: &#x27;${params.join(&#x27;, &#x27;)}&#x27;&#x60;];
+    }
+
+    return [true];
+  }
+
+  public getValue(): void {
+    return null;
+  }
+}
+
+class ExperimentUploadCommand implements ClientCommand&lt;number&gt; {
+  public description() {
+    return &#x60;Nahraje experiment do stimulátoru: ${this.getName()} id: number&#x60;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;server&#x27;;
+  }
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_EXPERIMENT_UPLOAD;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length &#x3D;&#x3D;&#x3D; 0) {
+      return [false, &#x27;Nedostatečný počet parametrů: &lt;experiment-upload id:number&gt;&#x27;];
+    }
+
+    if (params.length &gt; 1) {
+      return [false, &#x60;Byly zaznamenány neočekávané parametry: &#x27;${params.join(&#x27;, &#x27;)}&#x27;&#x60;];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): number {
+    return +params[0];
+  }
+}
+
+class ExperimentSetupCommand implements ClientCommand&lt;number&gt; {
+  public description() {
+    return &#x60;Inicializuje experiment ve stimulátoru: ${this.getName()} id: number&#x60;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;server&#x27;;
+  }
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_EXPERIMENT_SETUP;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length &#x3D;&#x3D;&#x3D; 0) {
+      return [false, &#x27;Nedostatečný počet parametrů: &lt;experiment-upload id:number&gt;&#x27;];
+    }
+
+    if (params.length &gt; 1) {
+      return [false, &#x60;Byly zaznamenány neočekávané parametry: &#x27;${params.join(&#x27;, &#x27;)}&#x27;&#x60;];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): number {
+    return +params[0];
+  }
+}
+
+class ExperimentRunCommand implements ClientCommand&lt;void&gt; {
+  public description() {
+    return &#x60;Spustí experiment: ${this.getName()}&#x60;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;server&#x27;;
+  }
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_EXPERIMENT_RUN;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length !&#x3D;&#x3D; 0) {
+      return [false, &#x60;Byly zaznamenány neočekávané parametry: &#x27;${params.join(&#x27;, &#x27;)}&#x27;&#x60;];
+    }
+
+    return [true];
+  }
+
+  public getValue(): number {
+    return null;
+  }
+}
+
+class ExperimentPauseCommand implements ClientCommand&lt;void&gt; {
+  public description() {
+    return &#x60;Pozastaví experiment: ${this.getName()}&#x60;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;server&#x27;;
+  }
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_EXPERIMENT_PAUSE;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length !&#x3D;&#x3D; 0) {
+      return [false, &#x60;Byly zaznamenány neočekávané parametry: &#x27;${params.join(&#x27;, &#x27;)}&#x27;&#x60;];
+    }
+
+    return [true];
+  }
+
+  public getValue(): number {
+    return null;
+  }
+}
+
+class ExperimentFinishCommand implements ClientCommand&lt;void&gt; {
+  public description() {
+    return &#x60;Ukončí experiment: ${this.getName()}&#x60;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;server&#x27;;
+  }
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_EXPERIMENT_FINISH;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length !&#x3D;&#x3D; 0) {
+      return [false, &#x60;Byly zaznamenány neočekávané parametry: &#x27;${params.join(&#x27;, &#x27;)}&#x27;&#x60;];
+    }
+
+    return [true];
+  }
+
+  public getValue(): number {
+    return null;
+  }
+}
+
+class ExperimentClearCommand implements ClientCommand&lt;void&gt; {
+  public description() {
+    return &#x60;Vymaže experiment ze stimulátoru: ${this.getName()}&#x60;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;server&#x27;;
+  }
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_EXPERIMENT_CLEAR;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length !&#x3D;&#x3D; 0) {
+      return [false, &#x60;Byly zaznamenány neočekávané parametry: &#x27;${params.join(&#x27;, &#x27;)}&#x27;&#x60;];
+    }
+
+    return [true];
+  }
+
+  public getValue(): number {
+    return null;
+  }
+}
+
+class SequencePartCommand implements ClientCommand&lt;{ offset: number; index: number }&gt; {
+  public description() {
+    return &#x60;Nahraje vybranou část sekvence do stimulátoru: ${this.getName()} offset: number, index: number&#x60;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;server&#x27;;
+  }
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_SEQUENCE_PART;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length &#x3D;&#x3D;&#x3D; 0) {
+      return [false, &#x27;Nedostatečný počet parametrů: &lt;sequence part offset:number index:number&gt;&#x27;];
+    }
+
+    if (params.length &gt; 2) {
+      return [false, &#x60;Byly zaznamenány neočekávané parametry: &#x27;${params.join(&#x27;, &#x27;)}&#x27;&#x60;];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): { offset: number; index: number } {
+    return { offset: +params[0], index: +params[1] };
+  }
+}
+
+class MemoryCommand implements ClientCommand&lt;number&gt; {
+  private static readonly MEMORY_TYPE: string[] &#x3D; [&#x27;config&#x27;, &#x27;counters&#x27;, &#x27;accumulator&#x27;];
+
+  public description() {
+    return &#x60;Vypíše zadaný kus paměti ze stimulátoru v raw podobě do konzole: ${this.getName()} memory: [${MemoryCommand.MEMORY_TYPE.toString()}]&#x60;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;server&#x27;;
+  }
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_MEMORY;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length &#x3D;&#x3D;&#x3D; 0) {
+      return [false, &#x27;Nedostatečný počet parametrů: &lt;debug [config, counters, accumulator].&gt;&#x27;];
+    }
+    if (params.length &gt; 1) {
+      return [false, &#x60;Byly zaznamenány neočekávané parametry: &#x27;${params.join(&#x27;, &#x27;)}&#x27;.&#x60;];
+    }
+
+    const memoryType &#x3D; params[0];
+    if (MemoryCommand.MEMORY_TYPE.indexOf(memoryType) &#x3D;&#x3D;&#x3D; -1) {
+      return [false, &#x27;Zadali jste nevalidní typ paměti. \nLze zadat pouze: [config, counters, accumulator].&#x27;];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): number {
+    return MemoryCommand.MEMORY_TYPE.indexOf(params[0]);
+  }
+}
+
+// Backdoor do stimulátoru
+class OutputSetCommand implements ClientCommand&lt;{ index: number; brightness: number }&gt; {
+  public description() {
+    return &#x60;Nastaví jeden konkrétní výstup na zadanou hodnotu: ${this.getName()} index: number, brightness: number&#x60;;
+  }
+
+  public getConsumer(): &#x27;client&#x27; | &#x27;server&#x27; {
+    return &#x27;server&#x27;;
+  }
+
+  public getName(): string {
+    return CommandClientToServer.COMMAND_OUTPUT_SET;
+  }
+
+  public isValid(params: string[]): [boolean, string?] {
+    if (params.length &lt; 2) {
+      return [false, &#x27;Nedostatečný počet parametrů: &lt;output set index:number brightness:number&gt;&#x27;];
+    }
+
+    if (params.length &gt; 2) {
+      return [false, &#x60;Byly zaznamenány neočekávané parametry: &#x27;${params.join(&#x27;, &#x27;)}&#x27;&#x60;];
+    }
+
+    if (typeof +params[0] !&#x3D;&#x3D; &#x27;number&#x27;) {
+      return [false, &#x27;Index musí být číslo!&#x27;];
+    }
+    if (typeof +params[1] !&#x3D;&#x3D; &#x27;number&#x27;) {
+      return [false, &#x27;Svítivost musí být!&#x27;];
+    }
+
+    return [true];
+  }
+
+  public getValue(params: string[]): { index: number; brightness: number } {
+    return { index: +params[0], brightness: +params[1] };
+  }
+}
+
+export const COMMANDS &#x3D; [
+  UnknownCommand,
+  HelpCommand,
+  DisplayClearCommand,
+  DisplayTextCommand,
+  StimulatorStateCommand,
+  ExperimentUploadCommand,
+  ExperimentSetupCommand,
+  ExperimentRunCommand,
+  ExperimentPauseCommand,
+  ExperimentFinishCommand,
+  ExperimentClearCommand,
+  SequencePartCommand,
+  MemoryCommand,
+  OutputSetCommand,
+];
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExperimentUploadCommand.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

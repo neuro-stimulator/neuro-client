@@ -1,0 +1,2159 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Neuro-stimulator client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Neuro-stimulator client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-functions">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Miscellaneous</li>
+  <li>Functions</li>
+</ol>
+
+<section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#assetPlayerReducer" title="libs/stim-lib-asset-player/src/lib/store/asset-player.reducer.ts" ><b>assetPlayerReducer</b>&nbsp;&nbsp;&nbsp;(libs/.../asset-player.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#authReducer" title="libs/stim-feature-auth/domain/src/lib/store/auth.reducer.ts" ><b>authReducer</b>&nbsp;&nbsp;&nbsp;(libs/.../auth.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#autologinFactory" title="apps/stimulator/src/app/app.module.ts" ><b>autologinFactory</b>&nbsp;&nbsp;&nbsp;(apps/.../app.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#checkLibraryFiles" title="tools/check-translations.ts" ><b>checkLibraryFiles</b>&nbsp;&nbsp;&nbsp;(tools/.../check-translations.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#checkTranslations" title="tools/check-translations.ts" ><b>checkTranslations</b>&nbsp;&nbsp;&nbsp;(tools/.../check-translations.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#connectionStateReducer" title="libs/stim-lib-connection/src/lib/store/connection.reducers.ts" ><b>connectionStateReducer</b>&nbsp;&nbsp;&nbsp;(libs/.../connection.reducers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#consoleReducer" title="libs/stim-lib-console/domain/src/lib/store/console.reducer.ts" ><b>consoleReducer</b>&nbsp;&nbsp;&nbsp;(libs/.../console.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#createIntroStepsLoader" title="apps/stimulator/src/app/app.module.ts" ><b>createIntroStepsLoader</b>&nbsp;&nbsp;&nbsp;(apps/.../app.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#createTranslateLoader" title="apps/stimulator/src/app/app.module.ts" ><b>createTranslateLoader</b>&nbsp;&nbsp;&nbsp;(apps/.../app.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#dependencyValidatorPattern" title="libs/stim-feature-experiments/feature/src/lib/experiments.share.ts" ><b>dependencyValidatorPattern</b>&nbsp;&nbsp;&nbsp;(libs/.../experiments.share.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#deserializeRequest" title="libs/stim-lib-common/src/lib/request-utils.ts" ><b>deserializeRequest</b>&nbsp;&nbsp;&nbsp;(libs/.../request-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#experimentResultsReducer" title="libs/stim-feature-experiment-results/domain/src/lib/store/experiment-results.reducer.ts" ><b>experimentResultsReducer</b>&nbsp;&nbsp;&nbsp;(libs/.../experiment-results.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#experimentsReducer" title="libs/stim-feature-experiments/domain/src/lib/store/experiments.reducer.ts" ><b>experimentsReducer</b>&nbsp;&nbsp;&nbsp;(libs/.../experiments.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#fileBrowserReducer" title="libs/stim-feature-file-browser/domain/src/lib/store/file-browser-reducer.ts" ><b>fileBrowserReducer</b>&nbsp;&nbsp;&nbsp;(libs/.../file-browser-reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getLocaleLoader" title="apps/stimulator/src/app/locale-loader.ts" ><b>getLocaleLoader</b>&nbsp;&nbsp;&nbsp;(apps/.../locale-loader.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#makeURL" title="apps/stimulator/src/environments/environment.dev.ts" ><b>makeURL</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.dev.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#makeURL" title="apps/stimulator/src/environments/environment.ts" ><b>makeURL</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#mapStopCondition" title="libs/stim-feature-player/domain/src/lib/domain/stop-condition.mapper.ts" ><b>mapStopCondition</b>&nbsp;&nbsp;&nbsp;(libs/.../stop-condition.mapper.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#navigationReducer" title="libs/stim-feature-navigation/domain/src/lib/store/navigation.reducer.ts" ><b>navigationReducer</b>&nbsp;&nbsp;&nbsp;(libs/.../navigation.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#outputCountParams" title="libs/stim-feature-experiments/feature/src/lib/experiments.share.ts" ><b>outputCountParams</b>&nbsp;&nbsp;&nbsp;(libs/.../experiments.share.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#outputCountValidatorPattern" title="libs/stim-feature-experiments/feature/src/lib/experiments.share.ts" ><b>outputCountValidatorPattern</b>&nbsp;&nbsp;&nbsp;(libs/.../experiments.share.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#pascalCaseToDash" title="tools/check-unused-selectors.ts" ><b>pascalCaseToDash</b>&nbsp;&nbsp;&nbsp;(tools/.../check-unused-selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#playerReducer" title="libs/stim-feature-player/domain/src/lib/store/player.reducer.ts" ><b>playerReducer</b>&nbsp;&nbsp;&nbsp;(libs/.../player.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#readDirectoryRecursive" title="tools/tools-helper.ts" ><b>readDirectoryRecursive</b>&nbsp;&nbsp;&nbsp;(tools/.../tools-helper.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#readLibFiles" title="tools/tools-helper.ts" ><b>readLibFiles</b>&nbsp;&nbsp;&nbsp;(tools/.../tools-helper.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#sequencesReducer" title="libs/stim-feature-sequences/domain/src/lib/store/sequences.reducer.ts" ><b>sequencesReducer</b>&nbsp;&nbsp;&nbsp;(libs/.../sequences.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#serializeRequest" title="libs/stim-lib-common/src/lib/request-utils.ts" ><b>serializeRequest</b>&nbsp;&nbsp;&nbsp;(libs/.../request-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#settingsReducer" title="libs/stim-feature-settings/domain/src/lib/store/settings.reducer.ts" ><b>settingsReducer</b>&nbsp;&nbsp;&nbsp;(libs/.../settings.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#stimulatorReducer" title="libs/stim-feature-stimulator/domain/src/lib/store/stimulator.reducer.ts" ><b>stimulatorReducer</b>&nbsp;&nbsp;&nbsp;(libs/.../stimulator.reducer.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>libs/stim-lib-asset-player/src/lib/store/asset-player.reducer.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="assetPlayerReducer"></a>
+                    <span class="name">
+                        <span ><b>assetPlayerReducer</b></span>
+                        <a href="#assetPlayerReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>assetPlayerReducer(assetPlayerState: <a href="../interfaces/AssetPlayerState.html" target="_self">AssetPlayerState</a>, sequencesAction: Action)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>assetPlayerState</td>
+                                    <td>
+                                                <code><a href="../interfaces/AssetPlayerState.html" target="_self" >AssetPlayerState</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>sequencesAction</td>
+                                    <td>
+                                            <code>Action</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-feature-auth/domain/src/lib/store/auth.reducer.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authReducer"></a>
+                    <span class="name">
+                        <span ><b>authReducer</b></span>
+                        <a href="#authReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>authReducer(authState: <a href="../interfaces/AuthState.html" target="_self">AuthState</a>, authAction: Action)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>authState</td>
+                                    <td>
+                                                <code><a href="../interfaces/AuthState.html" target="_self" >AuthState</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>authAction</td>
+                                    <td>
+                                            <code>Action</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>apps/stimulator/src/app/app.module.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="autologinFactory"></a>
+                    <span class="name">
+                        <span ><b>autologinFactory</b></span>
+                        <a href="#autologinFactory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>autologinFactory(facade: <a href="../injectables/AuthFacade.html" target="_self">AuthFacade</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>facade</td>
+                                    <td>
+                                                <code><a href="../injectables/AuthFacade.html" target="_self" >AuthFacade</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createIntroStepsLoader"></a>
+                    <span class="name">
+                        <span ><b>createIntroStepsLoader</b></span>
+                        <a href="#createIntroStepsLoader"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createIntroStepsLoader(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>http</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createTranslateLoader"></a>
+                    <span class="name">
+                        <span ><b>createTranslateLoader</b></span>
+                        <a href="#createTranslateLoader"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createTranslateLoader(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>http</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>tools/check-translations.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkLibraryFiles"></a>
+                    <span class="name">
+                        <span ><b>checkLibraryFiles</b></span>
+                        <a href="#checkLibraryFiles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkLibraryFiles(files, regex)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>files</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>regex</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkTranslations"></a>
+                    <span class="name">
+                        <span ><b>checkTranslations</b></span>
+                        <a href="#checkTranslations"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkTranslations(key)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>key</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-lib-connection/src/lib/store/connection.reducers.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="connectionStateReducer"></a>
+                    <span class="name">
+                        <span ><b>connectionStateReducer</b></span>
+                        <a href="#connectionStateReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>connectionStateReducer(connectionState, connectionAction: Action)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>connectionState</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>connectionAction</td>
+                                    <td>
+                                            <code>Action</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-lib-console/domain/src/lib/store/console.reducer.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="consoleReducer"></a>
+                    <span class="name">
+                        <span ><b>consoleReducer</b></span>
+                        <a href="#consoleReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>consoleReducer(consoleState: <a href="../interfaces/ConsoleState.html" target="_self">ConsoleState</a>, consoleAction: Action)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>consoleState</td>
+                                    <td>
+                                                <code><a href="../interfaces/ConsoleState.html" target="_self" >ConsoleState</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>consoleAction</td>
+                                    <td>
+                                            <code>Action</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-feature-experiments/feature/src/lib/experiments.share.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dependencyValidatorPattern"></a>
+                    <span class="name">
+                        <span ><b>dependencyValidatorPattern</b></span>
+                        <a href="#dependencyValidatorPattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>dependencyValidatorPattern(maxOutputCount)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>maxOutputCount</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="outputCountParams"></a>
+                    <span class="name">
+                        <span ><b>outputCountParams</b></span>
+                        <a href="#outputCountParams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>outputCountParams(maxOutputCount)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>maxOutputCount</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>SliderOptions</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="outputCountValidatorPattern"></a>
+                    <span class="name">
+                        <span ><b>outputCountValidatorPattern</b></span>
+                        <a href="#outputCountValidatorPattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>outputCountValidatorPattern(maxOutputCount)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>maxOutputCount</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-lib-common/src/lib/request-utils.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deserializeRequest"></a>
+                    <span class="name">
+                        <span ><b>deserializeRequest</b></span>
+                        <a href="#deserializeRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deserializeRequest(req: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>HttpRequest&lt;T&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="serializeRequest"></a>
+                    <span class="name">
+                        <span ><b>serializeRequest</b></span>
+                        <a href="#serializeRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>serializeRequest(req: <a href="https://angular.io/api/common/http/HttpRequest" target="_blank">HttpRequest</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/common/http/HttpRequest" target="_blank" >HttpRequest</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-feature-experiment-results/domain/src/lib/store/experiment-results.reducer.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="experimentResultsReducer"></a>
+                    <span class="name">
+                        <span ><b>experimentResultsReducer</b></span>
+                        <a href="#experimentResultsReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>experimentResultsReducer(experimentResultsState: <a href="../interfaces/ExperimentResultsState.html" target="_self">ExperimentResultsState</a>, experimentResultsAction: Action)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>experimentResultsState</td>
+                                    <td>
+                                                <code><a href="../interfaces/ExperimentResultsState.html" target="_self" >ExperimentResultsState</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>experimentResultsAction</td>
+                                    <td>
+                                            <code>Action</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-feature-experiments/domain/src/lib/store/experiments.reducer.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="experimentsReducer"></a>
+                    <span class="name">
+                        <span ><b>experimentsReducer</b></span>
+                        <a href="#experimentsReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>experimentsReducer(experimentsState: <a href="../interfaces/ExperimentsState.html" target="_self">ExperimentsState</a>, experimentsAction: Action)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>experimentsState</td>
+                                    <td>
+                                                <code><a href="../interfaces/ExperimentsState.html" target="_self" >ExperimentsState</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>experimentsAction</td>
+                                    <td>
+                                            <code>Action</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-feature-file-browser/domain/src/lib/store/file-browser-reducer.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fileBrowserReducer"></a>
+                    <span class="name">
+                        <span ><b>fileBrowserReducer</b></span>
+                        <a href="#fileBrowserReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>fileBrowserReducer(fileBrowserState: <a href="../interfaces/FileBrowserState.html" target="_self">FileBrowserState</a>, fileBrowserAction: Action)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fileBrowserState</td>
+                                    <td>
+                                                <code><a href="../interfaces/FileBrowserState.html" target="_self" >FileBrowserState</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>fileBrowserAction</td>
+                                    <td>
+                                            <code>Action</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>apps/stimulator/src/app/locale-loader.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getLocaleLoader"></a>
+                    <span class="name">
+                        <span ><b>getLocaleLoader</b></span>
+                        <a href="#getLocaleLoader"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getLocaleLoader(locale: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>locale</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>apps/stimulator/src/environments/environment.dev.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="makeURL"></a>
+                    <span class="name">
+                        <span ><b>makeURL</b></span>
+                        <a href="#makeURL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>makeURL(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, port: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>url</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>port</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>apps/stimulator/src/environments/environment.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="makeURL"></a>
+                    <span class="name">
+                        <span ><b>makeURL</b></span>
+                        <a href="#makeURL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>makeURL(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, port: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>url</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>port</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-feature-player/domain/src/lib/domain/stop-condition.mapper.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mapStopCondition"></a>
+                    <span class="name">
+                        <span ><b>mapStopCondition</b></span>
+                        <a href="#mapStopCondition"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>mapStopCondition(stopCondition: <a href="../interfaces/StopConditionType.html" target="_self">ExperimentStopConditionType</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>stopCondition</td>
+                                    <td>
+                                                <code><a href="../interfaces/StopConditionType.html" target="_self" >ExperimentStopConditionType</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/StopConditionType.html" target="_self" >StopConditionType</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-feature-navigation/domain/src/lib/store/navigation.reducer.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigationReducer"></a>
+                    <span class="name">
+                        <span ><b>navigationReducer</b></span>
+                        <a href="#navigationReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigationReducer(navigationState: <a href="../interfaces/NavigationState.html" target="_self">NavigationState</a>, navigationAction: Action)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>navigationState</td>
+                                    <td>
+                                                <code><a href="../interfaces/NavigationState.html" target="_self" >NavigationState</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>navigationAction</td>
+                                    <td>
+                                            <code>Action</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>tools/check-unused-selectors.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pascalCaseToDash"></a>
+                    <span class="name">
+                        <span ><b>pascalCaseToDash</b></span>
+                        <a href="#pascalCaseToDash"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>pascalCaseToDash(myStr: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>myStr</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-feature-player/domain/src/lib/store/player.reducer.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="playerReducer"></a>
+                    <span class="name">
+                        <span ><b>playerReducer</b></span>
+                        <a href="#playerReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>playerReducer(playerState: <a href="../interfaces/PlayerState.html" target="_self">PlayerState</a>, playerAction: Action)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>playerState</td>
+                                    <td>
+                                                <code><a href="../interfaces/PlayerState.html" target="_self" >PlayerState</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>playerAction</td>
+                                    <td>
+                                            <code>Action</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>tools/tools-helper.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="readDirectoryRecursive"></a>
+                    <span class="name">
+                        <span ><b>readDirectoryRecursive</b></span>
+                        <a href="#readDirectoryRecursive"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>readDirectoryRecursive(dir: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, fileExtention: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, relativeDir: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Rekurzivně projde zadanou složku a vyhledá veškeré HTML soubory</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dir</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Složka, která se má procházet</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>fileExtention</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Koncovka souboru, který se má vyfiltrovat</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>relativeDir</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>string[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="readLibFiles"></a>
+                    <span class="name">
+                        <span ><b>readLibFiles</b></span>
+                        <a href="#readLibFiles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>readLibFiles(libraries, dir: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, fileExtention: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, relativeDir)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>libraries</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>dir</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>fileExtention</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>relativeDir</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>literal type</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-feature-sequences/domain/src/lib/store/sequences.reducer.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sequencesReducer"></a>
+                    <span class="name">
+                        <span ><b>sequencesReducer</b></span>
+                        <a href="#sequencesReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sequencesReducer(sequencesState: <a href="../interfaces/SequencesState.html" target="_self">SequencesState</a>, sequencesAction: Action)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sequencesState</td>
+                                    <td>
+                                                <code><a href="../interfaces/SequencesState.html" target="_self" >SequencesState</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>sequencesAction</td>
+                                    <td>
+                                            <code>Action</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-feature-settings/domain/src/lib/store/settings.reducer.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="settingsReducer"></a>
+                    <span class="name">
+                        <span ><b>settingsReducer</b></span>
+                        <a href="#settingsReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>settingsReducer(settingsState, settingsAction: Action)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>settingsState</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>settingsAction</td>
+                                    <td>
+                                            <code>Action</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/stim-feature-stimulator/domain/src/lib/store/stimulator.reducer.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stimulatorReducer"></a>
+                    <span class="name">
+                        <span ><b>stimulatorReducer</b></span>
+                        <a href="#stimulatorReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>stimulatorReducer(stimulatorState, stimulatorAction: Action)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>stimulatorState</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>stimulatorAction</td>
+                                    <td>
+                                            <code>Action</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-functions';
+            var COMPODOC_CURRENT_PAGE_URL = 'functions.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
