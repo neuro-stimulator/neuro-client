@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "../../libs/**/*.ts",
+    "../../tools/**/*.ts",
+  ],
+  "exclude": [
+    "**/.cache/*.*",
+    "**/nx/**/*.*",
+  ]
+}
