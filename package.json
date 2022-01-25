@@ -29,7 +29,7 @@
     "update": "nx migrate latest",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "doc": "npx @compodoc/compodoc -p apps/stimulator/tsconfig.doc.json -n \"Neuro-stimulator client documentation\" -s -w",
+    "doc": "npx @compodoc/compodoc -p apps/stimulator/tsconfig.doc.json -n \"Neuro-stimulator client documentation\"",
     "check-translations": "ts-node --pretty --project=tools/tsconfig.tools.json tools/check-translations.ts",
     "check-unused-selectors": "ts-node --pretty --project=tools/tsconfig.tools.json tools/check-unused-selectors.ts",
     "merge-coverage": "tsc merge-coverage.ts && node merge-coverage",
