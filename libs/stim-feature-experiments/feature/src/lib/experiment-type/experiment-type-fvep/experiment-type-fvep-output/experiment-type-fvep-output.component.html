@@ -51,7 +51,7 @@
         <div class="col-12">
           <div class="form-group">
             <label [for]="'fvep-brightness_' + i">{{ 'EXPERIMENTS.EXPERIMENT.FVEP.OUTPUT.BRIGHTNESS' | translate }}</label>
-            <ng5-slider [id]="'fvep-brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions" class="fvep-brightness"></ng5-slider>
+            <ngx-slider [id]="'fvep-brightness_' + i" formControlName="brightness" [options]="brightnessSliderOptions" class="fvep-brightness"></ngx-slider>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness(i).errors?.min.min} }}</small>
             <small *ngIf="brightness(i).touched && brightness(i).errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness(i).errors?.max.max} }}</small>

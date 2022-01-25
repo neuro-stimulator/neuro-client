@@ -2,7 +2,7 @@ import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { Options as SliderOptions } from 'ng5-slider/options';
+import { Options as SliderOptions } from '@angular-slider/ngx-slider';
 
 import { Experiment, ExperimentType, TvepOutput } from '@stechy1/diplomka-share';
 

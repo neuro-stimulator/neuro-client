@@ -18,7 +18,7 @@
             <div class="col-12">
               <div class="form-group" style="padding-bottom: 5px">
                 <label for="rea-output-count">{{ 'EXPERIMENTS.EXPERIMENT.OUTPUT_COUNT' | translate }}</label>
-                <ng5-slider id="rea-output-count" formControlName="outputCount" [options]="outputCountParams"></ng5-slider>
+                <ngx-slider id="rea-output-count" formControlName="outputCount" [options]="outputCountParams"></ngx-slider>
               </div>
             </div>
 
@@ -86,7 +86,7 @@
             <div class="col-12 ">
               <div class="form-group">
                 <label for="rea-brightness">{{ 'EXPERIMENTS.EXPERIMENT.REA.BRIGHTNESS' | translate }}</label>
-                <ng5-slider id="rea-brightness" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
+                <ngx-slider id="rea-brightness" formControlName="brightness" [options]="brightnessSliderOptions"></ngx-slider>
                 <small *ngIf="brightness.touched && brightness.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
                 <small *ngIf="brightness.touched && brightness.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness.errors?.min.min} }}</small>
                 <small *ngIf="brightness.touched && brightness.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness.errors?.max.max} }}</small>

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { NGXLogger } from 'ngx-logger';
-import { Options as SliderOptions } from 'ng5-slider/options';
+import { Options as SliderOptions } from '@angular-slider/ngx-slider';
 
 import { createEmptyExperimentCVEP, CvepOutput, ExperimentCVEP } from '@stechy1/diplomka-share';
 

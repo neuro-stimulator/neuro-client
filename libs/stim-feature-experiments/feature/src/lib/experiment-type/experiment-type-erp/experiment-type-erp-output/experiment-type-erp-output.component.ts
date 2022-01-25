@@ -2,7 +2,7 @@ import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { ControlContainer, FormArray, FormControl, FormGroup, NgForm } from '@angular/forms';
 
 import { Observable, Subscription } from 'rxjs';
-import { Options as SliderOptions } from 'ng5-slider';
+import { Options as SliderOptions } from '@angular-slider/ngx-slider';
 
 import { Experiment, ExperimentERP, ExperimentType, ErpOutputDependency, ErpOutput } from '@stechy1/diplomka-share';
 

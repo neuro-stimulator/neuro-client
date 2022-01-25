@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
-import { Options as SliderOptions } from 'ng5-slider/options';
+import { Options as SliderOptions } from '@angular-slider/ngx-slider';
 
 import { IOEvent } from '@stechy1/diplomka-share';
 import { Round } from '@neuro-client/stim-lib-common';

@@ -1,4 +1,4 @@
-import { Options as SliderOptions } from 'ng5-slider/options';
+import { Options as SliderOptions } from '@angular-slider/ngx-slider';
 
 export function dependencyValidatorPattern(maxOutputCount) {
   return `^[0-${maxOutputCount}]x[1-9]+[0-9]*`;

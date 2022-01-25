@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 
-import { Options as SliderOptions } from 'ng5-slider/options';
+import { Options as SliderOptions } from '@angular-slider/ngx-slider';
 
 import { TOKEN_MAX_OUTPUT_COUNT } from '@neuro-client/stim-lib-common';
 

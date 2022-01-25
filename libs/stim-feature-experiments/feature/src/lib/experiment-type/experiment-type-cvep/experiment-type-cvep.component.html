@@ -18,7 +18,7 @@
             <div class="col-12">
               <div class="form-group" style="padding-bottom: 5px">
                 <label for="cvep-output-count">{{ 'EXPERIMENTS.EXPERIMENT.OUTPUT_COUNT' | translate }}</label>
-                <ng5-slider id="cvep-output-count" formControlName="outputCount" [options]="outputCountParams"></ng5-slider>
+                <ngx-slider id="cvep-output-count" formControlName="outputCount" [options]="outputCountParams"></ngx-slider>
               </div>
             </div>
 
@@ -53,7 +53,7 @@
             <div class="col-12 col-sm-6 col-md-3">
               <div class="form-group">
                 <label for="cvep-bit-shift">{{ 'EXPERIMENTS.EXPERIMENT.CVEP.BIT_SHIFT' | translate }}</label>
-                <ng5-slider id="cvep-bit-shift" formControlName="bitShift" [options]="bitShiftSliderOptions"></ng5-slider>
+                <ngx-slider id="cvep-bit-shift" formControlName="bitShift" [options]="bitShiftSliderOptions"></ngx-slider>
                 <small *ngIf="bitShift.touched && bitShift.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
                 <small *ngIf="bitShift.value == 0" class="form-text text-muted">{{ 'APP.VALIDATION.ZERO_VALUE' | translate }}</small>
               </div>
@@ -62,7 +62,7 @@
             <div class="col-12 col-sm-6 col-md-3">
               <div class="form-group">
                 <label for="cvep-brightness">{{ 'EXPERIMENTS.EXPERIMENT.CVEP.BRIGHTNESS' | translate }}</label>
-                <ng5-slider id="cvep-brightness" formControlName="brightness" [options]="brightnessSliderOptions"></ng5-slider>
+                <ngx-slider id="cvep-brightness" formControlName="brightness" [options]="brightnessSliderOptions"></ngx-slider>
                 <small *ngIf="brightness.touched && brightness.errors?.required" class="form-text text-muted">{{ 'APP.VALIDATION.REQUIRED' | translate }}</small>
                 <small *ngIf="brightness.touched && brightness.errors?.min" class="form-text text-muted">{{ 'APP.VALIDATION.MIN' | translate:{min: brightness.errors?.min.min} }}</small>
                 <small *ngIf="brightness.touched && brightness.errors?.max" class="form-text text-muted">{{ 'APP.VALIDATION.MAX' | translate:{max: brightness.errors?.max.max} }}</small>

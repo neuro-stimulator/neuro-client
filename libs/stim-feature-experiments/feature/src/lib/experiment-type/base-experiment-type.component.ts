@@ -5,7 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
 import { NGXLogger } from 'ngx-logger';
-import { Options as SliderOptions } from 'ng5-slider/options';
+import { Options as SliderOptions } from '@angular-slider/ngx-slider';
 
 import { Experiment, ExperimentType, IpcSynchronizationMessage, Output } from '@stechy1/diplomka-share';
 

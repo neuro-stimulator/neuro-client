@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { TranslateModule } from '@ngx-translate/core';
-import { Ng5SliderModule } from 'ng5-slider';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { ChartsModule } from 'ng2-charts';
 
 import { StimLibModalModule } from '@neuro-client/stim-lib-modal';
@@ -42,7 +42,7 @@ import { DiodeComponent } from './diode/diode.component';
   ],
   imports: [
     RouterModule,
-    Ng5SliderModule,
+    NgxSliderModule,
     ChartsModule,
     TranslateModule,
     StimLibCommonModule,
@@ -55,7 +55,7 @@ import { DiodeComponent } from './diode/diode.component';
     StimLibModalModule,
     StimLibFabModule,
     StimLibListUtilsModule,
-    Ng5SliderModule,
+    NgxSliderModule,
 
     DropdownBtnComponent,
     ExperimentViewerComponent,
