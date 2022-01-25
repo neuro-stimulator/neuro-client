@@ -26,7 +26,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-auth-domain": {
       "projectType": "library",
@@ -53,7 +54,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-auth-feature": {
       "projectType": "library",
@@ -80,7 +82,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-experiment-results-domain": {
       "projectType": "library",
@@ -111,7 +114,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-experiment-results-feature": {
       "projectType": "library",
@@ -142,7 +146,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-experiments-domain": {
       "projectType": "library",
@@ -173,7 +178,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-experiments-feature": {
       "projectType": "library",
@@ -204,7 +210,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-file-browser-domain": {
       "projectType": "library",
@@ -235,7 +242,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-file-browser-feature": {
       "projectType": "library",
@@ -266,7 +274,9 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["stim-feature-file-browser-domain"]
     },
     "stim-feature-help-feature": {
       "projectType": "library",
@@ -293,7 +303,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-navigation-domain": {
       "projectType": "library",
@@ -324,7 +335,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-navigation-feature": {
       "projectType": "library",
@@ -355,7 +367,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-player-domain": {
       "projectType": "library",
@@ -382,7 +395,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-player-feature": {
       "projectType": "library",
@@ -413,7 +427,9 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["stim-feature-player-domain"]
     },
     "stim-feature-sequences-domain": {
       "projectType": "library",
@@ -444,7 +460,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-sequences-feature": {
       "projectType": "library",
@@ -475,7 +492,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-settings-domain": {
       "projectType": "library",
@@ -506,7 +524,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-settings-feature": {
       "projectType": "library",
@@ -537,7 +556,9 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["stim-feature-settings-domain"]
     },
     "stim-feature-settings-feature-param-config": {
       "projectType": "library",
@@ -568,7 +589,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-settings-feature-param-config-application": {
       "projectType": "library",
@@ -599,7 +621,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-settings-feature-param-config-experiments": {
       "projectType": "library",
@@ -630,7 +653,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-settings-feature-param-config-server": {
       "projectType": "library",
@@ -661,7 +685,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-settings-feature-service-state": {
       "projectType": "library",
@@ -692,7 +717,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-settings-popup": {
       "projectType": "library",
@@ -723,7 +749,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-stimulator-domain": {
       "projectType": "library",
@@ -754,7 +781,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-stimulator-feature": {
       "projectType": "library",
@@ -785,7 +813,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-users-domain": {
       "projectType": "library",
@@ -812,7 +841,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-feature-users-feature": {
       "projectType": "library",
@@ -839,7 +869,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-lib-asset-player": {
       "projectType": "library",
@@ -866,7 +897,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-lib-common": {
       "projectType": "library",
@@ -893,7 +925,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-lib-connection": {
       "projectType": "library",
@@ -920,7 +953,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-lib-console-domain": {
       "projectType": "library",
@@ -947,7 +981,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-lib-console-feature": {
       "projectType": "library",
@@ -974,7 +1009,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-lib-fab": {
       "projectType": "library",
@@ -1001,7 +1037,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-lib-list-utils": {
       "projectType": "library",
@@ -1028,7 +1065,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-lib-modal": {
       "projectType": "library",
@@ -1055,7 +1093,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-lib-store": {
       "projectType": "library",
@@ -1082,7 +1121,8 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": []
     },
     "stim-lib-ui": {
       "projectType": "library",
@@ -1109,7 +1149,9 @@
         "@nrwl/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["stim-lib-modal", "stim-lib-fab", "stim-lib-list-utils"]
     },
     "stimulator": {
       "projectType": "application",
@@ -1237,7 +1279,9 @@
           },
           "outputs": ["coverage/apps/stimulator"]
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["stim-lib-ui"]
     },
     "stimulator-e2e": {
       "root": "apps/stimulator-e2e",
@@ -1272,20 +1316,9 @@
             "lintFilePatterns": ["apps/stimulator-e2e/**/*.ts", "apps/stimulator-e2e/**/*.component.html"]
           }
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["stimulator"]
     }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
-  "schematics": {
-    "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
-    }
-  },
-  "defaultProject": "stimulator"
+  }
 }

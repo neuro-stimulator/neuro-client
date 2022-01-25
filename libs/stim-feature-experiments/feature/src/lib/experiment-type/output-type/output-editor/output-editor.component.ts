@@ -62,7 +62,7 @@ export class OutputEditorComponent extends DialogChildComponent implements OnIni
 
   constructor(private readonly settings: SettingsFacade) {
     super();
-    this._touchDisplay = ( 'ontouchstart' in window ) || ( navigator.maxTouchPoints > 0 ) || ( navigator.msMaxTouchPoints > 0 )
+    this._touchDisplay = ( 'ontouchstart' in window ) || ( navigator.maxTouchPoints > 0 );
   }
 
   private _drawOutputs() {
