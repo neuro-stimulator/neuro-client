@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { ChartOptions, ChartType } from 'chart.js';
-import * as pluginDataLabels from 'chartjs-plugin-datalabels';
-import { Label } from 'ng2-charts';
+import { ChartConfiguration, ChartData, ScriptableContext } from 'chart.js';
+import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'stim-lib-ui-sequence-viewer',
@@ -11,22 +10,34 @@ import { Label } from 'ng2-charts';
 })
 export class SequenceViewerComponent {
   // Pie
-  readonly pieChartOptions: ChartOptions = {
+  private readonly colors = ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)', '#0b0033', '#370031', '#832232', '#ce8964', '#eaf27c'];
+  readonly pieChartOptions: ChartConfiguration<'pie', number[], string | string[]>['options'] = {
     responsive: true,
-    legend: {
-      position: 'top',
-    },
+    maintainAspectRatio: true,
     plugins: {
+      legend: {
+        display: true,
+        position: 'top'
+      },
       datalabels: {
-        formatter: (value, _): string => `#${value}`,
+        formatter: (value): string => `#${value}`,
+      },
+      tooltip: {
+        enabled: false
       },
     },
+    backgroundColor: ((ctx: ScriptableContext<'pie'>) => {
+      const index = ctx.dataIndex;
+
+      return this.colors[index];
+    }),
   };
-  pieChartLabels: Label[] = [];
-  pieChartData: number[] = [];
-  readonly pieChartType: ChartType = 'pie';
-  readonly pieChartLegend = true;
-  readonly pieChartPlugins = [pluginDataLabels];
+  readonly pieChartData: ChartData<'pie', number[], string | string[]> = {
+    labels: [],
+    datasets: []
+  }
+  readonly pieChartType: ChartConfiguration<'pie', number[], string | string[]>['type']  = 'pie';
+  readonly pieChartPlugins = [DatalabelsPlugin];
   readonly pieChartColors = [
     {
       backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)', '#0b0033', '#370031', '#832232', '#ce8964', '#eaf27c'],
@@ -104,17 +115,19 @@ export class SequenceViewerComponent {
   }
 
   private _showSequenceAnalyse(analyse: Record<string, string>) {
-    this.pieChartLabels.splice(0);
-    this.pieChartData.splice(0);
+    this.pieChartData.labels.splice(0);
+    this.pieChartData.datasets.splice(0);
     this.outputs.splice(0);
     for (let i = 0; i < this._outputCount; i++) {
       this.outputs.push(i);
     }
 
+    const chartValues: number[] = [];
     for (const key of Object.keys(analyse)) {
       const data = analyse[key];
-      this.pieChartLabels.push(`${+key+1}. (${data['percent'] * 100}%)`);
-      this.pieChartData.push(data['value']);
+      this.pieChartData.labels.push(`${+key+1}. (${(data['percent'] * 100).toFixed(2)}%)`);
+      chartValues.push(data['value']);
     }
+    this.pieChartData.datasets.push({ data: chartValues });
   }
 }

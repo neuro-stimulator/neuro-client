@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-import { ChartsModule } from 'ng2-charts';
+import { NgChartsModule } from 'ng2-charts';
 
 import { StimLibModalModule } from '@neuro-client/stim-lib-modal';
 import { StimLibCommonModule } from '@neuro-client/stim-lib-common';
@@ -43,7 +43,7 @@ import { DiodeComponent } from './diode/diode.component';
   imports: [
     RouterModule,
     NgxSliderModule,
-    ChartsModule,
+    NgChartsModule,
     TranslateModule,
     StimLibCommonModule,
     StimLibModalModule,

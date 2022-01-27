@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<ng-container *ngIf="flowData.length != 0">
+<ng-container *ngIf="flowData.length !== 0">
 
   <div class="row">
     <div class="col-12">
@@ -24,7 +24,7 @@
           <ul class="list-group stimul-group" >
             <li class="list-group-item stimul-entry"
                 *ngFor="let output of outputs"
-                [class.active]="data == output"
+                [class.active]="data === output"
                 (click)="handleStimulChange(i, output)">
               <span>{{output + 1}}</span>
             </li>
@@ -43,16 +43,14 @@
   </div>
 
   <div class="row">
-    <div class="col-12 col-sm-8">
+    <div class="col-12 col-sm-6">
       <div class="chart">
         <canvas baseChart
                 [data]="pieChartData"
-                [labels]="pieChartLabels"
-                [chartType]="pieChartType"
+                [type]="pieChartType"
                 [options]="pieChartOptions"
-                [colors]="pieChartColors"
-                [legend]="pieChartLegend"
-                [height]="128">
+                [plugins]="pieChartPlugins"
+        height="128">
         </canvas>
       </div>
     </div>
