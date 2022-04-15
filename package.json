@@ -70,7 +70,7 @@
     "cors": "2.8.5",
     "fuse.js": "6.5.3",
     "intro.js": "4.3.0",
-    "ng2-charts": "3.0.8",
+    "ng2-charts": "3.0.9",
     "ngx-logger": "5.0.7",
     "ngx-socket-io": "4.2.0",
     "ngx-toastr": "14.2.1",
