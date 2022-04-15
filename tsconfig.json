@@ -17,124 +17,48 @@
     "baseUrl": ".",
     "paths": {
       "@env/*": ["apps/stimulator/src/environments"],
-      "@neuro-client/stim-lib-modal": ["libs/stim-lib-modal/src/index.ts"],
+      "@neuro-client/stim-feature-about": ["libs/stim-feature-about/src/index.ts"],
+      "@neuro-client/stim-feature-auth/domain": ["libs/stim-feature-auth/domain/src/index.ts"],
+      "@neuro-client/stim-feature-auth/feature": ["libs/stim-feature-auth/feature/src/index.ts"],
+      "@neuro-client/stim-feature-experiment-results/domain": ["libs/stim-feature-experiment-results/domain/src/index.ts"],
+      "@neuro-client/stim-feature-experiment-results/feature": ["libs/stim-feature-experiment-results/feature/src/index.ts"],
+      "@neuro-client/stim-feature-experiments/domain": ["libs/stim-feature-experiments/domain/src/index.ts"],
+      "@neuro-client/stim-feature-experiments/feature": ["libs/stim-feature-experiments/feature/src/index.ts"],
+      "@neuro-client/stim-feature-file-browser": ["libs/stim-feature-file-browser/src/index.ts"],
+      "@neuro-client/stim-feature-file-browser-domain": ["libs/stim-feature-file-browser-domain/src/index.ts"],
+      "@neuro-client/stim-feature-file-browser-feature": ["libs/stim-feature-file-browser-feature/src/index.ts"],
+      "@neuro-client/stim-feature-file-browser/domain": ["libs/stim-feature-file-browser/domain/src/index.ts"],
+      "@neuro-client/stim-feature-file-browser/feature": ["libs/stim-feature-file-browser/feature/src/index.ts"],
+      "@neuro-client/stim-feature-help/feature": ["libs/stim-feature-help/feature/src/index.ts"],
+      "@neuro-client/stim-feature-navigation/domain": ["libs/stim-feature-navigation/domain/src/index.ts"],
+      "@neuro-client/stim-feature-navigation/feature": ["libs/stim-feature-navigation/feature/src/index.ts"],
+      "@neuro-client/stim-feature-player/domain": ["libs/stim-feature-player/domain/src/index.ts"],
+      "@neuro-client/stim-feature-player/feature": ["libs/stim-feature-player/feature/src/index.ts"],
+      "@neuro-client/stim-feature-sequences/domain": ["libs/stim-feature-sequences/domain/src/index.ts"],
+      "@neuro-client/stim-feature-sequences/feature": ["libs/stim-feature-sequences/feature/src/index.ts"],
+      "@neuro-client/stim-feature-settings/domain": ["libs/stim-feature-settings/domain/src/index.ts"],
+      "@neuro-client/stim-feature-settings/feature": ["libs/stim-feature-settings/feature/src/index.ts"],
+      "@neuro-client/stim-feature-settings/feature/console": ["libs/stim-feature-settings/feature/console/src/index.ts"],
+      "@neuro-client/stim-feature-settings/feature/param-config": ["libs/stim-feature-settings/feature/param-config/src/index.ts"],
+      "@neuro-client/stim-feature-settings/feature/param-config/application": ["libs/stim-feature-settings/feature/param-config/application/src/index.ts"],
+      "@neuro-client/stim-feature-settings/feature/param-config/experiments": ["libs/stim-feature-settings/feature/param-config/experiments/src/index.ts"],
+      "@neuro-client/stim-feature-settings/feature/param-config/server": ["libs/stim-feature-settings/feature/param-config/server/src/index.ts"],
+      "@neuro-client/stim-feature-settings/feature/service-state": ["libs/stim-feature-settings/feature/service-state/src/index.ts"],
+      "@neuro-client/stim-feature-settings/popup": ["libs/stim-feature-settings/popup/src/index.ts"],
+      "@neuro-client/stim-feature-stimulator/domain": ["libs/stim-feature-stimulator/domain/src/index.ts"],
+      "@neuro-client/stim-feature-stimulator/feature": ["libs/stim-feature-stimulator/feature/src/index.ts"],
+      "@neuro-client/stim-feature-users/domain": ["libs/stim-feature-users/domain/src/index.ts"],
+      "@neuro-client/stim-feature-users/feature": ["libs/stim-feature-users/feature/src/index.ts"],
+      "@neuro-client/stim-lib-asset-player": ["libs/stim-lib-asset-player/src/index.ts"],
+      "@neuro-client/stim-lib-common": ["libs/stim-lib-common/src/index.ts"],
+      "@neuro-client/stim-lib-connection": ["libs/stim-lib-connection/src/index.ts"],
+      "@neuro-client/stim-lib-console/domain": ["libs/stim-lib-console/domain/src/index.ts"],
+      "@neuro-client/stim-lib-console/feature": ["libs/stim-lib-console/feature/src/index.ts"],
       "@neuro-client/stim-lib-fab": ["libs/stim-lib-fab/src/index.ts"],
-      "@neuro-client/stim-lib-list-utils": [
-        "libs/stim-lib-list-utils/src/index.ts"
-      ],
-      "@neuro-client/stim-lib-common": [
-        "libs/stim-lib-common/src/index.ts"
-      ],
-      "@neuro-client/stim-lib-asset-player": [
-        "libs/stim-lib-asset-player/src/index.ts"
-      ],
-      "@neuro-client/stim-lib-ui": ["libs/stim-lib-ui/src/index.ts"],
-      "@neuro-client/stim-feature-file-browser": [
-        "libs/stim-feature-file-browser/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-about": [
-        "libs/stim-feature-about/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-settings/feature": [
-        "libs/stim-feature-settings/feature/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-settings/domain": [
-        "libs/stim-feature-settings/domain/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-settings/popup": [
-        "libs/stim-feature-settings/popup/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-stimulator/domain": [
-        "libs/stim-feature-stimulator/domain/src/index.ts"
-      ],
+      "@neuro-client/stim-lib-list-utils": ["libs/stim-lib-list-utils/src/index.ts"],
+      "@neuro-client/stim-lib-modal": ["libs/stim-lib-modal/src/index.ts"],
       "@neuro-client/stim-lib-store": ["libs/stim-lib-store/src/index.ts"],
-      "@neuro-client/stim-lib-connection": [
-        "libs/stim-lib-connection/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-file-browser-feature": [
-        "libs/stim-feature-file-browser-feature/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-file-browser-domain": [
-        "libs/stim-feature-file-browser-domain/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-file-browser/domain": [
-        "libs/stim-feature-file-browser/domain/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-file-browser/feature": [
-        "libs/stim-feature-file-browser/feature/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-navigation/feature": [
-        "libs/stim-feature-navigation/feature/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-navigation/domain": [
-        "libs/stim-feature-navigation/domain/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-help/feature": [
-        "libs/stim-feature-help/feature/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-player/feature": [
-        "libs/stim-feature-player/feature/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-player/domain": [
-        "libs/stim-feature-player/domain/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-experiments/feature": [
-        "libs/stim-feature-experiments/feature/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-experiments/domain": [
-        "libs/stim-feature-experiments/domain/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-experiment-results/feature": [
-        "libs/stim-feature-experiment-results/feature/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-experiment-results/domain": [
-        "libs/stim-feature-experiment-results/domain/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-sequences/feature": [
-        "libs/stim-feature-sequences/feature/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-sequences/domain": [
-        "libs/stim-feature-sequences/domain/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-settings/feature/console": [
-        "libs/stim-feature-settings/feature/console/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-settings/feature/param-config": [
-        "libs/stim-feature-settings/feature/param-config/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-settings/feature/service-state": [
-        "libs/stim-feature-settings/feature/service-state/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-settings/feature/param-config/application": [
-        "libs/stim-feature-settings/feature/param-config/application/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-settings/feature/param-config/experiments": [
-        "libs/stim-feature-settings/feature/param-config/experiments/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-settings/feature/param-config/server": [
-        "libs/stim-feature-settings/feature/param-config/server/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-auth/feature": [
-        "libs/stim-feature-auth/feature/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-auth/domain": [
-        "libs/stim-feature-auth/domain/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-users/feature": [
-        "libs/stim-feature-users/feature/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-users/domain": [
-        "libs/stim-feature-users/domain/src/index.ts"
-      ],
-      "@neuro-client/stim-feature-stimulator/feature": [
-        "libs/stim-feature-stimulator/feature/src/index.ts"
-      ],
-      "@neuro-client/stim-lib-console/feature": [
-        "libs/stim-lib-console/feature/src/index.ts"
-      ],
-      "@neuro-client/stim-lib-console/domain": [
-        "libs/stim-lib-console/domain/src/index.ts"
-      ]
+      "@neuro-client/stim-lib-ui": ["libs/stim-lib-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp", "old"]
