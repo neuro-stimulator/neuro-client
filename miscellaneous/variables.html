@@ -805,13 +805,13 @@
                             <a href="#environment" title="apps/stimulator/src/environments/environment.dev.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.dev.ts)</a>
                         </li>
                         <li>
-                            <a href="#environment" title="apps/stimulator/src/environments/environment.qa.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.qa.ts)</a>
+                            <a href="#environment" title="apps/stimulator/src/environments/environment.prod.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.prod.ts)</a>
                         </li>
                         <li>
                             <a href="#environment" title="apps/stimulator/src/environments/environment.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.ts)</a>
                         </li>
                         <li>
-                            <a href="#environment" title="apps/stimulator/src/environments/environment.prod.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.prod.ts)</a>
+                            <a href="#environment" title="apps/stimulator/src/environments/environment.qa.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.qa.ts)</a>
                         </li>
                         <li>
                             <a href="#experimentResultsFeature" title="libs/stim-feature-experiment-results/domain/src/lib/store/experiment-results.reducer.ts" ><b>experimentResultsFeature</b>&nbsp;&nbsp;&nbsp;(libs/.../experiment-results.reducer.ts)</a>
@@ -7363,7 +7363,7 @@
         </tbody>
     </table>
 </section>
-    <h3>apps/stimulator/src/environments/environment.qa.ts</h3>
+    <h3>apps/stimulator/src/environments/environment.prod.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
@@ -7385,16 +7385,16 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
-  production: false,
-  testing: true,
+  production: true,
+  testing: false,
   url: {
-    server: &#x27;10.0.1.25&#x27;,
-    socket: &#x27;10.0.1.25&#x27;,
+    server: VERSION.apiUrl,
+    socket: &#x27;&#x27;,
   },
   maxOutputCount: 8,
   patternSize: 32,
   // settings: DEFAULT_SETTINGS,
-  disableTutorial: true,
+  disableTutorial: false,
   introDelay: 500,
   supportedLanguages: [
     { value: &#x27;cz&#x27;, name: &#x27;SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.CZ&#x27; },
@@ -7454,7 +7454,7 @@
         </tbody>
     </table>
 </section>
-    <h3>apps/stimulator/src/environments/environment.prod.ts</h3>
+    <h3>apps/stimulator/src/environments/environment.qa.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
@@ -7476,16 +7476,16 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
-  production: true,
-  testing: false,
+  production: false,
+  testing: true,
   url: {
-    server: VERSION.apiUrl,
-    socket: &#x27;&#x27;,
+    server: &#x27;10.0.1.25&#x27;,
+    socket: &#x27;10.0.1.25&#x27;,
   },
   maxOutputCount: 8,
   patternSize: 32,
   // settings: DEFAULT_SETTINGS,
-  disableTutorial: false,
+  disableTutorial: true,
   introDelay: 500,
   supportedLanguages: [
     { value: &#x27;cz&#x27;, name: &#x27;SETTINGS.PARAM_CONFIG.APPLICATION.LANGUAGE.CZ&#x27; },
