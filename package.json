@@ -106,7 +106,7 @@
     "dotenv": "14.3.2",
     "eslint": "8.13.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-ngrx": "2.0.4",
+    "eslint-plugin-ngrx": "2.1.2",
     "eslint-plugin-rxjs": "5.0.2",
     "express": "4.17.3",
     "istanbul-api": "2.1.7",
