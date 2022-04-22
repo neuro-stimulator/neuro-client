@@ -104,7 +104,7 @@
     "codelyzer": "6.0.2",
     "cypress": "9.5.4",
     "dotenv": "16.0.0",
-    "eslint": "8.13.0",
+    "eslint": "8.14.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-ngrx": "2.1.2",
     "eslint-plugin-rxjs": "5.0.2",
