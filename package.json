@@ -68,7 +68,7 @@
     "chartjs-plugin-datalabels": "2.0.0",
     "core-js": "3.22.4",
     "cors": "2.8.5",
-    "fuse.js": "6.5.3",
+    "fuse.js": "6.6.1",
     "intro.js": "4.3.0",
     "ng2-charts": "3.0.10",
     "ngx-logger": "5.0.9",
