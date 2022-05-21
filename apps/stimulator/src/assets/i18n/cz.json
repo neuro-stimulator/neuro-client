@@ -140,10 +140,13 @@
       "TITLE": "Typ výstupu",
       "VALIDATIONS": {
         "NO_OUTPUT_TYPE": "Je třeba vybrat typ výstupu!",
+        "MATRIX_CONTENT_INVALID": "Vyberte obrázek!",
         "AUDIO_FILE_INVALID": "Vyberte zvukový soubor!",
         "IMAGE_FILE_INVALID": "Vyberte obrázek!"
       },
       "LED": "LED",
+      "MATRIX": "Matice",
+      "MATRIX_CONTENT": "Obsah matice",
       "AUDIO": "Zvuk",
       "AUDIO_FILE": "Soubor se zvukem",
       "IMAGE": "Obrázek",

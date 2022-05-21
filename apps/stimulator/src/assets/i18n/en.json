@@ -138,10 +138,13 @@
       "TITLE": "Output type",
       "VALIDATIONS": {
         "NO_OUTPUT_TYPE": "It is necessary to select output type!",
+        "MATRIX_CONTENT_INVALID": "Select image!",
         "AUDIO_FILE_INVALID": "Select audio file!",
         "IMAGE_FILE_INVALID": "Select image!"
       },
       "LED": "LED",
+      "MATRIX": "Matice",
+      "MATRIX_CONTENT": "Obsah matice",
       "AUDIO": "Audio",
       "AUDIO_FILE": "Audio file",
       "IMAGE": "Image",

@@ -155,6 +155,8 @@ export abstract class BaseExperimentTypeComponent<E extends Experiment<O>, O ext
           audioFile: new FormControl(null),
           image: new FormControl(null),
           imageFile: new FormControl(null),
+          matrix: new FormControl(null),
+          matrixContent: new FormControl(null)
         },
         {
           validators: [Validators.required, ExperimentOutputTypeValidator.createValidator()],

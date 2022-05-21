@@ -32,6 +32,7 @@ export class OutputTypeComponent implements OnInit {
     this.imageFile.valueChanges.subscribe((value) => {
       this.imageUrl = this.buildFilePath(value);
     });
+
   }
 
   buildFilePath(path: string) {
@@ -40,6 +41,15 @@ export class OutputTypeComponent implements OnInit {
 
   handleLedChange(event: Event) {
     if ((event.target as HTMLInputElement).checked) {
+      this.matrix.setValue(false);
+      this.audio.setValue(false);
+      this.image.setValue(false);
+    }
+  }
+
+  handleMatrixChange(event: Event) {
+    if ((event.target as HTMLInputElement).checked) {
+      this.led.setValue(false);
       this.audio.setValue(false);
       this.image.setValue(false);
     }
@@ -48,6 +58,7 @@ export class OutputTypeComponent implements OnInit {
   handleAudioImageChange(event: Event) {
     if ((event.target as HTMLInputElement).checked) {
       this.led.setValue(false);
+      this.matrix.setValue(false);
     }
   }
 
@@ -80,8 +91,20 @@ export class OutputTypeComponent implements OnInit {
       });
   }
 
+  handleRequestMatrixChange() {
+    // TODO handle matrix change
+  }
+
   get led() {
     return this.form.get('led');
+  }
+
+  get matrix() {
+    return this.form.get('matrix');
+  }
+
+  get matrixContent() {
+    return this.form.get('matrixContent');
   }
 
   get audio() {

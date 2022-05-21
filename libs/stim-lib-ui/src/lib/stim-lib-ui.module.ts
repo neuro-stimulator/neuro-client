@@ -23,6 +23,7 @@ import { ListButtonsAddonComponent } from './list-buttons-addon/list-buttons-add
 import { ContentTogglerDirective } from './content-toggler.directive';
 import { DateTimePipe } from './date-time.pipe';
 import { DiodeComponent } from './diode/diode.component';
+import { MatrixPlayerComponent } from "./matrix-player/matrix-player.component";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DiodeComponent } from './diode/diode.component';
     AudioTitlePipe,
     SecondsToMinutesPipe,
     ImagePlayerComponent,
+    MatrixPlayerComponent,
     ListButtonsAddonComponent,
     ContentTogglerDirective,
     DateTimePipe,
@@ -64,6 +66,7 @@ import { DiodeComponent } from './diode/diode.component';
     PageToolsComponent,
     AudioPlayerComponent,
     ImagePlayerComponent,
+    MatrixPlayerComponent,
     ListButtonsAddonComponent,
     ContentTogglerDirective,
     DateTimePipe,

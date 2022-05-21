@@ -10,7 +10,7 @@ export class ExperimentOutputTypeValidator {
 
   public static createValidator(): ValidatorFn {
     return (control: FormGroup): ValidationErrors | null => {
-      if (!control.get('led').value && !control.get('audio').value && !control.get('image').value) {
+      if (!control.get('led').value && !control.get('matrix').value && !control.get('audio').value && !control.get('image').value) {
         return { noOutputType: true };
       }
 
@@ -19,7 +19,13 @@ export class ExperimentOutputTypeValidator {
         return null;
       }
 
-      const errors = {audioFile: false, imageFile: false};
+      const errors = {matrixContent: false, audioFile: false, imageFile: false};
+
+      if (control.get('matrix').value === true) {
+        if (control.get('matrixContent').value === null) {
+          errors.matrixContent = true;
+        }
+      }
 
       if (control.get('audio').value === true) {
         if (control.get('audioFile').value === null) {
@@ -33,7 +39,7 @@ export class ExperimentOutputTypeValidator {
         }
       }
 
-      if (errors.audioFile || errors.imageFile) {
+      if (errors.matrixContent || errors.audioFile || errors.imageFile) {
         return errors;
       }
 

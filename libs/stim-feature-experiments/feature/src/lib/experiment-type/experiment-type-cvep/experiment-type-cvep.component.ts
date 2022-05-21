@@ -17,7 +17,6 @@ import { NavigationFacade } from '@neuro-client/stim-feature-navigation/domain';
 import { brightnessSliderOptions } from '../../experiments.share';
 import { ExperimentNameValidator } from '../../experiment-name-validator';
 import { BaseExperimentTypeComponent } from '../base-experiment-type.component';
-import { ExperimentOutputTypeValidator } from '../output-type/experiment-output-type-validator';
 
 @Component({
   templateUrl: './experiment-type-cvep.component.html',
@@ -54,16 +53,6 @@ export class ExperimentTypeCvepComponent extends BaseExperimentTypeComponent<Exp
   protected _createFormControls(): { [p: string]: AbstractControl } {
     const superControls = super._createFormControls();
     const myControls = {
-      usedOutputs: new FormGroup(
-        {
-          led: new FormControl(null),
-          audio: new FormControl(null),
-          audioFile: new FormControl(null),
-          image: new FormControl(null),
-          imageFile: new FormControl(null),
-        },
-        [Validators.required, ExperimentOutputTypeValidator.createValidator()]
-      ),
       out: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
       wait: new FormControl(null, [Validators.required, ShareValidators.exclusiveMin(0)]),
       pattern: new FormControl(null, [Validators.required]),

@@ -7,16 +7,34 @@
       </label>
     </div>
   </div>
-  <div class="col-12 col-sm-5">
+  <div class="col-12 col-sm-2">
     <div class="row">
       <div class="col">
         <div class="form-group">
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" [id]="'output-type-audio_' + uuid" formControlName="audio" (change)="handleAudioImageChange($event)">
-          <label class="form-check-label" [for]="'output-type-audio_' + uuid">
-            <i class="fas fa-music"></i> {{ 'EXPERIMENTS.OUTPUT_TYPE.AUDIO' | translate }}
-          </label>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" [id]="'output-type-matrix_' + uuid" formControlName="matrix" (change)="handleMatrixChange($event)">
+            <label class="form-check-label" [for]="'output-type-matrix_' + uuid">
+              <i class="fas fa-lightbulb"></i> {{ 'EXPERIMENTS.OUTPUT_TYPE.MATRIX' | translate }}
+            </label>
+          </div>
+          <small *ngIf="form.errors?.matrixContent" class="form-text text-muted">{{ 'EXPERIMENTS.OUTPUT_TYPE.VALIDATIONS.MATRIX_CONTENT_INVALID' | translate }}</small>
         </div>
+      </div>
+      <div class="col-8">
+        <stim-lib-ui-matrix-player *ngIf="matrix.value === true" [title]="defaultTitle" (requestFileChange)="handleRequestMatrixChange()"></stim-lib-ui-matrix-player>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-sm-4">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" [id]="'output-type-audio_' + uuid" formControlName="audio" (change)="handleAudioImageChange($event)">
+            <label class="form-check-label" [for]="'output-type-audio_' + uuid">
+              <i class="fas fa-music"></i> {{ 'EXPERIMENTS.OUTPUT_TYPE.AUDIO' | translate }}
+            </label>
+          </div>
           <small *ngIf="form.errors?.audioFile" class="form-text text-muted">{{ 'EXPERIMENTS.OUTPUT_TYPE.VALIDATIONS.AUDIO_FILE_INVALID' | translate }}</small>
         </div>
       </div>
@@ -26,16 +44,16 @@
     </div>
 
   </div>
-  <div class="col-12 col-sm-5">
+  <div class="col-12 col-sm-4">
     <div class="row">
       <div class="col">
         <div class="form-group">
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" [id]="'output-type-image_' + uuid" formControlName="image" (change)="handleAudioImageChange($event)">
-          <label class="form-check-label" [for]="'output-type-image_' + uuid">
-            <i class="fas fa-image"></i> {{ 'EXPERIMENTS.OUTPUT_TYPE.IMAGE' | translate }}
-          </label>
-        </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" [id]="'output-type-image_' + uuid" formControlName="image" (change)="handleAudioImageChange($event)">
+            <label class="form-check-label" [for]="'output-type-image_' + uuid">
+              <i class="fas fa-image"></i> {{ 'EXPERIMENTS.OUTPUT_TYPE.IMAGE' | translate }}
+            </label>
+          </div>
           <small *ngIf="form.errors?.imageFile" class="form-text text-muted">{{ 'EXPERIMENTS.OUTPUT_TYPE.VALIDATIONS.IMAGE_FILE_INVALID' | translate }}</small>
         </div>
       </div>
