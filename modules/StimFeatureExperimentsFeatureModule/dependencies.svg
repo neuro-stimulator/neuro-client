@@ -14,451 +14,451 @@
 <title>cluster_StimFeatureExperimentsFeatureModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-157.8 8325,-157.8 8325,-32.8 8,-32.8"/>
 </g>
-<g id="clust32" class="cluster">
-<title>cluster_StimFeatureExperimentsFeatureModule_imports</title>
-<polygon fill="none" stroke="black" points="6667,-40.8 6667,-92.8 8317,-92.8 8317,-40.8 6667,-40.8"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_StimFeatureExperimentsFeatureModule_declarations</title>
-<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 6659,-92.8 6659,-40.8 16,-40.8"/>
+<polygon fill="none" stroke="black" points="1674,-40.8 1674,-92.8 8317,-92.8 8317,-40.8 1674,-40.8"/>
+</g>
+<g id="clust32" class="cluster">
+<title>cluster_StimFeatureExperimentsFeatureModule_imports</title>
+<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 1666,-92.8 1666,-40.8 16,-40.8"/>
 </g>
 <!-- ExperimentTypeComponent -->
 <g id="node1" class="node">
 <title>ExperimentTypeComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="6650.91,-84.8 6475.09,-84.8 6475.09,-48.8 6650.91,-48.8 6650.91,-84.8"/>
-<text text-anchor="middle" x="6563" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="8308.91,-84.8 8133.09,-84.8 8133.09,-48.8 8308.91,-48.8 8308.91,-84.8"/>
+<text text-anchor="middle" x="8221" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeComponent</text>
 </g>
 <!-- StimFeatureExperimentsFeatureModule -->
 <g id="node30" class="node">
 <title>StimFeatureExperimentsFeatureModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="4121.22,-149.8 4118.22,-153.8 4097.22,-153.8 4094.22,-149.8 3880.78,-149.8 3880.78,-113.8 4121.22,-113.8 4121.22,-149.8"/>
-<text text-anchor="middle" x="4001" y="-127.6" font-family="Times,serif" font-size="14.00">StimFeatureExperimentsFeatureModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="4137.22,-149.8 4134.22,-153.8 4113.22,-153.8 4110.22,-149.8 3896.78,-149.8 3896.78,-113.8 4137.22,-113.8 4137.22,-149.8"/>
+<text text-anchor="middle" x="4017" y="-127.6" font-family="Times,serif" font-size="14.00">StimFeatureExperimentsFeatureModule</text>
 </g>
 <!-- ExperimentTypeComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge1" class="edge">
 <title>ExperimentTypeComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M6563,-85.11C6563,-104.95 6563,-133.8 6563,-133.8 6563,-133.8 4131.56,-133.8 4131.56,-133.8"/>
-<polygon fill="black" stroke="black" points="4131.56,-130.3 4121.56,-133.8 4131.56,-137.3 4131.56,-130.3"/>
+<path fill="none" stroke="black" d="M8221,-85.18C8221,-109.08 8221,-147.8 8221,-147.8 8221,-147.8 4147.44,-147.8 4147.44,-147.8"/>
+<polygon fill="black" stroke="black" points="4147.44,-144.3 4137.44,-147.8 4147.44,-151.3 4147.44,-144.3"/>
 </g>
 <!-- ExperimentTypeCvepComponent -->
 <g id="node2" class="node">
 <title>ExperimentTypeCvepComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="6457.47,-84.8 6252.53,-84.8 6252.53,-48.8 6457.47,-48.8 6457.47,-84.8"/>
-<text text-anchor="middle" x="6355" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeCvepComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="8115.47,-84.8 7910.53,-84.8 7910.53,-48.8 8115.47,-48.8 8115.47,-84.8"/>
+<text text-anchor="middle" x="8013" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeCvepComponent</text>
 </g>
 <!-- ExperimentTypeCvepComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge2" class="edge">
 <title>ExperimentTypeCvepComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M6355,-84.91C6355,-104.14 6355,-131.8 6355,-131.8 6355,-131.8 4131.38,-131.8 4131.38,-131.8"/>
-<polygon fill="black" stroke="black" points="4131.38,-128.3 4121.38,-131.8 4131.38,-135.3 4131.38,-128.3"/>
+<path fill="none" stroke="black" d="M8013,-85.12C8013,-108.46 8013,-145.8 8013,-145.8 8013,-145.8 4147.41,-145.8 4147.41,-145.8"/>
+<polygon fill="black" stroke="black" points="4147.41,-142.3 4137.41,-145.8 4147.41,-149.3 4147.41,-142.3"/>
 </g>
 <!-- ExperimentTypeCvepOutputComponent -->
 <g id="node3" class="node">
 <title>ExperimentTypeCvepOutputComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="6234.85,-84.8 5991.15,-84.8 5991.15,-48.8 6234.85,-48.8 6234.85,-84.8"/>
-<text text-anchor="middle" x="6113" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeCvepOutputComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="7892.85,-84.8 7649.15,-84.8 7649.15,-48.8 7892.85,-48.8 7892.85,-84.8"/>
+<text text-anchor="middle" x="7771" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeCvepOutputComponent</text>
 </g>
 <!-- ExperimentTypeCvepOutputComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge3" class="edge">
 <title>ExperimentTypeCvepOutputComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M6113,-85.02C6113,-103.63 6113,-129.8 6113,-129.8 6113,-129.8 4131.37,-129.8 4131.37,-129.8"/>
-<polygon fill="black" stroke="black" points="4131.37,-126.3 4121.37,-129.8 4131.37,-133.3 4131.37,-126.3"/>
+<path fill="none" stroke="black" d="M7771,-84.89C7771,-107.93 7771,-144.8 7771,-144.8 7771,-144.8 4147.39,-144.8 4147.39,-144.8"/>
+<polygon fill="black" stroke="black" points="4147.39,-141.3 4137.39,-144.8 4147.39,-148.3 4147.39,-141.3"/>
 </g>
 <!-- ExperimentTypeCvepOutputCountPipe -->
 <g id="node4" class="node">
 <title>ExperimentTypeCvepOutputCountPipe</title>
-<polygon fill="#ffffb3" stroke="black" points="5972.64,-84.8 5735.36,-84.8 5735.36,-48.8 5972.64,-48.8 5972.64,-84.8"/>
-<text text-anchor="middle" x="5854" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeCvepOutputCountPipe</text>
+<polygon fill="#ffffb3" stroke="black" points="7630.64,-84.8 7393.36,-84.8 7393.36,-48.8 7630.64,-48.8 7630.64,-84.8"/>
+<text text-anchor="middle" x="7512" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeCvepOutputCountPipe</text>
 </g>
 <!-- ExperimentTypeCvepOutputCountPipe&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge4" class="edge">
 <title>ExperimentTypeCvepOutputCountPipe&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M5854,-85.1C5854,-103.07 5854,-127.8 5854,-127.8 5854,-127.8 4131.51,-127.8 4131.51,-127.8"/>
-<polygon fill="black" stroke="black" points="4131.51,-124.3 4121.51,-127.8 4131.51,-131.3 4131.51,-124.3"/>
+<path fill="none" stroke="black" d="M7512,-84.96C7512,-107.15 7512,-141.8 7512,-141.8 7512,-141.8 4147.31,-141.8 4147.31,-141.8"/>
+<polygon fill="black" stroke="black" points="4147.31,-138.3 4137.31,-141.8 4147.31,-145.3 4147.31,-138.3"/>
 </g>
 <!-- ExperimentTypeErpComponent -->
 <g id="node5" class="node">
 <title>ExperimentTypeErpComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="5716.63,-84.8 5521.37,-84.8 5521.37,-48.8 5716.63,-48.8 5716.63,-84.8"/>
-<text text-anchor="middle" x="5619" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeErpComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="7374.63,-84.8 7179.37,-84.8 7179.37,-48.8 7374.63,-48.8 7374.63,-84.8"/>
+<text text-anchor="middle" x="7277" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeErpComponent</text>
 </g>
 <!-- ExperimentTypeErpComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge5" class="edge">
 <title>ExperimentTypeErpComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M5619,-84.82C5619,-102.17 5619,-125.8 5619,-125.8 5619,-125.8 4131.29,-125.8 4131.29,-125.8"/>
-<polygon fill="black" stroke="black" points="4131.29,-122.3 4121.29,-125.8 4131.29,-129.3 4131.29,-122.3"/>
+<path fill="none" stroke="black" d="M7277,-84.84C7277,-106.46 7277,-139.8 7277,-139.8 7277,-139.8 4147.38,-139.8 4147.38,-139.8"/>
+<polygon fill="black" stroke="black" points="4147.38,-136.3 4137.38,-139.8 4147.38,-143.3 4147.38,-136.3"/>
 </g>
 <!-- ExperimentTypeErpOutputComponent -->
 <g id="node6" class="node">
 <title>ExperimentTypeErpOutputComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="5503.02,-84.8 5268.98,-84.8 5268.98,-48.8 5503.02,-48.8 5503.02,-84.8"/>
-<text text-anchor="middle" x="5386" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeErpOutputComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="7161.02,-84.8 6926.98,-84.8 6926.98,-48.8 7161.02,-48.8 7161.02,-84.8"/>
+<text text-anchor="middle" x="7044" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeErpOutputComponent</text>
 </g>
 <!-- ExperimentTypeErpOutputComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge6" class="edge">
 <title>ExperimentTypeErpOutputComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M5386,-84.84C5386,-101.53 5386,-123.8 5386,-123.8 5386,-123.8 4131.49,-123.8 4131.49,-123.8"/>
-<polygon fill="black" stroke="black" points="4131.49,-120.3 4121.49,-123.8 4131.49,-127.3 4131.49,-120.3"/>
+<path fill="none" stroke="black" d="M7044,-85.08C7044,-106.12 7044,-137.8 7044,-137.8 7044,-137.8 4147.53,-137.8 4147.53,-137.8"/>
+<polygon fill="black" stroke="black" points="4147.53,-134.3 4137.53,-137.8 4147.53,-141.3 4147.53,-134.3"/>
 </g>
 <!-- ExperimentTypeErpOutputCountPipe -->
 <g id="node7" class="node">
 <title>ExperimentTypeErpOutputCountPipe</title>
-<polygon fill="#ffffb3" stroke="black" points="5251.3,-84.8 5022.7,-84.8 5022.7,-48.8 5251.3,-48.8 5251.3,-84.8"/>
-<text text-anchor="middle" x="5137" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeErpOutputCountPipe</text>
+<polygon fill="#ffffb3" stroke="black" points="6909.3,-84.8 6680.7,-84.8 6680.7,-48.8 6909.3,-48.8 6909.3,-84.8"/>
+<text text-anchor="middle" x="6795" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeErpOutputCountPipe</text>
 </g>
 <!-- ExperimentTypeErpOutputCountPipe&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge7" class="edge">
 <title>ExperimentTypeErpOutputCountPipe&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M5137,-84.81C5137,-100.85 5137,-121.8 5137,-121.8 5137,-121.8 4131.23,-121.8 4131.23,-121.8"/>
-<polygon fill="black" stroke="black" points="4131.23,-118.3 4121.23,-121.8 4131.23,-125.3 4131.23,-118.3"/>
+<path fill="none" stroke="black" d="M6795,-84.93C6795,-105.37 6795,-135.8 6795,-135.8 6795,-135.8 4147.26,-135.8 4147.26,-135.8"/>
+<polygon fill="black" stroke="black" points="4147.26,-132.3 4137.26,-135.8 4147.26,-139.3 4147.26,-132.3"/>
 </g>
 <!-- ExperimentTypeErpOutputDependencyPipe -->
 <g id="node8" class="node">
 <title>ExperimentTypeErpOutputDependencyPipe</title>
-<polygon fill="#ffffb3" stroke="black" points="5005.04,-84.8 4740.96,-84.8 4740.96,-48.8 5005.04,-48.8 5005.04,-84.8"/>
-<text text-anchor="middle" x="4873" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeErpOutputDependencyPipe</text>
+<polygon fill="#ffffb3" stroke="black" points="6663.04,-84.8 6398.96,-84.8 6398.96,-48.8 6663.04,-48.8 6663.04,-84.8"/>
+<text text-anchor="middle" x="6531" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeErpOutputDependencyPipe</text>
 </g>
 <!-- ExperimentTypeErpOutputDependencyPipe&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge8" class="edge">
 <title>ExperimentTypeErpOutputDependencyPipe&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M4873,-85.04C4873,-100.37 4873,-119.8 4873,-119.8 4873,-119.8 4131.33,-119.8 4131.33,-119.8"/>
-<polygon fill="black" stroke="black" points="4131.33,-116.3 4121.33,-119.8 4131.33,-123.3 4131.33,-116.3"/>
+<path fill="none" stroke="black" d="M6531,-85.11C6531,-104.95 6531,-133.8 6531,-133.8 6531,-133.8 4147.41,-133.8 4147.41,-133.8"/>
+<polygon fill="black" stroke="black" points="4147.41,-130.3 4137.41,-133.8 4147.41,-137.3 4147.41,-130.3"/>
 </g>
 <!-- ExperimentTypeFvepComponent -->
 <g id="node9" class="node">
 <title>ExperimentTypeFvepComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="4722.91,-84.8 4519.09,-84.8 4519.09,-48.8 4722.91,-48.8 4722.91,-84.8"/>
-<text text-anchor="middle" x="4621" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeFvepComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="6380.91,-84.8 6177.09,-84.8 6177.09,-48.8 6380.91,-48.8 6380.91,-84.8"/>
+<text text-anchor="middle" x="6279" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeFvepComponent</text>
 </g>
 <!-- ExperimentTypeFvepComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge9" class="edge">
 <title>ExperimentTypeFvepComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M4621,-84.92C4621,-99.58 4621,-117.8 4621,-117.8 4621,-117.8 4131.28,-117.8 4131.28,-117.8"/>
-<polygon fill="black" stroke="black" points="4131.28,-114.3 4121.28,-117.8 4131.28,-121.3 4131.28,-114.3"/>
+<path fill="none" stroke="black" d="M6279,-84.91C6279,-104.14 6279,-131.8 6279,-131.8 6279,-131.8 4147.42,-131.8 4147.42,-131.8"/>
+<polygon fill="black" stroke="black" points="4147.42,-128.3 4137.42,-131.8 4147.42,-135.3 4147.42,-128.3"/>
 </g>
 <!-- ExperimentTypeFvepOutputComponent -->
 <g id="node10" class="node">
 <title>ExperimentTypeFvepOutputComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="4501.3,-84.8 4258.7,-84.8 4258.7,-48.8 4501.3,-48.8 4501.3,-84.8"/>
-<text text-anchor="middle" x="4380" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeFvepOutputComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="6159.3,-84.8 5916.7,-84.8 5916.7,-48.8 6159.3,-48.8 6159.3,-84.8"/>
+<text text-anchor="middle" x="6038" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeFvepOutputComponent</text>
 </g>
 <!-- ExperimentTypeFvepOutputComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge10" class="edge">
 <title>ExperimentTypeFvepOutputComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M4380,-85.05C4380,-98.98 4380,-115.8 4380,-115.8 4380,-115.8 4131.44,-115.8 4131.44,-115.8"/>
-<polygon fill="black" stroke="black" points="4131.44,-112.3 4121.44,-115.8 4131.44,-119.3 4131.44,-112.3"/>
+<path fill="none" stroke="black" d="M6038,-85.02C6038,-103.63 6038,-129.8 6038,-129.8 6038,-129.8 4147.37,-129.8 4147.37,-129.8"/>
+<polygon fill="black" stroke="black" points="4147.37,-126.3 4137.37,-129.8 4147.37,-133.3 4147.37,-126.3"/>
 </g>
 <!-- ExperimentTypeFvepOutputCountPipe -->
 <g id="node11" class="node">
 <title>ExperimentTypeFvepOutputCountPipe</title>
-<polygon fill="#ffffb3" stroke="black" points="4241.08,-84.8 4004.92,-84.8 4004.92,-48.8 4241.08,-48.8 4241.08,-84.8"/>
-<text text-anchor="middle" x="4123" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeFvepOutputCountPipe</text>
+<polygon fill="#ffffb3" stroke="black" points="5899.08,-84.8 5662.92,-84.8 5662.92,-48.8 5899.08,-48.8 5899.08,-84.8"/>
+<text text-anchor="middle" x="5781" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeFvepOutputCountPipe</text>
 </g>
 <!-- ExperimentTypeFvepOutputCountPipe&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge11" class="edge">
 <title>ExperimentTypeFvepOutputCountPipe&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M4063.16,-84.91C4063.16,-84.91 4063.16,-103.79 4063.16,-103.79"/>
-<polygon fill="black" stroke="black" points="4059.66,-103.79 4063.16,-113.79 4066.66,-103.79 4059.66,-103.79"/>
+<path fill="none" stroke="black" d="M5781,-85.1C5781,-103.07 5781,-127.8 5781,-127.8 5781,-127.8 4147.55,-127.8 4147.55,-127.8"/>
+<polygon fill="black" stroke="black" points="4147.55,-124.3 4137.55,-127.8 4147.55,-131.3 4147.55,-124.3"/>
 </g>
 <!-- ExperimentTypeHeaderComponent -->
 <g id="node12" class="node">
 <title>ExperimentTypeHeaderComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="3986.82,-84.8 3771.18,-84.8 3771.18,-48.8 3986.82,-48.8 3986.82,-84.8"/>
-<text text-anchor="middle" x="3879" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeHeaderComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="5644.82,-84.8 5429.18,-84.8 5429.18,-48.8 5644.82,-48.8 5644.82,-84.8"/>
+<text text-anchor="middle" x="5537" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeHeaderComponent</text>
 </g>
 <!-- ExperimentTypeHeaderComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge12" class="edge">
 <title>ExperimentTypeHeaderComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M3933.78,-84.91C3933.78,-84.91 3933.78,-103.79 3933.78,-103.79"/>
-<polygon fill="black" stroke="black" points="3930.28,-103.79 3933.78,-113.79 3937.28,-103.79 3930.28,-103.79"/>
+<path fill="none" stroke="black" d="M5537,-84.82C5537,-102.17 5537,-125.8 5537,-125.8 5537,-125.8 4147.22,-125.8 4147.22,-125.8"/>
+<polygon fill="black" stroke="black" points="4147.22,-122.3 4137.22,-125.8 4147.22,-129.3 4147.22,-122.3"/>
 </g>
 <!-- ExperimentTypeNoneComponent -->
 <g id="node13" class="node">
 <title>ExperimentTypeNoneComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="3752.74,-84.8 3547.26,-84.8 3547.26,-48.8 3752.74,-48.8 3752.74,-84.8"/>
-<text text-anchor="middle" x="3650" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeNoneComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="5410.74,-84.8 5205.26,-84.8 5205.26,-48.8 5410.74,-48.8 5410.74,-84.8"/>
+<text text-anchor="middle" x="5308" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeNoneComponent</text>
 </g>
 <!-- ExperimentTypeNoneComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge13" class="edge">
 <title>ExperimentTypeNoneComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M3650,-85.05C3650,-98.98 3650,-115.8 3650,-115.8 3650,-115.8 3870.7,-115.8 3870.7,-115.8"/>
-<polygon fill="black" stroke="black" points="3870.7,-119.3 3880.7,-115.8 3870.7,-112.3 3870.7,-119.3"/>
+<path fill="none" stroke="black" d="M5308,-84.84C5308,-101.53 5308,-123.8 5308,-123.8 5308,-123.8 4147.29,-123.8 4147.29,-123.8"/>
+<polygon fill="black" stroke="black" points="4147.29,-120.3 4137.29,-123.8 4147.29,-127.3 4147.29,-120.3"/>
 </g>
 <!-- ExperimentTypeReaComponent -->
 <g id="node14" class="node">
 <title>ExperimentTypeReaComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="3529.68,-84.8 3332.32,-84.8 3332.32,-48.8 3529.68,-48.8 3529.68,-84.8"/>
-<text text-anchor="middle" x="3431" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeReaComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="5187.68,-84.8 4990.32,-84.8 4990.32,-48.8 5187.68,-48.8 5187.68,-84.8"/>
+<text text-anchor="middle" x="5089" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeReaComponent</text>
 </g>
 <!-- ExperimentTypeReaComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge14" class="edge">
 <title>ExperimentTypeReaComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M3431,-84.92C3431,-99.58 3431,-117.8 3431,-117.8 3431,-117.8 3870.47,-117.8 3870.47,-117.8"/>
-<polygon fill="black" stroke="black" points="3870.47,-121.3 3880.47,-117.8 3870.47,-114.3 3870.47,-121.3"/>
+<path fill="none" stroke="black" d="M5089,-84.81C5089,-100.85 5089,-121.8 5089,-121.8 5089,-121.8 4147.37,-121.8 4147.37,-121.8"/>
+<polygon fill="black" stroke="black" points="4147.37,-118.3 4137.37,-121.8 4147.37,-125.3 4147.37,-118.3"/>
 </g>
 <!-- ExperimentTypeReaOutputComponent -->
 <g id="node15" class="node">
 <title>ExperimentTypeReaOutputComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="3314.07,-84.8 3077.93,-84.8 3077.93,-48.8 3314.07,-48.8 3314.07,-84.8"/>
-<text text-anchor="middle" x="3196" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeReaOutputComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="4972.07,-84.8 4735.93,-84.8 4735.93,-48.8 4972.07,-48.8 4972.07,-84.8"/>
+<text text-anchor="middle" x="4854" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeReaOutputComponent</text>
 </g>
 <!-- ExperimentTypeReaOutputComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge15" class="edge">
 <title>ExperimentTypeReaOutputComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M3196,-85.04C3196,-100.37 3196,-119.8 3196,-119.8 3196,-119.8 3870.48,-119.8 3870.48,-119.8"/>
-<polygon fill="black" stroke="black" points="3870.48,-123.3 3880.48,-119.8 3870.48,-116.3 3870.48,-123.3"/>
+<path fill="none" stroke="black" d="M4854,-85.04C4854,-100.37 4854,-119.8 4854,-119.8 4854,-119.8 4147.37,-119.8 4147.37,-119.8"/>
+<polygon fill="black" stroke="black" points="4147.37,-116.3 4137.37,-119.8 4147.37,-123.3 4147.37,-116.3"/>
 </g>
 <!-- ExperimentTypeReaOutputCountPipe -->
 <g id="node16" class="node">
 <title>ExperimentTypeReaOutputCountPipe</title>
-<polygon fill="#ffffb3" stroke="black" points="3059.85,-84.8 2830.15,-84.8 2830.15,-48.8 3059.85,-48.8 3059.85,-84.8"/>
-<text text-anchor="middle" x="2945" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeReaOutputCountPipe</text>
+<polygon fill="#ffffb3" stroke="black" points="4717.85,-84.8 4488.15,-84.8 4488.15,-48.8 4717.85,-48.8 4717.85,-84.8"/>
+<text text-anchor="middle" x="4603" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeReaOutputCountPipe</text>
 </g>
 <!-- ExperimentTypeReaOutputCountPipe&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge16" class="edge">
 <title>ExperimentTypeReaOutputCountPipe&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M2945,-84.81C2945,-100.85 2945,-121.8 2945,-121.8 2945,-121.8 3870.63,-121.8 3870.63,-121.8"/>
-<polygon fill="black" stroke="black" points="3870.63,-125.3 3880.63,-121.8 3870.63,-118.3 3870.63,-125.3"/>
+<path fill="none" stroke="black" d="M4603,-84.92C4603,-99.58 4603,-117.8 4603,-117.8 4603,-117.8 4147.35,-117.8 4147.35,-117.8"/>
+<polygon fill="black" stroke="black" points="4147.35,-114.3 4137.35,-117.8 4147.35,-121.3 4147.35,-114.3"/>
 </g>
 <!-- ExperimentTypeResolverDirective -->
 <g id="node17" class="node">
 <title>ExperimentTypeResolverDirective</title>
-<polygon fill="#ffffb3" stroke="black" points="2811.93,-84.8 2600.07,-84.8 2600.07,-48.8 2811.93,-48.8 2811.93,-84.8"/>
-<text text-anchor="middle" x="2706" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeResolverDirective</text>
+<polygon fill="#ffffb3" stroke="black" points="4469.93,-84.8 4258.07,-84.8 4258.07,-48.8 4469.93,-48.8 4469.93,-84.8"/>
+<text text-anchor="middle" x="4364" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeResolverDirective</text>
 </g>
 <!-- ExperimentTypeResolverDirective&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge17" class="edge">
 <title>ExperimentTypeResolverDirective&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M2706,-84.84C2706,-101.53 2706,-123.8 2706,-123.8 2706,-123.8 3870.62,-123.8 3870.62,-123.8"/>
-<polygon fill="black" stroke="black" points="3870.62,-127.3 3880.62,-123.8 3870.62,-120.3 3870.62,-127.3"/>
+<path fill="none" stroke="black" d="M4364,-85.05C4364,-98.98 4364,-115.8 4364,-115.8 4364,-115.8 4147.39,-115.8 4147.39,-115.8"/>
+<polygon fill="black" stroke="black" points="4147.39,-112.3 4137.39,-115.8 4147.39,-119.3 4147.39,-112.3"/>
 </g>
 <!-- ExperimentTypeTvepComponent -->
 <g id="node18" class="node">
 <title>ExperimentTypeTvepComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="2582.18,-84.8 2377.82,-84.8 2377.82,-48.8 2582.18,-48.8 2582.18,-84.8"/>
-<text text-anchor="middle" x="2480" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeTvepComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="4240.18,-84.8 4035.82,-84.8 4035.82,-48.8 4240.18,-48.8 4240.18,-84.8"/>
+<text text-anchor="middle" x="4138" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeTvepComponent</text>
 </g>
 <!-- ExperimentTypeTvepComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge18" class="edge">
 <title>ExperimentTypeTvepComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M2480,-84.82C2480,-102.17 2480,-125.8 2480,-125.8 2480,-125.8 3870.7,-125.8 3870.7,-125.8"/>
-<polygon fill="black" stroke="black" points="3870.7,-129.3 3880.7,-125.8 3870.7,-122.3 3870.7,-129.3"/>
+<path fill="none" stroke="black" d="M4086.63,-84.91C4086.63,-84.91 4086.63,-103.79 4086.63,-103.79"/>
+<polygon fill="black" stroke="black" points="4083.13,-103.79 4086.63,-113.79 4090.13,-103.79 4083.13,-103.79"/>
 </g>
 <!-- ExperimentTypeTvepOutputComponent -->
 <g id="node19" class="node">
 <title>ExperimentTypeTvepOutputComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="2359.57,-84.8 2116.43,-84.8 2116.43,-48.8 2359.57,-48.8 2359.57,-84.8"/>
-<text text-anchor="middle" x="2238" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeTvepOutputComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="4017.57,-84.8 3774.43,-84.8 3774.43,-48.8 4017.57,-48.8 4017.57,-84.8"/>
+<text text-anchor="middle" x="3896" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeTvepOutputComponent</text>
 </g>
 <!-- ExperimentTypeTvepOutputComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge19" class="edge">
 <title>ExperimentTypeTvepOutputComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M2238,-85.1C2238,-103.07 2238,-127.8 2238,-127.8 2238,-127.8 3870.52,-127.8 3870.52,-127.8"/>
-<polygon fill="black" stroke="black" points="3870.52,-131.3 3880.52,-127.8 3870.52,-124.3 3870.52,-131.3"/>
+<path fill="none" stroke="black" d="M3957.09,-84.91C3957.09,-84.91 3957.09,-103.79 3957.09,-103.79"/>
+<polygon fill="black" stroke="black" points="3953.59,-103.79 3957.09,-113.79 3960.59,-103.79 3953.59,-103.79"/>
 </g>
 <!-- ExperimentTypeTvepOutputCountPipe -->
 <g id="node20" class="node">
 <title>ExperimentTypeTvepOutputCountPipe</title>
-<polygon fill="#ffffb3" stroke="black" points="2098.35,-84.8 1861.65,-84.8 1861.65,-48.8 2098.35,-48.8 2098.35,-84.8"/>
-<text text-anchor="middle" x="1980" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeTvepOutputCountPipe</text>
+<polygon fill="#ffffb3" stroke="black" points="3756.35,-84.8 3519.65,-84.8 3519.65,-48.8 3756.35,-48.8 3756.35,-84.8"/>
+<text text-anchor="middle" x="3638" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentTypeTvepOutputCountPipe</text>
 </g>
 <!-- ExperimentTypeTvepOutputCountPipe&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge20" class="edge">
 <title>ExperimentTypeTvepOutputCountPipe&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M1980,-85.02C1980,-103.63 1980,-129.8 1980,-129.8 1980,-129.8 3870.63,-129.8 3870.63,-129.8"/>
-<polygon fill="black" stroke="black" points="3870.63,-133.3 3880.63,-129.8 3870.63,-126.3 3870.63,-133.3"/>
+<path fill="none" stroke="black" d="M3638,-85.05C3638,-98.98 3638,-115.8 3638,-115.8 3638,-115.8 3886.56,-115.8 3886.56,-115.8"/>
+<polygon fill="black" stroke="black" points="3886.56,-119.3 3896.56,-115.8 3886.56,-112.3 3886.56,-119.3"/>
 </g>
 <!-- ExperimentsComponent -->
 <g id="node21" class="node">
 <title>ExperimentsComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1844.09,-84.8 1691.91,-84.8 1691.91,-48.8 1844.09,-48.8 1844.09,-84.8"/>
-<text text-anchor="middle" x="1768" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentsComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="3502.09,-84.8 3349.91,-84.8 3349.91,-48.8 3502.09,-48.8 3502.09,-84.8"/>
+<text text-anchor="middle" x="3426" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentsComponent</text>
 </g>
 <!-- ExperimentsComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge21" class="edge">
 <title>ExperimentsComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M1768,-84.91C1768,-104.14 1768,-131.8 1768,-131.8 1768,-131.8 3870.55,-131.8 3870.55,-131.8"/>
-<polygon fill="black" stroke="black" points="3870.55,-135.3 3880.55,-131.8 3870.55,-128.3 3870.55,-135.3"/>
+<path fill="none" stroke="black" d="M3426,-84.92C3426,-99.58 3426,-117.8 3426,-117.8 3426,-117.8 3886.69,-117.8 3886.69,-117.8"/>
+<polygon fill="black" stroke="black" points="3886.69,-121.3 3896.69,-117.8 3886.69,-114.3 3886.69,-121.3"/>
 </g>
 <!-- ExperimentsFilterDialogComponent -->
 <g id="node22" class="node">
 <title>ExperimentsFilterDialogComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1674.02,-84.8 1453.98,-84.8 1453.98,-48.8 1674.02,-48.8 1674.02,-84.8"/>
-<text text-anchor="middle" x="1564" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentsFilterDialogComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="3332.02,-84.8 3111.98,-84.8 3111.98,-48.8 3332.02,-48.8 3332.02,-84.8"/>
+<text text-anchor="middle" x="3222" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentsFilterDialogComponent</text>
 </g>
 <!-- ExperimentsFilterDialogComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge22" class="edge">
 <title>ExperimentsFilterDialogComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M1564,-85.11C1564,-104.95 1564,-133.8 1564,-133.8 1564,-133.8 3870.56,-133.8 3870.56,-133.8"/>
-<polygon fill="black" stroke="black" points="3870.56,-137.3 3880.56,-133.8 3870.56,-130.3 3870.56,-137.3"/>
+<path fill="none" stroke="black" d="M3222,-85.04C3222,-100.37 3222,-119.8 3222,-119.8 3222,-119.8 3886.69,-119.8 3886.69,-119.8"/>
+<polygon fill="black" stroke="black" points="3886.69,-123.3 3896.69,-119.8 3886.69,-116.3 3886.69,-123.3"/>
 </g>
 <!-- ExperimentsGhostItemListComponent -->
 <g id="node23" class="node">
 <title>ExperimentsGhostItemListComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1435.47,-84.8 1202.53,-84.8 1202.53,-48.8 1435.47,-48.8 1435.47,-84.8"/>
-<text text-anchor="middle" x="1319" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentsGhostItemListComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="3093.47,-84.8 2860.53,-84.8 2860.53,-48.8 3093.47,-48.8 3093.47,-84.8"/>
+<text text-anchor="middle" x="2977" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentsGhostItemListComponent</text>
 </g>
 <!-- ExperimentsGhostItemListComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge23" class="edge">
 <title>ExperimentsGhostItemListComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M1319,-84.93C1319,-105.37 1319,-135.8 1319,-135.8 1319,-135.8 3870.55,-135.8 3870.55,-135.8"/>
-<polygon fill="black" stroke="black" points="3870.55,-139.3 3880.55,-135.8 3870.55,-132.3 3870.55,-139.3"/>
+<path fill="none" stroke="black" d="M2977,-84.81C2977,-100.85 2977,-121.8 2977,-121.8 2977,-121.8 3886.68,-121.8 3886.68,-121.8"/>
+<polygon fill="black" stroke="black" points="3886.68,-125.3 3896.68,-121.8 3886.68,-118.3 3886.68,-125.3"/>
 </g>
 <!-- ExperimentsItemListComponent -->
 <g id="node24" class="node">
 <title>ExperimentsItemListComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1184.53,-84.8 985.47,-84.8 985.47,-48.8 1184.53,-48.8 1184.53,-84.8"/>
-<text text-anchor="middle" x="1085" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentsItemListComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="2842.53,-84.8 2643.47,-84.8 2643.47,-48.8 2842.53,-48.8 2842.53,-84.8"/>
+<text text-anchor="middle" x="2743" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentsItemListComponent</text>
 </g>
 <!-- ExperimentsItemListComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge24" class="edge">
 <title>ExperimentsItemListComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M1085,-85.08C1085,-106.12 1085,-137.8 1085,-137.8 1085,-137.8 3870.34,-137.8 3870.34,-137.8"/>
-<polygon fill="black" stroke="black" points="3870.34,-141.3 3880.34,-137.8 3870.34,-134.3 3870.34,-141.3"/>
+<path fill="none" stroke="black" d="M2743,-84.84C2743,-101.53 2743,-123.8 2743,-123.8 2743,-123.8 3886.57,-123.8 3886.57,-123.8"/>
+<polygon fill="black" stroke="black" points="3886.57,-127.3 3896.57,-123.8 3886.57,-120.3 3886.57,-127.3"/>
 </g>
 <!-- ExperimentsPageToolsComponent -->
 <g id="node25" class="node">
 <title>ExperimentsPageToolsComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="967.69,-84.8 756.31,-84.8 756.31,-48.8 967.69,-48.8 967.69,-84.8"/>
-<text text-anchor="middle" x="862" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentsPageToolsComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="2625.69,-84.8 2414.31,-84.8 2414.31,-48.8 2625.69,-48.8 2625.69,-84.8"/>
+<text text-anchor="middle" x="2520" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentsPageToolsComponent</text>
 </g>
 <!-- ExperimentsPageToolsComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge25" class="edge">
 <title>ExperimentsPageToolsComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M862,-84.84C862,-106.46 862,-139.8 862,-139.8 862,-139.8 3870.35,-139.8 3870.35,-139.8"/>
-<polygon fill="black" stroke="black" points="3870.35,-143.3 3880.35,-139.8 3870.35,-136.3 3870.35,-143.3"/>
+<path fill="none" stroke="black" d="M2520,-84.82C2520,-102.17 2520,-125.8 2520,-125.8 2520,-125.8 3886.71,-125.8 3886.71,-125.8"/>
+<polygon fill="black" stroke="black" points="3886.71,-129.3 3896.71,-125.8 3886.71,-122.3 3886.71,-129.3"/>
 </g>
 <!-- OutputEditorComponent -->
 <g id="node26" class="node">
 <title>OutputEditorComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="738.71,-84.8 583.29,-84.8 583.29,-48.8 738.71,-48.8 738.71,-84.8"/>
-<text text-anchor="middle" x="661" y="-62.6" font-family="Times,serif" font-size="14.00">OutputEditorComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="2396.71,-84.8 2241.29,-84.8 2241.29,-48.8 2396.71,-48.8 2396.71,-84.8"/>
+<text text-anchor="middle" x="2319" y="-62.6" font-family="Times,serif" font-size="14.00">OutputEditorComponent</text>
 </g>
 <!-- OutputEditorComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge26" class="edge">
 <title>OutputEditorComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M661,-84.96C661,-107.15 661,-141.8 661,-141.8 661,-141.8 3870.65,-141.8 3870.65,-141.8"/>
-<polygon fill="black" stroke="black" points="3870.65,-145.3 3880.65,-141.8 3870.65,-138.3 3870.65,-145.3"/>
+<path fill="none" stroke="black" d="M2319,-85.1C2319,-103.07 2319,-127.8 2319,-127.8 2319,-127.8 3886.58,-127.8 3886.58,-127.8"/>
+<polygon fill="black" stroke="black" points="3886.58,-131.3 3896.58,-127.8 3886.58,-124.3 3886.58,-131.3"/>
 </g>
 <!-- OutputPatternComponent -->
 <g id="node27" class="node">
 <title>OutputPatternComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="564.87,-84.8 405.13,-84.8 405.13,-48.8 564.87,-48.8 564.87,-84.8"/>
-<text text-anchor="middle" x="485" y="-62.6" font-family="Times,serif" font-size="14.00">OutputPatternComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="2222.87,-84.8 2063.13,-84.8 2063.13,-48.8 2222.87,-48.8 2222.87,-84.8"/>
+<text text-anchor="middle" x="2143" y="-62.6" font-family="Times,serif" font-size="14.00">OutputPatternComponent</text>
 </g>
 <!-- OutputPatternComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge27" class="edge">
 <title>OutputPatternComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M485,-84.89C485,-107.93 485,-144.8 485,-144.8 485,-144.8 3870.73,-144.8 3870.73,-144.8"/>
-<polygon fill="black" stroke="black" points="3870.73,-148.3 3880.73,-144.8 3870.73,-141.3 3870.73,-148.3"/>
+<path fill="none" stroke="black" d="M2143,-85.02C2143,-103.63 2143,-129.8 2143,-129.8 2143,-129.8 3886.56,-129.8 3886.56,-129.8"/>
+<polygon fill="black" stroke="black" points="3886.56,-133.3 3896.56,-129.8 3886.56,-126.3 3886.56,-133.3"/>
 </g>
 <!-- OutputTypeComponent -->
 <g id="node28" class="node">
 <title>OutputTypeComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="387.49,-84.8 238.51,-84.8 238.51,-48.8 387.49,-48.8 387.49,-84.8"/>
-<text text-anchor="middle" x="313" y="-62.6" font-family="Times,serif" font-size="14.00">OutputTypeComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="2045.49,-84.8 1896.51,-84.8 1896.51,-48.8 2045.49,-48.8 2045.49,-84.8"/>
+<text text-anchor="middle" x="1971" y="-62.6" font-family="Times,serif" font-size="14.00">OutputTypeComponent</text>
 </g>
 <!-- OutputTypeComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge28" class="edge">
 <title>OutputTypeComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M313,-85.12C313,-108.46 313,-145.8 313,-145.8 313,-145.8 3870.65,-145.8 3870.65,-145.8"/>
-<polygon fill="black" stroke="black" points="3870.65,-149.3 3880.65,-145.8 3870.65,-142.3 3870.65,-149.3"/>
+<path fill="none" stroke="black" d="M1971,-84.91C1971,-104.14 1971,-131.8 1971,-131.8 1971,-131.8 3886.65,-131.8 3886.65,-131.8"/>
+<polygon fill="black" stroke="black" points="3886.65,-135.3 3896.65,-131.8 3886.65,-128.3 3886.65,-135.3"/>
 </g>
 <!-- SequenceFastDialogComponent -->
 <g id="node29" class="node">
 <title>SequenceFastDialogComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="220.41,-84.8 23.59,-84.8 23.59,-48.8 220.41,-48.8 220.41,-84.8"/>
-<text text-anchor="middle" x="122" y="-62.6" font-family="Times,serif" font-size="14.00">SequenceFastDialogComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="1878.41,-84.8 1681.59,-84.8 1681.59,-48.8 1878.41,-48.8 1878.41,-84.8"/>
+<text text-anchor="middle" x="1780" y="-62.6" font-family="Times,serif" font-size="14.00">SequenceFastDialogComponent</text>
 </g>
 <!-- SequenceFastDialogComponent&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge29" class="edge">
 <title>SequenceFastDialogComponent&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M122,-85.18C122,-109.08 122,-147.8 122,-147.8 122,-147.8 3870.66,-147.8 3870.66,-147.8"/>
-<polygon fill="black" stroke="black" points="3870.66,-151.3 3880.66,-147.8 3870.66,-144.3 3870.66,-151.3"/>
+<path fill="none" stroke="black" d="M1780,-85.11C1780,-104.95 1780,-133.8 1780,-133.8 1780,-133.8 3886.73,-133.8 3886.73,-133.8"/>
+<polygon fill="black" stroke="black" points="3886.73,-137.3 3896.73,-133.8 3886.73,-130.3 3886.73,-137.3"/>
 </g>
 <!-- ExperimentsRoutingModule -->
 <g id="node31" class="node">
 <title>ExperimentsRoutingModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="8308.93,-84.8 8305.93,-88.8 8284.93,-88.8 8281.93,-84.8 8133.07,-84.8 8133.07,-48.8 8308.93,-48.8 8308.93,-84.8"/>
-<text text-anchor="middle" x="8221" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentsRoutingModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="1657.93,-84.8 1654.93,-88.8 1633.93,-88.8 1630.93,-84.8 1482.07,-84.8 1482.07,-48.8 1657.93,-48.8 1657.93,-84.8"/>
+<text text-anchor="middle" x="1570" y="-62.6" font-family="Times,serif" font-size="14.00">ExperimentsRoutingModule</text>
 </g>
 <!-- ExperimentsRoutingModule&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge30" class="edge">
 <title>ExperimentsRoutingModule&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M8221,-85.18C8221,-109.08 8221,-147.8 8221,-147.8 8221,-147.8 4131.34,-147.8 4131.34,-147.8"/>
-<polygon fill="black" stroke="black" points="4131.34,-144.3 4121.34,-147.8 4131.34,-151.3 4131.34,-144.3"/>
+<path fill="none" stroke="black" d="M1570,-84.93C1570,-105.37 1570,-135.8 1570,-135.8 1570,-135.8 3886.49,-135.8 3886.49,-135.8"/>
+<polygon fill="black" stroke="black" points="3886.49,-139.3 3896.49,-135.8 3886.49,-132.3 3886.49,-139.3"/>
 </g>
 <!-- StimFeatureExperimentsDomainModule -->
 <g id="node32" class="node">
 <title>StimFeatureExperimentsDomainModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="8114.84,-84.8 8111.84,-88.8 8090.84,-88.8 8087.84,-84.8 7871.16,-84.8 7871.16,-48.8 8114.84,-48.8 8114.84,-84.8"/>
-<text text-anchor="middle" x="7993" y="-62.6" font-family="Times,serif" font-size="14.00">StimFeatureExperimentsDomainModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="1463.84,-84.8 1460.84,-88.8 1439.84,-88.8 1436.84,-84.8 1220.16,-84.8 1220.16,-48.8 1463.84,-48.8 1463.84,-84.8"/>
+<text text-anchor="middle" x="1342" y="-62.6" font-family="Times,serif" font-size="14.00">StimFeatureExperimentsDomainModule</text>
 </g>
 <!-- StimFeatureExperimentsDomainModule&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge31" class="edge">
 <title>StimFeatureExperimentsDomainModule&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M7993,-85.12C7993,-108.46 7993,-145.8 7993,-145.8 7993,-145.8 4131.29,-145.8 4131.29,-145.8"/>
-<polygon fill="black" stroke="black" points="4131.29,-142.3 4121.29,-145.8 4131.29,-149.3 4131.29,-142.3"/>
+<path fill="none" stroke="black" d="M1342,-85.08C1342,-106.12 1342,-137.8 1342,-137.8 1342,-137.8 3886.43,-137.8 3886.43,-137.8"/>
+<polygon fill="black" stroke="black" points="3886.43,-141.3 3896.43,-137.8 3886.43,-134.3 3886.43,-141.3"/>
 </g>
 <!-- StimFeatureFileBrowserFeatureModule -->
 <g id="node33" class="node">
 <title>StimFeatureFileBrowserFeatureModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="7852.66,-84.8 7849.66,-88.8 7828.66,-88.8 7825.66,-84.8 7613.34,-84.8 7613.34,-48.8 7852.66,-48.8 7852.66,-84.8"/>
-<text text-anchor="middle" x="7733" y="-62.6" font-family="Times,serif" font-size="14.00">StimFeatureFileBrowserFeatureModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="1201.66,-84.8 1198.66,-88.8 1177.66,-88.8 1174.66,-84.8 962.34,-84.8 962.34,-48.8 1201.66,-48.8 1201.66,-84.8"/>
+<text text-anchor="middle" x="1082" y="-62.6" font-family="Times,serif" font-size="14.00">StimFeatureFileBrowserFeatureModule</text>
 </g>
 <!-- StimFeatureFileBrowserFeatureModule&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge32" class="edge">
 <title>StimFeatureFileBrowserFeatureModule&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M7733,-84.89C7733,-107.93 7733,-144.8 7733,-144.8 7733,-144.8 4131.47,-144.8 4131.47,-144.8"/>
-<polygon fill="black" stroke="black" points="4131.47,-141.3 4121.47,-144.8 4131.47,-148.3 4131.47,-141.3"/>
+<path fill="none" stroke="black" d="M1082,-84.84C1082,-106.46 1082,-139.8 1082,-139.8 1082,-139.8 3886.47,-139.8 3886.47,-139.8"/>
+<polygon fill="black" stroke="black" points="3886.47,-143.3 3896.47,-139.8 3886.47,-136.3 3886.47,-143.3"/>
 </g>
 <!-- StimFeatureSequencesDomainModule -->
 <g id="node34" class="node">
 <title>StimFeatureSequencesDomainModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="7595.17,-84.8 7592.17,-88.8 7571.17,-88.8 7568.17,-84.8 7362.83,-84.8 7362.83,-48.8 7595.17,-48.8 7595.17,-84.8"/>
-<text text-anchor="middle" x="7479" y="-62.6" font-family="Times,serif" font-size="14.00">StimFeatureSequencesDomainModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="944.17,-84.8 941.17,-88.8 920.17,-88.8 917.17,-84.8 711.83,-84.8 711.83,-48.8 944.17,-48.8 944.17,-84.8"/>
+<text text-anchor="middle" x="828" y="-62.6" font-family="Times,serif" font-size="14.00">StimFeatureSequencesDomainModule</text>
 </g>
 <!-- StimFeatureSequencesDomainModule&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge33" class="edge">
 <title>StimFeatureSequencesDomainModule&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M7479,-84.96C7479,-107.15 7479,-141.8 7479,-141.8 7479,-141.8 4131.23,-141.8 4131.23,-141.8"/>
-<polygon fill="black" stroke="black" points="4131.23,-138.3 4121.23,-141.8 4131.23,-145.3 4131.23,-138.3"/>
+<path fill="none" stroke="black" d="M828,-84.96C828,-107.15 828,-141.8 828,-141.8 828,-141.8 3886.36,-141.8 3886.36,-141.8"/>
+<polygon fill="black" stroke="black" points="3886.36,-145.3 3896.36,-141.8 3886.36,-138.3 3886.36,-145.3"/>
 </g>
 <!-- StimFeatureSettingsFeatureParamConfigExperimentsModule -->
 <g id="node35" class="node">
 <title>StimFeatureSettingsFeatureParamConfigExperimentsModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="7345.48,-84.8 7342.48,-88.8 7321.48,-88.8 7318.48,-84.8 6984.52,-84.8 6984.52,-48.8 7345.48,-48.8 7345.48,-84.8"/>
-<text text-anchor="middle" x="7165" y="-62.6" font-family="Times,serif" font-size="14.00">StimFeatureSettingsFeatureParamConfigExperimentsModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="694.48,-84.8 691.48,-88.8 670.48,-88.8 667.48,-84.8 333.52,-84.8 333.52,-48.8 694.48,-48.8 694.48,-84.8"/>
+<text text-anchor="middle" x="514" y="-62.6" font-family="Times,serif" font-size="14.00">StimFeatureSettingsFeatureParamConfigExperimentsModule</text>
 </g>
 <!-- StimFeatureSettingsFeatureParamConfigExperimentsModule&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge34" class="edge">
 <title>StimFeatureSettingsFeatureParamConfigExperimentsModule&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M7165,-84.84C7165,-106.46 7165,-139.8 7165,-139.8 7165,-139.8 4131.65,-139.8 4131.65,-139.8"/>
-<polygon fill="black" stroke="black" points="4131.65,-136.3 4121.65,-139.8 4131.65,-143.3 4131.65,-136.3"/>
+<path fill="none" stroke="black" d="M514,-84.89C514,-107.93 514,-144.8 514,-144.8 514,-144.8 3886.67,-144.8 3886.67,-144.8"/>
+<polygon fill="black" stroke="black" points="3886.67,-148.3 3896.67,-144.8 3886.67,-141.3 3886.67,-148.3"/>
 </g>
 <!-- StimLibListUtilsModule -->
 <g id="node36" class="node">
 <title>StimLibListUtilsModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="6967.45,-84.8 6964.45,-88.8 6943.45,-88.8 6940.45,-84.8 6812.55,-84.8 6812.55,-48.8 6967.45,-48.8 6967.45,-84.8"/>
-<text text-anchor="middle" x="6890" y="-62.6" font-family="Times,serif" font-size="14.00">StimLibListUtilsModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="316.45,-84.8 313.45,-88.8 292.45,-88.8 289.45,-84.8 161.55,-84.8 161.55,-48.8 316.45,-48.8 316.45,-84.8"/>
+<text text-anchor="middle" x="239" y="-62.6" font-family="Times,serif" font-size="14.00">StimLibListUtilsModule</text>
 </g>
 <!-- StimLibListUtilsModule&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge35" class="edge">
 <title>StimLibListUtilsModule&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M6890,-85.08C6890,-106.12 6890,-137.8 6890,-137.8 6890,-137.8 4131.46,-137.8 4131.46,-137.8"/>
-<polygon fill="black" stroke="black" points="4131.46,-134.3 4121.46,-137.8 4131.46,-141.3 4131.46,-134.3"/>
+<path fill="none" stroke="black" d="M239,-85.12C239,-108.46 239,-145.8 239,-145.8 239,-145.8 3886.64,-145.8 3886.64,-145.8"/>
+<polygon fill="black" stroke="black" points="3886.64,-149.3 3896.64,-145.8 3886.64,-142.3 3886.64,-149.3"/>
 </g>
 <!-- StimLibUiModule -->
 <g id="node37" class="node">
 <title>StimLibUiModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="6794.95,-84.8 6791.95,-88.8 6770.95,-88.8 6767.95,-84.8 6675.05,-84.8 6675.05,-48.8 6794.95,-48.8 6794.95,-84.8"/>
-<text text-anchor="middle" x="6735" y="-62.6" font-family="Times,serif" font-size="14.00">StimLibUiModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="143.95,-84.8 140.95,-88.8 119.95,-88.8 116.95,-84.8 24.05,-84.8 24.05,-48.8 143.95,-48.8 143.95,-84.8"/>
+<text text-anchor="middle" x="84" y="-62.6" font-family="Times,serif" font-size="14.00">StimLibUiModule</text>
 </g>
 <!-- StimLibUiModule&#45;&gt;StimFeatureExperimentsFeatureModule -->
 <g id="edge36" class="edge">
 <title>StimLibUiModule&#45;&gt;StimFeatureExperimentsFeatureModule</title>
-<path fill="none" stroke="black" d="M6735,-84.93C6735,-105.37 6735,-135.8 6735,-135.8 6735,-135.8 4131.56,-135.8 4131.56,-135.8"/>
-<polygon fill="black" stroke="black" points="4131.56,-132.3 4121.56,-135.8 4131.56,-139.3 4131.56,-132.3"/>
+<path fill="none" stroke="black" d="M84,-85.18C84,-109.08 84,-147.8 84,-147.8 84,-147.8 3886.61,-147.8 3886.61,-147.8"/>
+<polygon fill="black" stroke="black" points="3886.61,-151.3 3896.61,-147.8 3886.61,-144.3 3886.61,-151.3"/>
 </g>
 </g>
 </svg>

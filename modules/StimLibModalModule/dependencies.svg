@@ -14,13 +14,13 @@
 <title>cluster_StimLibModalModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 694,-230.8 694,-32.8 8,-32.8"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_StimLibModalModule_declarations</title>
-<polygon fill="none" stroke="black" points="24,-40.8 24,-92.8 680,-92.8 680,-40.8 24,-40.8"/>
-</g>
 <g id="clust8" class="cluster">
 <title>cluster_StimLibModalModule_exports</title>
 <polygon fill="none" stroke="black" points="16,-170.8 16,-222.8 686,-222.8 686,-170.8 16,-170.8"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_StimLibModalModule_declarations</title>
+<polygon fill="none" stroke="black" points="24,-40.8 24,-92.8 680,-92.8 680,-40.8 24,-40.8"/>
 </g>
 <!-- ConfirmDialogComponent -->
 <g id="node1" class="node">

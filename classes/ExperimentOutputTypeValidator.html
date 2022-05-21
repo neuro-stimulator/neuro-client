@@ -176,7 +176,7 @@ export class ExperimentOutputTypeValidator {
 
   public static createValidator(): ValidatorFn {
     return (control: FormGroup): ValidationErrors | null &#x3D;&gt; {
-      if (!control.get(&#x27;led&#x27;).value &amp;&amp; !control.get(&#x27;audio&#x27;).value &amp;&amp; !control.get(&#x27;image&#x27;).value) {
+      if (!control.get(&#x27;led&#x27;).value &amp;&amp; !control.get(&#x27;matrix&#x27;).value &amp;&amp; !control.get(&#x27;audio&#x27;).value &amp;&amp; !control.get(&#x27;image&#x27;).value) {
         return { noOutputType: true };
       }
 
@@ -185,7 +185,13 @@ export class ExperimentOutputTypeValidator {
         return null;
       }
 
-      const errors &#x3D; {audioFile: false, imageFile: false};
+      const errors &#x3D; {matrixContent: false, audioFile: false, imageFile: false};
+
+      if (control.get(&#x27;matrix&#x27;).value &#x3D;&#x3D;&#x3D; true) {
+        if (control.get(&#x27;matrixContent&#x27;).value &#x3D;&#x3D;&#x3D; null) {
+          errors.matrixContent &#x3D; true;
+        }
+      }
 
       if (control.get(&#x27;audio&#x27;).value &#x3D;&#x3D;&#x3D; true) {
         if (control.get(&#x27;audioFile&#x27;).value &#x3D;&#x3D;&#x3D; null) {
@@ -199,7 +205,7 @@ export class ExperimentOutputTypeValidator {
         }
       }
 
-      if (errors.audioFile || errors.imageFile) {
+      if (errors.matrixContent || errors.audioFile || errors.imageFile) {
         return errors;
       }
 
