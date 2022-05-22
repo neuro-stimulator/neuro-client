@@ -60,7 +60,7 @@
     "@ngx-translate/http-loader": "7.0.0",
     "@angular-slider/ngx-slider": "2.0.4",
     "@nrwl/angular": "13.10.5",
-    "@stechy1/diplomka-share": "1.0.57",
+    "@stechy1/diplomka-share": "1.0.58",
     "angular-2-local-storage": "3.0.2",
     "body-parser": "1.20.0",
     "bootstrap": "4.6.1",
